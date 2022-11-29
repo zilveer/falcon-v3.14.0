@@ -1,0 +1,29 @@
+extends ../../../layouts/LayoutComponent
+include ../../../mixins/components/navbar/Navbar
+
+append variables
+  
+  
+  -
+    var pageHeader = {
+      title: 'Navbar',
+      description: "Documentation and examples for Bootstrap’s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for Bootstrap collapse plugin.",
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/components/navbar/`,
+      linkText: 'Navbar on Bootstrap'
+    }
+
+append content
+  +PageHeader(pageHeader)
+
+  
+  +ComponentCard({
+    title: 'Navbar Light',
+    anchor: true,
+  }).mb-3
+    +Navbar('navbarLightExample').bg-light.navbar-light
+
+  +ComponentCard({
+    title: 'Navbar Dark',
+    anchor: true,
+  }).mb-3
+    +Navbar('navbarSuccessExample').bg-dark.navbar-dark.light

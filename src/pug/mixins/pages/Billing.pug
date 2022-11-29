@@ -1,0 +1,103 @@
+mixin BillingPageHeader
+  +PageHeader({title:'Get started with your free trial'})
+    p.mt-2 Premium team - 5 Seats. Free for 30 days, cancel at any time. 
+      br
+      | $6.25 / seat month after a trial
+    .dropdown
+      button#change-plan.btn.btn-link.dropdown-toggle.ps-0.btn-sm(type="button" data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false') Change plan
+      .dropdown-menu.py-3(aria-labelledby='change-plan' style="min-width: 15rem;")
+        .dropdown-item.px-3.py-2
+          span.d-flex.justify-content-between.fs--1.text-black
+            span.fw-semi-bold Standard License
+            span $59.00
+          ul.list-unstyled.ps-1.my-2.fs--1
+            li 
+              span.fas.fa-circle(data-fa-transform="shrink-11")
+              span.ms-1 Use for a single product
+            li
+              span.fas.fa-circle(data-fa-transform="shrink-11")
+              span.ms-1 Non-paying users only
+          p.fs--2.mb-0 Read the full 
+            a(href="#!") Standard License  
+        .dropdown-divider.my-0
+        .dropdown-item.px-3.py-2
+          span.d-flex.justify-content-between.fs--1.text-black
+            span.fw-semi-bold Extended License
+            span $99.00
+          ul.list-unstyled.ps-1.my-2.fs--1
+            li 
+              span.fas.fa-circle(data-fa-transform="shrink-11")
+              span.ms-1 Unlimited websites
+            li 
+              span.fas.fa-circle(data-fa-transform="shrink-11")
+              span.ms-1 Paying users allowed
+          p.fs--2.mb-0 Read the full   
+            a(href="#!") Extended License
+
+mixin BillingDetails
+  +Radio({id: 'paypal', parentAttrs: { class: 'mb-0'}, labelAttrs: { class: 'mb-0 d-block'}})(name="billing")
+    img(src=`${CWD}assets/img/icons/icon-paypal-full.png` height=20 alt='')
+  p.fs--1.mb-4 Pay with PayPal, Apple Pay, PayPal Credit and much more
+
+  +Radio({id: 'credit-card', parentAttrs: { class: 'mb-0'}, labelAttrs: { class: 'd-flex align-items-center mb-0'}})(checked="checked" name="billing")
+    span.fs-1.text-nowrap Credit Card
+    img.d-none.d-sm-inline-block.ms-2.mt-lg-0(src=`${CWD}assets/img/icons/icon-payment-methods.png` height=20 alt='')
+  p.fs--1.mb-4 Safe money transfer using your bank accounts. Visa, maestro, discover, american express.
+
+  .row.gx-3.mb-3
+    .col
+      label.form-label.ls.text-uppercase.text-600.fw-semi-bold.mb-0.fs--1(for='cardNumber') Card Number
+      input#cardNumber.form-control(placeholder='XXXX XXXX XXXX XXXX' type='text')
+    .col
+      label.form-label.ls.text-uppercase.text-600.fw-semi-bold.mb-0.fs--1(for='cardName') Name of Card
+      input#cardName.form-control(placeholder='John Doe' type='text')
+  .row.gx-3
+    .col-6.col-sm-3
+      label.form-label.ls.text-uppercase.text-600.fw-semi-bold.mb-0.fs--1(for='inputCountry') Country
+      input#inputCountry.form-select.mb-3(aria-label='customSelectCountry' list="country-list" placeholder="Country")
+      datalist#country-list.scrollbar
+        each country, index in countries
+          option=country
+    .col-6.col-sm-3
+      label.form-label.ls.text-uppercase.text-600.fw-semi-bold.mb-0.fs--1(for='zipCode') Zip Code
+      input#zipCode.form-control(placeholder='1234' type='text')
+    .col-6.col-sm-3
+      label.form-label.ls.text-uppercase.text-600.fw-semi-bold.mb-0.fs--1(for='expDate') Exp Date
+      input#expDate.form-control(placeholder='15/2024' type='text')
+    .col-6.col-sm-3
+      label.form-label.ls.text-uppercase.text-600.fw-semi-bold.mb-0.fs--1(for='cvv') CVV
+        span( data-bs-toggle="tooltip" data-bs-placement="top" title="Card verification value").ms-1
+          span.fa.fa-question-circle
+      input#cvv.form-control(placeholder='123' maxlength='3' pattern='[0-9]{3}' type='text')
+
+mixin BillingStartButton
+  .card&attributes(attributes)
+    .card-header
+      h5.mb-0 Billing
+    .card-body.bg-light
+      select.form-select.mb-3(aria-label='Default select example')
+        option(selected='') Monthly Plan
+        option(value='1') Annual Plan
+
+      .d-flex.justify-content-between.fs--1.mb-1
+        p.mb-0 Due in 30 days
+        span $375.00
+      .d-flex.justify-content-between.fs--1.mb-1.text-success
+        p.mb-0 Annual saving
+        span $75.00/yr
+      hr
+      h5.d-flex.justify-content-between
+        span Due today
+        span $0.00
+      p.fs--1.text-600 Once you start your trial, you will have 30 days to use #{name} Premium for free. After 30 days you’ll be charged based on your selected plan.
+
+      button.btn.btn-primary.d-block.w-100(type="submit")
+        span.fa.fa-lock.me-2
+        | Start free trial
+
+      .text-center.mt-2
+        small.d-inline-block
+          | By continuing, you are agreeing to our subscriber 
+          a(href='#!') terms
+          |  and will be charged at the end of the trial.     
+

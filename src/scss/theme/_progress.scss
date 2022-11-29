@@ -1,0 +1,42 @@
+// animated progress bar
+
+.animated-progress-bar {
+  width: var(--#{$prefix}progressbar-width);
+  animation: widthAnimation 1s;
+}
+
+@keyframes widthAnimation {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: var(--#{$prefix}progressbar-width);
+  }
+}
+
+// circle progress bar
+
+.circle-progress-svg {
+  transform: rotate(130deg);
+  [dir="rtl"] & {
+    transform: rotate(-130deg);
+  }
+  .progress-bar-rail{
+    stroke-dasharray: 340px;
+    stroke-dashoffset: 72;
+    stroke: var(--#{$prefix}gray-200);
+  }
+
+  .progress-bar-top {
+    stroke-dasharray: 340px;
+    stroke-dashoffset: 340;
+    animation: strokeAnimation 1s ease-in-out forwards;
+  }
+}
+
+@keyframes strokeAnimation {
+  to {
+    stroke-dashoffset: calc(340px - (267px * var(--#{$prefix}circle-progress-bar)) / 100);
+  }
+}

@@ -1,0 +1,118 @@
+extends ../../layouts/LayoutComponent
+
+  
+
+block append content
+
+  +PageHeader({
+    title: 'Setting up configuration',
+    description: 'Falcon has a global configuration system. You can change the theme settings with a single global javascript object.',
+  })
+  .card.mb-3
+    .card-header
+      h5.mb-0(data-anchor) Setting configuration
+    .card-body.bg-light
+      h6 For Gulp based workflow
+      p Edit the 
+        code src/js/config.js
+        |  file.
+
+      h6 If you are not using Gulp based workflow
+      p Edit the 
+        code public/assets/js/config.js
+        |  file.
+
+      h6.fs-0 Configuration object:
+      pre
+        code.lang-js.
+          const CONFIG = {
+            isNavbarVerticalCollapsed: false,
+            theme: "light",
+            isRTL: false,
+            isFluid: false,
+            navbarStyle: "transparent",
+            navbarPosition: "vertical",
+          };
+  .card
+    .card-header  
+      h5 Available Options
+    .card-body.bg-light
+      .table-responsive
+        table.table.table-bordered.border.border-200.fs--1.mb-0
+          thead.bg-200.text-900
+            tr
+              th.white-space-nowrap Option
+              th.white-space-nowrap Type
+              th.white-space-nowrap Defaults
+              th.white-space-nowrap Description
+          tbody
+            tr  
+              td.white-space-nowrap isNavbarVerticalCollapsed
+              td.white-space-nowrap 
+                code Boolean
+              td.white-space-nowrap 
+                code false
+              td Set 
+                code true
+                |  to make the vertical navbar stay collapsed when the page loads. 
+            tr
+              td.white-space-nowrap theme
+              td
+                code string 
+              td.white-space-nowrap  
+                code light 
+              td This option is for setting up the default color mode (
+                code dark
+                |  or 
+                code light
+                | ) for your project. Set 
+                code dark
+                |  to make the default color mode dark.
+            tr
+              td.white-space-nowrap isRTL
+              td
+                code Boolean
+              td
+                code false
+              td Use 
+                code true
+                |  to make the whole layout RTL (Right to Left). Recommended for languages such as Arabic, Hebrew, or other RTL languages.
+            tr
+              td.white-space-nowrap isFluid
+              td.white-space-nowrap 
+                code Boolean 
+              td.white-space-nowrap 
+                code false
+              td Set 
+                code true
+                |  to enable fluid mood. This will make the container full-width.
+            tr
+              td.white-space-nowrap navbarStyle
+              td.white-space-nowrap 
+                code string 
+              td.white-space-nowrap 
+                code transparent
+              td This option is for changing the vertical navigation styling. Available values:
+                ul.mb-0
+                  li 
+                    code transparent
+                  li 
+                    code vibrant
+                  li 
+                    code inverted
+                  li 
+                    code card
+            tr
+              td.white-space-nowrap navbarPosition
+              td.white-space-nowrap 
+                code string 
+              td.white-space-nowrap 
+                code vertical
+              td For setting the navbar position. Available values:
+                ul.mb-0
+                  li
+                    code top
+                  li
+                    code vertical
+                  li
+                    code combo

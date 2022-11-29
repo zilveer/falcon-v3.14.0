@@ -1,0 +1,46 @@
+mixin WizardHeader(config)
+  ul.nav.justify-content-between.nav-wizard
+    li.nav-item
+      a(href=config.tab1 data-bs-toggle='tab' data-wizard-step).nav-link.active.fw-semi-bold
+        span.nav-item-circle-parent
+          span.nav-item-circle
+            span.fas.fa-lock
+        span.d-none.d-md-block.mt-1.fs--1 Account
+    li.nav-item
+      a(href=config.tab2 data-bs-toggle='tab' data-wizard-step).nav-link.fw-semi-bold
+        span.nav-item-circle-parent
+          span.nav-item-circle
+            span.fas.fa-user
+        span.d-none.d-md-block.mt-1.fs--1 Personal
+    li.nav-item
+      a(href=config.tab3 data-bs-toggle='tab' data-wizard-step).nav-link.fw-semi-bold
+        span.nav-item-circle-parent
+          span.nav-item-circle
+            span.fas.fa-dollar-sign
+        span.d-none.d-md-block.mt-1.fs--1 Billing
+    li.nav-item
+      a(href=config.tab4 data-bs-toggle='tab' data-wizard-step).nav-link.fw-semi-bold
+        span.nav-item-circle-parent
+          span.nav-item-circle
+            span.fas.fa-thumbs-up
+        span.d-none.d-md-block.mt-1.fs--1 Done
+
+mixin FormWizardHeader(config) 
+  ul.nav.nav-pills.mb-3(role='tablist' id=config.navTabId)
+    li.nav-item(role='presentation')
+      button.nav-link.active(data-wizard-step data-bs-toggle='pill' data-bs-target=config.tab1 type='button' role='tab' aria-controls=config.tab1.split('#').pop() aria-selected='true')
+        span.fas.fa-lock.me-2(data-fa-transform='shrink-2')
+        span.d-none.d-md-inline-block.fs--1 Account
+    li.nav-item(role='presentation')
+      button.nav-link(data-wizard-step data-bs-toggle='pill' data-bs-target=config.tab2 type='button' role='tab' aria-controls=config.tab2.split('#').pop() aria-selected='false')
+        span.fas.fa-user.me-2(data-fa-transform='shrink-2')
+        span.d-none.d-md-inline-block.fs--1 Personal
+    li.nav-item(role='presentation')
+      button.nav-link(data-wizard-step data-bs-toggle='pill' data-bs-target=config.tab3 type='button' role='tab' aria-controls=config.tab3.split('#').pop() aria-selected='false')
+        span.fas.fa-dollar-sign.me-2(data-fa-transform='down-2 shrink-2')
+        span.d-none.d-md-inline-block.fs--1 Billing
+    li.nav-item(role='presentation')
+      button.nav-link(data-wizard-step data-bs-toggle='pill' data-bs-target=config.tab4 
+      type='button' role='tab' aria-controls=config.tab4.split('#').pop() aria-selected='false')
+        span.fas.fa-thumbs-up.me-2(data-fa-transform='shrink-2')
+        span.d-none.d-md-inline-block.fs--1 Done

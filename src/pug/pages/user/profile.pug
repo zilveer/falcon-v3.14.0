@@ -1,0 +1,35 @@
+extends ../../layouts/LayoutFeed
+include ../../mixins/common/Verified
+include ../../mixins/common/Notification
+include ../../mixins/common/Media
+include ../../mixins/pages/profile/Profile
+include ../../mixins/pages/profile/Activity
+include ../../mixins/pages/profile/Experience
+include ../../mixins/pages/profile/Education
+include ../../mixins/pages/profile/Events
+include ../../mixins/pages/profile/Associations
+include ../../mixins/pages/profile/Members
+
+
+prepend styles
+  link(href=`${CWD}vendors/glightbox/glightbox.min.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/glightbox/glightbox.min.js`)
+
+block feedBanner
+  +Profile
+
+block feed
+  +Intro
+  +Associations({more: true, start: 0, end: 4}).mb-3
+  +Activity({more: true, start: 5}).mb-3
+  +ProfileGallery
+
+block feedSideBar
+  +Experience
+  +Education
+  +Events({more: true})
+
+block feedFooter
+  +Members({more: true, start: 0, end: 12})

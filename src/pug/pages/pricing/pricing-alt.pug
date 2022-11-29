@@ -1,0 +1,22 @@
+extends ../../layouts/LayoutTheme
+include ../../mixins/pages/Billing
+include ../../mixins/pages/Pricing
+include ../../mixins/faq/FaqAlt
+
+
+append content
+  .card.mb-3
+    .card-body  
+      .row.justify-content-center
+        +PricingTitle
+        .col-12.col-lg-9.col-xl-10.col-xxl-8
+          .row  
+            +PricingFree
+            +PricingPro          
+        .col-12.text-center
+          h5.mt-5 Looking for personal or small team task management?
+          p.fs-1 Try the 
+            a(href="#") basic version
+            |  of #{name}
+
+  +FaqAlt({ footerPadding: 'py-3'})

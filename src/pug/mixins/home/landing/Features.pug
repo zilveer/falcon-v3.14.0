@@ -1,0 +1,101 @@
+mixin Features1
+  +Section
+    .row.justify-content-center.text-center
+      .col-lg-8.col-xl-7.col-xxl-6
+        h1.fs-2.fs-sm-4.fs-md-5 WebApp theme of the future
+        p.lead Built on top of Bootstrap 5, super modular #{name} provides you gorgeous design &amp; streamlined UX for your WebApp.
+
+    .row.flex-center.mt-8
+      .col-md.col-lg-5.col-xl-4.ps-lg-6
+        img.img-fluid.px-6.px-md-0(src=`${CWD}assets/img/icons/spot-illustrations/50.png` alt='')
+      .col-md.col-lg-5.col-xl-4.mt-4.mt-md-0
+        h5.text-danger
+          span.far.fa-lightbulb.me-2
+          | PLAN
+        h3 Blueprint &amp; design 
+        p With #{name} as your guide, now you have a fine-tuned state of the earth tool to make your wireframe a reality.
+
+    .row.flex-center.mt-7
+      .col-md.col-lg-5.col-xl-4.pe-lg-6.order-md-2
+        img.img-fluid.px-6.px-md-0(src=`${CWD}assets/img/icons/spot-illustrations/49.png` alt='')
+      .col-md.col-lg-5.col-xl-4.mt-4.mt-md-0
+        h5.text-info 
+          span.far.fa-object-ungroup.me-2
+          | BUILD
+        h3 38 Sets of components
+        p Build any UI effortlessly with #{name}'s robust set of layouts, 38 sets of built-in elements, carefully chosen colors, typography, and css helpers.
+
+    .row.flex-center.mt-7
+      .col-md.col-lg-5.col-xl-4.ps-lg-6
+        img.img-fluid.px-6.px-md-0(src=`${CWD}assets/img/icons/spot-illustrations/48.png` alt='')
+      .col-md.col-lg-5.col-xl-4.mt-4.mt-md-0
+        h5.text-success
+          span.far.fa-paper-plane.me-2
+          | DEPLOY
+        h3 Review and test
+        p From IE to iOS, rigorously tested and optimized #{name} will give the near perfect finishing to your webapp; from the landing page to the logout screen.
+
+mixin Features2
+  +Section.bg-light.text-center
+    .row
+      .col
+        h1.fs-2.fs-sm-4.fs-md-5 Here's what's in it for you
+        p.lead Things you will get right out of the box with #{name}.
+    .row.mt-6
+      .col-lg-4
+        .card.card-span.h-100
+          .card-span-img
+            span.fab.fa-sass.fs-4.text-info
+          .card-body.pt-6.pb-4
+            h5.mb-2 Bootstrap 5.x
+            p Build your webapp with the world's most popular front-end component library along with #{name}'s 32 sets of carefully designed elements.
+
+      .col-lg-4.mt-6.mt-lg-0
+        .card.card-span.h-100
+          .card-span-img
+            span.fab.fa-node-js.fs-5.text-success
+          .card-body.pt-6.pb-4
+            h5.mb-2 SCSS &amp; Javascript files
+            p With your purchased copy of #{name}, you will get all the uncompressed & documented SCSS and Javascript source code files.
+
+      .col-lg-4.mt-6.mt-lg-0
+        .card.card-span.h-100
+          .card-span-img
+            span.fab.fa-gulp.fs-6.text-danger
+          .card-body.pt-6.pb-4
+            h5.mb-2 Gulp based workflow
+            p All the painful or time-consuming tasks in your development workflow such as compiling the SCSS or transpiring the JS are automated.
+
+mixin Testimonial
+  +Section.bg-200.text-center
+    .row.justify-content-center
+      .col-lg-9.col-xl-8
+        .swiper-container.theme-slider(data-swiper!={
+          autoplay: true,
+          spaceBetween: 5,
+          loop: true,
+          loopedSlides: 5,
+          slideToClickedSlide: true,
+        })
+          .swiper-wrapper
+            .swiper-slide
+              .px-5.px-sm-6
+                p.fs-sm-1.fs-md-2.fst-italic.text-dark
+                  | Falcon is the best option if you are looking for a theme built with Bootstrap. On top of that, Falcon&apos;s creators and support staff are very brilliant and attentive to users&apos; needs.
+                p.fs-0.text-600 - Scott Tolinski, Web Developer
+                img.w-auto.mx-auto(src='../assets/img/logos/google.png' alt='' height='45')
+            .swiper-slide 
+              .px-5.px-sm-6
+                p.fs-sm-1.fs-md-2.fst-italic.text-dark
+                  | We&apos;ve become fanboys! Easy to change the modular design, great dashboard UI, enterprise-class support, fast loading time. What else do you want from a Bootstrap Theme?
+                p.fs-0.text-600 - Jeff Escalante, Developer
+                img.w-auto.mx-auto(src='../assets/img/logos/netflix.png' alt='' height='30')
+            .swiper-slide  
+              .px-5.px-sm-6
+                p.fs-sm-1.fs-md-2.fst-italic.text-dark
+                  | When I first saw Falcon, I was totally blown away by the care taken in the interface. It felt like something that I&apos;d really want to use and something I could see being a true modern replacement to the current class of Bootstrap themes.
+                p.fs-0.text-600 - Liam Martens, Designer
+                img.w-auto.mx-auto(src='../assets/img/logos/paypal.png' alt='' height='45')
+          .swiper-nav
+            .swiper-button-next.swiper-button-white
+            .swiper-button-prev.swiper-button-white 

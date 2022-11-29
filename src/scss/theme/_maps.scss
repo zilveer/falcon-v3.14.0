@@ -1,0 +1,59 @@
+//*-----------------------------------------------
+//|   Utilities colors map
+//-----------------------------------------------*/
+$theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value") !default;
+$theme-dark-colors-rgb: map-loop($theme-dark-colors, to-rgb, "$value") !default;
+$utilities-colors: $theme-colors-rgb !default;
+
+$grays-rgb: map-loop($grays, to-rgb, "$value") !default;
+$dark-grays-rgb: map-loop($dark-grays, to-rgb, "$value") !default;
+
+$brand-colors-rgb: map-loop($brand-colors, to-rgb, "$value") !default;
+$bg-soft-colors: map-loop($theme-colors-soft, bg-soft-css-var, "$key", "soft") !default;
+$theme-all-colors: map_merge_multiple($theme-colors, $grays, $brand-colors) !default;
+
+
+
+// scss-docs-start utilities-bg-colors
+$utilities-text: map-merge-multiple(
+  $utilities-colors,
+  $brand-colors-rgb,
+  (
+    "body": to-rgb($body-bg)
+  )
+) !default;
+// $utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg") !default;
+$theme-text-colors: map-loop($utilities-text, rgba-css-var, "$key", "text") !default;
+$grays-text-colors: map-loop($grays-rgb, grays-rgba-css-var, "$key", "text") !default;
+$utilities-text-colors: map-merge($theme-text-colors,$grays-text-colors) !default;
+
+
+// scss-docs-start utilities-bg-colors
+$utilities-bg: map-merge-multiple(
+  $utilities-colors,
+  $brand-colors-rgb,
+  (
+    // "black": to-rgb($black),
+    // "white": to-rgb($white),
+    "body": to-rgb($body-bg)
+  )
+) !default;
+$theme-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg") !default;
+$grays-bg-colors: map-loop($grays-rgb, grays-rgba-css-var, "$key", "bg") !default;
+$utilities-bg-colors: map-merge($theme-bg-colors,$grays-bg-colors) !default;
+
+
+// scss-docs-start border-colors
+$utilities-border: map-merge-multiple(
+  $utilities-colors,
+  $brand-colors-rgb,
+  (
+    "white": to-rgb($white),
+  )
+) !default;
+$theme-border-colors: map-loop($utilities-border, rgba-css-var, "$key", "border") !default;
+$grays-border-colors: map-loop($grays-rgb, grays-rgba-css-var, "$key", "border") !default;
+$utilities-border-colors: map-merge($theme-border-colors,$grays-border-colors) !default;
+
+
+

@@ -1,0 +1,79 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/Toasts
+
+append variables
+  
+  -
+    var pageHeader ={
+      title: 'Toasts',
+      description: 'Push notifications to your visitors with a toast, a lightweight and easily customizable alert message.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/components/toasts/`,
+      linkText: 'Toasts on Bootstrap'
+    } 
+
+block component
+  +PageHeader(pageHeader)
+
+  
+
+  +ComponentCard({
+    title: 'Basic Example',
+    anchor: true,
+  }).mb-3
+    +ToastBasicExampleDemo
+
+    
+
+  +ComponentCard({
+    title: 'Stacking',
+    anchor: true,
+    description:"When you have multiple toasts, we default to vertically stacking them in a readable manner.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +ToastStackingDemo
+
+
+  .card.mb-3
+    .card-header.bg-light
+      h5.mb-0 Placement
+      +ToastPlacementDescription.mt-2
+    .card-body.bg-light.py-0
+      +ComponentCard({ title: 'Example' }).mx-ncard.shadow-none.rounded-top-0
+        +RoastRightPlaceDemo
+      +ComponentCard({
+        description :'You can also get fancy with flexbox utilities to align toasts horizontally and/or vertically.'
+      }).mx-ncard.shadow-none.mt-3.rounded-top-0
+        +RoastMiddlePlaceDemo
+    
+        
+  +ComponentCard({
+    title: 'Live Toast',
+    anchor: true,
+  }).mb-3
+    +LiveToastDemo
+
+  +ComponentCard({
+    title: 'Translucent',
+    anchor: true,
+    description:"Toasts are slightly translucent, too, so they blend over whatever they might appear over.",
+    descriptionClass:'mt-2 mb-0',
+    bodyClass:'bg-dark'
+  }).mb-3
+    +TranslucentDemo
+
+  +ComponentCard({
+    title: 'Color schemes',
+    anchor: true,
+  }).mb-3
+    +ToastColorSchemesDemo
+
+    
+  +ComponentCard({
+    title: 'Custom Content',
+    anchor: true,
+    description:"You can also add additional controls and components to toasts.",
+    descriptionClass:'mt-2 mb-0',
+  }).mb-3
+    +CustomContentDemo
+
+

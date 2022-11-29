@@ -1,0 +1,105 @@
+append variables  
+  -
+    var recentLeadsItem = [
+      {
+        name: 'Kerry Ingram',
+        img:'team/1-thumb.png',
+        email: 'john@gmail.com',
+        status: 'New Lead',
+        color: 'primary'
+      },
+      {
+        name: 'Bradie Knowall',
+        img:'team/2-thumb.png',
+        email: 'bradie@mail.ru',
+        status: 'New Lead',
+        color: 'primary'
+      },
+      {
+        name: 'Jenny Horas',
+        img:'team/3-thumb.png',
+        email: 'jenny@mail.ru',
+        status: 'Cold Lead',
+        color: 'warning'
+      },
+      {
+        name: 'Chris Pratt',
+        img:'team/4-thumb.png',
+        email: 'pratt@mail.ru',
+        status: 'Cold Lead',
+        color: 'warning'
+      },
+      {
+        name: 'Andy Murray',
+        img:'team/5-thumb.png',
+        email: 'andy@gmail.com',
+        status: 'Won Lead',
+        color: 'success'
+      },
+    ]
+
+mixin CardRecentLeads(page=8)
+  .card#TableCrmRecentLeads(data-list!={
+    valueNames: ["name", "email", "status"],
+    page: page,
+    pagination: true
+  })&attributes(attributes)
+    .card-header.d-flex.flex-between-center.py-2
+      h6.mb-0 Recent Leads
+      +DashboardDropdown("recent-leads-header-dropdown")
+    .card-body.px-0.py-0
+      +RecentLeadsTable
+    .card-footer.bg-light.p-0
+      .pagination.d-none
+      a.btn.btn-sm.btn-link.d-block.py-2(href=`#!`) Show  full list
+        span.fas.fa-chevron-right.ms-1.fs--2
+
+
+mixin RecentLeadsTable     
+  .table-responsive.scrollbar
+    table.table.fs--1.mb-0
+      thead.bg-200.text-800
+        tr
+          th.py-3.white-space-nowrap(style="max-width: 30px;")
+            .form-check.mb-0.d-flex.align-items-center
+              input.form-check-input#checkbox-bulk-leads-select(
+                type='checkbox' 
+                data-bulk-select!={
+                  body: "table-recent-leads-body",
+                  actions: "table-recent-leads-actions",
+                  replacedElement: "table-recent-leads-replace-element"
+                }
+              )
+          th.sort.align-middle(data-sort="name") Name
+          th.sort.align-middle(data-sort="email") Email and Phone
+          th.sort.align-middle(data-sort="status") Status
+          th.sort.align-middle.text-end Action
+      tbody.list#table-recent-leads-body
+        each person, index in recentLeadsItem
+          +RecentLeadsTableItem(person, index)
+
+mixin RecentLeadsTableItem(config, index)
+  tr.hover-actions-trigger.btn-reveal-trigger.hover-bg-100
+    td.align-middle(style="max-width: 30px;")
+      .form-check.mb-0
+        input.form-check-input(
+          type='checkbox' 
+          id=`recent-leads-${index}`
+          data-bulk-select-row
+        )
+    td.align-middle.white-space-nowrap
+      a.text-800(href=`${CWD}pages/user/profile.html`)
+        .d-flex.align-items-center
+          +Avatar({img: `${config.img}`, size: 'xl'})
+          h6.mb-0.ps-2.name #{config.name}
+    td.align-middle.white-space-nowrap.text-primary.email
+      a(href=`mailto:${config.email}`)=config.email
+    td.align-middle.white-space-nowrap
+      small.badge.fw-semi-bold.rounded-pill.status(class = `badge-soft-${config.color}`)  #{config.status}
+    td.align-middle.white-space-nowrap.text-end.position-relative
+      .hover-actions.bg-100
+        button.btn.icon-item.rounded-3.me-2.fs--2.icon-item-sm
+          span.far.fa-edit
+        button.btn.icon-item.rounded-3.me-2.fs--2.icon-item-sm
+          span.far.fa-comment
+      +DashboardDropdown(`crm-recent-leads-${index}`, 'sm').transition-none

@@ -1,0 +1,42 @@
+mixin ContactDetailsHeader 
+  .card&attributes(attributes)
+    .card-header.d-flex.align-items-center.justify-content-between
+      button(type='button').btn.btn-falcon-default.btn-sm
+        span.fas.fa-arrow-left
+      .d-flex
+        button.btn.btn-sm.btn-falcon-default.d-xl-none(
+            type="button"
+            data-bs-toggle= "offcanvas"
+            data-bs-target="#contactDetailsOffcanvas"
+            aria-controls="contactDetailsOffcanvas"
+          )
+          span.fas.fa-tasks(data-fa-transform="shrink-2")
+          span.ms-1 To-do
+        .bg-300.mx-3.d-xl-none(style='width:1px; height:29px')
+        button(type='button').btn.btn-falcon-default.btn-sm.me-2
+          span.fas.fa-edit
+          span.d-none.d-xl-inline-block.ms-1 Edit
+        button(type='button').btn.btn-falcon-default.btn-sm.d-none.d-sm-block
+          span.fas.fa-sync-alt
+          span.d-none.d-xl-inline-block.ms-1 Convert to Agent
+        button(type='button').btn.btn-falcon-default.btn-sm.btn-sm.d-none.d-sm-block.mx-2
+          span.fas.fa-lock
+          span.d-none.d-xl-inline-block.ms-1 Send Activation Email
+        button(type='button').btn.btn-falcon-default.btn-sm.d-none.d-sm-block.me-2
+          span.fas.fa-trash-alt
+          span.d-none.d-xl-inline-block.ms-1 Delete
+        button(type='button').btn.btn-falcon-default.btn-sm.d-none.d-sm-block.me-2
+          span.fas.fa-key
+          span.d-none.d-xl-inline-block.ms-1 Change Password
+        .dropdown.font-sans-serif
+          button.btn.btn-falcon-default.text-600.btn-sm.dropdown-toggle.dropdown-caret-none(type='button' id="preview-dropdown" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false")
+            span.fas.fa-ellipsis-v.fs--2
+          .dropdown-menu.dropdown-menu-end.border.py-2(aria-labelledby="preview-dropdown" )
+            a(href='#!').dropdown-item View
+            a(href='#!').dropdown-item Export
+            a(href='#!').dropdown-item.d-sm-none Convert to Agent
+            a(href='#!').dropdown-item.d-sm-none Send Activation Email
+            a(href='#!').dropdown-item.d-sm-none Delete
+            a(href='#!').dropdown-item.d-sm-none Change Password
+            .dropdown-divider
+            a(href='#!').dropdown-item.text-danger Remove

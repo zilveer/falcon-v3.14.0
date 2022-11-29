@@ -1,0 +1,45 @@
+extends ../../../layouts/LayoutTheme
+include ../../../mixins/e-learning/Mixins
+include ../../../mixins/e-learning/Courses
+include ../../../mixins/e-learning/CourseGrid
+
+append variables
+  - var attrsHtml = Object.assign(attrsHtml, { class: 'navbar-vertical-collapsed' })
+  - var hasTopNavOnly = true;
+
+prepend styles
+  link(href=`${CWD}vendors/swiper/swiper-bundle.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/glightbox/glightbox.min.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/swiper/swiper-bundle.min.js`)
+  script(src=`${CWD}vendors/glightbox/glightbox.min.js`) 
+
+block navbarTop
+
+block navbarVertical
+  if ENV === 'PROD'
+    +NavbarDoubleTop({
+      toggleID: 'navbarDoubleTop',
+      search: true,
+      changelog: true,
+      footer: true
+    }).navbar-expand-lg
+  
+  +NavbarTop({
+    toggleID: 'navbarStandard',
+    links: true,
+    search: false,
+    changelog: true
+  }).navbar-expand-lg
+
+block content
+  .row.g-3
+    .col-xxl-2.col-xl-3
+      +CoursesFilter
+    .col-xxl-10.col-xl-9
+      +CoursesHeader('grid')
+      .row.mb-3.g-3
+        each course in courses
+          +CourseGridItem(course).col-md-6.col-xxl-4
+      +CoursesPagination

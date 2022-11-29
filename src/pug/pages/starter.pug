@@ -1,0 +1,14 @@
+extends ../layouts/LayoutTheme
+             
+
+append content
+  .card
+    .card-body.overflow-hidden.p-lg-6
+      .row.align-items-center
+        .col-lg-6
+          img.img-fluid(src=`${CWD}assets/img/icons/spot-illustrations/21.png` alt='')
+        .col-lg-6.ps-lg-4.my-5.text-center.text-lg-start
+          h3.text-primary Edit me!
+
+          p.lead Create Something Beautiful.
+          a(href=`${CWD}${paths['getting-started']}`).btn.btn-falcon-primary Getting started

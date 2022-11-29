@@ -1,0 +1,66 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/common/ComingSoon
+
+block append variables
+  
+  - 
+    var pageHeader = {
+      title: 'CountUp',
+      description: 'CountUp.js is a dependency-free, lightweight JavaScript class that can be used to quickly create animations that display numerical data in a more interesting way.',
+      url: `https://inorganik.github.io/countUp.js/`,
+      linkText: 'Documentation for CountUp'
+    }
+
+prepend scripts
+  script(src=`${CWD}vendors/countup/countUp.umd.js`)
+
+block append content
+  +PageHeader(pageHeader)
+
+  .card.mb-3
+    .card-header
+      h5.mb-0(data-anchor) Example
+    .card-body.bg-light      
+      .row
+        .col-6.col-md-4.col-xl.mb-4.text-center
+          ='\n'
+          span.fs-4.fw-medium(data-countup!={endValue: 36487}) 0
+          h6 (Default) 
+        .col-6.col-md-4.col-xl.mb-4.text-center
+          ='\n'
+          span.fs-4.fw-medium(data-countup!={endValue: 23542, duration: 10}) 0
+          h6 (Duration 10s) 
+        .col-6.col-md-4.col-xl.mb-4.text-center
+          ='\n'
+          span.fs-4.fw-medium(data-countup!={endValue: 36487, separator: '' }) 0
+          h6 (No Separator) 
+        .col-6.col-md-4.col-xl.mb-4.text-center
+          ='\n'
+          span.fs-4.fw-medium(data-countup!={endValue: 36487, separator : ' ' }) 0
+          h6 (Space) 
+        .col-6.col-md-4.col-xl.mb-4.text-center
+          ='\n'
+          span.fs-4.fw-medium(data-countup!={endValue: 36.487, decimalPlaces: 2, suffix : 'k' }) 0
+          h6 (suffix) 
+        .col-6.col-md-4.col-xl.mb-4.text-center
+          ='\n'
+          span.fs-4.fw-medium(data-countup!={endValue: 36487, prefix: '$' }) 0
+          h6 (Prefix) 
+      +ComponentCardLib
+        div(data-countup!={endValue: 36487}) 0
+        ='\n'
+        div(data-countup!={endValue: 23542, duration: 10}) 0
+        ='\n'
+        div(data-countup!={endValue: 36487, separator: '' }) 0
+        ='\n'
+        div(data-countup!={endValue: 36487, separator : ' ' }) 0
+        ='\n'
+        div(data-countup!={endValue: 36.487, decimalPlaces: 2, suffix : 'k' }) 0
+        ='\n'
+        div(data-countup!={endValue: 36487, prefix: '$' }) 0
+  .card.mb-3
+    .card-header
+      h5.mb-0 Javascript
+    .card-body.bg-light   
+      +ComponentCardLib
+        script(src=`vendors/countup/countUp.umd.js`)

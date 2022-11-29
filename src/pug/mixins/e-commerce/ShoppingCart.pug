@@ -1,0 +1,96 @@
+append variables
+  -
+    var itemsInCart = [
+      {
+        img: 1,
+        title: 'Apple MacBook Pro 15" Z0V20008N: 2.9GHz 6-core 8th-Gen Intel Core i9, 32GB RAM',
+        price: '$1292'
+      },
+      {
+        img: 2,
+        title: 'Apple iMac Pro (27-inch with Retina 5K Display, 3.0GHz 10-core Intel Xeon W, 1TB SSD)',
+        price: '$2012'
+      },
+      {
+        img: 4,
+        title: 'Apple iPad Air 2019 (3GB RAM, 128GB ROM, 8MP Main Camera)',
+        price: '$1024'
+      },
+      {
+        img: 3,
+        title: 'Apple iPhone XS Max (4GB RAM, 512GB ROM, 12MP Main Camera)',
+        price: '$990'
+      },
+      {
+        img: 5,
+        title: 'Apple Watch Series 4 44mm GPS Only',
+        price: '$400'
+      },
+      {
+        img: 7,
+        title: 'Nikon D3200 Digital DSLR Camera',
+        price: '$2398'
+      },
+      {
+        img: 8,
+        title: 'Canon Standard Zoom Lens',
+        price: '$400'
+      }
+    ];
+
+
+mixin ShoppingCartItem(config)
+  .row.gx-card.mx-0.align-items-center.border-bottom.border-200&attributes(attributes)
+    .col-8.py-3
+      .d-flex.align-items-center
+        a(href=`${CWD}${paths['product-details']}`)
+          img(src=`${CWD}assets/img/products/${config.img}.jpg` alt="" width="60").img-fluid.rounded-1.me-3.d-none.d-md-block
+        .flex-1
+          h5.fs-0
+            a.text-900(href=`${CWD}${paths['product-details']}`)=config.title
+          .fs--2.fs-md--1
+            a(href="#!").text-danger Remove
+
+    .col-4.py-3
+      .row.align-items-center
+        .col-md-8.d-flex.justify-content-end.justify-content-md-center.order-1.order-md-0
+          div
+            .input-group.input-group-sm.flex-nowrap(data-quantity)
+              button.btn.btn-sm.btn-outline-secondary.border-300.px-2.shadow-none(data-type="minus") -
+              input.form-control.text-center.px-2.input-spin-none(type='number' min="1" value="1" aria-label='Amount (to the nearest dollar)' style="width: 50px")
+              button.btn.btn-sm.btn-outline-secondary.border-300.px-2.shadow-none(data-type="plus") +
+        .col-md-4.text-end.ps-0.order-0.order-md-1.mb-2.mb-md-0.text-600=config.price
+
+mixin ShoppingCart  
+  .card&attributes(attributes)
+    .card-header
+      .row.justify-content-between
+        .col-md-auto
+          h5.mb-3.mb-md-0 Shopping Cart (7 Items)
+        .col-md-auto
+          a(href=`${CWD}${paths['product-list']}`).btn.btn-sm.btn-outline-secondary.border-300.me-2.shadow-none 
+            span.fas.fa-chevron-left.me-1(data-fa-transform="shrink-4")
+            | Continue Shopping
+          a(href=`${CWD}${paths['checkout']}`).btn.btn-sm.btn-primary Checkout
+    .card-body.p-0
+      .row.gx-card.mx-0.bg-200.text-900.fs--1.fw-semi-bold
+        .col-9.col-md-8.py-2 Name
+        .col-3.col-md-4
+          .row
+            .col-md-8.py-2.d-none.d-md-block.text-center Quantity
+            .col-12.col-md-4.text-end.py-2 Price
+      each item in itemsInCart
+        +ShoppingCartItem(item)
+
+      .row.fw-bold.gx-card.mx-0
+        .col-9.col-md-8.py-2.text-end.text-900 Total
+        .col.px-0
+          .row.gx-card.mx-0
+            .col-md-8.py-2.d-none.d-md-block.text-center 7 (items)
+            .col-12.col-md-4.text-end.py-2 $8516
+    .card-footer.bg-light.d-flex.justify-content-end
+      form.me-3
+        .input-group.input-group-sm
+          input(type="text" placeholder="Promocode").form-control
+          button(type="submit").btn.btn-outline-secondary.border-300.btn-sm.shadow-none Apply
+      a(href=`${CWD}${paths['checkout']}`).btn.btn-sm.btn-primary Checkout

@@ -1,0 +1,50 @@
+//- ==============================================
+//- Course Grid Item (course-config)
+//- ==============================================
+mixin CourseGridItem(config)
+  article(class=config.class ? config.class : false)&attributes(attributes)
+    .card.h-100.overflow-hidden
+      .card-body.p-0.d-flex.flex-column.justify-content-between
+        div
+          .hoverbox.text-center
+            +AttachmentLink({ 
+              image: `${CWD}assets/img/${config.thumbnail.image}`, 
+              src: `${CWD}assets/${config.thumbnail.video}`,
+              type: 'video'
+            }, 'attachment-bg')
+              img(src=`${CWD}assets/img/${config.thumbnail.image}`, alt="").w-100.h-100.fit-cover
+            .hoverbox-content.flex-center.pe-none.bg-holder.overlay.overlay-2
+              img.z-index-1(src=`${CWD}assets/img/icons/play.svg`, width=60 alt="")
+
+          .p-3
+            h5.fs-0.mb-2
+              a.text-dark(href=`${CWD}${paths['course-details']}`)=config.name
+            h5.fs-0
+              a(href=`${CWD}${paths['trainer-profile']}`)=config.trainer
+
+        .row.g-0.mb-3.align-items-end
+          .col.ps-3
+            h4.fs-1.text-warning.d-flex.align-items-center 
+              span #{config.price}
+              if(config.oldPrice)
+                del.ms-2.fs--1.text-700 #{config.oldPrice}
+            p.mb-0.fs--1.text-800 #{config.totalEnrolled.toLocaleString()} Learners Enrolled
+
+          .col-auto.pe-3
+            a.btn.btn-sm.btn-falcon-default.me-2(
+              href="#!" 
+              class=!config.wishlisted ? 'hover-danger' : false 
+              data-bs-toggle="tooltip" 
+              data-bs-placement="top" 
+              title=config.wishlisted ? 'Remove from wishlist': 'Add to Wishlist'
+            )
+              span(class=`${config.wishlisted ? 'fas fa-heart text-danger': 'far fa-heart'}` data-fa-transform="down-2")
+
+            a.btn.btn-sm(
+              href="#!" 
+              data-bs-toggle="tooltip" 
+              data-bs-placement="top" 
+              title=config.addedToCart ? 'Remove from Cart' : 'Add to Cart' 
+              class=config.addedToCart ? 'btn-primary': 'btn-falcon-default hover-primary'
+            )
+              span(class=`${config.addedToCart ? 'fas fa-shopping-cart': 'fas fa-cart-plus'}` data-fa-transform="down-2")

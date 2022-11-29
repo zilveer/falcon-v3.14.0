@@ -1,0 +1,22 @@
+include ../pages/Billing
+include ../e-commerce/ShoppingCart
+include ../e-commerce/Mixins
+include ../home/e-commerce/CardBestSellingProducts
+
+mixin ECommerce
+  +WidgetSectionTitle({
+    transform: 'shrink-4',
+    icon: 'fas fa-cart-plus',
+    title: 'E-commerce',
+    subtitle: `Find more cards which are dedicatedly made for E-commerce.`
+  }).mb-4.mt-6 
+
+  +ShoppingCart.mb-3
+
+  .row.g-3.mb-3 
+    .col-lg-6
+      +BillingStartButton.h-100
+    .col-lg-6
+      +OrderSummary
+    .col
+      +CardBestSellingProducts

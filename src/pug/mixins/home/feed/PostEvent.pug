@@ -1,0 +1,22 @@
+include Mixins
+include PostAction
+
+mixin PostEvent
+  .card&attributes(attributes)
+    img.card-img-top(src=`${CWD}assets/img/generic/13.jpg` alt='')
+    .card-body.overflow-hidden
+      .row.justify-content-between.align-items-center
+        .col
+          .d-flex
+            .calendar.me-2
+              span.calendar-month Dec
+              span.calendar-day 31 
+            .flex-1.fs--1
+              h5.fs-0
+                a(href=`${CWD}${paths['event-detail']}`) FREE New Year's Eve Midnight Harbor Fireworks
+              p.mb-0 by 
+                a(href='#!') Boston Harbor Now
+              span.fs-0.text-warning.fw-semi-bold $49.99 – $89.99
+        .col-md-auto.d-none.d-md-block
+          button.btn.btn-falcon-default.btn-sm.px-4(type='button') Register
+    +PostAction.bg-light.pt-0

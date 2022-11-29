@@ -1,0 +1,72 @@
+extends ../../../layouts/LayoutComponent
+
+block prepend scripts
+  script(src=`${CWD}vendors/lodash/lodash.min.js`)
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+  script(src=`${CWD}assets/js/echarts-example.js`)
+
+block append content
+
+  .row.g-3.mb-3
+    .col-lg-6 
+      +ComponentCard({
+        title:'Pie Chart',
+        anchor:true
+      }).h-100(dir='ltr')
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/pie-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-pie-chart-example(style="min-height: 320px;" data-echart-responsive="true")
+
+    .col-lg-6 
+      +ComponentCard({
+        title:'Doughnut Chart',
+        anchor:true
+      }).h-100(dir='ltr')
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/doughnut-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-doughnut-chart-example(style="min-height: 320px;" data-echart-responsive="true")
+        
+    .col-lg-6 
+      +ComponentCard({
+        title:'Doughnut Rounded Chart',
+        anchor:true
+      }).h-100(dir='ltr')
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/doughnut-rounded-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-doughnut-rounded-chart(style="min-height: 320px;" data-echart-responsive="true")
+
+    .col-lg-6 
+      +ComponentCard({
+        title:'Pie Multiple Chart',
+        anchor:true
+      }).h-100(dir='ltr')
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/pie-multiple-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-pie-multiple-chart(style="min-height: 320px;" data-echart-responsive="true")
+         
+    .col-lg-6
+      +ComponentCard({
+        title:'Pie Label Align',
+        anchor:true
+      }).h-100(dir='ltr')
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/pie-label-align-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-pie-label-align-chart(style="min-height: 320px;" data-echart-responsive="true") 
+   
+    .col-lg-6
+      +ComponentCard({
+        title:'Pie Edge Align',
+        anchor:true
+      }).h-100(dir='ltr')
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/pie-edge-align-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-pie-edge-align-chart(style="min-height: 320px;" data-echart-responsive="true") 
+    .col-lg-6
+      +ComponentCard({
+        title:'Nested Pies',
+        anchor:true
+      }).h-100(dir='ltr')
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/nested-pies-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echarts-nested-pies-chart-example(style="min-height: 320px;" data-echart-responsive="true")
+

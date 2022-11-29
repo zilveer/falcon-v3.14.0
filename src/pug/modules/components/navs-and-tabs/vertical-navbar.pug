@@ -1,0 +1,140 @@
+extends ../../../layouts/LayoutComponent
+include ../../../mixins/components/navbar/NavbarVertical
+include ../../../mixins/components/navbar/NavbarStyles
+
+append variables
+
+
+  -
+    var pageHeader = [
+      {
+        title: 'Navbar Vertical',
+        description: "Here is the available built-in option of Falcon's powerful, responsive vertical navigation. The following sections describe how you can customize both the responsive breakpoint and collapsing behavior."
+      },
+      {
+        title: 'Navbar Styles',
+        description: 'You can change the look of your Navbar Vertical in different styles. You can also customize your navbar vertical using SCSS variables. The different navbar styles are listed below:',
+        dataAnchor: true
+      },
+      {
+        img: 'inverted',
+        title: 'Navbar Vertical Inverted',
+        description: `You can update your Navbar Vertical <code>background-color</code> with Navbar Vertical Inverted.`,
+        url: `${CWD}demo/navbar-vertical-inverted.html`
+      },
+      {
+        img: 'vibrant',
+        title: 'Navbar Vertical Vibrant',
+        description: `Make your Navbar Vertical more live and awesome with ${name} Navbar Vibrant.`,
+        url: `${CWD}demo/navbar-vertical-vibrant.html`
+      },
+      {
+        img: 'card',
+        title: 'Navbar Vertical Card',
+        description: `Make your navbar vertical like ${name} card by using Navbar Vertical Card.`,
+        url: `${CWD}demo/navbar-vertical-card.html`
+      }
+    ]
+
+append content
+  +PageHeader(pageHeader[0])
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Responsive behavior')
+    .card-body.bg-light
+      +NavbarVerticalResponsiveDescription 
+      +ComponentCardLib
+        +NavbarVerticalDemo
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Collapsing behavior ')
+        +NavbarVerticalCollapsingDescription.mt-2.mb-0
+    .card-body.bg-light
+      +NavbarVerticalCollapseConfig
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Link')
+    .card-body.bg-light
+      +NavbarVerticalLinkDescription
+
+      +ComponentCardLib
+        +NavbarVerticalLinkDemo
+
+      +NavbarVerticalExtraDescription
+
+      p.mb-2 Child link example: 
+      +ComponentCardLib.mb-3
+        +NavbarVerticalChildLinkDemo
+
+      +NavbarVerticalDropdownIndicator
+
+      +ComponentCardLib.mb-3
+        +NavbarVerticalDropdownIndicatorDemo
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Event')
+        +NavbarVerticalEventDescription
+    .card-body.bg-light
+      +NavbarVerticalEventDemo 
+
+  .card
+    .card-header
+      +DocCardHeader('Customize')
+        +NavbarVerticalCustomizeDescription.mt-2.mb-0
+    .card-body.bg-light
+      +NavbarVerticalCustomizeDemo
+
+  hr.text-300.my-5
+  +PageHeader(pageHeader[1])
+
+  .card.mb-3
+    .card-body
+      +NavbarStyleHeader(pageHeader[2])
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Html')
+    .card-body.bg-light
+      +NavbarInvertedHtmlDemo
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('SCSS')
+    .card-body.bg-light
+      +NavbarInvertedSCSSDocs
+
+  .card.mb-3
+    .card-body
+      +NavbarStyleHeader(pageHeader[3])
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Html')
+    .card-body.bg-light
+      +NavbarVibrantHtmlDemo
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('SCSS')
+    .card-body.bg-light
+      +NavbarVibrantScssDocs
+
+  .card.mb-3
+    .card-body
+      +NavbarStyleHeader(pageHeader[4])
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Html')
+    .card-body.bg-light
+      +NavbarCardHtmlDemo
+
+  .card
+    .card-header
+      +DocCardHeader('SCSS')
+    .card-body.bg-light
+      +NavbarCardSCSSDocs

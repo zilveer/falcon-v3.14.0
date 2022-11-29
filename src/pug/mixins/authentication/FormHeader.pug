@@ -1,0 +1,10 @@
+mixin FormHeader(config)
+  .row.flex-between-center&attributes(attributes)
+    .col-auto
+      #{config.title.tag}=config.title.text
+    if config.linkText
+      .col-auto.fs--1.text-600
+        span.mb-0(class=`${config.normalContent.className}`)=config.normalContent.text
+        | 
+        span
+          a(href=`${CWD}pages/authentication/${config.link}`)=config.linkText

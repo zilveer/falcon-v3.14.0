@@ -1,0 +1,996 @@
+block append variables
+  -
+    var messageThreads = [
+      {
+        name: 'Antony Hopkins',
+        avatar: {
+          img: `team/2.jpg`,
+          size: 'xl',
+          status: 'online'
+        },
+        class: 'active',
+        messages: [
+          {
+            sender: {
+              name: 'Antony',
+              img: 2
+            },
+            message: 'Yes, in an organization stature, this is a must. Besides, we need to quickly establish all other professional appearances, e.g., having a website where members’ profile will be displayed along with additional organizational information. Providing services to existing members is more important than attracting new members at this moment, in my opinion..',
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Antony',
+              img: 2
+            },
+            message: 'What are you doing?',
+            time: {
+              day: 'Thu',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Me',
+              img: 3
+            },
+            message: `
+              <p class="mb-0">I took this pic </p> 
+              <a href="../assets/img/chat/1.jpg" data-gallery="gallery-3">
+                <img class="rounded" src="../assets/img/chat/1.jpg" alt="" width="150">
+              </a>
+            `,
+            status: 'seen',
+            time: {
+              day: 'Tue',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Me',
+              img: 3
+            },
+            message: 'Nothing!',
+            status: 'seen',
+            time: {
+              day: 'Wed',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Antony',
+              img: 2
+            },
+            message: 'How are you?',
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 6, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Me',
+              img: 3
+            },
+            message: 'Fine',
+            status: 'delivered',
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 6, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Me',
+              img: 3
+            },
+            type: 'gallery',
+            message: `<div class="row mx-n1">
+              <div class="col-6 col-md-4 px-1" style="min-width: 50px;">
+                <a href="../assets/img/chat/7.jpg" data-gallery="gallery-1"><img src="../assets/img/chat/7.jpg" alt="" class="img-fluid rounded mb-2"></a> 
+              </div>
+              <div class="col-6 col-md-4 px-1" style="min-width: 50px;">
+                <a href="../assets/img/chat/8.jpg" data-gallery="gallery-1"><img src="../assets/img/chat/8.jpg" alt="" class="img-fluid rounded mb-2"></a>
+              </div>
+              <div class="col-6 col-md-4 px-1" style="min-width: 50px;">
+                <a href="../assets/img/chat/9.jpg" data-gallery="gallery-1"><img src="../assets/img/chat/9.jpg" alt="" class="img-fluid rounded mb-2"></a>
+              </div>
+              <div class="col-6 col-md-4 px-1" style="min-width: 50px;">
+                <a href="../assets/img/chat/10.jpg" data-gallery="gallery-1"><img src="../assets/img/chat/10.jpg" alt="" class="img-fluid rounded mb-2 mb-lg-0"></a>
+              </div>
+              <div class="col-6 col-md-4 px-1" style="min-width: 50px;">
+                <a href="../assets/img/chat/11.jpg" data-gallery="gallery-1"><img src="../assets/img/chat/11.jpg" alt="" class="img-fluid rounded mb-2 mb-lg-0"></a>
+              </div>
+              <div class="col-6 col-md-4 px-1" style="min-width: 50px;">
+                <a href="../assets/img/chat/12.jpg" data-gallery="gallery-1"><img src="../assets/img/chat/12.jpg" alt="" class="img-fluid rounded"></a>
+              </div>
+            </div>`,
+            status: 'sent',
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 7, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Antony',
+              img: 2
+            },
+            message: "I took some excellent images yesterday.",
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 7, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Me',
+              img: 2
+            },
+            message: "Give me the images.",
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 8, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Antony',
+              img: 2
+            },
+            type: 'gallery',
+            message: `<div class="row mx-n1">
+              <div class="col-6 col-md-4 px-1" style="min-width: 50px;">
+                <a href="../assets/img/chat/1.jpg" data-gallery="gallery-2"><img src="../assets/img/chat/1.jpg" alt="" class="img-fluid rounded mb-2"></a> 
+              </div>
+              <div class="col-6 col-md-4 px-1" style="min-width: 50px;">
+                <a href="../assets/img/chat/2.jpg" data-gallery="gallery-2"><img src="../assets/img/chat/2.jpg" alt="" class="img-fluid rounded mb-2"></a>
+              </div>
+              <div class="col-6 col-md-4 px-1" style="min-width: 50px;">
+                <a href="../assets/img/chat/3.jpg" data-gallery="gallery-2"><img src="../assets/img/chat/3.jpg" alt="" class="img-fluid rounded mb-2"></a>
+              </div>
+              <div class="col-6 col-md-4 px-1" style="min-width: 50px;">
+                <a href="../assets/img/chat/4.jpg" data-gallery="gallery-2"><img src="../assets/img/chat/4.jpg" alt="" class="img-fluid rounded mb-2 mb-lg-0"></a>
+              </div>
+              <div class="col-6 col-md-4 px-1" style="min-width: 50px;">
+                <a href="../assets/img/chat/5.jpg" data-gallery="gallery-2"><img src="../assets/img/chat/5.jpg" alt="" class="img-fluid rounded mb-2 mb-lg-0"></a>
+              </div>
+              <div class="col-6 col-md-4 px-1" style="min-width: 50px;">
+                <a href="../assets/img/chat/6.jpg" data-gallery="gallery-2"><img src="../assets/img/chat/6.jpg" alt="" class="img-fluid rounded"></a>
+              </div>
+            </div>`,
+            messageType: 'attachment',
+            status: '6 photos',
+            time: {
+              day: 'Tue',
+              hour: '11:54 am',
+              date: 'May 8, 2019'
+            }
+          },
+
+        ]
+      },
+      {
+        name: 'Avengers',
+        type: 'group',
+        avatar: {
+          img: [`team/1.jpg`, 'team/2.jpg', 'team/3.jpg'],
+          size: 'xl',
+          type: 'group'
+        },
+        members: [
+          {
+            name: 'Antony Hopkins',
+            designation: 'Admin',
+            avatar: {
+              img: 'team/2.jpg',
+              size: 'xl',
+              status: 'online'
+            }
+          },
+          {
+            name: 'Emma Watson',
+            designation: 'Member',
+            avatar: {
+              img: 'team/1.jpg',
+              size: 'xl',
+            }
+          },
+          {
+            name: 'Anna Karinina',
+            designation: 'Member',
+            avatar: {
+              img: 'team/3.jpg',
+              size: 'xl',
+              status: 'online'
+            }
+          },
+          {
+            name: 'John Lee',
+            designation: 'Member',
+            avatar: {
+              img: 'team/4.jpg',
+              size: 'xl',
+              status: 'online'
+            }
+          },
+          {
+            name: 'Bucky Robert',
+            designation: 'Member',
+            avatar: {
+              img: 'team/5.jpg',
+              size: 'xl',
+            }
+          }
+        ],
+        messages: [
+          {
+            sender: {
+              name: 'Anna',
+              img: 13
+            },
+            message: 'In an organisation stature, this is a must. Besides, we need to quickly establish all other professional appearances, e.g. having a website where members’ profile will be displayed along with other organisational information. Providing services to existing members is more important than attracting new members at this moment, in my opinion.',
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Me',
+              img: 3
+            },
+            message: 'Your are right 👍',
+            status: 'seen',
+            time: {
+              day: 'Sun',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Antony',
+              img: 2
+            },
+            message: 'We should divide the tasks among all other members.',
+            status: 'seen',
+            time: {
+              day: 'Sun',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'John',
+              img: 4
+            },
+            message: 'I will make a list of all the tasks.',
+            status: 'seen',
+            time: {
+              day: 'Sun',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Me',
+              img: 3
+            },
+            message: 'I can help you to do this.',
+            status: 'seen',
+            time: {
+              day: 'Sun',
+              hour: '11:54 am',
+              date: 'May 7, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Emma',
+              img: 1
+            },
+            message: 'It will be a great opportunity if I can contribute to this task 😊',
+            status: 'seen',
+            time: {
+              day: 'Sun',
+              hour: '11:54 am',
+              date: 'May 7, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Bucky',
+              img: 5
+            },
+            message: `Wow, it will be great!`,
+            status: 'seen',
+            time: {
+              day: 'Sun',
+              hour: '11:54 am',
+              date: 'May 7, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Bucky',
+              img: 5
+            },
+            message: `<a href="#!" class="text-primary">@Emma</a> What do you think about the plan?`,
+            status: 'seen',
+            time: {
+              day: 'Sun',
+              hour: '11:54 am',
+              date: 'May 7, 2019'
+            }
+          },
+        ]
+      }, 
+      {
+        name: 'Emma Watson',
+        avatar: {
+          img: `team/1.jpg`,
+          size: 'xl',
+        },
+        messages: [
+          {
+            sender: {
+              name: 'Me',
+              img: 3
+            },
+            message: 'Hello',
+            status: 'seen',
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Me',
+              img: 3
+            },
+            message: '🙂',
+            status: 'seen',
+            time: {
+              day: 'Sun',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+        ]
+      },
+      {
+        name: 'Anna Karinina',
+        avatar: {
+          img: `team/13.jpg`,
+          size: 'xl',
+          status: 'online'
+        },
+        class: 'unread-message',
+        messages: [
+          {
+            sender: {
+              name: 'Me',
+              img: 3
+            },
+            message: 'Hello',
+            status: 'sent',
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Anna',
+              img: 13
+            },
+            message: 'What are you doing?',
+            time: {
+              day: 'Sat',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+        ]
+      },
+      {
+        name: 'John Lee',
+        avatar: {
+          img: `team/4.jpg`,
+          size: 'xl',
+          status: 'online'
+        },
+        class: 'unread-message',
+        messages: [
+          {
+            sender: {
+              name: 'John',
+              img: 4
+            },
+            message: "What's Up!",
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Me',
+              img: 3
+            },
+            message: 'Hey!',
+            status: 'sent',
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'John',
+              img: 4
+            },
+            message: 'How are you?',
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+        ]
+      },
+      {
+        name: 'Bucky Robert',
+        avatar: {
+          name: 'Bucky Robert',
+          size: 'xl',
+          status: 'online'
+        },
+        messages: [
+          {
+            sender: {
+              name: 'Bucky',
+              img: 5
+            },
+            message: "What's Up!",
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Me',
+              img: 3
+            },
+            message: 'Hey!',
+            status: 'sent',
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Me',
+              img: 3
+            },
+            message: '👋',
+            status: 'sent',
+            time: {
+              day: 'Wed',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+        ]
+      },
+      {
+        name: 'John Bradley',
+        avatar: {
+          img: `team/10.jpg`,
+          size: 'xl',
+          status: 'online'
+        },
+        messages: [
+          {
+            sender: {
+              name: 'Bradley',
+              img: 10
+            },
+            message: "What's Up!",
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Me',
+              img: 3
+            },
+            message: 'Hey!',
+            status: 'sent',
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Bradley',
+              img: 10
+            },
+            message: 'Hello!',
+            time: {
+              day: 'Fri',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+        ]
+      },
+      {
+        name: 'Rory McCann',
+        avatar: {
+          img: `team/11.jpg`,
+          size: 'xl',
+          status: 'online'
+        },
+        messages: [
+          {
+            sender: {
+              name: 'Rory',
+              img: 11
+            },
+            message: "I got my visa",
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Rory',
+              img: 11
+            },
+            message: `Let's have fun`,
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Me',
+              img: 3
+            },
+            message: '😮',
+            status: 'sent',
+            time: {
+              day: 'Sun',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+        ]
+      },
+      {
+        name: 'Joe Bempsie',
+        avatar: {
+          img: `team/12.jpg`,
+          size: 'xl',
+        },
+        messages: [
+          {
+            sender: {
+              name: 'Joe',
+              img: 12
+            },
+            message: "What's Up!",
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Me',
+              img: 3
+            },
+            message: 'Hey!',
+            status: 'sent',
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Joe',
+              img: 12
+            },
+            message: 'Hello!',
+            time: {
+              day: 'Wed',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+        ]
+      },
+      {
+        name: 'Diana Rigg',
+        avatar: {
+          img: `team/22.jpg`,
+          size: 'xl',
+        },
+        messages: [
+          {
+            sender: {
+              name: 'Diana',
+              img: 22
+            },
+            message: "What's Up!",
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Me',
+              img: 3
+            },
+            message: 'Hey!',
+            status: 'sent',
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+          {
+            sender: {
+              name: 'Me',
+              img: 3
+            },
+            message: 'Yes, in an organization stature, this is a must. Besides, we need to quickly establish all other professional appearances, e.g., having a website where members’ profile will be displayed along with additional organizational information. Providing services to existing members is more important than attracting new members at this moment, in my opinion..',
+
+            status: 'sent',
+            time: {
+              day: 'Mon',
+              hour: '11:54 am',
+              date: 'May 5, 2019'
+            }
+          },
+        ]
+      },
+      {
+        name: 'Gemma Whelan',
+        avatar: {
+          img: `team/23.jpg`,
+          size: 'xl',
+        },
+        messages: []
+      },
+    ];
+
+mixin ChatDropdownOptions(config)
+  ul.hover-actions.position-relative.list-inline.mb-0.text-400&attributes(attributes)
+    li.list-inline-item
+      a.chat-option(href="#!" data-bs-toggle="tooltip" data-bs-placement="top" title="Forward")
+        span.fas.fa-share
+    li.list-inline-item
+      a.chat-option(href="#!" data-bs-toggle="tooltip" data-bs-placement="top" title="Archive")
+        span.fas.fa-archive
+    li.list-inline-item
+      a.chat-option(href="#!" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit")
+        span.fas.fa-edit
+    li.list-inline-item
+      a.chat-option(href="#!" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove")
+        span.fas.fa-trash-alt
+
+
+mixin MessageLeft(config, type)
+  .d-flex.p-3
+    +Avatar({img: `team/${config.sender.img}.jpg`, size: 'l'}).me-2
+    .flex-1
+      .w-xxl-75
+        .hover-actions-trigger.d-flex.align-items-center
+          if(config.type === 'gallery')
+            .chat-message.chat-gallery!=config.message
+          else
+            .chat-message.bg-200.p-2.rounded-2!=config.message
+
+          +ChatDropdownOptions({
+            'optionsDropdownId': config.optionsDropdownId,
+          }).ms-2
+        .text-400.fs--2
+
+          if(type === 'group')
+            span.fw-semi-bold.me-2=config.sender.name
+
+          span=config.time.hour
+
+mixin MessageRight(config)
+  .d-flex.p-3
+    .flex-1.d-flex.justify-content-end
+      .w-100.w-xxl-75
+        .hover-actions-trigger.d-flex.flex-end-center
+          +ChatDropdownOptions({
+            type:"dropdown-menu-end",
+            'optionsDropdownId': config.optionsDropdownId,
+          }).me-2
+
+          if(config.type === 'gallery')
+            .chat-message.chat-gallery!=config.message
+          else
+            .bg-primary.text-white.p-2.rounded-2.chat-message.light
+              !=config.message
+
+        .text-400.fs--2.text-end=config.time.hour
+          if(config.status === 'sent')
+            span.fas.fa-check.ms-2
+          else if(config.status === 'delivered')
+            span.fas.fa-check-double.ms-2
+          else if(config.status === 'seen')
+            span.fas.fa-check.ms-2.text-success
+
+mixin ConversationInfo(thread, index)
+  .conversation-info(data-index=`${index}`)
+    .h-100.overflow-auto.scrollbar
+      .d-flex.position-relative.align-items-center.p-3.border-bottom
+        +Avatar(thread.avatar)
+        .flex-1.ms-2.d-flex.flex-between-center
+          h6.mb-0
+            a(href=`${CWD}${paths['user-profile']}`).text-decoration-none.stretched-link.text-700=thread.name
+          .dropdown.z-index-1
+            button.btn.btn-link.btn-sm.text-400.dropdown-toggle.dropdown-caret-none.me-n3(type='button', id=`profile-dropdown-${index}` data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              span.fas.fa-cog
+            .dropdown-menu.dropdown-menu-end.border.py-2(aria-labelledby=`profile-dropdown-${index}`)
+              a(href="#!").dropdown-item Mute
+              .dropdown-divider
+              a(href="#!").dropdown-item Archive
+              a(href="#!").dropdown-item.text-danger Delete
+
+      .px-3.pt-2
+        .nav.flex-column.font-sans-serif.fw-medium
+          a(href="#!").nav-link.d-flex.align-items-center.py-1.px-0.text-600
+            span.conversation-info-icon
+              span.fas.fa-search.me-1(data-fa-transform="shrink-1 down-3")
+            | Search in Conversation
+          a(href="#!").nav-link.d-flex.align-items-center.py-1.px-0.text-600
+            span.conversation-info-icon
+              span.fas.fa-pencil-alt.me-1(data-fa-transform="shrink-1")
+            | Edit Nicknames
+          a(href="#!").nav-link.d-flex.align-items-center.py-1.px-0.text-600
+            span.conversation-info-icon
+              span.fas.fa-palette.me-1(data-fa-transform="shrink-1")
+            span Change Color
+          a(href="#!").nav-link.d-flex.align-items-center.py-1.px-0.text-600
+            span.conversation-info-icon
+              span.fas.fa-thumbs-up.me-1(data-fa-transform="shrink-1")
+            | Change Emoji
+          a(href="#!").nav-link.d-flex.align-items-center.py-1.px-0.text-600
+            span.conversation-info-icon
+              span.fas.fa-bell.me-1(data-fa-transform="shrink-1")
+            | Notifications
+      hr.my-2
+      .px-3(id=`others-info-${index}`)
+        if thread.type === 'group'
+          .title(id=`member-title-${index}`)
+            a.btn.btn-link.btn-accordion.hover-text-decoration-none.dropdown-indicator(href=`#members-${index}` data-bs-toggle='collapse' aria-expanded='false', aria-controls=`members-${index}`)
+              | Members
+
+          .collapse(id=`members-${index}` aria-labelledby=`member-title-${index}`, data-parent=`#others-info-${index}`)
+            each member, i in thread.members
+              .d-flex.align-items-center.py-2.hover-actions-trigger
+                +Avatar(member.avatar)
+                .flex-1.ms-2.d-flex.justify-content-between
+                  div
+                    h6.mb-0
+                      a(href=`${CWD}${paths['user-profile']}`).text-700=member.name
+                    .fs--2.text-400=member.designation
+                  .dropdown.hover-actions.position-relative.dropdown-active-trigger.z-index-1
+                    button.btn.btn-link.btn-sm.text-400.dropdown-toggle.dropdown-caret-none(type='button', id=`user-settings-dropdown-${i}`, data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                      span.fas.fa-ellipsis-h
+                    .dropdown-menu.dropdown-menu-end.py-2.border(aria-labelledby=`user-settings-dropdown-${i}`)
+                      a(href="#!").dropdown-item Message
+                      a(href="#!").dropdown-item View Profile
+        .title(id=`shared-media-title-${index}`)
+          a.btn.btn-link.btn-accordion.hover-text-decoration-none.dropdown-indicator(href=`#shared-media-${index}` data-bs-toggle='collapse' aria-expanded='false', aria-controls=`shared-media-${index}`)
+            | Shared media
+        .collapse(id=`shared-media-${index}` aria-labelledby=`shared-media-title-${index}`, data-parent=`#others-info-${index}`)
+          .row.mx-n1
+            .col-6.col-md-4.px-1
+              a(href=`${CWD}assets/img/chat/1.jpg` data-gallery="images-1")
+                img(src=`${CWD}assets/img/chat/1.jpg`, alt="").img-fluid.rounded-1.mb-2 
+            .col-6.col-md-4.px-1
+              a(href=`${CWD}assets/img/chat/2.jpg` data-gallery="images-1")
+                img(src=`${CWD}assets/img/chat/2.jpg`, alt="").img-fluid.rounded-1.mb-2 
+            .col-6.col-md-4.px-1 
+              a(href=`${CWD}assets/img/chat/3.jpg` data-gallery="images-1")
+                img(src=`${CWD}assets/img/chat/3.jpg`, alt="").img-fluid.rounded-1.mb-2 
+            .col-6.col-md-4.px-1 
+              a(href=`${CWD}assets/img/chat/4.jpg` data-gallery="images-1")
+                img(src=`${CWD}assets/img/chat/4.jpg`, alt="").img-fluid.rounded-1.mb-2 
+            .col-6.col-md-4.px-1 
+              a(href=`${CWD}assets/img/chat/5.jpg` data-gallery="images-1")
+                img(src=`${CWD}assets/img/chat/5.jpg`, alt="").img-fluid.rounded-1.mb-2 
+            .col-6.col-md-4.px-1 
+              a(href=`${CWD}assets/img/chat/6.jpg` data-gallery="images-1")
+                img(src=`${CWD}assets/img/chat/6.jpg`, alt="").img-fluid.rounded-1.mb-2 
+
+
+mixin ChatContent(thread, index)
+  .tab-pane.card-chat-pane(
+    class=`${index === 0 ? 'active': ''}` 
+    id=`chat-${index}` 
+    role="tabpanel" 
+    aria-labelledby=`chat-link-${index}`
+  )
+    .chat-content-header
+      .row.flex-between-center
+        .col-6.col-sm-8.d-flex.align-items-center
+          a(href="#!").pe-3.text-700.d-md-none.contacts-list-show
+            .fas.fa-chevron-left
+          .min-w-0
+            h5.mb-0.text-truncate.fs-0=thread.name
+            .fs--2.text-400
+              if thread.avatar.status === 'online'
+                | Active On Chat
+              else
+                | Active 7h ago
+
+        .col-auto
+          button(type="button" data-index=`${index}` data-bs-toggle="tooltip" data-bs-placement="top" title="Start a Call").btn.btn-sm.btn-falcon-primary.me-2
+            span.fas.fa-phone
+          button(type="button" data-index=`${index}` data-bs-toggle="tooltip" data-bs-placement="top" title="Start a Video Call").btn.btn-sm.btn-falcon-primary.me-2
+            span.fas.fa-video
+          button(type="button" data-index=`${index}` data-bs-toggle="tooltip" data-bs-placement="top" title="Conversation Information").btn.btn-sm.btn-falcon-primary.btn-chat-info
+            span.fas.fa-info
+    .chat-content-body(style="display: inherit;")
+      +ConversationInfo(thread, index)
+
+      - var day = ''; 
+      .chat-content-scroll-area.scrollbar
+        .d-flex.position-relative.p-3.border-bottom.mb-3.align-items-center
+          +Avatar(Object.assign(thread.avatar, {size: '2xl'})).me-3
+          .flex-1
+            h6.mb-0
+              a(href=`${CWD}${paths['user-profile']}`).text-decoration-none.stretched-link.text-700=thread.name
+            p.mb-0
+              if thread.avatar.type === 'group'
+                | You are a member of #{thread.name}. Say hi to start conversation to the group.
+              else
+                | You friends with #{thread.name}. Say hi to start the conversation
+
+
+        if thread.messages.length
+          each message in thread.messages
+            if(day !== message.time.date)
+              - day = message.time.date
+              .text-center.fs--2.text-500
+                span=message.time.date
+                  |, 
+                  =message.time.hour
+            if(message.sender.name === 'Me')
+              +MessageRight(message)
+            else
+              +MessageLeft(message, thread.type)
+
+mixin ChatContact(config)
+  if config.messages
+    - var length = config.messages.length;
+    - var lastMessage = config.messages[config.messages.length - 1];
+    = '\n'
+    .hover-actions-trigger.chat-contact.nav-item(class=config.class ? config.class : false role="presentation")&attributes(attributes)
+      .d-md-none.d-lg-block
+        .dropdown.dropdown-active-trigger.dropdown-chat
+          button.hover-actions.btn.btn-link.btn-sm.text-400.dropdown-caret-none.dropdown-toggle.end-0.fs-0.mt-4.me-1.z-index-1.pb-2.mb-n2(
+            type='button' 
+            id=config.dropdownId 
+            data-boundary="viewport"
+            data-bs-toggle="dropdown" 
+            aria-haspopup="true" 
+            aria-expanded="false"
+          )
+            span.fas.fa-cog(data-fa-transform="shrink-3 down-4")
+          .dropdown-menu.dropdown-menu-end.border.py-2.rounded-2(aria-labelledby=config.dropdownId)
+            a(href='#!').dropdown-item Mute
+            .dropdown-divider
+            a(href='#!').dropdown-item Archive
+            a(href='#!').dropdown-item.text-danger Delete
+            .dropdown-divider
+            a(href='#!').dropdown-item Mark as Unread
+            a(href='#!').dropdown-item Something's Wrong
+            a(href='#!').dropdown-item Ignore Messsages
+            a(href='#!').dropdown-item Block Messages
+      .d-flex.p-3
+        if config.avatar    
+          +Avatar(config.avatar && Object.assign({size: '3xl'}, config.avatar))
+        .flex-1.chat-contact-body.ms-2.d-md-none.d-lg-block
+          .d-flex.justify-content-between
+            h6.mb-0.chat-contact-title!=config.name
+
+            if lastMessage
+              span.message-time.fs--2=lastMessage.time.day
+          .min-w-0
+            .chat-contact-content.pe-3
+              if lastMessage
+                if lastMessage.sender.name === 'Me'
+                  | You: 
+                else if config.type === 'group'
+                  | #{lastMessage.sender.name}: 
+                if lastMessage.messageType === 'attachment'
+                  | #{lastMessage.sender.name}
+                  | sent
+                  | #{lastMessage.status}
+                else
+                  !=lastMessage.message
+              else
+                | Say hi to your new friend
+
+            .position-absolute.bottom-0.end-0.hover-hide
+              if lastMessage
+                if(lastMessage.status === 'sent')
+                  span.fas.fa-check.text-400(data-fa-transform="shrink-5 down-4" )
+                else if(lastMessage.status === 'delivered')
+                  span.fas.fa-check-double.text-400(data-fa-transform="shrink-5 down-4")
+                else if(lastMessage.status === 'seen')
+                  span.fas.fa-check.text-success(data-fa-transform="shrink-5 down-4")
+
+mixin ChatSidebar
+  .chat-sidebar
+    .contacts-list.scrollbar-overlay
+      .nav.nav-tabs.border-0.flex-column(role='tablist' aria-orientation='vertical')
+        each thread, index in messageThreads
+          +ChatContact(thread)(
+            id=`chat-link-${index}` 
+            data-bs-toggle="tab"
+            data-bs-target=`#chat-${index}` 
+            role="tab" 
+            aria-controls=`chat-${index}` 
+            aria-selected=index === 0 ? 'true' : 'false'
+          )
+    form.contacts-search-wrapper
+      .form-group.mb-0.position-relative.d-md-none.d-lg-block.w-100.h-100
+        input.form-control.form-control-sm.chat-contacts-search.border-0.h-100(type="text" placeholder="Search contacts ...")
+        span.fas.fa-search.contacts-search-icon
+      button.btn.btn-sm.btn-transparent.d-none.d-md-inline-block.d-lg-none
+        span.fas.fa-search.fs--1
+
+

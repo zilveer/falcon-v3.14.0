@@ -1,0 +1,244 @@
+append variables
+  -
+    var courses = [
+      {
+        title: 'Advanced Design Tools for Modern Designs',
+        trainer: 'Bill finger',
+        published: '01/10/21',
+        enrolled: '47,726',
+        price: '$39.99'
+      },
+      {
+        title: 'Photograpy Basics: Get Familiar Standing Behind Lens',
+        trainer: 'Bruce Timm',
+        published: '11/12/21',
+        enrolled: '38,541',
+        price: '$19.99'
+      },
+      {
+        title: 'Abstract Painting: Zero to Mastery in Traditional Medium',
+        trainer: 'J. H. Williams III',
+        published: '03/09/21',
+        enrolled: '35,666',
+        price: '$45.49'
+      },
+      {
+        title: 'Character Design Masterclass: Your First Supervillain',
+        trainer: 'Bill finger',
+        published: '31/12/21',
+        enrolled: '29,988',
+        price: '$99.99'
+      },
+      {
+        title: 'Script Writing Masterclass: Introdution to Industry Cliches',
+        trainer: 'Bill finger',
+        published: '31/08/21',
+        enrolled: '92,632',
+        price: '$69.50'
+      },
+      {
+        title: 'Composition in Comics: Easy to Read Between Panels',
+        trainer: 'Bill finger',
+        published: '14/05/21',
+        enrolled: '92,603',
+        price: '$39.50'
+      },
+      {
+        title: 'Comic Page Layout: Analysing The Classics',
+        trainer: 'Bill finger',
+        published: '09/06/21',
+        enrolled: '32,106',
+        price: '$49.50'
+      },
+      {
+        title: 'Inking: Choosing Between Analog vs Digital',
+        trainer: 'Bill finger',
+        published: '09/06/21',
+        enrolled: '9,312',
+        price: '$39.99'
+      },
+      {
+        title: 'Character Art School: Character Drawing Course',
+        trainer: 'Bruce Timm',
+        published: '01/09/21',
+        enrolled: '3,625',
+        price: '$65.99'
+      },
+      {
+        title: 'User Experience Design Essentials',
+        trainer: 'Bill finger',
+        published: '15/12/21',
+        enrolled: '1,202',
+        price: '$25.20'
+      },
+      {
+        title: 'The Art & Science of Drawing',
+        trainer: 'J. H. Williams III',
+        published: '03/09/21',
+        enrolled: '35,666',
+        price: '$45.49'
+      },
+      {
+        title: 'Abstract Painting: One-to-One',
+        trainer: 'Bill finger',
+        published: '03/09/21',
+        enrolled: '6,356',
+        price: '$20.49'
+      },
+      {
+        title: 'Portrait Drawing Fundamentals Made Simple',
+        trainer: 'Bill finger',
+        published: '05/10/20',
+        enrolled: '10,356',
+        price: '$36.49'
+      },
+      {
+        title: 'Anatomy for Figure Drawing',
+        trainer: 'J. H. Williams',
+        published: '26/10/20',
+        enrolled: '12,386',
+        price: '$30.99'
+      },
+      {
+        title: 'Complete Perspective Drawing Course',
+        trainer: 'Bruce Timm',
+        published: '26/09/21',
+        enrolled: '6,757',
+        price: '$23.99'
+      },
+      {
+        title: 'The Ultimate Animal Drawing Course',
+        trainer: 'Bruce Timm',
+        published: '06/12/21',
+        enrolled: '7,658',
+        price: '$19.99'
+      }
+    ]
+
+mixin CardTopCourses
+  .card.overflow-hidden&attributes(attributes)
+    .card-header.p-0.scrollbar
+      ul.nav.nav-tabs.border-0.top-courses-tab.flex-nowrap(role='tablist')
+        -
+          var tabs = [
+            {
+              title: 'Most Popular',
+              isPaid: true,
+              isActive: true,
+              icon: 'fas fa-fire',
+              id: 'popularPaid-tab',
+              target: 'popularPaid',
+            },
+            {
+              title: 'Most Popular',
+              isPaid: false,
+              isActive: false,
+              icon: 'fas fa-fire',
+              id: 'popularFree-tab',
+              target: 'popularFree',
+            },
+            {
+              title: 'Top Rated',
+              isPaid: true,
+              isActive: false,
+              icon: 'fas fa-star',
+              id: 'topPaid-tab',
+              target: 'topPaid',
+            },
+            {
+              title: 'Top Rated',
+              isPaid: false,
+              isActive: false,
+              icon: 'fas fa-star',
+              id: 'topFree-tab',
+              target: 'topFree',
+            },
+          ]
+        each tab, index in tabs
+          li.nav-item(role='presentation')
+            a.nav-link.p-x1.mb-0(
+              role='tab' 
+              id=tab.id 
+              class=`${tab.isActive ? 'active' : false}` 
+              data-bs-toggle='tab' href=`#${tab.target}` 
+              aria-controls=tab.target 
+              aria-selected=index===1 ? 'true' : 'false'
+            )
+              .d-flex.gap-1.py-1.pe-3
+                .d-flex.flex-column.flex-between-center
+                  if tab.isPaid
+                    span.fas.fa-crown.fs--2.text-warning(data-fa-transform="shrink-4")
+                  
+                  span.mt-auto(class=tab.icon).fs-2
+                .ms-2 
+                  h6.mb-1.text-700.fs--2.text-nowrap #{tab.title}
+                  h5.mb-0.lh-1 #{tab.isPaid ? 'Paid' : 'Free'}
+
+    .card-body.p-0
+      .tab-content
+        .tab-pane.active#popularPaid(role='tabpanel' aria-labelledby='popularPaid-tab')
+          +CardTopCoursesTable({ items: 4, data: courses.slice(0, 4), id: 'popularPaidCourses'})
+        .tab-pane#popularFree(role='tabpanel' aria-labelledby='popularFree-tab')
+          +CardTopCoursesTable({ items: 4, data: courses.slice(4, 8), id: 'popularFreeCourses'})
+        .tab-pane#topPaid(role='tabpanel' aria-labelledby='topPaid-tab')
+          +CardTopCoursesTable({ items: 4, data: courses.slice(8, 12), id: 'topPaidCourses'})
+        .tab-pane#topFree(role='tabpanel' aria-labelledby='topFree-tab')
+          +CardTopCoursesTable({ items: 4, data: courses.slice(12, 16), id: 'topFreeCourses'})
+
+    .card-footer.bg-light.py-2
+      .row.flex-between-center.g-0
+        .col-auto
+          select.form-select.form-select-sm
+            option(value='week' selected) Last 7 days
+            option(value='month') Last month
+        .col-auto
+          a.btn.btn-link.btn-sm.px-0.fw-medium(href=`${CWD}${paths['course-list']}`) All Courses
+            span.fas.fa-chevron-right.ms-1.fs--2
+
+mixin Dropdown(id)
+  .dropstart.font-sans-serif.position-static.d-inline-block
+    button.btn.btn-link.text-600.btn-sm.dropdown-toggle.btn-reveal&attributes(attributes)(type='button' id=id data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent")
+      span.fas.fa-ellipsis-h.fs--1
+    .dropdown-menu.dropdown-menu-end.border.py-2(aria-labelledby=id)
+      a(href='#!').dropdown-item View
+      a(href='#!').dropdown-item Edit
+      a(href='#!').dropdown-item Refund
+      .dropdown-divider
+      a(href='#!').dropdown-item.text-warning Archive
+      a(href='#!').dropdown-item.text-danger Delete
+
+mixin CardTopCoursesTable({ items=5, data: courses, id })
+  .z-index-1&attributes(attributes)(
+    id=id 
+    data-list!={
+      valueNames: ["title", "name", "published", "enrolled", "price"],
+      page: items,
+    })
+    .px-0.py-0
+      .table-responsive.scrollbar
+        table.table.fs--1.mb-0.overflow-hidden
+          thead.bg-light.text-900
+            tr.font-sans-serif
+              th.fw-medium.sort.pe-1.align-middle(data-sort="title") Course Title
+              th.fw-medium.sort.pe-1.align-middle(data-sort="name") Trainer
+              th.fw-medium.sort.pe-1.align-middle.text-end(data-sort="published") Published on
+              th.fw-medium.sort.pe-1.align-middle.text-end(data-sort="enrolled") enrolled
+              th.fw-medium.sort.pe-1.align-middle.text-end.text-end(data-sort="price") Price
+              th.fw-medium.no-sort.pe-1.align-middle.data-table-row-action
+          tbody.list
+            each course, index in courses
+              +TopCoursesTableItem(course, index, id)
+
+
+mixin TopCoursesTableItem(config, index, id)
+  tr.btn-reveal-trigger.fw-semi-bold
+    td.align-middle.white-space-nowrap.title
+      a(href=`${CWD}${paths['course-details']}`)=config.title
+    td.align-middle.text-nowrap.name
+      a.text-800(href=`${CWD}${paths['trainer-profile']}`)=config.trainer
+    td.align-middle.white-space-nowrap.text-end.published=config.published
+    td.align-middle.text-end.enrolled=config.enrolled
+    td.align-middle.text-end.price=config.price
+    td.align-middle.white-space-nowrap.text-end
+      +Dropdown(`dropdown-${id}-${index + 1}`).float-end
+

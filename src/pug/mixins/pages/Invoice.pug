@@ -1,0 +1,125 @@
+mixin InvoiceHeader
+  .card.mb-3
+    .card-body
+      .row.justify-content-between.align-items-center
+        .col-md
+          h5.mb-2.mb-md-0 Order #AD20294
+        .col-auto
+          button.btn.btn-falcon-default.btn-sm.me-1.mb-2.mb-sm-0(type='button')
+            span.fas.fa-arrow-down.me-1 
+            | Download (.pdf)
+          button.btn.btn-falcon-default.btn-sm.me-1.mb-2.mb-sm-0(type='button')
+            span.fas.fa-print.me-1 
+            | Print
+          button.btn.btn-falcon-success.btn-sm.mb-2.mb-sm-0(type='button')
+            span.fas.fa-dollar-sign.me-1
+            | Receive Payment
+
+mixin Invoice
+  .card.mb-3
+    .card-body
+      .row.align-items-center.text-center.mb-3
+        .col-sm-6.text-sm-start
+          img(src=`${CWD}assets/img/logos/logo-invoice.png` alt='invoice' width=150)
+        .col.text-sm-end.mt-3.mt-sm-0
+          h2.mb-3 Invoice
+          h5 Falcon Design Studio
+          p.fs--1.mb-0 156 University Ave, Toronto
+            br
+            | On, Canada, M5H 2H7
+        .col-12
+          hr
+      .row.align-items-center
+        .col
+          h6.text-500 Invoice to
+          h5 Antonio Banderas
+          p.fs--1 1954 Bloor Street West
+            br
+            | Torronto ON, M6P 3K9
+            br
+            | Canada
+
+          p.fs--1
+            a(href='mailto:example@gmail.com') example@gmail.com
+            br
+            a(href='tel:444466667777') +4444-6666-7777
+
+        .col-sm-auto.ms-auto
+          .table-responsive
+            table.table.table-sm.table-borderless.fs--1
+              tbody
+                tr
+                  th.text-sm-end Invoice No:
+                  td 14
+                tr
+                  th.text-sm-end Order Number:
+                  td AD20294
+                tr
+                  th.text-sm-end Invoice Date:
+                  td 2018-09-25
+                tr
+                  th.text-sm-end Payment Due:
+                  td Upon receipt
+                tr.alert.alert-success.fw-bold
+                  th.text-sm-end Amount Due:
+                  td $19688.40
+
+      .table-responsive.scrollbar.mt-4.fs--1
+        table.table.table-striped.border-bottom
+          thead.light
+            tr.bg-primary.text-white.dark__bg-1000
+              th.border-0 Products
+              th.border-0.text-center Quantity
+              th.border-0.text-end Rate
+              th.border-0.text-end Amount
+          tbody
+            tr
+              td.align-middle
+                h6.mb-0.text-nowrap Platinum web hosting package
+                p.mb-0 Down 35mb, Up 100mb
+              td.align-middle.text-center 2
+              td.align-middle.text-end $65.00
+              td.align-middle.text-end $130.00
+
+            tr
+              td.align-middle
+                h6.mb-0.text-nowrap 2 Page website design
+                p.mb-0 Includes basic wireframes and responsive templates
+              td.align-middle.text-center 1
+              td.align-middle.text-end $2,100.00
+              td.align-middle.text-end $2,100.00
+            tr
+              td.align-middle
+                h6.mb-0.text-nowrap Mobile App Development
+                p.mb-0 Includes responsive navigation
+              td.align-middle.text-center 8
+              td.align-middle.text-end $5,00.00
+              td.align-middle.text-end $4,000.00
+            tr
+              td.align-middle
+                h6.mb-0.text-nowrap Web App Development
+                p.mb-0 Includes react spa
+              td.align-middle.text-center 6
+              td.align-middle.text-end $2,000.00
+              td.align-middle.text-end $12,000.00
+      .row.justify-content-end
+        .col-auto
+          table.table.table-sm.table-borderless.fs--1.text-end
+            tr
+              th.text-900 Subtotal:
+              td.fw-semi-bold $18,230.00    
+            tr
+              th.text-900 Tax 8%:
+              td.fw-semi-bold $1458.40
+            tr.border-top
+              th.text-900 Total:
+              td.fw-semi-bold $19688.40
+            tr.border-top.border-top-2.fw-bolder.text-900
+              th Amount Due:
+              td $19688.40
+    .card-footer.bg-light
+      p.fs--1.mb-0
+        strong Notes: 
+        | We really appreciate your business and if there’s anything else we can do, please let us know!
+
+

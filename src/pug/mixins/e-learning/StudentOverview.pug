@@ -1,0 +1,751 @@
+//- ==============================================
+//- Student Overview Header
+//- ==============================================
+mixin StudentOverviewHeader
+  .card&attributes(attributes)
+    .card-body.d-flex.flex-wrap.flex-between-center
+      div
+        h6.text-primary Learner
+        h5.mb-0 Michael Giacchino
+      div
+        button(type='button').btn.btn-primary.btn-md.me-2
+          span.fas.fa-envelope.me-md-1 
+          span.d-none.d-md-inline Message
+        button(type='button').btn.btn-falcon-default.btn-md
+          span.fas.fa-users.me-md-1
+          span.d-none.d-md-inline Followers
+
+
+//- ==============================================
+//- Student Info - Card
+//- ==============================================
+mixin StudentInfo
+  .card.font-sans-serif&attributes(attributes)
+    .card-body.d-flex.gap-3.flex-column.flex-sm-row.align-items-center
+
+      img.rounded-3(src=`${CWD}assets/img/elearning/avatar/student.png` alt='' width='112')
+
+      table.table.table-borderless.fs--1.fw-medium.mb-0
+        tbody
+          tr
+            td.p-1(style="width: 35%;") Last Online:
+            td.p-1.text-600 3 hours ago
+          tr
+            td.p-1(style="width: 35%;") Joined:
+            td.p-1.text-600 2021/01/12 23:13
+          tr
+            td.p-1(style="width: 35%;") Email:
+            td.p-1
+              a(href="mailto:goodguy@nicemail.com").text-600.text-decoration-none goodguy@nicemail.com 
+              +Badge({type: 'success', content: 'Verified', icon: 'fas fa-check',}).d-none.d-md-inline-block.ms-2
+          tr
+            td.p-1(style="width: 35%;") Mobile No:
+            td.p-1
+              a(href="tel:+01234567890 ").text-600.text-decoration-none +012-345-67890 
+              +Badge({type: 'primary', content: '2-step verification', icon: 'fas fa-link',}).d-none.d-md-inline-block.ms-2
+
+
+      .dropdown.btn-reveal-trigger.position-absolute.top-0.end-0.m-3
+        button.btn.btn-link.btn-reveal.text-600.btn-sm.dropdown-toggle.dropdown-caret-none(
+          type='button' 
+          id='studentInfoDropdown' 
+          data-bs-toggle="dropdown" 
+          data-boundary="viewport" 
+          aria-haspopup="true" 
+          aria-expanded="false"
+        )
+          span.fas.fa-ellipsis-h.fs--2
+
+        .dropdown-menu.dropdown-menu-end.border.py-2(aria-labelledby='studentInfoDropdown')
+          a(href='#!').dropdown-item View Profile
+          a(href='#!').dropdown-item Enrolled Courses
+          .dropdown-divider
+          a(href='#!').dropdown-item.text-danger Logout
+
+
+//- ==============================================
+//- Spendings - Line chart
+//- ==============================================
+mixin Spendings
+  .card.font-sans-serif&attributes(attributes)
+    .card-header.pb-0
+      h6.mb-0
+        | Spendings
+
+    .card-body
+      .row.g-0
+        .col-6
+          h4.text-700.lh-1.mb-1 
+            | $1971.52
+          +Badge({
+            type: 'danger', 
+            content: '5.1% last month', 
+            icon: 'fas fa-caret-down', 
+            iconBefore: true
+          }).fs--2.align-bottom
+
+        .col-6.mt-n4.d-flex.justify-content-end
+          .echart-default(data-echart-responsive="true" data-echarts!={
+            xAxis:{
+              data: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7','Day 8','Day 9','Day 10']
+            },
+            series: [
+              { 
+                type: 'line',
+                data: [85, 60, 120, 70, 100, 15, 65, 80, 60, 75, 45],
+                smooth:true,
+                lineStyle: {
+                  width: 2,
+                },
+              }
+            ],
+            grid:{ 
+              bottom: '2%',
+              top: '2%',
+              right: '0px',
+              left: '0px',
+            }
+          })
+
+
+//- ==============================================
+//- Time on Site - Line chart
+//- ==============================================
+mixin TimeOnSite
+  .card.font-sans-serif&attributes(attributes)
+    .card-header.pb-0
+      h6.mb-0 Time on Site
+    .card-body
+      .row.g-0
+        .col-6
+          h4.text-700.lh-1.mb-1  
+            | 121h 11m
+          +Badge({
+            type: 'success', 
+            content: '3.6% last month', 
+            icon: 'fas fa-caret-up', 
+            iconBefore: true
+          }).fs--2.align-bottom
+
+        .col-6.mt-n4.d-flex.justify-content-end
+          .echart-default(data-echart-responsive="true" data-echarts!={
+            xAxis:{
+              data: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7','Day 8']
+            },
+            series: [
+              { 
+                type: 'line',
+                data: [55, 60, 40, 120, 70, 80, 35, 80, 85],
+                smooth:true,
+                lineStyle: {
+                  width: 2,
+                },
+              }
+            ],
+            grid:{ 
+              bottom: '2%',
+              top: '2%',
+              right: '0px',
+              left: '10px',
+            }
+          })
+
+
+//- ==============================================
+//- Assignment Scores - Pie chart
+//- ==============================================
+mixin AssignmentScores
+  - 
+    var scores = [
+      {
+        range: '90-100%',
+        courses: 10,
+        color: 'success',
+        badge: {
+          type: 'success',
+          content: '2.1%',
+          icon: 'fas fa-caret-up',
+          iconBefore: true,
+        },
+      },
+      {
+        range: '70-90%',
+        courses: 16,
+        color: 'primary',
+        badge: {
+          type: 'danger',
+          content: '5.1%',
+          icon: 'fas fa-caret-down',
+          iconBefore: true,
+        },
+      },
+      {
+        range: '40-70%',
+        courses: 12,
+        color: 'info',
+        badge: {
+          type: 'secondary',
+          content: '0.0%',
+          icon: '',
+        },
+      },
+      {
+        range: '0-40%',
+        courses: 2,
+        color: 'warning',
+        badge: {
+          type: 'primary',
+          content: '3.5%',
+          icon: 'fas fa-plus',
+          iconBefore: true,
+        },
+      },
+    ]
+
+  .card.h-100.font-sans-serif&attributes(attributes)
+    .card-header.bg-light.d-flex.flex-between-center.py-2
+      h6.mb-0 Assignment Scores
+      a.btn.btn-link.btn-sm.px-0.fw-medium(href='#!') Individual results
+        span.fas.fa-angle-right.ms-1.fs--1
+
+    .card-body
+      .row.g-0.h-100
+        .col-sm-7.order-1.order-sm-0
+          .row.g-sm-0.gy-4.row-cols-2.h-100.align-content-between
+            each score,index in scores
+              .col
+                .d-flex.gap-2.mb-3
+                  .vr.rounded.ps-1(class=`bg-${score.color}`)
+                  h6.lh-base.text-700.mb-0
+                    | #{score.range}
+
+                h5.fw-normal 
+                  | #{score.courses} Courses
+
+                h6.mb-0
+                  span.text-500.me-2 this week
+                  +Badge(score.badge)
+
+        .col-sm-5.mb-5.mb-sm-0
+          // Find the JS file for the following chart at: src/js/charts/echarts/assignment-scores.js
+          // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+          .echart-assignment-scores(
+            data-echart-responsive="true"
+          )
+
+
+//- ==============================================
+//- Payment Methonds - Card
+//- ==============================================
+mixin PaymentMethods
+  .card.h-100&attributes(attributes)
+    .card-header.bg-light.d-flex.flex-between-center.py-2
+      h6.mb-0 Payment Methods
+      +DropdownLms('dropdown-payment-methods')
+
+    .card-body
+      .row.g-3.h-100
+        .col-sm-6.col-lg-12
+          .card.position-relative.rounded-4
+            +Background({ 
+              image: `${CWD}assets/img/icons/spot-illustrations/corner-2.png`, 
+              className: 'bg-card rounded-4',
+            })
+            .card-body.p-3.pt-5.pt-xxl-4
+              img.mb-3(src=`${CWD}assets/img/icons/chip.png` alt='' width='30')
+              h6.text-primary.font-base.lh-1.mb-1 **** **** **** 9876
+              h6.fs--2.fw-semi-bold.text-facebook.mb-3 12/26
+              h6.mb-0.text-facebook Michael Giacchino
+              img.position-absolute.end-0.bottom-0.mb-2.me-2(src=`${CWD}assets/img/icons/master-card.png`, alt="" width=70)
+
+        .col-sm-6.col-lg-12
+          table.table.table-borderless.fw-medium.font-sans-serif.fs--1.mb-2
+            tbody
+              tr
+                td.p-1(style="width: 35%;") Type:
+                td.p-1.text-600 Mastercard debit card
+              tr
+                td.p-1(style="width: 35%;") Name:
+                td.p-1.text-600 Michael Giacchino
+              tr
+                td.p-1(style="width: 35%;") Expires:
+                td.p-1.text-600 DEC 2026
+              tr
+                td.p-1(style="width: 35%;") Issuer:
+                td.p-1.text-600 Falcon Finances
+              tr
+                td.p-1(style="width: 35%;") ID:
+                td.p-1.text-600 card_3d1avx3zcafd62
+          +Badge({type: 'success', content: 'Verified', icon: 'fas fa-check'}).me-2
+          +Badge({type: 'warning', content: 'Non Billable', icon: 'fas fa-exclamation-triangle',})
+
+
+//- ==============================================
+//- Payment History - Table
+//- ==============================================
+mixin PaymentHistory(page=5, viewAllBtn=true) 
+  .card.h-100#paymentHistoryTable&attributes(attributes)(data-list!={
+    valueNames: ["course", "invoice", "date", "amount", "status"],
+    page: page
+  })
+    .card-header.d-flex.flex-between-center
+      h5.mb-0.text-nowrap.py-2.py-xl-0 Payment History
+
+      div
+        button(type='button').btn.btn-falcon-default.btn-sm.me-2
+          span.fas.fa-filter.fs--2
+          span.d-none.d-sm-inline-block.ms-1.align-middle Filter
+        button(type='button').btn.btn-falcon-default.btn-sm
+          span.fas.fa-external-link-alt.fs--2
+          span.d-none.d-sm-inline-block.ms-1.align-middle Export
+
+    .card-body.p-0
+      +PaymentHistoryTable
+
+    .card-footer.text-end.bg-light
+      p.mb-0.fs--1
+        span.d-none.d-sm-inline-block.me-2(data-list-info) 
+        if viewAllBtn
+          span.d-none.d-sm-inline-block.me-2 &mdash;  
+          a.fw-semi-bold(href='#!' data-list-view="*")
+            | View all
+            span.fas.fa-angle-right.ms-1(data-fa-transform='down-1')
+          a.fw-semi-bold.d-none(href='#!' data-list-view="less")
+            | View less
+            span.fas.fa-angle-right.ms-1(data-fa-transform='down-1')
+
+mixin PaymentHistoryTable  
+  -
+    var payments = [
+      {
+        courseId: '123232',
+        invoice: 'FA613145',
+        amount: 39.99,
+        date: '01/10/21',
+        status: 'Pending',
+        color: 'warning',
+      },
+      {
+        courseId: '147832',
+        invoice: 'LC014357',
+        amount: 19.99,
+        date: '12/12/21',
+        status: 'Successful',
+        color: 'success',
+      },
+      {
+        courseId: '965473',
+        invoice: 'FC657916',
+        amount: 35.99,
+        date: '23/08/21',
+        status: 'Pending',
+        color: 'warning',
+      },
+      {
+        courseId: '854763',
+        invoice: 'TN654236',
+        amount: 20.99,
+        date: '09/04/21',
+        status: 'Denied',
+        color: 'danger',
+      },
+      {
+        courseId: '232645',
+        invoice: 'ON820965',
+        amount: 45.49,
+        date: '03/09/21',
+        status: 'Successful',
+        color: 'success',
+      },
+      {
+        courseId: '232471',
+        invoice: 'TN755429',
+        amount: 99.95,
+        date: '31/12/21',
+        status: 'Denied',
+        color: 'danger',
+      },
+      {
+        courseId: '232558',
+        invoice: 'TN789426',
+        amount: 55.95,
+        date: '31/12/21',
+        status: 'Pending',
+        color: 'warning',
+      },
+    ]
+
+  .table-responsive.scrollbar
+    table.table.mb-0.fs--1.border-200.overflow-hidden
+      thead.bg-light.text-900.font-sans-serif
+        tr
+          th.sort.align-middle.fw-medium(data-sort="course") Course
+          th.sort.align-middle.fw-medium(data-sort="invoice") Invoice no.
+          th.sort.align-middle.fw-medium(data-sort="date") Date
+          th.sort.align-middle.fw-medium.text-end(data-sort="amount") Amount
+          th.sort.align-middle.fw-medium.text-end(data-sort="status") Payment Status
+      tbody.list
+        each payment, index in payments
+          +PaymentHistoryTableItem(payment, index)
+
+mixin PaymentHistoryTableItem(config, index)
+  tr.fw-semi-bold
+    td.align-middle.pe-5.py-3.course
+      a(href=`${CWD}${paths['course-details']}`) Course##{config.courseId}
+    td.align-middle.white-space-nowrap.pe-6.py-3.invoice ##{config.invoice}
+    td.align-middle.white-space-nowrap.pe-6.py-3.date=config.date
+    td.align-middle.white-space-nowrap.py-3.text-end.amount $#{config.amount}
+    td.align-middle.text-end.fw-medium.font-sans-serif.py-3.status(class=`text-${config.color}`)=config.status
+
+
+//- ==============================================
+//- Billing Address - Map
+//- ==============================================
+mixin BillingAddress 
+  .card.h-100&attributes(attributes)
+    .card-header.bg-light.d-flex.flex-between-center.py-2
+      h6.mb-0 Billing Address
+      +DropdownLms('dropdown-billing-address')
+
+    .card-body.p-0
+      .row.g-0
+        .col-12
+          .googlemap(style="min-height: 18.75rem" data-latlng="48.8583701,2.2922873,17" data-scrollwheel="false" data-icon="../../assets/img/icons/map-marker.png" data-zoom="17" data-theme="Default")
+            .marker-content
+              h5 Excellent Street 
+              .mb-0 987, Apartment 6, Excellent Street, Good Area, Clean City 5434, Canada
+
+        .col-12.p-x1
+          table.table.table-borderless.fw-medium.font-sans-serif.fs--1.mb-0
+            tbody
+
+              tr.hover-actions-trigger
+                td.p-1(style="width: 35%;") Name:
+                td.p-1.text-600 Michael Giacchino
+                  a(href='#!').btn.btn-link.p-0.mt-n1.hover-actions
+                    span.fas.fa-pencil-alt.ms-1.fs--2
+
+              tr.hover-actions-trigger
+                td.p-1(style="width: 35%;") Address:
+                td.p-1.text-600 987, Apartment 6, Excellent Street, Good Area, Clean City 5434, Canada.
+                  a(href='#!').btn.btn-link.p-0.mt-n1.hover-actions
+                    span.fas.fa-pencil-alt.ms-1.fs--2
+
+              tr.hover-actions-trigger
+                td.p-1(style="width: 35%;") Email:
+                td.p-1.text-600 
+                  a(href="mailto:goodguy@nicemail.com").text-600.text-decoration-none goodguy@nicemail.com 
+                  a(href='#!').btn.btn-link.p-0.mt-n1.hover-actions
+                    span.fas.fa-pencil-alt.ms-1.fs--2
+
+              tr.hover-actions-trigger
+                td.p-1(style="width: 35%;") Mobile No:
+                td.p-1.text-primary 
+                  a(href="tel:+12025550110").text-600.text-decoration-none +1-202-555-0110
+                  a(href='#!').btn.btn-link.p-0.mt-n1.hover-actions
+                    span.fas.fa-pencil-alt.ms-1.fs--2
+
+              tr.hover-actions-trigger
+                td.p-1(style="width: 35%;") SMS Invoice:
+                td.p-1.text-600 On
+                  a(href='#!').btn.btn-link.p-0.mt-n1.hover-actions
+                    span.fas.fa-pencil-alt.ms-1.fs--2
+
+
+//- ==============================================
+//- Recent Activities - Timeline
+//- ==============================================
+mixin RecentActivities
+  - 
+    var timelineData = [
+      {
+        title: 'Logged out',
+        description: 'Logged out from cart screen',
+        time: '3h ago',
+        icon: 'fas fa-sign-out-alt',
+      },
+      {
+        title: 'Added course#123456 to cart',
+        description: 'Added course to cart, Did not pay, Left cart',
+        time: '3h ago',
+        icon: 'fas fa-shopping-cart',
+      },
+      {
+        title: 'Downloaded Materials of #121212',
+        description: '3 pdf files were downloaded, learner completed 75% ',
+        time: '3h ago',
+        icon: 'fas fa-download',
+      },
+      {
+        title: 'Sent a direct mail to Tra_bil37a8',
+        description: 'Tra_bil37a8 is trainer of course#121212 ',
+        time: '5h ago',
+        icon: 'fas fa-envelope',
+      },
+      {
+        title: 'Submitted assignment no.3',
+        description: 'Assignment of course#121212 was due yesterday.',
+        time: '5h ago',
+        icon: 'fas fa-file-upload',
+      },
+    ]
+
+  .card.h-100.font-sans-serif&attributes(attributes)
+    .card-header.bg-light.d-flex.flex-between-center.py-2
+      h6.mb-0 Recent Activities
+      +DropdownLms('dropdown-recent-activities')
+
+    .card-body.py-0.scrollbar-overlay.recent-activity-body-height
+      .timeline-simple
+        each item,index in timelineData 
+          .timeline-item.position-relative
+            .row.g-0.align-items-center
+              .col-auto.d-flex.align-items-center
+                h6.timeline-item-date.fs--2.text-500.text-truncate.mb-0.me-1 
+                  | #{item.time}
+                .position-relative
+                  .icon-item.icon-item-md.rounded-7.shadow-none.bg-200
+                    span.text-primary(class=item.icon)
+              .col.ps-3.fs--1.text-500
+                .py-x1
+                  h5.fs--1=item.title
+                  p.mb-0=item.description
+                if timelineData.length - 1 !== index
+                  hr.text-200.my-0
+
+
+    .card-footer.bg-light.py-2
+      .row.justify-content-between
+        .col-auto
+          select.form-select.form-select-sm
+            option(value='today' selected) Today
+            option(value='week') last week
+            option(value='month') last month
+        .col-auto
+          a(href="#!").btn.btn-sm.btn-falcon-default View All
+
+
+//- ==============================================
+//- Course Status - Pie chart
+//- ==============================================
+mixin CourseStatus
+  - 
+    var courseStatusList = [
+      {
+        title: 'Completed Courses',
+        color: 'primary',
+        value: 13,
+        badge: {
+          type: 'success',
+          content: '2.1%',
+          icon: 'fas fa-caret-up',
+          iconBefore: true,
+        },
+      },
+      {
+        title: 'Dropped Courses',
+        color: 'warning',
+        value: 10,
+        badge: {
+          type: 'primary',
+          content: '3.5%',
+          icon: 'fas fa-caret-up',
+          iconBefore: true,
+        },
+      },
+      {
+        title: 'Refund Claimed',
+        color: 'success',
+        value: 7,
+        badge: {
+          type: 'secondary',
+          content: '0.00%',
+          icon: '',
+          iconBefore: true,
+        },
+      },
+      {
+        title: 'On-going Courses',
+        color: 'info',
+        value: 20,
+        badge: {
+          type: 'danger',
+          content: '5.1%',
+          icon: 'fas fa-caret-down',
+          iconBefore: true,
+        },
+      },
+    ]
+
+  .card.h-100.font-sans-serif&attributes(attributes)
+    .card-header.bg-light.py-2.d-flex.flex-between-center
+      h6.mb-0 Course Status
+      a.btn.btn-link.btn-sm.px-0.fw-medium(href='#!') Details
+        span.fas.fa-angle-right.ms-1.fs--1
+
+    .card-body.p-0.d-flex.flex-column.justify-content-between
+      // Find the JS file for the following chart at: src/js/charts/echarts/course-status.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-course-status(data-echart-responsive="true")
+      ul.list-unstyled.mb-0
+        each courseStatus, index in courseStatusList
+          +CourseStatusItem(courseStatus, index)
+
+mixin CourseStatusItem(config, index) 
+  li.d-flex.gap-2.flex-between-center.flex-wrap.fs--2.p-x1(class=(index % 2 === 0) && 'bg-light')
+    h6.fs-xxl--1.fs-lg--2.mb-0.d-flex.align-items-center.gap-2
+      span.fas.fa-circle(class= `text-${config.color}` data-fa-transform="shrink-4")
+      | #{config.title}
+      +Badge(config.badge)
+    p.text-600.mb-0 #{config.value} Courses
+
+//- ==============================================
+//- Browsing Courses - Bar chart
+//- ==============================================
+mixin BrowsedCourses
+  .card.h-100&attributes(attributes)
+    .card-header.bg-light.py-3
+      h6.mb-0 Browsing New Courses
+
+    .card-body
+      // Find the JS file for the following chart at: src/js/charts/echarts/browsed-courses.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-browsed-courses.h-100(data-echart-responsive="true" data-options!={
+        optionOne: 'newCourseBrowsed',
+        optionTwo: 'paidCourseBrowsed',
+      })
+
+    .card-footer.bg-light.py-2
+      .row.flex-between-center.g-0
+        .col-auto
+          button.btn.btn-sm.btn-link.fs--2.text-600.text-decoration-none.px-0.me-2#newCourseBrowsed
+            span.fas.fa-circle.text-primary.text-opacity-25.me-1(data-fa-transform="shrink-4")
+            | New Courses Browsed
+          button.btn.btn-sm.btn-link.fs--2.text-600.text-decoration-none.px-0#paidCourseBrowsed
+            span.fas.fa-circle.text-primary.me-1(data-fa-transform="shrink-4")
+            | Paid Courses Browsed
+        .col-auto
+          a(href='#!').btn.btn-link.btn-sm.px-0.fw-medium View report
+            span.fas.fa-chevron-right.ms-1.fs--2
+
+
+//- ==============================================
+//- Enrolled Courses - Table
+//- ==============================================
+mixin EnrolledCourses
+  .card&attributes(attributes)#enrolledCoursesTable(data-list!={
+    valueNames: ["title", "trainer", "date", "time", "progress", "price"],
+  })
+    .card-header.d-flex.flex-between-center
+      h6.mb-0 Enrolled Courses
+      div
+        button(type='button').btn.btn-falcon-default.btn-sm.me-2
+          span.fas.fa-filter.fs--2
+          span.d-none.d-sm-inline-block.ms-1.align-middle Filter
+        button(type='button').btn.btn-falcon-default.btn-sm
+          span.fas.fa-expand-arrows-alt.fs--2
+          span.d-none.d-sm-inline-block.ms-1.align-middle Expand
+
+    .card-body.p-0
+      +EnrolledCoursesTable
+
+    .card-footer.bg-light.py-2.text-center
+      a.btn.btn-link.btn-sm.px-0.fw-medium(href='#!') Show all enrollments
+        span.fas.fa-chevron-right.ms-1.fs--2
+
+mixin EnrolledCoursesTable
+  -
+    var enrolledCourses = [
+      {
+        title: 'Advanced Design Tools for Modern Designs',
+        image: 'elearning/courses/course3.png',
+        trainer: 'Bill finger',
+        enrollmentDate: '01/10/21',
+        worked: '12h:50m:00s',
+        progress: 75,
+        price: 39.99
+      },
+      {
+        title: 'Character Design Masterclass: Your First Superhero',
+        image: 'elearning/courses/course8.png',
+        trainer: 'Bruce Timm',
+        enrollmentDate: '01/10/21',
+        worked: '10h:40m:50s',
+        progress: 60,
+        price: 69.99
+      },
+      {
+        title: 'Script Writing Masterclass: Introdution to Industry Cliches',
+        image: 'elearning/courses/course1.png',
+        trainer: 'Bill finger',
+        enrollmentDate: '01/10/21',
+        worked: '12h:50m:00s',
+        progress: 55,
+        price: 69.55
+      },
+      {
+        title: 'Abstract Painting: Zero to Mastery in Traditional Medium',
+        image: 'elearning/courses/course5.png',
+        trainer: 'J. H. Williams III',
+        enrollmentDate: '03/09/21',
+        worked: '38h:10m:09s',
+        progress: 85,
+        price: 45.49
+      },
+      {
+        title: 'Character Design Masterclass: Your First Supervillain',
+        image: 'elearning/courses/course7.png',
+        trainer: 'Bill finger',
+        enrollmentDate: '01/10/21',
+        worked: '02h:29m:00s',
+        progress: 25,
+        price: 39.99
+      },
+      {
+        title: 'Composition in Comics: Easy to Read Between Panels',
+        image: 'elearning/courses/course2.png',
+        trainer: 'Bill finger',
+        enrollmentDate: '31/12/21',
+        worked: '00h:50m:30s',
+        progress: 15,
+        price: 99.99
+      }
+    ]
+
+  .table-responsive.scrollbar
+    table.table.mb-0.fs--1.border-200.overflow-hidden.table-enrolled-courses
+      thead.bg-light.font-sans-serif
+        tr.text-800
+          th.fw-medium.sort(data-sort="title") Course Title 
+          th.fw-medium.sort(data-sort="trainer") Trainer
+          th.fw-medium.sort(data-sort="date") Enrollment
+          th.fw-medium.sort(data-sort="time") Worked
+          th.fw-medium.sort(data-sort="progress") Progress
+          th.fw-medium.sort.text-end(data-sort="price") Price
+          th.fw-medium.no-sort.pe-1.align-middle.data-table-row-action
+      tbody.list
+        each course, index in enrolledCourses
+          +CourseTableItem(course, index)
+
+mixin CourseTableItem(config, index)
+  tr.btn-reveal-trigger.fw-semi-bold
+    td.align-middle.white-space-nowrap.title(style="max-width: 23rem;")
+      .d-flex.gap-3.align-items-center.position-relative
+        img(src=`${CWD}assets/img/${config.image}`, width="60" alt="").rounded-1.border.border-200
+        a.stretched-link.text-truncate(href=`${CWD}${paths['course-details']}`)=config.title
+    td.align-middle.text-nowrap.trainer
+      a(href=`${CWD}${paths['trainer-profile']}`).text-800=config.trainer
+    td.align-middle.date=config.enrollmentDate
+    td.align-middle.time=config.worked
+    td.align-middle
+      .progress.rounded-3.worked(style=`height: 5px; width:5rem`)
+        .progress-bar.bg-progress-gradient.rounded-pill(
+          role='progressbar' 
+          style=`width: ${config.progress}%` 
+          aria-valuenow='43.72' 
+          aria-valuemin='0' 
+          aria-valuemax='100'
+        )
+    td.align-middle.text-end.price $#{config.price}
+    td.align-middle.text-end
+      +DropdownLms(`dropdown${index}`).float-end

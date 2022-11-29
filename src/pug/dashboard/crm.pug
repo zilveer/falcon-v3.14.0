@@ -1,0 +1,64 @@
+extends ../layouts/LayoutTheme
+include ../mixins/home/dashboard/Mixins
+
+include ../mixins/home/dashboard-crm/CardGreetings
+include ../mixins/home/dashboard-crm/CardStatistics
+include ../mixins/home/dashboard-crm/CardCharts
+include ../mixins/home/dashboard-crm/CardDealForecastByOwner
+include ../mixins/home/dashboard-crm/CardToDoListCrm
+include ../mixins/home/dashboard-crm/CardRecentLeads
+include ../mixins/home/dashboard-crm/CardDealForecastBar
+include ../mixins/home/dashboard-crm/CardDealStorageFunnel
+include ../mixins/home/dashboard-crm/CardLocationBySessionCrm
+include ../mixins/home/dashboard-crm/CardRevenueChart
+prepend styles
+  link(href=`${CWD}vendors/leaflet/leaflet.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/leaflet.markercluster/MarkerCluster.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/leaflet.markercluster/MarkerCluster.Default.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/flatpickr/flatpickr.min.css`, rel='stylesheet')
+
+
+prepend scripts
+  script(src=`${CWD}vendors/chart/chart.min.js`)
+  script(src=`${CWD}vendors/leaflet/leaflet.js`)
+  script(src=`${CWD}vendors/leaflet.markercluster/leaflet.markercluster.js`)
+  script(src=`${CWD}vendors/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js`)
+  script(src=`${CWD}vendors/countup/countUp.umd.js`)
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+  script(src=`${CWD}assets/data/world.js`)
+  script(src=`${CWD}vendors/dayjs/dayjs.min.js`)
+  script(src=`${CWD}assets/js/flatpickr.js`)
+
+append content 
+  .row.mb-3 
+    .col
+      +CardGreetings
+  .row.mb-3.g-3
+    .col-lg-12.col-xxl-9
+      +CardCrmStatistics.mb-3
+      +CardCrmRevenueChart
+    .col-xxl-3
+      +CardMostLeads
+    .col-md-12.col-xxl-8
+      +CardDealForecastBar.h-100
+    .col-xxl-4
+      +CardDealStorageFunnel.h-100
+    .col-xxl-6
+      +CardDealClosedVsGoal.h-100
+    .col-xxl-6
+      +CardDealForecastByOwner
+
+  .row.mb-3.g-3
+    .col-lg-7
+      +CardCrmLocationBySession
+    .col-lg-5
+      .row.g-3
+        .col-12
+          +CardAverageCallDuration
+        .col-lg-12
+          +CardLeadConversion.h-100
+  .row.g-3.mb-3
+    .col-lg-5
+      +CardCrmToDoList.h-100
+    .col-lg-7
+      +CardRecentLeads

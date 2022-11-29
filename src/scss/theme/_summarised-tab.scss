@@ -1,0 +1,41 @@
+.tab-tickets-status,
+.tab-contact-details {
+  .nav-item {
+    .nav-link {
+      border-radius: 0;
+
+      &.active {
+        border-bottom: 2px solid var(--#{$prefix}primary);
+        background-color: var(--#{$prefix}card-bg);
+
+        .icon,
+        span {
+          color: var(--#{$prefix}primary) !important;
+        }
+        h6{
+          color: var(--#{$prefix}gray-900) !important;
+        }
+      }
+    }
+  }
+}
+
+.top-customers-tab {
+  .nav-item{
+    width: 5rem;
+    .nav-link {
+      &.active {
+        font-weight: $font-weight-semi-bold !important;
+  
+        &:after {
+          top: 45%;
+          right: -6px;
+          bottom: unset;
+          left: unset;
+          border-width: 1px 1px 0 0;
+        }
+      }
+  
+    }
+  }
+}

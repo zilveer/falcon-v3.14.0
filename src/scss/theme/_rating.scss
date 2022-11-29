@@ -1,0 +1,26 @@
+.rating{
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+.rating li{
+  list-style-type: none;
+}
+.rating-item{
+  border: 1px solid $white;
+  cursor: pointer;
+  font-size: 2rem;
+  color: var(--#{$prefix}warning);
+}
+.rating-item::before{
+  content: "\2605";
+}
+.rating-item.active ~ .rating-item::before{
+  content: "\2606";
+}
+.rating:hover .rating-item::before{
+  content: "2605";
+}
+.rating-item:hover ~ .rating-item::before{
+  content: "\2606";
+}

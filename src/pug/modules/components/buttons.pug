@@ -1,0 +1,160 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/Buttons
+include ../../mixins/components/CloseButton
+
+append variables
+  
+  -
+    var pageHeader = [
+      {
+        title: 'Buttons',
+        description: `Use ${name} custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.`,
+        url: `https://getbootstrap.com/docs/${bootstrapVersion}/components/buttons/`,
+        linkText: 'Buttons on Bootstrap'
+      },
+      {
+        title: 'Button Group\n',
+        description: 'Group a series of buttons together on a single line with the button group, and super-power them with JavaScript.',
+        url: `https://getbootstrap.com/docs/${bootstrapVersion}/components/button-group/`,
+        linkText: 'Button-Group on Bootstrap'
+      },
+    ]
+
+block component
+  +PageHeader(pageHeader[0])
+
+  +ComponentCard({
+    title: 'Falcon Buttons',
+    anchor: true,
+  }).mb-3
+    +FalconButtonsDemo
+
+  +ComponentCard({
+    title: 'Solid Buttons',
+    anchor: true,
+  }).mb-3
+    +SolidButtonsDemo
+
+  +ComponentCard({
+    title: 'Outline Buttons',
+    anchor: true,
+    description:"In need of a button, but not the hefty background colors they bring? Replace the default modifier classes with the <code> .btn-outline-* </code> ones to remove all background images and colors on any button.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +ButtonOutlineDemo
+
+
+  +ComponentCard({
+    title: 'Close Buttons',
+    anchor: true,
+    description:"<strong>Be sure to include text for screen readers</strong>, as we’ve done with <code>aria-label</code>. Disabled close buttons have <code>pointer-events: none </code>and <code>user-select: none</code> applied to, preventing hover and active states from triggering.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +CloseButtonExample
+
+  +ComponentCard({
+    title: 'Close buttons white variant',
+    anchor: true,
+    description:"Change the default <code>.btn-close </code>to be white with the <code>.btn-close-white </code>class. This class uses the <code>backdrop-filter </code>property to invert the <code>background-image.</code>",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    .bg-1000.rounded-1.p-3.light
+      +CloseButtonWhiteVariant
+
+  +ComponentCard({
+    title: 'Falcon close button',
+    anchor: true,
+    description:"Falcon close button is properly optimized for both light and dark mode. Use <code> .btn-close-falcon </code> class for falcon close button.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +FalconCloseButton
+  
+  +ComponentCard({
+    title: 'Button Sizes',
+    anchor: true,
+    description:"Fancy larger or smaller buttons? Add <code>.btn-lg</code> or <code>.btn-sm</code> for additional sizes.",
+    descriptionClass:'mt-2 mb-0'
+
+  }).mb-3
+    +ButtonSizesDemo
+
+  +ComponentCard({
+    title: 'Icon Buttons',
+    anchor: true,
+  }).mb-3
+    +ButtonIconDemo
+
+  +ComponentCard({
+    title: 'Button Capsule',
+    anchor: true,
+  }).mb-3
+    +ButtonCapsuleDemo
+
+
+  +PageHeader(pageHeader[1])
+
+  
+  +ComponentCard({
+    title: 'Basic Example',
+    anchor: true,
+    description:"Wrap a series of buttons with <code>.btn</code> in<code>.btn-group</code>. Add on optional JavaScript radio and checkbox style behavior with",
+    descriptionClass:'mt-2 mb-0'
+
+  }).mb-3
+    +ButtonGroupDemo
+
+  +ComponentCard({
+    title: 'Button Toolbar',
+    anchor: true,
+    description:"Combine sets of button groups into button toolbars for more complex components. Use utility classes as needed to space out groups, buttons, and more.",
+    descriptionClass:'mt-2 mb-0'
+
+  }).mb-3
+    +ButtonToolbarDemo
+
+  +ComponentCard({
+    title: 'Button toolbar with input group',
+    anchor: true,
+    description:"Feel free to mix input groups with button groups in your toolbars. Similar to the example above, you'll likely need some utilities though to space things properly.",
+    descriptionClass:'mt-2 mb-0'
+
+  }).mb-3
+    +ButtonToolbarWithInputGroupDemo
+
+  +ComponentCard({
+    title: 'Sizing',
+    anchor: true,
+    description:"Instead of aplying button sizing classes to every button in a group, just add  <code>.btn-gorup-* </code>to each <code>.btn-group</code>, including each one when nesting multiple groups.",
+    descriptionClass:'mt-2 mb-0'
+
+  }).mb-3
+    +ButtonGroupSizeDemo
+
+  +ComponentCard({
+    title: 'Vertical variation',
+    anchor: true,
+    description:"Make a set of buttons appear vertically tacked rather than horizontally. Split button dropdowns ae not supported here.",
+    descriptionClass:'mt-2 mb-0'
+
+  }).mb-3
+    +ButtonGroupVerticalDemo
+
+  +ComponentCard({
+    title: 'Vertical variation with dropdown',
+    anchor: true,
+  }).mb-3
+    +ButtonGroupVerticalWithDropdownDemo
+
+  +ComponentCard({
+    title: 'Disabled state',
+    anchor: true,
+    description:"Make buttons look inactive by adding the disabled boolean attribute to any <code> &lt;button&gt; </code> element. Disabled buttons have <code> pointer-events: none; </code> applied to, preventing hover and active states from triggering.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +ButtonDisableStateDemo
+
+  +ComponentCard({
+    title: 'Block buttons',
+    anchor: true,
+  }).mb-3
+    +BlockButtonsDemo

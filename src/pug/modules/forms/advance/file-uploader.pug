@@ -1,0 +1,83 @@
+extends ../../../layouts/LayoutComponent
+include ../../../mixins/common/ComingSoon
+
+prepend styles
+  link(href=`${CWD}vendors/dropzone/dropzone.min.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/dropzone/dropzone.min.js`)
+
+block append content
+  +PageHeader({title: 'File Uploader'})
+    p.mt-2 #{name} uses <b>DropzoneJS</b> for file-uploader. DropzoneJS is an open-source library that provides drag & drop file uploads with image previews.
+    a(href='https://www.dropzonejs.com/' target='_blank').btn.btn-link.ps-0.btn-sm  Documentation for Dropzone
+      span.fas.fa-chevron-right.ms-1.fs--2
+
+  
+  +ComponentCard({
+    title: 'Single File Upload',
+    anchor: true,
+    description:"<code>Dropzone </code>requires a valid server-side url for the file upload. You can easily pass it through <code>data-options </code>attribute like <code>data-options!={ url: 'valid/url'}</code>",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    .dropzone.dropzone-single.p-0(data-dropzone data-options!={ url: 'valid/url', maxFiles: 1, dictDefaultMessage: 'Choose or Drop a file here' })
+      .fallback
+        input(type="file" name="file")
+      .dz-preview.dz-preview-single
+        .dz-preview-cover.dz-complete
+          img.dz-preview-img(src=`${CWD}assets/img/generic/image-file-2.png` alt='...' data-dz-thumbnail='')
+          a(href="#!" data-dz-remove).dz-remove.text-danger
+            span.fas.fa-times
+          .dz-progress
+            span.dz-upload(data-dz-uploadprogress='')
+          .dz-errormessage.m-1
+            span(data-dz-errormessage)
+        .dz-progress
+          span.dz-upload(data-dz-uploadprogress='')
+      .dz-message(data-dz-message)
+        .dz-message-text
+          img(src=`${CWD}assets/img/icons/cloud-upload.svg`, width=25 alt="").me-2
+          | Drop your file here
+  
+  
+  +ComponentCard({
+    title: 'Multiple File Upload',
+    anchor: true,
+  }).mb-3
+    form.dropzone.dropzone-multiple.p-0#my-awesome-dropzone(data-dropzone action='#!')
+      .fallback
+        input(name='file' type='file', multiple)
+      .dz-message(data-dz-message) 
+        img(src=`${CWD}assets/img/icons/cloud-upload.svg`, width=25 alt="").me-2
+        | Drop your files here
+      .dz-preview.dz-preview-multiple.m-0.d-flex.flex-column
+        .d-flex.media.mb-3.pb-3.border-bottom.btn-reveal-trigger
+          img(src=`${CWD}assets/img/generic/image-file-2.png` alt="..." data-dz-thumbnail).dz-image
+          .flex-1.d-flex.flex-between-center
+            div
+              h6(data-dz-name)
+              .d-flex.align-items-center
+                p.mb-0.fs--1.text-400.lh-1(data-dz-size)
+                .dz-progress
+                  span.dz-upload(data-dz-uploadprogress='')
+              span.fs--2.text-danger(data-dz-errormessage)
+            .dropdown.font-sans-serif
+              button.btn.btn-link.text-600.btn-sm.dropdown-toggle.btn-reveal.dropdown-caret-none(type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                span.fas.fa-ellipsis-h
+              .dropdown-menu.dropdown-menu-end.border.py-2
+                a.dropdown-item(href="#!" data-dz-remove) Remove File
+        
+  .card.mb-3
+    .card-header
+      h5.mb-0 Stylesheet
+    .card-body.bg-light
+      +ComponentCardLib
+        link(href=`vendors/dropzone/dropzone.min.css`, rel='stylesheet')
+
+
+  .card.mb-3
+    .card-header
+      h5.mb-0 Javascript
+    .card-body.bg-light
+      +ComponentCardLib
+        script(src=`vendors/dropzone/dropzone.min.js`)

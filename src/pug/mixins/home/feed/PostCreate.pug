@@ -1,0 +1,42 @@
+include Mixins
+
+mixin PostCreate
+  .card&attributes(attributes)
+    .card-header.bg-light.overflow-hidden
+      .d-flex.align-items-center
+        +Avatar({img: 'team/1.jpg', size: 'm'})
+        .flex-1.ms-2
+          h5.mb-0.fs-0 Create post
+    .card-body.p-0
+      +PostCreateForm
+      
+
+mixin PostCreateForm
+  form
+    textarea.shadow-none.form-control.rounded-0.resize-none.px-x1.border-y-0.border-200(placeholder="What do you want to talk about?" rows='4')
+    .d-flex.align-items-center.ps-x1.border.border-200
+      label(for='hash-tags').text-nowrap.mb-0.me-2
+        span.fas.fa-plus.me-1.fs--2
+        span.fw-medium.fs--1 Add hashtag
+      input.form-control.border-0.fs--1.shadow-none#hash-tags(type="text" placeholder="Help the right person to see")
+
+    .row.g-0.justify-content-between.mt-3.px-x1.pb-3
+      .col
+        button.btn.btn-light.btn-sm.rounded-pill.shadow-none.d-inline-flex.align-items-center.fs--1.mb-0.me-1(type='button')
+          img.cursor-pointer(src=`${CWD}assets/img/icons/spot-illustrations/image.svg` width=17 alt="")
+          span.ms-2.d-none.d-md-inline-block Image
+        button.btn.btn-light.btn-sm.rounded-pill.shadow-none.d-inline-flex.align-items-center.fs--1.me-1(type='button')
+          img.cursor-pointer(src=`${CWD}assets/img/icons/spot-illustrations/calendar.svg` width=17 alt="")
+          span.ms-2.d-none.d-md-inline-block Event
+        button.btn.btn-light.btn-sm.rounded-pill.shadow-none.d-inline-flex.align-items-center.fs--1.me-1(type='button')
+          img.cursor-pointer(src=`${CWD}assets/img/icons/spot-illustrations/location.svg` width=17 alt="")
+          span.ms-2.d-none.d-md-inline-block.text-nowrap Check in
+      .col-auto
+        .dropdown.d-inline-block.me-1
+          button#dropdownMenuButton.btn.btn-sm.dropdown-toggle.px-1(type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+            span.fas.fa-globe-americas
+          .dropdown-menu.dropdown-menu-end(aria-labelledby='dropdownMenuButton')
+            a.dropdown-item(href='#') Public
+            a.dropdown-item(href='#') Private
+            a.dropdown-item(href='#') Draft
+        button.btn.btn-primary.btn-sm.px-4.px-sm-5(type='submit') Share

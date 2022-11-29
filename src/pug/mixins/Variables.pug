@@ -1,0 +1,1379 @@
+append variables
+  - var title = 'Falcon | Dashboard & Web App Template';
+  - var theme = `${name}-${version}`;
+  - var bootstrapVersion = '5.2';
+  - var attrsMain = { id: 'top', class: 'main' };
+  - var attrsLayout = { class: 'container', 'data-layout': 'container' }
+  - var colors = ['primary', 'secondary', 'success', 'info', 'warning', 'danger', 'light', 'dark'];
+  - var grays = ['black', 1100, 1000, 900, 800, 700, 600, 500, 400, 300, 200, 100, 'white'];
+  - var colorsAll = colors.concat(grays);
+  -
+    var themeColor =  {
+      primary: '#2c7be5',
+      secondary: '#748194',
+      success: '#00d27a',
+      info: '#27bcfd',
+      warning: '#f5803e',
+      danger: '#e63757',
+      light: '#f9fafd',
+      dark: '#0b1727',
+    }
+
+  - var footer = true;
+  - var pathName = (locals.filename || locals.history[0]).split('\\').join('/').split('src/pug/').pop().split('.pug').shift();
+  - var pageTree = pathName.split('/');
+  - var pageName = pathName.split('/').pop();
+  - var CWD = pageTree.slice(1).map(() => '../').join('');
+  - var hasTopNavOnly = false;
+
+  -
+    var sitemap = [
+      {
+        label: 'dashboard',
+        labelDisabled: true,
+        pages: [
+          {
+            name: 'dashboard',
+            icon: 'fas fa-chart-pie',
+            pages: [
+              {
+                name: 'default',
+                path: 'index',
+                pathName: 'default-dashboard',
+              },
+              {
+                name:'analytics',
+                path: 'dashboard/analytics',
+                pathName: 'dashboard-analytics',
+              },
+              {
+                name:'CRM',
+                path: 'dashboard/crm',
+                pathName: 'dashboard-crm',
+              },
+              {
+                name:'e-commerce',
+                path: 'dashboard/e-commerce',
+                pathName: 'dashboard-e-commerce',
+              },
+              {
+                name:'LMS',
+                path: 'dashboard/lms',
+                pathName: 'dashboard-lms',
+                badge: {
+                  type: 'success',
+                  text: 'New'
+                }
+              },
+              {
+                name:'management',
+                path: 'dashboard/project-management',
+                pathName: 'dashboard-project-management',
+              },
+              {
+                name:'SaaS',
+                path: 'dashboard/saas',
+                pathName: 'dashboard-saas',
+              },
+              {
+                name:'support-desk',
+                path: 'dashboard/support-desk',
+                pathName: 'dashboard-support-desk',
+                badge: {
+                  type: 'success',
+                  text: 'New'
+                }
+              },
+            ]
+          },
+        ],
+      },
+      {
+        label: 'app',
+        pages:[
+          {
+            name: 'calendar',
+            icon: 'fas fa-calendar-alt',
+            path: 'app/calendar',
+            pathName: 'calendar-app',
+          },
+          {
+            name: 'chat',
+            icon: 'fas fa-comments',
+            path: 'app/chat',
+            pathName: 'chat',
+
+          },
+          {
+            name:'email',
+            icon: 'fas fa-envelope-open',
+            pages: [
+              {
+                name: 'inbox',
+                path: 'app/email/inbox',
+                pathName: 'email-inbox',
+              },
+              {
+                name:'email-detail',
+                path: 'app/email/email-detail',
+                pathName: 'email-detail',
+              },
+              {
+                name:'compose',
+                path: 'app/email/compose',
+                pathName: 'email-compose',
+
+              }
+            ]
+          },
+          {
+            name:'events',
+            icon: 'fas fa-calendar-day',
+            pages: [
+              {
+                name: 'create-an-event',
+                path: 'app/events/create-an-event',
+                pathName: 'create-event',
+              },
+              {
+                name:'event-detail',
+                path: 'app/events/event-detail',
+                pathName: 'event-detail',
+              },
+              {
+                name:'event-list',
+                path: 'app/events/event-list',
+                pathName: 'event-list',
+              },
+            ]
+          },
+          {
+            name:'e-commerce',
+            icon: 'fas fa-shopping-cart',
+            pages: [
+              {
+                name: 'product',
+                pages:[
+                  {
+                    name: 'product-list',
+                    path: 'app/e-commerce/product/product-list',
+                    pathName: 'product-list',
+                  },
+                  {
+                    name: 'product-grid',
+                    path: 'app/e-commerce/product/product-grid',
+                    pathName: 'product-grid',
+                  },
+                  {
+                    name: 'product-details',
+                    path: 'app/e-commerce/product/product-details',
+                    pathName: 'product-details',
+                  },
+                ]
+              },
+              {
+                name:'orders',
+                pages: [
+                  {
+                    name: 'order-list',
+                    path: 'app/e-commerce/orders/order-list',
+                    pathName: 'order-list',
+                  },
+                  {
+                    name: 'order-details',
+                    path: 'app/e-commerce/orders/order-details',
+                    pathName: 'order-details',
+                  }
+                ]
+              },
+              {
+                name:'customers',
+                path: 'app/e-commerce/customers',
+                pathName: 'customers',
+              },
+              {
+                name:'customer-details',
+                path: 'app/e-commerce/customer-details',
+                pathName:'customer-details',
+              },
+              {
+                name:'shopping-cart',
+                path: 'app/e-commerce/shopping-cart',
+                pathName:'shopping-cart',
+              },
+              {
+                name:'checkout',
+                path: 'app/e-commerce/checkout',
+                pathName:'checkout',
+              },
+              {
+                name: 'billing',
+                path: 'app/e-commerce/billing',
+                pathName: 'billing',
+              },
+              {
+                name: 'invoice',
+                path: 'app/e-commerce/invoice',
+                pathName: 'invoice',
+              },
+            ]
+          },
+          {
+            name:'e-learning',
+            icon: 'fas fa-graduation-cap',
+            badge: {
+              type: 'success',
+              text: 'New'
+            },
+            pages: [
+              {
+                name: 'course',
+                pages:[
+                  {
+                    name: 'course-list',
+                    path: 'app/e-learning/course/course-list',
+                    pathName: 'course-list',
+                  },
+                  {
+                    name: 'course-grid',
+                    path: 'app/e-learning/course/course-grid',
+                    pathName: 'course-grid',
+                  },
+                  {
+                    name: 'course-details',
+                    path: 'app/e-learning/course/course-details',
+                    pathName: 'course-details',
+                  },
+                  {
+                    name: 'create-a-course',
+                    path: 'app/e-learning/course/create-a-course',
+                    pathName: 'create-a-course',
+                  },
+                ]
+              },
+              {
+                name:'student-overview',
+                path: 'app/e-learning/student-overview',
+                pathName: 'student-overview',
+              },
+              {
+                name:'trainer-profile',
+                path: 'app/e-learning/trainer-profile',
+                pathName:'trainer-profile',
+              },
+            ]
+          },
+          {
+            name:'kanban',
+            icon: 'fab fa-trello',
+            path: 'app/kanban',
+            pathName: 'kanban',
+          },
+          {
+            name: 'social',
+            icon: 'fas fa-share-alt',
+            pages:[
+              {
+                name:'feed',
+                path: 'app/social/feed',
+                pathName:'social-feed',
+              },
+              {
+                name: 'activity-log',
+                path: 'app/social/activity-log',
+                pathName: 'activity-log',
+              },
+              {
+                name: 'notifications',
+                path: 'app/social/notifications',
+                pathName: 'notifications',
+              },
+              {
+                name:'followers',
+                path: 'app/social/followers',
+                pathName:'followers',
+              },
+            ]
+          },
+          {
+            name: 'support-desk',
+            icon: 'fas fa-ticket-alt',
+            pages:[
+              {
+                name:'table-view',
+                path: 'app/support-desk/table-view',
+                pathName:'table-view',
+              },
+              {
+                name:'card-view',
+                path: 'app/support-desk/card-view',
+                pathName:'card-view',
+              },
+              {
+                name:'contacts',
+                path: 'app/support-desk/contacts',
+                pathName:'contacts',
+              },
+              {
+                name:'contact-details',
+                path: 'app/support-desk/contact-details',
+                pathName:'contact-details',
+              },
+              {
+                name:'tickets-preview',
+                path: 'app/support-desk/tickets-preview',
+                pathName:'tickets-preview',
+              },
+              {
+                name:'quick-links',
+                path: 'app/support-desk/quick-links',
+                pathName:'quick-links',
+              },
+              {
+                name:'reports',
+                path: 'app/support-desk/reports',
+                pathName:'reports',
+              }
+            ]
+          },
+        ]
+      },
+      {
+        label: 'pages',
+        pages:[
+          {
+            name: 'starter',
+            icon: 'fas fa-flag',
+            path: 'pages/starter',
+            pathName: 'starter-page',
+          },
+          {
+            name: 'landing',
+            icon: 'fas fa-globe',
+            path: 'pages/landing',
+            pathName: 'landing-page',
+          },
+          {
+            name: 'authentication',
+            icon: 'fas fa-lock',
+            pages: [
+              {
+                name: 'simple',
+                pages: [
+                  {
+                    name: 'login',
+                    path: 'pages/authentication/simple/login',
+                    pathName: 'simple-login',
+                  },
+                  {
+                    name: 'logout',
+                    path: 'pages/authentication/simple/logout',
+                    pathName: 'simple-logout',
+                  },
+                  {
+                    name: 'register',
+                    path: 'pages/authentication/simple/register',
+                    pathName: 'simple-register',
+                  },
+                  {
+                    name: 'forgot-password',
+                    path: 'pages/authentication/simple/forgot-password',
+                    pathName: 'simple-forgot-password',
+                  },
+                  {
+                    name: 'confirm-mail',
+                    path: 'pages/authentication/simple/confirm-mail',
+                    pathName: 'simple-confirm-mail',
+                  },
+                  {
+                    name: 'reset-password',
+                    path: 'pages/authentication/simple/reset-password',
+                    pathName: 'simple-reset-password',
+                  },
+                  {
+                    name: 'lock-screen',
+                    path: 'pages/authentication/simple/lock-screen',
+                    pathName: 'simple-lock-screen',
+                  }
+                ]
+              },
+              {
+                name: 'card',
+                pages: [
+                  {
+                    name: 'login',
+                    path: 'pages/authentication/card/login',
+                    pathName: 'card-login',
+                  },
+                  {
+                    name: 'logout',
+                    path: 'pages/authentication/card/logout',
+                    pathName: 'card-logout',
+                  },
+                  {
+                    name: 'register',
+                    path: 'pages/authentication/card/register',
+                    pathName: 'card-register',
+                  },
+                  {
+                    name: 'forgot-password',
+                    path: 'pages/authentication/card/forgot-password',
+                    pathName: 'card-forgot-password',
+                  },
+                  {
+                    name: 'confirm-mail',
+                    path: 'pages/authentication/card/confirm-mail',
+                    pathName: 'card-confirm-mail',
+                  },
+
+                  {
+                    name: 'reset-password',
+                    path: 'pages/authentication/card/reset-password',
+                    pathName: 'card-reset-password',
+                  },
+                  {
+                    name: 'lock-screen',
+                    path: 'pages/authentication/card/lock-screen',
+                    pathName: 'card-lock-screen',
+                  }
+                ]
+              },
+              {
+                name: 'split',
+                pages: [
+                  {
+                    name: 'login',
+                    path: 'pages/authentication/split/login',
+                    pathName: 'split-login',
+                  },
+                  {
+                    name: 'logout',
+                    path: 'pages/authentication/split/logout',
+                    pathName: 'split-logout',
+                  },
+                  {
+                    name: 'register',
+                    path: 'pages/authentication/split/register',
+                    pathName: 'split-register',
+                  },
+                  {
+                    name: 'forgot-password',
+                    path: 'pages/authentication/split/forgot-password',
+                    pathName: 'split-forgot-password',
+                  },
+                  {
+                    name: 'confirm-mail',
+                    path: 'pages/authentication/split/confirm-mail',
+                    pathName: 'split-confirm-mail',
+                  },
+                  {
+                    name: 'reset-password',
+                    path: 'pages/authentication/split/reset-password',
+                    pathName: 'split-reset-password',
+                  },
+                  {
+                    name: 'lock-screen',
+                    path: 'pages/authentication/split/lock-screen',
+                    pathName: 'split-lock-screen',
+                  }
+                ]
+              },
+              {
+                name: 'wizard',
+                path: 'pages/authentication/wizard',
+                pathName: 'wizard-auth',
+              },
+              {
+                name: 'modal',
+                path: '#authentication-modal',
+                pathName: 'auth-modal',
+              }
+            ]
+          },
+          {
+            name: 'user',
+            icon: 'fas fa-user',
+            pages: [
+              {
+                name: 'profile',
+                pathName: 'user-profile',
+                path: 'pages/user/profile',
+              },
+              {
+                name: 'settings',
+                pathName: 'user-settings',
+                path: 'pages/user/settings',
+              },
+            ]
+          },
+          {
+            name: 'pricing',
+            icon: 'fas fa-tags',
+            pages: [
+              {
+                name: 'pricing-default',
+                path: 'pages/pricing/pricing-default',
+                pathName: 'pricing-default',
+              },
+              {
+                name: 'pricing-alt',
+                path: 'pages/pricing/pricing-alt',
+                pathName: 'pricing-alt',
+              }
+            ]
+          },
+          {
+            name: 'faq',
+            icon: 'fas fa-question-circle',
+            pages:[
+              {
+                name:'faq-basic',
+                path: 'pages/faq/faq-basic',
+                pathName:'faq-basic',
+              },
+              {
+                name: 'faq-alt',
+                path: 'pages/faq/faq-alt',
+                pathName: 'faq-alt',
+              },
+              {
+                name: 'faq-accordion',
+                path: 'pages/faq/faq-accordion',
+                pathName: 'faq-accordion',
+              }
+            ]
+          },
+          {
+            name: 'errors',
+            icon: 'fas fa-exclamation-triangle',
+            pages: [
+              {
+                name: '404',
+                path: 'pages/errors/404',
+                pathName: 'error-404',
+              },
+              {
+                name: '500',
+                path: 'pages/errors/500',
+                pathName: 'error-500',
+              }
+            ]
+          },
+          {
+            name: 'miscellaneous',
+            icon: 'fas fa-thumbtack',
+            pages: [
+              {
+                name: 'associations',
+                path: 'pages/miscellaneous/associations',
+                pathName: 'associations',
+              },
+              {
+                name: 'invite-people',
+                path: 'pages/miscellaneous/invite-people',
+                pathName: 'invite-people',
+              },
+              {
+                name: 'privacy-policy',
+                path: 'pages/miscellaneous/privacy-policy',
+                pathName: 'privacy-policy',
+              },
+            ]
+          },
+          {
+            name: 'Layouts',
+            icon: 'far fa-window-restore',
+            pages: [
+              {
+                name: 'navbar-vertical',
+                pathName: 'vertical-navbar',
+                path: 'demo/navbar-vertical',
+                targetBlank: true
+              },
+              {
+                name: 'top-nav',
+                pathName: 'top-navbar',
+                path: 'demo/navbar-top',
+                targetBlank: true
+              },
+              {
+                name: 'double-top',
+                pathName: 'double-top-navbar',
+                path: 'demo/navbar-double-top',
+                targetBlank: true,
+                badge: {
+                  type: 'success',
+                  text: 'New'
+                }
+              },
+              {
+                name: 'combo-nav',
+                pathName: 'combo-navbar',
+                path: 'demo/combo-nav',
+                targetBlank: true
+              }
+            ]
+          },
+        ]
+      },
+      {
+        label: 'modules',
+        pages:[
+
+          {
+            name: 'forms',
+            icon: 'fas fa-file-alt',
+            pages: [
+              {
+                name: 'basic',
+                pages: [
+                  {
+                    name: 'form-control',
+                    path: 'modules/forms/basic/form-control',
+                    pathName: 'form-control',
+                  },
+                  {
+                    name: 'input-group',
+                    path: 'modules/forms/basic/input-group',
+                    pathName: 'form-input-group',
+                  },
+                  {
+                    name: 'select',
+                    path: 'modules/forms/basic/select',
+                    pathName: 'form-select',
+                  },
+                  {
+                    name: 'checks',
+                    path: 'modules/forms/basic/checks',
+                    pathName: 'form-checks',
+                  },
+                  {
+                    name: 'range',
+                    path: 'modules/forms/basic/range',
+                    pathName: 'form-range',
+                  },
+                  {
+                    name: 'layout',
+                    path: 'modules/forms/basic/layout',
+                    pathName: 'form-layout',
+                  },
+                ]
+              },
+              {
+                name: 'advance',
+                pages: [
+                  {
+                    name: 'advance-select',
+                    path: 'modules/forms/advance/advance-select',
+                    pathName: 'advance-select',
+                  },
+                  {
+                    name: 'date-picker',
+                    path: 'modules/forms/advance/date-picker',
+                    pathName: 'date-picker',
+                  },
+                  {
+                    name: 'editor',
+                    path: 'modules/forms/advance/editor',
+                    pathName: 'text-editor',
+                  },
+                  {
+                    name: 'emoji-button',
+                    path: 'modules/forms/advance/emoji-button',
+                    pathName: 'emoji-button',
+                  },
+                  {
+                    name: 'file-uploader',
+                    path: 'modules/forms/advance/file-uploader',
+                    pathName: 'file-uploader',
+                  },
+                  {
+                    name: 'rating',
+                    path: 'modules/forms/advance/rating',
+                    pathName: 'advance-rating',
+                  },
+                ]
+              },
+              {
+                name: 'floating-labels',
+                path: 'modules/forms/floating-labels',
+                pathName: 'floating-labels',
+              },
+              {
+                name: 'wizard',
+                path: 'modules/forms/wizard',
+                pathName: 'forms-wizard'
+              },
+              {
+                name: 'validation',
+                path: 'modules/forms/validation',
+                pathName: 'form-validation',
+              },
+            ]
+          },
+          {
+            name: 'tables',
+            icon: 'fas fa-table',
+            pages: [
+              {
+                name: 'basic-tables',
+                path: 'modules/tables/basic-tables',
+                pathName: 'basic-tables',
+              },
+              {
+                name: 'advance-tables',
+                path: 'modules/tables/advance-tables',
+                pathName: 'advance-tables',
+              },
+              {
+                name: 'bulk-select',
+                path: 'modules/tables/bulk-select',
+                pathName: 'bulk-select',
+              },
+            ]
+          },
+          {
+            name: 'charts',
+            icon: 'fas fa-chart-line',
+            pages: [
+              {
+                name: 'chartjs',
+                path: 'modules/charts/chartjs',
+                pathName: 'chartjs',
+              },
+              {
+                name: 'd3js',
+                path: 'modules/charts/d3js',
+                pathName: 'd3js',
+                badge: {
+                  type: 'success',
+                  text: 'New'
+                }
+              },
+              {
+                name: 'eCharts',
+                pages:[
+                  {
+                    name: 'line-charts',
+                    path: 'modules/charts/echarts/line-charts',
+                    pathName: 'eCharts-line-chart',
+                  },
+                  {
+                    name: 'bar-charts',
+                    path: 'modules/charts/echarts/bar-charts',
+                    pathName: 'eCharts-bar-chart',
+                  },
+                  {
+                    name: 'candlestick-charts',
+                    path: 'modules/charts/echarts/candlestick-charts',
+                    pathName: 'eCharts-candlestick-chart',
+                  },
+                  {
+                    name: 'geo-map',
+                    path: 'modules/charts/echarts/geo-map',
+                    pathName: 'eCharts-geo-map',
+                  },
+                  {
+                    name: 'scatter-charts',
+                    path: 'modules/charts/echarts/scatter-charts',
+                    pathName: 'eCharts-scatter-chart',
+                  },
+                  {
+                    name: 'pie-charts',
+                    path: 'modules/charts/echarts/pie-charts',
+                    pathName: 'eCharts-pie-chart',
+                  },
+                  {
+                    name: 'gauge-charts',
+                    path: 'modules/charts/echarts/gauge-charts',
+                    pathName: 'eCharts-gauge-chart',
+                  },
+                  {
+                    name: 'radar-charts',
+                    path: 'modules/charts/echarts/radar-charts',
+                    pathName: 'eCharts-radar-chart',
+                  },
+                  {
+                    name: 'heatmap-charts',
+                    path: 'modules/charts/echarts/heatmap-charts',
+                    pathName: 'eCharts-heatmap-chart',
+                  },
+                  {
+                    name: 'how-to-use',
+                    path: 'modules/charts/echarts/how-to-use',
+                    pathName: 'echart-how-to-use',
+                  }
+                ]
+              },
+            ]
+          },
+          {
+            name: 'icons',
+            icon: 'fas fa-shapes',
+            pages:[
+              {
+                name: 'font-awesome',
+                path: 'modules/icons/font-awesome',
+                pathName: 'font-awesome',
+              },
+              {
+                name: 'bootstrap-icons',
+                path: 'modules/icons/bootstrap-icons',
+                pathName: 'bootstrap-icons',
+              },
+              {
+                name: 'feather',
+                path: 'modules/icons/feather',
+                pathName: 'feather-icons',
+              },
+              {
+                name: 'material-icons',
+                path: 'modules/icons/material-icons',
+                pathName: 'material-icons',
+              },
+            ]
+          },
+          {
+            name: 'maps',
+            icon: 'fas fa-map',
+            pages: [
+              {
+                name: 'google-map',
+                path: 'modules/maps/google-map',
+                pathName: 'google-map',
+              },
+              {
+                name: 'leaflet-map',
+                path: 'modules/maps/leaflet-map',
+                pathName: 'leaflet-map',
+              }
+            ]
+          },
+          {
+            name: 'components',
+            icon: 'fas fa-puzzle-piece',
+            pages: [
+
+              {
+                name: 'accordion',
+                pathName: 'components-accordion',
+                path: 'modules/components/accordion',
+              },
+              {
+                name: 'alerts',
+                pathName: 'components-alerts',
+                path: 'modules/components/alerts',
+              },
+              {
+                name: 'anchor',
+                pathName: 'components-anchor',
+                path: 'modules/components/anchor'
+              },
+              {
+                name: 'animated-icons',
+                pathName: 'animated-icons',
+                path: 'modules/components/animated-icons'
+              },
+              {
+                name: 'background',
+                pathName: 'components-background',
+                path: 'modules/components/background'
+              },
+              {
+                name: 'badges',
+                pathName: 'components-badges',
+                path: 'modules/components/badges'
+              },
+              {
+                name: 'bottom-bar',
+                pathName: 'components-bottom-bar',
+                path: 'modules/components/bottom-bar',
+                badge: {
+                  type: 'success',
+                  text: 'New'
+                }
+              },
+              {
+                name: 'breadcrumbs',
+                pathName: 'components-breadcrumbs',
+                path: 'modules/components/breadcrumbs'
+              },
+              {
+                name: 'buttons',
+                pathName: 'components-buttons',
+                path: 'modules/components/buttons'
+              },
+              {
+                name: 'calendar',
+                pathName: 'components-calendar',
+                path: 'modules/components/calendar'
+              },
+              {
+                name: 'cards',
+                pathName: 'components-cards',
+                path: 'modules/components/cards'
+              },
+              {
+                name: 'carousel',
+                pages: [
+                  {
+                    name: 'bootstrap',
+                    path: 'modules/components/carousel/bootstrap',
+                    label:'bootstrap-carousel',
+                    pathName:'bootstrap-carousel'
+                  },
+                  {
+                    name: 'swiper',
+                    path: 'modules/components/carousel/swiper',
+                    pathName: 'carousel-swiper'
+                  },
+                ]
+              },
+              {
+                name: 'collapse',
+                pathName: 'collapse',
+                path: 'modules/components/collapse'
+              },
+              {
+                name: 'cookie-notice',
+                pathName: 'cookie-notice',
+                path: 'modules/components/cookie-notice'
+              },
+              {
+                name: 'countup',
+                pathName: 'countup',
+                path: 'modules/components/countup'
+              },
+              {
+                name: 'draggable',
+                pathName: 'draggable',
+                path: 'modules/components/draggable'
+              },
+              {
+                name: 'dropdowns',
+                pathName: 'dropdowns',
+                path: 'modules/components/dropdowns'
+              },
+              {
+                name: 'jquery',
+                pathName: 'jquery-components',
+                path: 'modules/components/jquery-components',
+                badge: {
+                  type: 'success',
+                  text: 'New'
+                }
+              },
+              {
+                name: 'list-group',
+                pathName: 'list-group',
+                path: 'modules/components/list-group'
+              },
+              {
+                name: 'modals',
+                pathName: 'components-modals',
+                path: 'modules/components/modals'
+              },
+              {
+                name: 'navs-_and_-Tabs',
+                pages: [
+                  {
+                    name: 'navs',
+                    pathName: 'components-navs',
+                    path: 'modules/components/navs-and-tabs/navs'
+                  },
+                  {
+                    name: 'navbar',
+                    pathName: 'navbar',
+                    path: 'modules/components/navs-and-tabs/navbar'
+                  },
+                  {
+                    name: 'navbar-vertical',
+                    pathName: 'vertical-navbar',
+                    path: 'modules/components/navs-and-tabs/vertical-navbar'
+                  },
+                  {
+                    name: 'top-nav',
+                    pathName: 'top-navbar',
+                    path: 'modules/components/navs-and-tabs/top-navbar'
+                  },
+                  {
+                    name: 'double-top',
+                    pathName: 'double-top-navbar',
+                    path: 'modules/components/navs-and-tabs/double-top-navbar',
+                    badge: {
+                      type: 'success',
+                      text: 'New'
+                    }
+                  },
+                  {
+                    name: 'combo-nav',
+                    pathName: 'combo-navbar',
+                    path: 'modules/components/navs-and-tabs/combo-navbar'
+                  },
+                  {
+                    name: 'tabs',
+                    pathName: 'components-tabs',
+                    path: 'modules/components/navs-and-tabs/tabs'
+                  },
+                ]
+              },
+              {
+                name: 'offcanvas',
+                pathName: 'components-offcanvas',
+                path: 'modules/components/offcanvas'
+              },
+              {
+                name: 'pictures',
+                pages: [
+                  {
+                    name: 'avatar',
+                    pathName: 'components-avatar',
+                    path: 'modules/components/pictures/avatar'
+                  },
+                  {
+                    name: 'images',
+                    pathName: 'components-images',
+                    path: 'modules/components/pictures/images'
+                  },
+                  {
+                    name: 'figures',
+                    pathName: 'components-figures',
+                    path: 'modules/components/pictures/figures'
+                  },
+                  {
+                    name: 'hoverbox',
+                    pathName: 'hoverbox',
+                    path: 'modules/components/pictures/hoverbox'
+                  },
+                  {
+                    name: 'lightbox',
+                    pathName: 'lightbox',
+                    path: 'modules/components/pictures/lightbox'
+                  },
+                ]
+              },
+              {
+                name: 'progress-bar',
+                path: 'modules/components/progress-bar',
+                pathName: 'basic-progress-bar',
+              },
+              {
+                name: 'placeholder',
+                path: 'modules/components/placeholder',
+                pathName: 'components-placeholder',
+              },
+              {
+                name: 'pagination',
+                path: 'modules/components/pagination',
+                pathName: 'components-pagination',
+              },
+              {
+                name: 'popovers',
+                pathName: 'components-popovers',
+                path: 'modules/components/popovers'
+              },
+              {
+                name: 'scrollspy',
+                pathName: 'components-scrollspy',
+                path: 'modules/components/scrollspy'
+              },
+              {
+                name: 'search',
+                pathName: 'components-search',
+                path: 'modules/components/search'
+              },
+              {
+                name: 'spinners',
+                pathName: 'components-spinners',
+                path: 'modules/components/spinners'
+              },
+              {
+                name: 'timeline',
+                pathName: 'components-timeline',
+                path: 'modules/components/timeline'
+              },
+              {
+                name: 'toasts',
+                pathName: 'components-toasts',
+                path: 'modules/components/toasts'
+              },
+              {
+                name: 'tooltips',
+                pathName: 'components-tooltips',
+                path: 'modules/components/tooltips'
+              },
+              {
+                name: 'treeview',
+                pathName: 'components-treeview',
+                path: 'modules/components/treeview',
+
+              },
+              {
+                name: 'typed-text',
+                pathName: 'components-typed-text',
+                path: 'modules/components/typed-text'
+              },
+              {
+                name: 'videos',
+                pages: [
+                  {
+                    name: 'embed',
+                    path: 'modules/components/videos/embed',
+                    pathName: 'videos-embed'
+                  },
+                  {
+                    name: 'plyr',
+                    path: 'modules/components/videos/plyr',
+                    pathName: 'videos-plyr'
+                  },
+                ]
+              },
+            ]
+          },
+          {
+            name: 'utilities',
+            icon: 'fas fa-fire',
+            pages: [
+              {
+                name: 'borders',
+                path: 'modules/utilities/borders',
+                pathName: 'utilities-borders',
+              },
+              {
+                name: 'clearfix',
+                path: 'modules/utilities/clearfix',
+                pathName: 'utilities-clearfix',
+              },
+              {
+                name: 'colors',
+                path: 'modules/utilities/colors',
+                pathName: 'utilities-colors'
+              },
+              {
+                name: 'colored-links',
+                path: 'modules/utilities/colored-links',
+                pathName: 'utilities-colored-links',
+              },
+              {
+                name: 'display',
+                path: 'modules/utilities/display',
+                pathName: 'utilities-display',
+              },
+              {
+                name: 'flex',
+                path: 'modules/utilities/flex',
+                pathName: 'utilities-flex',
+              },
+              {
+                name: 'float',
+                path: 'modules/utilities/float',
+                pathName: 'utilities-float',
+              },
+              {
+                name: 'grid',
+                path: 'modules/utilities/grid',
+                pathName: 'utilities-grid',
+              },
+              {
+                name: 'overlay scrollbar',
+                path: 'modules/utilities/overlayscrollbar',
+                pathName: 'utilities-overlayscrollbar',
+                badge: {
+                  type: 'success',
+                  text: 'New'
+                }
+              },
+              {
+                name: 'position',
+                path: 'modules/utilities/position',
+                pathName: 'utilities-position',
+              },
+              {
+                name: 'spacing',
+                path: 'modules/utilities/spacing',
+                pathName: 'utilities-spacing',
+              },
+              {
+                name: 'sizing',
+                path: 'modules/utilities/sizing',
+                pathName: 'utilities-sizing',
+              },
+              {
+                name: 'stretched-link',
+                path: 'modules/utilities/stretched-link',
+                pathName: 'utilities-stretched-link',
+              },
+              {
+                name: 'text-truncation',
+                path: 'modules/utilities/text-truncation',
+                pathName: 'utilities-text-truncation',
+              },
+              {
+                name: 'typography',
+                path: 'modules/utilities/typography',
+                pathName: 'utilities-typography',
+              },
+              {
+                name: 'vertical-align',
+                path: 'modules/utilities/vertical-align',
+                pathName: 'utilities-vertical-align',
+              },
+              {
+                name: 'visibility',
+                path: 'modules/utilities/visibility',
+                pathName: 'utilities-visibility',
+              },
+            ]
+
+          },
+          {
+            name: 'widgets',
+            icon: 'fas fa-poll',
+            path: 'widgets',
+            pathName: 'widgets',
+          },
+          {
+            name:'multi-level',
+            icon: 'fas fa-layer-group',
+            pages: [
+              {
+                name: 'level-two',
+                pages:[
+                  {
+                    name: 'item-1',
+                    path: '#!',
+                  },
+                  {
+                    name: 'item-2',
+                    path: '#!',
+                  },
+                ]
+              },
+              {
+                name:'level-three',
+                pages: [
+                  {
+                    name: 'item-3',
+                    path: '#!',
+                  },
+                  {
+                    name: 'item-4',
+                    path: '#!',
+                    pages:[
+                      {
+                        name: 'item-5',
+                        path: '#!',
+                      },
+                      {
+                        name: 'item-6',
+                        path: '#!',
+                      },
+                    ]
+                  }
+                ]
+              },
+              {
+                name:'level-four',
+                pages: [
+                  {
+                    name: 'item-6',
+                    path: '#!',
+                  },
+                  {
+                    name: 'item-7',
+                    pages:[
+                      {
+                        name: 'item-8',
+                        path: '#!',
+                      },
+                      {
+                        name: 'item-9',
+                        pages: [
+                          {
+                            name: 'item-10',
+                            path: '#!',
+                          },
+                          {
+                            name: 'item-11',
+                            path: '#!',
+                          }
+                        ]
+                      },
+                    ]
+                  }
+                ]
+              },
+            ]
+          },
+        ]
+      },
+      {
+        label: 'documentation',
+        pages: [
+          {
+            name: 'getting-started',
+            icon: 'fas fa-rocket',
+            path: 'documentation/getting-started',
+            pathName:'getting-started',
+          },
+          {
+            name: 'customization',
+            icon: 'fas fa-wrench',
+            pages:[
+              {
+                name:'configuration',
+                path:'documentation/customization/configuration',
+                pathName:'doc-configuration',
+              },
+              {
+                name:'styling',
+                path:'documentation/customization/styling',
+                badge: {
+                  type: 'success',
+                  text: 'Updated'
+                },
+                pathName:'doc-styling',
+              },
+              {
+                name:'dark-mode',
+                path:'documentation/customization/dark-mode',
+
+                pathName:'doc-dark-mode',
+              },
+              {
+                name:'plugin',
+                path:'documentation/customization/plugin',
+                pathName:'doc-plugin',
+              }
+
+            ]
+          },
+          {
+            name: 'faq',
+            icon: 'fas fa-question-circle',
+            path: 'documentation/faq',
+            pathName:'doc-faq',
+          },
+          {
+            name: 'gulp',
+            icon: 'fab fa-gulp',
+            path: 'documentation/gulp',
+            pathName:'doc-gulp',
+          },
+          {
+            name: 'design-file',
+            icon: 'fas fa-palette',
+            path: 'documentation/design-file',
+            pathName:'doc-design-file',
+          },
+          {
+            name: 'changelog',
+            icon: 'fas fa-code-branch',
+            path: 'changelog',
+            pathName:'changelog',
+          }
+        ]
+      },
+    ];
+
+  - var paths = flatSitemap(sitemap);

@@ -1,0 +1,88 @@
+mixin OrderDetailsHeader
+  .card-body.position-relative
+    h5 Order Details: #2737
+    p.fs--1 April 21, 2019, 5:33 PM
+    div
+      strong.me-2 Status: 
+      .badge.rounded-pill.badge-soft-success.fs--2 Completed
+        span.fas.fa-check.ms-1(data-fa-transform="shrink-2")
+
+mixin Address
+  .card.mb-3  
+    .card-body
+      .row
+        .col-md-6.col-lg-4.mb-4.mb-lg-0
+          h5.mb-3.fs-0 Billing Address
+          h6.mb-2 Antony Hopkins
+          p.mb-1.fs--1 2393 Main Avenue
+            br
+            | Penasauka, New Jersey 87896
+          p.mb-0.fs--1 
+            strong Email: 
+            a(href="mailto:ricky@gmail.com") antony@example.com
+          p.mb-0.fs--1 
+            strong Phone: 
+            a(href="tel:7897987987") 7897987987
+        .col-md-6.col-lg-4.mb-4.mb-lg-0
+          h5.mb-3.fs-0 Shipping Address
+          h6.mb-2 Antony Hopkins
+          p.mb-0.fs--1 2393 Main Avenue
+            br
+            | Penasauka, New Jersey 87896
+          .text-500.fs--1 (Free Shipping)
+        .col-md-6.col-lg-4
+          h5.mb-3.fs-0 Payment Method
+          .d-flex
+            img(src=`${CWD}assets/img/icons/visa.png`, width="40" height="30" alt="").me-3
+            .flex-1
+              h6.mb-0 Antony Hopkins
+              p.mb-0.fs--1 **** **** **** 9809
+
+mixin ProductsTable
+  .card.mb-3
+    .card-body
+      .table-responsive.fs--1
+        table.table.table-striped.border-bottom
+          thead.bg-200.text-900
+            tr
+              th.border-0 Products
+              th.border-0.text-center Quantity
+              th.border-0.text-end Rate
+              th.border-0.text-end Amount
+          tbody
+            tr.border-200
+              td.align-middle
+                h6.mb-0.text-nowrap Platinum web hosting package9
+                p.mb-0 Down 35mb, Up 100mb
+              td.align-middle.text-center 2
+              td.align-middle.text-end $65.00
+              td.align-middle.text-end $130.00
+
+            tr.border-200
+              td.align-middle
+                h6.mb-0.text-nowrap 2 Page website design
+                p.mb-0 Includes basic wireframes and responsive templates
+              td.align-middle.text-center 1
+              td.align-middle.text-end $2,100.00
+              td.align-middle.text-end $2,100.00
+            tr
+              td.align-middle
+                h6.mb-0.text-nowrap Mobile App Development
+                p.mb-0 Includes responsive navigation
+              td.align-middle.text-center 8
+              td.align-middle.text-end $5,00.00
+              td.align-middle.text-end $4,000.00
+      .row.g-0.justify-content-end
+        .col-auto
+          table.table.table-sm.table-borderless.fs--1.text-end
+            tr
+              th.text-900 Subtotal:
+              td.fw-semi-bold $6,230.00    
+            tr
+              th.text-900 Tax 5%:
+              td.fw-semi-bold $311.50
+            tr.border-top
+              th.text-900 Total:
+              td.fw-semi-bold $6541.50
+
+

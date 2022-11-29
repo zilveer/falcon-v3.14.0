@@ -1,0 +1,38 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/utilities/Position
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Position',
+      description: 'Use these shorthand utilities for quickly configuring the position of an element.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/utilities/position/`,
+      linkText: 'Position on Bootstrap'
+    }
+
+append content
+  +PageHeader(pageHeader)
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Common values')
+        +PositionCommonValuesDescription
+    .card-body.bg-light
+      +PositionDemo
+
+  +ComponentCard({
+    title: 'Arrange Elements',
+    anchor: true,
+    description: `Arrange elements easily with the edge positioning utilities. The format is <code>{property}-{position}. </code> has special utility class <code>.all-0 </code>to give full height/width to child element of parent element.`,
+    descriptionClass: '.mt-2.mb-0'
+  }).mb-3
+    +PositionArrangeElementsDemo
+
+  +ComponentCard({
+    title: 'Center Elements',
+    anchor: true,
+    description: `In addition, you can also center the elements with the transform utility classes <code>.translate-middle</code>, <code>.translate-middle-x </code>, <code>.translate-middle-y</code>. Responsive variations also exist for <code>transform-middle</code>, For example: <code>transform-{xxl|xl|lg|md|sm}-middle-{x|y}</code>.`,
+    descriptionClass: '.mt-2.mb-0'
+  }).mb-3
+    +PositionCenterElementsDemo
+

@@ -1,0 +1,48 @@
+extends ../layouts/LayoutTheme
+include ../mixins/home/dashboard-alt/CardStatistics
+include ../mixins/home/dashboard-alt/CardPaymentChart
+include ../mixins/home/dashboard-alt/CardDipositeStatus
+include ../mixins/home/saas/SaasStatsticsCards
+include ../mixins/home/dashboard/CardActiveUsers
+include ../mixins/home/dashboard/CardSharedFiles
+include ../mixins/home/saas/CandleChart
+include ../mixins/home/saas/GrossRevenueCard
+include ../mixins/home/saas/TransactionSummary
+include ../mixins/home/saas/DoMoreCard
+
+prepend scripts
+  script(src=`${CWD}vendors/chart/chart.min.js`)
+  script(src=`${CWD}vendors/countup/countUp.umd.js`)
+  script(src=`${CWD}vendors/lodash/lodash.min.js`)
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+  script(src=`${CWD}vendors/dayjs/dayjs.min.js`)
+
+append content
+  .row.g-3
+    .col-xxl-9
+      +CardPaymentChart.h-100
+    .col
+      +SaasStatsticsCards
+
+  .row.g-3.mb-3
+    .col-xxl-9
+      +CardDipositeStatus.my-3
+      +CardStatistics
+      .row.g-3
+        .col-12
+          +CandleChart
+        .col-lg-4
+          +CardActiveUsers({end: 7})
+        .col-lg-8
+          +GrossRevenueCard.h-100
+    .col
+      .row.g-3
+        .col-xxl-12
+          +CardSharedFiles(0,5).h-100.h-xxl-auto.mt-xxl-3
+        .col-md.col-xxl-12
+          +CardBandWidthSaved.h-100.h-xxl-auto
+        .col-md.col-xxl-12
+          +DoMoreCard  
+  .row
+    .col 
+      +TransactionSummary

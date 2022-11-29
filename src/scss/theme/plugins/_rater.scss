@@ -1,0 +1,7 @@
+.star-rating {
+  background-image: var(--#{$prefix}star-rating-bg-image) !important;
+  .star-value {
+    background: url('../img/icons/star_on.svg') !important;
+  }
+}
+

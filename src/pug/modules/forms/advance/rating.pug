@@ -1,0 +1,32 @@
+extends ../../../layouts/LayoutComponent
+
+append variables
+  
+  - 
+    var pageHeader = {
+      title: 'Rater',
+      description: 'Star rating widget for the browser. Unlimited number of stars. No dependencies. No Jquery required.',
+      url: `https://fredolss.github.io/rater-js/`,
+      linkText: 'Documentation for rater'
+    }
+
+prepend scripts
+  script(src=`${CWD}vendors/rater-js/index.js`)    
+
+append content
+  +PageHeader(pageHeader)
+
+  
+
+  +ComponentCard({
+    title: 'Example',
+    anchor: true,
+  }).mb-3
+    .d-block(data-rater!={starSize:32, step: .5})
+
+  .card.mb-3
+    .card-header
+      h5.mb-0 Javascript
+    .card-body.bg-light   
+      +ComponentCardLib
+        script(src=`vendors/rater-js/index.js`)

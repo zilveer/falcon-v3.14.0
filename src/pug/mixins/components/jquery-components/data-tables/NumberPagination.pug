@@ -1,0 +1,88 @@
+mixin NumberPaginationTableItem(config, index)
+  tr.btn-reveal-trigger
+    td(style="width: 28px;").align-middle
+      .form-check.mb-0
+        input.form-check-input(
+          type='checkbox' 
+          id=`number-pagination-item-${index}`
+          data-bulk-select-row
+        )
+    th.align-middle.white-space-nowrap.name
+      a(href=`${CWD}${paths['customer-details']}`)=config.customer
+    td.align-middle.white-space-nowrap.email=config.email
+    td.align-middle.white-space-nowrap.product=config.product
+    td.align-middle.text-center.fs-0.white-space-nowrap.payment
+      +Badge(config.status)
+    td.align-middle.text-end.amount=config.amount
+    td.align-middle.white-space-nowrap.text-end
+      +Dropdown(`dropdown-number-pagination-table-item-${index}`).float-end
+
+mixin NumberPaginationTable    
+  .falcon-data-table
+    table.table.table-sm.mb-0.data-table.fs--1(data-options!={
+        searching: false,
+        responsive: false,
+        pageLength: 8,
+        info: true,
+        lengthChange: false, 
+        dom: "<'row mx-1'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" + 
+          "<'table-responsive scrollbar'tr>" + 
+          "<'row no-gutters px-1 pb-3 align-items-center justify-content-center'<'col-auto' p>>",
+        language: {
+          paginate: {
+            next: '<span class="fas fa-chevron-right"></span>',
+            previous: '<span class="fas fa-chevron-left"></span>'
+          }
+        }
+      })
+      thead.bg-200.text-900
+        tr
+          th.no-sort.white-space-nowrap
+            .form-check.mb-0.d-flex.align-items-center
+              input.form-check-input#checkbox-bulk-table-item-select(
+                type='checkbox' 
+                data-bulk-select!={
+                  body: "table-number-pagination-body",
+                  actions: "table-number-pagination-actions",
+                  replacedElement: "table-number-pagination-replace-element"
+                }
+              )
+          th.sort.pe-1.align-middle.white-space-nowrap Customer
+          th.sort.pe-1.align-middle.white-space-nowrap Email
+          th.sort.pe-1.align-middle.white-space-nowrap Product
+          th.sort.pe-1.align-middle.white-space-nowrap.text-center Payment
+          th.sort.pe-1.align-middle.white-space-nowrap.text-end Amount
+          th.no-sort.pe-1.align-middle.data-table-row-action
+      tbody.list#table-number-pagination-body
+        each purchase, index in purchases
+          +NumberPaginationTableItem(purchase, index)
+
+mixin CardNumberPaginationTable
+  .card.shadow-none
+    .card-header
+      .row.flex-between-center
+        .col-6.col-sm-auto.d-flex.align-items-center.pe-0
+          h5.fs-0.mb-0.text-nowrap.py-2.py-xl-0 Recent Purchases 
+
+        .col-6.col-sm-auto.ms-auto.text-end.ps-0
+          #table-number-pagination-actions.d-none
+            .d-flex
+              select.form-select.form-select-sm(aria-label='Bulk actions')
+                option(selected='') Bulk actions
+                option(value='Refund') Refund
+                option(value='Delete') Delete
+                option(value='Archive') Archive
+              button.btn.btn-falcon-default.btn-sm.ms-2(type='button') Apply
+          #table-number-pagination-replace-element
+            button(type='button').btn.btn-falcon-default.btn-sm
+              span.fas.fa-plus(data-fa-transform="shrink-3 down-2")
+              span.d-none.d-sm-inline-block.ms-1 New
+            button(type='button').btn.btn-falcon-default.btn-sm.mx-2
+              span.fas.fa-filter(data-fa-transform="shrink-3 down-2")
+              span.d-none.d-sm-inline-block.ms-1 Filter
+            button(type='button').btn.btn-falcon-default.btn-sm
+              span.fas.fa-external-link-alt(data-fa-transform="shrink-3 down-2")
+              span.d-none.d-sm-inline-block.ms-1 Export
+    .card-body.p-0
+      +NumberPaginationTable
+

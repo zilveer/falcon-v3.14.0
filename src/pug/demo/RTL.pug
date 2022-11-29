@@ -1,0 +1,14 @@
+extends ../layouts/LayoutComponent
+include ../mixins/home/dashboard/Dashboard
+
+prepend variables
+  - var dir = 'rtl'
+
+block styles
+  link(href=`${CWD}assets/css/theme-rtl${ENV === 'PROD'? '.min': ''}.css`, rel='stylesheet' id="style-rtl")
+
+block prepend scripts
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+
+block append content
+  +Dashboard

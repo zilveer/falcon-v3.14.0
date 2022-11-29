@@ -1,0 +1,35 @@
+include SocialButtons
+include RegisterForm
+
+mixin AuthenticationModal
+  #authentication-modal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='authentication-modal-label' aria-hidden='true')
+    .modal-dialog.mt-6(role='document')
+      .modal-content.border-0
+        .modal-header.px-5.position-relative.modal-shape-header.bg-shape
+          .position-relative.z-index-1.light
+            h4.mb-0.text-white#authentication-modal-label Register
+            p.fs--1.mb-0.text-white Please create your free Falcon account
+          button.btn-close.btn-close-white.position-absolute.top-0.end-0.mt-2.me-2(data-bs-dismiss="modal" aria-label="Close")
+
+        .modal-body.py-4.px-5
+          +RegisterForm({
+            name: {
+              label: 'Name',
+              attrs: { id: 'modal-auth-name' }
+            },
+            email: {
+              label: 'Email address',
+              attrs: { id: 'modal-auth-email' }
+            },
+            password: {
+              label: 'Password',
+              attrs: { id: 'modal-auth-password' }
+            },
+            confirmPassword: {
+              label: 'Confirm Password',
+              attrs: { id: 'modal-auth-confirm-password' }
+            },
+            checkbox: { attrs: { id: 'modal-auth-register-checkbox' } },
+          })
+
+          +SocialButtons({ title: 'register' }).mt-5

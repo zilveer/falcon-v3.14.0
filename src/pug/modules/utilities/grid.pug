@@ -1,0 +1,23 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/utilities/Grid
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Grid',
+      description: "Use Bootstrap's powerful mobile-first flexbox grid to build layouts of all shapes and sizes thanks to a twelve column system, five default responsive tiers, Sass variables and mixins, and dozens of predefined classes",
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/layout/grid/`,
+      linkText: 'Grid on Bootstrap'
+    }
+
+append content
+
+  +PageHeader(pageHeader)
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Grid options')
+        +GridOptionsDescription.mt-2.mb-0
+    .card-body.bg-light
+      +GridTable

@@ -1,0 +1,37 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/forms/Validation
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Validation',
+      description: 'Provide valuable, actionable feedback to your users with HTML5 form validation, via browser default behaviors or custom styles and JavaScript.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/forms/validation`,
+      linkText: 'Validation on Bootstrap'
+    }
+
+block component
+  +PageHeader(pageHeader)
+
+  .card.mb-3
+    .card-header 
+      +DocCardHeader("Custom styles")
+    .card-body.bg-light
+      +CustomStyles
+  
+  
+
+  +ComponentCard({
+    title: 'Custom styles Example',
+    anchor: true,
+  }).mb-3
+    +CustomStylesForm
+
+  +ComponentCard({
+    title: 'Tooltips',
+    anchor: true,
+    description:"If your form layout allows it, you can swap the <code>.{valid|invalid}-feedback </code> classes for <code> .{valid|invalid}-tooltip </code> classes to display validation feedback in a styled tooltip. Be sure to have a parent with position: relative on it for tooltip positioning. In the example below, our column classes have this already, but your project may require an alternative setup.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +CustomTooltips

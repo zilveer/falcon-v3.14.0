@@ -1,0 +1,159 @@
+mixin TransactionSummary
+  -
+    var tableRows = [
+      {
+        col1:{
+          img: {src: 'logos/atlassian.png'},
+          title: 'Atlassian',
+          subtitle: 'Subscription payment',
+          hr: false
+        },
+        col2:{
+          label:'Completed',
+          color:'success'
+        },
+        col3:{
+          amount:'$290.00 USD',
+          date:'15 May, 2020'
+        },
+      },
+      {
+        col1:{
+          img: {src: 'logos/hubstaff.png'},
+          title: 'Hubstaff',
+          subtitle: 'Subscription payment',
+          hr: false
+        },
+        col2:{
+          label:'Pending',
+          color:'warning'
+        },
+        col3:{
+          amount:'$200.00 USD',
+          date:'1 May, 2020'
+        },
+      },
+      {
+        col1:{
+          img: {src: 'logos/bs-5.png'},
+          title: 'Bootstrap',
+          subtitle: 'Subscription payment',
+          hr: false
+        },
+        col2:{
+          label:'Pending',
+          color:'warning'
+        },
+        col3:{
+          amount:'$300.00 USD',
+          date:'26 April, 2020'
+        },
+      },
+      {
+        col1:{
+          img: {src: 'logos/asana-logo.png'},
+          title: 'Asana',
+          subtitle: 'Subscription payment',
+          hr: false
+        },
+        col2:{
+          label:'Pending',
+          color:'warning'
+        },
+        col3:{
+          amount:'$320.00 USD',
+          date:'14 April, 2020'
+        },
+      },
+      {
+        col1:{
+          img: {src: 'logos/adobe-creative-cloud.png'},
+          title: 'Adobe Creative Cloud',
+          subtitle: 'Subscription payment',
+          hr: false
+        },
+        col2:{
+          label:'Pending',
+          color:'warning'
+        },
+        col3:{
+          amount:'$150.00 USD',
+          date:'11 April, 2020'
+        },
+      },
+      {
+        col1:{
+          img: {src: 'logos/coursera.png'},
+          title: 'Coursera',
+          subtitle: 'Subscription payment',
+          hr: false
+        },
+        col2:{
+          label:'Pending',
+          color:'warning'
+        },
+        col3:{
+          amount:'$280.00 USD',
+          date:'26 March, 2020'
+        },
+      },
+      {
+        col1:{
+          img: {src: 'logos/medium.png'},
+          title: 'Medium',
+          subtitle: 'Subscription payment',
+          hr: false
+        },
+        col2:{
+          label:'Rejected',
+          color:'danger'
+        },
+        col3:{
+          amount:'$290.00 USD',
+          date:'15 March, 2020'
+        },
+      },
+    ]
+  .card.overflow-hidden&attributes(attributes)
+    .card-header.d-flex.flex-between-center.bg-light.py-2
+        h6.mb-0 Transaction Summary
+        +DashboardDropdown('dropdown-transaction-summary')
+    .card-body.py-0
+      .table-responsive.scrollbar
+        table.table.table-dashboard.mb-0.fs--1
+          each row,index in tableRows
+            tr(class=index === tableRows.length - 1 && 'border-0')
+              td.align-middle.ps-0.text-nowrap(class=index === tableRows.length - 1 && 'border-0')
+                +TransactionItem(row.col1)
+              td.align-middle.px-4(class=index === tableRows.length - 1 && 'border-0' style='width:1%;')
+                span.badge.fs--1.w-100(class=`badge-soft-${row.col2.color}`) #{row.col2.label}
+              td.align-middle.px-4.text-end.text-nowrap(class=index === tableRows.length - 1 && 'border-0' style='width:1%;')
+                h6.mb-0 #{row.col3.amount}
+                p.fs--2.mb-0 #{row.col3.date}
+              td.align-middle.ps-4.pe-1(style="width: 130px; min-width: 130px;" class=index === tableRows.length - 1 && 'border-0')
+                select.form-select.form-select-sm.px-2.bg-transparent
+                  option Action
+                  option Archive
+                  option Delete
+
+    .card-footer.bg-light.py-2
+      .row.flex-between-center
+        .col-auto
+          select.form-select.form-select-sm
+            option Last 7 days
+            option Last Month
+            option Last Year
+        .col-auto
+          a.btn.btn-link.btn-sm.px-0.fw-medium(href='#!') View All
+            span.fas.fa-chevron-right.ms-1.fs--2
+
+mixin TransactionItem(item)
+  .d-flex.position-relative.align-items-center
+    img.d-flex.align-self-center.me-2(src=`${CWD}assets/img/${item.img.src}`, alt='' width="30")
+    .flex-1
+      a.stretched-link(href="#!")
+        h6.mb-0 #{item.title}
+      p.mb-0=item.subtitle
+
+
+

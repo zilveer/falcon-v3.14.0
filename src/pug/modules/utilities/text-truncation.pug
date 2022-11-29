@@ -1,0 +1,27 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/utilities/TextTrunCation
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Text Truncation',
+      description: 'Truncate long strings of text with an ellipsis.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/helpers/text-truncation/`,
+      linkText: 'Text Truncation on Bootstrap'
+    }
+
+append content
+  +PageHeader(pageHeader)
+
+  +ComponentCard({
+    title: 'Example',
+    description: `
+    For longer content, you can add a <code> .text-truncate </code> class to truncate the text with an ellipsis. <strong> Requires </strong><code> display:inline-block </code> <strong>or</strong> <code>display:block</code>.`,
+    anchor: true,
+    descriptionClass:'mt-2'
+  }).mb-3
+    +TextTruncationExampleDemo
+
+
+

@@ -1,0 +1,55 @@
+append variables
+  -
+    var recentActivities = [
+      {
+        title: 'Antony Hopkins sent an Email',
+        text: 'Got an email for previous year sale report',
+        icon: 'fas fa-envelope',
+        time: '2m ago'
+      },
+       {
+        title: 'Emma archived a board',
+        text: 'A finished project\'s board is archived recently',
+        icon: 'fas fa-archive',
+        time: '26m ago'
+      },
+      {
+        title: 'Falcon v3.0.0 released with new features',
+        text: 'Falcon new version is released successfully with new Dashboards',
+        icon: 'fas fa-code',
+        time: '1h ago'
+      },
+      {
+        title: 'Rowan shared a link to the board',
+        text: 'A link is shared with attachments',
+        icon: 'fas fa-code-branch',
+        time: '3h ago'
+      },
+      {
+        title: 'Anna updated a file',
+        text: 'Fixed some bugs and spelling errors on this update',
+        icon: 'far fa-file-code',
+        time: '4h ago'
+      }
+    ];
+mixin CardRecentActivity 
+ .card&attributes(attributes)
+  .card-header
+    h6.mb-0 Recent Activity
+  .card-body.scrollbar.recent-activity-body-height.ps-2
+    each item,index in recentActivities
+      +RecentActivity(item, index)
+      
+mixin RecentActivity(item,index)
+  .row.g-3.timeline.timeline-primary(class = (index === recentActivities.length - 1) ? '' : `${[0, 1].includes(index) ? 'timeline-past' : index === 2 ? 'timeline-current' : ''} pb-x1`)
+    .col-auto.ps-4.ms-2
+      .ps-2
+        .icon-item.icon-item-sm.rounded-circle.bg-200.shadow-none
+          span.text-primary(class=item.icon)
+    .col
+      .row.gx-0(class= (index!== recentActivities.length-1) && `border-bottom pb-x1`)
+        .col
+          h6.text-800.mb-1 #{item.title}
+          p.fs--1.text-600.mb-0 #{item.text}
+        .col-auto
+          p.fs--2.text-500.mb-0 #{item.time}

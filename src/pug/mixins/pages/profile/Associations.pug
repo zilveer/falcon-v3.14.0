@@ -1,0 +1,80 @@
+append variables
+  -
+    var associations = [
+      {
+        img: {src: 'logos/apple.png'},
+        title: 'Apple',
+        subtitle: '3243 associates',
+        hr: false
+      },
+      {
+        img: {src: 'logos/g.png'},
+        title: 'Google',
+        subtitle: '34598 associates',
+        hr: false
+      },
+      {
+        img: {src: 'logos/intel-2.png'},
+        title: 'Intel',
+        subtitle: '7652 associates',
+        hr: false
+      },
+      {
+        img: {src: 'logos/facebook.png'},
+        title: 'Facebook',
+        subtitle: '765 associates',
+        hr: false
+      },
+      {
+        img: {src: 'logos/mailbluster.png'},
+        title: 'Mailbluster',
+        subtitle: '54 associates',
+        hr: false
+      },
+      {
+        img: {src: 'logos/digitalocean.png'},
+        title: 'Digital Ocean',
+        subtitle: '487 associates',
+        hr: false
+      },
+      {
+        img: {src: 'logos/nvidia.png'},
+        title: 'Nvidia',
+        subtitle: '98732 associates',
+        hr: false
+      },
+      {
+        img: {src: 'logos/hp.png'},
+        title: 'Hewlett Packard',
+        subtitle: '2345 associates',
+        hr: false
+      },
+      {
+        img: {src: 'logos/spotify.png'},
+        title: 'Spotify',
+        subtitle: '1737 associates',
+        hr: false
+      },
+    ];
+
+mixin Association(association)
+  .d-flex.position-relative.align-items-center.mb-2
+    img.d-flex.align-self-center.me-2.rounded-3(src=`${CWD}assets/img/${association.img.src}`, alt='' width="50")
+    .flex-1
+      h6.fs-0.mb-0
+        a(href="#!").stretched-link=association.title
+      p.mb-1=association.subtitle
+
+mixin Associations(config)
+  - var config = Object.assign({more: false, start: 0}, config)
+  .card&attributes(attributes)
+    .card-header.bg-light(class=`${config.more ? 'd-flex justify-content-between' : ''}`)
+      h5.mb-0 Associations
+      if(config.more)
+        a.font-sans-serif(href=`${CWD}${paths['associations']}`) All Associations
+
+    .card-body.fs--1.pb-0
+      .row
+        each association in associations.slice(config.start, config.end)
+          .col-sm-6(class=`${!config.more ? 'col-md-4' : ''}`).mb-3
+            +Association(association)

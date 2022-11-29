@@ -1,0 +1,41 @@
+extends ../../layouts/LayoutTheme
+include ../../mixins/e-learning/Mixins
+include ../../mixins/e-learning/CourseGrid
+include ../../mixins/e-learning/TrainerProfile
+
+append variables
+  - var hasTopNavOnly = true;
+
+prepend styles
+  link(href=`${CWD}vendors/glightbox/glightbox.min.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/countup/countUp.umd.js`)
+  script(src=`${CWD}vendors/glightbox/glightbox.min.js`) 
+
+block navbarTop
+
+block navbarVertical
+  if ENV === 'PROD'
+    +NavbarDoubleTop({
+      toggleID: 'navbarDoubleTop',
+      search: true,
+      changelog: true,
+      footer: true
+    }).navbar-expand-lg
+  
+  +NavbarTop({
+    toggleID: 'navbarStandard',
+    links: true,
+    search: false,
+    changelog: true
+  }).navbar-expand-lg
+
+block content
+  .row.g-3
+    .col-lg-4.col-xl-3
+      .sticky-sidebar.top-navbar-height
+        +TrainerInfo
+    .col-lg-8.col-xl-9
+      +TrainerIntro.mb-3
+      +TrainerCourses

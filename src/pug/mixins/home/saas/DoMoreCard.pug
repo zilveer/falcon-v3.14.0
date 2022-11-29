@@ -1,0 +1,46 @@
+mixin DoMoreCard()
+  -
+    var items = [
+      {
+        label:'Unlimited downloads',
+        icon:'fa-infinity'
+      },
+      {
+        label:'Commercial use',
+        icon:'fa-check'
+      },
+      {
+        label:'100% moneyback guarantee',
+        icon:'fa-check'
+      },
+      {
+        label:'Lifetime free updates',
+        icon:'fa-check'
+      },
+    ]
+  .card&attributes(attributes)
+    .card-body.px-4.py-3.my-2
+      h4.text-800 More with Falcon
+      h5.text-600.fs-0 Get 
+        span.text-primary.fw-semi-bold 70% OFF 
+        | with Falcon+
+      .alert.alert-success.mt-3
+        h3.mb-0.text-800 $29
+          span.fs-0.fw-medium.font-sans-serif.text-600 /month
+
+      ul.fa-ul.ms-2.ps-x1.mb-2
+        each item in items
+          +ListItem(item)
+
+      button.btn.btn-success.w-100 
+        span.fas.fa-crown.me-2
+        | Upgrade to Falcon+
+
+mixin ListItem({label,icon})
+  li.py-1
+    h6.text-700
+      span.fa-li.text-success
+        i.fas(class=icon)
+      | #{label}
+
+

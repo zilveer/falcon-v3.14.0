@@ -1,0 +1,77 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/utilities/Borders
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Borders',
+      description: 'Use border utilities to quickly style the border and border-radius of an element. Great for images, buttons, or any other element.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/utilities/borders/`,
+      linkText: 'Borders on Bootstrap'
+    }
+
+append content
+  +PageHeader(pageHeader)
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Border')
+    .card-body.bg-light
+      +BorderDoc
+
+  .row.g-0.border-component
+    .col-xl-6.pe-xl-2
+      +ComponentCard({
+        title:'Additive',
+        anchor:true
+      }).mb-3
+        +BorderAdditive
+        = '\n'
+
+    .col-xl-6.ps-xl-2
+      +ComponentCard({
+        title:'Subtractive',
+        anchor:true
+      }).mb-3
+        +BorderSubtractive
+
+  +ComponentCard({
+    title: "Border Radius",
+    description: "Add helper classes to an element to easily round its corners. For the rounded border, the class are named using the format <code> rounded-*</code>",
+    anchor:true
+  }).mb-3.border-component
+    +BorderRadius
+    = '\n'
+  +ComponentCard({
+    title: "Border sizes",
+    description: "You can control top, right, bottom, left border radius of different size, using the helper classes. The classes also support responsive behaviors like <code> rounded-{xxl | xl | lg | md | sm}-*</code> . Examples are given below",
+    anchor:true,
+    descriptionClass:'mt-2',
+  }).mb-3.border-component
+    +BorderRadiusSizeDemo
+  
+
+  +ComponentCard({
+      title: 'Border Style',
+      description: "For the different border style, add <code>border-{dashed/dotted/hidden/none}</code> classes with <code>border</code> class ",
+      anchor:true,
+      descriptionClass:'mt-2',
+  }).mb-3.border-component
+    +BorderStyle
+
+  +ComponentCard({
+    title: 'Border Width',
+    description: "You can control border width using helper classes<code> border-{1|2|3|4|5}. In addition, you can also use <code>border-top-2</code>, <code>border-end-2</code>, <code>border-bottom-2</code>, <code>border-start-2</code>.</code>",
+    anchor: true,
+    descriptionClass:'mt-2',
+  }).border-component.mb-3
+    +BorderWidth
+
+  +ComponentCard({
+    title: 'Border Color',
+    description: "Border color set as <code> currentColor and border width <code>1px </code>. Modifier can be used to change border color and width. The modifier classes for color are named using the format <code>border-{color}</code>.</code> <br>Where <em> color</em> is one of: <code>primary, secondary, success, info, warning, danger, light, dark, black, 1100, 1000, 900, 800, 700, 600, 500, 400, 300, 200, 100, white,</code>",
+    anchor:true,
+    descriptionClass:'mt-2',
+  }).border-component
+    +BorderColorWidth
+

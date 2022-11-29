@@ -1,0 +1,20 @@
+include Mixins
+include PostAction
+
+mixin PostVideo
+  .card&attributes(attributes)
+    .card-header.bg-light
+      .row.justify-content-between
+        .col
+          +PostHeader({img: 'team/8.jpg'}, 'Just Now &bull; Paris &bull; ', 'fas fa-users')
+            p.mb-1.lh-1
+              a(href=`${CWD}${paths['user-profile']}`).fw-semi-bold Johnny Depp
+              |  shared a 
+              a(href='#!') video
+        .col-auto
+          +PostCog('post-video-action')
+    .card-body
+      p See the sport of surfing as it’s never been captured before in John Florence and Blake Vincent Kueny’s second signature release, in association with the award-winning film studio, Brain Farm. The first surf film shot entirely in 4K, View From a Blue Moon. 🤩 🌎 🎬
+      div 
+        .player(data-plyr-provider='youtube' data-plyr-embed-id='bTqVqk7FSmY')
+    +PostAction.bg-light.pt-0

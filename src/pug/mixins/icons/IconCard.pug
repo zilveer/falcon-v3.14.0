@@ -1,0 +1,46 @@
+mixin IconExampleCard
+ +ComponentCard({
+    title: 'Example',
+    anchor: true,
+    description: `You can use these icons with color and font-size helper classes like the example bellow: `,
+    descriptionClass: 'mt-2 mb-0'
+  })&attributes(attributes)
+    block
+
+mixin IconExampleWithIndicatorCard
+ +ComponentCard({
+    title: 'Example with indicator',
+    anchor: true,
+    description: `You can use these icons with an indicator like the example bellow:`,
+    descriptionClass: 'mt-2 mb-0'
+  })&attributes(attributes)
+    block
+
+mixin IconListHeader(config)
+  - var config = Object.assign({search: true}, config);
+  .card-header
+    .row.flex-between-center
+      .col
+        h5.mb-0 Icons List
+      if config.search
+        .col-auto
+          input.form-control.rounded-pill.search(type="search" placeholder="Search")
+
+mixin IconCard(icon)
+  .col-lg-3.col-md-4.col-sm-6
+    span.icon-list-item.d-none=icon
+    .border.border-300.rounded-2.p-3.mb-4.text-center.bg-white.dark__bg-1000.shadow-sm
+      block
+      input.form-control.form-control-sm.mt-3.text-center.w-100.text-dark.bg-200.dark__bg-1100.border-300(type='text' readonly value=icon)
+
+mixin CopiedNotificationToast
+  .position-fixed.bottom-0.end-0.p-3(style='z-index: 5')
+    #icon-copied-toast.toast.align-items-center.text-white.bg-dark.border-0.light(role='alert' aria-live='assertive' aria-atomic='true')
+      .d-flex
+        .toast-body
+        button.btn-close.btn-close-white.me-2.m-auto(type='button' data-bs-dismiss='toast' aria-label='Close')
+
+
+mixin IconSearchFallback
+  .text-center
+    p.fallback.fw-bold.fs-1.d-none No icons found

@@ -1,0 +1,36 @@
+include ../dashboard/Mixins
+mixin CardUnresolvedTickets
+  .card.h-100&attributes(attributes)
+    .card-header.d-flex.flex-between-center.border-bottom.border-200.py-2
+      h6.mb-0.text-truncate.me-3  Unresolved Tickets by Priority
+      +DashboardDropdown('dropdown-unresolved-tickets')
+    .card-body.py-0
+      .row
+        .col-md-auto.border-md-end.border-md-200.pt-3.pt-md-0.d-md-flex.align-items-center
+          .row.flex-md-column.px-3
+            .col-auto.border-end.border-md-end-0.border-md-bottom.pb-md-3.mb-md-3.ps-0.ps-md-3.pe-x1.pe-md-3.me-1.me-md-0
+              .d-flex.align-items-center.mb-n1
+                label(for='urgent').fs-0.mb-n1.text-700.cursor-pointer 14
+                input.form-check-input.small-dot.mt-0.shadow-none.remove-checked-icon.rounded-circle.cursor-pointer(type="checkbox" data-unresolved-tickets="Urgent" value="" id="urgent" checked)
+              label(for='urgent').fs--2.mb-0.text-700.cursor-pointer Urgent
+            .col-auto.border-end.border-md-end-0.border-md-bottom.pb-md-3.mb-md-3.pe-x1.pe-md-3.me-1.me-md-0
+              .d-flex.align-items-center.mb-n1
+                label(for='high').fs-0.mb-n1.text-700.cursor-pointer 16
+                input.form-check-input.small-dot.mt-0.shadow-none.remove-checked-icon.rounded-circle.cursor-pointer.form-check-input-info(type="checkbox" data-unresolved-tickets="High" value="" id="high" checked)
+              label(for='high').fs--2.mb-0.text-700.cursor-pointer High
+            .col-auto.border-end.border-md-end-0.border-md-bottom.pb-md-3.mb-md-3.pe-x1.pe-md-3.me-1.me-md-0
+              .d-flex.align-items-center.mb-n1
+                label(for='medium').fs-0.mb-n1.text-700.cursor-pointer 53
+                input.form-check-input.small-dot.mt-0.shadow-none.remove-checked-icon.rounded-circle.cursor-pointer.bg-priority-medium(type="checkbox" data-unresolved-tickets="Medium" value="" id="medium" checked)
+              label(for='medium').fs--2.mb-0.text-700.cursor-pointer Medium
+            .col-auto.pe-0
+              .d-flex.align-items-center.mb-n1
+                label(for='low').fs-0.mb-n1.text-700.cursor-pointer 25
+                input.form-check-input.small-dot.mt-0.shadow-none.remove-checked-icon.rounded-circle.cursor-pointer.bg-priority-low(type="checkbox" data-unresolved-tickets="Low" value="" id="low" checked)
+              label(for='low').fs--2.mb-0.text-700.cursor-pointer Low
+        .col-md-auto.echart-unresolved-tickets-container
+          .echart-unresolved-tickets.h-100.mb-2(data-echart-responsive="true")
+    .card-footer.text-center.border-top.border-200.p-0
+      a.btn.btn-link.btn-sm.px-0.fw-medium.py-2(href=`#!`)
+        | View all
+        span.fas.fa-chevron-right.ms-1.fs--2

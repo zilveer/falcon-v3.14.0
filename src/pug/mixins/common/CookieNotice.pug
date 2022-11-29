@@ -1,0 +1,100 @@
+//---------------------------------------
+  |  Cookie Notice
+//---------------------------------------
+mixin CookieNoticeStructure
+  .card.mb-3
+    .card-header  
+      h5 Structure
+      p.mb-0.mt-2 #{name}'s Cookie Notice uses Bootstrap's "Toast" feature to show the notice content. 
+        code .notice 
+        | class is responsible for showing the notice as a popup. See 
+        a(href=`https://getbootstrap.com/docs/5.0/components/toasts/#placement` target="_blank") Toasts documentation on Bootstrap.
+    .card-body.bg-light
+      +ComponentCardLib
+        .toast.notice(role='alert', data-options!={ autoShow: true, autoShowDelay: 0, showOnce: true, cookieExpireTime: 7200000 } data-autohide="false" aria-live='assertive' aria-atomic='true')
+          .toast-body
+            // Your notice content  
+
+mixin CookieNoticeOptions
+  .card
+    .card-header  
+      h5 Options
+      p.mb-0 You can pass options via 
+        code data-options 
+        | through 
+        code .notice 
+        | element to control it's behavior.
+    .card-body.bg-light
+      .table-responsive.scrollbar.mb-3
+        table.table.table-bordered.border.border-200.fs--1.mb-0
+          thead.bg-200.text-900
+            tr
+              th.white-space-nowrap data-options
+              th object
+          tbody
+            tr  
+              td Example
+              td 
+                pre.language-css.
+                  data-options={"autoShow": true, "autoShowDelay": 3000, "showOnce": true, "cookieExpireTime": 7200000}}
+      .table-responsive.scrollbar
+        table.table.table-bordered.border.border-200.fs--1.mb-0
+          thead.bg-200.text-900
+            tr
+              th.white-space-nowrap Option
+              th.white-space-nowrap Type
+              th.white-space-nowrap Defaults
+              th.white-space-nowrap Description
+          tbody
+            tr  
+              td.white-space-nowrap autoShow
+              td.white-space-nowrap 
+                code Boolean
+              td.white-space-nowrap 
+                code false
+              td.white-space-nowrap Set 
+                code true 
+                | to make the Notice show automatically after the page is loaded.
+            tr
+              td.white-space-nowrap autoShowDelay
+              td
+                code Number 
+              td.white-space-nowrap  
+                code 0
+              td.white-space-nowrap How much time 
+                i (ms)  
+                | should wait after the page is loaded before showing the Notice. Works only when the autoShow is set true
+            tr
+              td.white-space-nowrap showOnce
+              td
+                code Boolean
+              td
+                code false
+              td.white-space-nowrap The Notice will show only once - for the first time when a user view the website and remain hidden according to the 
+                code cookieExpireTime 
+                | number.
+            tr
+              td.white-space-nowrap cookieExpireTime
+              td.white-space-nowrap 
+                code Number 
+              td.white-space-nowrap 
+                code 7200000
+              td.white-space-nowrap After how many time 
+                i (ms)  
+                | the cookie will expired. Count down starts after the user hits the “Close” or “OK, I UNDERSTAND”  button on the cookie notice.
+
+mixin CookieNotice
+  .toast.hide.notice.shadow-none#cookie-notice.bg-transparent(role='alert', data-options!={ autoShow: true, autoShowDelay: 3000, showOnce: true, cookieExpireTime: 7200000 } data-autohide="false" aria-live='assertive' aria-atomic='true' style='max-width:35rem')
+    .toast-body.my-3.ms-0.ms-md-5
+      .card
+        .card-body
+          .d-flex
+            .pe-3
+              img(src=`${CWD}assets/img/icons/cookie-1.png` width='40' alt='cookie')
+            div
+              p We use third party cookies to personalize content, ads and  analyze site traffic.
+              button.btn.btn-sm.btn-falcon-primary.me-3(type='button' data-bs-dismiss='toast' aria-label='Close') Okay
+              a.learn-more.me-3(href='#') Learn more
+                span.fas.fa-chevron-right.ms-1.fs--2
+
+

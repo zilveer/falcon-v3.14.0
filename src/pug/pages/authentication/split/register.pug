@@ -1,0 +1,44 @@
+extends ../../../layouts/LayoutSplit
+include ../../../mixins/authentication/RegisterForm
+include ../../../mixins/authentication/SocialButtons
+include ../../../mixins/authentication/FormHeader
+
+block append variables
+  - var background = { image: `${CWD}assets/img/generic/19.jpg` }
+
+block splitContent
+  +FormHeader({
+    title: {
+      text: 'Register',
+      tag: "h3",
+    },
+    normalContent: {
+      text: 'Already User?',
+      className:'fw-semi-bold',
+    },
+    linkText: 'Login',
+    link:'split/login.html'
+  })
+
+
+  +RegisterForm({
+    name: {
+      label: 'Name',
+      attrs: { id: 'split-name' }
+    },
+    email: {
+      label: 'Email address',
+      attrs: { id: 'split-email' }
+    },
+    password: {
+      label: 'Password',
+      attrs: { id: 'split-password' }
+    },
+    confirmPassword: {
+      label: 'Confirm Password',
+      attrs: { id: 'split-confirm-password' }
+    },
+    checkbox: { attrs: { id: 'cover-register-checkbox' } },
+  })
+
+  +SocialButtons({ title: 'register' }).mt-4

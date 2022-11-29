@@ -1,0 +1,106 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/Dropdowns
+include ../../mixins/components/Card
+include ../../mixins/authentication/LoginForm
+include ../../mixins/authentication/SocialButtons
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Dropdown',
+      description: 'Toggle contextual overlays for displaying lists of links and more with the Falcon dropdown plugin.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/components/dropdowns/`,
+      linkText: 'Dropdown on Bootstrap'
+    }
+
+
+block component
+
+  +PageHeader(pageHeader)
+  .row.g-0
+    .col-lg-6.pe-lg-2
+      +ComponentCard({
+        title: 'Example',
+        anchor: true,
+      }).mb-3
+        +DropdownExampleDemo
+
+    .col-lg-6.px-lg-2
+      +ComponentCard({
+        title: 'Dropdown Link',
+        anchor: true,
+      }).mb-3
+        +DropdownLinkDemo
+
+    +ComponentCard({
+      title: 'Button Variant',
+      anchor: true,
+    }).mb-3
+      +DropdownButtonVarientDemo
+
+    +ComponentCard({
+      title: 'Button Split',
+      anchor: true,
+    }).mb-3
+      +DropdownButtonSplitDemo
+
+    +ComponentCard({
+      title: 'Sizing',
+      anchor: true,
+    }).mb-3
+      +DropdownSizingDemo
+
+    +ComponentCard({
+      title: 'Directions',
+      anchor: true,
+    }).mb-3
+      +DropdownDirectionsDemo
+
+    +ComponentCard({
+      title: 'Menu Items',
+      anchor: true,
+    }).mb-3
+      +DropdownMenuItemsDemo
+
+  .row.g-3.mb-3
+    .col-lg-6
+      +ComponentCard({
+        title: 'Active Link',
+        anchor: true,
+      })
+        +DropdownActiveLinkDemo
+    .col-lg-6
+      +ComponentCard({
+        title: 'Disabled Link',
+        anchor: true,
+      })
+        +DropdownDisabledLinkDemo
+
+  .row.g-3.mb-3
+    .col-lg-6
+      +ComponentCard({
+      title: 'Alignment',
+        anchor: true
+      }).mb-3
+        +DropdownAlignmentDemo
+    .col-lg-6
+      +ComponentCard({
+        title: 'Headers',
+        anchor: true,
+      })
+        +DropdownHeaderDemo
+
+  .row.g-3.mb-3
+    .col-lg-6
+      +ComponentCard({
+        title: 'Dividers',
+        anchor: true,
+      })
+        +DropdownDividerDemo
+    .col-lg-6
+      +ComponentCard({
+        title: 'Forms',
+        anchor: true,
+      }).mb-3
+        +DropdownFormsDemo

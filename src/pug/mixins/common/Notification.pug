@@ -1,0 +1,192 @@
+append variables
+  - 
+    var notifications = [
+      {
+        avatar: {
+          img: 'team/1.jpg',
+          size: 'xl'
+        },
+        body: 'Announcing the winners of the <strong>The only book awards</strong> decided by you, the readers. Check out the champions and runners-up in all 21 categories now!',
+        time: 'Just Now',
+        emoji: '📢',
+        className: 'border-bottom-0'
+      },
+      {
+        avatar: {
+          img: 'team/2.jpg',
+          size: 'xl'
+        },
+        body: 'Last chance to vote in <strong>The 2018 Falcon Choice Awards</strong>! See what made it to the Final Round and help your favorites take home the win. Voting closes on November 26',
+        time: '15m',
+        emoji: '🏆',
+        className: 'border-bottom-0 notification-unread'
+      },
+      {
+        avatar: {
+          img: 'team/3.jpg',
+          size: 'xl'
+        },
+        body: '<strong>Jennifer Kent</strong> declared you as a <strong>President</strong> of Computer Science and Engineering Society',
+        time: '1h',
+        emoji: '📢',
+        className: 'border-bottom-0'
+      },
+      {
+        avatar: {
+          img: 'team/4.jpg',
+          size: 'xl'
+        },
+        body: 'Congratulate <strong>Woody Allen</strong> for starting a new position as Business Development Manager &amp; Implementation Engineer at <strong>Hewlett Packard Enterprise(HP)</strong>',
+        time: '6h',
+        emoji: '🎁',
+        className: 'border-bottom-0 notification-unread'
+      },
+      {
+        avatar: {
+          img: 'team/5.jpg',
+          size: 'xl'
+        },
+        body: '<strong>Christopher Nolan</strong> Mentioned you in a comment : "Congratulations! Wishing you a great future. Proud fo you ❤️"',
+        time: '8h',
+        emoji: '💬',
+        className: 'border-bottom-0 notification-unread'
+      },
+      {
+        avatar: {
+          img: 'logos/harvard.png',
+          size: 'xl'
+        },
+        body: 'Join <strong>GIS Institute Winter 2019</strong> Event arranged by <strong>Harvard University</strong>. Only three days to go.',
+        time: '9h',
+        emoji: '🚶',
+        className: 'border-bottom-0'
+      },
+      {
+        avatar: {
+          img: 'team/7.jpg',
+          size: 'xl'
+        },
+        body: '<strong>Peter Jackson</strong> set CSE Curnival Programe in New Museums Site in <strong>University of Cambridge</strong>',
+        time: '14h',
+        emoji: '💻',
+        className: 'border-bottom-0 notification-unread'
+      },
+      {
+        avatar: {
+          img: 'team/8.jpg',
+          size: 'xl'
+        },
+        body: '<strong>David Fincher</strong> declared you as a verified member of <strong>Stanford University.</strong>',
+        time: '2d',
+        emoji: '✔️',
+        className: 'border-bottom-0'
+      },
+      {
+        avatar: {
+          img: 'team/9.jpg',
+          size: 'xl'
+        },
+        body: 'Follow <strong>International Conference on Water and Environmental Engineering (ICWEE)</strong> event arranged by United Nations Development Program on 30 December 2018',
+        time: '3d',
+        emoji: '🔍',
+        className: 'border-bottom-0'
+      },
+      {
+        avatar: {
+          img: 'team/10.jpg',
+          size: 'xl'
+        },
+        body: '<strong>James Cameron</strong> invited to join the group: United Nations International Children\'s Fund',
+        time: '2d',
+        emoji: '🙋‍',
+        className: 'border-bottom-0'
+      },
+      {
+        avatar: {
+          img: 'logos/oxford.png',
+          size: 'xl'
+        },
+        body: '<strong>University of Oxford</strong> created an event : "Causal Inference Hilary 2019"',
+        time: '1w',
+        emoji: '✌️',
+        className: 'border-bottom-0 notification-unread '
+      }
+    ]
+  -
+    var cardNotifications = [
+      {
+        avatar: {
+          img: 'team/1.jpg',
+          size: 'xl'
+        },
+        body: '<strong>Anna Karinina</strong> changed her profile picture',
+        time: 'Just Now',
+        emoji: '📢',
+        className: 'border-bottom-0'
+      },
+      {
+        avatar: {
+          img: 'team/2.jpg',
+          size: 'xl'
+        },
+        body: '<strong>Antony Hopkins</strong> like your status "Long long ago we went to ..."',
+        time: '15m',
+        emoji: '🏆',
+        className: 'border-bottom-0 notification-unread'
+      },
+      {
+        avatar: {
+          img: 'team/3.jpg',
+          size: 'xl'
+        },
+        body: '<strong>Jennifer Kent</strong> declared you as a <strong>President</strong> of Computer Science and Engineering Society',
+        time: '1h',
+        emoji: '📢',
+        className: 'border-bottom-0'
+      },
+      {
+        avatar: {
+          img: 'team/4.jpg',
+          size: 'xl'
+        },
+        body: '<strong>John Lee</strong> interested an <strong>event</strong> near your location',
+        time: '1h',
+        emoji: '📢',
+        className: 'border-bottom-0 notification-unread shadow-none'
+      },
+    ]
+
+mixin Notification(config)
+  - var config = Object.assign({ body: 'Notification commonly shows activity related to an account.', time: '7m'}, config)
+  = '\n' 
+  a(href=`${config.link ? `${CWD}${config.link}` : '#!'}` class=config.className).notification&attributes(attributes)
+    if config.avatar
+      .notification-avatar
+        +Avatar(config.avatar && Object.assign({size: '3xl'}, config.avatar)).me-3
+    .notification-body
+      p.mb-1!=config.body
+      = '\n' 
+      span.notification-time
+        if config.emoji
+          span.me-2(role='img' aria-label='Emoji')!=config.emoji
+        if config.icon
+          span.me-2(class=config.icon)
+        =config.time
+      = '\n' 
+  = '\n' 
+
+mixin NotificationHeader
+  .row.flex-between-center
+    .col-sm-auto
+      h5.mb-1.mb-md-0 Your Notifications
+    .col-sm-auto.fs--1
+      a(href="#!").font-sans-serif.ms-2.ms-sm-3 Mark all as read
+      a(href="#notification-settings-modal" data-bs-toggle='modal').font-sans-serif.ms-2.ms-sm-3 Notification settings
+  
+mixin Notifications(start, end)
+  each notification in notifications.slice(start, end)
+    +Notification(notification).rounded-0.border-x-0.border-300
+
+mixin NotificationsDashboardCard
+  each notification in cardNotifications
+    +Notification(notification).rounded-0.border-x-0.border-bottom-300

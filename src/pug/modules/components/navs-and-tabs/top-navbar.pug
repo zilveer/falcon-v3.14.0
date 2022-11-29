@@ -1,0 +1,63 @@
+extends ../../../layouts/LayoutComponent
+include ../../../mixins/components/navbar/NavbarTop
+include ../../../mixins/components/navbar/DarkenOnScroll
+
+append variables
+  
+
+append content
+
+  +PageHeader({
+      title: 'Navbar Top',
+      description: `Navbar Top is a different user friendly layout system in ${name}.`,
+      url: `${CWD}demo/navbar-top.html`,
+      linkText: 'Navbar top example page'
+    })
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Supported Content')
+    .card-body.bg-light
+      +SupportedContentDescription.mb-0
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Html')
+    .card-body.bg-light
+      +NavbarTopHTMLCodeDemo
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Responsive Behaviors')
+        p.mt-2.mb-0 #{name} Navbar Top use Bootstrap Navbar responsive behaviors.
+    .card-body.bg-light
+      +NavbarTopResponsiveBehaviors
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Color Schemes')
+    .card-body.bg-light
+      +NavbarTopColorSchemes
+
+
+  +PageHeader({
+      title: 'Navbar darken on scroll',
+      description: `${name}'s special Navbar for landing, where background color will be changed gradually transparent to darken on scroll.`,
+      url: `${CWD}${paths['landing-page']}`,
+      linkText: 'See the implementation here'
+    })
+  .card.mb-3
+    .card-header
+      +DocCardHeader('HTML')
+    .card-body.bg-light
+      +HTMLDescription
+      +ComponentCardLib
+        +NavbarDarkenScrollDemo
+
+      +NavbarDarkenOnScrollVarientDescription 
+
+      +NavbarDarkenOnScrollVarientDemo
+  
+
+
+

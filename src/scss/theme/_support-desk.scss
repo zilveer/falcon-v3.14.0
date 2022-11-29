@@ -1,0 +1,72 @@
+.card-view-height{
+  @include media-breakpoint-between(md, lg){
+    height: 7.25rem;
+  }
+}
+// checkbox customization support desk
+.remove-checked-icon:checked[type=checkbox] {
+  background-image: none;
+}
+
+.open-tickets:checked {
+  opacity: 0.5;
+}
+
+.due-tickets:checked {
+  opacity: 0.3;
+}
+
+.unassigned-tickets:checked {
+  opacity: 0.7;
+}
+
+.due-tickets-volume:checked {
+  opacity: 0.3;
+}
+
+.unassigned-tickets-volume:checked {
+  opacity: 0.15;
+}
+
+.bg-priority-medium{
+  &:checked{
+    border-color: #73D3FE !important;
+    background-color: #73D3FE !important;
+    .dark & {
+      border-color: #229BD2 !important;
+      background-color: #229BD2 !important;
+    }
+  }
+}
+.bg-priority-low{
+  &:checked{
+    border-color: #A9E4FF !important;
+    background-color: #A9E4FF !important;
+    .dark & {
+      border-color: #195979 !important;
+      background-color: #195979 !important;
+    }
+  }
+}
+
+.ticket-preview-avatar{
+  width: 5.625rem;
+  height: 5.625rem;
+  border-radius: 50%;
+}
+.shadow-show-xl{
+  @include media-breakpoint-up(xl){
+    box-shadow: var(--#{$prefix}box-shadow) !important;
+  }
+}
+.hover-border-secondary:hover{
+  border-color: var(--#{$prefix}secondary) !important;
+}
+.input-search-width{
+  width: 13.75rem;
+}
+.rounded-xl-3{
+  @include media-breakpoint-up(xl){
+    border-radius: var(--#{$prefix}border-radius-lg);
+  }
+}

@@ -1,0 +1,39 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/forms/FloatingLabels
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Floating labels',
+      description: 'Create beautifully simple form labels that float over your input fields.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/forms/floating-labels`,
+      linkText: 'Floating labels on Bootstrap'
+    }
+
+block component
+  +PageHeader(pageHeader)
+
+  +ComponentCard({
+    title: 'Example',
+    anchor: true,
+  }).mb-3
+    +FloatingLabelsExample
+  
+  +ComponentCard({
+    title: 'Form Validation',
+    anchor: true,
+  }).mb-3
+    +FloatingLabelsFormValidation 
+
+  +ComponentCard({
+    title: 'Textarea',
+    anchor: true,
+  }).mb-3
+    +FloatingLabelsTextarea 
+
+  +ComponentCard({
+    title: 'Selects',
+    anchor: true,
+  }).mb-3
+    +FloatingLabelsSelects 

@@ -1,0 +1,34 @@
+mixin CardCalendarManagement
+  .card.overflow-hidden&attributes(attributes)
+    .card-body.p-0.management-calendar
+      .row.g-3
+        .col-md-7
+          +CalendarHeaderManagement
+          // Find the JS file for the following calendar at: src/js/calendar/management-calendar.js
+          // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+          .calendar-outline#managementAppCalendar.px-3(
+            data-calendar-option!={
+              title: "management-calendar-title",
+              day: "management-calendar-day",
+              events: "management-calendar-events"
+            }
+          )
+        .col-md-5.bg-light.pt-3
+          .px-3
+            h4.mb-0.fs-0.fs-sm-1.fs-lg-2#management-calendar-title
+            p.text-500.mb-0#management-calendar-day
+            ul.list-unstyled.mt-3.scrollbar.management-calendar-events#management-calendar-events
+      
+
+mixin CalendarHeaderManagement
+  .p-x1
+    .d-flex.justify-content-between
+      .order-md-1
+        button.btn.btn-sm.border.me-1.shadow-sm(type="button" data-event="prev" data-bs-toggle="tooltip" title="Previous")
+          span.fas.fa-chevron-left
+        button.btn.btn-sm.text-secondary.border.px-sm-4.shadow-sm(type="button" data-event="today") Today
+        button.btn.btn-sm.border.ms-1.shadow-sm(type="button" data-event="next" data-bs-toggle="tooltip" title="Next")
+          span.fas.fa-chevron-right
+      button.btn.btn-sm.text-primary.border.order-md-0.shadow-none(type="button" data-bs-toggle="modal" data-bs-target="#addEventModal") 
+        span.fas.fa-plus.me-2
+        | New Schedule

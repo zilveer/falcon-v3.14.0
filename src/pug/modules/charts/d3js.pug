@@ -1,0 +1,39 @@
+extends ../../layouts/LayoutComponent
+
+append scripts
+  script(src=`${CWD}vendors/d3/d3.min.js`)
+
+
+append content
+  +PageHeader({
+    title: 'D3 Js',
+    description: `${name} uses D3.js - JavaScript library for manipulating documents based on data.`,
+    url: 'https://github.com/d3/d3/wiki',
+    linkText: 'D3 Js documentations'
+  })
+
+  .card.mb-3
+    .card-header
+      h5.mb-0 Javascript
+    .card-body.bg-light   
+      +ComponentCardLib
+        script(src=`vendors/d3/d3.min.js`)
+
+  .row
+    .col 
+      +ComponentCard({
+        title:'Packed Bubble Chart',
+        anchor:true
+      })
+        // Find the JS file for the following chart at: src/js/charts/d3/d3-packed-bubble.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+        .d3-packed-bubble-chart
+          svg.d3-packed-bubble-svg
+          .d3-packed-bubble-tooltip.pe-none.position-fixed.py-1.px-2.rounded
+            .d-flex.align-items-center.fs--1
+              = '\n'
+              span.dot.d3-tooltip-dot
+              = '\n'
+              span.fw-semi-bold.d3-tooltip-name.pe-2
+              = '\n'
+              span.fw-semi-bold.d3-tooltip-value

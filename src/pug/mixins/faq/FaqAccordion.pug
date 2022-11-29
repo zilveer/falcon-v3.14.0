@@ -1,0 +1,44 @@
+block append variables
+  -
+    var faqs = [
+      {
+        id: 1,
+        title  :'How long do payouts take?',
+        description: 'Once you’re set up, payouts arrive in your bank account on a 2-day rolling basis. Or you can opt to receive payouts weekly or monthly.',
+        active: true,
+      },
+      {
+        id: 2,
+        title  :'How do refunds work?',
+        description: 'You can issue either partial or full refunds. There are no fees to refund a charge, but the fees from the original charge are not returned.',
+      },
+      {
+        id: 3,
+        title  :'How much do disputes costs?',
+        description: 'Disputed payments (also known as chargebacks) incur a $15.00 fee. If the customer’s bank resolves the dispute in your favor, the fee is fully refunded.',
+      },
+      {
+        id: 4,
+        title  :'Is there a fee to use Apple Pay or Google Pay?',
+        description: 'There are no additional fees for using our mobile SDKs or to accept payments using consumer wallets like Apple Pay or Google Pay.',
+      },
+    ];
+
+mixin FaqAccordionItem(config)
+  .card.shadow-none&attributes(attributes)
+    .accordion-item.border-0
+      .card-header.p-0(id=`faqAccordionHeading${config.id}`)
+        button.accordion-button.btn.btn-link.text-decoration-none.d-block.w-100.py-2.px-3.collapsed.border-0.text-start.rounded-0.shadow-none(data-bs-toggle='collapse' data-bs-target=`#collapseFaqAccordion${config.id}` aria-expanded='false' aria-controls=`collapseFaqAccordion${config.id}`)
+          span.fas.fa-caret-right.accordion-icon.me-3(data-fa-transform="shrink-2")
+          span.fw-medium.font-sans-serif.text-900=config.title
+      .accordion-collapse.collapse(id=`collapseFaqAccordion${config.id}` aria-labelledby=`faqAccordionHeading${config.id}` data-parent='#accordionFaq')
+        .accordion-body.p-0
+          .card-body.pt-2
+            p.ps-3.mb-0=config.description
+
+mixin FaqAccordion
+  .card
+    .card-body
+      #accordionFaq.accordion.border.rounded.overflow-hidden
+        each faq, index in faqs
+          +FaqAccordionItem(faq)(class=`${index === 0 ? 'rounded-bottom-0 ' : 'rounded-0 '}${index !== faqs.length - 1 ? 'border-bottom' : ''}`)

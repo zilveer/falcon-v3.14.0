@@ -1,0 +1,25 @@
+extends ../../../layouts/LayoutComponent
+include ../../../mixins/forms/Select
+
+append variables
+  
+
+block component 
+  +PageHeader(pageHeader[0])
+
+  
+  +ComponentCard({
+    title: 'Default',
+    anchor: true,
+    description:"Custom <code>select</code> menus need only a custom class, <code>.form-select</code> to trigger the custom styles. Custom styles are limited to the <code>select</code>'s initial appearance and cannot modify the <code>option</code>s due to browser limitations.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +DefaultForm
+  
+  +ComponentCard({
+    title: 'Sizing',
+    anchor: true,
+    description:"You may also choose from small and large custom selects to match our similarly sized text inputs.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +Sizing

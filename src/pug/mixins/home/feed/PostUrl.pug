@@ -1,0 +1,24 @@
+include Mixins
+include PostAction
+
+mixin PostUrl
+  .card&attributes(attributes)
+    .card-header.bg-light
+      .row.justify-content-between
+        .col
+          +PostHeader({img: 'team/17.jpg', status: 'online'}, '14 Feb &bull; London &bull; ')
+            p.mb-1.lh-1
+              a(href=`${CWD}${paths['user-profile']}`).fw-semi-bold Emilia Clarke
+              |  shared a 
+              a(href='#!') url
+        .col-auto
+          +PostCog('post-url-action')
+    .card-body.overflow-hidden
+      p Mount Everest, known in Nepali as Sagarmatha and in Tibetan as Chomolungma, is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The international border between Nepal and China runs across its summit point.
+      a(href='#!').text-decoration-none
+        img.img-fluid.rounded(src=`${CWD}assets/img/generic/12.jpg` alt='')
+        small.text-uppercase.text-700 en.wikipedia.org
+        h6.fs-0.mb-0 Mount Everest: Facts & Location of World's Highest Mountain
+        p.fs--1.mb-0.text-700 The Himalayan range has many of the Earth's highest peaks, including the highest, Mount Everest...
+
+    +PostAction({like: true}).bg-light.pt-0

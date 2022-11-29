@@ -1,0 +1,33 @@
+extends ../layouts/LayoutTheme
+include ../mixins/chat/Chat
+
+append variables
+  - var attrsBody = Object.assign(attrsBody, { class: 'overflow-hidden' }); 
+
+prepend styles
+  link(href=`${CWD}vendors/glightbox/glightbox.min.css`, rel='stylesheet')
+
+
+prepend scripts
+  script(src=`${CWD}vendors/glightbox/glightbox.min.js`)
+  script(src=`${CWD}assets/js/emoji-button.js` )
+
+
+append content
+  .card.card-chat.overflow-hidden
+    .card-body.d-flex.p-0.h-100
+      +ChatSidebar
+
+      .tab-content.card-chat-content
+        each thread, index in messageThreads
+          +ChatContent(thread, index)
+
+        form.chat-editor-area     
+          .emojiarea-editor.outline-none.scrollbar(contenteditable="true")
+          input.d-none(type="file" id=`chat-file-upload`)
+          label.chat-file-upload.cursor-pointer(for=`chat-file-upload`)
+            span.fas.fa-paperclip
+          .btn.btn-link.emoji-icon(data-emoji-button)
+            span.far.fa-laugh-beam
+          button.btn.btn-sm.btn-send.shadow-none(type="submit") Send
+

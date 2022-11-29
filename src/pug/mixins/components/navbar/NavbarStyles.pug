@@ -1,0 +1,289 @@
+mixin NavbarStyleHeader(config)
+  .d-flex.align-items-start
+    img(src=`${CWD}assets/img/generic/${config.img}.png`, alt="" width=100).me-3.border.border-2.rounded-3.bg-200
+    .flex-1
+      h5.mb-0(data-anchor)=config.title
+      p.mb-1!=config.description
+      a(href=config.url target='_blank').btn.btn-link.btn-sm.ps-0  See the implementation here 
+        span.fas.fa-chevron-right.ms-1.fs--2
+
+mixin NavbarInvertedHtmlDemo
+  p Add 
+    code .navbar-inverted 
+    | class to 
+    code .navbar-vertical 
+    | element to convert Transparent Vertical Navbar to Inverted Vertical Navbar.
+
+  +ComponentCardLib.mb-3
+    nav.navbar.navbar-vertical.navbar-expand-xl.navbar-light.navbar-inverted
+      // Content
+      .collapse.navbar-collapse
+        .navbar-vertical-content.scrollbar
+          // Navbar content
+
+  p You can change 
+    code background-color 
+    | by adding 
+    code .bg-* 
+    | utility classes in 
+    code .navbar-collapse 
+    | element or you can update globally using the SCSS variable which is described in SCSS section below.
+
+  +ComponentCardLib 
+    .collapse.navbar-collapse.bg-1000
+      .navbar-vertical-content.scrollbar
+
+        // Navbar content
+
+mixin NavbarInvertedSCSSDocs
+  p #{name} allow you to customize your Navbar Inverted with SCSS variables. The available options are listed below: 
+  h6.fs-0 Background color
+  p.mb-2 To change the background color of the Navbar Inverted, add the SCSS variable 
+    code $navbar-inverted-bg  
+    | in your 
+    code _user-variables.scss
+    |. Example: 
+
+  +ComponentCardLib.mb-4.
+    $navbar-inverted-bg: $gray-1000; 
+
+  h6.fs-0 Link color
+  p.mb-2 To change the color of the Navbar Inverted links, add the SCSS variable 
+    code $navbar-inverted-link-color 
+    | in your 
+    code _user-variables.scss
+    |. Example: 
+
+  +ComponentCardLib.mb-4.
+    $navbar-inverted-link-color: $gray-500;
+
+  h6.fs-0 Link hover color
+  p.mb-2 To change the hover color of the Navbar Inverted links, add the SCSS variable 
+    code $navbar-inverted-link-hover-color 
+    | in your 
+    code _user-variables.scss
+    |. Example: 
+
+  +ComponentCardLib.mb-4.
+    $navbar-inverted-link-hover-color: $gray-200;
+
+  h6.fs-0 Link active color
+  p.mb-2 To change the active color of the Navbar Inverted links, add the SCSS variable 
+    code $navbar-inverted-link-active-color 
+    | in your 
+    code _user-variables.scss
+    |. Example: 
+
+  +ComponentCardLib.mb-4.
+    $navbar-inverted-link-active-color: $gray-200;
+
+  h6.fs-0 Navbar inverted divider color
+  p.mb-2 To change the divider color, add the SCSS variable 
+    code $navbar-inverted-hr-color 
+    | in your 
+    code _user-variables.scss
+    |. Example: 
+
+  +ComponentCardLib.mb-4.
+    $navbar-inverted-hr-color: rgba($white, 0.2);
+
+  h6.fs-0 Navbar inverted scrollbar color
+  p.mb-2 To change the scrollbar color, add the SCSS variable 
+    code $navbar-inverted-scrollbar-color 
+    | in your 
+    code _user-variables.scss
+    |. Example: 
+
+  +ComponentCardLib.
+    $navbar-inverted-scrollbar-color: $gray-400;
+
+mixin NavbarVibrantHtmlDemo
+  p Add 
+    code .navbar-vibrant 
+    | class to 
+    code .navbar-vertical 
+    | element which will set a 
+    code gradient-color 
+    | and a 
+    code background-image  
+    | to the 
+    code .navbar-collapse 
+    | element. This style come from 
+    code theme.css
+    |.
+  +ComponentCardLib.mb-3
+    nav.navbar.navbar-vertical.navbar-expand-xl.navbar-light.navbar-vibrant
+      // Content
+      .collapse.navbar-collapse
+        .navbar-vertical-content.scrollbar
+          // Navbar content
+  p You can change the background of navbar vibrant using inline style. Add style attribute to 
+    code .navbar-collapse 
+    | element to change the backgruond image property. Otherwise, you can change background using SCSS variable.
+
+  +ComponentCardLib
+    .collapse.navbar-collapse(style="background-image: linear-gradient(-45deg, rgba(0, 160, 255, 0.86), #0048a2), url(assets/img/generic/bg-navbar.png)")
+      .navbar-vertical-content.scrollbar
+        // Navbar content
+
+mixin NavbarVibrantScssDocs
+  p To customize your Navbar Vibrant you can use SCSS variables. The available options are listed below:
+  h6.fs-0 Background 
+  p.mb-2 To change the background of the Navbar vibrant, add the SCSS variable 
+    code $navbar-vibrant-bg-image  
+    | in your 
+    code _user-variables.scss
+    |. You can update both overlay color and background image using this variable. Example: 
+
+  +ComponentCardLib.mb-4.
+    $navbar-vibrant-bg-image: linear-gradient(-45deg, rgba(0, 160, 255, 0.86), #0048a2), url(../img/generic/bg-navbar.png);
+
+  h6.fs-0 Link color
+  p.mb-2 To change the color of the Navbar Vibrant links, add the SCSS variable 
+    code $navbar-vibrant-link-color 
+    | in your 
+    code _user-variables.scss
+    |. Example: 
+
+  +ComponentCardLib.mb-4.
+    $navbar-vibrant-link-color: $gray-500;
+
+  h6.fs-0 Link hover color
+  p.mb-2 To change the hover color of the Navbar Vibrant links, add the SCSS variable 
+    code $navbar-vibrant-link-hover-color 
+    | in your 
+    code _user-variables.scss
+    |. Example: 
+
+  +ComponentCardLib.mb-4.
+    $navbar-vibrant-link-hover-color: $gray-200;
+
+  h6.fs-0 Link active color
+  p.mb-2 To change the active color of the Navbar Vibrant links, add the SCSS variable 
+    code $navbar-vibrant-link-active-color 
+    | in your 
+    code _user-variables.scss
+    |. Example: 
+
+  +ComponentCardLib.mb-4.
+    $navbar-vibrant-link-active-color: $gray-200;
+
+  h6.fs-0 Navbar vibrant divider
+  p.mb-2 To change the divider color, add the SCSS variable 
+    code $navbar-vibrant-hr-color 
+    | in your 
+    code _user-variables.scss
+    |. Example: 
+
+  +ComponentCardLib.mb-4.
+    $navbar-vibrant-hr-color: rgba($white, 0.2);
+
+  h6.fs-0 Navbar vibrant scrollbar color
+  p.mb-2 To change the scrollbar, add the SCSS variable 
+    code $navbar-vibrant-scrollbar-color 
+    | in your 
+    code _user-variables.scss
+    |. Example: 
+
+  +ComponentCardLib.
+    $navbar-vibrant-scrollbar-color: $gray-400;
+
+mixin NavbarCardHtmlDemo
+  p Add 
+    code .navbar-card 
+    | class to 
+    code .navbar-vertical 
+    | element to set white background and card shadow to the 
+    code .navbar-collapse 
+    | element to convert Transparent Navbar Vertical to Card Navbar Vertical.
+
+  +ComponentCardLib.mb-4
+    nav.navbar.navbar-vertical.navbar-expand-xl.navbar-light.navbar-card
+      // Content
+      .collapse.navbar-collapse
+        .navbar-vertical-content.scrollbar
+          // Navbar content
+
+  p You can change 
+    code background-color 
+    | by adding 
+    code .bg-* 
+    | utility classes in 
+    code .navbar-collapse 
+    | element or you can update globally using the SCSS variable which is described in SCSS section below.
+
+  +ComponentCardLib 
+    .collapse.navbar-collapse.bg-white  
+      .navbar-vertical-content.scrollbar  
+        // Navbar content  
+
+mixin NavbarCardSCSSDocs
+  p You can also update your Navbar Card style by using SCSS variables. The available options are listed below:  
+  h6.fs-0 Background color
+  p.mb-2 To change the background color of the Navbar Card, add the SCSS variable 
+    code $navbar-card-bg 
+    | in your 
+    code _user-variables.scss
+    |. Example: 
+
+  +ComponentCardLib.mb-4.
+    $navbar-card-bg: $white;
+
+  h6.fs-0 Navbar card shadow
+  p.mb-2 To change the shadow of the Navbar Card, add the SCSS variable 
+    code $navbar-card-shadow 
+    | in your 
+    code _user-variables.scss
+    |. Example: 
+
+  +ComponentCardLib.mb-4.
+    $navbar-card-shadow: $box-shadow;
+  h6.fs-0 Link color 
+  p.mb-2 To change the color of the Navbar Card links, add the SCSS variable 
+    code $navbar-card-link-color 
+    | in your 
+    code _user-variables.scss
+    |. Example: 
+
+  +ComponentCardLib.mb-4.
+    $navbar-card-link-color: $gray-700;
+
+  h6.fs-0 Link hover color
+  p.mb-2 To change the hover color of the Navbar Card links, add the SCSS variable 
+    code $navbar-card-link-hover-color 
+    | in your 
+    code _user-variables.scss
+    |. Example: 
+
+  +ComponentCardLib.mb-4.
+    $navbar-card-link-hover-color: $gray-900;
+
+  h6.fs-0 Link active color
+  p.mb-2 To change the active color of the Navbar Card links, add the SCSS variable 
+    code $navbar-card-link-active-color 
+    | in your 
+    code _user-variables.scss
+    |. Example: 
+
+  +ComponentCardLib.mb-4.
+    $navbar-card-link-active-color: $gray-900;
+
+  h6.fs-0 Navbar card divider
+  p.mb-2 To change the divider color, add the SCSS variable 
+    code $navbar-card-hr-color 
+    | in your 
+    code _user-variables.scss
+    |. Example: 
+
+  +ComponentCardLib.mb-4.
+    $navbar-card-hr-color: $gray-300;
+
+  h6.fs-0 Navbar card scrollbar color
+  p.mb-2 To change the scrollbar color, add the SCSS variable 
+    code $navbar-card-scrollbar-color 
+    | in your 
+    code _user-variables.scss
+    |. Example: 
+
+  +ComponentCardLib.
+    $navbar-card-scrollbar-color: $gray-400;

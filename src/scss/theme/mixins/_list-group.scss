@@ -1,0 +1,42 @@
+// @mixin list-group-item-variant($state, $background, $color) {
+//   .list-group-item-#{$state} {
+//     color: $color;
+//     background-color: $background;
+
+//     &.list-group-item-action {
+//       &:hover,
+//       &:focus {
+//         color: $color;
+//         background-color: shade-color($background, 10%);
+//       }
+
+//       &.active {
+//         color: $white;
+//         background-color: $color;
+//         border-color: $color;
+//       }
+//     }
+//   }
+// }
+@mixin list-group-item-variant($state, $background, $color) {
+  .list-group-item-#{$state} {
+    color: var(--#{$prefix}list-group-item-color-#{$state});
+    background-color: var(--#{$prefix}list-group-item-background-#{$state});
+
+    // TODO: Extract this variable.
+    --#{$prefix}list-group-item-#{$state}-hover-focus-background: #{shade-color($background, 10%)};
+    &.list-group-item-action {
+      &:hover,
+      &:focus {
+        color: var(--#{$prefix}list-group-item-color-#{$state});
+        background-color: var(--#{$prefix}list-group-item-#{$state}-hover-focus-background);
+      }
+
+      &.active {
+        color: $white;
+        background-color: var(--#{$prefix}list-group-item-color-#{$state});
+        border-color: var(--#{$prefix}list-group-item-color-#{$state});
+      }
+    }
+  }
+}

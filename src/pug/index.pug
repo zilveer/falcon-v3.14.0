@@ -1,0 +1,9 @@
+extends layouts/LayoutTheme
+include mixins/home/dashboard/Dashboard
+
+
+prepend scripts
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+
+append content
+  +Dashboard

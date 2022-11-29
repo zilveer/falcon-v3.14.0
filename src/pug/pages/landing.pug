@@ -1,0 +1,67 @@
+extends ../layouts/LayoutTheme
+include ../mixins/common/ComingSoon
+include ../mixins/navbars/NavbarStandard
+include ../mixins/home/landing/Banner
+include ../mixins/home/landing/Cta
+include ../mixins/home/landing/Features
+include ../mixins/home/landing/Footer
+
+prepend styles
+  link(href=`${CWD}vendors/swiper/swiper-bundle.min.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/swiper/swiper-bundle.min.js`)  
+  script(src=`${CWD}vendors/typed.js/typed.js`)
+
+block mainContent
+  +NavbarStandard({image: false, brandColor:'text-white dark__text-white'}).navbar-expand-lg.fixed-top.navbar-dark(data-navbar-darken-on-scroll)
+    ul.navbar-nav.ms-auto
+      li.nav-item.d-flex.align-items-center.me-2
+        .nav-link.theme-switch-toggle.fa-icon-wait.p-0
+          input#themeControlToggle.form-check-input.ms-0.theme-switch-toggle-input(
+            type='checkbox'
+            data-theme-control="theme"
+            value='dark'
+          )
+          label.mb-0.theme-switch-toggle-label.theme-switch-toggle-light(for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch to light theme")
+            span.fas.fa-sun
+          label.mb-0.py-2.theme-switch-toggle-light.d-lg-none(for="themeControlToggle" )
+            span Switch to light theme
+
+
+          label.mb-0.theme-switch-toggle-label.theme-switch-toggle-dark(for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch to dark theme")
+            span.fas.fa-moon
+          label.mb-0.py-2.theme-switch-toggle-dark.d-lg-none(for="themeControlToggle")
+            span Switch to dark theme
+
+      li.nav-item.dropdown
+        a#navbarDropdownLogin.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false') Login
+        .dropdown-menu.dropdown-caret.dropdown-menu-end.dropdown-menu-card(aria-labelledby='navbarDropdownLogin')
+          .card.shadow-none.navbar-card-login
+            .card-body.fs--1.p-4.fw-normal
+
+              .row.text-start.justify-content-between.align-items-center.mb-2
+                .col-auto
+                  h5.mb-0 Log in
+                .col-auto
+                  p.fs--1.text-600.mb-0 or 
+                    a(href=`${CWD}${paths['simple-register']}`) Create an account
+
+              +LoginForm({
+                layout:'simple',
+                email: { attrs: { placeholder: 'Email address' } },
+                password: { attrs: { placeholder: 'Password' } },
+                checkbox: { attrs: { id: 'modal-checkbox' } },
+              })
+              +SocialButtons({ title: 'log in' }).mt-4
+
+      li.nav-item
+        a(href='#!' data-bs-toggle='modal' data-bs-target='#exampleModal').nav-link Register
+  +Banner
+  +CtaClients
+  +Features1
+  +Features2
+  +Testimonial
+  +CtaFooter
+  +FooterStandard
+  +AuthenticationModal

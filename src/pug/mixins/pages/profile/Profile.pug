@@ -1,0 +1,72 @@
+mixin Profile
+  .card.mb-3
+    .card-header.position-relative.min-vh-25.mb-7
+      +Background({image: `${CWD}assets/img/generic/4.jpg`, className: 'rounded-3 rounded-bottom-0'})
+      .avatar.avatar-5xl.avatar-profile
+        img(src=`${CWD}assets/img/team/2.jpg` width=200 alt='').rounded-circle.img-thumbnail.shadow-sm
+    .card-body
+      .row
+        .col-lg-8
+          h4.mb-1  Anthony Hopkins
+            +Verified({placement: 'right'})
+          h5.fs-0.fw-normal Senior Software Engineer at Technext Limited
+          p.text-500 New York, USA
+          button(type='button').btn.btn-falcon-primary.btn-sm.px-3 Following
+          button(type='button').btn.btn-falcon-default.btn-sm.px-3.ms-2 Message
+          .border-bottom.border-dashed.my-4.d-lg-none
+        .col.ps-2.ps-lg-3
+          a.d-flex.align-items-center.mb-2(href='#')
+            span.fas.fa-user-circle.fs-3.me-2.text-700(data-fa-transform='grow-2')
+            .flex-1
+              h6.mb-0 See followers (330)
+          a.d-flex.align-items-center.mb-2(href='#')
+            img.align-self-center.me-2(src=`${CWD}assets/img/logos/g.png`, alt='Generic placeholder image' width="30")
+            .flex-1
+              h6.mb-0 Google
+          a.d-flex.align-items-center.mb-2(href='#')
+            img.align-self-center.me-2(src=`${CWD}assets/img/logos/apple.png`, alt='Generic placeholder image' width="30")
+            .flex-1
+              h6.mb-0 Apple
+          a.d-flex.align-items-center.mb-2(href='#')
+            img.align-self-center.me-2(src=`${CWD}assets/img/logos/hp.png`, alt='Generic placeholder image' width="30")
+            .flex-1
+              h6.mb-0 Hewlett Packard
+
+mixin Intro
+  .card.mb-3
+    .card-header.bg-light
+      h5.mb-0 Intro
+    .card-body.text-justify
+      p.mb-0.text-1000 Dedicated, passionate, and accomplished Full Stack Developer with 9+ years of progressive experience working as an Independent Contractor for Google and developing and growing my educational social network that helps others learn programming, web design, game development, networking.
+      .collapse.show#profile-intro
+        p.mt-3.text-1000 I’ve acquired a wide depth of knowledge and expertise in using my technical skills in programming, computer science, software development, and mobile app development to developing solutions to help organizations increase productivity, and accelerate business performance. 
+        p.text-1000 It’s great that we live in an age where we can share so much with technology but I’m but I’m ready for the next phase of my career, with a healthy balance between the virtual world and a workplace where I help others face-to-face.
+        p.text-1000.mb-0 There’s always something new to learn, especially in IT-related fields. People like working with me because I can explain technology to everyone, from staff to executives who need me to tie together the details and the big picture. I can also implement the technologies that successful projects need.
+    .card-footer.bg-light.p-0.border-top
+      button.btn.btn-link.d-block.w-100.btn-intro-collapse(type='button' data-bs-toggle="collapse" data-bs-target="#profile-intro" aria-expanded="true" aria-controls="profile-intro") Show 
+        span.less less
+          span.fas.fa-chevron-up.ms-2.fs--2
+        span.full full
+          span.fas.fa-chevron-down.ms-2.fs--2
+
+mixin ProfileGallery
+  .card.mb-3.mb-lg-0
+    .card-header.bg-light
+      h5.mb-0 Photos
+    .card-body.overflow-hidden
+      .row.g-0
+        .col-6.p-1
+          a.glightbox(href=`${CWD}assets/img/generic/4.jpg` data-gallery='gallery1' data-glightbox)
+            img(src=`${CWD}assets/img/generic/4.jpg` alt='...').img-fluid.rounded  
+        .col-6.p-1
+          a.glightbox(href=`${CWD}assets/img/generic/5.jpg` data-gallery='gallery1' data-glightbox)
+            img(src=`${CWD}assets/img/generic/5.jpg` alt='...').img-fluid.rounded  
+        .col-4.p-1
+          a.glightbox(href=`${CWD}assets/img/gallery/4.jpg` data-gallery='gallery1' data-glightbox)
+            img(src=`${CWD}assets/img/gallery/4.jpg` alt='...').img-fluid.rounded  
+        .col-4.p-1
+          a.glightbox(href=`${CWD}assets/img/gallery/5.jpg` data-gallery='gallery1' data-glightbox)
+            img(src=`${CWD}assets/img/gallery/5.jpg` alt='...').img-fluid.rounded  
+        .col-4.p-1
+          a.glightbox(href=`${CWD}assets/img/gallery/3.jpg` data-gallery='gallery1' data-glightbox)
+            img(src=`${CWD}assets/img/gallery/3.jpg` alt='...').img-fluid.rounded  

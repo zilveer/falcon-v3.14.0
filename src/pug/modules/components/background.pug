@@ -1,0 +1,26 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/Background
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Background',
+      description: 'These modular elements can be readily used and <br /> customized in every layout across pages.'
+    }
+
+block component
+  +PageHeader(pageHeader)
+
+  +ComponentCard({
+    title: 'Image Background',
+    anchor: true,
+  }).mb-3
+    +BackgroundImageDemo
+
+  +ComponentCard({
+    title: 'Video Background',
+    anchor: true,
+  }).mb-3
+    +BackgroundVideoDemo
+

@@ -1,0 +1,129 @@
+/* -------------------------------------------------------------------------- */
+/*                                  Flatpickr                                 */
+/* -------------------------------------------------------------------------- */
+
+.flatpickr-calendar{
+  background-color: var(--#{$prefix}flatpickr-calendar-bg) !important;
+  box-shadow: none !important;
+  border: 1px solid var(--#{$prefix}border-color) !important;
+  &.arrowTop{
+    &:after{
+      border-bottom-color: var(--#{$prefix}flatpickr-calendar-bg) !important;
+    }
+    &:before{
+      border-bottom-color: var(--#{$prefix}border-color) !important;
+    }
+  }
+  &.arrowBottom{
+    &:after{
+      border-top-color: var(--#{$prefix}flatpickr-calendar-bg) !important;
+    }
+    &:before{
+      border-top-color: var(--#{$prefix}border-color) !important;
+    }
+  }
+  
+}
+.flatpickr-input{
+  &:disabled,
+  &[readonly]{
+    background-color: var(--#{$prefix}flatpickr-calendar-bg);
+  }
+}
+.flatpickr-time{
+  .flatpickr-am-pm,
+  input{
+    color: var(--#{$prefix}gray-400);
+    @include hover-focus{
+      background-color: var(--#{$prefix}gray-100) !important;
+    }
+  }
+}
+.flatpickr-day{
+  color: var(--#{$prefix}gray-500);
+  &.endRange,
+  &.startRange{
+    background-color: var(--#{$prefix}primary) !important;
+    border: 0;
+    @include hover-focus{
+      background-color: var(--#{$prefix}primary) !important;
+    }
+  }
+  &.inRange, 
+  &.prevMonthDay.inRange, 
+  &.nextMonthDay.inRange, 
+  &.today.inRange, 
+  &.prevMonthDay.today.inRange, 
+  &.nextMonthDay.today.inRange, 
+  &:hover, 
+  &.prevMonthDay:hover, 
+  &.nextMonthDay:hover, 
+  &:focus, 
+  &.prevMonthDay:focus, 
+  &.nextMonthDay:focus{
+    background-color: var(--#{$prefix}gray-200);
+    border-color: var(--#{$prefix}gray-200);
+  }
+  &.today{
+    @include hover-focus{
+      background-color: var(--#{$prefix}flatpickr-calendar-bg);
+      color: var(--#{$prefix}black);
+    }
+  }
+  &.selected{ 
+    background-color: var(--#{$prefix}primary);
+    border-color: var(--#{$prefix}primary); 
+    @include hover-focus{
+      background-color: var(--#{$prefix}primary);
+      border-color: var(--#{$prefix}primary); 
+    }
+  }
+}
+.flatpickr-time {
+  input.flatpickr-hour{
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 5px;
+  }
+}
+.flatpickr-calendar.showTimeInput.hasTime .flatpickr-time{
+  border-top: 0 !important;
+}
+.flatpickr-calendar.hasTime .flatpickr-time {
+  border-top-color: var(--#{$prefix}border-color) !important;
+}
+.flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)), 
+.flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)), 
+.flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)){
+  box-shadow: none;;
+}
+.flatpickr-current-month .flatpickr-monthDropdown-months .flatpickr-monthDropdown-month{
+  background-color: var(--#{$prefix}flatpickr-calendar-bg) !important;
+}
+span.flatpickr-weekday,
+.flatpickr-weekdaycontainer,
+.flatpickr-monthDropdown-months,
+.flatpickr-months .flatpickr-month{
+  background-color: var(--#{$prefix}flatpickr-calendar-bg) !important;
+  color: var(--#{$prefix}body-color) !important;
+}
+
+.flatpickr-wrapper {
+  display: block;
+}
+.flatpickr-months {
+  .flatpickr-prev-month, .flatpickr-next-month {
+    fill: var(--#{$prefix}gray-700);
+    &:hover  svg {
+      fill: var(--#{$prefix}gray-800);
+    }
+  }
+}
+.flatpickr-day.inRange {
+  -webkit-box-shadow: -5px 0 0 var(--#{$prefix}flatpickr-calendar-bg), 5px 0 0 var(--#{$prefix}flatpickr-calendar-bg);
+  box-shadow: -5px 0 0 var(--#{$prefix}flatpickr-calendar-bg), 5px 0 0 var(--#{$prefix}flatpickr-calendar-bg);
+}
+
+.flatpickr-monthDropdown-months{
+  color: var(--#{$prefix}dark) !important;
+  height: 30px !important;
+}

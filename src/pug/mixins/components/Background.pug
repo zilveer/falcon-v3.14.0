@@ -1,0 +1,19 @@
+mixin BackgroundImageDemo
+  .position-relative.py-6.py-lg-8.light
+    +Background({image: `${CWD}assets/img/gallery/2.jpg`, className: 'rounded-3 overlay overlay-0'})
+    .position-relative.text-center
+      h4.text-white Image Background
+
+mixin BackgroundVideoDemo
+  .position-relative.light
+    +Background({
+      image: `${CWD}assets/video/beach.jpg`,
+      video: {
+        mp4: `${CWD}assets/video/beach`,
+        webm: `${CWD}assets/video/beach`
+      },
+      className: 'rounded-2'
+    })
+    .position-relative.vh-75.d-flex.flex-center
+      h4.text-white Video Background
+

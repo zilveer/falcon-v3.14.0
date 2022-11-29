@@ -1,0 +1,129 @@
+extends ../layouts/LayoutComponent
+
+block append variables
+  
+  - var pageHeader = { title: "Gulp", headerClass: 'mb-0' }
+
+block append content
+  +PageHeader(pageHeader)
+  .card.mb-3
+    .card-header
+      h5.mb-0(data-anchor) To start your project run:
+    .card-body.bg-light
+      code.fs-2.border.rounded-1.py-2.px-3.d-block.border-300.bg-white gulp
+      p.mt-4 The 
+        code gulp
+        |  command will build, serve and watch the project with the following gulp tasks:
+      .table-responsive
+        table.table.table-bordered
+          thead.bg-300.text-center.font-sans-serif
+            tr
+              th.text-nowrap Task
+              th Action
+          tbody
+            tr
+              td.text-nowrap
+                code clean
+              td Delete the following directories:
+                pre
+                  code.lang-html.
+                    public/assets/css
+                    public/assets/js
+                    public/vendors // packages which are included in vendors.json
+                    public/**/*.html
+
+            tr
+              td.text-nowrap
+                code style
+              td Compiles 
+                code scss/theme.scss
+                |  and generates 
+                code theme.css, theme.min.css, theme-rlt.css, theme-rtl.min.css
+                |  and 
+                code theme.css.map, theme.min.css.map, theme-rlt.css.map, theme-rtl.min.css.map
+                |  to the 
+                code public/assets/css/ 
+                |  directory.
+            tr
+              td.text-nowrap
+                code script
+              td Concat the 
+                code js
+                |  files from 
+                code src/js/
+                |  and transpiles with babel to 
+                code theme.js
+                | , 
+                code theme.min.js
+                |  to the 
+                code public/assets/js/
+                |  directory.
+            tr
+              td.text-nowrap
+                code compile:all
+              td Compiles all the 
+                code js, 
+                code scss, 
+                code pug 
+                | files from the 
+                code src
+                |  directory.
+            tr
+              td.text-nowrap
+                code vendor
+              td Runs 
+                code vendor:clean
+                |  and 
+                code vendor:move
+                |  in series.
+            tr
+              td.text-nowrap
+                code vendor:clean
+              td Delete the vendors from 
+                code public/vendors
+                |  directory which are included in  
+                code vendors.json
+                | .
+
+            tr
+              td.text-nowrap
+                code vendor:move
+              td Copies the vendors from 
+                code node_modules/
+                |  directory to 
+                code public/vendors
+                |  directory according to the 
+                code vendors.json
+                | .
+
+            tr
+              td.text-nowrap
+                code watch
+              td All of the following folders are monitored for changes, which will tell the browser to reload automatically after any changes are made:
+                pre
+                  code.lang-html.
+                    public/assets/img
+                    public/assets/fonts
+                    public/assets/video
+                    public/vendors/
+                    src/pug 
+                    src/scss
+                    src/js
+            tr
+              td.text-nowrap
+                code build
+              td Will delete previous build directory and generate a new compressed version to deploy 
+                pre
+                  code.lang-html.
+                    build/assets/img
+                    build/assets/fonts
+                    build/assets/video
+                    build/assets/css
+                    build/assets/js
+                    build/vendors/
+                    build/**/*.html
+
+            tr
+              td.text-nowrap
+                code build:test
+              td Will run the build version in port:3000

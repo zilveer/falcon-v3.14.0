@@ -1,0 +1,60 @@
+extends ../../layouts/LayoutComponent
+
+include ../../mixins/common/PageHeader
+
+include ../../mixins/components/jquery-components/data-tables/DataTables
+include ../../mixins/components/jquery-components/Select2
+include ../../mixins/components/jquery-components/Mixins
+
+prepend styles
+  link(href=`${CWD}vendors/select2/select2.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/select2-bootstrap-5-theme/select2-bootstrap-5-theme.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/datatables.net-bs5/dataTables.bootstrap5.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/prism/prism-okaidia.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/jquery/jquery.min.js`) 
+  script(src=`${CWD}vendors/prism/prism.js`)
+  script(src=`${CWD}vendors/select2/select2.min.js`) 
+  script(src=`${CWD}vendors/select2/select2.full.min.js`) 
+  script(src=`${CWD}vendors/datatables.net/jquery.dataTables.min.js`)
+  script(src=`${CWD}vendors/datatables.net-bs5/dataTables.bootstrap5.min.js`) 
+  script(src=`${CWD}vendors/datatables.net-fixedcolumns/dataTables.fixedColumns.min.js`) 
+
+
+block component
+  +PageHeader({
+    title: 'jQuery Components',
+    description: 'Fast, small, and feature-rich JavaScript library.'
+  })
+
+  .alert.alert-warning.p-x1(role='alert')
+    .d-flex.align-items-center
+      span.fab.fa-intentionally-kept.fs-3
+      .flex-1.ms-3
+        p.mb-0 
+          | In Falcon, we include jQuery only this page. Other pages aren't dependent on jQuery plugin. If your project included jQuery, you can use these components without writing any extra CSS.
+
+  .row.g-3
+    .col-lg-4.col-xxl-3.order-lg-1
+      .sticky-sidebar
+        +Sidebar
+
+    .col-lg-8.col-xxl-9
+      +PageHeader({ 
+        title:'Data Table', 
+        headerClass: 'fs-2',
+        description: 'DataTables is a highly flexible tool, build upon the foundations of progressive enhancement, that adds all of these advanced features to any HTML table.',
+        url: 'https://datatables.net/',
+        linkText: 'Datatable documentation'
+      })
+      +DataTables
+
+      +PageHeader({ 
+        title:'Select2', 
+        headerClass: 'fs-2',
+        description: 'Select2 gives you a customizable select box with support for searching, tagging, remote data sets, infinite scrolling, and many other highly used options.',
+        url: 'https://select2.org/',
+        linkText: 'Select2 documentation'
+      })
+      +Select2

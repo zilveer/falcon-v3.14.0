@@ -1,0 +1,121 @@
+append variables
+  -
+    var inDepthItems = [
+      {
+        name: "Email",
+        progressbarWidth: ['33', '70', '40', '50'],
+      },
+      {
+        name: "Phone",
+        progressbarWidth: ['60', '50', '40', '20'],
+      },
+      {
+        name: "Website",
+        progressbarWidth: ['70', '30', '50', '75'],
+      },
+      {
+        name: "Chat",
+        progressbarWidth: ['87', '95', '20', '30'],
+      },
+      {
+        name: "Urgent",
+        progressbarWidth: ['87', '70', '90', '85'],
+      },
+      {
+        name: "Medium",
+        progressbarWidth: ['70', '60', '50', '40'],
+      },
+      {
+        name: "High",
+        progressbarWidth: ['60', '70', '80', '90'],
+      },
+      {
+        name: "Low",
+        progressbarWidth: ['33', '25', '30', '20'],
+      },
+      {
+        name: "Open",
+        progressbarWidth: ['20', '30', '40', '50'],
+      },
+      {
+        name: "Question",
+        progressbarWidth: ['18', '30', '25', '15'],
+      },
+    ]
+
+mixin InDepthItem(config, status)
+  .row.mt-2&attributes(attributes)
+    .col-3.col-sm-2.col-md-3.col-lg-2
+      p.mb-0.fs--1.fw-semi-bold.text-600.text-nowrap= config.name
+    .col-9.col-sm-10.col-md-9.col-lg-10.d-flex.align-items-center
+      .progress.bg-200.w-100.rounded-pill(style="height:6px")
+        .progress-bar.rounded-pill.animated-progress-bar(role="progressbar"
+        aria-label="Basic example"
+        style=`--falcon-progressbar-width:${status==="created"?config.progressbarWidth[0] : status==="resolved"?config.progressbarWidth[1] : status==="reopened" ? config.progressbarWidth[2] : config.progressbarWidth[3]}%`
+        aria-valuenow=`${status==="created"?config.progressbarWidth[0] : status==="resolved"?config.progressbarWidth[1] : status==="reopened" ? config.progressbarWidth[2] : config.progressbarWidth[3]}`
+        aria-valuemin="0" aria-valuemax="100")
+      p.mb-0.fs--1.ps-3.fw-semi-bold.text-600= status==="created"?config.progressbarWidth[0] : status==="resolved"?config.progressbarWidth[1] : status==="reopened" ? config.progressbarWidth[2] : config.progressbarWidth[3]
+
+mixin TabItem(status)
+  .row.mx-0.border-bottom.border-dashed&attributes(attributes)
+    .col-md-6.p-x1.border-md-end.border-bottom.border-md-bottom-0.border-dashed
+      h6.fs--1.mb-3 Tickets #{status} Split by Source
+      each item in inDepthItems.slice(0, 4)
+        +InDepthItem(item, status)
+    .col-md-6.p-x1
+      h6.fs--1.mb-3 Tickets #{status} Split by Priority
+      each item in inDepthItems.slice(4, 8)
+        +InDepthItem(item, status)
+  .row.mx-0
+    .col-md-6.p-x1.border-md-end.border-bottom.border-md-bottom-0.border-dashed
+      h6.fs--1.mb-3 Tickets #{status} Split by Status
+      each item in inDepthItems.slice(8, 9)
+        +InDepthItem(item, status)
+    .col-md-6.p-x1
+      h6.fs--1.mb-3 Tickets #{status} Split by Category
+      each item in inDepthItems.slice(9, 10)
+        +InDepthItem(item, status)
+
+mixin CardInDepthHelpdesk
+  .card.overflow-hidden&attributes(attributes)
+    .card-header.p-0.bg-light.scrollbar-overlay
+      ul.nav.nav-tabs.border-0.tab-tickets-status.flex-nowrap#in-depth-chart-tab(role='tablist')
+        li.nav-item.text-nowrap(role='presentation')
+          a.nav-link.mb-0.d-flex.align-items-center.gap-2.py-3.px-x1.active#tickets-created-tab(data-bs-toggle='tab' href='#tickets-created' role='tab' aria-controls='tickets-created' aria-selected='true')
+            span.fas.fa-ticket-alt.icon.text-600
+            h6.mb-0.text-600 Tickets Created
+              span  (25)
+        li.nav-item.text-nowrap(role='presentation')
+          a.nav-link.mb-0.d-flex.align-items-center.gap-2.py-3.px-x1#tickets-resolved-tab(data-bs-toggle='tab' href='#tickets-resolved' role='tab' aria-controls='tickets-resolved' aria-selected='false')
+            span.fas.fa-check.icon.text-600
+            h6.mb-0.text-600 Tickets Resolved
+        li.nav-item.text-nowrap(role='presentation')
+          a.nav-link.mb-0.d-flex.align-items-center.gap-2.py-3.px-x1#tickets-reopened-tab(data-bs-toggle='tab' href='#tickets-reopened' role='tab' aria-controls='tickets-reopened' aria-selected='false')
+            span.fas.fa-envelope-open-text.icon.text-600
+            h6.mb-0.text-600 Tickets Reopened
+        li.nav-item.text-nowrap(role='presentation')
+          a.nav-link.mb-0.d-flex.align-items-center.gap-2.py-3.px-x1#tickets-unsolved-tab(data-bs-toggle='tab' href='#tickets-unsolved' role='tab' aria-controls='tickets-unsolved' aria-selected='false')
+            span.fas.fa-exclamation-triangle.icon.text-600
+            h6.mb-0.text-600 Tickets Unsolved
+    .card-body.p-0
+      .tab-content
+        .tab-pane.active#tickets-created(role='tabpanel' aria-labelledby='tickets-created-tab')
+          +TabItem("created")
+        .tab-pane#tickets-resolved(role='tabpanel' aria-labelledby='tickets-resolved-tab')
+          +TabItem("resolved")
+        .tab-pane#tickets-reopened(role='tabpanel' aria-labelledby='tickets-reopened-tab')
+          +TabItem("reopened")
+        .tab-pane#tickets-unsolved(role='tabpanel' aria-labelledby='tickets-unsolved-tab')
+          +TabItem("unsolved")
+
+    .card-footer.bg-light.py-2
+      .row.flex-between-center
+        .col-auto
+          select.form-select.form-select-sm
+            option Last 7 days
+            option Last Month
+            option Last Year
+        .col-auto
+          a.btn.btn-link.btn-sm.px-0.fw-medium(href=`#!`)
+            | View all
+            span.fas.fa-chevron-right.ms-1.fs--2

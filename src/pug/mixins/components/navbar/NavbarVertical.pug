@@ -1,0 +1,194 @@
+
+mixin NavbarVerticalResponsiveDescription
+  p&attributes(attributes) #{name} used the Bootstrap's 
+    code .navbar-expand{-sm|-md|-lg|-xl|-xxl} 
+    | classes in 
+    code .navbar-vertical 
+    | element to decide when the navbar vertical will expand or not. 
+
+
+mixin NavbarVerticalDemo
+  nav.navbar.navbar-vertical.navbar-expand-xl.navbar-light
+    // Content
+    .collapse.navbar-collapse
+      .navbar-vertical-content.scrollbar
+        // Collapsible content
+
+mixin NavbarVerticalCollapsingDescription
+  p&attributes(attributes) You can control the default collapsing behavior of #{name}'s vertical navigation - whether it will show up with the collapsed or expanded state when the page loads.
+
+mixin NavbarVerticalCollapseConfig
+  p From your project directory, If you are using gulp version open 
+    code src/js/config.js 
+    | or if you are using directly from the public folder open   
+    code public/assets/js/theme.js 
+    | and set  
+    code isNavbarVerticalCollapsed: true
+    |  of 
+    code CONFIG 
+    | object
+    | to collapse the Vertical Navigation by default
+
+  pre
+    code.lang-html.
+      const CONFIG = {
+        isNavbarVerticalCollapsed: false,
+        ...
+      };
+
+mixin NavbarVerticalLinkDescription
+  p&attributes(attributes) Normally, links in navbar vertical may contain icons, texts, badges and indicator icons. By default each elements in navbar vertical's links are vertically centered with each other. Navbar vertical's top parent link example:
+
+mixin NavbarVerticalLinkDemo
+  a.nav-link(href='#')
+    .d-flex.align-items-center
+      = '\n'
+      span.nav-link-icon
+        span.fas.fa-chart-pie
+      = '\n'
+      span.nav-link-text Dashboard 
+      = '\n'
+      span.badge.rounded-pill.badge-soft-success.ms-2 New
+      = '\n'
+mixin NavbarVerticalEventDescription
+  p.mt-2.mb-0 #{name} navbar vertical exposes 
+    code navbar.vertical.toggle 
+    | event for hooking into navbar vertical collapse functionality. The event fire immediately after 
+    code .navbar-vertical-toggle 
+    | element is clicked.
+     
+mixin NavbarVerticalEventDemo 
+  pre
+    code.lang-html.
+      const navbarVerticalToggle = document.querySelector(.navbar-vertical-toggle);
+      navbarVerticalToggle.addEventListener('navbar.vertical.toggle', function () {
+        // do something...
+      })
+
+mixin NavbarVerticalExtraDescription
+  p.mt-2 If you have long texts or you want to update the alignment, you can customize by removing 
+    code align-items-center 
+    | class or adding Bootstrap 
+    code align-items-* 
+    | helper classes.
+
+mixin NavbarVerticalChildLinkDemo
+  a.nav-link(href='#')
+    .d-flex.align-items-center
+      = '\n'
+      | Dashboard 
+      = '\n'
+      span.badge.rounded-pill.badge-soft-success.ms-2 New
+      = '\n'
+
+mixin NavbarVerticalDropdownIndicator    
+  p.mb-2 Add 
+    code dropdown-indicator 
+    | class to 
+    code .nav-link 
+    | element to show arrow icon to the right side of the link text.
+
+mixin NavbarVerticalDropdownIndicatorDemo
+  a.nav-link.dropdown-indicator(href='#')
+    // link content
+    = '\n' 
+
+mixin NavbarVerticalCustomizeDescription
+  p&attributes(attributes) You can easily customize #{name}'s 
+    strong Navbar Vertical 
+    | style using SCSS variables. All available variables are listed below:
+
+mixin NavbarVerticalCustomizeDemo
+  -
+    var $prefix = 'falcon-'
+  h6.fs-0 Breakpoints
+  p #{name} use 
+    code $grid-brekpoints 
+    | in reversed order for styling navbar vertical when screen size is above the breakpoint. Note: #{name} get the brekpoint from 
+    code .navbar-expand-* 
+    | class.
+  +ComponentCardLib.mb-4.
+    $navbar-vertical-breakpoints: mapReverse($grid-breakpoints) !default;
+
+  h6.fs-0 Width
+  p It's possible to update navbar vertical default width when screen size is above breakpoint.  
+  +ComponentCardLib.mb-4.
+    $navbar-vertical-width: 12.625rem !default;
+
+  h6.fs-0 Icon Width
+  p Set navbar vertical icon width and height using the variable.
+  +ComponentCardLib.mb-4.
+    $navbar-vertical-icon-width: 1.5rem !default;
+
+  h6.fs-0 Collapsed width
+  p Update width of navbar vertical when it is collapsed.
+  +ComponentCardLib.mb-4.
+    $navbar-vertical-collapsed-width: 3.125rem !default;
+
+  h6.fs-0 Hover Width
+  p To change the navbar vertical width on mouse over update the variable.
+  +ComponentCardLib.mb-4.
+    $navbar-vertical-hover-width: 12.875rem !default; 
+
+  h6.fs-0 Hover shadow
+  p Update navbar vertical shadow on mouse over
+  +ComponentCardLib.mb-4.
+    $navbar-vertical-collapsed-hover-shadow: 0.625rem 0 0.625rem -0.5625rem rgba($black, 0.2) !default;
+
+  h6.fs-0 Variation Width
+  p #{name} comes with different types of navbar vertical and you can change the width of those navbar by updating the variable.
+  +ComponentCardLib.mb-4.
+    $navbar-vertical-variation-width: 14.5rem !default;
+
+  h6.fs-0 Variation collapsed width
+  p To change the collapsed with of navbar vertical variation update the variable.
+  +ComponentCardLib.mb-4.
+    $navbar-vertical-variation-collapsed-width: 4.125rem !default;
+
+  h6.fs-0 Font size
+  p To change the font size of navbar vertical link update the variable.
+  +ComponentCardLib.mb-4.
+    $navbar-vertical-link-font-size: $font-size-sm !default;
+
+  h6.fs-0 Dropdown font size
+  p To change the dropdown font size of navbar vertical link update the variable.
+  +ComponentCardLib.mb-4.
+    $navbar-vertical-dropdown-font-size: 0.8125rem !default;
+
+  h6.fs-0 Background Color
+  p Change the navbar vertical background color using the variable
+  +ComponentCardLib.mb-4.
+    $navbar-vertical-bg-color: $bg-navbar-glass !default;
+
+  h6.fs-0 Link color
+  p Change the navbar vertical link color using the variable
+  +ComponentCardLib.mb-4.
+    $navbar-vertical-link-color: var(--#{$prefix}gray-700) !default;
+
+  h6.fs-0 Link hover color
+  p Change the navbar vertical link color on mouse oer using the variable
+  +ComponentCardLib.mb-4. 
+    $navbar-vertical-link-hover-color: var(--#{$prefix}gray-1000) !default;
+
+  h6.fs-0 Link active color
+  p Change the navbar vertical link active color using the variable
+  +ComponentCardLib.mb-4. 
+    $navbar-vertical-link-active-color: var(--#{$prefix}primary) !default;
+
+  h6.fs-0 Link disable color
+  p Change the navbar vertical link disable color using the variable.
+  +ComponentCardLib.mb-4. 
+    $navbar-vertical-link-disable-color: var(--#{$prefix}gray-400) !default;
+
+  h6.fs-0 Divider color
+  p Change the navbar vertical divider color using the variable
+  +ComponentCardLib.mb-4. 
+    $navbar-vertical-hr-color: var(--#{$prefix}gray-300) !default;
+
+  h6.fs-0 Scrollbar Color
+  p To change the navbar vertical scrollbar color, add the variable in your 
+    code _user-variables.scss 
+    | file
+  +ComponentCardLib.mb-4.
+    $navbar-vertical-scrollbar-color: rgba(var(--#{$prefix}gray-600-rgb), 0.3) !default;
+

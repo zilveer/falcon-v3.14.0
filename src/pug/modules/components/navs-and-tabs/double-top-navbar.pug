@@ -1,0 +1,63 @@
+extends ../../../layouts/LayoutComponent
+include ../../../mixins/components/navbar/NavbarDoubleTop
+include ../../../mixins/components/navbar/DarkenOnScroll
+
+append variables
+  
+
+append content
+
+  +PageHeader({
+      title: 'Navbar Double Top',
+      description: `Navbar Double Top is a different user friendly layout system in ${name}.`,
+      url: `${CWD}demo/navbar-double-top.html`,
+      linkText: 'Navbar double top example page'
+    })
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Supported Content')
+    .card-body.bg-light
+      +SupportedContentDescription.mb-0
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Html')
+    .card-body.bg-light
+      +NavbarDoubleTopHTMLCodeDemo
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Responsive Behaviors')
+        p.mt-2.mb-0 #{name} Navbar Double Top use Bootstrap Navbar responsive behaviors.
+    .card-body.bg-light
+      +NavbarDoubleTopResponsiveBehaviors
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Color Schemes')
+    .card-body.bg-light
+      +NavbarDoubleTopColorSchemes
+
+
+  +PageHeader({
+      title: 'Navbar darken on scroll',
+      description: `${name}'s special Navbar for landing, where background color will be changed gradually transparent to darken on scroll.`,
+      url: `${CWD}${paths['landing-page']}`,
+      linkText: 'See the implementation here'
+    })
+  .card.mb-3
+    .card-header
+      +DocCardHeader('HTML')
+    .card-body.bg-light
+      +HTMLDescription
+      +ComponentCardLib
+        +NavbarDarkenScrollDemo
+
+      +NavbarDarkenOnScrollVarientDescription 
+
+      +NavbarDarkenOnScrollVarientDemo
+  
+
+
+

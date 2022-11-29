@@ -1,0 +1,59 @@
+mixin ProductGrid(config)
+  div(class=`${config.class}`)&attributes(attributes)
+    .border.rounded-1.h-100.d-flex.flex-column.justify-content-between.pb-3
+      .overflow-hidden
+        .position-relative.rounded-top.overflow-hidden
+          if(config.slider)
+            .swiper-container.theme-slider(data-swiper!={
+              autoplay: true,
+              autoHeight: true,
+              spaceBetween: 5,
+              loop: true,
+              loopedSlides: 5,
+              navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+              },
+            })
+              .swiper-wrapper
+                each slide in config.slider
+                  .swiper-slide
+                    a(href=`${CWD}${paths['product-details']}`).d-block
+                      img(src=`${CWD}assets/img/products/${slide}.jpg` alt="").rounded-top.img-fluid
+              .swiper-nav
+                .swiper-button-next.swiper-button-white
+                .swiper-button-prev.swiper-button-white
+          else
+            a(href=`${CWD}${paths['product-details']}`).d-block
+              img(src=`${CWD}assets/img/products/${config.img}.jpg`, alt="").img-fluid.rounded-top
+          if(config.new)
+            span.badge.rounded-pill.bg-success.position-absolute.mt-2.me-2.z-index-2.top-0.end-0 New
+        .p-3  
+          h5.fs-0
+            a.text-dark(href=`${CWD}${paths['product-details']}`)=config.title
+          p.fs--1.mb-3
+            a(href="#!").text-500=config.category
+          h5.fs-md-2.text-warning.mb-0.d-flex.align-items-center.mb-3 
+            if(config.oldPrice)
+              | $#{config.oldPrice - (config.oldPrice * ( config.off / 100 ))}
+            else
+              |  $#{config.price}
+            if(config.oldPrice)
+              del.ms-2.fs--1.text-500 $#{config.oldPrice} 
+
+          p.fs--1.mb-1 Shipping Cost: 
+            strong=config.shippingCost
+          p.fs--1.mb-1 Stock: 
+            if(config.stock === 'Available')
+              strong.text-success=config.stock
+            else
+              strong.text-danger=config.stock
+      .d-flex.flex-between-center.px-3
+        div
+          +Review(config.rating)
+          span.ms-1 (#{config.review})
+        div
+          a(href="#!" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Wish List").btn.btn-sm.btn-falcon-default.me-2
+            span.far.fa-heart
+          a(href="#!" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Cart").btn.btn-sm.btn-falcon-default
+            span.fas.fa-cart-plus

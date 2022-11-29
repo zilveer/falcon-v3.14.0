@@ -1,0 +1,150 @@
+include ../home/dashboard/CardStatistics
+
+include ../home/dashboard-alt/CardStatistics
+include ../home/dashboard-alt/CardPaymentChart
+include ../home/dashboard-alt/CardActiveUserChart
+
+include ../home/dashboard-analytics/CardCharts
+include ../home/dashboard-analytics/CardAudience
+include ../home/dashboard-analytics/CardSession
+include ../home/dashboard-analytics/CardActiveUsersReport
+include ../home/dashboard-analytics/CardGoals
+
+include ../home/dashboard-lms/CardStatistics
+include ../home/dashboard-lms/CardCharts
+include ../home/dashboard-lms/CardUserLocationLms
+
+include ../home/e-commerce/CardStatistics.pug
+include ../home/e-commerce/CardCharts
+include ../home/e-commerce/CardShoppingCartBar
+include ../home/e-commerce/CardSaleStatistics
+
+include ../home/dashboard/Mixins
+
+include ../home/project-management/CardProjectStatistics
+
+include ../home/saas/CandleChart
+include ../home/saas/GrossRevenueCard
+include ../home/saas/SaasStatsticsCards
+
+include ../e-learning/StudentOverview
+
+include ../tickets/CardInDepthHelpdesk
+
+mixin Stats
+  +WidgetSectionTitle({
+    icon: 'fas fa-percentage',
+    title: 'Number Stats & Charts',
+    subtitle: 'You can easily show your stats content by using these cards.'
+  }).mb-4.mt-3
+
+  +CardStatistics
+  
+  .row.g-3.mb-3
+    .col-md-6.col-lg-4.col-xl-6.col-xxl-4
+      +CardWeeklySales
+    .col-md-6.col-lg-4.col-xl-6.col-xxl-4
+      +CardTotalOrder
+    .col-md-6.col-lg-4.col-xl-6.col-xxl-4
+      +CardMarketShare
+    .col-md-6.col-lg-4.col-xl-6.col-xxl-4
+      +CardProductShare.h-100
+    .col-lg-8.col-xl-12.col-xxl-8
+      +CardStorage.h-100
+  
+  .row.g-3.mb-3
+    .col-md-4
+      +SaasActiveUserCard.h-100
+    .col-md-4
+      +SaasRevenueCard.h-100
+    .col-md-4
+      +SaasConversionCard.h-100
+  
+  +CardSaleStatistics.py-3.mb-3
+  +CardLmsStatistics.mb-3
+  
+  .row.g-3.mb-3
+    .col-xxl-8
+      +CardPaymentChart.h-100.mb-3
+    .col-xxl-4.col-md-6
+      +CardBandWidthSaved.h-100
+    .col-xxl-4.col-md-6
+      +CardActiveUserChart
+    .col-xxl-8
+      +CardTopProducts.mb-3
+      +CardTotalSales  
+  
+  .row.g-3.mb-3
+    .col-xxl-8
+      +CardAudience
+    .col-md-6.col-xxl-4
+      +SessionByDevice.h-100
+    .col-md-6.col-xxl-4
+      +SessionByCountry
+    .col-xxl-8
+      +ActiveUsers.mb-3
+      +Goals.h-100
+
+  .row.g-3.mb-3
+    .col-xxl-6
+      .row.g-3
+        .col-12
+          +StudentInfo
+        .col-md-6
+          +Spendings
+        .col-md-6
+          +TimeOnSite
+    .col-xxl-6
+      +AssignmentScores
+  
+  .row.g-3.mb-3
+    .col-xxl-4
+      +CardTrendingKeywords.h-100
+    .col-xxl-8
+      .row.g-3.h-100
+        .col-md-6
+          +CardRevenueTarget.h-100
+        .col-md-6
+          +CardVisitorTarget.h-100
+        .col-12
+          +CardAvgEnrollmentRate.h-100
+  
+  .row.g-3.mb-3
+    .col-12.col-md-6.col-xxl-4
+      +BounceRate.h-100
+    .col-12.col-md-6.col-xxl-4.order-xxl-1
+      +UsersByTime
+    .col-12.col-xxl-8
+      +TrafficChannel
+    .col-md-6.col-xxl-4.order-xxl-1
+      +CardReturningCustomerRate.h-100
+    .col-md-6.col-xxl-4.order-xxl-1
+      +CardSalesByPosLocation.h-100
+  
+  .row.g-3.mb-3
+    .col-lg-6.col-xxl-7
+      +CardLmsUserLocation
+    .col-lg-6.col-xxl-5
+      +CardMarketingExpenses.h-100
+  
+  .row.g-3.mb-3
+    .col-lg-6.col-xxl-5
+      +CardWeeklyGoals.h-100
+    .col-lg-6.col-xxl-7
+      +CardCourseEnrollments.h-100
+  
+  .row.g-3.mb-3
+    .col-xxl-8
+      +CardTotalSalesEcommerce.h-100
+    .col-xxl-4.col-md-6
+      +CardShoppingCartBar.shopping-cart-bar-min-height.h-100 
+    .col-xxl-4.col-md-6
+      +GrossRevenueCard.h-100
+    .col-xxl-8
+      +CardProjectStatistics
+    .col
+      +CandleChart
+  
+  +BrowsedCourses
+  +CardInDepthHelpdesk.mt-3
+

@@ -1,0 +1,27 @@
+extends ../../../layouts/LayoutComponent
+include ../../../mixins/utilities/Embed
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Embed',
+      description: 'Create responsive video or slideshow embeds based on the width of the parent by creating an intrinsic ratio that scales on any device.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/components/modal/#embedding-youtube-videos`,
+      linkText: 'Embed on Bootstrap'
+    }
+
+append content
+  +PageHeader(pageHeader)
+
+  
+  +ComponentCard({
+    title: 'Example',
+    anchor: true,
+    description:"Wrap any embed, like an <code>&lt;iframe&gt;</code>, in a parent element with <code>.ratio</code> and an aspect ratio class. The immediate child element is automatically sized thanks to our universal selector <code>.ratio &gt; *</code>.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +EmbedExampleDemo
+
+
+

@@ -1,0 +1,31 @@
+mixin RegisterForm(config)
+  - var config = Object.assign({layout: 'basic', name: {}, email: {}, password: {}, confirmPassword: {}, checkbox: { id: 'basic-checkbox' } }, config)
+
+  form
+    .mb-3
+      if config.name.label
+        label.form-label(for=config.name.attrs.id)=config.name.label
+      input.form-control(type='text' autocomplete="on")&attributes(config.name.attrs)
+    .mb-3
+      if config.email.label
+        label.form-label(for=config.email.attrs.id)=config.email.label
+      input.form-control(type='email' autocomplete="on")&attributes(config.email.attrs)
+    .row.gx-2
+      .mb-3.col-sm-6
+        if config.password.label
+          label.form-label(for=config.password.attrs.id)=config.password.label
+        input.form-control(type='password' autocomplete="on")&attributes(config.password.attrs)
+      .mb-3.col-sm-6
+        if config.confirmPassword.label
+          label.form-label(for=config.confirmPassword.attrs.id)=config.confirmPassword.label
+        input.form-control(type='password' autocomplete="on")&attributes(config.confirmPassword.attrs)
+
+    .form-check
+      input.form-check-input(type='checkbox')&attributes(config.checkbox.attrs)
+      label.form-label(for=config.checkbox.attrs.id)
+        | I accept the 
+        a(href='#!') terms 
+        | and 
+        a(href='#!') privacy policy
+    .mb-3
+      button.btn.btn-primary.d-block.w-100.mt-3(type='submit' name='submit') Register

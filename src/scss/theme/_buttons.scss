@@ -1,0 +1,172 @@
+/*-----------------------------------------------
+|   Button
+-----------------------------------------------*/
+
+
+/*-----------------------------------------------
+|   Button Reveal
+-----------------------------------------------*/
+.btn-reveal-trigger {
+  @include hover-focus {
+    .btn-reveal {
+      box-shadow: $btn-reveal-hover-shadow;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: var(--#{$prefix}btn-reveal-color) !important;
+      }
+    }
+
+    .btn-reveal-sm {
+      box-shadow: var(--falcon-box-shadow-sm);
+    }
+  }
+
+  .btn-reveal {
+    box-shadow: none;
+
+    &:active:focus,
+    &:active,
+    &:focus {
+      box-shadow: none;
+      color: var(--#{$prefix}btn-reveal-color) !important;
+      background-color: var(--#{$prefix}btn-reveal-bg);
+      border-color: var(--#{$prefix}btn-reveal-border-color);
+    }
+  }
+
+  .dropdown-toggle {
+
+    &:after,
+    &:before {
+      display: none;
+    }
+  }
+}
+
+/*-----------------------------------------------
+|   Falcon buttons
+-----------------------------------------------*/
+$theme-falcon-btn-colors: (
+  "primary": var(--#{$prefix}primary),
+  "success": var(--#{$prefix}success),
+  "info": var(--#{$prefix}info),
+  "warning": var(--#{$prefix}warning),
+  "danger": var(--#{$prefix}danger),
+  "default": var(--#{$prefix}default),
+);
+
+@each $color,
+$value in $theme-falcon-btn-colors {
+  .btn-falcon-#{$color} {
+    @include falcon-button-variant($color);
+  }
+}
+
+/*-----------------------------------------------
+|   Brand Outline Buttons
+-----------------------------------------------*/
+.btn-outline-facebook {
+  @include button-outline-variant($facebook);
+}
+
+.btn-outline-twitter {
+  @include button-outline-variant($twitter);
+}
+
+.btn-outline-google-plus {
+  @include button-outline-variant($google-plus);
+}
+
+/*-----------------------------------------------
+|   Outline Buttons
+-----------------------------------------------*/
+[class*='btn-outline-'] {
+  --#{$prefix}btn-box-shadow: none;
+}
+
+/*-----------------------------------------------
+|   Profile Page Introduction
+-----------------------------------------------*/
+.btn-intro-collapse {
+  .less {
+    display: none;
+  }
+
+  &[aria-expanded="true"] {
+    .less {
+      display: inline;
+    }
+
+    .full {
+      display: none;
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                Dark override                               */
+/* -------------------------------------------------------------------------- */
+.dark {
+  .btn-light {
+    @extend .btn-dark;
+  }
+
+  .btn.disabled,
+  .btn:disabled {
+    // box-shadow: none !important;
+    opacity: .5;
+  }
+}
+
+
+
+// Close Button
+
+.btn-close-falcon {
+  cursor: pointer;
+  position: relative;
+  width: 25px;
+  height: 25px;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:after,
+  &:before {
+    position: absolute;
+    left: 12px;
+    top: 4px;
+    content: ' ';
+    height: 16px;
+    width: 2px;
+    background-color: $gray-700;
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+}
+
+.btn {
+  --#{$prefix}btn-border-width: var(--#{$prefix}border-width);
+}
+
+.btn-link {
+  --#{$prefix}btn-active-color: var(--#{$prefix}link-hover-color);
+
+}
+
+// disabled btn box shadow
+.btn {
+  &:disabled {
+    @include box-shadow(var(--#{$prefix}btn-box-shadow));
+  }
+}

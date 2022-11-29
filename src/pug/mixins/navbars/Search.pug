@@ -1,0 +1,100 @@
+mixin SearchResultTitle(config)
+  h6.dropdown-header.fw-medium.text-uppercase.px-x1.fs--2.pt-0.pb-2&attributes(attributes)=config.text
+
+mixin RecentlyBrowsedItems(items)
+  each item in items
+    a(href=item.url).dropdown-item.fs--1.px-x1.py-1.hover-primary
+      .d-flex.align-items-center
+        = '\n'
+        span.fas.fa-circle.me-2.text-300.fs--2
+        = '\n'
+        .fw-normal.title!=item.text
+    = '\n'
+
+mixin SearchSuggestion(items) 
+  each item in items
+    a(href=item.url).dropdown-item.px-x1.py-2
+      .d-flex.align-items-center
+        if item.file
+          .file-thumbnail.me-2
+            img(src=item.img, alt="")&attributes(item.imgAttrs)
+        if item.icon 
+          +Avatar(item.icon).me-2
+        .flex-1
+          h6.mb-0.title(class=item.titleClass)=item.title
+          if item.text
+            p.fs--2.mb-0.d-flex!=item.text
+    = '\n'
+
+mixin SuggestedFilter(items)
+  each item in items
+    a(href=item.url).dropdown-item.px-x1.py-1.fs-0
+      .d-flex.align-items-center
+        span.badge.fw-medium.text-decoration-none.me-2(class=`badge-soft-${item.type}`) #{item.key}:
+        .flex-1.fs--1.title=item.text
+    = '\n'
+
+mixin Search(placeholder) 
+  -
+    var recentlyBrowsedItems = [
+      { url: `${CWD}${paths['event-detail']}`, text: 'Pages <span class="fas fa-chevron-right mx-1 text-500 fs--2" data-fa-transform="shrink-2"></span> Events' },
+      { url: `${CWD}${paths['customers']}`, text: 'E-commerce <span class="fas fa-chevron-right mx-1 text-500 fs--2" data-fa-transform="shrink-2"></span> Customers'}
+    ]
+  -
+    var suggestedFilters = [
+      { url: `${CWD}${paths['customers']}`, key: 'customers', text: 'All customers list', type: 'warning' },
+      { url: `${CWD}${paths['event-detail']}`, key: 'events', text: 'Latest events in current month', type: 'success' },
+      { url: `${CWD}${paths['product-grid']}`, key: 'products', text: 'Most popular products', type: 'info' }
+    ]
+  -
+    var suggestionFiles = [
+      {
+        url: '#!',
+        img: `${CWD}assets/img/products/3-thumb.png`,
+        file: true,
+        title: 'iPhone',
+        imgAttrs: { class: 'border h-100 w-100 fit-cover rounded-3' },
+        text: '<span class="fw-semi-bold">Antony</span><span class="fw-medium text-600 ms-2">27 Sep at 10:30 AM</span>'
+      },
+      {
+        url: '#!',
+        img: `${CWD}assets/img/icons/zip.png`,
+        file: true,
+        title: 'Falcon v1.8.2',
+        imgAttrs: { class: 'img-fluid' },
+        text: '<span class="fw-semi-bold">John</span><span class="fw-medium text-600 ms-2">30 Sep at 12:30 PM</span>'
+      }
+    ]
+  -
+    var suggestionMembers = [
+      { url: `${CWD}${paths['user-profile']}`, icon: {img: `team/1.jpg`, size: 'l', status: 'online'}, title: 'Anna Karinina', text: 'Technext Limited',  },
+      { url: `${CWD}${paths['user-profile']}`, icon: {img: `team/2.jpg`, size: 'l'}, title: 'Antony Hopkins', text: 'Brain Trust' },
+      { url: `${CWD}${paths['user-profile']}`, icon: {img: `team/3.jpg`, size: 'l'}, title: 'Emma Watson', text: 'Google' },
+    ]
+  .search-box&attributes(attributes)(data-list!={valueNames: ['title']})
+    form.position-relative(data-bs-toggle="search" data-bs-display="static")
+      input.form-control.search-input.fuzzy-search(type='search' placeholder=placeholder, aria-label='Search')
+      = '\n'
+      span.fas.fa-search.search-box-icon
+      = '\n'
+    //- button.btn-close.position-absolute.end-0.top-50.translate-middle.shadow-none.p-1.me-1.fs--2(type="button" data-bs-dismiss="search")
+    .btn-close-falcon-container.position-absolute.end-0.top-50.translate-middle.shadow-none(data-bs-dismiss="search")
+      button.btn.btn-link.btn-close-falcon.p-0(aria-label="Close")
+    .dropdown-menu.border.font-base.start-0.mt-2.py-0.overflow-hidden.w-100
+      .scrollbar.list.py-3(style="max-height: 24rem;")
+        +SearchResultTitle({text: 'Recently Browsed'})
+        +RecentlyBrowsedItems(recentlyBrowsedItems)
+
+        hr.text-200.dark__text-900
+        +SearchResultTitle({text: 'Suggested Filter'})
+        +SuggestedFilter(suggestedFilters)
+
+        hr.text-200.dark__text-900
+        +SearchResultTitle({text: 'Files'})
+        +SearchSuggestion(suggestionFiles)
+
+        hr.text-200.dark__text-900
+        +SearchResultTitle({text: 'Members'})
+        +SearchSuggestion(suggestionMembers)
+      .text-center.mt-n3
+        p.fallback.fw-bold.fs-1.d-none No Result Found.

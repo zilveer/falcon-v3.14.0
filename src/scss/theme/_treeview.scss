@@ -1,0 +1,132 @@
+.treeview.treeview-slect{
+  [data-bs-toggle='collapse']{
+    .treeview-text{
+      margin-left: 2.1rem;
+    }
+  }
+  .toggle-container{
+    position: relative;
+    input{
+      position: absolute;
+      left: 18px;
+      z-index: 2;
+    }
+  }
+}
+.treeview{
+  position: relative;
+  padding-left: 0;
+  .collapsing {
+    @include transition($treeview-transition-collapse);
+  }
+  .treeview-border{
+    border-left-style: solid;
+    border-width: 1px; 
+    border-color:  var(--falcon-border-color);
+    margin-left: 3px;
+  }
+  .treeview-border-transparent{
+    border-color:  transparent !important ;
+  }
+  ul{
+    &:not(.collapse-show){
+      .treeview-row{
+        display: none;
+      }
+    }
+  }
+  .treeview-list-item{
+    list-style: none;
+    .treeview-row{
+      width: 100%;
+      height: 27px;
+      position: absolute;
+      left: 0;
+    }
+    .treeview-row-odd{
+      background-color: $treeview-row-bg-odd;
+    }
+    .treeview-row-even{
+      background-color: $treeview-row-bg-even;
+    }
+    .treeview-item{
+      position: relative;
+      display: flex;
+      align-items: center;
+      > {
+        .form-check-input{
+          margin: 0 map-get($spacers, 2) map-get($spacers, 1) 0;
+        }
+      }
+    }
+    .treeview-text{
+      display: flex;
+      align-items: center;
+      font-weight: $font-weight-semi-bold;
+      font-size: map-get($font-sizes, '-1');
+      color: $treeview-text-color;
+      padding: map-get($spacers, 1) 0;
+      margin-bottom: 0;
+    }
+  }
+  a{
+    text-decoration: none;
+  }
+  
+  [data-bs-toggle='collapse'] {
+    position: relative;
+    display: block;
+    .treeview-text{
+      padding-left: map-get($spacers, 4);
+      margin-left: map-get($spacers, 2);
+    }
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      height: 0.4rem;
+      width: 0.4rem;
+      border-right: 2px solid $gray-400;
+      border-bottom: 2px solid $gray-400;
+      top: 45%;
+      transform: translateY(-50%) rotate(-45deg);
+      transition: $transition-base;
+      transform-origin: center;
+      transition-property: transform, border-color;
+    }
+    &[aria-expanded="true"]:after {
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .treeview-text{
+      position: relative;
+      &::before{
+        display: block;
+        width: 12px;
+        position: absolute;
+        left: 10px;
+        content: url('data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJmb2xkZXIiIGNsYXNzPSJzdmctaW5saW5lLS1mYSBmYS1mb2xkZXIgZmEtdy0xNiIgcm9sZT0iaW1nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjNzQ4MTk0IiBkPSJNNDY0IDEyOEgyNzJsLTY0LTY0SDQ4QzIxLjQ5IDY0IDAgODUuNDkgMCAxMTJ2Mjg4YzAgMjYuNTEgMjEuNDkgNDggNDggNDhoNDE2YzI2LjUxIDAgNDgtMjEuNDkgNDgtNDhWMTc2YzAtMjYuNTEtMjEuNDktNDgtNDgtNDh6Ij48L3BhdGg+PC9zdmc+') !important;
+      }
+    }
+
+    &[aria-expanded="true"] {
+      .treeview-text {
+        &::before{
+          display: block;
+          width: 14px;
+          position: absolute;
+          left: 10px;
+          content: url('data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJmb2xkZXItb3BlbiIgY2xhc3M9InN2Zy1pbmxpbmUtLWZhIGZhLWZvbGRlci1vcGVuIGZhLXctMTgiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTc2IDUxMiI+PHBhdGggZmlsbD0iI0I2QzJEMiIgZD0iTTU3Mi42OTQgMjkyLjA5M0w1MDAuMjcgNDE2LjI0OEE2My45OTcgNjMuOTk3IDAgMCAxIDQ0NC45ODkgNDQ4SDQ1LjAyNWMtMTguNTIzIDAtMzAuMDY0LTIwLjA5My0yMC43MzEtMzYuMDkzbDcyLjQyNC0xMjQuMTU1QTY0IDY0IDAgMCAxIDE1MiAyNTZoMzk5Ljk2NGMxOC41MjMgMCAzMC4wNjQgMjAuMDkzIDIwLjczIDM2LjA5M3pNMTUyIDIyNGgzMjh2LTQ4YzAtMjYuNTEtMjEuNDktNDgtNDgtNDhIMjcybC02NC02NEg0OEMyMS40OSA2NCAwIDg1LjQ5IDAgMTEydjI3OC4wNDZsNjkuMDc3LTExOC40MThDODYuMjE0IDI0Mi4yNSAxMTcuOTg5IDIyNCAxNTIgMjI0eiI+PC9wYXRoPjwvc3ZnPg==') !important;
+        }
+      }
+    }
+  }
+  &.treeview-stripe{
+    padding-left: map-get($spacers, 2) !important;
+  }
+}
+
+.treeview-body-height {
+  height: 28.75rem;
+}

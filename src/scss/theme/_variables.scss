@@ -1,0 +1,738 @@
+/* prettier-ignore */
+@use 'sass:math';
+@use "sass:string";
+@import 'colors';
+$prefix: 'falcon-';
+$spacer-x1: 1.25rem;
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+// scss-docs-start container-max-widths
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1480px,
+  ) !default;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1540px,
+  ) !default;
+
+
+//*-----------------------------------------------
+//|   Spacing
+//----------------------------------------------
+
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.8,
+  5: $spacer * 3,
+  6: $spacer * 4,
+  7: $spacer * 5,
+  8: $spacer * 7.5,
+  9: $spacer * 10,
+  10: $spacer * 12.5,
+  11: $spacer * 15,
+  x1: $spacer-x1) !default;
+
+
+//*-----------------------------------------------
+//|   Body
+//-----------------------------------------------*/
+$body-bg: $gray-200 !default;
+$body-color: $gray-700 !default;
+// $body-color: map-get($grays, '700') !default;
+
+
+//*-----------------------------------------------
+//|   Gutter
+//-----------------------------------------------*/
+$grid-gutter-width: 2rem !default;
+
+// Customize the light and dark text colors for use in our color contrast function.
+$color-contrast-dark: $gray-800 !default;
+
+// Min contrast ratio
+$min-contrast-ratio: 2 !default;
+
+
+
+//*-----------------------------------------------
+//|   Border
+//-----------------------------------------------*/
+$border-color: var(--#{$prefix}border-color) !default;
+$border-width: 1px !default;
+
+$border-styles : (dotted: 'dotted !important',
+  dashed: 'dashed !important',
+  none: 'none !important',
+  hidden: 'hidden !important',
+) !default;
+
+$disabled-border: transparent !default;
+
+//*-----------------------------------------------
+//|   Opacity
+//-----------------------------------------------*/
+$opacities : (25: 0.25,
+  50: 0.5,
+  75: 0.75,
+  85: 0.85,
+  100: 1,
+) !default;
+
+//*-----------------------------------------------
+//|   Positions
+//-----------------------------------------------*/
+$positions : (static,
+  absolute,
+  relative,
+  fixed,
+  sticky,
+) !default;
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-shadows: true !default;
+$enable-gradients: false !default;
+$enable-negative-margins: true !default;
+
+
+// $component-active-color: var(--#{$prefix}white) !default;
+// $component-active-bg: var(--#{$prefix}primary) !default;
+
+//*-----------------------------------------------
+//|   Shadow
+//-----------------------------------------------*/
+$box-shadow: var(--#{$prefix}box-shadow) !default;
+$box-shadow-sm: var(--#{$prefix}box-shadow-sm) !default;
+$box-shadow-lg: var(--#{$prefix}box-shadow-lg) !default;
+$box-shadow-inset: var(--#{$prefix}box-shadow-inset) !default;
+
+//*-----------------------------------------------
+//|   Link
+//-----------------------------------------------*/
+$link-decoration: none !default;
+$link-hover-decoration: underline !default;
+
+//*-----------------------------------------------
+//|   Components
+//-----------------------------------------------*/
+$border-radius: 0.25rem !default;
+$border-radius-lg: 0.375rem !default;
+
+//*-----------------------------------------------
+//|   Fonts Families
+//-----------------------------------------------*/
+$font-family-sans-serif: 'Poppins',
+  -apple-system,
+  BlinkMacSystemFont,
+  'Segoe UI',
+  Roboto,
+  'Helvetica Neue',
+  Arial,
+  sans-serif,
+  'Apple Color Emoji',
+  'Segoe UI Emoji',
+  'Segoe UI Symbol' !default;
+$font-family-monospace: 'SFMono-Regular',
+  Menlo,
+  Monaco,
+  Consolas,
+  'Liberation Mono',
+  'Courier New',
+  monospace !default;
+$font-family-base: 'Open Sans',
+  -apple-system,
+  BlinkMacSystemFont,
+  'Segoe UI',
+  Roboto,
+  'Helvetica Neue',
+  Arial,
+  sans-serif,
+  'Apple Color Emoji',
+  'Segoe UI Emoji',
+  'Segoe UI Symbol' !default;
+
+//*-----------------------------------------------
+//|   Fonts
+//-----------------------------------------------*/
+$type-scale: 1.2 !default;
+$font-size-base: 1rem !default;
+$font-sizes: (
+  ) !default;
+$font-sizes: map-merge(('-2': math.div(1, pow($type-scale, 2)) * $font-size-base, //11.11
+      '-1': math.div(1, $type-scale) * $font-size-base, //13.33
+      0: $font-size-base, //16
+      1: pow($type-scale, 1) * $font-size-base, // 19.2
+      2: pow($type-scale, 2) * $font-size-base, // 23.04
+      3: pow($type-scale, 3) * $font-size-base, // 27.65
+      4: pow($type-scale, 4) * $font-size-base, // 33.18
+      5: pow($type-scale, 5) * $font-size-base, // 39.81
+      6: pow($type-scale, 6) * $font-size-base, // 47.78
+      7: pow($type-scale, 7) * $font-size-base, // 57.33
+      8: pow($type-scale, 8) * $font-size-base, // 68.79
+    ),
+    $font-sizes
+);
+
+$font-size-sm: $font-size-base * 0.875 !default;
+$font-size-lg: $font-size-base * 1.2 !default;
+$font-weight-thin: 100 !default;
+$font-weight-lighter: 200 !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semi-bold: 600 !default;
+$font-weight-bold: 700 !default;
+$font-weight-bolder: 800 !default;
+$font-weight-black: 900 !default;
+
+$h1-font-size: map_get($font-sizes, 5) !default;
+$h2-font-size: map_get($font-sizes, 4) !default;
+$h3-font-size: map_get($font-sizes, 3) !default;
+$h4-font-size: map_get($font-sizes, 2) !default;
+$h5-font-size: map_get($font-sizes, 1) !default;
+$h6-font-size: map_get($font-sizes, '-1') !default;
+
+$headings-font-family: var(--#{$prefix}font-sans-serif) !default;
+$headings-font-weight: $font-weight-medium !default;
+$headings-color: var(--#{$prefix}heading-color) !default;
+
+
+// scss-docs-start display-headings
+$display-font-sizes: (
+  1: map_get($font-sizes, 8),
+  2: map_get($font-sizes, 7),
+  3: map_get($font-sizes, 6),
+  4: map_get($font-sizes, 5),
+  5: map_get($font-sizes, 4),
+  6: map_get($font-sizes, 3),
+  ) !default;
+
+$display-font-weight: $font-weight-black !default;
+$display-line-height: 1 !default;
+// scss-docs-end display-headings
+
+$lead-font-size: $font-size-lg !default;
+$lead-font-weight: $font-weight-normal !default;
+
+$small-font-size: 75% !default;
+
+$text-muted: $gray-500 !default;
+
+$blockquote-font-size: $font-size-lg !default;
+
+//*-----------------------------------------------
+//|   Accordion
+//-----------------------------------------------*/
+$accordion-icon-active-color: $body-color;
+// $accordion-bg: var(--#{$prefix}card-bg) !default;
+$accordion-bg: white;
+$accordion-border-color: rgba($black, .125) !default;
+$accordion-button-active-color: shade-color($primary, 10%) !default;
+$accordion-color: $body-color !default;
+$accordion-button-active-bg: var(--#{$prefix}card-bg
+);
+
+//*-----------------------------------------------
+//|   Tables
+//-----------------------------------------------*/
+$table-border-color: map-get($grays, '200') !default;
+$table-dark-bg: $gray-1000 !default;
+$table-dark-border-color: lighten($gray-1000, 7.5%) !default;
+$table-striped-order: even !default;
+// $table-accent-bg: $gray-100 !default;
+$table-cell-padding-y: 0.75rem !default;
+$table-cell-padding-x: 0.75rem !default;
+$table-group-separator-color: inherit !default;
+$table-striped-bg: map-get($grays, '100') !default;
+$table-striped-color: map-get($grays, '700') !default;
+
+
+//*-----------------------------------------------
+//|   Buttons
+//-----------------------------------------------*/
+$btn-falcon-box-shadow: var(--#{$prefix}btn-falcon-box-shadow) !default;
+$btn-falcon-hover-box-shadow: var(--#{$prefix}btn-falcon-hover-box-shadow) !default;
+
+//*-----------------------------------------------
+//|   Buttons and Forms
+//-----------------------------------------------*/
+$input-btn-padding-y: 0.3125rem !default;
+$input-btn-padding-x: 1rem !default;
+
+$input-btn-padding-y-sm: 0.1875rem !default;
+$input-btn-padding-x-sm: 0.75rem !default;
+
+$input-btn-padding-y-lg: 0.375rem !default;
+$input-btn-padding-x-lg: 1.25rem !default;
+
+$btn-reveal-hover-shadow: 0 0 0 1px rgba(43, 45, 80, 0.1),
+  0 2px 5px 0 rgba(43, 45, 80, 0.08), 0 1px 1.5px 0 rgba($black, 0.07),
+  0 1px 2px 0 rgba($black, 0.08) !default;
+$btn-font-weight: $font-weight-medium !default;
+$btn-focus-width: 0 !default;
+
+//*-----------------------------------------------
+//|   Forms
+//-----------------------------------------------*/
+$input-disabled-bg: var(--#{$prefix}gray-200) !default;
+$input-group-addon-bg: var(--#{$prefix}gray-200) !default;
+$input-border-color: var(--#{$prefix}input-border-color) !default;
+$input-placeholder-color: var(--#{$prefix}input-placeholder-color) !default;
+$input-color: var(--#{$prefix}input-color) !default;
+$form-check-margin-bottom: 0.34375rem !default;
+$form-label-font-size: $font-size-sm !default;
+$form-check-input-bg: transparent !default;
+$form-check-input-border: 1px solid var(--#{$prefix}form-check-input-border-color) !default;
+$form-switch-color: $gray-500 !default;
+$form-select-disabled-bg: var(--#{$prefix}gray-200) !default;
+$input-bg: var(--#{$prefix}input-bg) !default;
+$input-focus-border-color: var(--#{$prefix}input-focus-border-color) !default;
+$form-file-button-bg: $gray-900 !default;
+$form-file-button-color: $gray-300 !default;
+
+//*-----------------------------------------------
+//|   Z-index
+//-----------------------------------------------*/
+
+$zindex-sticky: 1015 !default;
+
+//*-----------------------------------------------
+//|   Navigation
+//-----------------------------------------------*/
+$navbar-dark-color: var(--#{$prefix}navbar-dark-color) !default;
+$navbar-dark-hover-color: var(--#{$prefix}navbar-dark-hover-color) !default;
+$navbar-dark-active-color: var(--#{$prefix}navbar-dark-active-color) !default;
+$navbar-dark-disabled-color: var(--#{$prefix}navbar-dark-disabled-color) !default;
+$navbar-dark-toggler-border-color: var(--#{$prefix}navbar-dark-toggler-border-color) !default;
+$navbar-light-color: var(--#{$prefix}navbar-light-color) !default;
+$navbar-light-hover-color: var(--#{$prefix}navbar-light-hover-color) !default;
+$navbar-light-active-color: var(--#{$prefix}navbar-light-active-color) !default;
+$navbar-light-disabled-color: var(--#{$prefix}navbar-light-disabled-color) !default;
+$navbar-light-toggler-border-color: var(--#{$prefix}navbar-light-toggler-border-color) !default;
+
+$navbar-font-size: $font-size-base * 0.8 !default;
+
+// $navbar-light-color: rgba($black, 0.55) !default;
+$navbar-dark-color: rgba($white, 0.70) !default;
+$navbar-light-hover-color: rgba($black, 0.9) !default;
+$navbar-light-active-color: var(--#{$prefix}primary) !default;
+$navbar-light-disabled-color: rgba($black, 0.25) !default;
+
+// $navbar-dark-color: rgba($white, .7) !default;
+$navbar-dark-hover-color: rgba($white, 0.9) !default;
+
+$navbar-padding-y: map_get($spacers, 2) !default;
+$navbar-padding-x: $spacer !default;
+$top-nav-height: 4.3125rem !default;
+$double-top-nav-height: 8.688rem !default;
+$standard-nav-height: 3.5625rem !default;
+
+$navbar-light-toggler-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#9da9bb' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M0 6h30M0 14h30M0 22h30'/%3E%3C/svg%3E"),
+    '#',
+    '%23'
+  ) !default;
+
+$navbar-dark-toggler-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#9da9bb' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M0 6h30M0 14h30M0 22h30'/%3E%3C/svg%3E"),
+    '#',
+    '%23'
+  ) !default;
+
+
+// Navbar Glass
+
+$bg-navbar-glass: var(--#{$prefix}bg-navbar-glass) !default;
+
+//*-----------------------------------------------
+//|   Navbar Brand
+//-----------------------------------------------*/
+$navbar-brand-font-size: map_get($font-sizes, 3) !default;
+$navbar-brand-font-weight: $font-weight-bolder !default;
+
+//*-----------------------------------------------
+//|   Nav
+//-----------------------------------------------*/
+$link-color: $primary !default;
+$link-color-dark: map-get($theme-dark-colors, 'primary') !default;
+
+
+$nav-link-color: null;
+$nav-link-hover-color: null;
+$nav-link-disabled-color: map-get($grays, '600') !default;
+
+$nav-tabs-border-color: map-get($grays, '300') !default;
+$nav-tabs-link-hover-border-color: map-get($grays, '200') map-get($grays, '200') $nav-tabs-border-color !default;
+$nav-tabs-link-active-color: map-get($grays, '700') !default;
+$nav-tabs-link-active-bg: $body-bg;
+$nav-tabs-link-active-border-color: map-get($grays, '300') map-get($grays, '300') $nav-tabs-link-active-bg;
+
+// $bg-navbar-glass: rgba(map-get($grays, '200'), 0.96) !default;
+$nav-pills-link-active-color: map-get($theme-colors, 'white') !default;
+$nav-pills-link-active-bg: map-get($theme-colors, 'primary') !default;
+
+//*-----------------------------------------------
+//|   Dropdowns | Dropdown menu container and contents.
+//-----------------------------------------------*/
+$dropdown-bg: map-get($grays, 'white') !default;
+$dropdown-color: map-get($grays, '300') !default;
+$dropdown-link-color: map-get($grays, '900') !default;
+$dropdown-link-hover-color: darken(map-get($grays, '900'), 5%) !default;
+$dropdown-link-hover-bg: map-get($grays, '100') !default;
+$dropdown-link-disabled-color: map-get($grays, '600') !default;
+$dropdown-divider-bg: $border-color !default;
+$dropdown-border-color: $border-color !default;
+$dropdown-link-active-color: $white !default;
+$dropdown-link-active-bg: map-get($theme-colors, 'primary') !default;
+$dropdown-box-shadow: $box-shadow !default;
+$dropdown-header-color: map-get($grays, '600') !default;
+
+$dropdown-dark-color: map-get($grays, '300') !default;
+$dropdown-dark-bg: map-get($grays, '800') !default;
+$dropdown-dark-border-color: $dropdown-border-color !default;
+$dropdown-dark-divider-bg: $dropdown-divider-bg !default;
+$dropdown-dark-box-shadow: null;
+$dropdown-dark-link-color: $dropdown-dark-color;
+$dropdown-dark-link-hover-color: $white;
+$dropdown-dark-link-hover-bg: rgba($white, .15) !default;
+$dropdown-dark-link-active-color: $dropdown-link-active-color;
+$dropdown-dark-link-active-bg: $dropdown-link-active-bg;
+$dropdown-dark-link-disabled-color: map-get($grays, '500') !default;
+$dropdown-dark-header-color: map-get($grays, '500') !default;
+
+
+
+$dropdown-font-size: $navbar-font-size !default;
+$dropdown-item-padding-y: map_get($spacers, 1) !default;
+$dropdown-item-padding-x: map_get($spacers, 3) !default;
+$dropdown-padding-y: map_get($spacers, 3) !default;
+
+
+//*-----------------------------------------------
+//|   Pagination
+//-----------------------------------------------*/
+$pagination-padding-y: 0.5rem !default;
+$pagination-padding-x: 0.75rem !default;
+$pagination-padding-y-sm: 0.25rem !default;
+$pagination-padding-x-sm: 0.5rem !default;
+$pagination-padding-y-lg: 0.75rem !default;
+$pagination-padding-x-lg: 1.5rem !default;
+
+$pagination-color: $black !default;
+$pagination-bg: $white !default;
+$pagination-border-color: map-get($grays, '200') !default;
+$pagination-focus-color: var(--#{$prefix}pagination-focus-color) !default;
+$pagination-focus-bg: var(--#{$prefix}pagination-focus-bg) !default;
+$pagination-focus-box-shadow: var(--#{$prefix}pagination-focus-box-shadow) !default;
+$pagination-hover-color: $white !default;
+$pagination-hover-bg: var(--#{$prefix}primary) !default;
+$pagination-hover-border-color: var(--#{$prefix}primary) !default;
+$pagination-active-color: $white !default;
+$pagination-active-bg: var(--#{$prefix}primary) !default;
+$pagination-active-border-color: var(--#{$prefix}primary) !default;
+$pagination-disabled-color: var(--#{$prefix}pagination-disabled-color) !default;
+$pagination-disabled-bg: var(--#{$prefix}pagination-disabled-bg) !default;
+$pagination-disabled-border-color: map-get($grays, '300') !default;
+
+//*-----------------------------------------------
+//|   Cards
+//-----------------------------------------------*/
+// $card-spacer-y: map_get($spacers, 3) !default;
+$card-spacer-y: 1.25rem !default;
+$card-spacer-x: $spacer-x1 !default;
+$card-border-width: 0px !default;
+$card-border-radius: $border-radius-lg !default;
+$card-border-color: rgba($black, 0.125) !default;
+$card-cap-bg: rgba($black, 0) !default;
+$card-cap-padding-y: $spacer !default;
+$card-cap-padding-x: 1.25rem !default;
+$card-bg: $white !default;
+$card-bg-dark: #121e2d !default; //- falcon custom variable
+$card-cap-color: null !default;
+$card-color: null !default;
+
+// /*-----------------------------------------------
+//|   Tooltip
+//-----------------------------------------------*/
+
+$tooltip-padding-y: 0.5rem !default;
+$tooltip-font-size: map_get($font-sizes, '-1') !default;
+
+//*-----------------------------------------------
+//|   Badge
+//-----------------------------------------------*/
+$badge-font-weight: $font-weight-semi-bold !default;
+$badge-padding-y: 0.355555em !default;
+$badge-padding-x: 0.711111em !default;
+
+// /*-----------------------------------------------
+//|   Modal
+//-----------------------------------------------*/
+$modal-content-border-radius: $border-radius-lg !default;
+$modal-content-bg: $white !default;
+
+///*-----------------------------------------------
+//|   List Group
+//-----------------------------------------------*/
+$list-group-color: var(--#{$prefix}gray-800) !default;
+$list-group-bg: $white !default;
+$list-group-border-color: $border-color !default;
+$list-group-action-hover-color: map-get($grays, '700') !default;
+$list-group-hover-bg: map-get($grays, '100') !default;
+$list-group-action-active-bg: var(--#{$prefix}gray-200) !default;
+
+//*-----------------------------------------------
+//|   Thumbnail
+//-----------------------------------------------*/
+$thumbnail-bg: var(--#{$prefix}thumbnail-bg) !default;
+$thumbnail-border-width: 3px !default;
+$thumbnail-border-color: var(--#{$prefix}thumbnail-bg) !default;
+
+// /*-----------------------------------------------
+//|   Breadcrumbs
+//-----------------------------------------------*/
+$breadcrumb-padding-x: 0 !default;
+$breadcrumb-margin-bottom: 0 !default;
+$breadcrumb-bg: 'transparent';
+$breadcrumb-divider: quote('/') !default;
+
+//*-----------------------------------------------
+//|   Carousel
+//-----------------------------------------------*/
+$carousel-transition-duration: 0.8s !default;
+
+// /*-----------------------------------------------
+//|   Spinner
+//-----------------------------------------------*/
+$spinner-width-sm: 1.35rem !default;
+$spinner-height-sm: $spinner-width-sm !default;
+
+// /*-----------------------------------------------
+//|   Spinner
+//-----------------------------------------------*/
+$hr-color: var(--#{$prefix}border-color) !default;
+$hr-opacity: 1 !default;
+
+
+//*-----------------------------------------------
+//|   Treeview
+//----------------------------------------------
+
+$treeview-transition-collapse: height .15s ease !default;
+$treeview-row-bg-odd : var(--#{$prefix}gray-200) !default;
+$treeview-row-bg-even : var(--#{$prefix}gray-100) !default;
+$treeview-text-color : var(--#{$prefix}gray-600) !default;
+
+//*=============================================
+//|   Falcon Specific
+//=============================================
+
+
+//*-----------------------------------------------
+//|   Viewport Heights & Widths
+//----------------------------------------------
+
+$viewport-heights: (
+  25: 25vh,
+  50: 50vh,
+  75: 75vh,
+  100: 100vh,
+  ) !default;
+
+
+$viewport-widths: (
+  25: 25vw,
+  50: 50vw,
+  75: 75vw,
+  100: 100vw,
+  ) !default;
+
+$sizes: (
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%,
+  auto: auto,
+  ) !default;
+
+// /*-----------------------------------------------
+//|   Calendar
+//-----------------------------------------------*/
+$calendar-color: var(--#{$prefix}danger) !default;
+$calendar-color-rgb: var(--#{$prefix}danger-rgb) !default;
+
+// /*-----------------------------------------------
+//|   Footer
+//-----------------------------------------------*/
+
+$footer-height: 3.9875rem !default;
+$responsive-footer-height: 0.625rem !default;
+
+// /*-----------------------------------------------
+//|   Avatar
+//-----------------------------------------------*/
+
+$avatars-dimension: (
+  's': toRem(20rem),
+  'm': toRem(24rem),
+  'l': toRem(28rem),
+  'xl': toRem(32rem),
+  '2xl': toRem(40rem),
+  '3xl': toRem(56rem),
+  '4xl': toRem(98rem),
+  '5xl': toRem(168rem),
+  ) !default;
+
+
+$gutters: (
+  ) !default;
+$gutters: map-merge($spacers, (card: $card-spacer-x * 2)
+);
+
+//*-----------------------------------------------
+//|   Plugins color variables
+//-----------------------------------------------*/
+
+$data-table-pagination-button-color: $black !default;
+// $emojipicker-icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkY0NzY2NDQzRjk0MDExRTk4NTJGRTg0MUE3NDhGRDY5IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkY0NzY2NDQ0Rjk0MDExRTk4NTJGRTg0MUE3NDhGRDY5Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjQ3NjY0NDFGOTQwMTFFOTg1MkZFODQxQTc0OEZENjkiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjQ3NjY0NDJGOTQwMTFFOTg1MkZFODQxQTc0OEZENjkiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4A4uBrAAAf4klEQVR42uyd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' !default;
+
+//*-----------------------------------------------
+//|   Navbar Vertical
+//-----------------------------------------------*/
+
+$navbar-vertical-breakpoints: mapReverse($grid-breakpoints) !default;
+$navbar-vertical-width: 12.625rem !default;
+$navbar-vertical-icon-width: 1.5rem !default;
+$navbar-vertical-collapsed-width: 3.125rem !default;
+$navbar-vertical-hover-width: 12.625rem !default;
+$navbar-vertical-collapsed-hover-shadow: 0.625rem 0 0.625rem -0.5625rem var(--#{$prefix}navbar-vertical-collapsed-hover-shadow-color) !default;
+$navbar-vertical-variation-width: 14.625rem !default;
+$navbar-vertical-variation-collapsed-width: 4.125rem !default;
+
+$navbar-vertical-link-font-size: $font-size-sm !default;
+$navbar-vertical-dropdown-font-size: map-get($font-sizes, '-1') !default;
+$navbar-vertical-bg-color: var(--#{$prefix}navbar-vertical-bg-color) !default;
+$navbar-vertical-link-color: var(--#{$prefix}navbar-vertical-link-color) !default;
+$navbar-vertical-link-hover-color: var(--#{$prefix}navbar-vertical-link-hover-color) !default;
+$navbar-vertical-link-active-color: var(--#{$prefix}navbar-vertical-link-active-color) !default;
+$navbar-vertical-link-disable-color: var(--#{$prefix}navbar-vertical-link-disable-color) !default;
+$navbar-vertical-hr-color: var(--#{$prefix}navbar-vertical-hr-color) !default;
+$navbar-vertical-scrollbar-color: var(--#{$prefix}navbar-vertical-scrollbar-color) !default;
+
+$navbar-light-brand-color: var(--#{$prefix}navbar-light-brand-color) !default;
+$navbar-light-brand-hover-color: $navbar-light-brand-color !default;
+$navbar-dark-brand-color: var(--#{$prefix}navbar-dark-brand-color) !default;
+$navbar-dark-brand-hover-color: $navbar-dark-brand-color !default;
+$navbar-vertical-label-color: var(--#{$prefix}gray-500) !default;
+//*-----------------------------------------------
+//|   Navbar Inverted
+//-----------------------------------------------*/
+$navbar-inverted-bg-color: $gray-1000 !default;
+$navbar-inverted-link-color: $gray-500 !default;
+$navbar-inverted-link-hover-color: $gray-200 !default;
+$navbar-inverted-link-active-color: $navbar-inverted-link-hover-color !default;
+$navbar-inverted-link-disable-color: $gray-700 !default;
+$navbar-inverted-hr-color: rgba($white, 0.08) !default;
+$navbar-inverted-scrollbar-color: $gray-400 !default;
+$navbar-inverted-label-color: $gray-700 !default;
+
+//*-----------------------------------------------
+//|   Navbar Vibrant
+//-----------------------------------------------*/
+$navbar-vibrant-bg-image: linear-gradient(-45deg,
+    rgba(0, 160, 255, 0.86),
+    #0048a2),
+  url(../img/generic/bg-navbar.png) !default;
+$navbar-vibrant-link-color: rgba($white, 0.75) !default;
+$navbar-vibrant-link-hover-color: $white !default;
+$navbar-vibrant-link-active-color: $navbar-vibrant-link-hover-color !default;
+$navbar-vibrant-link-disable-color: rgba($white, 0.45) !default;
+$navbar-vibrant-hr-color: rgba($white, 0.2) !default;
+$navbar-vibrant-scrollbar-color: $gray-400 !default;
+$navbar-vibrant-label-color: rgba($white, 0.4) !default;
+
+//*-----------------------------------------------
+//|   Navbar card
+//-----------------------------------------------*/
+// $navbar-card-bg-color: $white !default;
+// $navbar-card-link-color: $gray-700 !default;
+// $navbar-card-link-hover-color: $gray-900 !default;
+// $navbar-card-link-active-color: $primary !default;
+// $navbar-card-link-disable-color: $gray-400 !default;
+// $navbar-card-shadow: $box-shadow !default;
+// $navbar-card-hr-color:  rgba($black, 0.08) !default;
+// $navbar-card-scrollbar-color: rgba($gray-600, 0.3) !default;
+// $navbar-card-label-color: $gray-500 !default;
+
+
+$navbar-card-bg-color: var(--#{$prefix}navbar-card-bg-color) !default;
+$navbar-card-link-color: var(--#{$prefix}gray-700) !default;
+$navbar-card-link-hover-color: var(--#{$prefix}gray-900) !default;
+$navbar-card-link-active-color: var(--#{$prefix}primary) !default;
+$navbar-card-link-disable-color: var(--#{$prefix}gray-400) !default;
+$navbar-card-shadow: $box-shadow !default;
+$navbar-card-hr-color: var(--#{$prefix}navbar-card-hr-color) !default;
+$navbar-card-scrollbar-color: rgba($gray-600, 0.3) !default;
+$navbar-card-label-color: var(--#{$prefix}gray-500) !default;
+
+//*-----------------------------------------------
+//|   Utilities
+//-----------------------------------------------*/
+$border-width: 1px !default;
+
+//*-----------------------------------------------
+//|   Popover
+//-----------------------------------------------*/
+
+$popover-bg: $white !default;
+$popover-border-color: rgba($black, .2) !default;
+$popover-box-shadow: $box-shadow !default;
+$popover-header-bg: var(--#{$prefix}light) !default;
+$popover-header-border-bottom-color: shade-color($white, 16%) !default;
+$popover-header-color: $headings-color !default;
+$popover-body-color: $body-color !default;
+$popover-arrow-color: $white !default;
+$popover-arrow-outer-color: fade-in(rgba($black, .2), .05) !default;
+
+//*-----------------------------------------------
+//|   Toast
+//-----------------------------------------------*/
+$toast-background-color: rgba($white, .85) !default;
+$toast-header-color: var(--#{$prefix}gray-600) !default;
+$toast-header-background-color: rgba($white, .85) !default;
+$toast-color: var(--#{$prefix}gray-600) !default;
+
+//*-----------------------------------------------
+//|   Progress
+//-----------------------------------------------*/
+$progress-bg: var(--#{$prefix}gray-200) !default;
+$progress-bar-bg: var(--#{$prefix}primary) !default;
+
+
+//*-----------------------------------------------
+//|   Scrollbar
+//-----------------------------------------------*/
+$scrollbar-bg: var(--#{$prefix}scrollbar-bg) !default;
+$simplebar-bg: var(--#{$prefix}simplebar-bg) !default;
+
+//*-----------------------------------------------
+//|   Timeline
+//-----------------------------------------------*/
+$timeline-vertical-breakpoint: lg !default;
+$timeline-zigzag-breakpoint: lg !default;

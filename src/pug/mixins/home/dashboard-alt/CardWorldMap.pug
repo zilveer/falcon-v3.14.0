@@ -1,0 +1,29 @@
+mixin CardWorldMap(config)
+  - var config = Object.assign({ title: 'Active users' }, config)
+  .card.h-100&attributes(attributes)
+    .card-header.bg-light.d-flex.flex-between-center
+      h5.mb-0=config.title
+      .dropdown.font-sans-serif.btn-reveal-trigger
+        button.btn.btn-link.text-600.btn-sm.dropdown-toggle.dropdown-caret-none.btn-reveal(type='button' id=id data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false")
+          span.fas.fa-ellipsis-h.fs--1
+        .dropdown-menu.dropdown-menu-end.border.py-2(aria-labelledby=id)
+          a(href='#!').dropdown-item Edit
+          a(href='#!').dropdown-item Move
+          a(href='#!').dropdown-item Resize
+          .dropdown-divider
+          a(href='#!').dropdown-item.text-warning Archive
+          a(href='#!').dropdown-item.text-danger Delete
+    .card-body.h-100.p-0
+      #map.h-100.bg-white(style="min-height: 300px;")
+    .card-footer.bg-light
+      .row.justify-content-between
+        .col-auto
+          select.form-select.form-select-sm
+            option(value='week' selected) Last 7 days
+            option(value='month') Last month
+            option(value='year') Last year
+        .col-auto
+          a.btn.btn-falcon-default.btn-sm(href="#!")
+            span.d-none.d-sm-inline-block.me-1 Location
+            | overview
+            span.fa.fa-chevron-right.ms-1.fs--1

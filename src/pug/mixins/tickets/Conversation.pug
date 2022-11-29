@@ -1,0 +1,200 @@
+append variables
+  -
+    var messages = [
+      {
+        subject: 'Improve in A purposed Manner',
+        salutation: 'Hi',
+        message: 'The television I ordered from your site was delivered with a cracked screen. I need some help with a refund or a replacement.',
+        conclusion: 'Here is the order number FD07062010',
+        closing: 'Thanks',
+        sender: 'Emma Watson',
+        attached: true,
+        reply: false
+      },
+      {
+        subject: 'Television with cracked screen',
+        salutation: 'Hi Emma Waston,',
+        message: 'I am sorry to hear about your experience with our TV. It sounds like you received a damaged product. Please provide me with the order number and we will work to resolve this issue as quickly as possible.',
+        conclusion: 'We are here to help!',
+        closing: 'Thanks',
+        sender: 'Customer Support',
+        attached: false,
+        reply: true
+      },
+      {
+        subject: 'Cracked Television screen Issue',
+        salutation: 'Hi Mr. Mike,',
+        message: 'Thanks for resolving the issue as per request. It worked as I wanted. I hope to work with you ahead. thanks again.',
+        conclusion: '',
+        closing: 'Regards',
+        sender: 'Emma Watson',
+        attached: false,
+        reply: true
+      },
+      {
+        subject: 'Cracked Television screen Issue',
+        salutation: 'Hi Emma Waston,',
+        message: 'Glad to help you. Buzz us anytime if you have any other queries regarding our products. Would you please consider rate us on the board?',
+        conclusion: '',
+        closing: 'Thanks,',
+        sender: 'Mike',
+        attached: false,
+        reply: true
+      },
+      {
+        subject: 'Cracked Television screen Issue',
+        salutation: 'Hi Emma Waston,',
+        message: 'If you like our support service, please leave your valuable feedback and review us with a 5-star.',
+        conclusion: '',
+        closing: 'Thanks,',
+        sender: 'Mike',
+        attached: false,
+        reply: true
+      },
+      {
+        subject: 'Cracked Television screen Issue',
+        salutation: 'Hi Mr. Mike,',
+        message: 'The support you provided was really good, and I got the correct solution for my problems.',
+        conclusion: '',
+        closing: 'Regards,',
+        sender: 'Emma Watson',
+        attached: false,
+        reply: true
+      },
+    ]
+mixin MailHeader(image, name, type, email, date, time)
+  .d-md-flex.d-xl-inline-block.d-xxl-flex.align-items-center.justify-content-between&attributes(attributes)
+    .d-flex.align-items-center.gap-2
+      +Avatar({img:image, size: "2xl"})
+      p.mb-0
+        a.fw-semi-bold.mb-0.text-800(href=`${CWD}${paths['contact-details']}`)= name
+        span.fs--2.text-800.fw-normal.mx-2= type
+        a.mb-0.fs--1.d-block.text-500(href=`mailto:${email}`)= email
+    p.mb-0.fs--2.fs-sm--1.fw-semi-bold.mt-2.mt-md-0.mt-xl-2.mt-xxl-0.ms-5
+      | #{date}
+      span.mx-1 |
+      span.fst-italic=  time
+      span.fas.fa-star.ms-2.text-warning
+
+mixin File(config)
+  .border.p-2.rounded-3.d-flex.bg-white.dark__bg-1000.fs--1&attributes(attributes)
+    span.fs-1(class=config.icon)
+    span.ms-2.me-3=config.title
+    a.text-300.ms-auto(href="#!" data-bs-toggle="tooltip" data-bs-placement="right" title=config.action)
+      span(class=config.actionIcon)
+
+mixin MailBody(config)
+  div&attributes(attributes)(class= config.reply && "border-bottom")
+    h6.mb-3.fw-semi-bold.text-1000= config.subject
+    p= config.salutation
+    p= config.message
+    p= config.conclusion
+    p.mb-0= config.closing
+    p.mb-0= config.sender
+    if config.attached
+      .p-x1.bg-light.rounded-3.mt-3
+        .d-inline-flex.flex-column
+          +File({
+            title: "broken_tv_solve.jpg (873kb)",
+            icon:"far fa-image",
+            actionIcon: !config.reply && 'fas fa-arrow-down',
+            action: "Download"
+          }).mb-2
+          +File({
+            title: "broken_tv_solve.zip (342kb)",
+            icon:"fas fa-file-archive",
+            actionIcon: !config.reply && 'fas fa-arrow-down',
+            action: "Download"
+          })
+        if !config.reply
+          hr.my-x1
+          .row.flex-between-center.gx-4.gy-2
+            .col-auto
+              p.fs--1.text-1000.mb-sm-0.font-sans-serif.fw-medium.mb-0
+                span.fas.fa-link.me-2
+                | 2 files attached
+            .col-auto
+              button.btn.btn-falcon-default.btn-sm
+                span.fas.fa-file-download.me-2
+                | Download all
+
+mixin ReplyCompose
+  h5.mb-0.p-x1.bg-light Reply
+  .border.border-top-0.border-200
+    input#email-to.form-control.border-0.rounded-0.outline-none.px-x1(type='email', aria-describedby='email-from', placeholder='From' value="mike@support.com")
+  .border.border-top-0.border-200
+    input#email-from.form-control.border-0.rounded-0.outline-none.px-x1(type='email', aria-describedby='email-to', placeholder='To' value='emma@watson.com')
+  .border.border-y-0.border-200
+    input#email-subject.form-control.border-0.rounded-0.outline-none.px-x1(type='text', aria-describedby='email-subject', placeholder='Subject')
+    textarea.tinymce.d-none(name='content' )
+  .px-x1.py-3.bg-light
+    .d-inline-flex.flex-column
+      +File({
+        title: 'broken_tv_solve.jpg (873kb)',
+        icon: 'far fa-image',
+        actionIcon: 'fas fa-times',
+        action: "Detach"
+      }).mb-2
+      +File({
+        title: 'broken_tv_solve.zip (342kb)',
+        icon: 'fas fa-file-archive',
+        actionIcon: 'fas fa-times',
+        action: "Detach"
+      })
+  .d-flex.align-items-center.justify-content-between.px-x1.py-3
+    .d-flex.align-items-center
+      button.btn.btn-primary.btn-sm.px-4.me-2(type='submit') Send
+      input#email-attachment.d-none(type='file')
+      label.me-2.btn.btn-light.btn-sm.mb-0.cursor-pointer(for='email-attachment' data-bs-toggle="tooltip" data-bs-placement="top" title="Attach files")
+        span.fas.fa-paperclip.fs-1(data-fa-transform='down-2')
+      input#email-image.d-none(type='file' accept='image/*')
+      label.btn.btn-light.btn-sm.mb-0.cursor-pointer(for='email-image' data-bs-toggle="tooltip" data-bs-placement="top" title="Attach images")
+        span.fas.fa-image.fs-1(data-fa-transform='down-2')
+    .d-flex.align-items-center
+      .dropdown.font-sans-serif.me-2.btn-reveal-trigger
+        button.btn.btn-link.text-600.btn-sm.dropdown-toggle.btn-reveal.dropdown-caret-none#email-options(type='button' data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false" )
+          span.fas.fa-ellipsis-v(data-fa-transform='down-2')
+        .dropdown-menu.dropdown-menu-end.border.py-2(aria-labelledby='email-options')
+          a(href='#!').dropdown-item Print
+          a(href='#!').dropdown-item Check spelling
+          a(href='#!').dropdown-item Plain text mode
+          .dropdown-divider
+          a(href='#!').dropdown-item Archive
+      button.btn.btn-light.btn-sm(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" data-dismiss="collapse")
+        span.fas.fa-trash
+
+mixin Conversation
+  .card&attributes(attributes)
+    .card-header.bg-light
+      h5
+        span.fas.fa-envelope.me-2
+        span Received a broken TV
+    .card-body
+      +MailHeader(`${CWD}assets/img/team/1-thumb.png`,"Emma Waston", "via email","emma@watson.com", "01 March, 2020", "8:40 AM (1 Day ago)" ).mb-x1
+      +MailBody(messages[0])
+      .my-5.position-relative.text-center
+        hr.position-absolute.top-50.border-300.w-100.my-0
+        span.position-relative.bg-white.dark__bg-card-dark.px-3.z-index-1
+          button.btn.btn-sm.btn-outline-secondary.rounded-pill.border-300.px-lg-5 Conversions 5+
+      +MailHeader(`${CWD}assets/img/team/2-thumb.png`,"Mike", "replied","mike@support.com", "01 March, 2020", "8:40 AM (1 Day ago)" ).mb-x1
+      +MailBody(messages[1]).mb-5.pb-5
+      +MailHeader(`${CWD}assets/img/team/1-thumb.png`,"Emma Waston", "via email","emma@watson.com", "01 March, 2020", "8:40 AM (1 Day ago)" ).mb-x1
+      +MailBody(messages[2]).mb-5.pb-5
+      +MailHeader(`${CWD}assets/img/team/2-thumb.png`,"Mike", "replied","mike@support.com", "01 March, 2020", "8:40 AM (1 Day ago)" ).mb-x1
+      +MailBody(messages[3]).mb-5.pb-5
+      +MailHeader(`${CWD}assets/img/team/2-thumb.png`,"Mike", "replied","mike@support.com", "01 March, 2020", "8:40 AM (1 Day ago)" ).mb-x1
+      +MailBody(messages[4]).mb-5.pb-5
+      +MailHeader(`${CWD}assets/img/team/1-thumb.png`,"Emma Waston", "via email","emma@watson.com", "01 March, 2020", "8:40 AM (1 Day ago)" ).mb-x1
+      +MailBody(messages[5]).border-none
+    .collapse.rounded-lg.transition-none#previewMailForm
+      +ReplyCompose
+    .card-footer.bg-light#preview-footer
+      button(type='button' data-bs-toggle="collapse" data-bs-target="#previewMailForm" aria-expanded="false" aria-controls="previewMailForm").btn.btn-falcon-default.btn-sm.fs--1
+        span.fas.fa-reply
+        span.d-none.d-sm-inline-block.ms-1 Reply
+      button(type='button' data-bs-toggle="collapse" data-bs-target="#previewMailForm" aria-expanded="false" aria-controls="previewMailForm").btn.btn-falcon-default.btn-sm.fs--1.mx-2
+        span.fas.fa-location-arrow
+        span.d-none.d-sm-inline-block.ms-1 Forward
+      button(type='button' data-bs-toggle="collapse" data-bs-target="#previewMailForm" aria-expanded="false" aria-controls="previewMailForm").btn.btn-falcon-default.btn-sm.fs--1
+        span.fas.fa-file-alt
+        span.d-none.d-sm-inline-block.ms-1 Add Note

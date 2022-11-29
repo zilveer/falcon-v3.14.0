@@ -1,0 +1,11 @@
+extends ../../layouts/LayoutTheme
+include ../../mixins/common/PageHeader
+include ../../mixins/faq/FaqAccordion
+             
+append content
+  +PageHeader({
+    title: 'FAQ Accordion',
+    description: `Below you'll find answers to the questions we get <br class='d-none.d-sm-block' /> asked the most about to join with ${name}`
+  })
+
+  +FaqAccordion

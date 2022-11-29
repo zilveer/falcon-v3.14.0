@@ -1,0 +1,29 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/utilities/Clearfix
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Clearfix',
+      description: 'Quickly and easily clear floated content within a container by adding a clearfix utility.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/helpers/clearfix/`,
+      linkText: 'Clearfix on Bootstrap'
+    }
+
+append content
+  +PageHeader(pageHeader)
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Example')
+    .card-body.bg-light
+      +ClearfixExampleDescription
+      +ComponentCardLib
+        .clearfix ...
+
+      +ClearfixDemoDescription
+
+      +ComponentCard
+        +Clearfix
+

@@ -1,0 +1,14 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/BottomBar
+
+append content
+  +PageHeader({ title: 'Bottom Bar' })
+    p.mt-2 
+      | #{name}'s Bottom Bar feature is used to show any component in the bottom of the viewport. You can also trigger the bottom bar by targeting a component when it is scrolled outside the viewport.
+    button(type="button" id="bottom-bar-target-example-btn").btn.btn-primary.btn-md.px-5 Target Button
+
+  +BottomBarStructure
+  +BottomBarOptions
+
+append afterContent
+  +BottomBar

@@ -1,0 +1,26 @@
+mixin EducationForm  
+  form.row
+    .col-3.mb-3.text-lg-end
+      label.form-label(for="school") School
+    .col-9.col-sm-7.mb-3 
+      input#school.form-control.form-control-sm(type="text")
+    .col-3.mb-3.text-lg-end
+      label.form-label(for="degree") Degree
+    .col-9.col-sm-7.mb-3 
+      input#degree.form-control.form-control-sm(type="text") 
+    .col-3.mb-3.text-lg-end
+      label.form-label(for="field") Field
+    .col-9.col-sm-7.mb-3 
+      input#field.form-control.form-control-sm(type="text") 
+    .col-3.text-lg-end
+      label.form-label(for="edu-form3") From  
+    .col-9.col-sm-7.mb-3 
+      input.form-control.form-control-sm.datetimepicker#edu-form3(type="text"  placeholder="d/m/y" data-options!={dateFormat:'d/m/y'})   
+    .col-3.text-lg-end
+      label.form-label(for="edu-to") To 
+    .col-9.col-sm-7.mb-3 
+      input.form-control.form-control-sm.datetimepicker#edu-to(type="text" placeholder="d/m/y" data-options!={dateFormat:'d/m/y'})   
+    .col-9.col-sm-7.offset-3
+      button.btn.btn-primary(type="button") Save
+      
+  .border-dashed-bottom.my-3

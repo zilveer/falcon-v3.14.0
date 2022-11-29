@@ -1,0 +1,49 @@
+include CardStatistics
+include CardProjects
+include CardCharts
+include CardStorage
+include CardBestProducts
+include CardSharedFiles
+include CardActiveUsers
+
+mixin Dashboard
+  .row.g-3.mb-3
+    .col-md-6.col-xxl-3
+      +CardWeeklySales
+    .col-md-6.col-xxl-3
+      +CardTotalOrder
+    .col-md-6.col-xxl-3
+      +CardMarketShare
+    .col-md-6.col-xxl-3
+      +CardWeatherUpdate.h-md-100
+
+  .row.g-0
+    .col-lg-6.pe-lg-2.mb-3
+      +CardProjects
+    .col-lg-6.ps-lg-2.mb-3
+      +CardTotalSales.h-lg-100
+
+  .row.g-0
+    .col-lg-6.col-xl-7.col-xxl-8.mb-3.pe-lg-2.mb-3
+      +CardStorage.h-lg-100
+    .col-lg-6.col-xl-5.col-xxl-4.mb-3.ps-lg-2
+      +CardStorageSpaceStatus.h-lg-100     
+
+  .row.g-0
+    .col-lg-7.col-xl-8.pe-lg-2.mb-3
+      +CardBestProducts
+    .col-lg-5.col-xl-4.ps-lg-2.mb-3
+      +CardSharedFiles(0, 5)
+
+  .row.g-0
+    .col-sm-6.col-xxl-3.pe-sm-2.mb-3.mb-xxl-0
+      +CardActiveUsers
+    .col-sm-6.col-xxl-3.ps-sm-2.order-xxl-1.mb-3.mb-xxl-0
+      +CardBandWidthSaved.h-100
+    .col-xxl-6.px-xxl-2
+      +CardTopProducts.h-100
+
+
+
+
+

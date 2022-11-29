@@ -1,0 +1,36 @@
+mixin CardActiveUserChart
+  .card.h-100.bg-line-chart-gradient
+    .card-header.bg-transparent.light
+      h5.text-white Users online right now
+      .real-time-user.display-1.fw-normal.text-white(data-countup!={endValue: 119}) 0
+    .card-body.text-white.fs--1.light.pb-0
+      p.border-bottom.pb-2(style='border-color: rgba(255, 255, 255, 0.15) !important') Page views / second
+      // Find the JS file for the following chart at: src/js/charts/echarts/real-time-users.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-real-time-users(style='height:150px' data-echart-responsive="true")
+      .list-group-flush.mt-4
+        .rounded-2(style='border:1px solid rgba(255, 255, 255, 0.15)')
+          .px-3.bg-transparent.text-white.d-flex.justify-content-between.px-0.py-1.fw-semi-bold.border-top-0(style='border-bottom:1px solid rgba(255, 255, 255, 0.15)')
+            p.mb-0 Most Active Pages
+            p.mb-0 User Count
+          .px-3.bg-transparent.text-white.d-flex.justify-content-between.px-0.py-1(style='border-bottom:1px solid rgba(255, 255, 255, 0.05)')
+            p.mb-0 /bootstrap-themes/
+            p.mb-0 3
+          .px-3.bg-transparent.text-white.d-flex.justify-content-between.px-0.py-1(style='border-bottom:1px solid rgba(255, 255, 255, 0.05)')
+            p.mb-0 /tags/html5/
+            p.mb-0 3
+          .px-3.bg-transparent.text-white.d-xxl-flex.justify-content-between.px-0.py-1.d-none(style='border-bottom:1px solid rgba(255, 255, 255, 0.05)')
+            p.mb-0 /
+            p.mb-0 2
+          .px-3.bg-transparent.text-white.d-xxl-flex.justify-content-between.px-0.py-1.d-none(style='border-bottom:1px solid rgba(255, 255, 255, 0.05)')
+            p.mb-0 /preview/falcon/dashboard/
+            p.mb-0 2
+          .px-3.bg-transparent.text-white.d-flex.justify-content-between.px-0.py-1(style='border-bottom:1px solid rgba(255, 255, 255, 0.05)')
+            p.mb-0 /100-best-themes...all-time/
+            p.mb-0 1
+          .px-3.bg-transparent.text-white.d-flex.justify-content-between.px-0.py-1(style='border-bottom:1px solid rgba(255, 255, 255, 0.05)')
+            p.mb-0 /product/falcon-admin-dashboard/
+            p.mb-0 1
+    .card-footer.text-end.bg-transparent.light
+      a(href="#!").text-white Real-time data
+        span.fa.fa-chevron-right.ms-1.fs--1

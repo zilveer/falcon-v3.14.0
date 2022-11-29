@@ -1,0 +1,18 @@
+extends ../../layouts/LayoutTheme
+include ../../mixins/pages/NotificationSettings
+include ../../mixins/common/Notification
+include ../../mixins/common/Form
+            
+
+append content
+  .card.overflow-hidden.mb-3
+    .card-header.bg-light
+      +NotificationHeader
+    .card-body.fs--1.p-0
+      +Notifications
+
+append afterContent
+  #notification-settings-modal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='notification-settings-modal-label' aria-hidden='true')
+    .modal-dialog.modal-dialog-centered.modal-lg(role="document")
+      .modal-content
+        +NotificationSettings

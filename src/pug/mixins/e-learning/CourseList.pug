@@ -1,0 +1,50 @@
+//- ==============================================
+//- Course List Item (course-config)
+//- ==============================================
+mixin CourseListItem(config)
+  article.card.mb-3.overflow-hidden&attributes(attributes)
+    .card-body.p-0
+      .row.g-0
+        .col-md-4.col-lg-3
+          .hoverbox.h-md-100
+            +AttachmentLink({ 
+              image: `${CWD}assets/img/${config.thumbnail.image}`, 
+              src: `${CWD}assets/${config.thumbnail.video}`,
+              type: 'video'
+            }, 'attachment-bg')
+              img(src=`${CWD}assets/img/${config.thumbnail.image}`, alt="").h-100.w-100.fit-cover
+            .hoverbox-content.flex-center.pe-none.bg-holder.overlay.overlay-2
+              img.z-index-1(src=`${CWD}assets/img/icons/play.svg`, width=60 alt="")
+
+        .col-md-8.col-lg-9.p-x1
+          .row.g-0.h-100
+            .col-lg-8.col-xxl-9.d-flex.flex-column.pe-x1
+              .d-flex.gap-2.flex-wrap.mb-3
+                each tag in config.tags
+                  +Badge(tag)
+              h5.fs-0
+                a(href=`${CWD}${paths['trainer-profile']}`)=config.trainer
+              h4.mt-3.mt-sm-0.fs-0.fs-lg-1
+                a(href=`${CWD}${paths['course-details']}`).text-900=config.name
+              p.fs--1.mt-2.d-none.d-lg-block=config.excerpt
+              .flex-1.d-flex.align-items-end.fw-semi-bold.fs--1
+                span.me-1.text-900=config.rating
+                div 
+                  +Review(config.rating)
+                span.ms-2.text-secondary (#{config.reviews.toLocaleString()} reviews)
+
+            .col-lg-4.col-xxl-3.mt-4.mt-lg-0
+              .h-100.rounded.border-lg.border-1.d-flex.flex-lg-column.justify-content-between.p-lg-3
+                .mb-lg-4.mt-auto.mt-lg-0
+                  h4.mb-1.lh-1.fs-2.text-warning.d-flex.align-items-end #{config.price}
+                    if(config.oldPrice)
+                      del.ms-1.fs--1.text-500.mb-1 #{config.oldPrice}
+                  p.mb-0.fs--2.text-800 #{config.totalEnrolled.toLocaleString()} Learners Enrolled
+
+                .mt-3.d-flex.flex-lg-column.gap-2
+                  button.btn.btn-md.btn-falcon-default.hover-danger.fs--1.text-600
+                    span.far.fa-heart
+                    span.ms-1.text-600.d-none.d-lg-inline Add to Wishlist
+                  button.btn.btn-md.btn-primary.fs--1
+                    span.fas.fa-cart-plus
+                    span.ms-1.d-none.d-lg-inline Add to Cart

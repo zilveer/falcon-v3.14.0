@@ -1,0 +1,20 @@
+include Mixins
+include PostAction
+
+mixin PostImage
+  .card&attributes(attributes)
+    .card-header.bg-light
+      .row.justify-content-between
+        .col
+          +PostHeader({img: 'team/10.jpg'}, '13 Jan &bull; LA, US &bull; ')
+            p.mb-1.lh-1
+              a(href=`${CWD}${paths['user-profile']}`).fw-semi-bold Leonardo DiCaprio
+              |  shared a 
+              a(href='#!') photo
+        .col-auto
+          +PostCog('post-image-action')
+    .card-body.overflow-hidden
+      a(href=`${CWD}assets/img/generic/11.jpg` data-gallery="gallery-2")
+        img(src=`${CWD}assets/img/generic/11.jpg` alt='').img-fluid.rounded
+
+    +PostAction.bg-light.pt-0

@@ -1,0 +1,39 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/Popovers
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Popovers',
+      description: "Documentation and examples for showing pagination to indicate a series of related content exists across multiple pages.",
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/components/popovers/`,
+      linkText: 'Popovers on Bootstrap'
+    } 
+
+block component
+
+  +PageHeader(pageHeader)
+
+  +ComponentCard({
+    title: 'Examples',
+    anchor: true,
+  }).mb-3
+    .row.g-1
+      .col-auto
+        +Popover("top")
+      .col-auto
+        +Popover("left")
+      .col-auto
+        +Popover("right")
+      .col-auto
+        +Popover("bottom")
+
+  +ComponentCard({
+    title: 'Examples',
+    descriptionEl:`<p class='mt-2 mb-0'>Use the <code>data-bs-trigger="focus"</code> to dismiss popovers on the user’s next click of a different element than the toggle element.</p>`,
+    anchor: true,
+  }).mb-3
+    +DismissiblePopover
+
+

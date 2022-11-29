@@ -1,0 +1,61 @@
+append variables 
+  -
+    var saleItems = [
+      {
+        title: 'Orders',
+        amount: '15,450',
+        subAmount: '13,675',
+        color: 'primary'
+      },
+      {
+        title: 'Items sold',
+        amount: '1,054',
+        subAmount: '13,675',
+        color: 'warning'
+      },
+      {
+        title: 'Refunds',
+        amount: '$145.65',
+        subAmount: '13,675 ',
+        color: 'success'
+      },
+      {
+        title: 'Gross sale',
+        amount: '$100.26',
+        subAmount: '$109.65 ',
+        color: 'danger'
+      },
+      {
+        title: 'Shipping',
+        amount: '$365.53',
+        subAmount: '13,675 ',
+        color: 'success'
+      },
+      {
+        title: 'Processing',
+        amount: '861',
+        subAmount: '13,675 ',
+        color: 'info'
+      },
+    ]
+
+mixin CardSaleStatistics 
+  .card&attributes(attributes)
+    .card-body.py-3
+      .row.g-0
+        +SaleItems(saleItems[0]).border-200.border-bottom.border-end.pb-4
+        +SaleItems(saleItems[1]).border-200.border-md-200.border-bottom.border-md-end.pb-4.ps-3
+        +SaleItems(saleItems[2]).border-200.border-bottom.border-end.border-md-end-0.pb-4.pt-4.pt-md-0.ps-md-3
+        +SaleItems(saleItems[3]).border-200.border-md-200.border-bottom.border-md-bottom-0.border-md-end.pt-4.pb-md-0.ps-3.ps-md-0
+        +SaleItems(saleItems[4]).border-200.border-md-bottom-0.border-end.pt-4.pb-md-0.ps-md-3
+        +SaleItems(saleItems[5]).pb-0.pt-4.ps-3
+      
+mixin SaleItems(item)
+  .col-6.col-md-4&attributes(attributes)
+    h6.pb-1.text-700 #{item.title} 
+    p.font-sans-serif.lh-1.mb-1.fs-2 #{item.amount} 
+    .d-flex.align-items-center
+      h6.fs--1.text-500.mb-0 #{item.subAmount} 
+      h6.fs--2.ps-3.mb-0(class = `text-${item.color}`)
+        span.me-1.fas.fa-caret-up
+        | 21.8%

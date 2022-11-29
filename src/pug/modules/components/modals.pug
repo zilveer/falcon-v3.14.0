@@ -1,0 +1,46 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/Modals
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Modals',
+      description: "List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.",
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/components/modal/`,
+      linkText: 'Modal on Bootstrap'
+    }
+
+block component
+  +PageHeader(pageHeader)
+
+  +ComponentCard({
+    title: 'Example',
+    anchor: true,
+  }).mb-3
+    +ModalExampleDemo
+  
+  +ComponentCard({
+    title: 'Static backdrop',
+    anchor: true,
+    description:"When backdrop is set to static, the modal will not close when clicking outside it. Click the button below to try it.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +StaticBackdrop
+
+  +ComponentCard({
+    title: 'Tooltips and Popovers',
+    anchor: true,
+    description: `<a href="${CWD}${paths['components-tooltips']}">
+  Tooltips </a> and <a href="${CWD}${paths['components-popovers']}">Popovers </a>can be placed within modals as needed. When modals are closed, any tooltips and popovers within are also automatically dismissed.`,
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +TooltipsPopovers
+
+  +ComponentCard({
+    title: 'Scrolling long content',
+    anchor: true,
+    description: "When modals become too long for the user’s viewport or device, they scroll independent of the page itself. Try the demo below to see what we mean.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +ScrollingLongContent 

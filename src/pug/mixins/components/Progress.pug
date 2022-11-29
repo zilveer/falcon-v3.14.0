@@ -1,0 +1,19 @@
+mixin ProgressbarDemo(config)
+  - var config = Object.assign({height: 15,value:70}, config)
+  .progress(style=`height:${config.height}px`).mb-3
+    .progress-bar&attributes(attributes)(role='progressbar', style=`width: ${config.value}%`, aria-valuenow='25', aria-valuemin='0', aria-valuemax='100')
+      if config.display
+        | #{config.value}%
+  
+
+mixin ProgressbarMultipleColorDemo
+  .progress
+    .progress-bar(role='progressbar', style='width: 15%', aria-valuenow='15', aria-valuemin='0', aria-valuemax='100')
+    .progress-bar.bg-success(role='progressbar', style='width: 30%', aria-valuenow='30', aria-valuemin='0', aria-valuemax='100')
+    .progress-bar.bg-info(role='progressbar', style='width: 20%', aria-valuenow='20', aria-valuemin='0', aria-valuemax='100')
+
+
+mixin ProgressbarAnimatedDemo
+  .progress
+    .progress-bar.progress-bar-striped#progress-toggle(role='progressbar', aria-valuenow='75', aria-valuemin='0', aria-valuemax='100', style='width: 75%')
+  button.btn.btn-secondary.btn-sm.mt-2(type='button' data-progress-animation="progress-toggle") Toggle Animation 

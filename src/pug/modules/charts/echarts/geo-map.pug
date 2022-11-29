@@ -1,0 +1,52 @@
+extends ../../../layouts/LayoutComponent
+
+block prepend scripts
+  script(src=`${CWD}vendors/lodash/lodash.min.js`)
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+  script(src=`${CWD}assets/data/usa.js`)
+  script(src=`${CWD}assets/data/world.js`)
+  script(src=`${CWD}vendors/dayjs/dayjs.min.js`)
+  script(src=`${CWD}assets/js/echarts-example.js`)
+
+block append content
+
+  +PageHeader({
+      title: 'Getting Started',
+      description: 'ECharts can uses geoJSON format as map outline. You can use third-party <a href="https://geojson.org/" target="_blank">geoJSON</a> data (like maps) and register them into ECharts. You can get the JSON data from this <a href="https://github.com/pissang/starbucks/tree/gh-pages/json">Starbuck\'s Github repository</a>.',
+      url: `https://echarts.apache.org/en/option.html#series-map.type`,
+      linkText: 'Echart\'s map documentation'
+    })
+
+  .row.g-3.mb-3
+    .col-lg-6
+      +ComponentCard({
+        title:'World map',
+        anchor:true
+      }).h-100.position-relative
+        .position-absolute.z-index-2(style='right:16px')
+          button.btn.btn-falcon-default.btn-sm.mb-1.session-by-country-map-reset
+            span.fas.fa-sync-alt.fs--1
+        // Find the JS file for the following chart at: src/js/charts/echarts/session-by-country-map.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+        .echart-session-by-country-map(style="min-height: 400px;" data-echart-responsive="true")
+        
+        h5.mt-3 JavaScript 
+        +ComponentCardLib 
+          script(src="assets/data/world.js") 
+    .col-lg-6
+      +ComponentCard({
+        title:'Usa map',
+        anchor:true
+      }).h-100.position-relative
+        .position-absolute.z-index-2(style='right:16px')
+          button.btn.btn-falcon-default.btn-sm.mb-1.usa-map-reset
+            span.fas.fa-sync-alt.fs--1
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/map-usa.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-map-usa-example(style="min-height: 400px;" data-echart-responsive="true")
+        
+        h5.mt-3 JavaScript 
+        +ComponentCardLib 
+          script(src="assets/data/usa.js") 
+    
+

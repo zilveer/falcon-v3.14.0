@@ -1,0 +1,27 @@
+extends ../../layouts/LayoutTheme
+include ../../mixins/tickets/CardReportsGreeting
+include ../../mixins/tickets/CardInDepthHelpdesk
+include ../../mixins/tickets/CardDistributionOfPerformance
+include ../../mixins/tickets/CardSatisfactionSurvey
+include ../../mixins/tickets/CardReceivedTickets
+include ../../mixins/tickets/CardTopCustomers
+include ../../mixins/tickets/CardTicketVolume
+include ../../mixins/tickets/CardAgentSurveyResult
+
+prepend styles
+  link(href=`${CWD}vendors/flatpickr/flatpickr.min.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+  script(src=`${CWD}vendors/dayjs/dayjs.min.js`)
+  script(src=`${CWD}assets/js/flatpickr.js`)
+
+block append content
+  +CardReportsGreeting
+  +CardInDepthHelpdesk.mt-3
+  +CardDistributionOfPerformance.mt-3
+  +CardAgentSurveyResult(5).mt-3
+  +CardSatisfactionSurvey.mt-3
+  +CardTopCustomers.mt-3
+  +CardReceivedTickets.mt-3
+  +CardTicketVolume.mt-3

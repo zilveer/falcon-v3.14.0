@@ -1,0 +1,77 @@
+mixin PaginationTextDemo
+  nav(aria-label='Page navigation example')
+    ul.pagination
+      li.page-item
+        a.page-link(href='#') Previous
+      li.page-item.active
+        a.page-link(href='#') 1
+      li.page-item
+        a.page-link(href='#') 2
+      li.page-item
+        a.page-link(href='#') 3
+      li.page-item
+        a.page-link(href='#') Next
+
+mixin PaginationIconDemo
+  nav(aria-label='Page navigation example')
+    ul.pagination
+      li.page-item
+        a.page-link(href='#', aria-label='Previous')
+          span(aria-hidden='true') &laquo;
+          span.sr-only Previous
+      li.page-item.active
+        a.page-link(href='#') 1
+      li.page-item
+        a.page-link(href='#') 2
+      li.page-item
+        a.page-link(href='#') 3
+      li.page-item
+        a.page-link(href='#', aria-label='Next')
+          span(aria-hidden='true') &raquo;
+          span.sr-only Next
+
+mixin PaginationSizingDescription
+  p&attributes(attributes) Fancy larger or smaller pagination add
+    code .pagination-lg 
+    | or
+    code .pagination-sm 
+    | for additional sizes. 
+
+mixin PaginationSizingDdemo
+  nav(aria-label='...')
+    ul.pagination&attributes(attributes)
+      li.page-item.active
+        a.page-link(href='#', tabindex='-1') 1
+      li.page-item
+        a.page-link(href='#') 2
+      li.page-item
+        a.page-link(href='#') 3
+
+mixin PaginationAlignment
+  // Center
+  nav(aria-label='Page navigation example')
+    ul.pagination.justify-content-center
+      li.page-item
+        a.page-link(href='#', tabindex='-1', aria-disabled='true') Previous
+      li.page-item
+        a.page-link(href='#') 1
+      li.page-item
+        a.page-link(href='#') 2
+      li.page-item
+        a.page-link(href='#') 3
+      li.page-item
+        a.page-link(href='#') Next
+  // End
+  nav(aria-label='Page navigation example')
+    ul.pagination.justify-content-end
+      li.page-item
+        a.page-link(href='#', tabindex='-1', aria-disabled='true') Previous
+      li.page-item
+        a.page-link(href='#') 1
+      li.page-item
+        a.page-link(href='#') 2
+      li.page-item
+        a.page-link(href='#') 3
+      li.page-item
+        a.page-link(href='#') Next
+

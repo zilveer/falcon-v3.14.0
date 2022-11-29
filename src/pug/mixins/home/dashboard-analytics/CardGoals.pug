@@ -1,0 +1,73 @@
+mixin Goals
+  .card
+    .card-body.py-5.py-sm-3
+      .row.g-5.g-sm-0
+        .col-sm-4
+          .border-sm-end.border-300
+            +MiniChart({
+              title: 'Completed Goals',
+              value: 1727,
+              center: true
+            })
+            .echart-goal-charts(data-echart-responsive="true" data-echarts!={
+              tooltip:{
+                show:false
+              },
+              series: [
+                { 
+                  type: 'bar',
+                  data: [172, 129, 123, 158, 196, 106, 187, 198, 152, 175, 178, 165, 188, 139, 115, 131, 143, 140, 112, 167, 180, 156, 121, 190, 100],
+                  symbol: 'none',
+                  itemStyle: {
+                    barBorderRadius: [5, 5, 0, 0],
+                  },
+                }
+              ],
+              grid: { right: "16px", left: "0", bottom: "0", top: "0" },
+            })
+        .col-sm-4
+          .border-sm-end.border-300
+            +MiniChart({
+              title: 'Value',
+              value: '$34.2M',
+              center: true
+            })
+            .echart-goal-charts(data-echart-responsive="true" data-echarts!={ 
+              tooltip:{
+                show:false
+              },
+              series: [
+                { 
+                  type: 'bar',
+                  data: [170, 156, 171, 193, 108, 178, 163, 175, 117, 123, 174, 199, 122, 111, 113, 140, 192, 167, 186, 172, 131, 187, 135, 115, 118],
+                  symbol: 'none',
+                  itemStyle: {
+                    barBorderRadius: [5, 5, 0, 0],
+                  },
+                }
+              ],
+              grid: { right: "16px", left: "16px", bottom: "0", top: "0" },
+            })
+        .col-sm-4
+          div
+            +MiniChart({
+              title: 'Conversion Rate',
+              value: '19.67%',
+              center: true
+            })
+            .echart-goal-charts(data-echart-responsive="true" data-echarts!={ 
+              tooltip:{
+                show:false
+              },
+              series: [
+                { 
+                  type: 'bar',
+                  data: [199, 181, 155, 164, 108, 158, 117, 148, 121, 152, 189, 116, 111, 130, 113, 171, 193, 104, 110, 153, 190, 162, 180, 114, 183],
+                  symbol: 'none',
+                  itemStyle: {
+                    barBorderRadius: [5, 5, 0, 0],
+                  },
+                }
+              ],
+              grid: { right: "0", left: "16px", bottom: "0", top: "0" },
+            })

@@ -1,0 +1,47 @@
+mixin SupportedContentDescription
+  p&attributes(attributes) #{name} Navbar Double Top support all of 
+    a(href=`https://getbootstrap.com/docs/${bootstrapVersion}/components/navbar/`) Boostrap Navbar 
+    | components. 
+    code .navbar-brand
+    |, 
+    code .navbar-nav
+    |, 
+    code .navbar-toggler
+    |, 
+    code .form-inline
+    |, 
+    code .navbar-text
+    |, 
+    code .collapse.navbar-collapse 
+    | those sub-componets are used in Navbar Double Top.
+
+mixin NavbarDoubleTopHTMLCodeDemo
+  +ComponentCardLib
+    nav.navbar.navbar-light.navbar-glass.navbar-top&attributes(attributes)
+      div 
+        // Navbar Content
+      hr.my-2.d-none.d-lg-block
+
+      div.collapse.navbar-collapse#triggerID
+        // Collapsible content
+
+mixin NavbarDoubleTopResponsiveBehaviors
+  p Navbar Double Top can utilize 
+    code .navbar-toggler
+    |, 
+    code .navbar-collapse
+    |, and 
+    code .navbar-expand{-sm|-md|-lg|-xl} 
+    | classes to change when their content collapses behind a button. In combination with other utilities, you can easily choose when to show or hide particular elements.
+
+  p.mb-0 For navbars that never collapse, add the 
+    code .navbar-expand 
+    | class on the navbar. For navbars that always collapse, don’t add any 
+    code .navbar-expand 
+    | class.
+
+mixin NavbarDoubleTopColorSchemes
+  p.mb-0 Changing the color of Navbar Double Top is very easy. #{name} uses 
+    code .navbar-light 
+    | for styling Navbar Double Top. You can use other Bootstrap utilitie classes to update the Navbar. Learn more about Bootstrap Navbar  
+    a(href=`https://getbootstrap.com/docs/${bootstrapVersion}/components/navbar/#color-schemes` target="_blank") Color Schemes.

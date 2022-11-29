@@ -1,0 +1,60 @@
+//- ==============================================
+//- E-learning Statistics Card
+//- ==============================================
+mixin CardLmsStatistics
+  -
+    var lmsStatistics = {
+      newLearners:
+        {
+          title: 'New Learners',
+          amount: '4968',
+          lastMonth: '4203',
+          icon: 'fas fa-user-graduate',
+          color: 'primary',
+        },
+      newTrainers:
+        {
+          title: 'New Trainers',
+          amount: '324',
+          lastMonth: '301',
+          icon: 'fas fa-chalkboard-teacher',
+          color: 'info',
+        },
+      newCourses:
+        {
+          title: 'New Courses',
+          amount: '3712',
+          lastMonth: '2779',
+          icon: 'fas fa-book-open',
+          color: 'success',
+        },
+      refunds:
+        {
+          title: 'Refunds',
+          amount: '1054',
+          lastMonth: '1201',
+          icon: 'fas fa-dollar-sign',
+          color: 'warning',
+        }
+    }
+
+  .card&attributes(attributes)
+    .card-body.px-xxl-0.pt-4
+      .row.g-0
+        +LmsStatisticsItem(lmsStatistics.newLearners).border-md-end.border-bottom.border-xxl-bottom-0.pb-3.p-xxl-0.ps-md-0
+        +LmsStatisticsItem(lmsStatistics.newTrainers).border-xxl-end.border-bottom.border-xxl-0.pb-3.pt-4.pt-md-0.pe-md-0.p-xxl-0
+        +LmsStatisticsItem(lmsStatistics.newCourses).border-md-end.border-bottom.border-md-bottom-0.pb-3.pt-4.p-xxl-0.pb-md-0.ps-md-0
+        +LmsStatisticsItem(lmsStatistics.refunds).pt-4.p-xxl-0.pb-0.pe-md-0
+
+mixin LmsStatisticsItem(item)
+  .col-xxl-3.col-md-6.px-3.text-center&attributes(attributes)
+    .icon-circle(class=`icon-circle-${item.color}`)
+      span.fs-2(class=`${item.icon} text-${item.color}`)
+
+    h4.mb-1.font-sans-serif
+      span.text-700.mx-2(data-countup!={ endValue: item.amount }) 0
+      span.fw-normal.text-600 #{item.title}
+
+    p.fs--1.fw-semi-bold.mb-0
+      | #{item.lastMonth} 
+      span.text-600.fw-normal last month

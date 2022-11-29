@@ -1,0 +1,25 @@
+extends ../../layouts/LayoutTheme
+include ../../mixins/e-commerce/Checkout
+include ../../mixins/common/Form
+
+
+append content
+  .row.g-3
+    .col-xl-4.order-xl-1
+      +OrderSummary
+    .col-xl-8
+      +ShippingAddress
+      .card
+        .card-header.bg-light
+          h5.mb-0 Payment Method
+        .card-body
+          form
+            +PaymentCreditCard
+            +PaymentPaypal
+            .border-bottom.border-dashed.my-5
+            +CheckoutFooter
+
+
+
+
+

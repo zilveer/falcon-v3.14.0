@@ -1,0 +1,70 @@
+{
+  "rtl": true,
+  "dir": {
+    "dev": "public",
+    "prod": "build"
+  },
+  "style": {
+    "src": "src/scss/**/*.scss",
+    "dest": "assets/css"
+  },
+  "script": {
+    "src": [
+      "src/js/utils.js",
+      "src/js/detector.js",
+      "src/js/node.js",
+      "src/js/**/!(utils | detector | node)*.js",
+      "!src/js/emoji-button.js",
+      "!src/js/charts/echarts/examples/*.js",
+      "!src/js/echarts-example.js",
+      "!src/js/flatpickr.js",
+      "!src/js/config.js",
+      "!src/js/theme.js",
+      "src/js/theme.js"
+    ],
+    "configNavbar": "src/js/config.js",
+    "echartsExample": [
+      "src/js/utils.js",
+      "src/js/charts/echarts/echarts-utils.js",
+      "src/js/charts/echarts/examples/*.js",
+      "!src/js/echarts-example.js",
+      "src/js/echarts-example.js"
+    ],
+    "dest": "assets/js"
+  },
+  "pug": {
+    "base": "src/pug",
+    "src": {
+      "all": "src/pug/**/*.pug",
+      "pages": [
+        "*.pug",
+        "app/**/*.pug",
+        "authentication/**/*.pug",
+        "dashboard/**/*.pug",
+        "demo/**/*.pug",
+        "documentation/**/*.pug",
+        "modules/**/*.pug",
+        "pages/**/*.pug"
+      ]
+    },
+    "dest": ""
+  },
+  "product": {
+    "paths": [
+      "gulp/**/*.*",
+      "public/**/*.*",
+      "src/**/*.*",
+      ".babelrc",
+      ".eslintrc",
+      ".npmrc",
+      ".gitignore",
+      ".prettierignore",
+      "gulpfile.js",
+      "package-lock.json",
+      "package.json",
+      "README.md",
+      "vendors.json"
+    ]
+  },
+  "watch": ["assets/img", "assets/data", "assets/video", "vendors"]
+}

@@ -1,0 +1,130 @@
+mixin SpacingDocHeaderDescription
+  p&attributes(attributes) Spacing utilities that apply to all breakpoints, from 
+    code xs 
+    |  to 
+    code xxl
+    | , have no breakpoint abbreviation in them. This is because those classes are applied from 
+    code min-width: 0
+    |  and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
+
+mixin SpacingDoc
+  p
+    | The classes are named using the format 
+    code {property}{sides}-{size}
+    |  for 
+    code xs
+    |  and 
+    code {property}{sides}-{breakpoint}-{size}
+    |  for 
+    code sm
+    | ,
+    code md
+    | ,
+    code lg
+    | ,
+    code xl
+    |  and 
+    code xxl
+    | .
+  p.mb-0
+    | Where
+    em property
+    |  is one of:
+  ul
+    li
+      code m
+      |  - for classes that set 
+      code margin
+    li
+      code p
+      |  - for classes that set 
+      code padding
+  p.mb-0
+    | Where
+    em sides
+    |  is one of:
+  ul
+    li
+      code t
+      |  - for classes that set 
+      code margin-top
+      |  or 
+      code padding-top
+    li
+      code b
+      |  - for classes that set 
+      code margin-bottom
+      |  or 
+      code padding-bottom
+    li
+      code s
+      |  - for classes that set 
+      code margin-left
+      |  or 
+      code padding-left
+    li
+      code e
+      |  - for classes that set 
+      code margin-right
+      |  or 
+      code padding-right
+    li
+      code x
+      |  - for classes that set both 
+      code *-left
+      |  and 
+      code *-right
+    li
+      code y
+      |  - for classes that set both 
+      code *-top
+      |  and 
+      code *-bottom
+    li
+      | blank - for classes that set a 
+      code margin
+      |  or  
+      code padding
+      |  on all 4 sides of the element
+  p.mb-0
+    | Where
+    em size
+    |  is one of: 
+    code 0
+    | ,
+    code 1
+    | ,
+    code 2
+    | ,
+    code 3
+    | ,
+    code 4
+    | ,
+    code 5
+    | ,
+    code 6
+    | ,
+    code 7
+    | ,
+    code 8
+    | ,
+    code 9
+    | ,
+    code 10
+    | ,
+    code 11
+    |  &amp; 
+    code auto 
+
+mixin GapDoc
+  p When using 
+    code display: grid
+    | , you can make use of 
+    code gap 
+    | utilities on the parent grid container. This can save on having to add margin utilities to individual grid items (children of a display: grid container). Gap utilities are responsive by default, and are generated via our utilities API, based on the 
+    code $spacers 
+    | Sass map.
+  .d-grid.gap-3
+    .p-2.bg-light.border Grid item 1
+    .p-2.bg-light.border Grid item 2
+    .p-2.bg-light.border Grid item 3

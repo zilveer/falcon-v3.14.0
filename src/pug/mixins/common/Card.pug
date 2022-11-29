@@ -1,0 +1,187 @@
+//---------------------------------------
+  | Top Navigation Cards
+//---------------------------------------
+mixin CardNotification
+  .card.card-notification.shadow-none&attributes(attributes)
+    .card-header
+      .row.justify-content-between.align-items-center
+        .col-auto
+          h6.card-header-title.mb-0 Notifications
+        .col-auto.ps-0.ps-sm-3
+          a.card-link.fw-normal(href='#') Mark all as read
+    .scrollbar-overlay(style="max-height:19rem")
+      .list-group.list-group-flush.fw-normal.fs--1   
+        .list-group-title.border-bottom NEW
+        .list-group-item
+          +Notification({
+            avatar: {size: '2xl', img: 'team/1-thumb.png'},
+            body: '<strong>Emma Watson</strong> replied to your comment : "Hello world 😍"',
+            time: 'Just now',
+            emoji: '💬',
+          }).notification-flush.notification-unread
+        .list-group-item
+          +Notification({
+            avatar: {size: '2xl', name: 'Albert Brooks'},
+            body: '<strong>Albert Brooks</strong> reacted to <strong>Mia Khalifa\'s</strong> status',
+            time: '9hr',
+            icon: 'fab fa-gratipay text-danger'
+          }).notification-flush.notification-unread
+        .list-group-title.border-bottom EARLIER
+        .list-group-item
+          +Notification({
+            avatar: {size: '2xl', img: 'icons/weather-sm.jpg'},
+            body: 'The forecast today shows a low of 20&#8451; in California. See today\'s weather.',
+            time: '1d',
+            emoji: '🌤️'
+          }).notification-flush
+        .list-group-item
+          +Notification({
+          avatar: {
+            img: 'logos/oxford.png',
+            size: 'xl'
+          },
+          body: '<strong>University of Oxford</strong> created an event : "Causal Inference Hilary 2019"',
+          time: '1w',
+          emoji: '✌️',
+          className: 'border-bottom-0 notification-unread '
+        }).notification-flush
+        .list-group-item
+          +Notification({
+          avatar: {
+            img: 'team/10.jpg',
+            size: 'xl'
+          },
+          body: '<strong>James Cameron</strong> invited to join the group: United Nations International Children\'s Fund',
+          time: '2d',
+          emoji: '🙋‍',
+          className: 'border-bottom-0'
+        }).notification-flush
+    .card-footer.text-center.border-top
+      a.card-link.d-block(href=`${CWD}${paths['notifications']}`) View all
+
+
+mixin CardUserPreferences
+  .bg-white.dark__bg-1000.rounded-2.py-2&attributes(attributes)
+    = '\n'
+    a(href='#!').dropdown-item.fw-bold.text-warning
+      span.fas.fa-crown.me-1
+      span Go Pro
+    = '\n'
+    .dropdown-divider
+    = '\n'
+    a(href='#!').dropdown-item Set status
+    = '\n'
+    a(href=`${CWD}${paths['user-profile']}`).dropdown-item Profile &amp; account
+    = '\n'
+    a(href='#!').dropdown-item Feedback
+    = '\n'
+    .dropdown-divider
+    = '\n'
+    a(href=`${CWD}${paths['user-settings']}`).dropdown-item Settings
+    = '\n'
+    a(href=`${CWD}${paths['card-logout']}`).dropdown-item Logout
+
+
+mixin Card(config)
+  .card&attributes(attributes)
+    .card-header
+      h5.mb-0(data-anchor=config.anchor)!=config.title
+    .card-body.bg-light
+      block
+
+mixin ComponentCard(config)
+  - var config = Object.assign({ anchor: false,bodyClass:'bg-light', anchorID }, config);
+  - var previewId = `dom-${uuid()}`;
+  - var codeId = `dom-${uuid()}`;
+  .card&attributes(attributes)
+    .card-header(class=config.headerClass && config.headerClass)
+      .row.flex-between-end
+        .col-auto.align-self-center
+          if config.title
+            h5.mb-0(data-anchor=config.anchor id=config.anchorID)=config.title
+          if config.description
+            p.mb-0.pt-1(class=config.descriptionClass && config.descriptionClass)!=config.description
+          if config.descriptionEl
+            .mt-2(class=config.descriptionClass && config.descriptionClass)!=config.descriptionEl
+          if config.url
+            a(href=config.url target='_blank').btn.btn-link.btn-sm.ps-0.mt-2=config.linkText
+              span.fas.fa-chevron-right.ms-1.fs--2
+
+        .col-auto.ms-auto
+          .nav.nav-pills.nav-pills-falcon.flex-grow-1(role='tablist' class=config.description && 'mt-2')
+            button.btn.btn-sm.active(data-bs-toggle='pill' data-bs-target=`#${previewId}` type='button' role='tab' aria-controls=previewId aria-selected='true' id=`tab-${previewId}`) Preview
+            button.btn.btn-sm(data-bs-toggle='pill' data-bs-target=`#${codeId}` type='button' role='tab' aria-controls=codeId aria-selected='false' id=`tab-${codeId}`) Code
+
+    .card-body(class=config.bodyClass && config.bodyClass)
+      .tab-content
+        .tab-pane.preview-tab-pane.active(role='tabpanel' aria-labelledby=`tab-${previewId}` id=previewId)
+          block
+        .tab-pane.code-tab-pane(role='tabpanel' aria-labelledby=`tab-${codeId}` id=codeId)
+          pre.scrollbar.rounded-1(style="max-height:420px")
+            code.language-html
+              +escape
+                block
+
+mixin ComponentCardLib(lang = 'html')
+  pre.scrollbar.mt-2&attributes(attributes)
+    code(class=`language-${lang}`)
+      +escape
+        block
+
+//----------------------- NineDotsMenu ------------------------------
+
+mixin NineDotsMenuItem(config)
+  - var config = Object.assign({ title:'title', contentClass:'', link: '#!', width:'40', height: '40'}, config);
+  .col-4
+    a.d-block.hover-bg-200.px-2.py-3.rounded-3.text-center.text-decoration-none(href=`${config.link}` target='_blank')
+      if config.avatar
+        .avatar.avatar-2xl         
+          img(src=`${CWD}assets/img/${config.avatar}` alt='').rounded-circle
+      else if config.avatarText
+        .avatar.avatar-2xl 
+          .avatar-name.rounded-circle(class=`${config.contentClass}`)
+            span.fs-2=config.avatarText
+      else if config.img
+        img(src=`${CWD}assets/img/${config.img}` alt='' width=`${config.width}` height=`${config.height}`).rounded
+
+      p.mb-0.fw-medium.text-800.text-truncate.fs--2(class=`${config.img || config.icon ? 'pt-1' : ''}`)=config.title
+
+mixin NineDotsMenu
+  .card.shadow-none&attributes(attributes)
+    .scrollbar-overlay.nine-dots-dropdown
+      .card-body.px-3
+        .row.text-center.gx-0.gy-0
+          -
+            var brands = [
+              {avatar: 'team/3.jpg', title: 'Account', link:`${CWD}${paths['user-profile']}` }, 
+              {img: 'nav-icons/themewagon.png', title: 'Themewagon', link: 'https://themewagon.com/' },
+              {img: 'nav-icons/mailbluster.png', title: 'Mailbluster', link: 'https://mailbluster.com/'},
+              {img: 'nav-icons/google.png', title: 'Google'},
+              {img: 'nav-icons/spotify.png', title: 'Spotify'},
+              {img: 'nav-icons/steam.png', title: 'Steam'},
+              {img: 'nav-icons/github-light.png', title: 'Github'},
+              {img: 'nav-icons/discord.png', title: 'Discord'},
+              {img: 'nav-icons/xbox.png', title: 'xbox'},
+              {img: 'nav-icons/trello.png', title: 'Kanban'},
+              {img: 'nav-icons/hp.png', title: 'Hp'}
+            ];
+            var socials = [
+              {img: 'nav-icons/linkedin.png', title: 'Linkedin'},
+              {img: 'nav-icons/twitter.png', title: 'Twitter'},
+              {img: 'nav-icons/facebook.png', title: 'Facebook'},
+              {img: 'nav-icons/instagram.png', title: 'Instagram'},
+              {img: 'nav-icons/pinterest.png', title: 'Pinterest'},
+              {img: 'nav-icons/slack.png', title: 'Slack'},
+              {img: 'nav-icons/deviantart.png', title: 'Deviantart'},
+              {avatarText: 'E', title: 'Events', link: `${CWD}${paths['event-detail']}`, contentClass:'bg-soft-primary text-primary'}
+            ];
+            
+          each item in brands 
+            +NineDotsMenuItem(item)
+          .col-12 
+            hr.my-3.mx-n3.bg-200
+          each item in socials 
+            +NineDotsMenuItem(item)
+          .col-12
+            a.btn.btn-outline-primary.btn-sm.mt-4(href='#!') Show more
+

@@ -1,0 +1,16 @@
+// scss-docs-start alert-variant-mixin
+@mixin alert-variant($background, $border, $color, $state) {
+    --#{$prefix}alert-color: #{$color};
+    --#{$prefix}alert-bg: #{$background};
+    --#{$prefix}alert-border-color: #{$border};
+  
+    @if $enable-gradients {
+      background-image: var(--#{$prefix}gradient);
+    }
+  
+    .alert-link {
+      color: var(--#{$prefix}alert-link-color-#{$state});
+    }
+  }
+  // scss-docs-end alert-variant-mixin
+  

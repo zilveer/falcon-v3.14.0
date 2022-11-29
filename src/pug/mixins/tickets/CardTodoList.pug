@@ -1,0 +1,58 @@
+append variables
+  -
+    var todoListTickets = [
+      {
+        task: 'Sidenav text cutoff rendering issue',
+        title:'Problem with Falcon theme'
+      },
+      {
+        task: 'Notify when the WebPack release is ready',
+        title:'Falcon Bootstarp 5'
+      },
+      {
+        task: 'File Attachments',
+        title:'Sending attachments automatically attaches them to the notification email that the client receives as well as making them accessible through.'
+      },
+      {
+        task: 'Billing a Client',
+        title:"It's also possible to create a billable item for a client when you reply to a ticket. You can generate invoices or log time spent on a ticket."
+      },
+      {
+        task: 'Sidenav text cutoff rendering issue',
+        title:'Problem with Falcon theme'
+      },
+      {
+        task: 'Notify when the WebPack release is ready',
+        title:'Falcon Bootstarp 5'
+      },
+      {
+        task: 'File Attachments',
+        title:'Sending attachments automatically attaches them to the notification email that the client receives as well as making them accessible through.'
+      },
+    ];
+
+mixin CardTodoList(itemCount)
+  .card.shadow-none.shadow-show-xl&attributes(attributes)
+    .card-header.d-flex.flex-between-center.bg-light.d-none.d-xl-flex
+      h6.mb-0 To-do List
+      button(type='button').btn.btn-falcon-default.btn-sm.d-flex.align-items-center
+        span.fas.fa-plus(data-fa-transform="shrink-3")
+        span.ms-1 Add
+    .card-body.ticket-todo-list.scrollbar-overlay(class=itemCount && 'h-auto')
+      each item, index in todoListTickets.slice(0, itemCount)
+        +TodoItem(item,index, itemCount)
+    .card-footer.border-top.border-200.text-xl-center.p-0
+      a.btn.btn-link.btn-sm.fw-medium.py-x1.py-xl-2.px-x1(href=`#!`)
+        | View all
+        span.fas.fa-chevron-right.ms-1.fs--2
+
+mixin TodoItem(item,index, itemCount)
+  .d-flex.hover-actions-trigger.btn-reveal-trigger.gap-3.border-200&attributes(attributes)(class= index !== todoListTickets.slice(0, itemCount).length - 1 ? "border-bottom mb-3" : 'mb-0')
+    .form-check.mb-0
+      input.form-check-input.form-check-line-through(type="checkbox" id=`ticket-checkbox-todo-${index}`)
+      label.form-check-label.w-100.pe-3(for=`ticket-checkbox-todo-${index}` class= index===todoListTickets.slice(0, itemCount).length - 1 && 'mb-0')
+        span.mb-1.text-700.d-block= item.task
+        span.fs--2.text-600.lh-base.font-base.fw-normal.d-block(class= index===todoListTickets.slice(0, itemCount).length - 1 ? 'mb-0' : 'mb-2')= item.title
+    .hover-actions.end-0
+      button.btn.fs--2.icon-item-sm.btn-link.px-0.text-600
+        span.fas.fa-trash.text-danger

@@ -1,0 +1,101 @@
+append variables
+  -
+    var activities = [
+      {
+        avatar: {
+          emoji: '🔍',
+          size: 'xl'
+        },
+        body: '<strong>Anthony Hopkins</strong> Followed <strong>Massachusetts Institute of Technology</strong>',
+        time: 'Just Now',
+        className: 'border-bottom-0'
+      },
+      {
+        avatar: {
+          emoji: '📌',
+          size: 'xl'
+        },
+        body: '<strong>Anthony Hopkins</strong> Save a <strong>Life Event</strong>',
+        time: 'Yesterday',
+        className: 'border-bottom-0'
+      },
+      {
+        avatar: {
+          emoji: '🏷️',
+          size: 'xl'
+        },
+        body: '<strong>Rowan Atkinson</strong> Tagged <strong>Anthony Hopkins</strong> in a live video',
+        time: 'December 1, 8:00 PM',
+        className: 'border-bottom-0'
+      },
+      {
+        avatar: {
+          emoji: '💬',
+          size: 'xl'
+        },
+        body: '<strong>Robert Downey</strong> mention <strong>Anthony Hopkins</strong> in a comment',
+        time: 'November 27, 12:00 AM',
+        className: 'border-bottom-0'
+      },
+      {
+        avatar: {
+          emoji: '😂',
+          size: 'xl'
+        },
+        body: '<strong>Anthony Hopkins</strong> reacted to a comment of <strong>Anna Karinina</strong>',
+        time: 'November 20, 8:00 Am',
+        className: 'border-bottom-0'
+      },
+      {
+        avatar: {
+          emoji: '🎁',
+          size: 'xl'
+        },
+        body: '<strong>Jennifer Kent</strong> Congratulated <strong>Anthony Hopkins</strong>',
+        time: 'November 13, 5:00 Am',
+        className: 'border-bottom-0'
+      },
+      {
+        avatar: {
+          emoji: '🏷️',
+          size: 'xl'
+        },
+        body: '<strong>California Institute of Technology</strong> tagged <strong>Anthony Hopkins</strong> in a post.',
+        time: 'November 8, 5:00 PM',
+        className: 'border-bottom-0'
+      },
+      {
+        avatar: {
+          emoji: '📋️',
+          size: 'xl'
+        },
+        body: '<strong>Anthony Hopkins</strong> joined <strong>Victory day cultural Program</strong> with <strong>Tony Stark</strong>',
+        time: 'November 01, 11:30 AM',
+        className: 'border-bottom-0'
+      }
+    ]
+
+mixin ActivityList(start, end)
+  each activity in activities.slice(start, end)
+    +Notification(activity).rounded-0.border-x-0.border.border-300
+  +Notification({
+    avatar: {
+      emoji: '📅️',
+      size: 'xl'
+    },
+    body: '<strong>Massachusetts Institute of Technology</strong> invited <strong>Anthony Hopkin</strong> to an event',
+    time: 'October 28, 12:00 PM'
+  }).border-x-0.border-bottom-0.border-300.rounded-top-0
+
+mixin Activity(config)
+  - var config = Object.assign({more: false, start: 0}, config)
+  .card&attributes(attributes)
+    .card-header.bg-light(class=`${config.more ? 'd-flex justify-content-between' : ''}`)
+      h5.mb-0 Activity log
+      if(config.more)
+        a.font-sans-serif(href=`${CWD}${paths['activity-log']}`) All logs
+    .card-body.fs--1.p-0
+      +ActivityList(config.start)
+      
+
+  

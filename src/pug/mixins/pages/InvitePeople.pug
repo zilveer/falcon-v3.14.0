@@ -1,0 +1,57 @@
+mixin InvitePeople(config)
+  - var config = Object.assign({ inputFieldColumn: 'col-md-7', buttonColumn: 'col-lg-4' }, config);
+  .card&attributes(attributes)
+    .card-body.text-center.py-5
+      .row.justify-content-center
+        .col-7.col-md-5
+          img.img-fluid(src=`${CWD}assets/img/icons/spot-illustrations/41.png`, alt="" style='width:58%;')
+      h3.mt-3.fw-normal.fs-2(class=config.titleClass) Invite a friend, you both get $100
+      p.lead.mb-5 Invite your friends and start working together in seconds. 
+        if(config.brClass)
+          br(class=config.brClass)
+        | Everyone you invite will receive a welcome email.
+
+      .row.justify-content-center
+        div(class=config.inputFieldColumn)
+          form.row.gx-2
+            .col-sm.mb-2.mb-sm-0
+              input.form-control(type='email' placeholder="Email address" aria-label="Recipient's username")
+            .col-sm-auto
+              button.btn.btn-primary.d-block.w-100(type="submit") Send Invitation
+
+    .card-footer.bg-light.text-center.pt-4
+      .row.justify-content-center
+        .col-11.col-sm-10
+          h4.fw-normal.mb-0.fs-1(class=config.footerTitleClass) More ways to 
+            br.d-sm-none 
+            |  invite your friends
+          .row.gx-2.my-4
+            div(class=config.buttonColumn)
+              button.btn.btn-falcon-default.d-block.w-100.mb-2(class=config.buttonClass)
+                img(src=`${CWD}assets/img/logos/gmail.png`, width="20" alt="")
+                span.fw-medium.ms-2 Invite from Gmail
+            div(class=config.buttonColumn)
+              button.btn.btn-falcon-default.d-block.w-100.mb-2(data-bs-toggle="modal" data-bs-target="#copyLinkModal" class=config.buttonClass)
+                span.fas.fa-link.text-700
+                span.fw-medium.ms-2 Copy Link
+
+              #copyLinkModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='copyLinkModalLabel' aria-hidden='true')
+                .modal-dialog(role='document')
+                  .modal-content.overflow-hidden
+                    .modal-header
+                      h5#copyLinkModalLabel.modal-title Your personal referral link
+                      button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                    .modal-body.bg-light.p-4
+                      form
+                        input.form-control.form-control-sm.invitation-link(value="https://falcon.com/invited")
+
+            div(class=config.buttonColumn)
+              button.btn.btn-falcon-default.d-block.w-100.ms-0(class=config.buttonClass)
+                span.fab.fa-facebook-square.text-facebook(data-fa-transform="grow-2")
+                span.fw-medium.ms-2 Share on Facebook
+          p.mb-2.fs--1 Once you’ve invited friends, you can 
+            a(href="#!") view the status of your referrals
+            br.d-none.d-lg-block.d-xxl-none
+            |  or visit our 
+            a(href="#!") Help Center 
+            | if you have any questions.  

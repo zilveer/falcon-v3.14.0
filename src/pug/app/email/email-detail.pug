@@ -1,0 +1,70 @@
+extends ../../layouts/LayoutTheme
+include ../../mixins/email/EmailDetail
+       
+
+block append content
+  +EmailDetailHeader.mb-3
+  .card
+    .card-header
+      .row
+        .col-md.d-flex
+          +Avatar({img: 'team/1.jpg'})
+          .flex-1.ms-2
+            h5.mb-0 Women work wonders… on your marketing skills
+            a(href="#!").text-800.fs--1
+              span.fw-semi-bold Emma Watson
+              span.ms-1.text-500 &lt;emma@watson.com&gt;
+        .col-md-auto.ms-auto.d-flex.align-items-center.ps-6.ps-md-3
+          small 8:40 AM (9 hours ago)
+          span.fas.fa-star.text-warning.fs--1.ms-2
+    .card-body.bg-light
+      .row.justify-content-center
+        .col-lg-8.col-xxl-6
+          .card.shadow-none.mb-3
+            img(src=`${CWD}assets/img/icons/spot-illustrations/international-women-s-day-2.png` alt="").card-img-top
+            .card-body
+              h3.fw-semi-bold Happy International Women’s Day!
+              p On International Women’s Day, we at ThemeWagon want you to discover the skills you can learn from our amazing women digital marketing instructors.
+              p That's not all, when you enroll in one of their courses, use promo code: 
+                code GirlPower20
+                |  and get 
+                a(href="#!").fw-semi-bold 20% off
+                |  as our Women's Day gift to you. This offer 
+                a(href="#!").fw-semi-bold expires in 7 days
+                |  —so pick your course—and enroll today!
+              .text-center
+                button(type='button').btn.btn-success.btn-lg.my-3 Browse Courses
+                small.d-block For any technical issues faced, please contact 
+                  a(href='#!') Customer Support
+                  | .
+          .text-center
+            .icon-group.justify-content-center
+              a(href='#!').icon-item.text-facebook
+                span.fab.fa-facebook-f
+              a(href='#!').icon-item.text-twitter
+                span.fab.fa-twitter
+              a(href='#!').icon-item.text-google-plus
+                span.fab.fa-google-plus-g
+              a(href='#!').icon-item.text-linkedin
+                span.fab.fa-linkedin-in
+              a(href='#!').icon-item.text-700
+                span.fab.fa-medium-m
+
+            small If you wish to unsubscribe from all future emails, please click 
+              a(href="#!") here
+              | .
+    .card-footer
+      .row.justify-content-between
+        .col
+          a.btn.btn-falcon-default.btn-sm(href=`${CWD}${paths['email-compose']}`)
+            span.fas.fa-reply(data-fa-transform="down-2")
+            span.d-none.d-sm-inline-block.ms-1 Reply
+          a.btn.btn-falcon-default.btn-sm.ms-2(href=`${CWD}${paths['email-compose']}`)
+            span.fas.fa-location-arrow(data-fa-transform="down-2")
+            span.d-none.d-sm-inline-block.ms-1 Forward
+        .col-auto.d-flex.align-items-center
+          small 2 of 354
+          button(type='button').btn.btn-falcon-default.btn-sm.ms-2
+            span.fas.fa-chevron-left
+          button(type='button').btn.btn-falcon-default.btn-sm.ms-2
+            span.fas.fa-chevron-right

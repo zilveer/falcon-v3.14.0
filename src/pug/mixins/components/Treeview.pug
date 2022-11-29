@@ -1,0 +1,110 @@
+mixin TreeviewExample(items)
+  ul.mb-0.treeview#treeviewExample
+    each item,index in items
+      if item.hasOwnProperty('children')
+        +SingleItem(item,index,false,'treeviewExample')
+      else
+        +TreeviewListItem(item,false)
+
+mixin TreeviewStripedExample(items)
+  ul.mb-0.treeview.treeview-stripe#treeviewStriped(data-options!={ striped: true })
+    each item,index in items
+      if item.hasOwnProperty('children')
+        +SingleItem(item,index,true,'treeviewStriped')
+      else
+        +TreeviewListItem(item,true)
+
+mixin TreeviewSelectExample(items)
+  ul.mb-0.treeview.treeview-slect#treeviewSelect(data-options!={ select: true })
+    each item,index in items
+      if item.hasOwnProperty('children')
+        +SelectSingleItem(item,index,false,'treeviewSelect')
+      else
+        +TreeviewSelectListItem(item,false)
+
+mixin TreeviewSelectStripedExample(items)
+  ul.mb-0.treeview.treeview-stripe.treeview-slect#treeviewSelectStriped(data-options!={ striped: true, select:true })
+    each item,index in items
+      if item.hasOwnProperty('children')
+        +SelectSingleItem(item,index,true,'treeviewSelectStriped')
+      else
+        +TreeviewSelectListItem(item,true)
+
+mixin SingleItem(config,index,stripe,treeviewId)
+  li.treeview-list-item
+    = '\n\n'
+    a(data-bs-toggle='collapse', href=`#${treeviewId}-${config.id}` role='button', aria-expanded='false')
+      p.treeview-text
+        = '\n\n'
+        | #{config.name}
+        if config.badge
+          span.badge.rounded-pill.badge-soft-primary.ms-2=config.badge
+    ul.collapse.treeview-list(id=`${treeviewId}-${config.id}` data-show=`${config.show ? config.show : false}`)
+      each item,ind in config.children
+        if item.hasOwnProperty('children')
+          +SingleItem(item,ind,stripe,treeviewId)
+        else 
+          +TreeviewListItem(item,stripe)
+
+
+mixin SelectSingleItem(config,index,stripe,treeviewId)
+  li.treeview-list-item
+    = '\n\n'
+    .toggle-container
+      input.form-check-input(type='checkbox' data-target=`#${treeviewId}-${config.id}`)
+      = '\n\n'
+      a(data-bs-toggle='collapse', href=`#${treeviewId}-${config.id}` role='button', aria-expanded='false')
+        p.treeview-text
+          = '\n\n'
+          | #{config.name}
+          if config.badge
+            span.badge.rounded-pill.badge-soft-primary.ms-2=config.badge
+    ul.collapse.treeview-list(id=`${treeviewId}-${config.id}` data-show=`${config.show ? config.show : false}`)
+      each item,ind in config.children
+        if item.hasOwnProperty('children')
+          +SelectSingleItem(item,ind,stripe,treeviewId)
+        else
+          +TreeviewSelectListItem(item,stripe)
+
+mixin TreeviewListItem(item,stripe)
+  li.treeview-list-item
+    .treeview-item
+      = '\n\n'
+      a(href='#!').flex-1
+        p.treeview-text
+          = '\n\n'
+          span(class=`me-2 ${item.icon}`)
+          = '\n\n'
+          | #{item.name}
+      if item.dot && stripe
+        .dot(class=`bg-${item.dot}`)
+
+mixin TreeviewSelectListItem(item,stripe)
+  li.treeview-list-item
+    .treeview-item
+      = '\n\n'
+      input.form-check-input(type='checkbox')
+      = '\n\n'
+      a(href='#!').flex-1
+        p.treeview-text
+          = '\n\n'
+          span(class=`me-2 ${item.icon}`)
+          = '\n\n'
+          | #{item.name}
+      if item.dot && stripe
+        .dot(class=`bg-${item.dot}`)
+
+mixin TreeviewDemo
+  ul#treeviewExample.treeview
+    li.treeview-list-item
+      = '\n\n'
+      a(data-bs-toggle='collapse', href='#treeviewExample-1-1', role='button', aria-expanded='false')
+        p.treeview-text
+          | public
+      ul#treeviewExample-1-1.collapse.treeview-list
+        li.treeview-list-item
+          = '\n\n'
+          a(data-bs-toggle='collapse', href='#treeviewExample-2-1', role='button', aria-expanded='false')
+            p.treeview-text
+              | assets
+          // Nestesd Childrens

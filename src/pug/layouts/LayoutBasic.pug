@@ -1,0 +1,15 @@
+mixin LayoutAuthBasicCard
+  .card&attributes(attributes)
+    .card-body.p-4.p-sm-5
+      block
+
+mixin LayoutBasic(config)
+  - var config = Object.assign({columnClass: 'col-xl-5 col-xxl-4'}, config)
+
+  .row.flex-center.min-vh-100.py-6&attributes(attributes)
+    .col-sm-10.col-md-8.col-lg-6(class=config.columnClass)
+      a(href=`${CWD}${paths['default-dashboard']}`).d-flex.flex-center.mb-4
+        +Logo('falcon', 58).fw-bolder.fs-5.d-inline-block
+      +LayoutAuthBasicCard
+        block
+

@@ -1,0 +1,24 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/documentation/Plugins
+  
+
+block append content
+  +PageHeader({title:"Plugin"})
+  .card.mb-3
+    .card-header
+      h5.mb-0(data-anchor) Simple approach(without npm)
+    .card-body.bg-light
+      +SimpleApproach.mb-0
+  .card.mb-3
+    .card-header
+      h5.mb-0(data-anchor) Using npm
+    .card-body.bg-light
+      +NpmApproach
+
+  +PageHeader({
+    title: 'Built-in plugins'
+  })
+
+  +Plugins
+
+

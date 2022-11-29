@@ -1,0 +1,11 @@
+extends ../layouts/LayoutComponent
+include ../mixins/home/dashboard/Dashboard
+
+prepend scripts
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+
+block navbarVertical
+  +NavbarVertical.navbar-inverted
+
+append content
+  +Dashboard

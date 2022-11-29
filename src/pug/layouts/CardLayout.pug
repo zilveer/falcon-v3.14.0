@@ -1,0 +1,26 @@
+extends LayoutTheme
+
+block mainContent
+  .container-fluid
+    .row.min-vh-100.flex-center.g-0&attributes(attributes)
+      .col-lg-8.col-xxl-5.py-3.position-relative
+        img(src=`${CWD}assets/img/icons/spot-illustrations/bg-shape.png`, alt="" width='250').bg-auth-circle-shape
+        img(src=`${CWD}assets/img/icons/spot-illustrations/shape-1.png`, alt="" width="150").bg-auth-circle-shape-2
+        .card.overflow-hidden.z-index-1
+          .card-body.p-0
+            .row.g-0.h-100
+              .col-md-5.text-center.bg-card-gradient
+                .position-relative.p-4.pt-md-5.pb-md-7.light
+                  +Background({
+                    image: `${CWD}assets/img/icons/spot-illustrations/half-circle.png`,
+                    className: 'bg-auth-card-shape'
+                  }).z-index-0
+                  .z-index-1.position-relative
+                    a(href=`${CWD}${paths['default-dashboard']}`).link-light.mb-4.font-sans-serif.fs-4.d-inline-block.fw-bolder falcon
+                    p.opacity-75.text-white With the power of #{name}, you can now focus only on functionaries for your digital products, while leaving the UI design on us!
+                .mt-3.mb-4.mt-md-4.mb-md-5.light
+                  block cardLeft
+              .col-md-7.d-flex.flex-center
+                .p-4.p-md-5.flex-grow-1
+                  block cardRight
+

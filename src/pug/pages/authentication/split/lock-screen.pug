@@ -1,0 +1,8 @@
+extends ../../../layouts/LayoutSplit
+include ../../../mixins/authentication/LockScreenContent
+
+block append variables
+  - var background = { image: `${CWD}assets/img/generic/18.jpg` }
+
+block splitContent
+  +LockScreenContent

@@ -1,0 +1,31 @@
+extends ../../../layouts/LayoutComponent
+
+block prepend scripts
+  script(src=`${CWD}vendors/lodash/lodash.min.js`)
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+  script(src=`${CWD}vendors/dayjs/dayjs.min.js`)
+  script(src=`${CWD}assets/js/echarts-example.js`)
+
+block append content
+
+  .row.g-3.mb-3
+    .col-lg-6
+      +ComponentCard({
+        title:'Heatmap Chart',
+        anchor:true
+      }).h-100(dir='ltr')
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/heatmap-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-heatmap-chart-example(style="min-height: 350px;" data-echart-responsive="true")
+
+    .col-lg-6
+      +ComponentCard({
+        title:'Heatmap Single Series Chart',
+        anchor:true
+      }).h-100(dir='ltr')
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/heatmap-single-series-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-heatmap-single-series-chart(style="min-height: 350px;" data-echart-responsive="true")
+
+
+

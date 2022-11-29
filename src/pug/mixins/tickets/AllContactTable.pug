@@ -1,0 +1,519 @@
+append variables
+  -
+    var contactBadges = [
+      {content: 'Active', type:'success'},
+      {content: 'Inactive', type:'secondary'},
+      {content: 'Expired', type:'danger'},
+      {content: 'Pending', type:'warning'},
+      {content: 'N/A', type:''}
+    ];
+
+  -
+    var contacts = [
+      {
+        name:"Emma Watson",
+        avatar: {
+          name:"Emma Watson",
+          size: 'xl',
+          round: "circle"
+        },
+        phone: '+61 1800 861 302',
+        report: 'Analysis of the Top Customers',
+        subscription: contactBadges[0],
+        social: "Facebook"
+      },
+      {
+        name:"Luke",
+        avatar: {
+          name:"Luke",
+          size: 'xl',
+          round: "circle"
+        },
+        phone: '+36 1256 523 369',
+        report: 'Performance of a Group',
+        subscription: contactBadges[1],
+        social: "Twitter"
+      },
+      {
+        name:"Finley",
+        avatar: {
+          img: 'team/1-thumb.png',
+          size: 'xl',
+        },
+        phone: '+61 1800 861 302',
+        report: 'Performance of Agents',
+        subscription: contactBadges[2],
+        social: "Linkedin"
+      },
+      {
+        name:"Peter Gill",
+        avatar: {
+          name:"Peter Gill",
+          size: 'xl',
+          round: "circle"
+        },
+        phone: '+99 2536 632 566',
+        report: 'Handling Time (on Average)',
+        subscription: contactBadges[0],
+        social: "Twitter"
+      },
+      {
+        name:"Sallie Reyes",
+        avatar: {
+          img: 'team/25-thumb.png',
+          size: 'xl',
+        },
+        phone: '+84 3698 856 963',
+        report: 'Handling Time (on Average)',
+        subscription: "",
+        social: "Twitter"
+      },
+      {
+        name:"Freya",
+        avatar: {
+          name:"Freya",
+          size: 'xl',
+          round: 'circle'
+        },
+        phone: '+66 3256 632 235',
+        report: 'Survey of Customer Satisfaction',
+        subscription: "",
+        social: ""
+      },
+      {
+        name:"Morrison",
+        avatar: {
+          name:"Morrison",
+          size: 'xl',
+          round: "circle"
+        },
+        phone: '+12 2563 223 325',
+        report: 'Distribution of Performance',
+        subscription: contactBadges[3],
+        social: "Twitter"
+      },
+      {
+        name:"Aar Kay",
+        avatar: {
+          name:"Aar Kay",
+          size: 'xl',
+          round: 'circle'
+        },
+        phone: '+89 213 658 963',
+        report: 'Distribution of Performance',
+        subscription: contactBadges[0],
+        social: ""
+      },
+      {
+        name:"Michele",
+        avatar: {
+          name:"Michele",
+          size: 'xl',
+          round: 'circle'
+        },
+        phone: '+39 213 658 963',
+        report: 'Analysis of the Top Customer',
+        subscription: "",
+        social: "Twitter"
+      },
+      {
+        name:"Banneker",
+        avatar: {
+          img: 'team/14-thumb.png',
+          size: 'xl',
+        },
+        phone: '+69 213 658 963',
+        report: "Freddy's canned retort",
+        subscription: contactBadges[0],
+        social: ""
+      },
+      {
+        name:"Romanin",
+        avatar: {
+          img: 'team/3-thumb.png',
+          size: 'xl',
+        },
+        phone: '+79 213 658 963',
+        report: 'Emailbot Freddy',
+        subscription: contactBadges[0],
+        social: ""
+      },
+      {
+        name:"Michele",
+        avatar: {
+          name:"Michele",
+          size: 'xl',
+          round: 'circle'
+        },
+        phone: '+66 3256 632 235',
+        report: 'Survey of Customer Satisfaction',
+        subscription: "",
+        social: ""
+      },
+      {
+        name:"Morrison",
+        avatar: {
+          name:"Morrison",
+          size: 'xl',
+          round: "circle"
+        },
+        phone: '+12 2563 223 325',
+        report: 'Distribution of Performance',
+        subscription: contactBadges[3],
+        social: "Twitter"
+      },
+      {
+        name:"Aar Kay",
+        avatar: {
+          name:"Aar Kay",
+          size: 'xl',
+          round: 'circle'
+        },
+        phone: '+89 213 658 963',
+        report: 'Distribution of Performance',
+        subscription: contactBadges[0],
+        social: ""
+      },
+      {
+        name:"Emma Watson",
+        avatar: {
+          name:"Emma Watson",
+          size: 'xl',
+          round: "circle"
+        },
+        phone: '+61 1800 861 302',
+        report: 'Analysis of the Top Customers',
+        subscription: contactBadges[0],
+        social: "Facebook"
+      },
+      {
+        name:"Banneker",
+        avatar: {
+          img: 'team/14-thumb.png',
+          size: 'xl',
+        },
+        phone: '+36 1256 523 369',
+        report: 'Performance of a Group',
+        subscription: contactBadges[1],
+        social: "Twitter"
+      },
+      {
+        name:"Finley",
+        avatar: {
+          img: 'team/1-thumb.png',
+          size: 'xl',
+        },
+        phone: '+61 1800 861 302',
+        report: 'Performance of Agents',
+        subscription: contactBadges[2],
+        social: "Linkedin"
+      },
+      {
+        name:"Peter Gill",
+        avatar: {
+          name:"Peter Gill",
+          size: 'xl',
+          round: "circle"
+        },
+        phone: '+99 2536 632 566',
+        report: 'Handling Time (on Average)',
+        subscription: contactBadges[0],
+        social: "Twitter"
+      },
+      {
+        name:"Sallie Reyes",
+        avatar: {
+          img: 'team/25-thumb.png',
+          size: 'xl',
+        },
+        phone: '+84 3698 856 963',
+        report: 'Handling Time (on Average)',
+        subscription: "",
+        social: "Twitter"
+      },
+      {
+        name:"Freya",
+        avatar: {
+          name:"Freya",
+          size: 'xl',
+          round: 'circle'
+        },
+        phone: '+66 3256 632 235',
+        report: 'Survey of Customer Satisfaction',
+        subscription: "",
+        social: ""
+      },
+      {
+        name:"Luke",
+        avatar: {
+          name:"Luke",
+          size: 'xl',
+          round: "circle"
+        },
+        phone: '+36 1256 523 369',
+        report: 'Performance of a Group',
+        subscription: contactBadges[1],
+        social: "Twitter"
+      },
+      {
+        name:"Finley",
+        avatar: {
+          img: 'team/1-thumb.png',
+          size: 'xl',
+        },
+        phone: '+61 1800 861 302',
+        report: 'Performance of Agents',
+        subscription: contactBadges[2],
+        social: "Linkedin"
+      },
+      {
+        name:"Banneker",
+        avatar: {
+          img: 'team/14-thumb.png',
+          size: 'xl',
+        },
+        phone: '+69 213 658 963',
+        report: "Freddy's canned retort",
+        subscription: contactBadges[0],
+        social: ""
+      },
+      {
+        name:"Sallie Reyes",
+        avatar: {
+          img: 'team/25-thumb.png',
+          size: 'xl',
+        },
+        phone: '+84 3698 856 963',
+        report: 'Handling Time (on Average)',
+        subscription: "",
+        social: "Twitter"
+      },
+      {
+        name:"Freya",
+        avatar: {
+          name:"Freya",
+          size: 'xl',
+          round: 'circle'
+        },
+        phone: '+66 3256 632 235',
+        report: 'Survey of Customer Satisfaction',
+        subscription: "",
+        social: ""
+      },
+      {
+        name:"Luke",
+        avatar: {
+          name:"Luke",
+          size: 'xl',
+          round: "circle"
+        },
+        phone: '+36 1256 523 369',
+        report: 'Performance of a Group',
+        subscription: contactBadges[1],
+        social: "Twitter"
+      },
+      {
+        name:"Finley",
+        avatar: {
+          img: 'team/1-thumb.png',
+          size: 'xl',
+        },
+        phone: '+61 1800 861 302',
+        report: 'Performance of Agents',
+        subscription: contactBadges[2],
+        social: "Linkedin"
+      },
+      {
+        name:"Peter Gill",
+        avatar: {
+          name:"Peter Gill",
+          size: 'xl',
+          round: "circle"
+        },
+        phone: '+99 2536 632 566',
+        report: 'Handling Time (on Average)',
+        subscription: contactBadges[0],
+        social: "Twitter"
+      },
+      {
+        name:"Sallie Reyes",
+        avatar: {
+          img: 'team/25-thumb.png',
+          size: 'xl',
+        },
+        phone: '+84 3698 856 963',
+        report: 'Handling Time (on Average)',
+        subscription: "",
+        social: "Twitter"
+      },
+      {
+        name:"Emma Watson",
+        avatar: {
+          name:"Emma Watson",
+          size: 'xl',
+          round: "circle"
+        },
+        phone: '+66 3256 632 235',
+        report: 'Survey of Customer Satisfaction',
+        subscription: "",
+        social: ""
+      },
+      {
+        name:"Morrison",
+        avatar: {
+          name:"Morrison",
+          size: 'xl',
+          round: "circle"
+        },
+        phone: '+12 2563 223 325',
+        report: 'Distribution of Performance',
+        subscription: contactBadges[3],
+        social: "Twitter"
+      },
+      {
+        name:"Aar Kay",
+        avatar: {
+          name:"Aar Kay",
+          size: 'xl',
+          round: 'circle'
+        },
+        phone: '+89 213 658 963',
+        report: 'Distribution of Performance',
+        subscription: contactBadges[0],
+        social: ""
+      },
+      {
+        name:"Romanin",
+        avatar: {
+          img: 'team/3-thumb.png',
+          size: 'xl',
+        },
+        phone: '+79 213 658 963',
+        report: 'Emailbot Freddy',
+        subscription: contactBadges[0],
+        social: ""
+      },
+    ]
+
+mixin Badge(badge)
+  small.badge.rounded(class=`badge-soft-${badge.type}`)=badge.content
+
+mixin ContactItem(config, index)
+  tr&attributes(attributes)
+    td.align-middle.fs-0.py-3
+      .form-check.mb-0
+          input.form-check-input(
+            type='checkbox'
+            id=`all-contact-${index}`
+            data-bulk-select-row
+          )
+    td.align-middle.name.white-space-nowrap.pe-5.ps-2
+      .d-flex.align-items-center.gap-2.position-relative
+        +Avatar(config.avatar)
+        h6.mb-0
+          a(href=`${CWD}app/support-desk/contact-details.html`).stretched-link.text-900= config.name
+    td.align-middle.phone-number.font-sans-serif.white-space-nowrap
+      a.text-700(href=`tel:${config.phone.replace(/\s+/g, '')}`)= config.phone
+    td.align-middle.report
+      a(href="#!")= config.report
+    if config.subscription
+      td.align-middle.subscription.fs-0.text-end
+        +Badge(config.subscription)
+    else
+      td.align-middle.subscription.text-500.font-sans-serif.text-end N/A
+    td.align-middle.social.text-end.ps-4
+      if config.social
+        a(href="#!")= config.social
+      else
+        p.mb-0.text-500 N/A
+
+mixin ContactTable
+  .table-responsive.scrollbar&attributes(attributes)
+    table.table.table-sm.fs--1.mb-0
+      thead.text-800.bg-light
+        tr
+          th.py-2.fs-0.pe-2(style="width: 28px;")
+            .form-check.d-flex.align-items-center
+              input.form-check-input#checkbox-bulk-tickets-select(
+                type='checkbox'
+                data-bulk-select!={
+                  body: "table-contact-body",
+                  actions: "table-contact-actions",
+                  replacedElement: "table-contact-replace-element"
+                }
+              )
+          th.sort.align-middle.ps-2(data-sort="name") Name
+          th.sort.align-middle.pe-5(data-sort="phone-number") Phone Number
+          th.sort.align-middle.pe-5(data-sort="report") Name of the report
+          th.sort.align-middle.text-end(data-sort="subscription") Subscription
+          th.sort.align-middle.text-end(data-sort="social") Social
+      tbody.list#table-contact-body
+        each contact, index in contacts
+          +ContactItem(contact, index)
+    .text-center.d-none#contact-table-fallback
+      p.fw-bold.fs-1.mt-3 No contact found
+
+
+mixin AllContactTable(page)
+  .card#allContactTable&attributes(attributes)(data-list!={
+    valueNames: ["name", "phone-number", "report", "subscription", "social"],
+    page: page,
+    pagination: true,
+    fallback: "contact-table-fallback"
+  })
+    .card-header.border-bottom.border-200.px-0
+      .d-lg-flex.justify-content-between
+        .row.flex-between-center.gy-2.px-x1
+          .col-auto.pe-0
+            h6.mb-0 Contacts
+          .col-auto
+            form
+              .input-group.input-search-width
+                input.form-control.form-control-sm.shadow-none.search(type='search', placeholder='Search  by name', aria-label='search')
+                button.btn.btn-sm.btn-outline-secondary.border-300.hover-border-secondary
+                  span.fa.fa-search.fs--1
+        .border-bottom.border-200.my-3
+        .d-flex.align-items-center.justify-content-between.justify-content-lg-end.px-x1
+          button.btn.btn-sm.btn-falcon-default.d-xl-none(
+            type="button"
+            data-bs-toggle= "offcanvas"
+            data-bs-target="#allContactOffcanvas"
+            aria-controls="allContactOffcanvas"
+          )
+            span.fas.fa-filter(data-fa-transform="shrink-4")
+            span.ms-1.d-none.d-sm-inline-block Filter
+          .bg-300.mx-3.d-none.d-lg-block.d-xl-none(style='width:1px; height:29px')
+          #table-contact-actions.d-none
+            .d-flex
+              select.form-select.form-select-sm(aria-label='Bulk actions')
+                option(selected='') Bulk actions
+                option(value='Refund') Refund
+                option(value='Delete') Delete
+                option(value='Archive') Archive
+              button.btn.btn-falcon-default.btn-sm.ms-2(type='button') Apply
+          .d-flex.align-items-center#table-contact-replace-element
+            button(type='button').btn.btn-falcon-default.btn-sm
+              span.fas.fa-plus(data-fa-transform="shrink-3")
+              span.d-none.d-sm-inline-block.d-xl-none.d-xxl-inline-block.ms-1 New
+            button(type='button').btn.btn-falcon-default.btn-sm.mx-2
+              span.fas.fa-external-link-alt(data-fa-transform="shrink-3")
+              span.d-none.d-sm-inline-block.d-xl-none.d-xxl-inline-block.ms-1 Export
+            button(type='button').btn.btn-falcon-default.btn-sm
+              span.fas.fa-file-import(data--transform="shrink-3")
+              span.d-none.d-sm-inline-block.d-xl-none.d-xxl-inline-block.ms-1 Import
+            .dropdown.font-sans-serif.ms-2
+              button.btn.btn-falcon-default.text-600.btn-sm.dropdown-toggle.dropdown-caret-none(type='button' id="preview-dropdown" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false")
+                span.fas.fa-ellipsis-h.fs--2
+              .dropdown-menu.dropdown-menu-end.border.py-2(aria-labelledby="preview-dropdown" )
+                a(href='#!').dropdown-item View
+                a(href='#!').dropdown-item Export
+                .dropdown-divider
+                a(href='#!').dropdown-item.text-danger Remove
+    .card-body.p-0
+      +ContactTable
+    .card-footer.d-flex.justify-content-center
+      button(type='button' title="Previous" data-list-pagination='prev').btn.btn-sm.btn-falcon-default.me-1
+        span.fas.fa-chevron-left
+      ul.pagination.mb-0
+      button(type='button' title="Next" data-list-pagination='next').btn.btn-sm.btn-falcon-default.ms-1
+        span.fas.fa-chevron-right

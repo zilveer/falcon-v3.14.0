@@ -1,0 +1,46 @@
+extends ../../../layouts/LayoutComponent
+include ../../../mixins/components/Images
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Images',
+      description: 'Documentation and examples for opting images into responsive behavior (so they never become larger than their parent elements) and add lightweight styles to them—all via classes.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/content/images/`,
+      linkText: 'Images on Bootstrap'
+    }
+
+block component
+  +PageHeader(pageHeader)
+
+  
+
+  +ComponentCard({
+    title: 'Responsive images',
+    anchor: true,
+    description:"Images in Bootstrap are made responsive with <code>.img-fluid</code> This applies <code>max-width: 100%;</code> and <code>height: auto;</code> to the image so that it scales with the parent element.",
+    descriptionClass:'mt-2 mb-0',
+    bodyClass:'bg-light overflow-hidden'
+  }).mb-3
+    +ResponsiveImageDemo  
+
+  +ComponentCard({
+    title: 'Image thumbnails',
+    anchor: true,
+    description:`In addition to our <a href="https://getbootstrap.com/docs/${bootstrapVersion}/utilities/borders/">border-radius utilities</a>, you can use <code>.img-thumbnail</code> to give an image a rounded 1px border appearance.`,
+    descriptionClass:'mt-2 mb-0',
+    bodyClass:'bg-light overflow-hidden'
+  }).mb-3
+    +ImageThumbnailDemo  
+
+  +ComponentCard({
+    title: 'Aligning images',
+    anchor: true,
+    description:`Align images with the 
+    <a href="https://getbootstrap.com/docs/${bootstrapVersion}/utilities/float/">
+  helper float classes </a> or <a href="https://getbootstrap.com/docs/${bootstrapVersion}/utilities/text/#text-alignment/">text alignment classes</a>. <code>block</code>-level images can be centered using <a href="https://getbootstrap.com/docs/${bootstrapVersion}/utilities/spacing/#horizontal-centering/">the <code>.mx-auto</code> margin utility class</a>.`,
+    descriptionClass:'mt-2 mb-0',
+    bodyClass:'bg-light overflow-hidden'
+  }).mb-3
+    +AlignImageDemo

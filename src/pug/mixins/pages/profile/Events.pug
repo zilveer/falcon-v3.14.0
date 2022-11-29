@@ -1,0 +1,837 @@
+mixin EventTitle
+  .card.mb-3
+    .card-body
+      .row.flex-between-center
+        .col-md
+          h5.mb-2.mb-md-0 Create Event
+        .col-auto
+          button.btn.btn-falcon-default.btn-sm.me-2(role='button') Save
+          button.btn.btn-falcon-primary.btn-sm(role='button') Make your event live 
+
+mixin EventBanner
+  .card.cover-image.mb-3
+    img.card-img-top(src=`${CWD}assets/img/generic/13.jpg` alt='')
+    input#upload-cover-image.d-none(type="file")
+    label.cover-image-file-input(for="upload-cover-image")
+      span.fas.fa-camera.me-2
+      span Change cover photo
+
+mixin EventDetail
+  form
+    .row.gx-2
+      .col-12.mb-3
+        label.form-label(for="event-name") Event Title
+        input.form-control#event-name(type="text" placeholder="Event Title")
+      .col-sm-6.mb-3
+        label.form-label(for="start-date") Start Date
+        input.form-control#start-date.datetimepicker(type="text" placeholder="d/m/y" data-options!={ dateFormat: 'd/m/y',disableMobile: true})
+      .col-sm-6.mb-3
+        label.form-label(for="start-time") Start Time
+        input.form-control#start-time.datetimepicker(type="text" placeholder="H:i" data-options!={enableTime: true, noCalendar: true, dateFormat: 'H:i',disableMobile: true})
+      .col-sm-6.mb-3
+        label.form-label(for="end-date") End Date
+        input.form-control#end-date.datetimepicker(type="text" placeholder="d/m/y" data-options!={ dateFormat: 'd/m/y',disableMobile: true})
+      .col-sm-6.mb-3
+        label.form-label(for="end-time") End Time
+        input.form-control#end-time.datetimepicker(type="text" placeholder="H:i" data-options!={enableTime: true, noCalendar: true, dateFormat: 'H:i',disableMobile: true})
+      .col-sm-6
+        label.form-label(for="registration-deadline") Registration Deadline
+        input.form-control#registration-deadline.datetimepicker(type="text" placeholder="d/m/y" data-options!={ dateFormat: 'd/m/y',disableMobile: true})
+      .col-sm-6
+        label.form-label(for="time-zone") Timezone
+          -
+            var timezones = [
+              {
+                "offset": "GMT-12:00",
+                "name": "Etc/GMT-12"
+              },
+              {
+                "offset": "GMT-11:00",
+                "name": "Etc/GMT-11"
+              },
+              {
+                "offset": "GMT-11:00",
+                "name": "Pacific/Midway"
+              },
+              {
+                "offset": "GMT-10:00",
+                "name": "America/Adak"
+              },
+              {
+                "offset": "GMT-09:00",
+                "name": "America/Anchorage"
+              },
+              {
+                "offset": "GMT-09:00",
+                "name": "Pacific/Gambier"
+              },
+              {
+                "offset": "GMT-08:00",
+                "name": "America/Dawson_Creek"
+              },
+              {
+                "offset": "GMT-08:00",
+                "name": "America/Ensenada"
+              },
+              {
+                "offset": "GMT-08:00",
+                "name": "America/Los_Angeles"
+              },
+              {
+                "offset": "GMT-07:00",
+                "name": "America/Chihuahua"
+              },
+              {
+                "offset": "GMT-07:00",
+                "name": "America/Denver"
+              },
+              {
+                "offset": "GMT-06:00",
+                "name": "America/Belize"
+              },
+              {
+                "offset": "GMT-06:00",
+                "name": "America/Cancun"
+              },
+              {
+                "offset": "GMT-06:00",
+                "name": "America/Chicago"
+              },
+              {
+                "offset": "GMT-06:00",
+                "name": "Chile/EasterIsland"
+              },
+              {
+                "offset": "GMT-05:00",
+                "name": "America/Bogota"
+              },
+              {
+                "offset": "GMT-05:00",
+                "name": "America/Havana"
+              },
+              {
+                "offset": "GMT-05:00",
+                "name": "America/New_York"
+              },
+              {
+                "offset": "GMT-04:30",
+                "name": "America/Caracas"
+              },
+              {
+                "offset": "GMT-04:00",
+                "name": "America/Campo_Grande"
+              },
+              {
+                "offset": "GMT-04:00",
+                "name": "America/Glace_Bay"
+              },
+              {
+                "offset": "GMT-04:00",
+                "name": "America/Goose_Bay"
+              },
+              {
+                "offset": "GMT-04:00",
+                "name": "America/Santiago"
+              },
+              {
+                "offset": "GMT-04:00",
+                "name": "America/La_Paz"
+              },
+              {
+                "offset": "GMT-03:00",
+                "name": "America/Argentina/Buenos_Aires"
+              },
+              {
+                "offset": "GMT-03:00",
+                "name": "America/Montevideo"
+              },
+              {
+                "offset": "GMT-03:00",
+                "name": "America/Araguaina"
+              },
+              {
+                "offset": "GMT-03:00",
+                "name": "America/Godthab"
+              },
+              {
+                "offset": "GMT-03:00",
+                "name": "America/Miquelon"
+              },
+              {
+                "offset": "GMT-03:00",
+                "name": "America/Sao_Paulo"
+              },
+              {
+                "offset": "GMT-03:30",
+                "name": "America/St_Johns"
+              },
+              {
+                "offset": "GMT-02:00",
+                "name": "America/Noronha"
+              },
+              {
+                "offset": "GMT-01:00",
+                "name": "Atlantic/Cape_Verde"
+              },
+              {
+                "offset": "GMT",
+                "name": "Europe/Belfast"
+              },
+              {
+                "offset": "GMT",
+                "name": "Africa/Abidjan"
+              },
+              {
+                "offset": "GMT",
+                "name": "Europe/Dublin"
+              },
+              {
+                "offset": "GMT",
+                "name": "Europe/Lisbon"
+              },
+              {
+                "offset": "GMT",
+                "name": "Europe/London"
+              },
+              {
+                "offset": "UTC",
+                "name": "UTC"
+              },
+              {
+                "offset": "GMT+01:00",
+                "name": "Africa/Algiers"
+              },
+              {
+                "offset": "GMT+01:00",
+                "name": "Africa/Windhoek"
+              },
+              {
+                "offset": "GMT+01:00",
+                "name": "Atlantic/Azores"
+              },
+              {
+                "offset": "GMT+01:00",
+                "name": "Atlantic/Stanley"
+              },
+              {
+                "offset": "GMT+01:00",
+                "name": "Europe/Amsterdam"
+              },
+              {
+                "offset": "GMT+01:00",
+                "name": "Europe/Belgrade"
+              },
+              {
+                "offset": "GMT+01:00",
+                "name": "Europe/Brussels"
+              },
+              {
+                "offset": "GMT+02:00",
+                "name": "Africa/Cairo"
+              },
+              {
+                "offset": "GMT+02:00",
+                "name": "Africa/Blantyre"
+              },
+              {
+                "offset": "GMT+02:00",
+                "name": "Asia/Beirut"
+              },
+              {
+                "offset": "GMT+02:00",
+                "name": "Asia/Damascus"
+              },
+              {
+                "offset": "GMT+02:00",
+                "name": "Asia/Gaza"
+              },
+              {
+                "offset": "GMT+02:00",
+                "name": "Asia/Jerusalem"
+              },
+              {
+                "offset": "GMT+03:00",
+                "name": "Africa/Addis_Ababa"
+              },
+              {
+                "offset": "GMT+03:00",
+                "name": "Asia/Riyadh89"
+              },
+              {
+                "offset": "GMT+03:00",
+                "name": "Europe/Minsk"
+              },
+              {
+                "offset": "GMT+03:30",
+                "name": "Asia/Tehran"
+              },
+              {
+                "offset": "GMT+04:00",
+                "name": "Asia/Dubai"
+              },
+              {
+                "offset": "GMT+04:00",
+                "name": "Asia/Yerevan"
+              },
+              {
+                "offset": "GMT+04:00",
+                "name": "Europe/Moscow"
+              },
+              {
+                "offset": "GMT+04:30",
+                "name": "Asia/Kabul"
+              },
+              {
+                "offset": "GMT+05:00",
+                "name": "Asia/Tashkent"
+              },
+              {
+                "offset": "GMT+05:30",
+                "name": "Asia/Kolkata"
+              },
+              {
+                "offset": "GMT+05:45",
+                "name": "Asia/Katmandu"
+              },
+              {
+                "offset": "GMT+06:00",
+                "name": "Asia/Dhaka"
+              },
+              {
+                "offset": "GMT+06:00",
+                "name": "Asia/Yekaterinburg"
+              },
+              {
+                "offset": "GMT+06:30",
+                "name": "Asia/Rangoon"
+              },
+              {
+                "offset": "GMT+07:00",
+                "name": "Asia/Bangkok"
+              },
+              {
+                "offset": "GMT+07:00",
+                "name": "Asia/Novosibirsk"
+              },
+              {
+                "offset": "GMT+08:00",
+                "name": "Etc/GMT+8"
+              },
+              {
+                "offset": "GMT+08:00",
+                "name": "Asia/Hong_Kong"
+              },
+              {
+                "offset": "GMT+08:00",
+                "name": "Asia/Krasnoyarsk"
+              },
+              {
+                "offset": "GMT+08:00",
+                "name": "Australia/Perth"
+              },
+              {
+                "offset": "GMT+08:45",
+                "name": "Australia/Eucla"
+              },
+              {
+                "offset": "GMT+09:00",
+                "name": "Asia/Irkutsk"
+              },
+              {
+                "offset": "GMT+09:00",
+                "name": "Asia/Seoul"
+              },
+              {
+                "offset": "GMT+09:00",
+                "name": "Asia/Tokyo"
+              },
+              {
+                "offset": "GMT+09:30",
+                "name": "Australia/Adelaide"
+              },
+              {
+                "offset": "GMT+09:30",
+                "name": "Australia/Darwin"
+              },
+              {
+                "offset": "GMT+09:30",
+                "name": "Pacific/Marquesas"
+              },
+              {
+                "offset": "GMT+10:00",
+                "name": "Etc/GMT+10"
+              },
+              {
+                "offset": "GMT+10:00",
+                "name": "Australia/Brisbane"
+              },
+              {
+                "offset": "GMT+10:00",
+                "name": "Australia/Hobart"
+              },
+              {
+                "offset": "GMT+10:00",
+                "name": "Asia/Yakutsk"
+              },
+              {
+                "offset": "GMT+10:30",
+                "name": "Australia/Lord_Howe"
+              },
+              {
+                "offset": "GMT+11:00",
+                "name": "Asia/Vladivostok"
+              },
+              {
+                "offset": "GMT+11:30",
+                "name": "Pacific/Norfolk"
+              },
+              {
+                "offset": "GMT+12:00",
+                "name": "Etc/GMT+12"
+              },
+              {
+                "offset": "GMT+12:00",
+                "name": "Asia/Anadyr"
+              },
+              {
+                "offset": "GMT+12:00",
+                "name": "Asia/Magadan"
+              },
+              {
+                "offset": "GMT+12:00",
+                "name": "Pacific/Auckland"
+              },
+              {
+                "offset": "GMT+12:45",
+                "name": "Pacific/Chatham"
+              },
+              {
+                "offset": "GMT+13:00",
+                "name": "Pacific/Tongatapu"
+              },
+              {
+                "offset": "GMT+14:00",
+                "name": "Pacific/Kiritimati"
+              }
+            ]
+        select.form-select#time-zone
+          each timezone in timezones
+            option #{(timezone.offset)} #{timezone.name}
+      .col-12
+        .border-bottom.border-dashed.my-3
+      .col-sm-6.mb-3
+        label.form-label(for="event-venue") Venue
+        input.form-control#event-venue(type="text" placeholder="Venue")
+        button.btn.btn-link.btn-sm.btn.p-0(type="button") Online Event
+      .col-sm-6.mb-3
+        label.form-label(for="event-address") Address
+        input.form-control#event-address(type="text" placeholder="Address")
+      .col-sm-4.mb-3
+        label.form-label(for="event-city") City
+        input.form-control#event-city(type="text" placeholder="City")
+      .col-sm-4.mb-3
+        label.form-label(for="event-state") State
+        input.form-control#event-state(type="text" placeholder="State")
+      .col-sm-4.mb-3
+        label.form-label(for="event-country") Country
+        input.form-control#event-country(type="text" placeholder="Country")
+      .col-12
+        label.form-label(for="event-description") Description
+        textarea#event-description.form-control(rows="6")
+
+mixin TicketPrice
+  button(type="button").btn.btn-falcon-default.btn-sm Free
+    span.d-none.d-sm-inline  Ticket
+  button(type="button").btn.btn-falcon-primary.btn-sm.ms-2 Paid
+    span.d-none.d-sm-inline  Ticket
+  button(type="button").btn.btn-falcon-default.btn-sm.ms-2 Donation
+  hr
+  h6.fs-0 Pricing Options:
+  .form-check
+    input#customCheck1.form-check-input(type='checkbox' checked)
+    label.form-check-label.align-top(for='customCheck1') Enable varible pricing
+  .form-check.mt-2
+    input#customCheck2.form-check-input(type='checkbox')
+    label.form-check-label.align-top(for='customCheck2') Enable multi-option purchase mode.
+
+  table.table.table-bordered.mt-3.bg-white.dark__bg-1100
+    thead
+      tr.fs--1
+        th Option Name
+        th Price
+        th Default
+        th
+    tbody
+      tr
+        td
+          input.form-control.form-control-sm(type="text" placeholder="Option Name" value="Front desks")
+        td
+          input.form-control.form-control-sm(type="text" placeholder="Price" value="$0.00")
+        td.text-center.align-middle
+          .form-check.mb-0
+            input#customRadio1.form-check-input.float-none(type='radio' name='customRadio' checked)
+            label.form-check-label(for='customRadio1')
+
+        td.text-center.align-middle
+          button.btn.btn-link.btn-sm
+            span.fas.fa-times-circle.text-danger(data-fa-transform="shrink-2")
+      tr
+        td
+          input.form-control.form-control-sm(type="text" placeholder="Option Name" value="Green gallery")
+        td
+          input.form-control.form-control-sm(type="text" placeholder="Price" value="$5.00")
+        td.text-center.align-middle
+          .form-check.mb-0
+            input#customRadio2.form-check-input.float-none(type='radio' name='customRadio')
+            label.form-check-label(for='customRadio2')
+        td.text-center.align-middle
+          button.btn.btn-link.btn-sm
+            span.fas.fa-times-circle.text-danger(data-fa-transform="shrink-2")
+      tr
+        td
+          input.form-control.form-control-sm(type="text" placeholder="VIP" value="VIP")
+        td 
+          input.form-control.form-control-sm(type="text" placeholder="Price" value="$20.00")
+        td.text-center.align-middle
+          .form-check.mb-0
+            input#customRadio3.form-check-input.float-none(type='radio' name='customRadio')
+            label.form-check-label(for='customRadio3')
+        td.text-center.align-middle
+          button.btn.btn-link.btn-sm
+            span.fas.fa-times-circle.text-danger(data-fa-transform="shrink-2")
+
+mixin ItemCloseButton
+  .position-absolute.end-0.top-0.mt-2.me-3.z-index-1
+    button.btn.btn-link.btn-sm.p-0(type="button")
+      span.fas.fa-times-circle.text-danger(data-fa-transform="shrink-1")
+
+mixin Schedule
+  .card.mb-3
+    .card-header
+      h5.mb-0 Schedule
+    .card-body.bg-light
+      .border.rounded-1.position-relative.bg-white.dark__bg-1100.p-3
+        +ItemCloseButton
+        .row.gx-2
+          .col-12.mb-3
+            label.form-label(for="schedule-title") Title
+            input.form-control.form-control-sm#schedule-title(type="text" placeholder="Title")
+          .col-sm-6.mb-3
+            label.form-label(for="schedule-start-date") Start Date
+            input.form-control.form-control-sm#schedule-start-date.datetimepicker(type="text" placeholder="d/m/y" data-options!={dateFormat: 'd/m/y', enableTime: false})
+          .col-sm-6.mb-3
+            label.form-label(for="schedule-start-time") Start Time
+            input.form-control.form-control-sm#schedule-start-time.datetimepicker(type="text" placeholder="H:i" data-options!={enableTime: true, noCalendar: true, dateFormat: 'H:i'})
+          .col-sm-6.mb-3.mb-sm-0
+            label.form-label(for="schedule-end-date") End Date
+            input.form-control.form-control-sm#schedule-end-date.datetimepicker(type="text" placeholder="d/m/y" data-options!={dateFormat: 'd/m/y', enableTime: false})
+          .col-sm-6
+            label.form-label(for="schedule-end-time") End Time
+            input.form-control.form-control-sm#schedule-end-time.datetimepicker(type="text" placeholder="H:i" data-options!={enableTime: true, noCalendar: true, dateFormat: 'H:i'})
+      button.btn.btn-falcon-default.btn-sm.mt-2(type="button")
+        span.fas.fa-plus.fs--2.me-1(data-fa-transform="up-1")
+        | Add Item 
+
+mixin UploadPhotos
+  .card.mb-3
+    .card-header
+      h5.mb-0 Upload Photos
+    .card-body.bg-light
+      form.dropzone.dropzone-multiple.p-0#my-awesome-dropzone(data-dropzone action='#!')
+        .fallback
+          input(name='file' type='file', multiple)
+        .dz-message(data-dz-message) 
+          img(src=`${CWD}assets/img/icons/cloud-upload.svg`, width=25 alt="").me-2
+          | Drop your files here
+        .dz-preview.dz-preview-multiple.m-0.d-flex.flex-column
+          .d-flex.media.align-items-center.mb-3.pb-3.border-bottom.btn-reveal-trigger
+            img(src=`${CWD}assets/img/generic/image-file-2.png` alt="..." data-dz-thumbnail).dz-image
+            .flex-1.d-flex.flex-between-center
+              div
+                h6(data-dz-name)
+                .d-flex.align-items-center
+                  p.mb-0.fs--1.text-400.lh-1(data-dz-size)
+                  .dz-progress
+                    span.dz-upload(data-dz-uploadprogress='')
+              .dropdown.font-sans-serif
+                button.btn.btn-link.text-600.btn-sm.dropdown-toggle.btn-reveal.dropdown-caret-none(type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                  span.fas.fa-ellipsis-h
+                .dropdown-menu.dropdown-menu-end.border.py-2
+                  a.dropdown-item(href="#!" data-dz-remove) Remove File
+
+mixin CustomField
+  .card.mb-3.mb-lg-0
+    .card-header
+      h5.mb-0 Custom Fields
+    .card-body.bg-light
+      .position-relative.rounded-1.border.bg-white.dark__bg-1100.p-3
+        +ItemCloseButton
+        .row.gx-2
+          .col-sm-6.mb-3
+            label.form-label(for="field-name") Name
+            input.form-control.form-control-sm#field-name(type="text" placeholder="Name (e.g. T-shirt)")
+          .col-sm-6.mb-3
+            label.form-label(for="field-type") Type
+            select.form-select.form-select-sm#field-type
+              option Select a type
+              option Text
+              option Checkboxes
+              option Radio Buttons
+              option Textarea
+              option Date
+              option Dropdowns
+              option File
+          .col-12
+            label.form-label(for="field-options") Field Options
+            textarea.form-control.form-control-sm#field-options(rows="3")
+            .form-text.fs--1.text-warning * Separate your options with comma
+      button.btn.btn-falcon-default.btn-sm.mt-2(type="submit")
+        span.fas.fa-plus.fs--2.me-1(data-fa-transform="up-1")
+        | Add Item
+
+mixin OtherInfo
+  .mb-3
+    .d-flex.flex-between-center
+      label.form-label(for="organizer") Organizer
+      button.btn.btn-link.btn-sm.pe-0(type="button") Add New
+    select.form-select.js-choice#organizer(multiple size="1" name="organizer"  data-options!={removeItemButton: true,placeholder: true})
+      option(value="") Select organizer...
+      option Massachusetts Institute of Technology
+      option University of Chicago
+      option GSAS Open Labs At Harvard
+      option California Institute of Technology
+  .mb-3
+    .d-flex.flex-between-center
+      label.form-label(for="sponsors") Sponsors
+      button.btn.btn-link.btn-sm.pe-0(type="button") Add New
+    select.form-select.js-choice#sponsors(multiple size="1" name="sponsors" data-options!={removeItemButton: true,placeholder: true})
+      option(value="") Select sponsors...
+      option Microsoft Corporation
+      option Technext Limited
+      option Hewlett-Packard
+
+  .mb-3
+    label.form-label(for="event-type") Event Type
+    select.form-select#event-type(name="event-type") 
+      option Select event type...
+      option Class, Training, or Workshop
+      option Concert or Performance
+      option Conference
+      option Convention
+      option Dinner or Gala
+      option Festival or Fair
+  .mb-3
+    label.form-label(for="event-topic") Event Topic
+    select.form-select#event-topic(name="even-topic") 
+      option(value='', selected) Select a topic
+      option Auto, Boat &amp; Air
+      option Business &amp; Professional
+      option Charity &amp; Causes
+      option Community &amp; Culture
+      option Family &amp; Education
+      option Fashion &amp; Beauty
+      option Film, Media &amp; Entertainment
+      option Food &amp; Drink
+      option Government &amp; Politics
+  .mb-3
+    .d-flex.justify-content-between.align-items-center
+      label.mb-0(for="event-tags") Tags
+      button.btn.btn-link.btn-sm.pe-0(type="button") Add New
+    select.form-select.js-choice#event-tags(multiple size="1" name="tags" data-options!={removeItemButton: true,placeholder: true})
+      option(value="") Select tags...
+      option Concert
+      option New Year
+      option Party
+
+  .border-bottom.border-dashed.my-3
+
+  h6 Listing Privacy
+  .mb-3.form-check
+    input#customRadio4.form-check-input(type='radio' name="listingPrivacy" checked)
+    label.form-label.mb-0(for='customRadio4') 
+      strong Public page:
+    .form-text.mt-0 Discoverable by anyone on #{name}, our distribution partners, and search engines.
+  .mb-3.form-check
+    input#customRadio5.form-check-input(type='radio' name="listingPrivacy")
+    label.form-label.mb-0(for='customRadio5' ) 
+      strong Private page:
+    .form-text.mt-0 Accessible only by people you specify.      
+  .border-bottom.border-dashed.my-3
+  h6 Remaining Tickets
+  .form-check.custom-checkbox.mb-0
+    input#customRadio6.form-check-input(type='checkbox')
+    label.form-label.mb-0(for='customRadio6' ) Show the number of remaining tickets.        
+
+mixin EventCreateFooter
+  .card&attributes(attributes)
+    .card-body
+      .row.justify-content-between.align-items-center
+        .col-md
+          h5.mb-2.mb-md-0 Nice Job! You're almost done
+        .col-auto
+          button.btn.btn-falcon-default.btn-sm.me-2 Save
+          button.btn.btn-falcon-primary.btn-sm Make your event live 
+
+mixin Events(config)
+  - var config = Object.assign({more: false, title: 'Events'}, config)
+  -
+    var events = [
+      {
+        calendar: {month: 'Mar', day: 26},
+        title: 'Crain\'s New York Business <span class="badge badge-soft-success rounded-pill">Free</span>',
+        subtitle: 'Organized by <a href="#!" class="text-700">AID MIT</a>',
+        additional: ['Time: 11:00AM', 'Duration: Feb 29 - Mar 2'],
+        block: 'The Liberty Warehouse, New Yourk',
+      },
+      {
+        calendar: {month: 'Feb', day: 29},
+        title: 'Film Festival',
+        subtitle: 'Organized by <a href="#!" class="text-700">American Nuclear Society</a>',
+        additional: ['Time: 11:00AM', 'Duration: Feb 29 - Mar 2'],
+        block: 'Place: Workbar - Central Square, Cambridge'
+      },
+      {
+        calendar: {month: 'Feb', day: 21},
+        title: 'Newmarket Nights',
+        subtitle: 'Organized by <a href="#!" class="text-700">University of Oxford</a>',
+        additional: ['Time: 6:00AM', 'Duration: 6:00AM - 5:00PM'],
+        block: 'Place: Cambridge Boat Club, Cambridge'
+      },
+      {
+        calendar: {month: 'Dec', day: 31},
+        title: '31st Night Celebration',
+        subtitle: 'Organized by <a href="#!" class="text-700">Chamber Music Society</a>',
+        additional: ['Time: 11:00PM', '280 people interested'],
+        block: 'Place: Tavern on the Greend, New York'
+      },
+      {
+        calendar: {month: 'Dec', day: 16},
+        title: 'Folk Festival',
+        subtitle: 'Organized by <a href="#!" class="text-700">Harvard University</a>',
+        additional: ['Time: 9:00AM', 'Location: Cambridge Masonic Hall Association'],
+        block: 'Place: Porter Square, North Cambridge',
+        hr: false
+      }
+    ]
+  .card.mb-3.mb-lg-0&attributes(attributes)
+    .card-header.bg-light(class=`${config.more ? '' : 'd-flex justify-content-between'}`)
+      h5.mb-0=config.title
+      if(!config.more)
+        form
+          select.form-select.form-select-sm(aria-label='.form-select-sm example')
+            option(selected) Select Category
+            option Health &amp; Wellness
+            option Business &amp; Professional
+            option Performing &amp; Visual Arts
+            option Science &amp; Technology
+            option Sports &amp; Fitness
+            option Charity &amp; Causes
+            option Film &amp; Media
+            option Fashion &amp; Beauty
+            option Travel &amp; Outdoor
+            option Entertainment
+            option Other
+
+    if(config.more)
+      .card-body.fs--1
+        each event in events.slice(2)
+          - var event = Object.assign({link: `${CWD}${paths['event-detail']}`}, event)
+          +Media(event)
+            if(event.block)
+              =event.block
+      .card-footer.bg-light.p-0.border-top
+        a.btn.btn-link.d-block.w-100(href=`${CWD}${paths['event-list']}`) All Events
+          span.fas.fa-chevron-right.ms-1.fs--2
+    else
+      .card-body.fs--1
+        .row
+          each event in events
+            - var event = Object.assign({link: `${CWD}${paths['event-detail']}`}, event)
+            .col-md-6.h-100
+              +Media(event)
+                if(event.block)
+                  =event.block
+
+mixin EventBannerDetails
+  .card.mb-3
+    img.card-img-top(src=`${CWD}assets/img/generic/13.jpg` alt='')
+    .card-body
+      .row.justify-content-between.align-items-center
+        .col
+          .d-flex
+            .calendar.me-2
+              span.calendar-month Dec
+              span.calendar-day 31 
+            .flex-1.fs--1
+              h5.fs-0 FREE New Year's Eve Midnight Harbor Fireworks
+              p.mb-0 by 
+                a(href='#!') Boston Harbor Now
+              span.fs-0.text-warning.fw-semi-bold $49.99 – $89.99
+        .col-md-auto.mt-4.mt-md-0
+          button(type='button').btn.btn-falcon-default.btn-sm.me-2
+            span.fas.fa-heart.text-danger.me-1
+            | 235
+          button(type='button').btn.btn-falcon-default.btn-sm.me-2
+            span.fas.fa-share-alt.me-1
+            | Share
+          button(type='button').btn.btn-falcon-primary.btn-sm.px-4.px-sm-5 Register
+
+mixin EventDetails
+  .card.mb-3.mb-lg-0
+    .card-body
+      h5.fs-0.mb-3 New Year's Eve on the Waterfront
+      p Boston Harbor Now in partnership with the Friends of Christopher Columbus Park, the Wharf District Council and the City of Boston is proud to announce the New Year's Eve Midnight Harbor Fireworks! This beloved nearly 40-year old tradition is made possible by the generous support of local waterfront organizations and businesses and the support of the City of Boston and the Office of Mayor Marty Walsh.
+      p Join us as we ring in the New Year with a dazzling display over Boston Harbor. Public viewing is free and available from the Harborwalk of these suggested viewing locations:
+      ul
+        li Christopher Columbus Park, North End
+        li Fan Pier, Seaport District
+        li East Boston Harborwalk
+      p The show will begin promptly at midnight.
+      p Register here for a reminder and updates about the harbor fireworks and other waterfront public programs as they become available. Be the first to be notified for popular waterfront New Year's Eve public activities.
+
+      h5.fs-0.mt-5.mb-2 Tags
+      a(href='#!').badge.border.link-secondary.me-1.text-decoration-none Things To Do In Brooklyn, NY
+      a(href='#!').badge.border.link-secondary.me-1.text-decoration-none Party
+      a(href='#!').badge.border.link-secondary.me-1.text-decoration-none Music
+
+
+      h5.fs-0.mt-5.mb-2 Share with friends
+      .icon-group
+        a(href='#!').icon-item.text-facebook
+          span.fab.fa-facebook-f
+        a(href='#!').icon-item.text-twitter
+          span.fab.fa-twitter
+        a(href='#!').icon-item.text-google-plus
+          span.fab.fa-google-plus-g
+        a(href='#!').icon-item.text-linkedin
+          span.fab.fa-linkedin-in
+        a(href='#!').icon-item.text-700
+          span.fab.fa-medium-m
+
+      .googlemap.min-vh-50.rounded-3.mt-5#view-map(data-latlng='23.8383608,90.3680554' data-scrollwheel='false', data-icon=`${CWD}assets/img/icons/map-marker.png`, data-zoom='17' data-theme='Default')
+        .marker-content.pb-3.light
+          h5 Eiffel Tower
+          p
+            | Gustave Eiffel's iconic, wrought-iron 1889 tower,
+            br
+            |  with steps and elevators to observation decks.
+
+mixin EventTimeLocation
+  .card.mb-3.fs--1
+    .card-body
+      h6 Date And Time
+      p.mb-1 Mon, Dec 31, 2018, 11:59 PM – 
+        br
+        | Tue, Jan 1, 2019, 12:19 AM EST
+      a(href='#!') Add to Calendar
+      h6.mt-4 Location
+      .mb-1 Boston Harborwalk
+        br
+        | Christopher Columbus Park
+        br
+        | Boston, MA 02109
+        br
+        | United States
+      a(href='#view-map') View Map
+      h6.mt-4 Refund Policy
+      p.fs--1.mb-0 No Refunds

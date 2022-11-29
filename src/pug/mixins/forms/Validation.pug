@@ -1,0 +1,105 @@
+mixin CustomStyles
+  p.mb-0.mt-2 For custom Bootstrap form validation messages, you’ll need to add the 
+    code novalidate
+    |  boolean attribute to your 
+    code form
+    | .This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you. When attempting to submit, you’ll see the 
+    code :invalid
+    |  and 
+    code :valid
+    |  styles applied to your form controls. 
+  p Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback. Background icons for 
+    code select
+    | s are only available with 
+    code .form-select
+    | , and not 
+    code .form-control
+    | .
+
+mixin CustomStylesForm    
+  form.row.g-3.needs-validation(novalidate='')
+    .col-md-4
+      label.form-label(for='validationCustom01') First name
+      input#validationCustom01.form-control(type='text' value='Mark' required='')
+      .valid-feedback
+        | Looks good!
+    .col-md-4
+      label.form-label(for='validationCustom02') Last name
+      input#validationCustom02.form-control(type='text' value='Otto' required='')
+      .valid-feedback
+        | Looks good!
+    .col-md-4
+      label.form-label(for='validationCustomUsername') Username
+      .input-group.has-validation
+        span#inputGroupPrepend.input-group-text @
+        input#validationCustomUsername.form-control(type='text' aria-describedby='inputGroupPrepend' required='')
+        .invalid-feedback
+          | Please choose a username.
+    .col-md-6
+      label.form-label(for='validationCustom03') City
+      input#validationCustom03.form-control(type='text' required='')
+      .invalid-feedback
+        | Please provide a valid city.
+    .col-md-3
+      label.form-label(for='validationCustom04') State
+      select#validationCustom04.form-select(required='')
+        option(selected='' disabled='' value='') Choose...
+        option ...
+      .invalid-feedback
+        | Please select a valid state.
+    .col-md-3
+      label.form-label(for='validationCustom05') Zip
+      input#validationCustom05.form-control(type='text' required='')
+      .invalid-feedback
+        | Please provide a valid zip.
+    .col-12
+      .form-check
+        input#invalidCheck.form-check-input(type='checkbox' value='' required='')
+        label.form-check-label.mb-0(for='invalidCheck')
+          | Agree to terms and conditions
+        .invalid-feedback.mt-0
+          | You must agree before submitting.
+    .col-12
+      button.btn.btn-primary(type='submit') Submit form
+
+
+mixin CustomTooltips
+  form.row.g-3.needs-validation(novalidate='')
+    .col-md-4.position-relative
+      label.form-label(for='validationTooltip01') First name
+      input#validationTooltip01.form-control(type='text' value='Mark' required='')
+      .valid-tooltip
+        | Looks good!
+    .col-md-4.position-relative
+      label.form-label(for='validationTooltip02') Last name
+      input#validationTooltip02.form-control(type='text' value='Otto' required='')
+      .valid-tooltip
+        | Looks good!
+    .col-md-4.position-relative
+      label.form-label(for='validationTooltipUsername') Username
+      .input-group
+        span#validationTooltipUsernamePrepend.input-group-text @
+        input#validationTooltipUsername.form-control(type='text' aria-describedby='validationTooltipUsernamePrepend' required='')
+        .invalid-tooltip
+          | Please choose a unique and valid username.
+    .col-md-6.position-relative
+      label.form-label(for='validationTooltip03') City
+      input#validationTooltip03.form-control(type='text' required='')
+      .invalid-tooltip
+        | Please provide a valid city.
+    .col-md-3.position-relative
+      label.form-label(for='validationTooltip04') State
+      select#validationTooltip04.form-select(required='')
+        option(selected='' disabled='' value='') Choose...
+        option ...
+      .invalid-tooltip
+        | Please select a valid state.
+    .col-md-3.position-relative
+      label.form-label(for='validationTooltip05') Zip
+      input#validationTooltip05.form-control(type='text' required='')
+      .invalid-tooltip
+        | Please provide a valid zip.
+    .col-12
+      button.btn.btn-primary(type='submit') Submit form
+
+

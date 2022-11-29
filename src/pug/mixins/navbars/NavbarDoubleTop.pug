@@ -1,0 +1,19 @@
+include Mixins
+include ../common/Avatar
+include ../common/Card
+include ../common/Notification
+
+mixin NavbarDoubleTop(config)
+  nav.navbar.navbar-light.navbar-glass.navbar-top(data-double-top-nav=ENV === 'PROD' ? true : false)&attributes(attributes)
+    .w-100
+      .d-flex.flex-between-center
+        +NavbarToggleIcon.navbar-toggler.me-1.me-sm-3(type='button' data-bs-toggle='collapse' data-bs-target=`#${config.toggleID}`, aria-controls=config.toggleID, aria-expanded='false' aria-label='Toggle Navigation')
+        +NavbarBrand.me-1.me-sm-3
+        if config.search
+          +NavbarSearch
+        +NavbarIcons
+
+      hr.my-2.d-none.d-lg-block
+
+      div(id=config.toggleID).collapse.navbar-collapse.scrollbar.py-lg-2
+        +NewTopNav({combo:false})

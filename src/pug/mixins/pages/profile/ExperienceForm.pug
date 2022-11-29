@@ -1,0 +1,38 @@
+include ../../common/Form
+mixin ExperienceForm  
+  form.row
+    .col-3.mb-3.text-lg-end
+      label.form-label(for="company") Company
+    .col-9.col-sm-7.mb-3 
+      input#company.form-control.form-control-sm(type="text")
+    .col-3.mb-3.text-lg-end
+      label.form-label(for="position") Position
+    .col-9.col-sm-7.mb-3 
+      input#position.form-control.form-control-sm(type="text") 
+    .col-3.mb-3.text-lg-end
+      label.form-label(for="city") City 
+    .col-9.col-sm-7.mb-3 
+      input#city.form-control.form-control-sm(type="text" ) 
+    .col-3.mb-3.text-lg-end
+      label.form-label(for="exp-description") Description 
+    .col-9.col-sm-7.mb-3 
+      textarea.form-control.form-control-sm#exp-description(rows="3") 
+    .col-9.col-sm-7.offset-3.mb-3
+      +Checkbox({
+        id: 'experience-current',
+        text: 'I currently work here',
+        parentAttrs: {class: 'mb-0 lh-1'},
+        labelAttrs: {class: 'mb-0'}
+      })(checked)
+    .col-3.text-lg-end
+      label.form-label(for="experience-form2") From  
+    .col-9.col-sm-7.mb-3 
+      input.form-control.form-control-sm.text-500.datetimepicker#experience-form2(type="text" placeholder="d/m/y" data-options!={ dateFormat:'d/m/y',disableMobile:true})   
+    .col-3.text-lg-end
+      label.form-label(for="experience-to") To 
+    .col-9.col-sm-7.mb-3 
+      input.form-control.form-control-sm.text-500.datetimepicker#experience-to(type="text" placeholder="d/m/y" data-options!={ dateFormat:'d/m/y',disableMobile:true})   
+    .col-9.col-sm-7.offset-3
+      button.btn.btn-primary(type="button") Save
+
+  .border-dashed-bottom.my-4

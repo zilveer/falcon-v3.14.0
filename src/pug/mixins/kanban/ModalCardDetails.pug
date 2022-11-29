@@ -1,0 +1,238 @@
+//- Modal title and subtitle icon
+mixin ModalIcon({icon, transform})
+  span.fa-stack.ms-n1.me-3
+    i.fas.fa-circle.fa-stack-2x.text-200
+    i.fa-inverse.fa-stack-1x.text-primary(data-fa-transform=transform class=icon)
+
+//- Comments
+mixin Comments  
+  .d-flex
+    +ModalIcon({ icon: 'far fa-comment', transform: 'shrink-2'})
+    .flex-1 
+      h5.mb-3.fs-0 Comments
+      .d-flex
+        +Avatar({img: 'team/4.jpg', size: 'l'}).me-2
+        .flex-1.fs--1
+          .position-relative.border.rounded-1.mb-3
+            form
+              textarea.form-control.border-0.rounded-bottom-0.resize-none(rows=3 contentEditable="true")
+              .d-flex.flex-between-center.bg-light.rounded-bottom.p-2.mt-1
+                button.btn.btn-sm.btn-primary(type="submit") Save
+                ul.list-inline.mb-0
+                  li.list-inline-item.me-1
+                    a(href="#!").link-600.p-2.transition-base.rounded
+                      span.fas.fa-paperclip
+                  li.list-inline-item.me-1
+                    a(href="#!").link-600.p-2.transition-base.rounded
+                      span.fas.fa-at
+                  li.list-inline-item.me-1
+                    a(href="#!").link-600.p-2.transition-base.rounded
+                      span.fas.fa-image
+
+      .d-flex.mb-3
+        a(href=`${CWD}${paths['user-profile']}`)
+          +Avatar({img: 'team/4.jpg', size: 'l'})
+        .flex-1.ms-2.fs--1
+          p.mb-1.bg-200.rounded-3.p-2
+            a(href=`${CWD}${paths['user-profile']}`).fw-semi-bold Rowan 
+            | This time we should finish the task before the deadline
+          a(href='#!') Like
+          |  &bull; 
+          a(href='#!') Reply
+          |  &bull; 23min 
+      .d-flex
+        a(href=`${CWD}${paths['user-profile']}`)
+          +Avatar({img: 'team/1.jpg', size: 'l'})
+        .flex-1.ms-2.fs--1
+          p.mb-1.bg-200.rounded-3.p-2
+            a(href=`${CWD}${paths['user-profile']}`).fw-semi-bold Emma 
+            | We have more task to do
+          a(href='#!') Like
+          |  &bull; 
+          a(href='#!') Reply
+          |  &bull; 2hour 
+      hr.my-4
+
+//- Activity
+mixin Activity  
+  .d-flex
+    +ModalIcon({ icon: 'fas fa-list-ul', transform: 'shrink-2'})
+    .flex-1
+      h5.mb-3.fs-0 Activity         
+      .d-flex.mb-3
+        a(href=`${CWD}${paths['user-profile']}`)
+          +Avatar({img: 'team/4.jpg', size: 'l'})
+        .flex-1.ms-2.fs--1
+          p.mb-0
+            a(href=`${CWD}${paths['user-profile']}`).fw-semi-bold Rowan 
+            | Added the card
+          .fs--2 6 hours ago
+      .d-flex
+        a(href=`${CWD}${paths['user-profile']}`)
+          +Avatar({img: 'team/3.jpg', size: 'l'})
+        .flex-1.ms-2.fs--1
+          p.mb-0
+            a(href=`${CWD}${paths['user-profile']}`).fw-semi-bold Anna 
+            | attached final-pic.png to this card
+          .fs--2 4 hours ago
+
+//- Attchment target link
+mixin AttachmentLink(config, group)
+  a(
+    href=config.image ? config.src : '#!' 
+    data-gallery=config.type==='txt' || config.type==='pdf' ? false : group
+  ).text-decoration-none&attributes(attributes)
+    block
+
+//- Attchment item
+mixin AttachmentItem(config, index)
+  .d-flex.align-items-center(class=index !== attachments.length -1 && 'mb-3')
+    +AttachmentLink(config, 'attachment-bg').me-3
+      .bg-attachment
+        if config.image
+          +Background({ image: config.image, className: 'rounded' })
+          if config.type === 'video'
+            .icon-play
+              span.fas.fa-play
+        else
+          span.text-uppercase.fw-bold=config.type
+
+    .flex-1.fs--2
+      h6.mb-1 
+        +AttachmentLink(config, 'attachment-title')
+          =config.title
+      a(href="#!").link-600.fw-semi-bold Edit
+      span.mx-1 |
+      a(href="#!").link-600.fw-semi-bold Remove
+      p.mb-0 Uploaded at #{config.date}
+
+//- Attachments
+mixin Attachments
+  .d-flex 
+    +ModalIcon({ icon: 'fas fa-paperclip', transform: 'shrink-2'})
+    .flex-1
+      .d-flex.justify-content-between.mb-2
+        h5.mb-0.fs-0 Attachments
+        .dropdown
+          button.btn.btn-falcon-default.btn-sm.dropdown-toggle.dropdown-caret-none.fs--2(type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false") 
+            span.fas.fa-plus
+          .dropdown-menu.dropdown-menu-end
+            a(href="#!").dropdown-item Computer
+            a(href="#!").dropdown-item Google Drive
+            .dropdown-divider
+            a(href="#!").dropdown-item Attach Link
+      each attachment, index in attachments
+        +AttachmentItem(attachment, index) 
+      hr.my-4  
+
+//- Descriptions
+mixin Descriptions
+  .d-flex
+    +ModalIcon({ icon: 'fas fa-align-left', transform: 'shrink-2'})
+    .flex-1
+      h5.mb-2.fs-0 Description
+      p.text-word-break.fs--1
+        | The illustration must match to the contrast of the theme. The illustraion must described the concept of the design. To know more about the theme visit the page. 
+        a(href=`https://prium.github.io/falcon/${version}/index.html` target="_blank") https://prium.github.io/falcon/#{version}/index.html
+
+      hr.my-4
+
+//- Label
+mixin Labels
+  -
+    var assignedLabels = [
+      { text: 'New', type: 'success'},
+      { text: 'Goal', type: 'primary'},
+      { text: 'Enhancement', type: 'info'},
+    ]
+  .d-flex
+    each label in assignedLabels
+      span.badge.me-1.py-2(class=`badge-soft-${label.type}`)=label.text
+    .dropdown.dropend
+      button.btn.btn-sm.btn-secondary.px-2.fsp-75.bg-400.border-400.dropdown-toggle.dropdown-caret-none(data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+        span.fas.fa-plus
+      .dropdown-menu
+        h6.dropdown-header.py-0.px-3.mb-0 Select Label
+        .dropdown-divider
+        .px-3
+          each label in labels
+            button(type="button" class=`badge-soft-${label.type}`).dropdown-item.rounded-1.mb-2=label.text
+        .dropdown-divider
+        .px-3
+          button.btn.btn-sm.d-block.w-100.btn-outline-secondary.border-400 Create Label
+
+//- Modal header
+mixin HeaderContent(config)
+  .bg-light.rounded-top-lg.py-3(class=config.img ? 'px-4' : 'ps-4 pe-6')
+    h4.mb-1(id=`kanban-modal-label-${config.suffix}`) Add a new illustration to the landing page
+    p.fs--2.mb-0 Added by 
+      a(href="#!").link-600.fw-semi-bold Antony
+
+mixin ModalCardDetails(config)
+  - var config  = Object.assign({img: ''}, config)
+  .modal.fade(tabindex='-1' role='dialog', aria-labelledby=`kanban-modal-label-${config.suffix}`, aria-hidden='true')&attributes(attributes)
+    .modal-dialog.modal-lg.mt-6(role='document')
+      .modal-content.border-0
+        if config.img
+          .position-relative.overflow-hidden.py-8
+            +Background({ image: config.img, className: 'rounded-top-lg' })
+        .position-absolute.top-0.end-0.mt-3.me-3.z-index-1
+          button.btn-close.btn.btn-sm.btn-circle.d-flex.flex-center.transition-base(data-bs-dismiss="modal" aria-label="Close")
+        .modal-body.p-0
+          +HeaderContent(config)
+          .p-4
+            .row
+              .col-lg-9
+                //-  Card Members
+                .d-flex
+                  +ModalIcon({ icon: 'fas fa-user', transform: 'shrink-2'})
+                  .flex-1
+                    h5.mb-2.fs-0 Reviewers
+                    +MemberGroup({members, add: true, size: 'xl', id: 'cardDetailsMemberDropdown'})
+                    hr.my-4
+                //-  Badges
+                .d-flex
+                  +ModalIcon({ icon: 'fas fa-tag', transform: 'shrink-2'})
+                  .flex-1
+                    h5.mb-2.fs-0 Labels
+                    +Labels
+                    hr.my-4
+                //-  Descriptiosn
+                +Descriptions
+                //-  Attachments
+                +Attachments
+                +Comments
+                +Activity
+              .col-lg-3
+                h6.mt-5.mt-lg-0 Add To Card
+                ul.nav.flex-lg-column.fs--1
+                  li.nav-item.me-2.me-lg-0
+                    a(href="#!").nav-link.nav-link-card-details 
+                      span.fas.fa-user.me-2
+                      | Members
+                  li.nav-item.me-2.me-lg-0
+                    a(href="#!").nav-link.nav-link-card-details 
+                      span.fas.fa-tag.me-2
+                      | Label
+                  li.nav-item.me-2.me-lg-0
+                    a(href="#!").nav-link.nav-link-card-details 
+                      span.fas.fa-paperclip.me-2
+                      | Attachments
+                  li.nav-item.me-2.me-lg-0
+                    a(href="#!").nav-link.nav-link-card-details 
+                      span.fas.fa-check.me-2
+                      | Checklists
+                h6.mt-3 Actions
+                ul.nav.flex-lg-column.fs--1
+                  li.nav-item.me-2.me-lg-0
+                    a(href="#!").nav-link.nav-link-card-details 
+                      span.far.fa-copy.me-2 
+                      | Copy
+                  li.nav-item.me-2.me-lg-0
+                    a(href="#!").nav-link.nav-link-card-details 
+                      span.fas.fa-arrow-right.me-2
+                      | Move
+                  li.nav-item.me-2.me-lg-0
+                    a(href="#!").nav-link.nav-link-card-details
+                      span.fas.fa-trash-alt.me-2
+                      | Remove

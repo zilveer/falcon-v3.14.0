@@ -1,0 +1,321 @@
+append variables
+  -
+    var results = [
+      {
+        name: "Amelia",
+        avatar: {
+          more: 'A',
+          size: 'xl',
+          contentClass: 'text-success bg-soft-success fs-0'
+        },
+        satisfied: {
+          total: 36,
+          count: 17,
+          date: 'Last Day 19',
+          progressBarWidth: [80, 60],
+          countUp: true
+        },
+        dissatisfied: {
+          total: 52,
+          count: 33,
+          date: 'Last Day 19',
+          progressBarWidth: [60, 50],
+          countUp: true
+        }
+      },
+      {
+        name: "Bentley",
+        avatar: {
+          more: 'B',
+          size: 'xl',
+          contentClass: 'text-primary bg-soft-primary fs-0'
+        },
+        satisfied: {
+          total: 41,
+          count: 17,
+          date: 'Last Day 24',
+          progressBarWidth: [90, 80],
+          countUp: true
+        },
+        dissatisfied: {
+          total: 23,
+          count: 01,
+          date: 'Last Day 24',
+          progressBarWidth: [95, 75],
+          countUp: false
+        }
+      },
+      {
+        name: "Abigail",
+        avatar: {
+          more: 'A',
+          size: 'xl',
+          contentClass: 'text-info bg-soft-info fs-0'
+        },
+        satisfied: {
+          total: 52,
+          count: 27,
+          date: 'Last Day 25',
+          progressBarWidth: [70, 80],
+          countUp: true
+        },
+        dissatisfied: {
+          total: 12,
+          count: 13,
+          date: 'Last Day 25',
+          progressBarWidth: [70, 90],
+          countUp: false
+        }
+      },
+      {
+        name: "Christopher",
+        avatar: {
+          more: 'C',
+          size: 'xl',
+          contentClass: 'text-warning bg-soft-warning fs-0'
+        },
+        satisfied: {
+          total: 14,
+          count: 16,
+          date: 'Last Day 30',
+          progressBarWidth: [50, 80],
+          countUp: false
+        },
+        dissatisfied: {
+          total: 25,
+          count: 13,
+          date: 'Last Day 38',
+          progressBarWidth: [60, 70],
+          countUp: false
+        }
+      },
+      {
+        name: "Declan",
+        avatar: {
+          img: 'team/2-thumb.png',
+          size: 'xl',
+        },
+        satisfied: {
+          total: 15,
+          count: 30,
+          date: 'Last Day 45',
+          progressBarWidth: [60, 85],
+          countUp: false
+        },
+        dissatisfied: {
+          total: 32,
+          count: 07,
+          date: 'Last Day 39',
+          progressBarWidth: [30, 70],
+          countUp: false
+        }
+      },
+      {
+        name: "Bentley",
+        avatar: {
+          more: 'B',
+          size: 'xl',
+          contentClass: 'text-primary bg-soft-primary fs-0'
+        },
+        satisfied: {
+          total: 41,
+          count: 17,
+          date: 'Last Day 24',
+          progressBarWidth: [90, 80],
+          countUp: true
+        },
+        dissatisfied: {
+          total: 23,
+          count: 01,
+          date: 'Last Day 24',
+          progressBarWidth: [95, 75],
+          countUp: false
+        }
+      },
+      {
+        name: "Abigail",
+        avatar: {
+          more: 'A',
+          size: 'xl',
+          contentClass: 'text-info bg-soft-info fs-0'
+        },
+        satisfied: {
+          total: 52,
+          count: 27,
+          date: 'Last Day 25',
+          progressBarWidth: [70, 80],
+          countUp: true
+        },
+        dissatisfied: {
+          total: 12,
+          count: 13,
+          date: 'Last Day 25',
+          progressBarWidth: [70, 90],
+          countUp: false
+        }
+      },
+      {
+        name: "Christopher",
+        avatar: {
+          more: 'C',
+          size: 'xl',
+          contentClass: 'text-warning bg-soft-warning fs-0'
+        },
+        satisfied: {
+          total: 14,
+          count: 16,
+          date: 'Last Day 30',
+          progressBarWidth: [50, 80],
+          countUp: false
+        },
+        dissatisfied: {
+          total: 25,
+          count: 13,
+          date: 'Last Day 38',
+          progressBarWidth: [60, 70],
+          countUp: false
+        }
+      },
+      {
+        name: "Declan",
+        avatar: {
+          img: 'team/2-thumb.png',
+          size: 'xl',
+        },
+        satisfied: {
+          total: 15,
+          count: 30,
+          date: 'Last Day 45',
+          progressBarWidth: [60, 85],
+          countUp: false
+        },
+        dissatisfied: {
+          total: 32,
+          count: 07,
+          date: 'Last Day 39',
+          progressBarWidth: [30, 70],
+          countUp: false
+        }
+      },
+      {
+        name: "Amelia",
+        avatar: {
+          more: 'A',
+          size: 'xl',
+          contentClass: 'text-success bg-soft-success fs-0'
+        },
+        satisfied: {
+          total: 36,
+          count: 17,
+          date: 'Last Day 19',
+          progressBarWidth: [80, 60],
+          countUp: false
+        },
+        dissatisfied: {
+          total: 52,
+          count: 33,
+          date: 'Last Day 19',
+          progressBarWidth: [60, 50],
+          countUp: false
+        }
+      },
+    ]
+
+mixin ProgressBar(progressBarWidth, progressBarColor)
+  .progress(style="height:5px; width:174px").rounded-pill&attributes(attributes)
+    .progress-bar.rounded-pill(class=progressBarColor role="progressbar" aria-label="Basic example" style=`width: ${progressBarWidth}%` aria-valuenow=progressBarWidth aria-valuemin="0" aria-valuemax="100")
+
+mixin TableItem(config, index)
+  tr&attributes(attributes)
+    td(style="width: 28px;").align-middle.py-4.fs-0
+      .form-check.mb-0
+        input.form-check-input(
+          type='checkbox'
+          id=`agent-survey-result-${index}`
+          data-bulk-select-row
+        )
+    td.align-middle.name.white-space-nowrap.pe-4.w-lg-25
+      .d-flex.align-items-center.gap-2.position-relative
+        +Avatar(config.avatar)
+        h6.mb-0
+          a(href="#!").stretched-link.text-800= config.name
+    td.align-middle.satisfied.white-space-nowrap.pe-5.pe-xxl-8
+      .d-flex.align-items-center
+        div
+          .d-flex.align-items-baseline.gap-1.mb-1
+            h5.mb-0= config.satisfied.total
+            h6.mb-0.fw-semi-bold(class=config.satisfied.countUp?"text-primary": "text-danger")
+              span.fs--2.me-1.ms-2(class=`fas fa-caret-${config.satisfied.countUp?"up":"down"}`)
+              span.fs--1= config.satisfied.count
+          h6.mb-0.text-700= config.satisfied.date
+        .ms-4
+          +ProgressBar(config.satisfied.progressBarWidth[0], "bg-primary").mb-1
+          +ProgressBar(config.satisfied.progressBarWidth[1], "bg-info")
+    td.align-middle.dissatisfied
+      .d-flex.align-items-center
+        div
+          .d-flex.align-items-baseline.gap-1.mb-1
+            h5.mb-0= config.dissatisfied.total
+            h6.mb-0.fs--2.fw-semi-bold(class=!config.dissatisfied.countUp?"text-primary": "text-danger")
+              span.me-1.ms-2.fs--2(class=`fas fa-caret-${!config.dissatisfied.countUp?"down":"up"}`)
+              span.fs--1= config.dissatisfied.count
+          h6.mb-0.text-700.text-nowrap= config.dissatisfied.date
+        .ms-4
+          +ProgressBar(config.dissatisfied.progressBarWidth[0], "bg-primary").mb-1
+          +ProgressBar(config.dissatisfied.progressBarWidth[1], "bg-info")
+
+
+mixin SurveyResultTable
+  .table-responsive.scrollbar&attributes(attributes)
+    table.table.table-sm.fs--1.mb-0
+      thead.bg-light.text-800
+        tr
+          th.py-2.fs-0
+            .form-check.d-flex.align-items-center
+              input.form-check-input#checkbox-bulk-tickets-select(
+                type='checkbox'
+                data-bulk-select!={
+                  body: "table-survey-result-body",
+                  actions: "table-survey-result-actions",
+                  replacedElement: "table-survey-result-replace-element"
+                }
+              )
+          th.sort.align-middle(data-sort="name" style="width:30%") Agent Name
+          th.sort.align-middle(data-sort="satisfied" style="width:30%") Extremely Satisfied
+          th.sort.align-middle(data-sort="dissatisfied") Extremely Dissatisfied
+      tbody.list#table-survey-result-body
+        each result, index in results
+          +TableItem(result, index)
+
+mixin CardAgentSurveyResult(page)
+  .card#surveyResultTable&attributes(attributes)(data-list!={
+    valueNames: ["name", "satisfied", "dissatisfied"],
+    page: page,
+    pagination: true
+  })
+    .card-header.border-bottom.border-200
+      .row.flex-between-center.gy-2
+        .col-auto
+          h6.mb-0 Agent Survey Result
+        .col-auto
+          #table-survey-result-actions.d-none
+            .d-flex
+              select.form-select.form-select-sm(aria-label='Bulk actions')
+                option(selected='') Bulk actions
+                option(value='Refund') Refund
+                option(value='Delete') Delete
+                option(value='Archive') Archive
+              button.btn.btn-falcon-default.btn-sm.ms-2(type='button') Apply
+          select.form-select.form-select-sm#table-survey-result-replace-element
+            option(selected) Daily
+            option Weekly
+            option Monthly
+            option Yearly
+    .card-body.p-0
+      +SurveyResultTable
+    .card-footer.d-flex.justify-content-center
+      button(type='button' title="Previous" data-list-pagination='prev').btn.btn-sm.btn-falcon-default.me-1
+        span.fas.fa-chevron-left
+      ul.pagination.mb-0
+      button(type='button' title="Next" data-list-pagination='next').btn.btn-sm.btn-falcon-default.ms-1
+        span.fas.fa-chevron-right

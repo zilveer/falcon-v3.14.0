@@ -1,0 +1,111 @@
+// pow() - Raise number to the nth power
+//
+// @param {number} $base      The base number
+// @param {number} $exponents The exponent to which to raise $base
+@use 'sass:math';
+@function pow($base, $exponents) {
+  $raised: 1;
+  @for $i from 1 through $exponents {
+    $raised: $raised * $base;
+  }
+  @return $raised;
+}
+@function toRem($px) {
+  @return math.div($px,16);
+}
+
+@function mapReverse($map) {
+  $result: null;
+
+  @if type-of($map) == "map" {
+      $keys: map-keys($map);
+      $map-reversed: ();
+      
+      @for $i from length($keys) through 1 {
+          $map-reversed: map-merge(
+              $map-reversed,
+              (nth($keys, $i): map-get($map, nth($keys, $i)))
+          );
+      }
+
+      @if type-of($map-reversed) == "map" {
+          $result: $map-reversed;
+      } @else {
+          @warn 'There was an error reversing the order of "#{$map}"';
+      }
+  } @else {
+      @warn '"#{$map}" is not a valid map';
+  }
+
+  @return $result;
+}
+
+@mixin chrome-scrollbar($bg: $scrollbar-bg) {
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    visibility: hidden;
+    -webkit-appearance: none;
+    width: 6px;
+    height: 6px;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    visibility: hidden;
+    border-radius: 3px;
+    background-color: $bg;
+  }
+
+  @include hover-focus {
+    &::-webkit-scrollbar, &::-webkit-scrollbar-thumb {
+      visibility: visible;
+    }
+  }
+}
+
+@mixin firefox-scrollbar($bg: $scrollbar-bg) {
+  overflow: auto !important;
+  scrollbar-color: $bg transparent;
+  scrollbar-width: thin;
+}
+
+//----------------
+@function rgb-css-var($identifier){
+  @return rgb(var(--#{$prefix}#{$identifier}-rgb))
+};
+
+@function bg-soft-css-var($identifier, $target){
+  @return var(--#{$prefix}#{$target}-#{$identifier})
+};
+
+// stylelint-disable scss/dollar-variable-pattern
+// @function grays-rgba-css-var($identifier, $target) {
+//     @return rgba(var(--#{$prefix}gray-#{$identifier}-rgb), var(--#{$prefix}bg-opacity));
+// }
+@function grays-rgba-css-var($identifier, $target) {
+  @if $identifier == "body" and $target == "bg" {
+    @return rgba(var(--#{$prefix}gray-#{$identifier}-bg-rgb), var(--#{$prefix}#{$target}-opacity));
+  } @if $identifier == "body" and $target == "text" {
+    @return rgba(var(--#{$prefix}#{$identifier}-color-rgb), var(--#{$prefix}#{$target}-opacity));
+  } @else {
+    @return rgba(var(--#{$prefix}gray-#{$identifier}-rgb), var(--#{$prefix}#{$target}-opacity));
+  }
+}
+
+@function map-gray-loop($map, $func, $args...) {
+  $_map: ();
+
+
+  @each $key, $value in $map {
+    // allow to pass the $key and $value of the map as an function argument
+    $_args: ();
+    @each $arg in $args {
+      $_args: append($_args, if($arg == "$key", "gray-"+$key, if($arg == "$value", $value, $arg)));
+    }
+
+    $_map: map-merge($_map, ($key: call(get-function($func), $_args...)));
+  }
+
+  @return $_map;
+}
+// stylelint-enable scss/dollar-variable-pattern

@@ -1,0 +1,11 @@
+extends ../../../layouts/LayoutSplit
+include ../../../mixins/authentication/LogOutContent
+
+block append variables
+  - var background = { image: `${CWD}assets/img/generic/19.jpg` }
+
+block splitContent
+  +LogOutContent({
+    titleTag: 'h3',
+    layout: 'split'
+  }).text-center

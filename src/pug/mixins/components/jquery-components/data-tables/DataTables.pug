@@ -1,0 +1,58 @@
+include ./DefaultExample
+include ./SimplePagination
+include ./NumberPagination
+include ./FixedColumns
+include ./VerticalScroll
+
+mixin DataTables
+  +ComponentCard({
+    title: 'Default Example',
+    anchor: true,
+    anchorID: 'jquery-datatables-default-example',
+    bodyClass:'px-0',
+  }).mb-3
+    +CardDefaultExampleTable
+
+  +ComponentCard({
+    title: 'Simple Pagination',
+    anchor: true,
+    anchorID: 'jquery-datatables-simple-pagination',
+    bodyClass:'p-0',
+  }).mb-3
+    +CardSimplePaginationTable
+
+  +ComponentCard({
+    title: 'Number Pagination',
+    anchor: true,
+    anchorID: 'jquery-datatables-number-pagination',
+    bodyClass:'p-0',
+  }).mb-3
+    +CardNumberPaginationTable
+
+  +ComponentCard({
+    title: 'Vertical Scroll',
+    anchor: true,
+    anchorID: 'jquery-datatables-vertical-scroll',
+    bodyClass:'px-0 pt-0',
+  }).mb-3
+    +VerticalScrollTable
+
+  +ComponentCard({
+    title: 'Fixed Columns',
+    anchor: true,
+    anchorID: 'jquery-datatables-fixed-columns',
+    bodyClass:'px-0 pt-0',
+  }).mb-3
+    +FixedColumnsTable
+
+  .card.mb-3
+    .card-body
+      h5.mb-0 Javascript 
+      +ComponentCardLib.mb-3
+        script(src=`vendors/jquery/jquery.min.js`)
+        script(src=`vendors/datatables.net/jquery.dataTables.min.js`)
+        script(src=`vendors/datatables.net-bs5/dataTables.bootstrap5.min.js`)
+        script(src=`vendors/datatables.net-fixedcolumns/dataTables.fixedColumns.min.js`)
+      h5.mb-0 Stylesheets 
+      +ComponentCardLib
+        script(src=`vendors/datatables.net-bs5/dataTables.bootstrap5.min.css`)

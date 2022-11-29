@@ -1,0 +1,58 @@
+mixin CandleChart()
+  -
+    var candleChartitems = [
+      {
+        title: 'Forecast Hours',
+        badge: {
+          color: 'primary',
+          text: '20.2%'
+        },
+        amount: '2077h'
+      },
+      {
+        title: 'Workflow Hours',
+        badge: {
+          color: 'success',
+          text: '20%'
+        },
+        amount: '100h'
+      },
+      {
+        title: 'Forecast Income',
+        badge: {
+          color: 'primary',
+          text: '18%'
+        },
+        amount:'$256,489'
+      },
+    ]
+  .card.h-100&attributes(attributes)
+    .card-header
+      .row.flex-between-center
+        .col-auto
+          h6.mb-2 Candle Chart
+        .col-auto.mt-2
+          .row.g-sm-4
+            each item,index in candleChartitems
+              .col-12.col-sm-auto
+                +Stat(item,index)
+    .card-body.pe-0.position-relative#candle-chart(dir='ltr')
+      .btn-group.position-absolute.z-index-1.top-0.d-inline-block(role="group" style='left:20px;right:20px;')
+        button.btn.btn-falcon-default.btn-sm.mb-1(data-zoom="in")
+          span.fas.fa-plus
+        button.btn.btn-falcon-default.btn-sm.mb-1(data-zoom="out")
+          span.fas.fa-minus
+      
+      // Find the JS file for the following calendar at: src/js/charts/echarts/candle-chart.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-candle-chart(data-echart-responsive="true" data-action-target="candle-chart")    
+
+
+mixin Stat(details,index)
+    .mb-3(class=index != 2 ? 'pe-4 border-sm-end border-200' : 'pe-0')
+      h6.fs--2.text-600.mb-1 #{details.title}
+      .d-flex.align-items-center
+        h5.fs-0.text-900.mb-0.me-2 #{details.amount}
+        span.badge.rounded-pill(class=`badge-soft-${details.badge.color}`)
+          span.fas.fa-caret-up
+          |  #{details.badge.text}

@@ -1,0 +1,64 @@
+mixin NotificationSettings
+  .modal-header.d-flex.align-items-center.border-bottom.px-4
+    h4.mb-0#notification-settings-modal-label Notification Settings
+  .modal-body.p-4
+    +NotificationSettingsForm
+
+  .modal-footer.border-top.text-start.py-3.px-4.d-flex.justify-content-end
+    button.btn.btn-secondary.btn-sm(data-bs-dismiss='modal') Cancel
+    button.btn.btn-primary.btn-sm.ms-2(type="submit") Update
+
+
+mixin NotificationSettingsForm
+  form.text-start
+    +Radio({
+      id: 'always', 
+      text: 'Get a notification each time there is activity on your page or an important update.',
+      parentAttrs: { class: 'lh-1 mb-0' },
+      labelAttrs: { class: 'mb-0'}
+    })(name="notification-settings")
+    +Radio({
+      id: 'everyday', 
+      text: 'Get one notification every 12-24 hours on all activity and updates.',
+      parentAttrs: { class: 'lh-1 mb-0' },
+      labelAttrs: { class: 'mb-0'}
+    })(name="notification-settings")
+    +Radio({
+      id: 'off', 
+      text: 'Off',
+      parentAttrs: { class: 'lh-1 mb-0' },
+      labelAttrs: { class: 'mb-0'}
+    })(name="notification-settings")
+
+    h5.fs-0.mb-3.mt-4 Edit your notification settings for: 
+    ul.list-group.list-group-flush.mb-4.fs--1
+      li.list-group-item.d-flex.justify-content-between.align-items-center.py-2.px-0.border-200.bg-transparent
+        span New Mention of Page 
+        span.form-check.fs-0.mb-0
+          input.form-check-input.me-0#checkbox1(type='checkbox', name='checkbox1', checked)
+      li.list-group-item.d-flex.justify-content-between.align-items-center.py-2.px-0.border-200.bg-transparent
+        span New Comments on page post
+        span.form-check.fs-0.mb-0
+          input.form-check-input.me-0#checkbox2(type='checkbox', name='checkbox2', checked)
+      li.list-group-item.d-flex.justify-content-between.align-items-center.py-2.px-0.border-200.bg-transparent
+        span Edits to Comments you have written
+        span.form-check.fs-0.mb-0
+          input.form-check-input.me-0#checkbox3(type='checkbox', name='checkbox3', checked)
+    +Checkbox({
+      id: 'followers-activity', 
+      text: 'Allow notifications from your followers activity',
+      parentAttrs: { class: 'mb-0'},
+      labelAttrs: { class: 'mb-0'},
+    })
+    +Checkbox({
+      id: 'groups', 
+      text: 'Groups',
+      parentAttrs: { class: 'mb-0'},
+      labelAttrs: { class: 'mb-0'},
+    })
+    +Checkbox({
+      id: 'associations', 
+      text: 'Associations',
+      parentAttrs: { class: 'mb-0'},
+      labelAttrs: { class: 'mb-0'},
+    })

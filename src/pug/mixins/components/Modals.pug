@@ -1,0 +1,173 @@
+mixin ModalExampleDemo
+  = '\n'
+  button.btn.btn-primary(type='button' data-bs-toggle='modal' data-bs-target='#error-modal') Launch demo modal
+  #error-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+    .modal-dialog.modal-dialog-centered(role="document" style="max-width: 500px")
+      .modal-content.position-relative
+        .position-absolute.top-0.end-0.mt-2.me-2.z-index-1
+          = '\n'
+          button.btn-close.btn.btn-sm.btn-circle.d-flex.flex-center.transition-base(data-bs-dismiss='modal' aria-label='Close')
+        .modal-body.p-0
+          .rounded-top-lg.py-3.ps-4.pe-6.bg-light
+            h4#modalExampleDemoLabel.mb-1 Add a new illustration 
+          .p-4.pb-0  
+            form
+              .mb-3
+                = '\n'
+                label.col-form-label(for='recipient-name') Recipient:
+                = '\n'
+                input#recipient-name.form-control(type='text')
+              .mb-3
+                = '\n'
+                label.col-form-label(for='message-text') Message:
+                = '\n'
+                textarea#message-text.form-control
+        .modal-footer
+          = '\n'
+          button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+          = '\n'
+          button.btn.btn-primary(type='button') Understood        
+
+mixin StaticBackdrop 
+  button.btn.btn-primary(type='button' data-bs-toggle='modal' data-bs-target='#staticBackdrop')
+    | Launch static backdrop modal
+  #staticBackdrop.modal.fade(data-bs-keyboard="false" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" )
+    .modal-dialog.modal-lg.mt-6(role='document')
+      .modal-content.border-0
+        .position-absolute.top-0.end-0.mt-3.me-3.z-index-1
+          button.btn-close.btn.btn-sm.btn-circle.d-flex.flex-center.transition-base(data-bs-dismiss='modal' aria-label='Close')
+        .modal-body.p-0
+          .bg-light.rounded-top-lg.py-3.ps-4.pe-6
+            h4#staticBackdropLabel.mb-1 Add a new illustration to the landing page
+            p.fs--2.mb-0
+              | Added by 
+              a.link-600.fw-semi-bold(href='#!') Antony
+          .p-4
+            .row
+              .col-lg-9
+                .d-flex
+                  span.fa-stack.ms-n1.me-3
+                    i.fas.fa-circle.fa-stack-2x.text-200
+                    i.fa-inverse.fa-stack-1x.text-primary.fas.fa-tag(data-fa-transform="shrink-2")
+                  .flex-1
+                    h5.mb-2.fs-0 Labels
+                    .d-flex
+                      span.badge.me-1.py-2.badge-soft-success New
+                      span.badge.me-1.py-2.badge-soft-primary Goal
+                      span.badge.me-1.py-2.badge-soft-info Enhancement
+                      .dropdown.dropend
+                        button.btn.btn-sm.btn-secondary.px-2.fsp-75.bg-400.border-400.dropdown-toggle.dropdown-caret-none(data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                          span.fas.fa-plus
+                        .dropdown-menu
+                          h6.dropdown-header.py-0.px-3.mb-0 Select Label
+                          .dropdown-divider
+                          .px-3
+                            button.badge-soft-danger.dropdown-item.rounded-1.mb-2(type='button') New
+                            button.badge-soft-primary.dropdown-item.rounded-1.mb-2(type='button') Goal
+                            button.badge-soft-info.dropdown-item.rounded-1.mb-2(type='button') Enhancement
+                          .dropdown-divider
+                          .px-3
+                            button.btn.btn-sm.d-block.w-100.btn-outline-secondary.border-400 Create Label
+                    hr.my-4
+                .d-flex
+                  span.fa-stack.ms-n1.me-3
+                    i.fas.fa-circle.fa-stack-2x.text-200
+                    i.fa-inverse.fa-stack-1x.text-primary.fas.fa-align-left(data-fa-transform='shrink-2')
+                  .flex-1
+                    h5.mb-2.fs-0 Description
+                    p.text-word-break.fs--1
+                      | The illustration must match to the contrast of the theme. The illustraion must described the concept of the design. To know more about the theme visit the page. 
+              .col-lg-3      
+                h6.mt-5.mt-lg-0 Add To Card
+                ul.nav.flex-lg-column.fs--1
+                  li.nav-item.me-2.me-lg-0
+                    a.nav-link.nav-link-card-details(href='#!')
+                      span.fas.fa-user.me-2
+                      | Members
+                  li.nav-item.me-2.me-lg-0
+                    a.nav-link.nav-link-card-details(href='#!')
+                      span.fas.fa-tag.me-2
+                      | Label
+                  li.nav-item.me-2.me-lg-0
+                    a.nav-link.nav-link-card-details(href='#!')
+                      span.fas.fa-paperclip.me-2
+                      | Attachments
+                  li.nav-item.me-2.me-lg-0
+                    a.nav-link.nav-link-card-details(href='#!')
+                      span.fa.fa-align-left.me-2
+                      | Description   
+
+mixin ScrollingLongContent                    
+  button.btn.btn-primary(type='button' data-bs-toggle='modal' data-bs-target='#scrollinglongcontent')
+    | Launch Scrolling long content modal
+  #scrollinglongcontent.modal.fade( data-keyboard='false' tabindex='-1' aria-labelledby='scrollinglongcontentLabel' aria-hidden='true')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          h5#scrollinglongcontentLabel.modal-title Modal title
+          button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+        .modal-body.modal-dialog.modal-dialog-scrollable.mt-0
+          p Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+
+            |Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+
+            |Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
+
+            |Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+
+            |Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+
+            |Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
+
+            |Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+
+            |Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+
+            |Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
+
+            |Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+
+            |Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+
+            |Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
+
+            |Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+
+            |Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+
+            |Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
+
+            |Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+
+            |Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+
+            |Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
+        .modal-footer
+          button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+          button.btn.btn-primary(type='button') Understood
+
+mixin TooltipsPopovers
+  button.btn.btn-primary(type='button' data-bs-toggle='modal' data-bs-target='#tooltippopovers')
+    | Launch modal with tooltips and pophover
+  #tooltippopovers.modal.fade(tabindex='-1' aria-labelledby='tooltippopoversLabel' aria-hidden='true')
+    .modal-dialog.mt-6(role='document')
+      .modal-content.border-0
+        .position-absolute.top-0.end-0.mt-2.me-2.z-index-1
+          button.btn-close.btn.btn-sm.btn-circle.d-flex.flex-center.transition-base(data-bs-dismiss='modal' aria-label='Close')
+        .modal-body.p-0
+          .bg-light.rounded-top-lg.py-3.ps-4.pe-6
+            h4#tooltippopoversLabel.mb-1 Tooltips and Pophover
+          .p-4.pb-0
+            .row
+              .col      
+                h5 Popover in a modal
+                p
+                  | This 
+                  a.btn.btn-secondary.popover-test(href='#!' role='button' title='Popover title' data-bs-toggle="popover" data-bs-placement="top" data-bs-content='Popover body content is set in this attribute.') button
+                  |  triggers a popover on click.
+                h5 Tooltips in a modal
+                p
+                  a.tooltip-test(href='#' data-bs-toggle="tooltip" data-bs-placement="top" title='Tooltip') This link
+                  |  and 
+                  a.tooltip-test(href='#' data-bs-toggle="tooltip" data-bs-placement="top" title='Tooltip') that link
+                  |  have tooltips on hover.

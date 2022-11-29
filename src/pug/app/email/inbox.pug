@@ -1,0 +1,51 @@
+extends ../../layouts/LayoutTheme
+include ../../mixins/email/Inbox
+
+prepend styles
+  link(href=`${CWD}vendors/glightbox/glightbox.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/prism/prism-okaidia.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/glightbox/glightbox.min.js`) 
+  script(src=`${CWD}vendors/prism/prism.js`)
+
+append content
+  .card.mb-3
+    .card-header
+      .row.align-items-center
+        .col.d-flex.align-items-center
+          .form-check.mb-0.d-none.d-sm-block
+            input.form-check-input.checkbox-bulk-select(
+              type='checkbox'
+              data-bulk-select!={
+                body: "emails",
+                actions: "emails-actions"
+              }
+            )
+          +ButtonReload.ms-sm-1
+          +DropdownFilter('ms-2')
+          #emails-actions.border-start.ms-3.ps-3.d-none
+            +EmailActions
+
+        .col-auto
+          a.btn.btn-falcon-primary.btn-sm(href=`${CWD}${paths['email-compose']}`)
+            span.fas.fa-plus.me-1(data-fa-transform='shrink-3')
+            | Compose
+
+    .card-body.fs--1.border-top.border-200.p-0#emails
+      h5.fs-0.px-3.pt-3.pb-2.mb-0.border-bottom.border-200 Unread
+      each email in emails
+        if (!email.read)
+          +EmailRow(email)
+      h5.fs-0.px-3.pt-3.pb-2.mb-0.border-bottom.border-200 Everything else
+      each email in emails
+        if (email.read)
+          +EmailRow(email)
+
+    .card-footer.d-flex.justify-content-between.align-items-center
+      small 2.29 GB 
+        span.d-none.d-sm-inline-block (13%)  
+        |  of 17 GB used
+      div
+        small 1-#{emails.length} of 354
+        +Paginations

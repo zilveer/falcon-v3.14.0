@@ -1,0 +1,17 @@
+extends ../../layouts/LayoutFeed
+include ../../mixins/common/Media
+include ../../mixins/pages/profile/Events
+
+
+prepend scripts
+  script(src!=`https://maps.googleapis.com/maps/api/js?key=${APIGmap}&callback=initMap` async)
+
+block feedBanner
+  +EventBannerDetails
+
+block feed  
+  +EventDetails
+
+block feedSideBar
+  +EventTimeLocation
+  +Events({more: true, title: 'Events you may like'})

@@ -1,0 +1,24 @@
+extends ../../layouts/LayoutTheme
+include ../../mixins/tickets/ContactDetailsHeader
+include ../../mixins/tickets/CardContactDetails
+include ../../mixins/tickets/ContactProfile
+include ../../mixins/tickets/CardTodoList
+
+block append content
+  +ContactDetailsHeader.mb-3
+  .row.g-3
+    .col-xxl-3.col-xl-4.order-xl-1
+      .position-xl-sticky.top-0
+        +ContactProfile
+        .offcanvas.offcanvas-end.offcanvas-contact-info(tabindex="-1" id="contactDetailsOffcanvas" aria-labelledby="contactDetailsOffcanvasLabelCard")
+          .offcanvas-header.d-xl-none.d-flex.flex-between-center.d-xl-none.bg-light
+            h6.fs-0.mb-0.fw-semi-bold To-do List
+            button.btn-close.text-reset.d-xl-none.shadow-none#contactDetailsOffcanvasLabelCard(type='button' data-bs-dismiss='offcanvas' aria-label='Close')
+          .offcanvas-body.scrollbar.scrollbar-none-xl.p-0
+            button(type='button').btn.btn-falcon-default.btn-sm.d-flex.align-items-center.mb-x1.d-xl-none.ms-x1.mt-x1
+              span.fas.fa-plus(data-fa-transform="shrink-3")
+              span.ms-1 Add
+            .border-bottom.border-xl-0.border-200
+            +CardTodoList(3).mt-xl-3
+    .col-xxl-9.col-xl-8 
+      +CardContactDetails

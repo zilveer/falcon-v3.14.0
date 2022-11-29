@@ -1,0 +1,38 @@
+extends ../../../layouts/LayoutSplit
+include ../../../mixins/authentication/LoginForm
+include ../../../mixins/authentication/FormHeader
+include ../../../mixins/authentication/SocialButtons
+
+block append variables
+  -
+    var background = {
+      image: `${CWD}assets/img/generic/14.jpg`,
+      attrs: { style: 'background-position: 50% 20%;' }
+    }
+
+block splitContent
+  +FormHeader({
+    title: {
+      text: 'Login',
+      tag: "h3"
+    },
+    normalContent: {
+      text:'New User?',
+      className:'fw-semi-bold'
+    },
+    linkText: 'Create account',
+    link:`split/register.html`
+    })
+  +LoginForm({
+    layout: 'split',
+    email: {
+      label: 'Email address',
+      attrs: { id: 'split-login-email' }
+    },
+    password: {
+      label: 'Password',
+      attrs: { id: 'split-login-password' }
+    },
+    checkbox: { attrs: { id: 'split-checkbox' } }
+  })
+  +SocialButtons({ title: 'log in' }).mt-4

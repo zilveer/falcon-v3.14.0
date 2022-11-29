@@ -1,0 +1,87 @@
+
+mixin CardCrmStatistics
+  .card&attributes(attributes)
+    .card-body
+      .row
+        -
+          var crmNewContact = 
+            {
+              title: 'New Contact',
+              amount: '15',
+              target: '2500 vs 2683',
+              icon: 'fas fa-phone',
+              caret: 'fas fa-caret-up',
+              color: 'primary',
+              caretColor: 'primary',
+              data: [220, 230, 150, 175, 200, 170, 70, 160],
+              lineColor:  themeColor.primary 
+            }
+        +CrmStatisticsItem(crmNewContact, 'dropdown-new-contact').border-lg-end.border-bottom.border-lg-0.pb-3.pb-lg-0
+        -
+          var crmNewUser = 
+            {
+              title: 'New Users',
+              amount: '13',
+              target: '1635 vs 863',
+              icon: 'fas fa-user',
+              caret: 'fas fa-caret-up',
+              color: 'info',
+              caretColor: 'success',
+              data: [90, 160, 150, 120, 230, 155, 220,240],
+              lineColor: themeColor.info
+            }
+        +CrmStatisticsItem(crmNewUser, 'dropdown-new-users').border-lg-end.border-bottom.border-lg-0.py-3.py-lg-0
+        -
+          var crmNewLeads = 
+            {
+              title: 'New Leads',
+              amount: '16',
+              target: '1423 vs 256',
+              icon: 'fas fa-bolt',
+              caret: 'fas fa-caret-down',
+              color: 'success',
+              caretColor: 'danger',
+              data: [200, 150, 175, 130, 150, 115, 130,100],
+              lineColor: themeColor.success
+            }
+        +CrmStatisticsItem(crmNewLeads, 'dropdown-new-leads').pt-3.pt-lg-0
+
+mixin CrmStatisticsItem(item,id)
+  .col-lg-4&attributes(attributes)
+    .d-flex.flex-between-center.mb-3
+      .d-flex.align-items-center
+        .icon-item.icon-item-sm.bg-soft-primary.shadow-none.me-2(class = `bg-soft-${item.color}`)
+          span.fs--2(class = `${item.icon} text-${item.color}`)
+        h6.mb-0 #{item.title}
+      +DashboardDropdown(id)
+    .d-flex
+      .d-flex
+        p.font-sans-serif.lh-1.mb-1.fs-4.pe-2 #{item.amount}%
+        .d-flex.flex-column 
+          span.me-1.text-success(class = `${item.caret} text-${item.caretColor}`)
+          p.fs--2.mb-0.text-nowrap #{item.target} 
+      .echart-crm-statistics.w-100.ms-2( data-echart-responsive="true" data-echarts!={
+          series: [
+            { 
+              type: 'line',
+              data: item.data,
+              color: item.lineColor,
+              areaStyle: {
+                color: {
+                  colorStops: [
+                    {
+                      offset: 0,
+                      color: item.lineColor+'3A',         
+                    },
+                    {
+                      offset: 1,
+                      color: item.lineColor+'0A',
+                    },
+                  ],
+                },
+            },
+            },
+          ],
+          
+          grid: { bottom: "-10px" },
+        })

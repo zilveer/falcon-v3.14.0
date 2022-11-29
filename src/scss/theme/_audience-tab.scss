@@ -1,0 +1,18 @@
+.audience-chart-header {
+  .firefox & {
+    min-height: 96px;
+  }
+}
+
+.chart-tab {
+  .nav-link {
+    &:not(.active):hover {
+      border-color: transparent !important;
+    }
+
+    &.active {
+      border-bottom: 2px solid var(--#{$prefix}primary);
+      background-color: var(--#{$prefix}card-bg);
+    }
+  }
+}

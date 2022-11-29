@@ -1,0 +1,65 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/Alerts
+
+append variables
+  -
+    var pageHeader = {
+      title: 'Alerts',
+      description: 'Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/components/alerts/`,
+      linkText: 'Alerts on Bootstrap'
+    }
+
+block component
+  +PageHeader(pageHeader)
+
+  
+  +ComponentCard({
+    title: 'Alerts with icon',
+    anchor: true,
+  }).mb-3
+    .alert.alert-success.border-2.d-flex.align-items-center(role='alert')
+      .bg-success.me-3.icon-item
+        span.fas.fa-check-circle.text-white.fs-3
+      p.mb-0.flex-1 A simple success alert—check it out!
+      button.btn-close(type='button' data-bs-dismiss='alert' aria-label='Close')
+
+    .alert.alert-info.border-2.d-flex.align-items-center(role='alert')
+      .bg-info.me-3.icon-item
+        span.fas.fa-info-circle.text-white.fs-3
+      p.mb-0.flex-1 A simple info alert—check it out!
+      button.btn-close(type='button' data-bs-dismiss='alert' aria-label='Close')
+
+    .alert.alert-warning.border-2.d-flex.align-items-center(role='alert')
+      .bg-warning.me-3.icon-item
+        span.fas.fa-exclamation-circle.text-white.fs-3
+      p.mb-0.flex-1 A simple warning alert—check it out!
+      button.btn-close(type='button' data-bs-dismiss='alert' aria-label='Close')
+
+    .alert.alert-danger.border-2.d-flex.align-items-center(role='alert')
+      .bg-danger.me-3.icon-item
+        span.fas.fa-times-circle.text-white.fs-3
+      p.mb-0.flex-1 A simple danger alert—check it out!
+      button.btn-close(type='button' data-bs-dismiss='alert' aria-label='Close')
+
+  +ComponentCard({
+    title: 'Basic Examples',
+    anchor: true,
+    description:"Alerts are available for any length of text, as well as an optional close button. For proper styling, use one of the eight<strong> required </strong> contextual classes (e.g., <code> .alert-success </code> ). For inline dismissal, use the <a href='#dismissing'> alerts JavaScript plugin </a>",
+    descriptionClass:'mt-2',
+  }).mb-3
+    +AlertBasicDemo
+
+  +ComponentCard({
+    title: 'Additional Content',
+    anchor: true,
+  }).mb-3
+    +AlertAdditionalContentDemo
+
+  +ComponentCard({
+    title: 'Dismissing',
+    anchor: true,
+  }).mb-3
+    +AlertDismissingDemo
+
+

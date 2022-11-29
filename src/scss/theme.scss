@@ -1,0 +1,35 @@
+/* -------------------------------------------------------------------------- */
+/*                                 Theme                                      */
+/* -------------------------------------------------------------------------- */
+
+@import "../../node_modules/bootstrap/scss/_functions";
+@import "theme/functions";
+
+@import "user-variables";
+@import "theme/variables";
+@import "../../node_modules/bootstrap/scss/variables";
+
+
+@import 'theme/maps';
+@import "../../node_modules/bootstrap/scss/maps"; // ---new---
+
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "theme/mixins";
+
+@import 'theme/_utilities';
+@import "../../node_modules/bootstrap/scss/utilities";
+
+
+@import "../../node_modules/bootstrap/scss/root";
+@import 'theme/root';
+
+
+/*-----------------------------------------------
+|   Bootstrap Styles
+-----------------------------------------------*/
+@import "bootstrap";
+
+/*-----------------------------------------------
+|   Theme Styles
+-----------------------------------------------*/
+@import "theme/theme";

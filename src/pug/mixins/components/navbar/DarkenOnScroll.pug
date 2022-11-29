@@ -1,0 +1,29 @@
+mixin HTMLDescription 
+  p&attributes(attributes) You can add   
+    strong darken on scroll 
+    | feature to the Bootstrap navbar, just add 
+    code data-navbar-darken-on-scroll 
+    | attribute to the 
+    code .navbar 
+    | element. By default it will take the 
+    code bg-dark 
+    | color code to darken the navbar.
+
+mixin NavbarDarkenScrollDemo
+  nav.navbar.navbar-expand-lg.navbar-dark(data-navbar-darken-on-scroll)
+    // Navbar content 
+
+mixin NavbarDarkenOnScrollVarientDescription
+  p.mt-3 You can also change the background color of the navbar by using any of the color from the list:  
+    each val, index in colorsAll
+      code #{val}
+      if(index != colorsAll.length - 1)
+        | , 
+    |  like as follows: 
+
+    a(href=`${CWD}${paths['utilities-colors']}`) See all colors in #{name}
+
+mixin NavbarDarkenOnScrollVarientDemo
+  +ComponentCardLib
+    nav.navbar.navbar-expand-lg.navbar-dark(data-navbar-darken-on-scroll="primary")
+      // Navbar content 

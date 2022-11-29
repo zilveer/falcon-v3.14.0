@@ -1,0 +1,120 @@
+append variables
+  -
+    var statusData = [
+      {
+        color:"primary",
+        img:"hold-tickets",
+        percentage:"5.3%",
+        count:"25",
+        text:"On Hold Tickets",
+        dataArray:[10, 40, 30, 35, 20, 40],
+        chartColor:"#2c7be5"
+      },
+      {
+        color:"success",
+        img:"open-tickets",
+        percentage:"3.20%",
+        count:"05",
+        text:"Open the ticket",
+        dataArray:[10, 12, 16, 14, 20, 25],
+        chartColor:"#00d27a"
+      },
+      {
+        color:"info",
+        img:"due-tickets",
+        percentage:"2.3%",
+        count:"02",
+        text:"Due Tickets Today",
+        dataArray:[15, 10, 15, 10, 12, 10],
+        chartColor:"#27bcfd"
+      },
+      {
+        color:"warning",
+        img:"unassigned",
+        percentage:"3.12%",
+        count:"03",
+        text:"Unassigned",
+        dataArray:[10, 15, 12, 11, 14, 12],
+        chartColor:"#f5803e"
+      }
+    ]
+
+mixin CardWelcomeTicket
+  .card.bg-light.shadow-none&attributes(attributes)
+    +Background({image:`${CWD}assets/img/illustrations/ticket-bg.png`, className:"bg-card d-none d-sm-block"})
+    .card-header.d-flex.align-items-center.z-index-1.p-0
+      img(src=`${CWD}assets/img/illustrations/ticket-welcome.png`, alt="" width='96')
+      .ms-n3
+        h6.mb-1.text-primary Welcome to
+        h4.mb-0.text-primary.fw-bold Falcon
+          span.text-info.fw-medium  Support Desk
+
+
+mixin CardTicketsStatus
+  .card&attributes(attributes)
+    .card-body
+      .row.g-0
+        .col-md-6.border-200.border-md-200.border-bottom.border-md-end.pb-x1.pe-md-x1
+            +StatusItem(statusData[0])
+        .col-md-6.ps-md-x1.pb-x1.pt-x1.pt-md-0.border-bottom.border-200
+          +StatusItem(statusData[1])
+        .col-md-6.border-md-200.border-200.border-bottom.border-md-bottom-0.border-md-end.pt-x1.pe-md-x1.pb-x1.pb-md-0
+          +StatusItem(statusData[2])
+        .col-md-6.ps-md-x1.pt-x1
+          +StatusItem(statusData[3])
+
+
+mixin StatusItem(config)
+  .row.g-0&attributes(attributes)
+    .col-6
+      img(src=`${CWD}assets/img/tickets/${config.img}.png`, alt="" width='39').mt-1
+      h2.mt-2.mb-1.text-700.fw-normal= config.count
+        span.fas.fa-caret-up.ms-2.me-1.fs--1(class=`text-${config.color}`)
+        span.fs--1.fw-semi-bold(class=`text-${config.color}`)= config.percentage
+      h6.mb-0= config.text
+    .col-6.d-flex.align-items-center.px-0
+      .h-50.w-100(data-echarts!={
+      tooltip:{
+        trigger:'axis',
+        formatter: '{b0} : {c0}',
+      },
+      xAxis:{
+        data: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5','Week 6'],
+      },
+      series: [
+        {
+          type: 'line',
+          data: config.dataArray,
+          color: config.chartColor,
+          smooth:true,
+          lineStyle: {
+            width: 2,
+          },
+          areaStyle: {
+            color: {
+              type: "linear",
+              x: 0,
+              y: 0,
+              x2: 0,
+              y2: 1,
+              colorStops: [
+                {
+                  offset: 0,
+                  color: config.chartColor === "#2c7be5" ? 'rgba(44, 123, 229, .25)' : config.chartColor === "#00d27a" ? 'rgba(0, 210, 122, .25)' : config.chartColor === "#27bcfd" ? 'rgba(39, 188, 253, .25)' : 'rgba(245, 128, 62, .25)',
+                },
+                {
+                  offset: 1,
+                  color: config.chartColor === "#2c7be5" ? 'rgba(44, 123, 229, 0)' : config.chartColor === "#00d27a" ? 'rgba(0, 210, 122, 0)' : config.chartColor === "#27bcfd" ? 'rgba(39, 188, 253, 0)' : 'rgba(245, 128, 62, 0)',
+                },
+              ],
+            },
+          },
+        }
+      ],
+    grid:{
+        bottom: '2%',
+        top: '2%',
+        right: '0',
+        left: '0px',
+      }
+    } data-echart-responsive="true")

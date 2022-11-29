@@ -1,0 +1,75 @@
+/*-----------------------------------------------
+|   Icons group
+-----------------------------------------------*/
+.icon-group {
+  display: flex;
+
+  .icon-item:not(:last-child) {
+    margin-right: map_get($spacers, 2);
+  }
+}
+
+.icon-item {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--#{$prefix}gray-700);
+  transition: $transition-base;
+  height: 2.5rem;
+  width: 2.5rem;
+  border: 0;
+  font-size: $font-size-sm;
+  box-shadow: $box-shadow-sm;
+
+  @include hover-focus {
+    background-color: var(--#{$prefix}gray-200);
+  }
+
+  &.icon-item-sm {
+    height: 1.875rem;
+    width: 1.875rem;
+  }
+
+  &.icon-item-lg {
+    height: 2.75rem;
+    width: 2.75rem;
+  }
+
+  &.icon-item-xl {
+    height: 3.125rem;
+    width: 3.125rem;
+    font-size: $font-size-lg;
+  }
+}
+
+
+.fa-icon-wait {
+  opacity: 0;
+
+  .fontawesome-i2svg-active & {
+    opacity: 1;
+  }
+}
+
+// Icon circle
+.icon-circle {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-width: 2px;
+  border-style: solid;
+  margin: 0 auto;
+  margin-bottom: map_get($spacers, 3);
+}
+
+@each $color,
+$value in $icon-circle-colors {
+  .icon-circle-#{$color} {
+    color: var(--#{$prefix}#{$color});
+    border-color: var(--#{$prefix}#{$color});
+  }
+}

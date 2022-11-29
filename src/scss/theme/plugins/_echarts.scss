@@ -1,0 +1,323 @@
+/* -------------------------------------------------------------------------- */
+/*                                   Echarts                                  */
+/* -------------------------------------------------------------------------- */
+[data-echarts] {
+  width: 3.625rem;
+  height: 1rem;
+}
+
+.echart-bar-weekly-sales {
+  width: 8.5rem;
+}
+
+.echart-bar-weekly-sales-smaller-width {
+  width: 6.5rem;
+}
+
+.echart-line-total-order {
+  width: 8.625rem;
+  height: 5rem;
+}
+
+.echart-bandwidth-saved {
+  height: 10.3rem;
+  width: 10.3rem;
+}
+
+.echart-line-total-sales {
+  min-height: 18.4375rem;
+
+  @include media-breakpoint-up(lg) {
+    min-height: 15.625rem;
+  }
+}
+
+.echart-bar-top-products {
+  min-height: 18.4375rem;
+
+  @include media-breakpoint-up(xxl) {
+    min-height: 15.625rem;
+  }
+}
+
+.echart-bar-top-products-ecommerce {
+  min-height: 18.4375rem;
+
+  @include media-breakpoint-up(xxl) {
+    min-height: 23.625rem;
+  }
+}
+
+.echart-market-share,
+.echart-product-share {
+  width: 6.625rem;
+  height: 6.625rem;
+}
+
+.echart-world-map {
+  min-height: 26.25rem;
+}
+
+.echart-line-total-sales-ecommerce {
+  height: 18.7rem;
+}
+
+.echart-radar-sales-by-pos-location {
+  min-width: 18rem;
+  min-height: 16rem;
+  max-height: 22rem;
+
+}
+
+.echart-line-returning-customer-rate {
+  min-width: 16rem;
+  min-height: 20rem;
+}
+
+// Project management
+.echart-candle-chart {
+  height: 20.5rem;
+
+  .firefox & {
+    min-height: 21.5rem;
+  }
+
+  @include media-breakpoint-down(lg) {
+    min-height: 25rem;
+
+  }
+
+  @include media-breakpoint-down(sm) {
+    min-height: 18.75rem;
+  }
+}
+
+.echart-gross-revenue-chart {
+  min-height: 14.375rem;
+}
+
+.echart-active-user-chart {
+  height: 3.125rem;
+}
+
+.echart-bar-report-for-this-week {
+  min-height: 18.4375rem;
+
+  @include media-breakpoint-up(xxl) {
+    min-height: 17.6875rem;
+  }
+}
+
+[data-echarts] {
+  width: 3.625rem;
+  height: 1rem;
+}
+
+.total-order-ecommerce {
+  width: 9rem !important;
+  height: 4rem !important;
+}
+
+// analytics style
+
+.echart-audience {
+  min-height: 21.25rem;
+
+  .container-fluid & {
+    min-height: 25rem;
+  }
+}
+
+.echart-session-by-browser,
+.echart-session-by-country-map {
+  min-height: 12.5rem;
+}
+
+.echart-session-by-device {
+  min-height: 12.5rem;
+}
+
+.echart-most-leads {
+  min-height: 12.65rem;
+}
+
+.echart-session-by-country {
+  min-height: 13.125rem;
+}
+
+.echart-active-users-report-container {
+
+  @include media-breakpoint-up(md) {
+    width: calc(100% - 120px);
+  }
+}
+
+.echart-active-users-report {
+  min-height: 16.25rem;
+}
+
+.echart-bounce-rate {
+  min-height: 20rem;
+}
+
+.echart-traffic-channels {
+  min-height: 21.875rem;
+}
+
+.echart-browsed-courses {
+  min-height: 21.875rem;
+}
+
+.echart-users-by-time {
+  min-height: 24.75rem;
+}
+
+.echart-goal-charts {
+  height: 1.875rem;
+  width: 100%;
+}
+
+// CRM
+
+.echart-crm-statistics {
+  height: 2rem !important;
+}
+
+.echart-call-duration {
+  width: 12rem !important;
+  height: 3rem !important;
+}
+
+.echart-marketing-traffic {
+  width: 8.7rem !important;
+  height: 2rem !important;
+}
+
+.crm-weekly-sales-width {
+  width: 8.7rem;
+}
+
+.echart-lead-conversion {
+  min-height: 18.9rem;
+}
+
+.echart-deal-storage-funnel {
+  height: 10rem;
+}
+
+.echart-closed-vs-goal {
+  min-height: 15re;
+
+  @include media-breakpoint-up(xxl) {
+    min-height: 14rem !important;
+  }
+}
+
+.echart-default-total-order,
+.echart-default {
+  width: 8.625rem;
+  height: 100%;
+}
+
+//supports ticket
+.echart-unresolved-tickets-container {
+  @include media-breakpoint-up(md) {
+    width: calc(100% - 7.1rem);
+  }
+}
+
+.echart-unresolved-tickets {
+  min-height: 20rem;
+  width: 100%;
+}
+
+.echart-number-of-tickets {
+  min-height: 18.5rem;
+  min-width: 40rem;
+}
+
+.echart-customer-setisfaction {
+  min-height: 19.5rem;
+}
+
+.echart-distribution-of-performance {
+  min-height: 20.875rem;
+  min-width: 40rem;
+}
+
+.echart-satisfaction-survey {
+  min-height: 24.625rem;
+  min-width: 40rem;
+}
+
+.echart-received-tickets {
+  min-height: 23.5rem;
+  min-width: 52rem;
+}
+
+.echart-top-customers {
+  min-height: 22rem;
+}
+
+.echart-ticket-volume {
+  min-height: 21.81rem;
+}
+
+.charts-ticket-priority {
+  height: 1.625rem;
+  width: 1.625rem;
+}
+
+// LMS
+.echart-assignment-scores {
+  min-height: 12.5rem;
+}
+
+.echart-course-status {
+  height: 18.75rem;
+}
+
+// examples
+
+.echart-scatter-quartet-chart-example {
+  min-height: 500px;
+
+  @include media-breakpoint-down(md) {
+    min-height: 1050px;
+  }
+}
+
+//------------------------------- echart example--------------------------------------
+
+// ---radar chart---
+.echart-radar-customized-chart {
+  height: 22rem;
+
+  @include media-breakpoint-down(lg) {
+    height: 45rem;
+  }
+}
+
+.echart-radar-multiple-chart {
+  height: 21rem;
+
+  @include media-breakpoint-down(xxl) {
+    height: 32rem;
+  }
+
+  @include media-breakpoint-down(xl) {
+    height: 32rem;
+  }
+
+  @include media-breakpoint-down(lg) {
+    height: 50rem;
+  }
+}
+
+// ---Heatmap---
+
+.echart-heatmap-calendar-vertical-chart {
+  @include media-breakpoint-down(md) {
+    height: 215rem;
+  }
+}

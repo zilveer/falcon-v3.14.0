@@ -1,0 +1,34 @@
+extends ../../../layouts/CardLayout
+//- include ../../../mixins/authentication/Mixins
+
+block append variables
+  - var attrsLayout = { class: 'container-fluid' }
+
+block cardLeft
+  p.pt-3.text-white Have an account?
+    br
+    a(href=`${CWD}${paths['card-login']}`).btn.btn-outline-light.mt-2.px-4
+      | Log In
+
+block cardRight
+  h3 Register
+  +RegisterForm({
+    name: {
+      label: 'Name',
+      attrs: { id: 'card-name' }
+    },
+    email: {
+      label: 'Email address',
+      attrs: { id: 'card-email' }
+    },
+    password: {
+      label: 'Password',
+      attrs: { id: 'card-password' }
+    },
+    confirmPassword: {
+      label: 'Confirm Password',
+      attrs: { id: 'card-confirm-password' }
+    },
+    checkbox: { attrs: { id: 'card-register-checkbox' } },
+  })
+  +SocialButtons({ title: 'register' }).mt-4

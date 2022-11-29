@@ -1,0 +1,32 @@
+extends ../../../layouts/LayoutComponent
+include ../../../mixins/components/navbar/NavbarCombo
+
+append variables
+  
+  
+  -
+    var pageHeader = {
+      title: 'Combo Nav',
+      description: `Combo Nav is an additional layout system of ${name} where you can place both Navbar Top and Navbar Vertical in a same page.`,
+      url: `${CWD}demo/combo-nav.html`,
+      linkText: 'Combo Nav Example Page'
+    }
+
+append content
+
+  +PageHeader(pageHeader)
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Html')
+    .card-body.bg-light
+      +ComboNavHTMLDescription
+      +ComponentCardLib
+        +ComboNavHTMLDemo
+
+  .card.mb-3#combo-nav-docs
+    .card-header
+      +DocCardHeader('Responsive behaviors')
+    .card-body.bg-light
+      +ComboNavResponsiveBehaviors
+

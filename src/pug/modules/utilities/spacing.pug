@@ -1,0 +1,28 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/utilities/Spacing
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Spacing',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/utilities/spacing/`,
+      linkText: 'Spacing on Bootstrap'
+    }
+
+append content
+  +PageHeader(pageHeader)
+    +SpacingDocHeaderDescription
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Example')
+    .card-body.bg-light
+      +SpacingDoc
+
+  +ComponentCard({
+    title: 'Gap'
+  })
+    +GapDoc
+
+
+

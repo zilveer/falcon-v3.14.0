@@ -1,0 +1,82 @@
+append variables
+  -
+    var shopingCardBarItems = [
+      {
+        title: 'Initiated',
+        amount: '43.6%',
+        barWidth: '50%',
+        items: ' Session: <span class ="text-600">6817</span> ',
+        class: {
+          iconColor: 'text-success',
+          bgColor: 'primary',
+          icon: 'fas fa-caret-up',
+        } 
+      },
+      {
+        title: 'Abandonment rate',
+        amount: '13.11%',
+        barWidth: '25%',
+        items: '<span class ="text-600">44</span>  of 61',
+        class: {
+          iconColor: 'text-danger',
+          bgColor: 'danger',
+          icon: 'fas fa-caret-up',
+        } 
+      },
+      {
+        title: 'Bounce rate',
+        amount: '12.11%',
+        barWidth: '35%',
+        items: '<span class ="text-600">8</span>  of 61',
+        class: {
+          iconColor: 'text-success',
+          bgColor: 'primary',
+          icon: 'fas fa-caret-up',
+        } 
+      },
+      {
+        title: 'Completion rate',
+        amount: '43.6%',
+        barWidth: '43%',
+        items: '<span class ="text-600">18</span>  of 179',
+        class: {
+          iconColor: 'text-danger',
+          bgColor: 'primary',
+          icon: 'fas fa-caret-down',
+        } 
+      },
+      {
+        title: 'Revenue Rate',
+        amount: '60.5%',
+        barWidth: '60%',
+        items: '<span class ="text-600">18</span>  of 179',
+        class: {
+          iconColor: 'text-success',
+          bgColor: 'primary',
+          icon: 'fas fa-caret-up',
+        } 
+      },
+    
+    ]
+
+mixin CardShoppingCartBar
+  .card&attributes(attributes)
+    .card-header.d-flex.flex-between-center
+      h6.mb-0 Shopping Cart
+      +DashboardDropdown('dropdown-shopping-cart-bar')
+
+    .card-body.py-0.d-flex.align-items-center.h-100
+      .flex-1
+        each item,index in shopingCardBarItems
+          .row.g-0.align-items-center.pb-3(class = index !==0 && 'border-top pt-3')
+            .col.pe-4
+              h6.fs--2.text-600 #{item.title}
+              .progress(style='height:5px')
+                .progress-bar.rounded-3(class = `bg-${item.class.bgColor}` role='progressbar' style=`width: ${item.barWidth} ` aria-valuenow='25' aria-valuemin='0' aria-valuemax='100')
+            .col-auto.text-end
+              p.mb-0.text-900.font-sans-serif
+                span.me-1(class = `${item.class.icon} ${item.class.iconColor}`)
+                | #{item.amount}
+              p.mb-0.fs--2.text-500.fw-semi-bold !{item.items}
+      
+

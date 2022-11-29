@@ -1,0 +1,51 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/Placeholder
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Placeholder',
+      description: "Use loading placeholders for your components or pages to indicate something may still be loading",
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/components/placeholders/`,
+      linkText: 'Placeholders on Bootstrap'
+    } 
+
+block component
+
+  +PageHeader(pageHeader)
+
+  +ComponentCard({
+    title: 'Examples',
+    anchor: true,
+    descriptionEl:`<p class='mt-2 mb-0'>In the example below, we take a typical card component and recreate it with placeholders applied to create a “loading card”. Size and proportions are the same between the two.</p>`
+  }).mb-3
+    +PlaceholeHolderExample
+
+  +ComponentCard({
+    title: 'Width',
+    anchor: true,
+    descriptionEl:`<p class='mt-2 mb-0'>You can change the <code>width</code> through grid column classes, width utilities, or inline styles.</p>`
+  }).mb-3
+    +PlaceholderWidth
+
+  +ComponentCard({
+    title: 'Color',
+    anchor: true,
+    descriptionEl:`<p class='mt-2 mb-0'>By default, the <code>placeholder</code> uses <code>currentColor</code>. This can be overriden with a custom color or utility class.</p>`
+  }).mb-3
+    +PlaceholderColor
+
+  +ComponentCard({
+    title: 'Sizing',
+    anchor: true,
+    descriptionEl:`<p class='mt-2 mb-0'>The size of <code>.placeholder</code>s are based on the typographic style of the parent element. Customize them with sizing modifiers: <code>.placeholder-lg</code>, <code>.placeholder-sm</code>, or <code>.placeholder-xs</code>.</p>`
+  }).mb-3
+    +PlaceholderSizing
+
+  +ComponentCard({
+    title: 'Animation',
+    anchor: true,
+    descriptionEl:`<p class='mt-2 mb-0'>Animate placehodlers with <code>.placeholder-glow</code> or <code>.placeholder-wave</code> to better convey the perception of something being <em>actively</em> loaded.</p>`
+  }).mb-3
+    +PlaceholderAnimation

@@ -1,0 +1,3 @@
+mixin Logo(logo, width)
+  img(src=`${CWD}assets/img/icons/spot-illustrations/${logo}.png` alt='' width=`${width ? width : 40}`).me-2
+  span.font-sans-serif&attributes(attributes) #{logo}

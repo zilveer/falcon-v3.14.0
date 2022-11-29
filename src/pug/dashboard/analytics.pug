@@ -1,0 +1,51 @@
+extends ../layouts/LayoutTheme
+include ../mixins/home/dashboard-alt/CardActiveUserChart
+include ../mixins/home/dashboard-analytics/CardAskIntelligence
+include ../mixins/home/dashboard-analytics/CardAudience
+include ../mixins/home/dashboard-analytics/CardSession
+include ../mixins/home/dashboard-analytics/CardActiveUsersReport
+include ../mixins/home/dashboard-analytics/CardPagesTable
+include ../mixins/home/dashboard-analytics/CardPerfomance
+include ../mixins/home/dashboard-analytics/CardCharts
+include ../mixins/home/dashboard-analytics/CardGoals
+
+prepend styles
+  link(href=`${CWD}vendors/leaflet/leaflet.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/leaflet.markercluster/MarkerCluster.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/leaflet.markercluster/MarkerCluster.Default.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+  script(src=`${CWD}assets/data/world.js`)
+  script(src=`${CWD}vendors/chart/chart.min.js`)
+  script(src=`${CWD}vendors/dayjs/dayjs.min.js`)
+
+append content
+  .row.g-3.mb-3
+    .col-xxl-8
+      +CardAudience.mb-3
+      +CardConnect
+    .col-md-6.col-xxl-4
+      +CardActiveUserChart
+    .col-md-6.col-xxl-4
+      +SessionByDevice.h-100
+    .col-md-6.col-xxl-4
+      +SessionByCountry
+    .col-md-6.col-xxl-4
+      +AskIntelligence.h-100
+  .row.g-3.mb-3
+    .col-lg-7
+      +ActiveUsers.mb-3
+      +Goals
+    .col-lg-5
+      +CampaignsPerformance
+  .row.g-3.mb-3
+    .col-lg-5.col-xxl-4
+      +UsersByTime
+    .col-lg-7.col-xxl-8
+      +PagesTable.h-100
+  .row.g-3.mb-3
+    .col-lg-5.col-xxl-6
+      +BounceRate
+    .col-lg-7.col-xxl-6
+      +TrafficChannel

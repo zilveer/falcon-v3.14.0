@@ -1,0 +1,78 @@
+extends ../../layouts/LayoutTheme
+include ../../mixins/faq/FaqBasic
+include ../../mixins/pages/Pricing
+
+
+append content
+  +PricingHeader
+  .card.mb-3
+    .card-body
+      .row.g-0
+        .col-12.mb-3
+          +PricingCardTitle
+
+        +PricingCard({
+          title: 'Single',
+          subTitle: 'For teams that need to create project plans with confidence.',
+          price: '0',
+          url: `${CWD}${paths['billing']}`,
+          buttonText: 'Start free trial',
+          featureTitle: 'Track team projects with free:',
+          features: [
+            'Timeline',
+            'Advanced Search',
+            'Custom fields <div class="badge badge-soft-success rounded-pill">New</div>',
+            'Task dependencies',
+            'Private teams & projects'
+          ],
+        })    
+        +PricingCard({
+          title: 'Business',
+          subTitle: 'For teams and companies that need to manage work across initiatives.',
+          price: '39',
+          url: `${CWD}${paths['billing']}`,
+          buttonText: 'Get Business',
+          buttonActive: true,
+          featureTitle: 'Everything in Premium, plus:',
+          features: [
+            'Portfolios',
+            'Lock custom fields',
+            'Onboarding plan',
+            'Resource Management',
+            'Lock custom fields'
+          ],
+        })(style="background-color: rgba(115, 255, 236, 0.18)" class="dark__bg-1000 px-4 px-lg-0") 
+
+        +PricingCard({
+          title: 'Extended',
+          subTitle: 'For organizations that need additional security and support.',
+          price: '99',
+          url: `${CWD}${paths['billing']}`,
+          buttonText: 'Purchase',
+          featureTitle: 'Everything in Business, plus:',
+          features: [
+            'Portfolios',
+            'Tags <div class="badge badge-soft-primary rounded-pill">Coming soon</div>',
+            'Onboarding plan',
+            'Resource Management'
+          ],
+        })   
+
+        .col-12.text-center
+          h5.mt-5 Looking for personal or small team task management?
+          p.fs-1 Try the 
+            a(href="#") basic version
+            |  of #{name}
+
+  .card
+    .card-header
+      h4.text-center.mb-0 Frequently asked questions
+    .card-body.bg-light
+      each faq in faqs
+        +FaqBasicItem(faq)
+    +FaqFooter
+
+
+
+
+

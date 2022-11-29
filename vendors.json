@@ -1,0 +1,160 @@
+{
+  "bootstrap": {
+    "src": ["dist/js/bootstrap.min.js", "dist/js/bootstrap.min.js.map"],
+    "dest": "bootstrap"
+  },
+  "prismjs": {
+    "src": ["prism.js", "themes/prism-okaidia.css"],
+    "dest": "prism"
+  },
+  "is_js": {
+    "src": "is.min.js",
+    "dest": "is"
+  },
+  "anchor-js": {
+    "src": "anchor.min.js",
+    "dest": "anchorjs"
+  },
+  "@fortawesome/fontawesome-free": {
+    "src": "js/all.min.js",
+    "dest": "fontawesome"
+  },
+  "flatpickr": {
+    "src": "dist/flatpickr.min.css",
+    "dest": "flatpickr"
+  },
+  "lodash": {
+    "src": "lodash.min.js",
+    "dest": "lodash"
+  },
+  "echarts": {
+    "src": ["dist/echarts.min.js"],
+    "dest": "echarts"
+  },
+  "glightbox": {
+    "src": ["dist/js/glightbox.min.js", "dist/css/glightbox.min.css"],
+    "dest": "glightbox"
+  },
+  "plyr": {
+    "src": [
+      "dist/plyr.polyfilled.min.js",
+      "dist/plyr.polyfilled.min.js.map",
+      "dist/plyr.css"
+    ],
+    "dest": "plyr"
+  },
+  "dropzone": {
+    "src": ["dist/min/dropzone.min.js", "dist/min/dropzone.min.css"],
+    "dest": "dropzone"
+  },
+  "choices.js": {
+    "src": [
+      "public/assets/scripts/choices.min.js",
+      "public/assets/styles/choices.min.css",
+      "public/assets/styles/base.min.css"
+    ],
+    "dest": "choices"
+  },
+  "chart.js": {
+    "src": ["dist/chart.min.js"],
+    "dest": "chart"
+  },
+  "leaflet": {
+    "src": ["dist/leaflet.js", "dist/leaflet.js.map", "dist/leaflet.css"],
+    "dest": "leaflet"
+  },
+  "leaflet.markercluster": {
+    "src": [
+      "dist/leaflet.markercluster.js",
+      "dist/leaflet.markercluster.js.map",
+      "dist/MarkerCluster.css",
+      "dist/MarkerCluster.Default.css"
+    ],
+    "dest": "leaflet.markercluster"
+  },
+  "leaflet.tilelayer.colorfilter": {
+    "src": "src/leaflet-tilelayer-colorfilter.min.js",
+    "dest": "leaflet.tilelayer.colorfilter"
+  },
+  "countup.js": {
+    "src": "dist/countUp.umd.js",
+    "dest": "countup"
+  },
+  "tinymce": {
+    "src": ["**/*.*"],
+    "dest": "tinymce"
+  },
+  "@popperjs/core": {
+    "src": ["dist/umd/popper.min.js", "dist/umd/popper.min.js.map"],
+    "dest": "popper"
+  },
+  "typed.js": {
+    "src": "lib/typed.js",
+    "dest": "typed.js"
+  },
+  "list.js": {
+    "src": ["dist/list.min.js", "dist/list.min.js.map"],
+    "dest": "list.js"
+  },
+  "swiper": {
+    "src": ["swiper-bundle.min.js", "swiper-bundle.min.css"],
+    "dest": "swiper"
+  },
+  "rater-js": {
+    "src": ["index.js", "lib/**/*.*"],
+    "dest": "rater-js"
+  },
+  "@shopify": {
+    "src": "draggable/lib/es5/draggable.bundle.legacy.js",
+    "dest": "draggable"
+  },
+  "fullcalendar": {
+    "src": ["main.min.js", "main.js", "main.min.css"],
+    "dest": "fullcalendar"
+  },
+  "dayjs": {
+    "src": "dayjs.min.js",
+    "dest": "dayjs"
+  },
+  "lottie-web": {
+    "src": "build/player/lottie.min.js",
+    "dest": "lottie"
+  },
+  "simplebar": {
+    "src": ["dist/simplebar.min.js", "dist/simplebar.min.css"],
+    "dest": "simplebar"
+  },
+  "d3": {
+    "src": ["dist/d3.min.js"],
+    "dest": "d3"
+  },
+  "select2": {
+    "src": ["dist/css/select2.min.css", "dist/js/select2.min.js", "dist/js/select2.full.min.js"],
+    "dest": "select2"
+  },
+  "select2-bootstrap-5-theme": {
+    "src": ["dist/select2-bootstrap-5-theme.min.css"],
+    "dest": "select2-bootstrap-5-theme"
+  },
+  "jquery": {
+    "src": ["dist/jquery.min.js"],
+    "dest": "jquery"
+  },
+  "datatables.net": {
+    "src": ["js/jquery.dataTables.min.js"],
+    "dest": "datatables.net"
+  },
+  "datatables.net-bs5": {
+    "src": [
+      "css/dataTables.bootstrap5.min.css",
+      "js/dataTables.bootstrap5.min.js"
+    ],
+    "dest": "datatables.net-bs5"
+  },
+  "datatables.net-fixedcolumns": {
+    "src": [
+      "js/dataTables.fixedColumns.min.js"
+    ],
+    "dest": "datatables.net-fixedcolumns"
+  }
+}

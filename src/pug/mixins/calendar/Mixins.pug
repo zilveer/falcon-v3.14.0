@@ -1,0 +1,110 @@
+append variables
+  -
+    var views = [
+      {
+        title: 'Month View',
+        value: 'dayGridMonth'
+      },
+      {
+        title: 'Week View',
+        value: 'timeGridWeek'
+      },
+      {
+        title: 'Day View',
+        value: 'timeGridDay'
+      },
+      {
+        title: 'List View',
+        value: 'listWeek'
+      },
+      {
+        title: 'Year View',
+        value: 'listYear'
+      },
+    ]
+mixin CalendarEventDetailsModal
+  #eventDetailsModal.modal.fade(tabindex="-1")
+    .modal-dialog.modal-dialog-centered
+      .modal-content.border
+
+mixin CalendarAddEventModal
+  #addEventModal.modal.fade(tabindex="-1")
+    .modal-dialog
+      .modal-content.border
+        +CalendarAddEventModalForm
+        
+
+mixin CalendarHeader
+  .card-header
+    .row.gx-0.align-items-center
+      .col-auto.d-flex.justify-content-end.order-md-1
+        button.btn.icon-item.icon-item-sm.shadow-none.p-0.me-1.ms-md-2(type="button" data-event="prev" data-bs-toggle="tooltip" title="Previous")
+          span.fas.fa-arrow-left
+        button.btn.icon-item.icon-item-sm.shadow-none.p-0.me-1.me-lg-2(type="button" data-event="next" data-bs-toggle="tooltip" title="Next")
+          span.fas.fa-arrow-right
+
+      .col-auto.col-md-auto.order-md-2
+        h4.mb-0.fs-0.fs-sm-1.fs-lg-2.calendar-title
+      .col.col-md-auto.d-flex.justify-content-end.order-md-3
+        button.btn.btn-falcon-primary.btn-sm(type="button" data-event="today") Today
+
+      .col-md-auto.d-md-none
+        hr
+
+      .col-auto.d-flex.order-md-0
+        button.btn.btn-primary.btn-sm(type="button" data-bs-toggle="modal" data-bs-target="#addEventModal") 
+          span.fas.fa-plus.me-2
+          | Add Schedule
+      .col.d-flex.justify-content-end.order-md-2        
+        .dropdown.font-sans-serif.me-md-2
+          button.btn.btn-falcon-default.text-600.btn-sm.dropdown-toggle.dropdown-caret-none(type='button' id="email-filter" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false")
+            span(data-view-title) Month View
+            span.fas.fa-sort.ms-2.fs--1
+          .dropdown-menu.dropdown-menu-end.border.py-2(aria-labelledby="email-filter")
+            each view, index in views
+              a(href='#!' data-fc-view=view.value class=index === 0 ? 'active' : false).dropdown-item.d-flex.justify-content-between
+                =view.title
+                span.icon-check
+                  span.fas.fa-check(data-fa-transform="down-4 shrink-4")
+
+
+mixin CalendarAddEventModalForm(clsBtn=true)
+  form#addEventForm(autocomplete="off")&attributes(attributes)
+    .modal-header.px-x1.bg-light.border-bottom-0
+      h5.modal-title Create Schedule
+      button.btn-close.me-n1(type="button" data-bs-dismiss="modal" aria-label="Close" class=!clsBtn && 'd-none')
+    .modal-body.p-x1
+      .mb-3
+        label.fs-0(for="eventTitle") Title
+        input#eventTitle.form-control(type="text" name="title" required)
+      .mb-3
+        label.fs-0(for="eventStartDate") Start Date
+        input#eventStartDate.form-control.datetimepicker(type="text" required name="startDate" placeholder="yyyy/mm/dd hh:mm" data-options!={static: "true", enableTime: "true", dateFormat: 'Y-m-d H:i'})
+
+      .mb-3
+        label.fs-0(for="eventEndDate") End Date
+        input#eventEndDate.form-control.datetimepicker(type="text" name="endDate" placeholder="yyyy/mm/dd hh:mm" data-options!={static: "true", enableTime: "true", dateFormat: 'Y-m-d H:i'})
+
+      +Checkbox({id: 'eventAllDay', text: 'All Day', attrs: {class: "mb-3"}})(name="allDay")
+
+      .mb-3  
+        label.fs-0 Schedule Meeting
+        div
+          a(href="#!").btn.badge-soft-success.btn-sm
+            span.fas.fa-video.me-2
+            | Add video conference link
+      .mb-3
+        label.fs-0(for="eventDescription") Description
+        textarea(rows="3" name="description").form-control#eventDescription
+      .mb-3
+        label.fs-0(for="eventLabel") Label
+        select#eventLabel.form-select(name="label")
+          option(value="" selected) None
+          option(value="primary") Business
+          option(value="danger") Important
+          option(value="success") Personal
+          option(value="warning") Must Attend
+
+    .modal-footer.d-flex.justify-content-end.align-items-center.bg-light.border-0
+      a(href=`${CWD}${paths['create-event']}`).me-3.text-600 More options
+      button.btn.btn-primary.px-4(type="submit") Save

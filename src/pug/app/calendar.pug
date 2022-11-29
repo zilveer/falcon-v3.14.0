@@ -1,0 +1,22 @@
+extends ../layouts/LayoutTheme
+include ../mixins/calendar/Mixins
+include ../mixins/common/Form
+
+prepend styles
+  link(href=`${CWD}vendors/fullcalendar/main.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/flatpickr/flatpickr.min.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/fullcalendar/main.min.js`)
+  script(src=`${CWD}assets/js/flatpickr.js`)
+  script(src=`${CWD}vendors/dayjs/dayjs.min.js`)
+
+append content
+  .card.overflow-hidden
+    +CalendarHeader
+    .card-body.p-0.scrollbar
+      .calendar-outline#appCalendar
+
+append afterContent
+  +CalendarEventDetailsModal
+  +CalendarAddEventModal

@@ -1,0 +1,74 @@
+extends ../layouts/LayoutTheme
+include ../mixins/home/dashboard-alt/CardRecentPurchaseTable
+include ../mixins/home/dashboard/CardCharts.pug
+include ../mixins/home/dashboard/CardStatistics
+include ../mixins/home/e-commerce/CardStatistics
+include ../mixins/home/e-commerce/CardGreetings
+include ../mixins/home/e-commerce/CardShoppingCartBar
+include ../mixins/home/e-commerce/CardBestSellingProducts
+include ../mixins/home/e-commerce/CardSaleStatistics
+include ../mixins/home/e-commerce/CardCharts
+
+prepend scripts
+  script(src=`${CWD}vendors/chart/chart.min.js`)
+  script(src=`${CWD}vendors/countup/countUp.umd.js`)
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+  script(src=`${CWD}vendors/dayjs/dayjs.min.js`)
+
+append content 
+  .row.g-3.mb-3
+    .col-xxl-6.col-xl-12
+      .row.g-3
+        .col-12
+          +CardGreetings
+        .col-lg-12
+          .row.g-3
+            .col-md-6
+              +CardWeeklySales('fs-2').echart-bar-weekly-sales-smaller-width
+            .col-md-6
+              +CardProductShare.product-share-doughnut-width
+            .col-md-6
+              -
+                var marketShare = {
+                  title: 'Market Share',
+                  ammount: '26M',
+                  chart: 'echart-product-share',
+                  data:[
+                    {
+                      brand: 'Falcon',
+                      color: 'primary',
+                      percentage: '57'
+                    },
+                    {
+                      brand: 'Sparrow',
+                      color: 'info',
+                      percentage: '20'
+                    },
+                    {
+                      brand: 'Phoenix',
+                      color: 'warning',
+                      percentage: '22'
+                    },
+                  ]
+                }
+              +CardMarketShare(marketShare).h-100
+            .col-md-6
+              +CardTotalOrderEcommerce
+    .col-xxl-6.col-xl-12
+      +CardSaleStatistics.py-3.mb-3
+      +CardTotalSalesEcommerce
+
+  .row.g-3.mb-3
+    .col-xxl-3.col-md-6.col-lg-5
+      +CardShoppingCartBar.shopping-cart-bar-min-height.h-100
+    .col-xxl-4.col-md-6.col-lg-7.order-xxl-1
+      +CardTopProductsEcommerce.h-100
+    .col-xxl-9.col-md-12
+      +CardRecentPurchaseTable(7, false)
+    .col-xxl-4.col-md-6
+      +CardReturningCustomerRate.h-100
+    .col-xxl-4.col-md-6
+      +CardSalesByPosLocation.h-100
+  .row 
+    .col
+      +CardBestSellingProducts

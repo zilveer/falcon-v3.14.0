@@ -1,0 +1,26 @@
+mixin CardReportsGreeting 
+  - var date = new Date();
+  - var currentMonth = date.toLocaleString('en-us', { month: 'short' });
+  - var getDate = date.getDate();
+  - var currentDateNumber = `0${getDate}`.slice(-2)
+  - var startDate = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+  - var startMonth= startDate.toLocaleString('en-us', { month: 'short' });
+  - var startDateNumber = `0${startDate.getDate()}`.slice(-2)
+
+  .card.shadow-none.border&attributes(attributes)
+    +Background({image:`${CWD}assets/img/illustrations/reports-bg.png`, className:"bg-card d-none d-md-block"})
+    .card-header.z-index-1
+      .row.flex-between-center.gx-0
+        .col-lg-auto.d-flex.align-items-center
+          img(src=`${CWD}assets/img/illustrations/reports-greeting.png`, alt="").img-fluid
+          .ms-x1
+            h6.mb-1.text-primary Welcome to
+            h4.mb-0.text-primary.fw-bold Falcon 
+              span.text-info.fw-medium Support - Reports
+        .col-lg-auto.pt-3.pt-lg-0
+          form.row.flex-lg-column.flex-xxl-row.gx-3.gy-2.align-items-center.align-items-lg-start.align-items-xxl-center
+            .col-auto
+              h6.text-700.mb-0 Showing Data For: 
+            .col-md-auto.position-relative
+              input#reportsDateRange.form-control.form-control-sm.datetimepicker.ps-4(type='text' data-options=`{"mode":"range","dateFormat":"M d","disableMobile":true , "defaultDate": ["${startMonth} ${startDateNumber}", "${currentMonth} ${currentDateNumber}"] }`) 
+              span.fas.fa-calendar-alt.text-primary.position-absolute.top-50.translate-middle-y.ms-2 

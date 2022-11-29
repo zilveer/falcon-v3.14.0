@@ -1,0 +1,29 @@
+include ../home/dashboard/Mixins
+
+mixin TicketPreviewHeader
+  .card&attributes(attributes)
+    .card-header.d-flex.flex-between-center
+      button(type='button').btn.btn-falcon-default.btn-sm
+        span.fas.fa-arrow-left
+      .d-flex
+        button(type='button').btn.btn-falcon-default.btn-sm
+          span.fas.fa-object-ungroup(data-fa-transform="shrink-2")
+          span.d-none.d-md-inline-block.ms-1 Merge
+        button(type='button').btn.btn-falcon-default.btn-sm.mx-2
+          span.fas.fa-check(data-fa-transform="shrink-2 down-2")
+          span.d-none.d-md-inline-block.ms-1 close
+        button(type='button').btn.btn-falcon-default.btn-sm
+          span.fas.fa-ban(data-fa-transform="shrink-2 down-1")
+          span.d-none.d-md-inline-block.ms-1 Ban visitor
+        button(type='button').btn.btn-falcon-default.btn-sm.ms-2.d-none.d-sm-block
+          span.fas.fa-trash-alt(data-fa-transform="shrink-2 down-1")
+          span.d-none.d-md-inline-block.ms-1 Delete
+        .dropdown.font-sans-serif.ms-2
+          button.btn.btn-falcon-default.text-600.btn-sm.dropdown-toggle.dropdown-caret-none(type='button' id="preview-dropdown" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false")
+            span.fas.fa-ellipsis-v.fs--2
+          .dropdown-menu.dropdown-menu-end.border.py-2(aria-labelledby="preview-dropdown" )
+            a(href='#!').dropdown-item View
+            a(href='#!').dropdown-item Export
+            a(href='#!').dropdown-item.d-sm-none Delete
+            .dropdown-divider
+            a(href='#!').dropdown-item.text-danger Remove

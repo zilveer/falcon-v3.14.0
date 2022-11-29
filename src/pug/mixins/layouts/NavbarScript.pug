@@ -1,0 +1,56 @@
+mixin NavbarScript 
+  if hasTopNavOnly
+    script.
+      var navbarPosition = localStorage.getItem('navbarPosition');
+      var navbarTop = document.querySelector('[data-layout] .navbar-top:not([data-double-top-nav');
+      var navbarDoubleTop = document.querySelector('[data-double-top-nav]');
+      
+      if (localStorage.getItem('navbarPosition') === 'double-top') {
+        document.documentElement.classList.toggle('double-top-nav-layout');
+      }
+
+      if (navbarPosition === 'double-top') {
+        navbarDoubleTop.removeAttribute('style');
+        navbarTop.remove(navbarTop);
+      } else {
+        navbarTop.removeAttribute('style');
+        navbarDoubleTop.remove(navbarDoubleTop);
+      }
+  else 
+    script.
+      var navbarPosition = localStorage.getItem('navbarPosition');
+      var navbarVertical = document.querySelector('.navbar-vertical');
+      var navbarTopVertical = document.querySelector('.content .navbar-top');
+      var navbarTop = document.querySelector('[data-layout] .navbar-top:not([data-double-top-nav');
+      var navbarDoubleTop = document.querySelector('[data-double-top-nav]');
+      var navbarTopCombo = document.querySelector('.content [data-navbar-top="combo"]');
+      
+      if (localStorage.getItem('navbarPosition') === 'double-top') {
+        document.documentElement.classList.toggle('double-top-nav-layout');
+      }
+
+      if (navbarPosition === 'top') {
+        navbarTop.removeAttribute('style');
+        navbarTopVertical.remove(navbarTopVertical);
+        navbarVertical.remove(navbarVertical);
+        navbarTopCombo.remove(navbarTopCombo);
+        navbarDoubleTop.remove(navbarDoubleTop);
+      } else if (navbarPosition === 'combo') {
+        navbarVertical.removeAttribute('style');
+        navbarTopCombo.removeAttribute('style');
+        navbarTop.remove(navbarTop);
+        navbarTopVertical.remove(navbarTopVertical);
+        navbarDoubleTop.remove(navbarDoubleTop);
+      } else if (navbarPosition === 'double-top') {
+        navbarDoubleTop.removeAttribute('style');
+        navbarTopVertical.remove(navbarTopVertical);
+        navbarVertical.remove(navbarVertical);
+        navbarTop.remove(navbarTop);
+        navbarTopCombo.remove(navbarTopCombo);
+      } else {
+        navbarVertical.removeAttribute('style');
+        navbarTopVertical.removeAttribute('style');
+        navbarTop.remove(navbarTop);
+        navbarDoubleTop.remove(navbarDoubleTop);
+        navbarTopCombo.remove(navbarTopCombo);
+      }

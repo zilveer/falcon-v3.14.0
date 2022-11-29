@@ -1,0 +1,39 @@
+extends ../../layouts/LayoutTheme
+include ../../mixins/e-learning/Mixins
+include ../../mixins/e-learning/StudentOverview
+
+prepend scripts
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+  script(src!=`https://maps.googleapis.com/maps/api/js?key=${APIGmap}&callback=initMap` async)
+  script(src=`${CWD}vendors/dayjs/dayjs.min.js`)
+
+append content 
+  +StudentOverviewHeader.mb-3
+      
+  .row.g-3.mb-3
+    .col-xxl-6
+      .row.g-3
+        .col-12
+          +StudentInfo
+        .col-md-6
+          +Spendings
+        .col-md-6
+          +TimeOnSite
+    .col-xxl-6
+      +AssignmentScores
+
+  .row.g-3.mb-3
+    .col-lg-5.col-xxl-3
+      +PaymentMethods
+    .col-xxl-8.col-xxl-9.order-xxl-1.order-lg-2.order-1
+      +PaymentHistory
+    .col-md-6.col-lg-6.col-xxl-4.order-xxl-2.order-lg-3.order-2
+      +BillingAddress
+    .col-md-6.col-lg-7.col-xxl-4.order-xxl-3.order-lg-1.order-3
+      +RecentActivities
+    .col-lg-6.col-xxl-4.order-4
+      +CourseStatus 
+
+  +BrowsedCourses.mb-3 
+
+  +EnrolledCourses

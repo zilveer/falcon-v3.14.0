@@ -1,0 +1,495 @@
+//- ==============================================
+//- Course Bottom Bar
+//- ==============================================
+mixin CourseBottomBar 
+  .card.rounded-0.bottom-bar.d-lg-none(
+    data-bottom-bar!={ 
+      target: 'course-purchase-btn', 
+      offsetTop: 60,
+      breakPoint: 'lg'
+    })
+    .card-body.py-2
+      .d-flex.gap-3.flex-between-center
+        h2.mb-0.fw-medium.d-flex.align-items-center $47.49
+          del.d-none.d-sm-block.ms-2.fs--1.text-500 $69.99
+
+        button.btn.btn-primary.btn-lg.fs-0.flex-1
+          | Purchase this course
+
+
+
+//- ==============================================
+//- Course Banner
+//- ==============================================
+mixin CourseBanner
+  .card.overflow-hidden.light&attributes(attributes)
+    .card-body.bg-black
+      +Background({image: `${CWD}assets/img/icons/spot-illustrations/course-details-bg.png`, className:"rounded-3"})
+      .row
+        .col-xl-8.position-relative 
+          .row.g-3.align-items-center
+            .col-lg-5
+              .position-relative
+                +Background({image: `${CWD}assets/img/elearning/courses/course-details.png`, className:"rounded-1 overlay"})
+                +AttachmentLink({
+                  image: `${CWD}assets/img/elearning/courses/course3.png`,
+                  src: `${CWD}assets/video/beach.mp4`,
+                  type: 'video' 
+                }, 'attachment-bg').position-relative.d-block.py-7.text-center
+                  img(src=`${CWD}assets/img/icons/play.svg`, width=60 alt="").rounded-1
+
+            .col-lg-7
+              h6.fw-semi-bold.text-400 A course by 
+                a.text-info(href=`${CWD}${paths['trainer-profile']}`) Bill Finger
+              h2.fw-bold.text-white Advanced Design Tools for Modern Designs 
+              p.text-white.fw-semi-bold.fs--1
+                span.me-1 4.8
+                +Review(4.8)
+                span.text-info.ms-2 (6,899 reviews)
+              p.mb-0.fw-medium.text-400 
+                | Exploring Photoshop, Illustrator, Krita, Procreate, and Canva; trace the evolution of graphic design from ancient...
+                a(href='#!').text-info  
+                  | See more
+
+          hr.text-secondary.text-opacity-50
+
+          ul.list-unstyled.d-flex.flex-wrap.gap-3.fs--1.fw-semi-bold.text-300.mt-3.mb-0
+            li
+              span.fas.fa-graduation-cap.text-white.me-1 
+              | 7,302 Learners 
+            li
+              span.fas.fa-user-graduate.text-white.me-1 
+              | 91% Completion
+            li
+              span.fas.fa-headphones.text-white.me-1 
+              | English
+            li
+              span.fas.fa-closed-captioning.text-white.me-1 
+              | English
+
+
+//- ==============================================
+//- Course Plan & Pricing
+//- ============================================== 
+mixin CoursePricingPlan 
+  -
+    var contents = [
+      {
+        text: 'Total 13 hours of video lectures',
+        icon: 'fas fa-check',
+      },
+      {
+        text: '12 premium article access',
+        icon: 'fas fa-check',
+      },
+      {
+        text: '11 downloadable resources',
+        icon: 'fas fa-check',
+      },
+      {
+        text: 'Mobile, Tab or TV friendly content',
+        icon: 'fas fa-check',
+      },
+      {
+        text: 'Certificate upon completion',
+        icon: 'fas fa-check',
+      },
+      {
+        text: 'Lifetime permission to access',
+        icon: 'fas fa-infinity',
+      },
+    ]
+
+  .card.mb-3&attributes(attributes)
+    .card-header.bg-light.d-none.d-lg-block
+      h5.mb-0 Plan Your Dream Career
+
+    .card-body
+      .row
+        .col-md-7.col-lg-12.order-md-1.order-lg-0
+          h2.fw-medium.d-flex.align-items-center $47.49
+            del.ms-2.fs--1.text-500 $69.99
+
+          p.text-danger.fs--1.fw-semi-bold
+            span.far.fa-clock.me-2
+            | Sale ends in  13h : 25m : 54s
+
+          button.btn.btn-primary.btn-lg.w-100.fs-0.mt-1#course-purchase-btn
+            | Purchase this course
+
+          p.text-700.fw-medium.fs--1.mt-3.mb-0
+            | 14 day Refund Policy
+
+        .col-md-5.col-lg-12
+          hr.border-top.border-dashed.d-md-none.d-lg-block
+          h6.fw-bold Course Contents
+          ul.list-unstyled.fs--1.mb-0
+            each content in contents
+              li.mb-1
+                span.fs--2(class=content.icon).me-2
+                | #{content.text}
+
+      hr.border-top.border-dashed
+      h6.fw-bold Share with friends
+      .d-flex.gap-2
+        button.btn.btn-falcon-default.icon-item.fs--2.icon-item-lg
+          span.fs-0.fab.fa-facebook-f.mr-1.text-primary
+        button.btn.btn-falcon-default.icon-item.fs--2.icon-item-lg
+          span.fs-0.fab.fa-twitter.mr-1.text-twitter
+        button.btn.btn-falcon-default.icon-item.fs--2.icon-item-lg
+          span.fs-0.fab.fa-google-plus-g.mr-1.text-google-plus
+        button.btn.btn-falcon-default.icon-item.fs--2.icon-item-lg
+          span.fs-0.fab.fa-linkedin-in.mr-1.text-info
+
+
+//- ==============================================
+//- Course Features
+//- ==============================================
+mixin CourseFeatures
+  -
+    var features = [
+      {
+        title: 'Improve in A purposed Manner',
+        description: 'Improve your skills by immersing yourself in a learning environment with professional instruction and limited access at a time.',
+        icon: 'target.svg'
+      },
+      {
+        title: 'Get Exclusive Deals and Discounts',
+        description: 'Online discussion and crucial insights, Adobe vouchers, and more are all available solely to you and your fellow learners to get you going.',
+        icon: 'discount.svg'
+      },
+      {
+        title: 'Networking with Fellow Artists',
+        description: 'Learn, work together and connect with other learners tools like a common purpose Discord and Slack channel and showcase your works.',
+        icon: 'networking.svg'
+      }
+    ]
+
+  .card.mb-3.bg-transparent.border.shadow-none&attributes(attributes)
+    .card-body
+      .row.gy-4.text-center.text-md-start
+        each feature in features 
+          .col-md-4
+            img(src=`${CWD}assets/img/icons/${feature.icon}`, width=36 alt="").mb-3
+            h6.fs-0.text-primary #{feature.title}
+            p.fs--1.mb-0 #{feature.description}
+
+
+//- ==============================================
+//- What Course will Teach You
+//- ==============================================
+mixin WhatCourseWillTeach
+  -
+    var contents = [
+      'Which tool is preferred for what kind of work.',
+      'How to take criticism and make best use of them.',
+      'Lessons and tasks that will give you intermidiate level skills.',
+      'To build your first portfolio while completing the tasks.',
+      'The Advantage and Disadvantage that comes with each software.',
+      'Trials of Premium and Free programs and promo codes.'
+    ]
+
+  .card.mb-3&attributes(attributes)
+    .card-header.bg-light
+      .d-flex.flex-between-center
+        h5.mb-0.text-truncate This Course Will Teach You
+        button(type='button').btn.btn-falcon-primary.btn-sm
+          span.d-none.d-sm-inline-block.align-middle.me-1 Preview
+          span.fas.fa-caret-right.align-middle
+
+    .card-body.position-relative
+      +Background({
+        image: `${CWD}assets/img/icons/spot-illustrations/corner-6.png`, 
+        className: 'bg-card d-none d-md-block'
+      })
+      ul.list-unstyled.position-relative.row.g-2.fs--1.mb-0.p-0
+        each content in contents 
+          li.col-md-6.d-flex.gap-2
+            span.fas.fa-circle.mt-1(data-fa-transform="shrink-8")
+            span #{content}
+
+
+//- ==============================================
+//- Course Lesson Plans
+//- ============================================== 
+mixin CourseLessonPlans 
+  .card.mb-3
+    .card-header.bg-light
+      h5.mb-0 Lesson Plans
+
+    .card-body.p-0
+      each lesson, index in lessons
+        +LessonsItem(lesson, index)
+
+    .card-footer.text-end.py-1.bg-light
+      a.btn.btn-link.btn-sm.py-2.px-0(href='#!')
+        | Full Lesson Plan
+        span.fas.fa-chevron-down.ms-1.fs--2
+
+mixin LessonsItem(config, index)
+  .d-flex.align-items-center.px-x1.py-2(class=index !== lessons.length -1 && 'border-bottom border-200')
+    .hoverbox.me-3.my-1
+      +AttachmentLink(config.attachment, 'attachment-bg')
+        .bg-attachment.bg-attachment-square
+          +Background({ image: config.attachment.image })
+      .hoverbox-content.flex-center.pe-none.bg-holder.overlay.overlay-1.rounded
+        .position-relative.light.fs-2.text-white
+          span.fas.fa-play-circle
+
+    .flex-1
+      h5.fs-0
+        +AttachmentLink(config.attachment, 'attachment-title')
+          =config.title
+      p.fs--1.mb-0 #{config.excerpt}
+
+    if config.isLocked === true
+      span.fas.fa-lock.fs--1.text-secondary
+    else
+      button(type='button').btn.btn-falcon-default.btn-sm
+        span.d-none.d-sm-inline-block.me-1 Take a Peek
+        span.fas.fa-chevron-down.fs--2
+
+
+//- ==============================================
+//- Course Requirements
+//- ==============================================
+mixin CourseRequirements
+  -
+    var requirements = [
+      {
+        text: 'This course requires profieciency in English language as the Lessons are prepared in English.'
+      },
+      {
+        text: 'Learners with following skills might be more benefited, but little extra work is all that’ll take to catch up to experts’ level',
+        branches: [
+          'Comfortable with Computer',
+          'Access to Internet and Computer',
+          'Background in Fine Arts or Any Creative Field',
+          'Digital Drawing Experience'
+        ]
+      }
+    ]
+
+  .card.mb-3
+    .card-header.bg-light
+      h5.mb-0 Requirements
+
+    .card-body.position-relative
+      +Background({
+        image: `${CWD}assets/img/icons/spot-illustrations/corner-7.png`, 
+        className: 'bg-card d-none d-md-block'
+      })
+      ul.list-unstyled.position-relative.fs--1.p-0.m-0
+        each requirement in requirements 
+          li.mb-2
+            .d-flex
+              span.fas.fa-circle.me-2.mt-1(data-fa-transform="shrink-8")
+              span #{requirement.text}
+            if requirement.branches
+              ol.bullet-inside.mt-2
+                each branch in requirement.branches
+                  li.mb-2
+                    | #{branch}
+
+
+//- ==============================================
+//- Course Trainer
+//- ==============================================
+mixin CourseTrainer
+  -
+    var tags = [
+      {
+        text: 4.95,
+        icon: 'fas fa-star',
+        class: 'rounded-pill border py-2 px-3'
+      },
+      {
+        text: 35400,
+        icon: 'fas fa-graduation-cap',
+        class: 'rounded-pill border py-2 px-3'
+      },
+      {
+        text: 15,
+        icon: 'fas fa-file-alt',
+        class: 'rounded-pill border py-2 px-3'
+      },
+      {
+        text: 5700,
+        icon: 'fas fa-map-pin',
+        class: 'rounded-pill border py-2 px-3'
+      }
+    ]
+
+  .card.mb-3
+    .card-header.d-flex.flex-between-center
+      h5.mb-0 Trainer
+      button(type='button').btn.btn-falcon-primary.btn-sm
+        span.fas.fa-user-plus
+        span.d-none.d-sm-inline-block.align-middle.ms-1 Follow
+
+    .card-body.bg-light 
+      .row.g-4.text-center.text-md-start
+        .col-md-auto
+          a(href=`${CWD}${paths['trainer-profile']}`)  
+            +Avatar({img:'team/5-thumb.png', size: '4xl'})
+        .col
+          h5.mb-2 
+            a(href=`${CWD}${paths['trainer-profile']}`) Bill Finger
+          h6.fs--1.text-800.fw-normal.mb-3 Artist | Professional Comic Writer
+          p.fs--1.text-700 Finger, an aspiring writer and part-time shoe salesperson, joined Kane's fledgling studio in 1938. Finger was inducted into the Jack Kirby Hall of Fame in 1994 and the 
+            strong Will Eisner Award Hall of Fame
+            | in 1999 after death. Finger was named one of the awardees in the company's 50th anniversary edition 
+            strong Fifty Who Made DC 
+            | Great in 1985. In his honor, Comic-Con International created the 
+            strong Bill Finger Award for Excellence 
+            | in Comic Book Writing in 2005. In 2014, Finger got a posthumous 
+            strong Inkpot Award. 
+          .d-flex.flex-wrap.gap-2.justify-content-center.justify-content-md-start
+            each tag in tags 
+              +Badge({...tag, content: tag.text.toLocaleString(), iconBefore: true, type: 'light'}).border.border-300.text-secondary.py-2.px-3
+
+    .card-footer.text-end.py-1
+      a(href=`${CWD}${paths['course-list']}`).btn.btn-link.btn-sm.fw-medium.py-2.px-0
+        | View all his courses
+        span.fas.fa-external-link-alt.ms-1
+
+
+
+//- ==============================================
+//- Course Reviews
+//- ==============================================
+mixin CourseReviews
+  -
+    var reviews = [
+      {
+        reviewer: 'Jim Lee',
+        avatar: 'team/11.jpg',
+        comment: 'Excellent Course for any beginner like me :p The trainer was very generous and helped whenever DMed.',
+        rating: 4.5,
+        liked: 230,
+        date: '3 days ago'
+      },
+      {
+        reviewer: 'Greg Capullo',
+        avatar: 'team/2-thumb.png',
+        comment: 'Very Sophisticated Content. Helped me a great amount. Going to follow this guy and his other contents.',
+        rating: 5,
+        liked: 670,
+        date: '5 days ago'
+      },
+      {
+        reviewer: 'Frank Miller',
+        avatar: 'team/7.jpg',
+        comment: 'BEST COURSE EVER in this topic. Going to use the knowledge I’ve gathered here. Great content and clear, contextual lessons.',
+        rating: 5,
+        liked: 17,
+        date: '5 days ago'
+      },
+      {
+        reviewer: 'Scott Snyder',
+        avatar: 'team/4-thumb.png',
+        comment: 'I was confused about what tool is good for me and this finally course helped me a lot. I’m definitely going to refer it to my peers.',
+        rating: 5,
+        liked: 68,
+        date: '7 days ago'
+      },
+      {
+        reviewer: 'Bob Kane',
+        avatar: 'team/10.jpg',
+        comment: 'This course changed my life. I changed my profession and now I’m living a happy life where I’m in charge. Thanks to both Bill and Falcon.',
+        rating: 3.5,
+        liked: 0,
+        date: '8 days ago'
+      },
+    ]
+
+  .card.mb-3
+    .card-header.bg-light.d-flex.flex-between-center
+      h5.mb-0 Reviews
+      .d-flex.gap-2 
+        button(type='button').btn.btn-falcon-default.btn-sm
+          span.d-none.d-sm-inline-block.me-1 Filter
+          span.fs--2.fas.fa-filter
+        div 
+          select.form-select.form-select-sm
+            option(value='' selected) Sort by
+            option(value='oldest') Oldest
+            option(value='newest') Newest
+            option(value='name') Name
+
+    .card-body.py-0
+      each review, index in reviews 
+        .row.g-3.align-items-center.text-center.text-md-start.py-3(class = reviews.length - 1 !== index ? 'border-bottom border-200' : '')
+
+          .col-md-auto
+            a(href='#!')  
+              +Avatar({ img:review.avatar, size: '3xl' })
+
+          .col.px-x1.py-2
+            .row
+              .col-12
+                h6.fs-0
+                  a.me-2(href='#!') #{review.reviewer}
+                  +Review(review.rating)
+              .col-md-10
+                p.fs--1.text-800 #{review.comment}
+              .col-12
+                .fs--2.text-600.d-flex.flex-column.flex-md-row.align-items-center.gap-2
+                  h6.fs--2.text-600.mb-0 #{review.date}
+                  p.mb-0.ms-1 #{review.liked} people found this helpful
+
+          .col-md-auto.d-flex.justify-content-center.gap-2
+            button.btn.btn-falcon-default.icon-item.focus-bg-primary
+              span.fs--2.fas.fa-thumbs-up
+            button.btn.btn-falcon-default.icon-item.focus-bg-secondary
+              span.fs--2.fas.fa-thumbs-up(data-fa-transform="rotate-180")
+
+    .card-footer.bg-light.text-end.py-1
+      a.btn.btn-link.btn-sm.py-2.px-0(href='#!')
+        | See All Reviewes
+        span.fas.fa-external-link-alt.ms-1
+
+
+
+//- ==============================================
+//- Similar Courses - Swiper Slider
+//- ==============================================
+mixin SimilarCourses
+  .card
+    .card-header
+      h6.fs-0.mb-0 Similar Courses
+
+    .card-body.py-0.bg-light 
+      .swiper-container.theme-slider.py-x1(
+        data-swiper!={
+          autoplay: true,
+          spaceBetween: 10,
+          slidesPerView: 1,
+          breakpoints: {
+            460: {
+              slidesPerView: 1.5,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            1540: {
+              slidesPerView: 2.5,
+            }
+          },
+          loop: true,
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        })
+          .swiper-wrapper
+            each course in courses
+              +CourseGridItem({...course, class: 'swiper-slide h-auto'})
+          .swiper-nav
+            .swiper-button-next.swiper-button-white
+            .swiper-button-prev.swiper-button-white
+
+    .card-footer.text-end.py-1
+      a.btn.btn-link.btn-sm.py-2.px-0(href=`${CWD}${paths['course-grid']}`)
+        | All courses
+        span.fas.fa-external-link-alt.ms-1

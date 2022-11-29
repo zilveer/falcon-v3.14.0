@@ -1,0 +1,110 @@
+extends ../../layouts/LayoutComponent
+
+append scripts
+  script(src=`${CWD}vendors/chart/chart.min.js`)
+
+
+append content
+  +PageHeader({
+      title: 'Chart Js',
+      description: `${name} uses chart.js - simple yet flexible JavaScript charting for designers & developers`,
+      url: '//chartjs.org/docs/latest/',
+      linkText: 'Chart Js documentations'
+    })
+
+  .card.mb-3
+    .card-header
+      h5.mb-0 Javascript
+    .card-body.bg-light   
+      +ComponentCardLib
+        script(src=`vendors/chart/chart.min.js`)
+
+  .row.g-3.mb-3 
+    .col-lg-6  
+      +ComponentCard({
+        title:'Bar Chart',
+        anchor:true
+      })
+        // Find the JS file for the following chart at: src/js/charts/chartjs/chart-bar.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+        canvas.max-w-100#chartjs-bar-chart(width=1618, height=1000)
+      
+
+    .col-lg-6
+      +ComponentCard({
+        title: 'Line Chart',
+        anchor: true,
+      })
+        // Find the JS file for the following chart at: src/js/charts/chartjs/chart-line.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+        canvas.max-w-100#chartjs-line-chart(width=1618, height=1000)
+
+  .row.g-3.mb-3
+    .col-lg-6
+    
+      +ComponentCard({
+        title: 'Doughnut Chart',
+        anchor: true, 
+      })
+        // Find the JS file for the following chart at: src/js/charts/chartjs/chart-doughnut.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+        canvas.max-w-100#chartjs-doughnut-chart(width=350)
+
+    .col-lg-6
+    
+      +ComponentCard({
+        title: 'Pie Chart',
+        anchor: true,
+      })
+        // Find the JS file for the following chart at: src/js/charts/chartjs/chart-pie.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+        canvas.max-w-100#chartjs-pie-chart(width=350)
+
+  .row.g-3.mb-3
+    .col-lg-6
+    
+      +ComponentCard({
+        title: 'Polar Chart',
+        anchor: true,
+      })
+        // Find the JS file for the following chart at: src/js/charts/chartjs/chart-polar.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+        canvas.max-w-100#chartjs-polar-chart(width=350)
+
+    .col-lg-6
+    
+      +ComponentCard({
+        title: 'Radar Chart',
+        anchor: true,
+      })
+        // Find the JS file for the following chart at: src/js/charts/chartjs/chart-radar.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+        canvas.max-w-100#chartjs-radar-chart(width=350)
+
+  .row.g-3.mb-3
+    .col-lg-6
+      +ComponentCard({
+        title: 'Bubble Chart',
+        anchor: true,
+      })
+        // Find the JS file for the following chart at: src/js/charts/chartjs/chart-bubble.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+        canvas.max-w-100#chartjs-bubble-chart(height=200)
+    .col-lg-6
+      +ComponentCard({
+        title: 'Scatter Chart',
+        anchor: true,
+      })
+        // Find the JS file for the following chart at: src/js/charts/chartjs/chart-scatter.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+        canvas.max-w-100#chartjs-scatter-chart(height=200)
+
+  .row.g-3.mb-3
+    .col
+      +ComponentCard({
+        title: 'Combo Chart',
+        anchor: true,
+      })
+        // Find the JS file for the following chart at: src/js/charts/chartjs/chart-combo.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+        canvas.max-w-100#chartjs-combo-chart(width=1618, height=500)

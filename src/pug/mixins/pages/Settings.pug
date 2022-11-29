@@ -1,0 +1,205 @@
+mixin Banner
+  .row
+    .col-12
+      .card.mb-3.btn-reveal-trigger
+        .card-header.position-relative.min-vh-25.mb-8
+          .cover-image
+            +Background({image: `${CWD}assets/img/generic/4.jpg`, className: 'rounded-3 rounded-bottom-0'})
+            input#upload-cover-image.d-none(type="file")
+            label.cover-image-file-input(for="upload-cover-image")
+              span.fas.fa-camera.me-2
+              span Change cover photo
+          .avatar.avatar-5xl.avatar-profile.shadow-sm.img-thumbnail.rounded-circle
+            .h-100.w-100.rounded-circle.overflow-hidden.position-relative 
+              img(src=`${CWD}assets/img/team/2.jpg` width=200 alt='' data-dz-thumbnail)
+
+              input#profile-image(type="file").d-none
+              label.mb-0(for="profile-image").overlay-icon.d-flex.flex-center
+                span.bg-holder.overlay.overlay-0
+                span.z-index-1.text-white.dark__text-white.text-center.fs--1
+                  span.fas.fa-camera
+                  span.d-block Update
+mixin CardExperience
+  .card.mb-3
+    .card-header
+      h5.mb-0 Experiences
+    .card-body.bg-light
+      a(href="#experience-form1" data-bs-toggle="collapse" aria-expanded="false" aria-controls="experience-form1").mb-4.d-block.d-flex.align-items-center
+        span.circle-dashed
+          span.fas.fa-plus
+        span.ms-3 Add new experience
+      #experience-form1.collapse
+        +ExperienceForm
+      +ExperienceList(true)
+
+mixin CardEducation
+  .card.mb-3.mb-lg-0
+    .card-header
+      h5.mb-0 Educations
+    .card-body.bg-light
+      a(href="#education-form" data-bs-toggle="collapse" aria-expanded="false" aria-controls="education-form").mb-4.d-block.d-flex.align-items-center
+        span.circle-dashed
+          span.fas.fa-plus
+        span.ms-3 Add new education
+      #education-form.collapse
+        +EducationForm
+      +EducationList(true)
+mixin AccountSetting
+  .card.mb-3.overflow-hidden
+    .card-header
+      h5.mb-0 Account Settings
+    .card-body.bg-light
+      h6.fw-bold Who can see your profile ?
+        span.fs--2.ms-1.text-primary(data-bs-toggle="tooltip" data-bs-placement="top" title="Only The group of selected people can see your profile")
+          span.fas.fa-question-circle
+      .ps-2
+        +Radio({
+          id: 'everyone', 
+          text: 'Everyone',
+          parentAttrs: {class: 'mb-0 lh-1'},
+          labelAttrs: {class: 'mb-0'}
+        })(name="view-settings")
+        +Radio({
+          id: 'my-followers', 
+          text: 'My followers',
+          parentAttrs: {class: 'mb-0 lh-1'},
+          labelAttrs: {class: 'mb-0'}
+        })(checked name="view-settings")
+        +Radio({
+          id: 'only-me', 
+          text: 'Only me',
+          parentAttrs: {class: 'mb-0 lh-1'},
+          labelAttrs: {class: 'mb-0'}
+        })(name="view-settings")
+
+      h6.mt-2.fw-bold Who can tag you ?
+        span.fs--2.ms-1.text-primary(data-bs-toggle="tooltip" data-bs-placement="top" title="Only The group of selected people can tag you")
+          span.fas.fa-question-circle
+      .ps-2
+        +Radio({ 
+          id: 'tag-everyone', 
+          text: 'Everyone',
+          parentAttrs: {class: 'mb-0 lh-1'},
+          labelAttrs: {class: 'mb-0'}
+        })(name="tag-settings")
+        +Radio({ 
+          id: 'group-members', 
+          text: 'Group Members',
+          parentAttrs: {class: 'mb-0 lh-1'},
+          labelAttrs: {class: 'mb-0'}
+        })(checked name="tag-settings")
+
+      .border-dashed-bottom.my-3
+      +Checkbox({
+        id: 'userSettings1', 
+        text: 'Allow users to show your followers',
+        parentAttrs: {class: 'mb-0 lh-1'},
+        labelAttrs: {class: 'mb-0'}
+      })(checked)
+
+      +Checkbox({
+        id: 'userSettings2', 
+        text: 'Allow users to show your email',
+        parentAttrs: {class: 'mb-0 lh-1'},
+        labelAttrs: {class: 'mb-0'}
+      })(checked)
+
+      +Checkbox({
+        id: 'userSettings3', 
+        text: 'Allow users to show your experiences',
+        parentAttrs: {class: 'mb-0 lh-1'},
+        labelAttrs: {class: 'mb-0'}
+      })
+
+      .border-bottom.border-dashed.my-3
+      +Switch({ 
+        id: 'flexSwitchCheckDefault', 
+        text: 'Make your phone number visible',
+        parentAttrs: {class: 'mb-0 lh-1'},
+        labelAttrs: {class: 'mb-0'}
+
+      })(checked)
+
+      +Switch({ 
+        id: 'flexSwitchCheckChecked', 
+        text: 'Allow user to follow you',
+        parentAttrs: {class: 'mb-0 lh-1'},
+        labelAttrs: {class: 'mb-0'}
+      }) 
+
+mixin ProfileSetting
+  .card.mb-3
+    .card-header
+      h5.mb-0 Profile Settings
+    .card-body.bg-light
+      form.row.g-3
+        .col-lg-6 
+          label.form-label(for="first-name") First Name
+          input.form-control#first-name(type="text" value="Anthony")
+        .col-lg-6 
+          label.form-label(for="last-name") Last Name
+          input.form-control#last-name(type="text" value="Hopkins") 
+        .col-lg-6 
+          label.form-label(for="email1") Email
+          input.form-control#email1(type="text" value="anthony@gmail.com")  
+        .col-lg-6 
+          label.form-label(for="email2") Phone
+          input.form-control#email2(type="text" value="+44098098304") 
+        .col-lg-12
+          label.form-label(for="email3") Heading
+          input.form-control#email3(type="text" value="Software Engineer")   
+        .col-lg-12 
+          label.form-label(for="intro") Intro
+          textarea.form-control#intro(name="intro" cols="30" rows="13") Dedicated, passionate, and accomplished Full Stack Developer with 9+ years of progressive experience working as an Independent Contractor for Google and developing and growing my educational social network that helps others learn programming, web design, game development, networking. I’ve acquired a wide depth of knowledge and expertise in using my technical skills in programming, computer science, software development, and mobile app development to developing solutions to help organizations increase productivity, and accelerate business performance. It’s great that we live in an age where we can share so much with technology but I’m but I’m ready for the next phase of my career, with a healthy balance between the virtual world and a workplace where I help others face-to-face. There’s always something new to learn, especially in IT-related fields. People like working with me because I can explain technology to everyone, from staff to executives who need me to tie together the details and the big picture. I can also implement the technologies that successful projects need.
+        .col-12.d-flex.justify-content-end
+          button.btn.btn-primary(type="submit") Update 
+
+
+mixin BillingSetting
+  .card.mb-3
+    .card-header
+      h5.mb-0 Billing Setting
+    .card-body.bg-light
+      h5 Plan
+      p.fs-0
+        strong Developer
+        | - Unlimited private repositories
+
+      a.btn.btn-falcon-default.btn-sm(href="#!") Update Plan
+    .card-body.bg-light.border-top
+      h5 Payment
+      p.fs-0 You have not added any payment.
+
+      a.btn.btn-falcon-default.btn-sm(href="#!") Add Payment 
+
+mixin ChangePassword
+  .card.mb-3
+    .card-header
+      h5.mb-0 Change Password
+    .card-body.bg-light
+      form
+        .mb-3
+          label.form-label(for='old-password') Old Password
+          input#old-password.form-control(type='password')
+        .mb-3
+          label.form-label(for='new-password') New Password
+          input#new-password.form-control(type='password')
+        .mb-3
+          label.form-label(for='confirm-password') Confirm Password
+          input#confirm-password.form-control(type='password')
+        button.btn.btn-primary.d-block.w-100(type='submit') Update Password        
+
+mixin SettingsDanzerZone
+  .card&attributes(attributes)
+    .card-header
+      h5.mb-0 Danger Zone
+    .card-body.bg-light
+      h5.fs-0 Transfer Ownership
+      p.fs--1 Transfer this account to another user or to an organization where you have the ability to create repositories.
+      a(href="#!").btn.btn-falcon-warning.d-block Transfer
+
+      .border-bottom.border-dashed.my-4
+
+      h5.fs-0 Delete this account
+      p.fs--1 Once you delete a account, there is no going back. Please be certain.
+      a(href="#!").btn.btn-falcon-danger.d-block Deactivate Account

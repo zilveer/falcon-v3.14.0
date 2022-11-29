@@ -1,0 +1,126 @@
+/* -------------------------------------------------------------------------- */
+/*                          Navbar Double Top                                 */
+/* -------------------------------------------------------------------------- */
+// Kanban variables
+$column-width: 22.1875rem;
+$page-header-height: 4.3125rem;
+$column-header-height: 2.5625rem;
+$column-footer-height: 2.8125rem;
+$horizontal-scroll-height: 0.9375rem;
+$double-top-nav-height-remove: $double-top-nav-height + $page-header-height +
+  $column-header-height + $column-footer-height + $horizontal-scroll-height; // With bottom spaces for horizontal scrollbar
+$double-top-nav-updated-height-remove: $double-top-nav-height + $page-header-height +
+  $column-header-height + $horizontal-scroll-height; // Except column footer height
+
+.double-top-nav-layout {
+  // Reboot
+  [id]{
+    @media (min-height: $double-top-nav-height) {
+      scroll-margin-top: $double-top-nav-height + 1.5; 
+    }
+  }
+
+  // Mixed
+  .navbar-top + .content{
+    min-height: calc(100vh - $double-top-nav-height);
+  }
+  
+  // Chat
+  .card-chat {
+    height: calc(100vh - #{$double-top-nav-height} - #{$responsive-footer-height});
+  }
+  .ipad,
+  .mobile.safari,
+  .mobile.chrome {
+    .card-chat {
+      height: calc(100vh - #{$double-top-nav-height} - #{$responsive-footer-height} - 3.5rem);
+    }
+  }
+  @include media-breakpoint-up(sm) {
+    .card-chat {
+      height: calc(100vh - #{$double-top-nav-height} - #{$footer-height});
+    }
+  }
+
+  // Course Details
+  .course-details-sticky-sidebar {
+    @include media-breakpoint-up(lg) {
+      top: $double-top-nav-height + 1;
+    }
+  }
+
+  // Kanban
+  .kanban-items-container {
+    max-height: calc(100vh - #{$double-top-nav-height-remove});
+  }
+
+  .form-added {
+    .kanban-items-container {
+      max-height: calc(100vh - #{$double-top-nav-updated-height-remove});
+    }
+  }
+
+  .ipad,
+  .mobile.safari,
+  .mobile.chrome {
+    .kanban-items-container {
+      max-height: calc(100vh - #{$double-top-nav-height-remove + 3.5rem});
+    }
+    .form-added {
+      .kanban-items-container {
+        max-height: calc(100vh - #{$double-top-nav-updated-height-remove + 3.5rem});
+      }
+    }
+  }
+
+  // Sidebar
+  .sticky-sidebar{
+    top: $double-top-nav-height + 1; 
+  }
+
+  .top-navbar-height {
+    top: $double-top-nav-height;
+  }
+
+  // Navbar Vertical
+  .navbar-vertical {
+    top: $double-top-nav-height;
+
+    .navbar-collapse {
+      overflow: hidden;
+      .navbar-vertical-content {
+        max-height: calc(100vh - #{$double-top-nav-height});
+      }
+    }
+
+    // Navbar Variant
+    &.navbar-card,
+    &.navbar-vibrant,
+    &.navbar-inverted {
+      .navbar-collapse,
+      .navbar-vertical-content{ 
+        max-height: calc(100vh - #{$double-top-nav-height} - #{map-get($spacers, 3)}) !important;
+      }
+    }
+  }
+
+  @each $item, $value in $navbar-vertical-breakpoints {
+    @include media-breakpoint-up($item) {
+      .navbar-vertical.navbar-expand-#{$item}{
+        .navbar-vertical-content{
+          height: calc(100vh - #{$double-top-nav-height});
+        }
+      }
+    }
+  }
+
+  // Offcanvas
+  .offcanvas {
+    &.offcanvas-filter-sidebar {
+      @include media-breakpoint-up(xl){
+        top: $double-top-nav-height;
+        height: calc(100vh - #{$double-top-nav-height});
+      }
+    }
+  }
+}

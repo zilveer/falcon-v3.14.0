@@ -1,0 +1,113 @@
+extends ../../../layouts/LayoutComponent
+
+append variables
+  
+
+prepend styles
+  link(href=`${CWD}vendors/flatpickr/flatpickr.min.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}assets/js/flatpickr.js` )
+
+append content
+  +PageHeader({ title: 'Date Picker' })
+    p.mt-2 Lightweight, powerful javascript datetimepicker with no dependencies.
+    a(href='https://flatpickr.js.org/' target='_blank').btn.btn-link.ps-0.btn-sm  Flatpickr documentation
+      span.fas.fa-chevron-right.ms-1.fs--2
+      
+  .card.mb-3
+    .card-header
+      h5.mb-0 Stylesheet
+    .card-body.bg-light
+      +ComponentCardLib
+        link(href=`vendors/flatpickr/flatpickr.min.css`, rel='stylesheet')
+  .card.mb-3
+    .card-header
+      h5.mb-0 Javascript
+    .card-body.bg-light
+      +ComponentCardLib
+        script(src=`assets/js/flatpickr.js`)
+
+  .row.g-3.mb-3
+    .col-lg-6
+      +ComponentCard({
+        title: 'Date Picker',
+        anchor: true,
+      })
+          = '\n'
+          label.form-label(for="datepicker") Start Date
+          = '\n'  
+          input.form-control.datetimepicker#datepicker(type="text" placeholder="d/m/y" data-options!={disableMobile:true})
+          = '\n'
+    .col-lg-6
+      +ComponentCard({
+        title: 'Time Picker',
+        anchor: true,
+      })
+        = '\n'
+        label.form-label(for="timepicker1") Start Time
+        = '\n'  
+        input.form-control.datetimepicker#timepicker1(type="text" placeholder="H:i" data-options!={enableTime:true, noCalendar: true, dateFormat:'H:i',disableMobile:true})
+        = '\n'
+    .col-lg-6
+      +ComponentCard({
+        title: 'Date & Time Picker',
+        anchor: true,
+      })
+        = '\n'
+        label.form-label(for="datetimepicker") Start Date
+        = '\n'  
+        input.form-control.datetimepicker#datetimepicker(type="text" placeholder="d/m/y H:i" data-options!={enableTime: true, dateFormat:'d/m/y H:i',disableMobile:true})
+        = '\n'
+    .col-lg-6
+      +ComponentCard({
+        title: 'Range',
+        anchor: true,
+      })
+        = '\n'
+        label.form-label(for="timepicker2") Select Time Range
+        = '\n'  
+        input.form-control.datetimepicker#timepicker2(type="text" placeholder="d/m/y to d/m/y" data-options!={mode:'range', dateFormat:'d/m/y',disableMobile:true})
+        = '\n'
+
+    .col-lg-12
+      +ComponentCard({
+        title: 'Validation',
+        description: 'Pass <code>"allowInput":true</code> through <code>data-options</code> attribute to apply the form validation.',
+        anchor: true,
+      })
+        form.needs-validation(novalidate)
+          .mb-3
+            label.form-label(for="datepickerVal")  Date
+            input.form-control.datetimepicker#datepickerVal(type="text" placeholder="d/m/y" required data-options!={disableMobile:true, allowInput: true})
+            .invalid-feedback This field is required
+
+          .mb-3
+            label.form-label(for="dateTimepickerVal") Date & Time
+            input.form-control.datetimepicker#dateTimepickerVal(type="text" required placeholder="d/m/y H:i" data-options!={enableTime: true, dateFormat:'d/m/y H:i',disableMobile:true, allowInput: true})
+            .invalid-feedback This field is required
+
+          
+          button.btn.btn-primary(type="submit") Submit form
+
+    .col-lg
+      .card.mb-3
+        .card-header.mb-0.bg-light
+          h5(data-anchor) Localization
+          p.mb-1 Flatpickr can be localized per-instance, or globally. To localize flatpickr import language script in 
+            code src/js/flatpickr.js.
+            | For example, you can use Bangla language by importing the following script
+          +ComponentCardLib('js').mb-2
+            | import "flatpickr/dist/l10n/bn.js"
+          
+          p.mb-0 For more details visit Flatpickr  
+            a(href='https://flatpickr.js.org/localization/' target="_blank") localization documentation
+            | .
+        .card-body.bg-light.py-0
+          +ComponentCard({ title: 'Example' }).mx-ncard.shadow-none.rounded-top-0
+            .mb-3
+              = '\n'
+              label.form-label(for="timepicker3") Select Time Range
+              = '\n'  
+              input.form-control.datetimepicker#timepicker3(type="text" placeholder="d/m/y to d/m/y" data-options!={mode:'range',  dateFormat:'d/m/y', disableMobile:true, locale: 'bn'})
+    //-           = '\n'

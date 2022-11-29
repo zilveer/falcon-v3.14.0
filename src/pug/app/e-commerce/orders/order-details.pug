@@ -1,0 +1,15 @@
+extends ../../../layouts/LayoutTheme
+include ../../../mixins/e-commerce/OrderDetails
+
+append content
+  .card.mb-3
+    +Background({
+      image: `${CWD}assets/img/icons/spot-illustrations/corner-4.png`, 
+      className:"d-none d-lg-block bg-card",
+      attrs: {
+        style: 'opacity: 0.7'
+      }
+    })
+    +OrderDetailsHeader
+  +Address
+  +ProductsTable

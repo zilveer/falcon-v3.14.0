@@ -1,0 +1,205 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/Treeview
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Treeview',
+      description: 'Treeview is a visual portrayal of hierarchical data that starts with the root item and progresses through its children and their descendants. Aside from the root, every item has a parent and can have children. To create this Treeview, we used Bootstrap’s “Collapse” feature.',
+    }
+
+    var treeviewItems = [
+      {
+        name: 'public',
+        id:'1-1',
+        children:[
+          {
+            name: 'assets',
+            id:'2-1',
+            children:[
+              {
+                name: 'image',
+                id:'3-1',
+                show:true,
+                children:[
+                  {
+                    name: 'falcon.png',
+                    icon: 'fas fa-image text-success',
+                    dot:'info'
+                  },
+                  {
+                    name: 'generic.png',
+                    icon: 'fas fa-image text-success',
+                    dot:'primary'
+                  },
+                  {
+                    name: 'shield.svg',
+                    icon: 'fas fa-sun text-warning',
+                    dot:'primary'
+                  },
+                ]
+              },
+              {
+                name: 'video',
+                id:'3-2',
+                badge:3,
+                show:true,
+                children:[
+                  {
+                    name: 'beach.mp4',
+                    icon: 'fas fa-play text-danger',
+                    dot:'warning'
+                  },
+                  {
+                    name: 'background.map',
+                    icon: 'fas fa-play text-danger',
+                    dot:'warning'
+                  }
+                ]
+              },
+              {
+                name: 'js',
+                id:'3-3',
+                badge:2,
+                children:[
+                  {
+                    name: 'theme.js',
+                    icon: 'fab fa-js text-success'
+                  },
+                  {
+                    name: 'theme.min.js',
+                    icon: 'fab fa-js text-success'
+                  },
+                ]
+              },
+            ]
+          },
+          {
+            name:'dashboard',
+            id:'2-3',
+            children:[ 
+              {
+                name: 'default.html',
+                icon: 'fab fa-html5 text-danger',
+              },
+              {
+                name: 'analytics.html',
+                icon: 'fab fa-html5 text-danger',
+              },
+              {
+                name: 'crm.html',
+                icon: 'fab fa-html5 text-danger',
+              },
+            ]
+          },
+          {
+            name: 'index.html',
+            icon: 'fab fa-html5 text-danger',
+          },
+        ]
+      },
+      {
+        name: 'Files',
+        id:'1-2',
+        show:true,
+        children:[
+          {
+            name: 'build.zip',
+            icon: 'fas fa-file-archive text-warning'
+          },
+          {
+            name: 'live-1.3.4.zip',
+            icon: 'fas fa-file-archive text-warning'
+          },
+          {
+            name: 'app.exe',
+            icon: 'fas fa-file text-primary',
+            dot:'warning'
+          },
+          {
+            name: 'export.csv',
+            icon: 'fas fa-file text-primary',
+            dot:'primary'
+          },
+          {
+            name: 'default.pdf',
+            icon: 'fas fa-file-pdf text-danger',
+            dot:'primary'
+          },
+          {
+            name: 'Yellow_Coldplay.wav',
+            icon: 'fas fa-music text-info'
+          },
+        
+        ]
+      },
+      {
+        name:'package.json',
+        icon:'fab fa-node-js text-success'
+      },
+      {
+        name:'package-lock.json',
+        icon:'fab fa-node-js text-success'
+      },
+      {
+        name:'README.md',
+        icon:'fas fa-exclamation-circle text-primary'
+      },
+    ]
+
+block component
+  +PageHeader(pageHeader)
+
+  .row.g-3.mb-3
+    .col-xxl-6
+      +ComponentCard({
+        title: 'Basic Example',
+        anchor: true,
+        descriptionEl:`<p class='mb-2'>Use <code> data-show="true" </code> attribute with the collapse element to expand the tree at first.</p>`,
+        descriptionClass:'mt-2 mb-0 pt-0',
+        bodyClass:'scrollbar-overlay treeview-body-height mb-3 pb-0'
+      }).h-100
+        +TreeviewExample(treeviewItems)
+    .col-xxl-6
+      +ComponentCard({
+        title: 'Stripe Example',
+        anchor: true,
+        descriptionEl:`<p class='mb-2'>Use <code> treeview-stripe </code> class and <code> data-options='{"striped":true}' </code> to make a striped treeview.</p>`,
+        bodyClass:'scrollbar-overlay treeview-body-height mb-3 py-0'
+      }).h-100
+        +TreeviewStripedExample(treeviewItems)
+
+  .row.g-3.mb-3
+    .col-xxl-6
+      +ComponentCard({
+        title: 'Select Example',
+        anchor: true,
+        descriptionEl:`<p class='mb-2'>Use <code> treeview-slect </code> class and <code> data-options='{"select":true}' </code> to make a selectable treeview.</p>`,
+        bodyClass:'scrollbar-overlay treeview-body-height mb-3 py-0'
+      }).h-100
+        +TreeviewSelectExample(treeviewItems)
+    .col-xxl-6
+      +ComponentCard({
+        title: 'Stripe with select Example',
+        anchor: true,
+        descriptionEl:`<p class='mb-2'>Use <code> treeview-stripe </code> and <code> treeview-slect </code> both class and <code> data-options='{"select":true,"striped":true}' </code> to make a selectable and striped treeview.</p>`,
+        descriptionClass:'mt-2 mb-0 pt-0',
+        bodyClass:'scrollbar-overlay treeview-body-height mb-3 pb-0'
+      }).h-100
+        +TreeviewSelectStripedExample(treeviewItems)
+
+  .card.mb-3
+    .card-header
+      h5#structure.mb-0(data-anchor='data-anchor')
+        | Structure
+        a.anchorjs-link(aria-label='Anchor', data-anchorjs-icon='#', href='#structure', style='padding-left: 0.375em;')
+      p.mt-2.mb-0
+        | Falcon uses <strong>Bootstrap Collapse</strong> to create interactive trees. All you need to add some specific treeview classes in <strong>Bootstrap Collapse</strong> component to make a treeview. First, add a unique id to the treeview element. Normally Bootstrap collapse needs a unique id for every collapse element. We recommend using treeview element id as the prefix of every collapse element along with a unique id. See 
+        a(href="https://getbootstrap.com/docs/5.1/components/collapse/" target="_blank") 
+          | Collapse documentation on Bootstrap
+    .card-body.bg-light
+      +ComponentCardLib
+        +TreeviewDemo
+
+  

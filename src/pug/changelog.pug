@@ -1,0 +1,1948 @@
+extends layouts/LayoutComponent
+
+block append content
+  +PageHeader({title: 'Changelog'})
+
+  .card.mb-3
+    .card-body
+      .alert.alert-warning.p-4.mb-0(role='alert')
+        .d-flex
+          span.fab.fa-intentionally-kept.fs-3
+          .flex-1.ms-3
+            h4.alert-heading Before you update!
+            p.mb-0 Backup your files and read the changelog before updating Falcon on your project. If you come across with any problems with Falcon template during the update, feel free to contact us at 
+              a(href='mailto:support@themewagon.com') support@themewagon.com
+              | .
+  
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.14.0
+        |  - Black falcon
+      p.mb-0 20 Oct, 2022
+    .card-body.bg-light
+
+
+      h6 New
+      ul.bullet-inside.ps-0
+        li Page: 
+          code public/dashboard/support-desk.html
+        li Page: 
+          code public/app/support-desk/table-view.html
+        li Page: 
+          code public/app/support-desk/card-view.html
+        li Page: 
+          code public/app/support-desk/contacts.html
+        li Page: 
+          code public/app/support-desk/contact-details.html
+        li Page: 
+          code public/app/support-desk/tickets-preview.html
+        li Page: 
+          code public/app/support-desk/quick-links.html
+        li Page: 
+          code public/app/support-desk/reports.html
+        li SCSS: 
+          code src/scss/theme/_progress.scss
+        li SCSS: 
+          code src/scss/theme/_summarised-tab.scss
+        li SCSS: 
+          code src/scss/theme/_support-desk.scss
+        li JS: 
+          code src/js/charts/echarts/unresolved-tickets.js
+        li JS: 
+          code src/js/charts/echarts/number-of-tickets.js
+        li JS: 
+          code src/js/charts/echarts/customer-satisfaction.js
+        li JS: 
+          code src/js/charts/echarts/distribution-of-performance.js
+        li JS: 
+          code src/js/charts/echarts/satisfaction-survey.js
+        li JS: 
+          code src/js/charts/echarts/top-customer.js
+        li JS: 
+          code src/js/charts/echarts/received-tickets.js
+        li JS: 
+          code src/js/charts/echarts/ticket-volume.js
+        li JS: 
+          code src/js/hide-on-collapse.js
+        li JS: 
+          code src/js/unresolved-tickets-tab.js
+      h6 Update
+      ul.bullet-inside.ps-0
+        li Padding updated p-card to p-x1
+        li SCSS: 
+          code src/scss/theme/_card.scss
+        li SCSS: 
+          code src/scss/theme/root/_light.scss
+        li SCSS: 
+          code src/scss/theme/root/_dark.scss
+        li SCSS: 
+          code src/scss/theme/root/_variables.scss
+
+  //-  ------------------------
+  .card.mb-3
+    .card-header
+      h5.mb-2 
+        code.fw-bold.fs-1 v3.13.0
+        |  - Eleonora's falcon
+      p.mb-0 16 Oct, 2022
+    .card-body.bg-light
+      h6 New
+      ul.bullet-inside.ps-0
+        li Layout: 
+          strong Navbar Double Top
+        li jQuery support components
+        li Page: 
+          code public/modules/components/jquery-components.html
+        li Plugin: 
+          code datatables.net
+        li Plugin: 
+          code select2
+        li SCSS: 
+          code src/scss/theme/_double-top-nav-layout.scss
+        li JS: 
+          code src/js/datatables.js
+        li JS: 
+          code src/js/select2.js
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li Bootstrap to 
+          code 5.2.2
+        li JS: 
+          code src/js/theme-control.js
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Minor bugs.
+
+  //-  ------------------------
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.12.0
+        |  - Gyrfalcon
+      p.mb-0 20 Sep, 2022
+    .card-body.bg-light
+      h6 New
+      ul.bullet-inside.ps-0
+        li Bottom bar component
+        li Page:
+          code public/dashboard/lms.html
+        li Page:
+          code public/app/e-learning/student-overview.html
+        li Page:
+          code public/app/e-learning/trainer-profile.html
+        li Page:
+          code public/app/e-learning/course/course-list.html
+        li Page:
+          code public/app/e-learning/course/course-grid.html
+        li Page:
+          code public/app/e-learning/course/course-details.html
+        li Page:
+          code public/app/e-learning/course/create-a-course.html
+        li Plugin:
+          code simplebar.js
+        li Plugin:
+          code D3.js
+        li SCSS:
+          code src/scss/theme/_bottom-bar.scss
+        li SCSS:
+          code src/scss/theme/_collapse.scss
+        li SCSS:
+          code src/scss/theme/_offcanvas.scss
+        li SCSS:
+          code src/scss/theme/_focus.scss
+        li SCSS:
+          code src/scss/theme/_e-learning.scss
+        li JS:
+          code src/js/bottom-bar.js
+        li JS:
+          code src/js/charts/d3/*.js
+        li JS:
+          code src/js/charts/chartjs/chart-half-doughnut.js
+        li JS:
+          code src/js/charts/echarts/average-enrollment-rate.js
+        li JS:
+          code src/js/charts/echarts/assignment-scores.js
+        li JS:
+          code src/js/charts/echarts/browsed-courses.js
+        li JS:
+          code src/js/charts/echarts/course-enrollments.js
+        li JS:
+          code src/js/charts/echarts/course-status.js
+        li JS:
+          code src/js/charts/echarts/marketing-expenses.js
+        li JS:
+          code src/js/charts/echarts/user-by-location-lms.js
+        li JS:
+          code src/js/charts/echarts/weekly-goals-lms.js
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li Bootstrap to
+          code 5.2.1
+        li Plugin:
+          code overlayscrollbars.js
+          | replaced with
+          code simplebar.js
+        li SCSS:
+          code src/scss/theme/root/_light.scss
+        li SCSS:
+          code src/scss/theme/root/_dark.scss
+        li SCSS:
+          code src/scss/theme/_variables.scss
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li TinyMCE validation.
+        li Auto scrolling bug on top searchbar input.
+        li Scroll to target ID.
+        li Minor bugs.
+  //-  ------------------------
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.11.0
+        |  - Amur falcon
+      p.mb-0 27 July, 2022
+    .card-body.bg-light
+
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li Bootstrap to
+          code 5.2.0
+
+        li SCSS:
+          code src/scss/theme/plugins/_full-calendar.scss
+        li SCSS:
+          code src/scss/theme/_reboot.scss
+        li SCSS:
+          code src/scss/theme/_animations.scss
+        li SCSS:
+          code src/scss/theme/plugins/_leaflet.scss
+        li SCSS:
+          code src/scss/theme/root/_light.scss
+        li SCSS:
+          code src/scss/theme/root/_dark.scss
+        li SCSS:
+          code src/scss/theme/_variables.scss
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Emoji border color.
+        li Minor bugs.
+  //-  ------------------------
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.10.0
+        |  - Barbary falcon
+      p.mb-0 01 July, 2022
+    .card-body.bg-light
+
+      h6 New
+      ul.bullet-inside.ps-0
+        li SCSS:
+          code src/scss/theme/_maps.scss
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li
+          code Bootstrap to 5.2.0-beta1
+        li All scss files
+        li CSS variable for grays
+        li Doc:
+          a(href='https://prium.github.io/falcon/v3.10.0/documentation/customization/styling.html') Styling
+        li
+          code bg-{color}
+          | classes replaced with
+          code text-{color}
+          | in
+          code hr
+          | tags.
+
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Border dashed style
+        li Advance select style in RTL
+        li Other minor bugs
+
+
+  //- -----------------------------------------------------------------
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.9.0
+        |  - Grey kestrel
+      p.mb-0 28 April, 2022
+    .card-body.bg-light
+
+      h6 New
+      ul.bullet-inside.ps-0
+        li Add bootstrap validation for Advance select and Date picker
+        li Add filter in advance table.
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li DOC:
+          code public/modules/forms/advance/advance-select.html
+        li DOC:
+          code public/modules/forms/advance/date-picker.html
+        li DOC:
+          code public/modules/tables/advance-tables.html
+        li JS:
+          code src/js/list.js
+        li JS:
+          code src/js/choices.js
+        li SCSS:
+          code src/scss/theme/plugins/_full-calendar.scss
+        li SCSS:
+          code src/scss/theme/plugins/_swiper.scss
+        li SCSS:
+          code src/scss/theme/root/_dark.scss
+        li SCSS:
+          code src/scss/theme/_navbar.scss
+        li SCSS:
+          code src/scss/theme/_navbar-top.scss
+        li SCSS:
+          code src/scss/theme/plugins/_choices.scss
+
+
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Vertical navbar card style in dark mode
+        li Dropdown caret issue
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.8.0
+        |  - Peregrine falcon
+      p.mb-0 07 March, 2022
+    .card-body.bg-light
+
+      h6 New
+      ul.bullet-inside.ps-0
+        li Reset button on setting panel
+        li Page: 
+          code public/documentation/faq.html
+          
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li JS:
+          code src/js/config.js
+        li JS:
+          code src/js/theme-control.js
+        li SCSS:
+          code src/scss/theme/root/_dark.scss
+        li SCSS:
+          code src/scss/theme/root/_light.scss
+        li SCSS:
+          code src/scss/theme/_colors.scss
+        li SCSS:
+          code src/scss/theme/_variables.scss
+        li SCSS:
+          code src/scss/theme/_utilities.scss
+        li SCSS:
+          code src/scss/theme/_mixins.scss
+        li SCSS: Removed
+          code src/scss/theme/mixins/_utilities.scss
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Color opacity issue
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.7.0
+        |  -  Oriental hobby
+      p.mb-0 19 January, 2022
+    .card-body.bg-light
+
+      h6 New
+      ul.bullet-inside.ps-0
+        li Timeline component
+        li SCSS:
+          code src/scss/theme/_timeline.scss
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li SCSS:
+          code src/scss/theme/_navbar.scss
+        li SCSS:
+          code src/scss/theme/_variables.scss
+        li JSON:
+          code package.json
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Nine dot dropdown issue
+
+  // -----------------------------------------------------------------
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.6.0
+        |  -  Nankeen kestrel
+      p.mb-0 14 December, 2021
+    .card-body.bg-light
+
+      h6 New
+      ul.bullet-inside.ps-0
+        li 9 dot menu on top navbar
+        li JS:
+          code src/js/scroll.js
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li Add
+            code data-hide-on-body-scroll
+            | attribute to the notification dropdown link
+        li JS:
+          code src/js/theme.js
+        li Page:
+          code public/widgets.html
+        li SCSS:
+          code src/scss/theme/_navbar.scss
+        li SCSS:
+          code src/scss/theme/_navbar-vertical.scss
+        li JSON:
+          code package.json
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Page jump issue in ipad
+
+  // -----------------------------------------------------------------
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.5.1
+        |  -  Lesser falcon
+      p.mb-0 29 November, 2021
+    .card-body.bg-light
+
+      h6 Update
+      ul.bullet-inside.ps-0
+
+        li JS:
+          code src/js/fullcalendar.js
+        li JS:
+          code src/js/charts/echarts/examples/step-line-chart.js
+        li JS:
+          code src/js/charts/echarts/examples/gradient-bar-chart.js
+        li DOC:
+          code geo-map.html
+        li SCSS:
+          code src/scss/theme/plugins/_full-calendar.scss
+        li JSON:
+          code package.json
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Running project table
+        li Dropdown issue
+        li Other minor bugs
+  // -----------------------------------------------------------------
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.5.0
+        |  -  Bateleur falcon
+      p.mb-0 02 November, 2021
+    .card-body.bg-light
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li Bootstrap to
+          code v5.1.3
+        li JS:
+          code src/js/charts/echarts/sales-by-pos-location.js
+        li SCSS:
+          code src/scss/theme/root/_dark.scss
+        li SCSS:
+          code src/scss/theme/_variables.scss
+        li JSON:
+          code package.json
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Placeholder dark mode color
+        li Sales by pos location chart color
+        li Other minor bugs
+  // -----------------------------------------------------------------
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.4.0
+        |  -  Laggar falcon
+      p.mb-0 19 September, 2021
+    .card-body.bg-light
+
+      h6 New
+      ul.bullet-inside.ps-0
+        li PAGE:
+          code public/modules/components/treeview.html
+        li SCSS:
+          code src/scss/theme/_treeview.scss
+        li JS:
+          code src/js/treeview.js
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li JS:
+          code src/js/theme.js
+        li JS:
+          code src/js/dropzone.js
+        li JS:
+          code src/js/charts/echarts/returning-customer-rate.js
+        li SCSS:
+          code src/scss/theme/_theme.scss
+        li SCSS:
+          code src/scss/theme/_variables.scss
+        li SCSS:
+          code src/scss/theme/plugins/_dropzone.scss
+        li SCSS:
+          code src/scss/theme/plugins/_full-calendar.scss
+        li SCSS:
+          code src/scss/theme/root/_dark.scss
+        li SCSS:
+          code src/scss/theme/root/_light.scss
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Returning Customer Rate chart legend issue
+        li Other minor bugs
+  // -----------------------------------------------------------------
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.3.0
+        |  -  Lanner falcon
+      p.mb-0 23 August, 2021
+    .card-body.bg-light
+
+      h6 New
+      ul.bullet-inside.ps-0
+        li PAGE:
+          code public/modules/components/placeholder.html
+        li PAGE:
+          code public/modules/components/offcanvas.html
+
+        li JS:
+          code src/js/charts/echarts/bandwidth-saved.js
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li Bootstrap to
+          code v5.1.0
+        li Plugin: Removed
+          code progressbar.js
+        li Bandwidth Saved progressbar is converted to
+          code echarts
+          | from
+          code progressbar.js
+        li Settings Panel is converted to
+          code offcanvas
+          | from
+          code modal
+        li Removed
+          code Side Panel
+          | component
+        li Removed
+          code Advance Progessbar
+          | component
+
+
+        li JS: Removed
+          code src/js/settings-panel.js
+        li JS: Removed
+          code src/js/progressbar.js
+        li JS:
+          code src/js/config.js
+        li JS:
+          code src/js/theme.js
+        li JS:
+          code src/js/utils.js
+
+
+        li SCSS: Removed
+          code src/scss/theme/_modal.scss
+        li SCSS: Removed
+          code src/scss/theme/plugins/_progressbar.scss
+        li SCSS:
+          code src/scss/theme/_variables.scss
+        li SCSS:
+          code src/scss/theme/root/_light.scss
+        li SCSS:
+          code src/scss/_bootstrap.scss
+        li SCSS:
+          code src/scss/theme/plugins/_echarts.scss
+        li SCSS:
+          code src/scss/theme/_chat.scss
+        li SCSS:
+          code src/scss/theme/plugins/_choices.scss
+        li SCSS:
+          code src/scss/theme/_avatar.scss
+        li SCSS:
+          code src/scss/theme/_functions.scss
+        li SCSS:
+          code src/scss/theme/_popover.scss
+        li SCSS:
+          code src/scss/theme/_plugins.scss
+        li SCSS:
+          code src/scss/theme/_settings-panel.scss
+        li SCSS:
+          code src/scss/theme/_theme.scss
+        li SCSS:
+          code src/scss/theme/mixins/_utilities.scss
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Search box dropdown menu hr color in dark mode.
+        li Search box close button color in dark mode.
+        li SCSS compiling deprecated warning.
+        li Other minor bugs
+  // -----------------------------------------------------------------
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.2.0
+        |  -  Aplomado falcon
+      p.mb-0 23 June, 2021
+    .card-body.bg-light
+
+      h6 New
+      ul.bullet-inside.ps-0
+        li Added multiple echarts example
+        li PAGE:
+          code public/dashboard/crm.html
+        li JS:
+          code public/assets/data/world.js
+        li JS:
+          code public/assets/data/usa.js
+        li JS:
+          code src/js/charts/echarts/closed-vs-goal.js
+        li JS:
+          code src/js/charts/echarts/line-payment.js
+        li JS:
+          code src/js/charts/echarts/real-time-users.js
+        li JS:
+          code src/js/charts/echarts/lead-conversion.js
+        li JS:
+          code src/js/charts/echarts/crm-revenue.js
+        li JS:
+          code src/js/charts/echarts/deal-storage-funnel.js
+        li JS:
+          code src/js/charts/echarts/location-by-session-crm.js
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li Bootstrap to
+          code v5.0.2
+        li Plugin:
+          code echarts
+        li Plugin:
+          code chart.js
+        li Line payment chart is converted from
+          code chart.js
+          | to
+          code echarts
+        li Real time user chart is converted from
+          code chart.js
+          | to
+          code echarts
+        li JS:
+          code src/js/popover.js
+        li JS:
+          code src/js/charts/echarts/traffic-channels.js
+        li JS:
+          code src/js/tinymce.js
+        li JS:
+          code src/js/charts/echarts/echarts-utils.js
+        li JS:
+          code src/js/charts/echarts/session-by-country-map.js
+        li JS:
+          code src/js/charts/echarts/total-order.js
+        li JS:
+          code src/js/charts/echarts/weekly-sales.js
+        li JS:
+          code src/js/charts/echarts/returning-customer-rate.js
+        li JS:
+          code src/js/charts/echarts/gross-revenue.js
+        li JS:
+          code src/js/charts/echarts/traffic-channels.js
+        li JS:
+          code src/js/theme-control.js
+        li JS:
+          code src/js/theme.js
+        li JS:
+          code gulp/watch.gulp.js
+        li JS:
+          code gulp/script.gulp.js
+
+        li SCSS:
+          code src/scss/theme/mixins/_button.scss
+        li SCSS:
+          code src/scss/theme/_buttons.scss
+        li SCSS:
+          code src/scss/theme/_dropdown.scss
+        li SCSS:
+          code src/scss/theme/_variables.scss
+        li SCSS:
+          code src/scss/theme/plugins/_echarts.scss
+        li SCSS:
+          code src/scss/theme/plugins/_list.scss
+        li SCSS:
+          code src/scss/theme/root/_dark.scss
+        li SCSS:
+          code src/scss/theme/root/_light.scss
+        li SCSS:
+          code src/scss/theme/plugins/_flatpickr.scss
+        li SCSS:
+          code src/scss/theme/_dashboard.scss
+        li SCSS:
+          code src/scss/theme/_forms.scss
+        li SCSS:
+          code src/scss/theme/_navbar-top.scss
+        li SCSS:
+          code src/scss/theme/_notification.scss
+        li SCSS:
+          code src/scss/theme/_hover.scss
+        li SUSS:
+          code src/scss/theme/plugins/_tinymce.scss
+
+        li JSON:
+          code package.json
+        li JSON:
+          code vendors.json
+        li JSON:
+          code gulp/gulp.json
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Tinymce dark mode issue
+        li Table dropdown issue in ipad
+        li Disabled button color issue
+        li Other minor bugs
+
+  //----------------------------------------------------------------------
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.1.0
+        |  -  Saker falcon
+      p.mb-0 2 June, 2021
+    .card-body.bg-light
+
+      h6 New
+      ul.bullet-inside.ps-0
+        li HTML:
+          code public/modules/forms/floating-labels.html
+        li Added support for Apple M1 chip
+        li Add
+          code @mr-hope/gulp-sass
+          | package for compiling SCSS
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li Plugin:
+          code @fortawesome/fontawesome-free
+        li Plugin:
+          code @joeattardi/emoji-button
+        li Plugin:
+          code @popperjs/core
+        li Plugin:
+          code anchor-js
+        li Plugin:
+          code dropzone
+        li Plugin:
+          code fullcalendar
+        li Plugin:
+          code glightbox
+        li Plugin:
+          code leaflet.markercluster
+        li Plugin:
+          code list.js
+        li Plugin:
+          code lottie-web
+        li Plugin:
+          code plyr
+        li Plugin:
+          code swiper
+        li Plugin:
+          code tinymce
+        li Plugin:
+          code typed.js
+        li Remove
+          code gulp-sass
+          | package
+        li JS:
+          code gulp/style.gulp.js
+        li JS:
+          code src/js/calendar/template.js
+        li JS:
+          code src/js/chat.js
+        li JS:
+          code src/js/search.js
+        li JS:
+          code src/js/list.js
+
+        li SCSS:
+          code src/scss/theme/_navbar-top.scss
+        li SCSS:
+          code src/scss/theme/_calendar.scss
+        li SCSS:
+          code src/scss/theme/_chat.scss
+        li SCSS:
+          code src/scss/theme/_notification.scss
+        li SCSS:
+          code src/scss/theme/plugins/_full-calendar.scss
+        li SCSS:
+          code src/scss/theme/_icon.scss
+        li SCSS:
+          code src/scss/theme/root/_dark.scss
+        li SCSS:
+          code src/scss/theme/root/_light.scss
+        li SCSS:
+          code src/scss/theme/_forms.scss
+        li SCSS:
+          code src/scss/theme/_reboot.scss
+        li SCSS:
+          code src/scss/theme/_variables.scss
+        li SCSS:
+          code src/scss/theme/_dashboard.scss
+
+        li JSON:
+          code vendors.json
+        li JSON:
+          code package.json
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Search suggestion toggle issue in top navbar
+        li Notification dropdown height in Firefox
+        li Other minor bugs.
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.0.0
+        |  -  Prairie falcon
+      p.mb-0 23 May, 2021
+    .card-body.bg-light
+
+      h6 New
+      ul.bullet-inside.ps-0
+        li HTML:
+          code public/dashboard/analytics.html
+        li HTML:
+          code public/dashboard/e-commerce.html
+        li HTML:
+          code public/dashboard/project-management.html
+        li HTML:
+          code public/dashboard/saas.html
+        li JS:
+          code src/js/charts/echarts/audience.js
+        li JS:
+          code src/js/charts/echarts/active-users-report.js
+        li JS:
+          code src/js/charts/echarts/basic-echarts.js
+        li JS:
+          code src/js/charts/echarts/bounce-rate.js
+        li JS:
+          code src/js/charts/echarts/candle-chart.js
+        li JS:
+          code src/js/charts/echarts/gross-revenue.js
+        li JS:
+          code src/js/charts/echarts/market-share-ecommerce.js
+        li JS:
+          code src/js/charts/echarts/report-for-this-week.js
+        li JS:
+          code src/js/charts/echarts/returning-customer-rate.js
+        li JS:
+          code src/js/charts/echarts/sales-by-pos-location.js
+        li JS:
+          code src/js/charts/echarts/session-by-country-map.js
+        li JS:
+          code src/js/charts/echarts/session-by-country.js
+        li JS:
+          code src/js/charts/echarts/session-by-browser.js
+        li JS:
+          code src/js/charts/echarts/total-sales-ecommerce.js
+        li JS:
+          code src/js/charts/echarts/traffic-channels.js
+        li JS:
+          code src/js/charts/echarts/users-by-time.js
+        li JS:
+          code src/js/calendar/management-calendar.js
+        li JS:
+          code src/js/calendar/management-events.js
+        li JS:
+          code gulp/link.gulp.js
+        li JS:
+          code src/js/charts/chartjs/product-share-doughnut.js
+        li SCSS:
+          code src/scss/theme/_audience-tab.scss
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li Bootstrap
+          | to
+          code v5.0.1
+        li JS:
+          code src/js/theme.js
+        li JS:
+          code src/js/utils.js
+        li JS:
+          code src/js/navbar-darken-on-scroll.js
+        li JS:
+          code src/js/fullcalendar.js
+        li JS:
+          code src/js/navbar-top.js
+        li JS:
+          code src/js/calendar/index.js
+        li JS:
+          code src/js/calendar/template.js
+        li JS:
+          code src/js/calendar/events.js
+        li JS:
+          code src/js/charts/echarts/echarts.js
+        li JS:
+          code src/js/charts/chartjs/chart-line-payment.js
+        li JS:
+          code src/js/list.js
+        li JS:
+          code src/js/search.js
+        li JS:
+          code src/js/charts/echarts/total-sales.js
+        li JS:
+          code gulp/product.gulp.js
+        li JS:
+          code gulp/pug.gulp.js
+
+        li SCSS:
+          code src/scss/theme/_theme.scss
+        li SCSS:
+          code src/scss/theme/plugins/_full-calendar.scss
+        li SCSS:
+          code src/scss/theme/plugins/_echarts.scss
+        li SCSS:
+          code src/scss/theme/_mixed.scss
+        li SCSS:
+          code src/scss/theme/helpers/_background.scss
+        li SCSS:
+          code src/scss/theme/root/_dark.scss
+        li SCSS:
+          code src/scss/theme/root/_light.scss
+        li SCSS:
+          code src/scss/theme/_avatar.scss
+        li SCSS:
+          code src/scss/theme/_calendar.scss
+        li SCSS:
+          code src/scss/theme/_forms.scss
+        li SCSS:
+          code src/scss/theme/_dashboard.scss
+        li SCSS:
+          code src/scss/theme/_card.scss
+        li SCSS:
+          code src/scss/theme/_variables.scss
+        li SCSS:
+          code src/scss/theme/_timeline.scss
+        li SCSS:
+          code src/scss/theme/_utilities.scss
+        li SCSS:
+          code src/scss/theme/_calendar.scss
+
+        li JSON:
+          code vendors.json
+        li JSON:
+          code gulp/gulp.json
+        li JSON:
+          code package.json
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Other minor bugs
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.0.0-beta7
+        |  -  Taita falcon
+      p.mb-0 24 April, 2021
+    .card-body.bg-light
+
+      h6 New
+      ul.bullet-inside.ps-0
+        li JS:
+          code gulp/product.gulp.js
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li JS:
+          code src/js/list.js
+        li JS:
+          code src/js/rater.js
+        li JS:
+          code src/js/tinymce.js
+        li JS:
+          code src/js/googleMap.js
+        li JS:
+          code src/js/navbar-darken-on-scroll.js
+        li JS:
+          code src/js/wizard.js
+        li JS:
+          code gulp/pug.gulp.js
+        li JS:
+          code gulpfile.js
+        li JSON:
+          code gulp/gulp.json
+        li JSON:
+          code package.json
+        li SCSS:
+          code src/scss/theme/plugins/_tinymce.scss
+        li SCSS:
+          code src/scss/theme/_landing.scss
+        li SCSS:
+          code src/scss/theme/_navbar-vertical.scss
+        li SCSS:
+          code src/scss/theme/_search-box.scss
+        li SCSS:
+          code src/scss/theme/_buttons.scss
+        li SCSS:
+          code src/scss/theme/helpers/_background.scss
+        li SCSS:
+          code src/scss/theme/plugins/_flatpickr.scss
+        li SCSS:
+          code src/scss/theme/plugins/_full-calendar.scss
+        li SCSS:
+          code src/scss/theme/_browser-support.scss
+        li SCSS:
+          code src/scss/theme/_kanban.scss
+        li SCSS:
+          code src/scss/theme/_notification.scss
+        li SCSS:
+          code src/scss/theme/plugins/_choices.scss
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Other minor bugs
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.0.0-beta6
+        |  -  Merlin falcon
+      p.mb-0 8 April, 2021
+    .card-body.bg-light
+      h6 New
+      ul.bullet-inside.ps-0
+        li JS:
+          code src/js/charts/chartjs/chart-bar.js
+        li JS:
+          code src/js/charts/chartjs/chart-combo.js
+        li JS:
+          code src/js/charts/chartjs/chart-doughnut.js
+        li JS:
+          code src/js/charts/chartjs/chart-line-payment.js
+        li JS:
+          code src/js/charts/chartjs/chart-pie.js
+        li JS:
+          code src/js/charts/chartjs/chart-polar.js
+        li JS:
+          code src/js/charts/chartjs/chart-radar.js
+        li JS:
+          code src/js/charts/chartjs/chart-real-time-user.js
+        li JS:
+          code src/js/charts/chartjs/chart-scatter.js
+        li JS:
+          code src/js/charts/chartjs/chartjs-utils.js
+        li JS:
+          code src/js/dropdown-menu.js
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li HTML:
+          code public/modules/charts/chartjs.html
+        li HTML:
+          code public/modules/tables/basic-tables.html
+        li HTML:
+          code public/modules/forms/basic/layout.html
+        li HTML:
+          code public/modules/forms/basic/form-control.html
+        li JS:
+          code src/js/utils.js
+        li JS:
+          code src/js/theme.js
+        li JS:
+          code src/js/flatpickr.js
+        li JS:
+          code gulp/pug.gulp.js
+        li SCSS:
+          code src/scss/theme/_nav-tab.scss
+        li SCSS:
+          code src/scss/theme/root/_dark.scss
+        li SCSS:
+          code src/scss/theme/root/_light.scss
+        li SCSS:
+          code src/scss/theme/_variables.scss
+        li SCSS:
+          code src/scss/theme/_card.scss
+        li SCSS:
+          code src/scss/theme/helpers/_flex.scss
+        li SCSS:
+          code src/scss/theme/_navbar-top.scss
+        li JSON:
+          code package.json
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Dropdown clipping on table
+        li Other minor bugs
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.0.0-beta5
+        |  -  Sooty falcon
+      p.mb-0 25 March, 2021
+    .card-body.bg-light
+      h6 New
+      ul.bullet-inside.ps-0
+        li Multiple icons set added with example
+        li Page:
+          code public/plugins/Overlayscrollbars.html
+        li JS:
+          code src/js/icons.js
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li
+          strong Bootsrap
+          |  version updated from
+          code v5.0.0-beta2
+          |  to
+          code v5.0.0-beta3
+        li File structure updated
+        li JS:
+          code src/js/navbar-vertical.js
+        li JS:
+          code src/js/toast.js
+        li JS:
+          code src/js/list.js
+        li JS:
+          code src/js/tooltip.js
+        li JS:
+          code src/js/theme.js
+        li JS:
+          code gulp/pug.gulp.js
+        li SCSS:
+          code src/scss/theme/_settings-panel.scss
+        li SCSS:
+          code src/scss/theme/plugins/_echarts.scss
+        li SCSS:
+          code src/scss/theme/_navbar-vertical.scss
+        li JSON:
+          code gulp/gulp.json
+        li JSON:
+          code package.json
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Other minor bugs
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.0.0-beta4
+        |  -  Bat falcon
+      p.mb-0 15 March, 2021
+    .card-body.bg-light
+      h6 New
+      ul.bullet-inside.ps-0
+        li Page:
+          code public/plugins/Overlayscrollbars.html
+        li JS:
+          code src/js/scrollbar.js
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li Scrollbar plugin updated to OverlayScrollbars from Simplebar.
+        li SCSS:
+          code src/scss/theme/_functions.scss
+        li SCSS:
+          code src/scss/theme/_scrollbar.scss
+        li SCSS:
+          code src/scss/theme/_navbar-top.scss
+        li JS:
+          code src/js/dropdown-on-hover.js
+        li JS:
+          code src/js/theme.js
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Scrollbar on top navbar
+        li Other minor bugs
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.0.0-beta3
+        |  -  Pied
+      p.mb-0 9 March, 2021
+    .card-body.bg-light
+      h6 New
+      ul.bullet-inside.ps-0
+        li Page:
+          code public/plugins/simplebar.html
+        li Page:
+          code public/forms/form-wizard.html
+        li SCSS:
+          code src/scss/theme/_form-wizard.scss
+        li JS:
+          code src/js/simplebar.js
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li SCSS:
+          code src/scss/theme/_functions.scss
+        li SCSS:
+          code src/scss/theme/_navbar-vertical.scss
+        li SCSS:
+          code src/scss/theme/mixins/_navbar-vertical.scss
+        li SCSS:
+          code src/scss/theme/_scrollbar.scss
+        li SCSS:
+          code src/scss/theme/_variables.scss
+        li SCSS:
+          code src/scss/theme/_theme.scss
+        li JS:
+          code src/js/wizard.js
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Scrollbar style
+        li Icons jumping issue when navbar collapsed
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.0.0-beta2
+        |  -  Greater Kestrels
+      p.mb-0 23 February, 2021
+    .card-body.bg-light
+      h6 New
+      ul.bullet-inside.ps-0
+
+        li Page:
+          code public/plugins/chartjs.html
+        li JS:
+          code src/js/form-validation.js
+        li JS:
+          code src/js/charts/chart-bar.js
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li Feature: Reposition the settings panel toggler
+        li SCSS:
+          code src/scss/theme/_settings-panel.scss
+        li Bootstrap: updated to
+          strong bootstrap-beta2
+          | -
+          a(href="https://getbootstrap.com/docs/5.0/migration/#v500-beta2") see migration
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Bootstrap form validation
+        li Flatpicker enable in mobile device
+        li Dropzone preview icon other file
+        li TinyMCE: text color issue in mobile device
+        li Some minor issues
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.0.0-beta1
+        |  -  Red-necked
+      p.mb-0 02 February, 2021
+    .card-body.bg-light
+      .alert.alert-success(role="alert")
+        .d-flex
+          span.fas.fa-exclamation-triangle.fs-1
+          .flex-1.ms-3
+            | This is a massive update.
+      h6 New
+      ul.bullet-inside.ps-0
+        li Feature: Redesign navbar-vertical, navbar-top
+
+        li Page:
+          code public/documentation/configuration.html
+        li Page:
+          code public/documentation/styling.html
+        li JS:
+          code src/js/dropdown-on-hover.js
+        li Bootstrap: updated to bootstrap-beta1 -
+          a(href="https://getbootstrap.com/docs/5.0/migration/#v500-beta1") see migration
+
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li SCSS:
+          code src/scss/theme/_navbar-vertical.scss
+        li SCSS:
+          code src/scss/theme/_navbar-top.scss
+        li SCSS:
+          code src/scss/mixins/_navbar-vertical.scss
+        li SCSS:
+          code src/scss/theme/_navbar.scss
+        li SCSS:
+          code src/scss/theme/_function.scss
+        li SCSS:
+          code src/scss/theme/_mixins.scss
+        li SCSS:
+          code src/scss/theme/_mixed.scss
+        li SCSS:
+          code src/scss/theme/_mixed.scss
+        li SCSS:
+          code src/scss/theme/_theme.scss
+        li SCSS:
+          code src/scss/theme.scss
+        li SCSS:
+          code src/scss/theme/_variables.scss
+        li SCSS: Remove underscore from
+          code src/scss/_user.scss
+        li JS:
+          code src/js/config.js
+        li Gulp:
+          code gulp/gulp.json
+
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.0.0-alpha11
+        |  -  Banded kestrel
+      p.mb-0 17 January, 2021
+    .card-body.bg-light
+      h6 New
+      ul.bullet-inside.ps-0
+        li Feature:  Dark Mood
+          a(href="documentation/customization/dark-mode.html")           (Documentation)
+        li Introduced CSS variables
+        li SCSS:
+          code .dark__bg-{colors}
+          |,
+          code .dark__text-{colors}
+          | ,
+          code .dark
+          | ,
+          code .light
+
+        li JS:
+          code  src/js/theme-control.js
+        li HTML: Replace all the bootstrap-alpha2 classes with bootstrap-alpha3 classes -
+          a(href="https://getbootstrap.com/docs/5.0/migration/#v500-alpha3") see migration
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li SCSS: Almost all scss file
+        li JS:
+          code src/js/config.js
+        li JS:
+          code src/js/charts/**/*.js
+        li JS:
+          code src/js/leaflet-active-user.js
+        li JS:
+          code src/js/googleMap.js
+        li JS:
+          code src/js/emoji-button.js
+        li JS:
+          code src/js/list.js
+        li JS:
+          code src/js/utils.js
+        li JS:
+          code src/js/navbar-darken-on-scroll.js
+        li JS:
+          code src/js/progressbar.js
+        li Gulp:
+          code src/gulp/gulp.json
+        li Gulp:
+          code src/gulp/watch.gulp.js
+        li Gulp:
+          code src/gulp/script.gulp.js
+        li page:
+          code public/home/*.html
+        li page:
+          code public/email/*.html
+        li page:
+          code public/authentication/**/*.html
+        li page:
+          code public/calendar.html
+        li page:
+          code public/chat.html
+        li page:
+          code public/kanban.html
+        li page:
+          code public/widgets.html
+        li page:
+          code public/pages/event-create.html
+        li page:
+          code public/pages/event-detail.html
+        li page:
+          code public/pages/invoice.html
+        li page:
+          code public/pages/people.html
+        li page:
+          code public/pages/privacy-policy.html
+        li page:
+          code public/pages/notifications.html
+        li page:
+          code public/utilities/clearfix.html
+        li page:
+          code public/utilities/borders.html
+        li page:
+          code public/utilities/colors.html
+        li page:
+          code public/utilities/embed.html
+        li page:
+          code public/components/background.html
+        li page:
+          code public/components/badges.html
+        li page:
+          code public/components/buttons.html
+        li page:
+          code public/components/toasts.html
+        li page:
+          code public/components/hoverbox.html
+        li page:
+          code public/components/dropdowns.html
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.0.0-alpha10
+        |  -  Merlin
+      p.mb-0 11 November, 2020
+    .card-body.bg-light
+      h6 New
+      ul.bullet-inside.ps-0
+        li page:
+          code pages/privacy-policy.html
+        li page:
+          code pages/faq/faq-basic.html
+        li page:
+          code pages/faq/faq-alt.html
+        li page:
+          code pages/faq/faq-accordion.html
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li SCSS:
+          code _full-calendar.scss
+        li SCSS:
+          code _mixed.scss
+        li Docs: Add dropcap and text transformation in typography.html
+        li Docs: modals.html
+        li Docs: tables.html
+        li Docs: page-headers.html
+        li Page: Add order and customer page links in dashboard-alt.html
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Progress bar animation
+        li Margin bottom in forms and component pages
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.0.0-alpha9
+        |  -  Fox kestrel
+      p.mb-0 2 November, 2020
+    .card-body.bg-light
+      h6 Add
+      ul.bullet-inside.ps-0
+        li Testimonial section in landing page
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li SCSS:
+          code _colored-link.scss
+        li SCSS:
+          code _browser-support.scss
+        li SCSS:
+          code _button.scss
+        li JS:
+          code  navbar-vertical.js
+        li Docs: Add brand colors in colors.html
+        li Docs: Navbar vertical event
+        li Button right align in orders.html
+        li Page:
+          code checkout.html page
+        li Page: class name of links in footer of landing.html
+        li Class name of dropdown link in navbar top
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Navbar vertical toggle hover
+
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.0.0-alpha8
+        | - Brown
+      p.mb-0 25 October, 2020
+    .card-body.bg-light
+      h6 New
+      ul.bullet-inside.ps-0
+        li Autocomplete search
+        li Component:
+          code components/cookie-notice.html
+        li JS:
+          code search.js
+        li JS:
+          code cookie-notice.js
+        li SCSS:
+          code _cookie-notice.scss
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li SCSS:
+          code _search-box.scss
+        li SCSS:
+          code _swiper.scss
+        li SCSS: Rename
+          code _fullcalendar.scss
+          | to
+          code _full-calendar.scss
+        li SCSS:
+          code _hover.scss
+        li JS:
+          code swiper.js
+        li JS:
+          code list.js
+
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Swiper slider width issue when navbar vertical collapsed
+        li Product slider height with relative to content
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.0.0-alpha7
+        | - Spotted kestrel
+      p.mb-0 13 October, 2020
+    .card-body.bg-light
+      h6 New
+      ul.bullet-inside.ps-0
+        li Page:
+          code calendar.html
+        li Page:
+          code authentication/wizard.html
+        li Page:
+          code e-commerce/product-grid.html
+        li Page:
+          code e-commerce/product-details.html
+        li Plugin:
+          code fullCalendar
+          | JavaScript plugin
+        li Plugin:
+          code dayjs
+          | JavaScript plugin
+        li Plugin:
+          code lottie
+          | JavaScript plugin
+        li Plugin:
+          code Swiper
+          | JavaScript plugin
+        li Plugin:
+          code Rater
+          | JavaScript plugin
+        li SCSS:
+          code _fullcalendar.scss
+        li SCSS:
+          code _wizard.scss
+        li SCSS:
+          code _lottie.scss
+        li SCSS:
+          code _rater.scss
+        li JS:
+          code rater.js
+        li JS:
+          code fullcalendar.js
+        li JS:
+          code calendar/index.js
+        li JS:
+          code calendar/events.js
+        li JS:
+          code calendar/template.js
+        li JS:
+          code swiper.js
+        li JS:
+          code wizard.js
+        li JS:
+          code lottie.js
+        li
+          code transform-middle
+          |,
+          code transform-middle-x
+          |,
+          code transform-middle-y
+          | classes with responsive support
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li Bootstrap to
+          code v5.0.0-alpha2
+        li Removed
+          code t-0
+          |,
+          code r-0
+          |,
+          code b-0
+          |,
+          code t-0
+          | classes.
+        li Removed
+          code absolute-centered
+          |,
+          code absolute-vertical-centered
+          |,
+          code absolute-sm-vertical-centered
+          | classes.
+        li
+          code .close
+          | to
+          code .btn-close
+          | class.
+        li SCSS:
+          code _anchor.scss
+        li SCSS:
+          code _variables.scss
+        li SCSS:
+          code _position.scss
+        li SCSS:
+          code _utilities.scss
+        li SCSS:
+          code _mixed.scss
+        li SCSS:
+          code .a-0
+          | to
+          code .all-0
+        li SCSS:
+          code _borders.scss
+        li SCSS:
+          code _buttons.scss
+        li SCSS: Removed
+          code .border-2x
+          | class.
+        li SCSS: Replace
+          code .border-{top|right|bottom|left}-2x
+          | to
+          code .border-{top|right|bottom|left}-2
+
+        li JS:
+          code navbar-vertical.js
+        li JS:
+          code echarts.js
+        li HTML:
+          code widget.html
+        li HTML: Updated source link of
+          code flatpickr.js
+          | from HTML file
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Removed
+          code _tiny-slider.scss
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.0.0-alpha6
+        | - Mauritius kestrel
+      p.mb-0 16 September, 2020
+    .card-body.bg-light
+      h6 New
+      ul.bullet-inside.ps-0
+        li Page:
+          code chat.html
+        li Page:
+          code kanban.html
+        li Plugin:
+          code draggable
+          | JavaScript plugin
+        li Plugin:
+          code Emoji Button
+          | JavaScript plugin
+        li SCSS:
+          code _chat.scss
+        li SCSS:
+          code _kanban.scss
+        li JS:
+          code chat.js
+        li JS:
+          code draggable.js
+        li JS:
+          code emoji-button.js
+        li JS:
+          code kanban.js
+        li Large border radius of different corners
+        li Grays link colors
+      h6 Update
+      ul.bullet-inside.ps-0
+        li SCSS:
+          code _variables.scss
+        li SCSS:
+          code _utilities.scss
+        li SCSS:
+          code _hover.scss
+        li SCSS:
+          code _mixed.scss
+        li SCSS: Rename
+          code _pointer.scss
+          | to
+          code _cursor.scss
+        li Utilities:
+          code border.html
+        li Utilities:
+          code colored-link.html
+        li
+          code package.json
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Negative margin issue
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.0.0-alpha5
+        | - Eurasian hobby
+      p.mb-0 9 September, 2020
+    .card-body.bg-light
+      h6 New
+      ul.bullet-inside.ps-0
+        li Page:
+          code e-commerce/checkout.html
+        li Page:
+          code e-commerce/customers.html
+        li Page:
+          code e-commerce/orders.html
+        li Page:
+          code e-commerce/product-list.html
+        li Page:
+          code e-commerce/shopping-cart.html
+        li Plugin:
+          code List.js
+          | JavaScript plugin
+        li Layout:
+          strong Navbar Top
+        li Layout:
+          strong Navbar Combo
+        li Navbar Vertical Variations
+        li JS:
+          code navbar-combo.js
+        li JS:
+          code list.js
+        li JS:
+          code quantity.js
+
+      h6 Update
+      ul.bullet-inside.ps-0
+        li Improve Pug codes
+        li JS:
+          code demo-mode.js
+        li SCSS:
+          code _navbar-vertical.scss
+        li SCSS:
+          code _mixed.scss
+        li SCSS:
+          code _variables.scss
+        li SCSS:
+          code _functions.scss
+        li SCSS:
+          code _mixins.scss
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.0.0-alpha4
+        | - Seychelles kestrel
+      p.mb-0 24 August, 2020
+    .card-body.bg-light
+      h6 New
+      ul.bullet-inside.ps-0
+        li Page:
+          code home/landing.html
+        li Page:
+          code email/inbox.html
+        li Page:
+          code email/email-details.html
+        li Page:
+          code email/compose.html
+        li Authentication: Split Layout
+        li Plugin:
+          code type.js
+          | JavaScript plugin
+        li Plugin:
+          code tinymce.js
+          | JavaScript plugin
+        li JS:
+          code bulk-select.js
+        li JS:
+          code navbar-darken-on-scroll.js
+        li JS:
+          code node.js
+        li JS:
+          code scroll-to-top.js
+        li JS:
+          code tinymce.js
+        li JS:
+          code typed.js
+        li SCSS:
+          code  _landing.scss
+        li SCSS:
+          code _navbar-standard.scss
+        li SCSS:
+          code plugins/_tinymce.scss
+      h6 Update
+      ul.bullet-inside.ps-0
+        li SCSS:
+          code _mixed.scss
+        li SCSS:
+          code _variables.scss
+        li SCSS:
+          code _hover.scss
+      h6 Fix
+      ul.bullet-inside.ps-0
+        li Scroll padding top issue
+        li Switch input color
+        li Popover file location from node_modules
+
+
+
+
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.0.0-alpha3
+        |  - Malagasy's kestrel
+      p.mb-0 13 August, 2020
+    .card-body.bg-light
+      h6 New
+      ul.bullet-inside.ps-0
+        li Settings Panel
+        li Page:
+          code dashboard-alt.html
+        li Page:
+          code event-create.html
+        li Page:
+          code event-detail.html
+        li Page:
+          code InvitePeople.html
+        li Page:
+          code invoice.html
+        li Page:
+          code pricing.html
+        li Page:
+          code pricing-alt.html
+        li Plugin:
+          code CountUp.js
+        li Plugin:
+          code Choices
+        li Plugin:
+          code Dropzone
+        li Plugin:
+          code Leaflet
+        li Plugin:
+          code Google Map
+        li JS:
+          code config.js
+        li JS:
+          code demo-mode.js
+        li JS:
+          code dropzone.js
+        li JS:
+          code choices.js
+        li JS:
+          code countup.js
+        li JS:
+          code settings-panel.js
+        li JS:
+          code googleMap.js
+        li JS:
+          code copy-link.js
+        li JS:
+          code charts/chart-line-payment.js
+        li JS:
+          code charts/chart-real-time-user.js
+        li SCSS:
+          code plugins/_choices.scss
+        li SCSS:
+          code plugins/_dropzone.scss
+        li SCSS:
+          code plugins/_glightbox.scss
+        li SCSS:
+          code plugins/_leaflet.scss
+        li Design File(Figma)
+        li
+          code README.md
+      h6 Update
+      ul.bullet-inside.ps-0
+        li JS:
+          code utils.js
+        li JS:
+          code navbar-vertical.js
+
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 v3.0.0-alpha2
+        |  - Dickinson's kestrel
+      p.mb-0 6 August, 2020
+    .card-body.bg-light
+      h6 New
+      ul.bullet-inside.ps-0
+        li Page:
+          code feed.html
+        li Page:
+          code billing.html
+        li Plugin:
+          code glightbox
+        li Plugin:
+          code Plyr
+        li SCSS:
+          code _plyr.scss
+        li JS:
+          code glightbox.js
+        li JS:
+          code plyr.js
+      h6 Update
+      ul.bullet-inside.ps-0
+        li SCSS:
+          code _flex.scss
+        li SCSS:
+          code _dropdown.scss
+        li SCSS:
+          code _position.scss
+        li JS:
+          code src/js/theme.js
+
+  .card.mb-3
+    .card-header
+      h5.mb-2
+        code.fw-bold.fs-1 3-alpha
+        |  - Initial Release
+      p.mb-0 24 July, 2020
+    .card-body.bg-light
+      p.mb-0 Nothing to see here.

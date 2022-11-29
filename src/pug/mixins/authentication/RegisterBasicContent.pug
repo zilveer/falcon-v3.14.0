@@ -1,0 +1,27 @@
+include RegisterForm
+include SocialButtons
+include FormHeader
+
+mixin RegisterBasicContent
+  +FormHeader({
+    title: {
+      text: 'Register',
+      tag: "h5"
+    },
+    normalContent: {
+      text:'Have an account?'
+    },
+    linkText: 'Login',
+    link: 'simple/login.html'
+  }).mb-2
+
+  +RegisterForm({
+    name: { attrs: { placeholder: 'Name' } },
+    email: { attrs: { placeholder: 'Email address' } },
+    password: { attrs: { placeholder: 'Password' } },
+    confirmPassword: { attrs: { placeholder: 'Confirm Password' } },
+    checkbox: { attrs: { id: 'basic-register-checkbox' } },
+  })
+  +SocialButtons({
+    title: 'register'
+  }).mt-4

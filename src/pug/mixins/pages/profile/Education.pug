@@ -1,0 +1,40 @@
+mixin EducationList(action)
+  .d-flex
+    a(href="#!")  
+      +Avatar({name: 'Stanford University', size: '3xl'})
+    .flex-1.position-relative.ps-3
+      h6.fs-0.mb-0 
+        a(href="#!") Stanford University
+          +Verified(true)
+      p.mb-1 Computer Science and Engineering
+      p.text-1000.mb-0 2010 - 2014 • 4 yrs
+      p.text-1000.mb-0 California, USA
+      .border-bottom.border-dashed.my-3
+  .d-flex
+    a(href="#!")  
+      img.img-fluid(src=`${CWD}assets/img/logos/staten.png`, alt='' width="56")
+    .flex-1.position-relative.ps-3
+      h6.fs-0.mb-0 
+        a(href="#!") Staten Island Technical High School
+          +Verified(true) 
+      p.mb-1 Higher Secondary School Certificate, Science
+      p.text-1000.mb-0 2008 -  2010 &bull; 2 yrs
+      p.text-1000.mb-0 New York, USA
+      .border-bottom.border-dashed.my-3
+  .d-flex
+    a(href="#!")  
+      img.img-fluid(src=`${CWD}assets/img/logos/tj-heigh-school.png`, alt='' width="56")
+    .flex-1.position-relative.ps-3
+      h6.fs-0.mb-0 
+        a(href="#!") Thomas Jefferson High School for Science and Technology
+          +Verified(true) 
+      p.mb-1 Secondary School Certificate, Science
+      p.text-1000.mb-0 2003 -  2008 &bull; 5 yrs
+      p.text-1000.mb-0 Alexandria, USA
+
+mixin Education
+  .card.mb-3
+    .card-header.bg-light
+      h5.mb-0 Education
+    .card-body.fs--1
+      +EducationList

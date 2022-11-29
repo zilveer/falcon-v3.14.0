@@ -1,0 +1,321 @@
+append variables
+  -
+    var timelineBadges = [
+      {content: 'Recent', type:'success'},
+      {content: 'Overdue', type:'danger'},
+      {content: 'Remaining', type:'warning'},
+      {content: 'Responded', type:'info'},
+      {content: 'Closed', type:'secondary'}
+    ];
+
+  -
+    var timeline = [
+      {
+        subject: "Got a new television #377",
+        description: "Thank you for replacing my broken television with a new one.",
+        time: "10:28 AM",
+        icon: "fas fa-envelope",
+        priority: {
+          color: "danger",
+          text: "Urgent"
+        },
+        status: timelineBadges[0],
+        year: "2022",
+        day: "25 September"
+      },
+      {
+        subject: "Subscription Issue #362",
+        description: "On November 2, 2022, your membership at Falcon is going to expire. We really hope that you have benefited from your membership.",
+        time: "09:26 PM",
+        icon: "fas fa-envelope",
+        priority: {
+          color: "info",
+          text: "Low"
+        },
+        status: timelineBadges[4],
+        year: "2022",
+        day: "23 September"
+      },
+      {
+        subject: "Received a broken TV #345",
+        description: "My television from your website was delivered with a cracked screen. I need assistance getting a refund or a replacement.",
+        time: "01:06 PM",
+        icon: "fas fa-envelope",
+        priority: {
+          color: "danger",
+          text: "Urgent"
+        },
+        status: timelineBadges[0],
+        year: "2022",
+        day: "20 September"
+      },
+      {
+        subject: "Payment failed #324",
+        description: "Your payment failed while I tried to make a payment on your website, I was told. My card was, however, billed.",
+        time: "11:06 PM",
+        icon: "fas fa-envelope",
+        priority: {
+          color: "primary",
+          text: "Medium"
+        },
+        status: timelineBadges[4],
+        year: "2022",
+        day: "03 September"
+      },
+      {
+        subject: "Password change #234",
+        description: "I must modify my password. If I make a modification, will I lose access to my account? I have a lot of items in my cart and don't want to go looking for them again.",
+        time: "10:08 AM",
+        icon: "fas fa-envelope",
+        priority: {
+          color: "danger",
+          text: "Urgent"
+        },
+        status: timelineBadges[4],
+        year: "2022",
+        day: "24 August"
+      },
+      {
+        subject: "Email Address change #202",
+        description: "My email address needs to be updated. I'm curious if changing it will result in me losing access to my account. I've put a lot of items in my shopping basket and don't want to search for them again.",
+        time: "12:26 PM",
+        icon: "fas fa-envelope",
+        priority: {
+          color: "info",
+          text: "Low"
+        },
+        status: timelineBadges[4],
+        year: "2022",
+        day: "20 August"
+      },
+    ];
+
+  -
+    var tickets = [
+      {
+        subject:"Got a new television | Order #377",
+        status: timelineBadges[0],
+        date: "25 September, 2022",
+        priority: {
+          title: "Urgent",
+          color: "#e63757",
+          data: 100
+        },
+        agent:"Anindya",
+      },
+      {
+        subject:"Subscription Issue | Order #362",
+        status: timelineBadges[4],
+        date: "23 September, 2022",
+        priority: {
+          title: "Low",
+          color: "#00D27B",
+          data: 25
+        },
+        agent:"Khalid",
+      },
+      {
+        subject:"Received a broken TV | Order #345",
+        status: timelineBadges[0],
+        date: "20 September, 2022",
+        priority: {
+          title: "Urgent",
+          color: "#e63757",
+          data: 100
+        },
+        agent:"Nowrin",
+      },
+      {
+        subject:"Payment failed | Order #324",
+        status: timelineBadges[4],
+        date: "03 September, 2022",
+        priority: {
+          title: "Medium",
+          color: "#2A7BE4",
+          data: 50
+        },
+        agent:"Anindya",
+      },
+      {
+        subject:"Password change | Order #234",
+        status: timelineBadges[4],
+        date: "24 August, 2022",
+        priority: {
+          title: "Urgent",
+          color: "#e63757",
+          data: 100
+        },
+        agent:"Nowrin",
+      },
+      {
+        subject:"Email Address change | Order #202",
+        status: timelineBadges[4],
+        date: "20 August, 2022",
+        priority: {
+          title: "Low",
+          color: "#00D27B",
+          data: 25
+        },
+        agent:"Shajeeb",
+      },
+    ]
+  -
+    var notes = [
+      {
+        title:"Not able to access the system",
+        description: "The PS4's hard drive is most likely the source of this CE-34335-8 safe mode error notice. Try these techniques to fix the hard drive issue if your PS4 won't start and won't let you access system storage because of error number CE-34335-8.",
+        date: "28 Sep, 2020",
+        time: "12:06 AM",
+        agent:"Anindya",
+      },
+      {
+        title:"No refund was requested",
+        description: "It only takes a little while for a consumer to arrive on your door asking for a refund if you sell things online or in a physical store. And instead of closing that door all the way, think of a different approach.",
+        date: "25 Sep, 2020",
+        time: "03:18 PM",
+        agent:"Khalid",
+      },
+      {
+        title:"Use case for online ticket notes",
+        description: "Using the inline ticket notes allows you to take notes while interacting with consumers. You may jot down notes while assisting a customer over live chat or over the phone, for instance. Aside from that.",
+        date: "22 Sep, 2020",
+        time: "10:21 AM",
+        agent:"Nowrin",
+      },
+      {
+        title:"Github Uploaded of the Conscious Administrator",
+        description: "Are they really that dissimilar, even though those are mock-ups and this is politics? She may simply have my card, I believe.",
+        date: "15 Sep, 2020",
+        time: "12:21 PM",
+        agent:"Shajeeb",
+      },
+      {
+        title:"Selection of a design team",
+        description: "One designer can make up a design team, as can a group of designers who take on various tasks and employ various techniques and tools to reach a single objective. The shared objective can be achieved by creating a website, a mobile application, or any other design project.",
+        date: "11 Sep, 2020",
+        time: "10:11 PM",
+        agent:"Anindya",
+      },
+      {
+        title:"Quickness of Reaction",
+        description: "It has been designed particularly for WordPress, as opposed to other Frameworks which attempt to cover everything.",
+        date: "09 Sep, 2020",
+        time: "12:22 AM",
+        agent:"Shajeeb",
+      },
+      {
+        title:"Cultivate a design-oriented culture",
+        description: "By teaching your designers to put the needs of the customer first and coordinating design objectives with corporate objectives, you can foster a culture of design strategy. Everything your design team does should be based on a design strategy.",
+        date: "05 Sep, 2020",
+        time: "10:21 AM",
+        agent:"Khalid",
+      },
+    ]
+
+mixin Badge(badge)
+  small.badge.rounded(class=`badge-soft-${badge.type} ${badge.type === 'secondary' && "dark__bg-1000"}`)=badge.content
+
+mixin PrioritySelect(config)
+  .d-flex.align-items-center.gap-2&attributes(attributes)
+    div(style=`--falcon-circle-progress-bar:${config.data}`)
+      svg.circle-progress-svg(width="26" height="26" viewBox="0 0 120 120")
+        circle.progress-bar-rail(cx="60" cy="60" r="54" fill="none" stroke-width="12")
+        circle.progress-bar-top(cx="60" cy="60" r="54" fill="none" stroke-linecap="round" stroke=config.color stroke-width="12")
+    h6.mb-0.text-700= config.title
+
+mixin AgentSelect(selectedAgent)
+  select.form-select.form-select-sm&attributes(attributes)(aria-label='agents actions')
+    each agent in ['Select Agent','Anindya', 'Nowrin', 'Khalid', 'Shajeeb']
+      option(selected= agent === selectedAgent)
+        | #{agent}
+
+mixin Timeline 
+  .timeline-vertical.py-0
+    each item,index in timeline 
+      .timeline-item(class= `${ index%2 == 0 ? 'timeline-item-start': 'timeline-item-end'} ${index !== timeline.length - 1 ? "mb-3" : "mb-0"}`)
+        .timeline-icon.icon-item.icon-item-lg.text-primary.border-300
+          span.fs-1(class=`${item.icon}`)
+        .row
+          .col-lg-6.timeline-item-time
+            div
+              h6.mb-0.text-700=item.year
+              p.fs--2.text-500.font-sans-serif=item.day
+          .col-lg-6
+            .timeline-item-content.arrow-bg-white
+              .timeline-item-card.bg-white.dark__bg-1100
+                a(href=`${CWD}${paths['tickets-preview']}`) 
+                  h5.mb-2.hover-primary=item.subject
+                p.fs--1.border-bottom.mb-3.pb-4.text-600=item.description
+                .d-flex.flex-wrap.pt-2
+                  h6.mb-0.text-600.lh-base
+                    span.far.fa-clock.me-1
+                    | #{item.time}
+                  .d-flex.align-items-center.ms-auto.me-2.me-sm-x1.me-xl-2.me-xxl-x1
+                    .dot.me-0.me-sm-2.me-xl-0.me-xxl-2(class=`bg-${item.priority.color}` data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title=item.priority.text)
+                    h6.mb-0.text-700.d-none.d-sm-block.d-xl-none.d-xxl-block= item.priority.text
+                  +Badge(item.status)
+
+mixin Tickets 
+  .bg-light.d-flex.flex-column.gap-3.p-x1
+    each ticket in tickets
+      .bg-white.dark__bg-1100.p-x1.rounded-3.shadow-sm.d-md-flex.d-xl-inline-block.d-xxl-flex.align-items-center
+        div 
+          p.fw-semi-bold
+            a(href=`${CWD}${paths['tickets-preview']}`)= ticket.subject
+          .d-flex.align-items-center 
+            h6.mb-0.me-3.text-800= ticket.date
+            +Badge(ticket.status)
+        .border-bottom.mt-4.mb-x1
+        .d-flex.justify-content-between.ms-auto
+          +PrioritySelect(ticket.priority)(style="width:7.5rem").ms-md-4.ms-xl-0.ms-xxl-4
+          +AgentSelect(ticket.agent)(style="width:9.375rem")
+        
+
+mixin Notes 
+  .bg-light.d-flex.flex-column.gap-3.p-x1
+    each note, index in notes
+      .bg-white.dark__bg-1100.p-x1.rounded-3.shadow-sm
+        .row.flex-between-center
+          .col-12.col-md-7.col-xl-12.col-xxl-8.order-1.order-md-0.order-xl-1.order-xxl-0
+            h5.mb-0.border-top.border-md-0.border-xl-top.border-xxl-0.mt-x1.mt-md-0.mt-xl-x1.mt-xxl-0.pt-x1.pt-md-0.pt-xl-x1.pt-xxl-0.border-200.border-xl-200= note.title
+          .col-12.col-md-auto.col-xl-12.col-xxl-auto.d-flex.flex-between-center
+            +AgentSelect(note.agent).me-2.w-auto
+            .dropdown.font-sans-serif
+              button.btn.btn-falcon-default.text-600.btn-sm.dropdown-toggle.dropdown-caret-none(type='button' id=`notes-dropdown-${index}` data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false")
+                span.fas.fa-ellipsis-h.fs--2
+              .dropdown-menu.dropdown-menu-end.border.py-2(aria-labelledby=`notes-dropdown-${index}` )
+                a(href='#!').dropdown-item View
+                a(href='#!').dropdown-item Export
+                .dropdown-divider
+                a(href='#!').dropdown-item.text-danger Remove
+        h6.mb-0.mt-2
+          span.fas.fa-clock.text-primary.me-2
+          span.text-600= note.date
+          span.text-500  at 
+          span.text-600= note.time
+        p.w-lg-75.w-xl-100.w-xxl-75.mb-0.border-top.border-md-0.border-xl-top.border-xxl-0.mt-x1.mt-md-4.mt-xl-x1.mt-xxl-4.pt-x1.pt-md-0.pt-xl-x1.pt-xxl-0.border-200.border-xl-200= note.description
+
+
+mixin CardContactDetails 
+  .card.overflow-hidden&attributes(attributes)
+    .card-header.p-0.scrollbar-overlay.border-bottom
+      ul.nav.nav-tabs.border-0.tab-contact-details.flex-nowrap#contact-details-tab(role='tablist')
+        li.nav-item.text-nowrap(role='presentation')
+          a.nav-link.mb-0.d-flex.align-items-center.gap-1.py-3.px-x1.active#contact-timeline-tab(data-bs-toggle='tab' href='#timeline' role='tab' aria-controls='timeline' aria-selected='true')
+            span.fas.fa-stream.icon.text-600
+            h6.mb-0.text-600 Timeline
+        li.nav-item.text-nowrap(role='presentation')
+          a.nav-link.mb-0.d-flex.align-items-center.gap-1.py-3.px-x1#contact-tickets-tab(data-bs-toggle='tab' href='#tickets' role='tab' aria-controls='tickets' aria-selected='false')
+            span.fas.fa-ticket-alt.text-600
+            h6.mb-0.text-600 Tickets
+        li.nav-item.text-nowrap(role='presentation')
+          a.nav-link.mb-0.d-flex.align-items-center.gap-1.py-3.px-x1#contact-notes-tab(data-bs-toggle='tab' href='#notes' role='tab' aria-controls='notes' aria-selected='false')
+            span.fas.fa-file-alt.icon.text-600
+            h6.mb-0.text-600 Notes
+    .tab-content
+      .card-body.bg-light.tab-pane.active#timeline(role='tabpanel' aria-labelledby='contact-timeline-tab')
+        +Timeline
+      .card-body.tab-pane.p-0#tickets(role='tabpanel' aria-labelledby='contact-tickets-tab')
+        +Tickets
+      .card-body.tab-pane.p-0#notes(role='tabpanel' aria-labelledby='contact-notes-tab')
+        +Notes

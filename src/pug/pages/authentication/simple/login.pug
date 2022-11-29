@@ -1,0 +1,27 @@
+extends ../../../layouts/LayoutTheme
+include ../../../layouts/LayoutBasic
+include ../../../mixins/authentication/LoginForm
+include ../../../mixins/authentication/FormHeader
+include ../../../mixins/authentication/SocialButtons
+
+block wrapperContent
+  +LayoutBasic
+    +FormHeader({title: {
+      text: 'Log in',
+      tag: "h5"
+      },
+      normalContent:{
+        text: 'or'
+      },
+      linkText: 'Create an account',
+      link: 'simple/register.html'
+    }).mb-2
+
+    +LoginForm({
+      layout: 'simple',
+      email: { attrs: { placeholder: 'Email address' } },
+      password: { attrs: { placeholder: 'Password' } },
+      checkbox: { attrs: { id: 'basic-checkbox', checked: true } },
+    })
+
+    +SocialButtons({ title: 'log in' }).mt-4

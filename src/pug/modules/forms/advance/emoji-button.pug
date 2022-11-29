@@ -1,0 +1,35 @@
+extends ../../../layouts/LayoutComponent
+
+append variables
+  
+  - var attrsBody = Object.assign(attrsBody, { class: 'overflow-hidden' });
+  - var attrsLayout = Object.assign(attrsLayout, { class: 'vh-100 container' });
+  - 
+    var pageHeader = {
+      title: 'Emoji Button',
+      description: 'Emoji Button is a vanilla JavaScript emoji picker component. It displays a panel of emojis where one can be selected. What is done with the selected emoji is up to you.',
+      url: `https://emoji-button.js.org/docs`,
+      linkText: 'Documentation for Emoji Button'
+    }
+prepend scripts
+  script(src=`${CWD}assets/js/emoji-button.js` )
+
+
+append content
+  +PageHeader(pageHeader)
+
+  
+  +ComponentCard({
+    title: 'Example',
+    anchor: true,
+  }).mb-3
+    .position-relative#emoji-button
+      .btn.btn-info(data-emoji-button)
+        span.far.fa-laugh-beam
+
+  .card.mb-3
+    .card-header
+      h5.mb-0 Javascript
+    .card-body.bg-light   
+      +ComponentCardLib
+        script(src=`vendors/emoji-button/emoji-button.js`)

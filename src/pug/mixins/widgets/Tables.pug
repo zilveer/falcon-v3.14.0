@@ -1,0 +1,81 @@
+include ../pages/profile/Experience
+include ../e-commerce/Customers
+include ../e-learning/StudentOverview
+include ../e-learning/Mixins
+include ../home/dashboard-alt/CardRecentPurchaseTable
+
+include ../home/dashboard-analytics/CardPagesTable
+include ../home/dashboard-analytics/CardAskIntelligence
+include ../home/dashboard-analytics/CardPerfomance
+
+include ../home/dashboard-lms/CardTopCourses
+
+include ../home/e-commerce/CardShoppingCartBar
+include ../home/e-commerce/CardSaleStatistics
+include ../home/e-commerce/CardCharts
+
+include ../home/dashboard-alt/CardWorldMap
+include ../calendar/Mixins
+include ../common/Form
+include ../home/dashboard/Mixins
+include ../home/project-management/CardToDoListManagement
+include ../home/project-management/CardMemberInfo
+include ../home/project-management/CardMembersActivity
+
+include ../home/project-management/CardRecentActivity
+include ../home/project-management/CardRunningProject
+
+include ../home/saas/TransactionSummary
+
+include ../home/dashboard-tickets/CardTickets
+
+mixin Tables
+  +WidgetSectionTitle({
+    transform: 'shrink-2',
+    icon: 'fas fa-list',
+    title: 'Tables, Files, and Lists',
+    subtitle: `${name}'s styled components are dedicatedly made for displaying your contents and lists.`
+  }).mb-4.mt-6
+
+  +CardRecentPurchaseTable.mb-3
+  +Customers
+  +EnrolledCourses.mb-3
+  +CardTopCourses.mb-3
+  
+  .row.g-3.mb-3
+    .col-lg-4 
+      +PaymentMethods.mb-3
+    .col-lg-8
+      +PaymentHistory
+  
+  .row.g-3.mb-3
+    .col-lg-6
+      +CardSharedFiles(1).h-lg-100
+    .col-lg-6
+      +Experience.h-100
+    .col-lg-7.col-xxl-8
+      +PagesTable(6)
+    .col-lg-5.col-xxl-4
+      +CardToDoListManagement
+  
+  .row.g-3.mb-3
+    .col-lg-8
+      +CardMemberInfo.h-100
+    .col-lg-4
+      +CardMembersActivity.h-100
+  
+  .row.g-3.mb-3
+    .col-xxl-8
+      +TransactionSummary
+    .col-xxl-4
+      +CardRecentActivity.h-100
+  
+  .row.g-3.mb-3
+    .col-md-6.col-xxl-5
+      +AskIntelligence.h-100
+    .col-md-6.col-xxl-7
+      +CampaignsPerformance
+    .col
+      +CardRunningProject
+    .col
+      +CardTickets(6, "Unsolved Tickets", "table", "btnPagination", true, 12)

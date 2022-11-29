@@ -1,0 +1,93 @@
+append variables
+  -
+    var projects = [ 
+      {
+        project: 'Organizing UI',
+        team: 'ThemeWagon',
+        iconColor: 'text-primary'
+      },
+      {
+        project: 'Create Mobile View',
+        team: 'Mailbluster',
+        iconColor: 'text-warning'
+      },
+      {
+        project: 'Create Landing Pages',
+        team: 'BlackBOx',
+        iconColor: 'text-secondary'
+      },
+      {
+        project: 'Front end issues',
+        team: 'Falcon Team',
+        iconColor: 'text-info'
+      }
+    ];
+
+mixin CardProjectStatistics
+  .card&attributes(attributes)
+    .card-header.d-flex.flex-between-center
+      h6.mb-0 Project Statistics
+      +DashboardDropdown('dropdown-project-statistics')
+    .card-body.pt-0
+      .row.mb-2
+        .col-6.border-end.border-200
+          h4.mb-0 5,432
+          p.fs--1.text-600.mb-0 Total Work Hours
+        .col-3.border-end.text-center.border-200
+           h4.fs-0.mb-0 13
+           p.fs--1.text-600.mb-0 Projects
+        .col-3.text-center
+           h4.fs-0.mb-0 7
+           p.fs--1.text-600.mb-0 Ongoing
+      +ProgressBar
+      p.fs--1.mb-2.mt-3 Assignees in Sprint
+      .avatar-group.avatar-group-dense.mb-3
+        -
+          var users = [
+            {
+              img:'team/1-thumb.png'
+            },
+            {
+              img:'team/2-thumb.png'
+            },
+            {
+              img:'team/3-thumb.png'
+            },
+            {
+              img:'team/4-thumb.png'
+            },
+            {
+              img:'team/5-thumb.png'
+            },
+            {
+              more: "+50"
+            }
+          ];
+        each user in users
+          +Avatar(user).border.border-3.border-light.rounded-circle
+
+      .d-flex.justify-content-between
+        h6 Project 
+        h6 Team
+      
+      each project, index in projects
+        +ProjectStatisticsItem(project, index)
+
+mixin ProjectStatisticsItem(project, index) 
+  .d-flex.flex-between-center.rounded-3.bg-light.p-3(class= (index !== projects.length-1) && `mb-2`)
+    a(href='#!')
+      h6.mb-0
+        span.fas.fa-circle.fs--1.me-3(class= `${project.iconColor}`)
+        | #{project.project}
+    a(href='#!').fs--2.text-600.mb-0 #{project.team}
+
+mixin ProgressBar
+  .overflow-visible.progress.mt-4.rounded-3(style="height: 6px;")
+    .overflow-visible.progress-bar.bg-progress-gradient.border-end.border-white.border-2.rounded-end.rounded-pill(role='progressbar' style='width: 25%' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100')
+      span.mt-n4.text-900.fw-bold 25%
+    .overflow-visible.progress-bar.bg-secondary.border-end.border-white.border-2(role='progressbar' style='width: 45%' aria-valuenow='45' aria-valuemin='0' aria-valuemax='100')
+      span.mt-n4.text-900.fw-bold 45%
+    .overflow-visible.progress-bar.bg-warning.border-end.border-white.border-2(role='progressbar' style='width: 15%' aria-valuenow='15' aria-valuemin='0' aria-valuemax='100')
+      span.mt-n4.text-900.fw-bold 15%
+    .overflow-visible.progress-bar.bg-info.rounded-start.rounded-pill(role='progressbar' style='width: 15%' aria-valuenow='15' aria-valuemin='15' aria-valuemax='100')
+      span.mt-n4.text-900.fw-bold 15%

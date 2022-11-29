@@ -1,0 +1,34 @@
+include Mixins
+
+append variables
+  - var months = ['January', 'February', 'March', 'April', 'May', 'Jun', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+mixin CardTopProducts
+  .card&attributes(attributes)
+    .card-header.bg-light.py-2
+      .row.flex-between-center
+        .col-auto
+          h6.mb-0 Top Products
+        .col-auto.d-flex
+          a(href="#!").btn.btn-link.btn-sm.me-2 View Details
+          +DashboardDropdown('dropdown-top-products')
+    .card-body.h-100
+      // Find the JS file for the following chart at: src/js/charts/echarts/top-products.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-bar-top-products.h-100(data-echart-responsive="true")
+
+mixin CardTotalSales
+  .card&attributes(attributes)
+    .card-header
+      .row.flex-between-center
+        .col-auto
+          h6.mb-0 Total Sales
+        .col-auto.d-flex
+          select.form-select.form-select-sm.select-month.me-2
+            each month, index in months
+              option(value=index)=month
+          +DashboardDropdown('dropdown-total-sales')
+    .card-body.h-100.pe-0
+      // Find the JS file for the following chart at: src\js\charts\echarts\total-sales.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public\assets\js\theme.js
+      .echart-line-total-sales.h-100(data-echart-responsive="true")

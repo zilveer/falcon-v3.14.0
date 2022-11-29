@@ -1,0 +1,39 @@
+mixin ExampleHeaderDescription
+  p&attributes(attributes) Using the card component, you can extend the default collapse behavior to create an accordion. To properly achieve the accordion style, be sure to use 
+    code .accordion 
+    | as a wrapper.
+
+mixin AccordionDemo
+  -
+    var items = [
+      {
+        id: 1,
+        title  :'How long do payouts take?',
+        description: 'Once you’re set up, payouts arrive in your bank account on a 2-day rolling basis. Or you can opt to receive payouts weekly or monthly.',
+        active: true,
+      },
+      {
+        id: 2,
+        title  :'How do refunds work?',
+        description: 'You can issue either partial or full refunds. There are no fees to refund a charge, but the fees from the original charge are not returned.',
+      },
+      {
+        id: 3,
+        title  :'How much do disputes costs?',
+        description: 'Disputed payments (also known as chargebacks) incur a $15.00 fee. If the customer’s bank resolves the dispute in your favor, the fee is fully refunded.',
+      },
+      {
+        id: 4,
+        title  :'Is there a fee to use Apple Pay or Google Pay?',
+        description: 'There are no additional fees for using our mobile SDKs or to accept payments using consumer wallets like Apple Pay or Google Pay.',
+      },
+    ];
+
+  .accordion#accordionExample
+    each item,index in items
+      .accordion-item
+        h2.accordion-header(id=`heading${item.id}`)
+          button.accordion-button(type='button' class=(index > 0 && 'collapsed') data-bs-toggle='collapse' data-bs-target=`#collapse${item.id}` aria-expanded='true' aria-controls=`collapse${item.id}`)
+            | #{item.title}
+        .accordion-collapse.collapse(class=(index === 0 && 'show')  id=`collapse${item.id}` aria-labelledby=`heading${item.id}` data-bs-parent='#accordionExample')
+          .accordion-body #{item.description}

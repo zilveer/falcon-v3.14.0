@@ -1,0 +1,31 @@
+extends ../layouts/LayoutTheme
+include ../mixins/home/dashboard-tickets/CardTicketsStatus
+include ../mixins/home/dashboard-tickets/CardUnresolvedTickets
+include ../mixins/home/dashboard-tickets/CardNumberOfTickets
+include ../mixins/home/dashboard-tickets/CardCustomerSatisfaction
+include ../mixins/home/dashboard-tickets/CardTodoListTickets
+include ../mixins/home/dashboard-tickets/CardTickets
+
+
+prepend scripts
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+
+append content
+  .row.g-3.mb-3
+    .col-xxl-6
+      .row.g-0.h-100
+        .col-12.mb-3
+          +CardWelcomeTicket
+        .col-12
+          +CardTicketsStatus.h-100
+    .col-xxl-6
+      +CardUnresolvedTickets
+  .row.g-3
+    .col-xxl-8
+      +CardNumberOfTickets
+    .col-xxl-4.col-md-6
+      +CardCustomerSatisfaction
+    .col-xxl-3.col-md-6
+      +CardTodoListTickets.h-100
+    .col-xxl-9
+      +CardTicketsDashboard("table")

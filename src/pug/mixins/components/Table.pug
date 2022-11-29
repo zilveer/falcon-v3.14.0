@@ -1,0 +1,229 @@
+include ../../mixins/e-commerce/Customers
+
+append variables
+  -
+    var badges = [
+      {content: 'Completed', type:'success', icon: 'fas fa-check'},
+      {content: 'Processing', type:'primary', icon: 'fas fa-redo'},
+      {content: 'Pending', type:'warning', icon: 'fas fa-stream'},
+      {content: 'On Hold', type:'secondary', icon: 'fas fa-ban'}
+    ];
+  -
+    var customers = [
+      {
+        name: 'Ricky Antony',
+        avatar: {
+          size: 'xl',
+          img: 'team/4.jpg',
+          round: 'circle',
+        },
+        email: 'ricky@example.com',
+        phone: '(201) 200-1851',
+        address: '2392 Main Avenue, Penasauka',
+        joined: '30/03/2018',
+        amount:'$99',
+        status:badges[0],
+        type:'primary',
+      },
+      {
+        name: 'Emma Watson',
+        avatar: {
+          size: 'xl',
+          img: 'team/13.jpg',
+          round: 'circle',
+        },
+        email: 'emma@example.com',
+        phone: '(212) 228-8403',
+        address: '2289 5th Avenue, New York',
+        joined: '11/07/2017',
+        amount:'$199',
+        status:badges[0],
+        type:'secondary',
+      },
+      {
+        name: 'Rowen Atkinson',
+        avatar: {
+          size: 'xl',
+          name: 'Rowen Atkinson',
+          round: 'circle',
+        },
+        email: 'rown@example.com',
+        phone: '(201) 200-1851',
+        address: '112 Bostwick Avenue, Jersey City',
+        joined: '05/04/2016',
+        amount:'$755',
+        status:badges[1],
+        type:'success',
+      },
+      {
+        name: 'Antony Hopkins',
+        avatar: {
+          size: 'xl',
+          img: 'team/2.jpg',
+          round: 'circle'
+        },
+        email: 'antony@example.com',
+        phone: '(901) 324-3127',
+        address: '3448 Ile De France St #242',
+        joined: '05/04/2018',
+        amount:'$50',
+        status:badges[3],
+        type:'danger',
+      },
+      {
+        name: 'Jennifer Schramm',
+        avatar: {
+          size: 'xl',
+          img: 'team/3.jpg',
+          round: 'circle'
+        },
+        email: 'jennifer@example.com',
+        phone: '(828) 382-9631',
+        address: '659 Hannah Street, Charlotte',
+        joined: '17/03/2016',
+        amount:'$150',
+        status:badges[2],
+        type:'warning',
+      },
+    ]
+
+
+mixin ActionButtons
+  .btn-group.btn-group&attributes(attributes)
+    button.btn.btn-light.pe-2(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Edit")
+      span.fas.fa-edit
+    button.btn.btn-light.ps-2(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Delete")
+      span.fas.fa-trash-alt
+
+mixin Action(type)
+  if type === 'basic'
+    div
+      button.btn.btn-link.p-0(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Edit")
+        span.text-500.fas.fa-edit
+      button.btn.btn-link.p-0.ms-2(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Delete")
+        span.text-500.fas.fa-trash-alt
+  else if type === 'dropdown'
+    +CustomerDropdown
+
+mixin Table(config)
+  - 
+    var config = Object.assign({ 
+      action: false,
+      actionType: 'basic',
+      active: false,
+      colspan:  false,
+      head: false,
+      caption:  false,
+      contextual: false,
+      colgroup: false,
+    }, 
+    config);
+
+  table.table&attributes(attributes)
+    if config.caption
+      caption List of Users
+
+    if config.colgroup
+      colgroup
+        col.bg-soft-primary
+        col
+        col
+        
+    thead(class=config.head && 'table-dark')
+
+      tr(class=config.actionType==='dropdown' && 'btn-reveal-trigger')
+        th(scope='col') Name
+        th(scope='col') Email
+        if config.action
+          th(scope='col').text-end Actions
+
+    tbody
+      each customer in customers
+        tr(class=config.contextual && `table-${customer.type}` class=config.actionType==='dropdown' && 'btn-reveal-trigger')
+          td=customer.name
+          td=customer.email
+          if config.action
+            td.text-end
+              +Action(config.actionType)
+
+mixin Activetable
+  table.table&attributes(attributes)
+    thead
+      tr
+        th(scope='col') Name
+        th(scope='col') Email
+        th(scope='col').text-end Actions
+    tbody
+      each customer,index in customers
+        tr(class= index===1 && 'table-active')
+          td=customer.name
+          td(class= index===3 && 'table-active')=customer.email
+          td.text-end
+            +Action('basic')
+
+mixin Smalltable
+  table.table&attributes(attributes)
+    thead
+      tr
+        th(scope='col') Name
+        th(scope='col') Email
+    tbody
+      each customer,index in customers
+        tr
+          td=customer.name
+          td=customer.email
+      tr
+        td Mizan Rifat
+        td mizan@example.com
+      tr
+        td Tony Robbins
+        td tony@example.com
+
+mixin HoverTableExample
+  table.table.table-hover&attributes(attributes)
+      thead
+        tr
+          th(scope='col') Name
+          th(scope='col') Email
+          th(scope='col') 
+          th(scope='col') joined
+      tbody
+        each customer,index in customers
+          tr.hover-actions-trigger
+            td.align-middle.text-nowrap
+              .d-flex.align-items-center
+                +Avatar(customer.avatar)
+                .ms-2 #{customer.name}
+            td.align-middle.text-nowrap=customer.email
+            td.w-auto
+              +ActionButtons.hover-actions.end-0.me-4
+            td.align-middle.text-nowrap=customer.joined
+
+mixin ResponsiveTableExample
+  table.table.table-hover&attributes(attributes)
+      thead
+        tr
+          th(scope='col') Name
+          th(scope='col') Email
+          th(scope='col') Phone
+          th(scope='col') Address
+          th(scope='col') Status
+          th(scope='col').text-end Amount
+      tbody
+        each customer,index in customers
+          tr.align-middle
+            td.text-nowrap
+              .d-flex.align-items-center
+                +Avatar(customer.avatar)
+                .ms-2 #{customer.name}
+                  
+            td.text-nowrap=customer.email
+            td.text-nowrap=customer.phone
+            td.text-nowrap=customer.address
+            td
+              +Badge(customer.status)
+            td.text-end=customer.amount
+            
+mixin Badge(badge)
+  span.badge.badge.rounded-pill.d-block.p-2(class=`badge-soft-${badge.type}`)=badge.content
+    span.ms-1(class=badge.icon data-fa-transform="shrink-2")

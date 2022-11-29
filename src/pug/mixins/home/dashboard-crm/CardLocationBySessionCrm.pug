@@ -1,0 +1,89 @@
+append variables  
+  -
+    var countriesCrm = [
+      {
+        country: 'India',
+        img: 'crm/india.png',
+        sessions:'268,663',
+        users: '325,633',
+        percentage: 89,
+      },
+      {
+        country: 'UAE',
+        img: 'crm/uae.png',
+        sessions:'250,663',
+        users: '525,633',
+        percentage: 62,
+      },
+      {
+        country: 'Nepal',
+        img: 'crm/nepal.png',
+        sessions:'268,663',
+        users: '325,633',
+        percentage: 50,
+      },
+     
+
+    ]
+mixin CardCrmLocationBySession(page=3)
+  .card#CrmLocationBySessionTable(data-list!={
+    valueNames: ["country", "sessions", "users"],
+    page: page,
+    pagination: true
+  })&attributes(attributes)
+    .card-header.d-flex.flex-between-center.bg-light.py-2
+      h6.mb-0 Location By Session
+      .d-flex
+        .btn-reveal-trigger
+          button.btn.btn-link.btn-reveal.btn-sm.location-by-session-map-reset(type='button')
+            span.fas.fa-sync-alt.fs--1
+        +DashboardDropdown(`crm-location-by-session`)
+    .card-body.pb-0.position-relative
+      // Find the JS file for the following chart at: src/js/charts/echarts/location-by-session-crm.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-location-by-session-map(data-echart-responsive="true" style='height:302px;')
+      .position-absolute.top-0.border.mt-3.border-200.rounded-3.bg-light
+        button.btn.btn-link.btn-sm.bg-100.rounded-bottom-0.px-2.location-by-session-map-zoom.text-700(type='button')
+          span.fas.fa-plus.fs--1
+        hr.text-200.m-0
+        button.btn.btn-link.btn-sm.bg-100.rounded-top-0.px-2.location-by-session-map-zoomOut.text-700(type='button')
+          span.fas.fa-minus.fs--1
+      
+      +LocationBySessionTable.mx-ncard.mt-3
+    .card-footer.text-end.p-0
+      .pagination.d-none
+      p.mb-0.fs--1.px-x1
+        span.d-none.d-sm-inline-block.me-2(data-list-info) 
+        span.d-none.d-sm-inline-block.me-2 &mdash;  
+        a.btn.btn-link.btn-sm.py-2.px-0(href='#!')
+          | View all
+          span.fas.fa-angle-right.ms-1
+    
+mixin LocationBySessionTable
+  .table-responsive.scrollbar&attributes(attributes)
+    table.table.fs--1.mb-0
+      thead.bg-200.text-800
+        tr
+          th.sort(data-sort="country") Country
+          th.sort(data-sort="sessions") Sessions
+          th.sort(data-sort="users") Users
+          th.sort.text-end(style="width: 9.625rem;") Percentage
+      tbody.list#table-crm-location-session
+        each country, index in countriesCrm
+          +CrmTableItem(country, index)
+
+
+mixin CrmTableItem(config, index)
+  tr
+    td.align-middle.py-3
+      a(href=`#!`)
+        .d-flex.align-items-center
+          img(src=`${CWD}assets/img/${config.img}`, alt="")
+          p.mb-0.ps-3.country.text-700 #{config.country}
+    td.align-middle.fw-semi-bold.sessions=config.sessions
+    td.users.align-middle #{config.users}
+    td.align-middle.pe-x1
+      .d-flex.align-items-center.justify-content-end
+        p.mb-0.me-2 #{config.percentage}%
+        .progress.rounded-3.bg-200(style=`height: 0.3125rem;width:3.8rem`)
+          .progress-bar.bg-primary.rounded-pill(role='progressbar', style=`width: ${config.percentage}%;`  aria-valuenow=`${config.percentage}`, aria-valuemin='0' aria-valuemax='100')

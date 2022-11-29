@@ -1,0 +1,100 @@
+/*-----------------------------------------------
+|   Notification
+-----------------------------------------------*/
+.notification{
+  color: var(--#{$prefix}gray-1000);
+  text-decoration: none;
+  background-color: var(--#{$prefix}notification-bg);
+  display: flex;
+  font-size: map_get($font-sizes, '-1');
+  font-family: $font-family-base;
+  transition: $transition-base;
+  &:not(.notification-flush){
+    border: 1px solid var(--#{$prefix}border-color);
+    box-shadow: $box-shadow-sm;
+    border-radius: $border-radius-lg;
+    padding: map_get($spacers, 3);
+  }
+  @include hover-focus{
+    color: var(--#{$prefix}dark);
+    text-decoration: none;
+  }
+}
+.notification-body{ margin-bottom: map_get($spacers, 1); }
+.notification-time{
+  margin-bottom: 0;
+  color: var(--#{$prefix}gray-600);
+  font-size: map_get($font-sizes, '-1');
+}
+.notification-unread{
+  background-color: var(--#{$prefix}notification-unread-bg) !important;
+  @include hover-focus{
+    background-color: var(--#{$prefix}notification-unread-hover-bg) !important;
+  }
+}
+.notification-indicator{
+  position: relative;
+  &::before{
+    position: absolute;
+    content: '';
+    right: 0.125rem;
+    top: 0.5rem;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    border: 2px solid var(--#{$prefix}notification-indicator-border-color);
+  }
+  &-number{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0.125rem;
+    top: 0.505rem;
+    height: 1rem;
+    width: 1rem;
+    font-size: 0.67rem;
+    color: #fff;
+    font-weight: $font-weight-bold;
+  }
+  &{
+    @each $state, $value in $theme-colors {
+      &-#{$state}::before { background-color: var(--#{$prefix}#{$state}); }
+    }
+  }
+  & {
+    &-fill::before { border : 0; }
+  }
+}
+
+// Card notification
+
+.dropdown-menu-notification {
+  min-width: 16rem;
+  max-width: 5rem;
+  .card-header,
+  .card-footer {
+    padding-top: map_get($spacers, 2);
+    padding-bottom: map_get($spacers, 2);
+  }
+  .list-group-flush {
+    .list-group-item {
+      padding: 0;
+      .notification-flush {
+        padding: 0.5rem 1rem;
+      }
+    }
+    .list-group-title {
+      background-color: var(--#{$prefix}notification-title-bg);
+      font-weight: $font-weight-semi-bold;
+      font-size: map_get($font-sizes, "-2");
+      color: var(--#{$prefix}gray-600);
+      padding: map_get($spacers, 1) $card-spacer-x;
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    min-width: 20rem;
+  }
+}
+

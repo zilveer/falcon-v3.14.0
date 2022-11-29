@@ -1,0 +1,40 @@
+mixin ExperienceList(action)
+  .d-flex
+    a(href="#!")  
+      img.img-fluid(src=`${CWD}assets/img/logos/g.png`, alt='' width="56")
+    .flex-1.position-relative.ps-3
+      h6.fs-0.mb-0 Big Data Engineer
+        +Verified(true)
+      p.mb-1 
+        a(href="#!") Google
+      p.text-1000.mb-0 Apr 2012  - Present &bull; 6 yrs 9 mos
+      p.text-1000.mb-0 California, USA
+      .border-bottom.border-dashed.my-3
+  .d-flex
+    a(href="#!")  
+      img.img-fluid(src=`${CWD}assets/img/logos/apple.png`, alt='' width="56")
+    .flex-1.position-relative.ps-3
+      h6.fs-0.mb-0 Software Engineer
+        +Verified(true)
+      p.mb-1 
+        a(href="#!") Apple
+      p.text-1000.mb-0 Jan 2012 -  Apr 2012 &bull; 4 mos
+      p.text-1000.mb-0 California, USA
+      .border-bottom.border-dashed.my-3
+  .d-flex
+    a(href="#!")  
+      img.img-fluid(src=`${CWD}assets/img/logos/nike.png`, alt='' width="56")
+    .flex-1.position-relative.ps-3
+      h6.fs-0.mb-0 Mobile App Developer
+        +Verified(true)
+      p.mb-1 
+        a(href="#!") Nike
+      p.text-1000.mb-0 Jan 2011 -  Apr 2012 &bull; 1 yr 4 mos
+      p.text-1000.mb-0 Beaverton, USA
+  
+mixin Experience
+  .card.mb-3&attributes(attributes)
+    .card-header.bg-light
+      h5.mb-0 Experience
+    .card-body.fs--1
+      +ExperienceList

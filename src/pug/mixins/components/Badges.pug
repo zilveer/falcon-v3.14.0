@@ -1,0 +1,39 @@
+mixin BackgroundColorDescription
+  p&attributes(attributes) Use our background utility classes to quickly change the appearance of a badge. Please note that when using Bootstrap’s default 
+    code .bg-light
+    | , you’ll likely need a text color utility like 
+    code .text-dark
+    |  for proper styling. This is because background utilities do not set anything but 
+    code background-color
+    | .
+mixin BadgeSolidDemo
+  each value in colors
+    span.badge(class=`bg-${value}${value === 'light' ? ' text-dark' : ''}${value === 'dark' ? ' dark__bg-dark' : '' }`)
+      +cleanText(value)
+    = '\n'
+    
+mixin BadgePillDemo
+  each value in colors
+    span.badge.rounded-pill(class=`bg-${value}${value === 'light' ? ' text-dark' : ''}${value === 'dark' ? ' dark__bg-dark' : '' }`)
+      +cleanText(value)
+    = '\n'
+
+mixin BadgeSoftDemo
+  each value in colors
+    span.badge(class=`badge-soft-${value}`)
+      +cleanText(value)
+    = '\n'
+    
+mixin BadgeSoftPillDemo
+  each value in colors
+    span.badge.rounded-pill(class=`badge-soft-${value}`)
+      +cleanText(value)
+    = '\n'
+
+mixin PillBadgeDescription
+  p&attributes(attributes)
+    | Use the 
+    code .rounded-pill
+    |  utility class to make badges more rounded with a larger 
+    code border-radius
+    | .

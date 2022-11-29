@@ -1,0 +1,191 @@
+append variables 
+  -
+    var elements = [
+      {
+        linkText: 'Datatables',
+        link: '#jquery-datatables',
+        id:'1-1',
+        show:true,
+        children:[
+          {
+            link: '#jquery-datatables-default-example',
+            linkText: 'Default example',
+          },
+          {
+            link: '#jquery-datatables-simple-pagination',
+            linkText: 'Simple pagination',
+          },
+          {
+            link: '#jquery-datatables-number-pagination',
+            linkText: 'Number pagination',
+          },
+          {
+            link: '#jquery-datatables-vertical-scroll',
+            linkText: 'Vertical scroll',
+          },
+          {
+            link: '#jquery-datatables-fixed-columns',
+            linkText: 'Fixed columns',
+          },
+        ]
+      },
+      {
+        linkText: 'Select2',
+        link: '#jquery-select2',
+        id:'2-1',
+        show:true,
+        children:[
+          {
+            link: '#jquery-select2-single-select',
+            linkText: 'SIngle Select',
+          },
+          {
+            link: '#jquery-select2-multiple-select',
+            linkText: 'Multiple select',
+          }
+        ]
+      },
+    ];
+  -
+    var badges = [
+      {content: 'Success', type:'success', icon: 'fas fa-check'},
+      {content: 'Blocked', type:'secondary', icon: 'fas fa-ban'},
+      {content: 'Pending', type:'warning', icon: 'fas fa-stream'}
+    ];  
+  -
+    var purchases = [
+      {
+        customer: 'Sylvia Plath',
+        email: 'john@gmail.com',
+        product: 'Slick - Drag & Drop Bootstrap Generator',
+        status:  badges[0],
+        amount: '$99'
+      },
+      {
+        customer: 'Homer',
+        email: 'sylvia@mail.ru',
+        product: 'Bose SoundSport Wireless Headphones',
+        status:  badges[0],
+        amount: '$634'
+      },
+      {
+        customer: 'Edgar Allan Poe',
+        email: 'edgar@yahoo.com',
+        product: 'All-New Fire HD 8 Kids Edition Tablet',
+        status:  badges[1],
+        amount: '$199'
+      },
+      {
+        customer: 'William Butler Yeats',
+        email: 'william@gmail.com',
+        product: 'Apple iPhone XR (64GB)',
+        status:  badges[0],
+        amount: '$798'
+      },
+      {
+        customer: 'Rabindranath Tagore',
+        email: 'tagore@twitter.com',
+        product: 'ASUS Chromebook C202SA-YS02 11.6"',
+        status:  badges[1],
+        amount: '$318'
+      },
+      {
+        customer: 'Emily Dickinson',
+        email: 'emily@gmail.com',
+        product: 'Mirari OK to Wake! Alarm Clock & Night-Light',
+        status:  badges[2],
+        amount: '$11'
+      },
+      {
+        customer: 'Giovanni Boccaccio',
+        email: 'giovanni@outlook.com',
+        product: 'Summer Infant Contoured Changing Pad',
+        status:  badges[0],
+        amount: '$31'
+      },
+      {
+        customer: 'Oscar Wilde',
+        email: 'oscar@hotmail.com',
+        product: 'Munchkin 6 Piece Fork and Spoon Set',
+        status:  badges[0],
+        amount: '$43'
+      },
+      {
+        customer: 'John Doe',
+        email: 'doe@gmail.com',
+        product: 'Falcon - Responsive Dashboard Template',
+        status:  badges[0],
+        amount: '$57'
+      },
+      {
+        customer: 'Emma Watson',
+        email: 'emma@gmail.com',
+        product: 'Apple iPhone XR (64GB)',
+        status:  badges[1],
+        amount: '$999'
+      },
+      {
+        customer: 'Sylvia Plath',
+        email: 'plath@yahoo.com',
+        product: 'All-New Fire HD 8 Kids Edition Tablet',
+        status:  badges[2],
+        amount: '$199'
+      },
+      {
+        customer: 'Rabindranath Tagore',
+        email: 'Rabindra@gmail.com',
+        product: 'Apple iPhone XR (64GB)',
+        status:  badges[1],
+        amount: '$999'
+      },
+      {
+        customer: 'Anila Wilde',
+        email: 'anila@yahoo.com',
+        product: 'All-New Fire HD 8 Kids Edition Tablet',
+        status:  badges[2],
+        amount: '$199'
+      },
+      {
+        customer: 'Jack Watson ',
+        email: 'Jack@gmail.com',
+        product: 'Apple iPhone XR (64GB)',
+        status:  badges[1],
+        amount: '$999'
+      },
+    ]
+
+mixin Badge(badge)
+  span.badge.badge.rounded-pill(class=`badge-soft-${badge.type}`)=badge.content
+    span.ms-1(class=badge.icon data-fa-transform="shrink-2")
+
+mixin Dropdown(id)
+  .dropstart.font-sans-serif.position-static.d-inline-block
+    button.btn.btn-link.text-600.btn-sm.dropdown-toggle.btn-reveal&attributes(attributes)(type='button' id=id data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent")
+      span.fas.fa-ellipsis-h.fs--1
+    .dropdown-menu.dropdown-menu-end.border.py-2(aria-labelledby=id)
+      a(href='#!').dropdown-item View
+      a(href='#!').dropdown-item Edit
+      a(href='#!').dropdown-item Refund
+      .dropdown-divider
+      a(href='#!').dropdown-item.text-warning Archive
+      a(href='#!').dropdown-item.text-danger Delete
+
+mixin Sidebar
+  .card.sticky-top.font-sans-serif
+    .card-header.border-bottom
+      h6.mb-0.fs-0 On this page
+    .card-body
+      ul.mb-0.treeview#treeviewExample
+        each element,index in elements
+          if element.hasOwnProperty('children')
+            li.treeview-list-item(class=index===0 ? 'mb-3' : '')
+              a(data-bs-toggle='collapse', href=`#jquery-${element.linkText}` role='button', aria-expanded='false')
+                p.treeview-text
+                  | #{element.linkText}
+              ul.collapse.treeview-list(id=`jquery-${element.linkText}` data-show=`${element.show ? element.show : false}`)
+                each item,ind in element.children
+                  li.treeview-item
+                    a(href=`${item.link}`).flex-1
+                      p.treeview-text.fw-medium
+                        span(class='me-2 fas fa-hashtag fs--2')
+                        | #{item.linkText}

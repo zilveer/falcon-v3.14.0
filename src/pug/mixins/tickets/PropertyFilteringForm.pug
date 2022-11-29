@@ -1,0 +1,50 @@
+mixin PropertyFilteringForm 
+  .card&attributes(attributes)
+    .card-header.bg-light
+      h6.mb-0 Properties
+    .card-body
+      form
+        .mb-2.mt-n2
+          label.mb-1 Type
+          select.form-select.form-select-sm
+            option None
+            option Question
+            option Incident
+            option Problem
+            option Feature Request
+            option Refund
+        .mb-2
+          label.mb-1.mt-2 Status
+          select.form-select.form-select-sm
+            option None
+            option Recent
+            option Overdue
+            option Closed
+            option Remaining
+            option Responded
+        .mb-2
+          label.mb-1.mt-2 Priority
+          select.form-select.form-select-sm
+            option None
+            option Urgent
+            option High
+            option Medium
+            option Low
+        .mb-2
+          label.mb-1.mt-2 Agent
+          select.form-select.form-select-sm
+            option None
+            option Anindya
+            option Nowrin
+            option Khalid
+        div
+          label.mb-1.mt-2 Tags
+          select.form-select.form-select-sm
+            option None
+            option Sales
+            option Request
+            option Complaint
+            option Feedback
+            option Support
+    .card-footer.border-top.border-200.py-x1
+      button.btn.btn-primary.w-100 Update

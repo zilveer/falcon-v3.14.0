@@ -1,0 +1,117 @@
+include ../../layouts/LayoutBasic
+include ../authentication/RegisterBasicContent
+include ../authentication/ForgotPasswordForm
+include ../authentication/CardAuthenticationSplit
+include ../authentication/FormHeader
+include ../authentication/LoginForm
+include ../authentication/SocialButtons
+include ../pages/profile/ExperienceForm
+include ../authentication/wizard/WizardContent
+include ../authentication/PasswordResetForm
+include ../home/feed/PostCreate
+include ../email/Compose
+
+mixin Forms
+  +WidgetSectionTitle({
+    transform: 'shrink-2',
+    icon: 'fas fa-file-alt',
+    title: 'Forms',
+    subtitle: `Get different types of data from the user by using ${name}'s customizable form.`
+  }).mb-4.mt-6 
+
+  .row.g-0
+    .col-lg-5.pe-lg-2
+      .row.g-0.h-100.align-items-stretch
+        .col-12.mb-3
+          +LayoutAuthBasicCard.h-lg-100
+            +RegisterBasicContent
+        .col-12.mb-3
+          +LayoutAuthBasicCard.h-lg-100.text-center
+            h5.mb-0 Forgot your password?
+            small Enter your email and we'll send you a reset link.
+            +ForgotPasswordForm.mt-4
+        .col-12.mb-3
+          +CardAuthenticationSplit
+            +FormHeader({
+              title: {
+                text: 'Login',
+                tag: "h3"
+              },
+              normalContent: {
+                text:'New User?',
+                className:'fw-semi-bold'
+              },
+              linkText: 'Create account',
+              link:'simple/register.html'
+              })
+            +LoginForm({
+              layout: 'split',
+              email: {
+                label: 'Email address',
+                attrs: { id: 'split-login-email' }
+              },
+              password: {
+                label: 'Password',
+                attrs: { id: 'split-login-password' }
+              },
+              checkbox: { attrs: { id: 'split-checkbox' } }
+            })
+            +SocialButtons({ title: 'log in' }).mt-4
+
+    .col-lg-7.ps-lg-2.mb-3
+      .row.g-0.h-100.align-items-stretch
+        .col-lg-12.mb-3
+          .card.h-100
+            .card-header
+              h5.mb-0 Experiences
+            .card-body.bg-light.pb-0
+              a(href="#experience-form" data-bs-toggle="collapse" aria-expanded="true" aria-controls="experience-form").mb-4.d-block.d-flex.align-items-center
+                span.circle-dashed
+                  span.fas.fa-plus
+                span.ms-3 Add new experience
+              #experience-form.collapse.show
+                +ExperienceForm
+        .col-lg-12
+          .card.h-100
+            .card-header
+              h5.mb-0 Profile
+            .card-body.bg-light.pb-0
+              +WizardContentProfile({name: 'form-example'})
+  .row.g-0
+    .col-lg-5.pe-lg-2.mb-3       
+      +LayoutAuthBasicCard.h-lg-100
+        h5.text-center Reset new password
+        +PasswordResetForm({
+          password: { attrs: { placeholder: 'New Password' } },
+          confirmPassword: { attrs: { placeholder: 'Confirm Password' } }
+        }).mt-3  
+
+    .col-lg-7.ps-lg-2.mb-3
+      +PostCreate.h-100 
+  +Compose.mb-3
+  +UploadPhotos
+  .card.mb-3
+    .card-header 
+      h5.mb-0 Multiple File Upload
+    .card-body.bg-light
+      form.dropzone.dropzone-multiple.p-0#dropzoneMultipleFileUpload(data-dropzone action='#!')
+        .fallback
+          input(name='file' type='file', multiple)
+        .dz-message(data-dz-message) 
+          img(src=`${CWD}assets/img/icons/cloud-upload.svg`, width=25 alt="").me-2
+          | Drop your files here
+        .dz-preview.dz-preview-multiple.m-0.d-flex.flex-column
+          .d-flex.media.align-items-center.mb-3.pb-3.border-bottom.btn-reveal-trigger
+            img(src=`${CWD}assets/img/icons/cloud-upload.svg` alt="..." data-dz-thumbnail).dz-image
+            .flex-1.d-flex.flex-between-center
+              div
+                h6(data-dz-name)
+                .d-flex.align-items-center
+                  p.mb-0.fs--1.text-400.lh-1(data-dz-size)
+                  .dz-progress
+                    span.dz-upload(data-dz-uploadprogress='')
+              .dropdown.font-sans-serif
+                button.btn.btn-link.text-600.btn-sm.dropdown-toggle.btn-reveal.dropdown-caret-none(type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                  span.fas.fa-ellipsis-h
+                .dropdown-menu.dropdown-menu-end.border.py-2
+                  a.dropdown-item(href="#!" data-dz-remove) Remove File

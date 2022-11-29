@@ -1,0 +1,26 @@
+mixin Navbar(id)
+  nav.navbar.navbar-expand-lg&attributes(attributes)
+    .container-fluid
+      a.navbar-brand(href='#') Navbar
+      button.navbar-toggler(type='button' data-bs-toggle='collapse', data-bs-target=`#${id}`, aria-controls=id aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      .collapse.navbar-collapse(id=id)
+        ul.navbar-nav.me-auto.mb-2.mb-lg-0
+          li.nav-item
+            a.nav-link.active(aria-current='page' href='#') Home
+          li.nav-item
+            a.nav-link(href='#') Link
+          li.nav-item.dropdown
+            a.nav-link.dropdown-toggle(href='#', id=`${id}Dropdown` role='button' data-bs-toggle='dropdown' aria-expanded='false')
+              | Dropdown
+            .dropdown-menu.py-0(aria-labelledby=`${id}Dropdown`)
+              .bg-white.dark__bg-1000.py-2.rounded-3
+                a.dropdown-item(href='#') Action
+                a.dropdown-item(href='#') Another action
+                hr.dropdown-divider
+                a.dropdown-item(href='#') Something else here
+          li.nav-item
+            a.nav-link.disabled(href='#' tabindex='-1' aria-disabled='true') Disabled
+        form.d-flex
+          input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
+          button.btn.btn-light(type='submit') Search

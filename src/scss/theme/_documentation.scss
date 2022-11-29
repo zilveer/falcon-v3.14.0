@@ -1,0 +1,99 @@
+/*-----------------------------------------------
+|   Documentation link and Prism
+-----------------------------------------------*/
+.code-block{
+  padding: 0;
+  overflow: auto;
+  pre[class*='language-']{
+    padding: 1.6rem;
+    border: 0;
+    margin: 0;
+    border-radius: 0;
+  }
+}
+
+:not(pre) > code[class*='language-'], pre[class*='language-'] {
+  background-color: $gray-1000;
+  border: $border-width solid var(--#{$prefix}border-color);
+  border-radius: $border-radius;
+}
+code.language-html:first-child{
+  display: block;
+}
+
+code[class*='language-'], pre[class*='language-'] {
+  color: $gray-300;
+  font-family: $font-family-monospace;
+}
+pre[class*="language-"]{
+  margin: 0;
+}
+.contains-anchor{
+  a{
+    opacity: 0;
+    transition-property: opacity;
+  }
+  @include hover-focus{
+    a{
+      opacity: 1;
+      text-decoration: none;
+    }
+  }
+}
+.token.property, .token.tag, .token.constant, .token.symbol, .token.deleted{
+  color: var(--#{$prefix}danger);
+}
+.token.punctuation{
+  color: $gray-400;
+}
+.components-nav{
+  font-family: var(--#{$prefix}font-sans-serif);
+  font-size: 0.85rem;
+}
+
+/*-----------------------------------------------
+|   Component examples
+-----------------------------------------------*/
+/*-----------------------------------------------
+|   Borders
+-----------------------------------------------*/
+.component-example{
+  font-family: var(--#{$prefix}font-sans-serif);
+  [class^='border']{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 8rem;
+    height: 8rem;
+    margin: .75rem;
+    background-color: $gray-100;
+  }
+}
+
+
+/*-----------------------------------------------
+|   Utilities
+-----------------------------------------------*/
+.border-component{
+  [class^=border],
+  [class^="rounded-"]{
+    display: inline-block;
+    width: 5rem;
+    height: 5rem;
+    margin: .25rem;
+  }
+
+  [class^=border] {
+    background-color: var(--#{$prefix}gray-200);
+  }
+
+  [class^="rounded-"] {
+    background-color: var(--#{$prefix}gray-200);
+  }
+}
+
+#loaders{
+  [class^="spinner"]{
+    margin-right: 0.5rem;
+  }
+}

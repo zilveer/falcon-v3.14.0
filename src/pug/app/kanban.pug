@@ -1,0 +1,37 @@
+extends ../layouts/LayoutTheme
+include ../mixins/kanban/Mixins
+include ../mixins/kanban/ModalCardDetails
+
+
+
+prepend styles
+  link(href=`${CWD}vendors/glightbox/glightbox.min.css`, rel='stylesheet')
+
+
+prepend scripts
+  script(src=`${CWD}vendors/glightbox/glightbox.min.js`) 
+  script(src=`${CWD}vendors/draggable/draggable.bundle.legacy.js`)
+
+append content
+  +KanbanHeader
+  .kanban-container.scrollbar.me-n3
+    each kanbanItem, index in kanbanItems
+      +KanbanColumn(kanbanItem, index)
+    .kanban-column
+      .collapse.bg-100.p-x1.rounded-lg.transition-none#addListForm
+        form
+          textarea.form-control.mb-2(data-input="add-list" rows=2 placeholder="Enter list title...")
+          .row.gx-2
+            .col
+              button.btn.btn-primary.btn-sm.d-block.w-100(type="button") Add
+            .col
+              button.btn.btn-outline-secondary.btn-sm.d-block.w-100.border-400(type="button" data-dismiss="collapse") Cancel
+
+      button.btn.d-block.w-100.btn-secondary.bg-400.border-400(data-bs-toggle="collapse" data-bs-target='#addListForm' aria-expanded="false" aria-controls="addListForm")
+        span.fas.fa-plus.me-1 
+        | Add another list
+
+append afterContent
+  +ModalCardDetails({suffix: 1})#kanban-modal-1
+  +ModalCardDetails({img: `${CWD}assets/img/kanban/1.jpg`, suffix: 2})#kanban-modal-2
+  +ModalCardDetails({img: `${CWD}assets/img/kanban/2.jpg`, suffix: 3})#kanban-modal-3

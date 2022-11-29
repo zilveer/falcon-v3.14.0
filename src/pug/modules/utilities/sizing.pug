@@ -1,0 +1,36 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/utilities/Sizing
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Sizing',
+      description: 'Easily make an element as wide or as tall (relative to its parent) with our width and height utilities',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/utilities/sizing/`,
+      linkText: 'Sizing on Bootstrap'
+    }
+
+append content
+
+  +PageHeader(pageHeader)
+    +SizingDoc
+
+  +ComponentCard({
+    title: 'Width (relative to parent)',
+    anchor:true
+  }).mb-3
+    +SizingWidth
+
+  +ComponentCard({
+    title: 'Height (relative to parent)',
+    anchor:true
+  }).mb-3
+    +SizingHeight
+
+  .card
+    .card-header
+      +DocCardHeader('Special classes (relative to viewport)')
+        +SizingSpecialClassDescription.mt-2.mb-0
+    .card-body.bg-light
+      +SizingSpecial

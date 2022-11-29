@@ -1,0 +1,39 @@
+extends ../../../layouts/CardLayout
+include ../../../mixins/authentication/LoginForm
+include ../../../mixins/authentication/FormHeader
+include ../../../mixins/authentication/SocialButtons
+
+block append variables
+  - var attrsLayout = { class: 'container-fluid' }
+
+block cardLeft
+  p.text-white Don't have an account?
+    br
+    a(href=`${CWD}${paths['card-register']}`).text-decoration-underline.link-light
+      | Get started!
+
+
+  p.mb-0.mt-4.mt-md-5.fs--1.fw-semi-bold.text-white.opacity-75 Read our 
+    a(href='#!').text-decoration-underline.text-white terms
+    |  and 
+    a(href="#!").text-decoration-underline.text-white conditions 
+
+block cardRight
+  +FormHeader({title: {
+    text: 'Account Login',
+    tag: "h3"
+    }
+  })
+  +LoginForm({
+    layout: 'card',
+    email: {
+      label: 'Email address',
+      attrs: { id: 'card-email' }
+    },
+    password: {
+      label: 'Password',
+      attrs: { id: 'card-password' }
+    },
+    checkbox: { attrs: { id: 'card-checkbox', checked: true } }
+  })
+  +SocialButtons({ title: 'log in' }).mt-4

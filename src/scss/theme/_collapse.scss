@@ -1,0 +1,28 @@
+.collapse-indicator-plus {
+  position: relative;
+  
+  &:after, &:before {
+    position: absolute;
+    right: 0;
+    font-size: 1.2rem;
+    font-weight: $font-weight-medium;
+    color: inherit;
+    top: 25%;
+    transition: $transition-base;
+    transition-property: transform, scale;
+  }
+  &:before {
+    content: "\2212";
+    transform: scale(0);
+  }
+  &:after {
+    content: "\002B";
+    transform: scale(1);
+  }
+  &[aria-expanded="true"]:after {
+    transform: scale(0);
+  }
+  &[aria-expanded="true"]:before {
+    transform: scale(1);
+  }
+}

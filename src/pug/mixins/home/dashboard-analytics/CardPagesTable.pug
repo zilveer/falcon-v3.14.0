@@ -1,0 +1,140 @@
+append variables 
+  -
+    var pagesTableItems = [
+      {
+        path: '/sparrow/landing-page',
+        views: 1455,
+        time: '2m:25s',
+        exitRate: '20.4%',
+      },
+      {
+        path: '/falcon/pages/starter.html',
+        views: 1422,
+        time: '2m:14s',
+        exitRate: '52.4%',
+      },
+      {
+        path: '/pages/falcon-webapp-theme',
+        views: 1378,
+        time: '2m:23s',
+        exitRate: '25.1%',
+      },
+      {
+        path: '/product/sparrow-bootstrap-theme',
+        views: 1144,
+        time: '2m:2s',
+        exitRate: '6.3%',
+      },
+      {
+        path: '/themes/falcon/components',
+        views: 11047,
+        time: '1m:16s',
+        exitRate: '49.3%',
+      },
+      {
+        path: '/themewagon.com/themes/free-website-template',
+        views: 1007,
+        time: '0m:34s',
+        exitRate: '35.9%',
+      },
+      {
+        path: '/mailbluster.com/about',
+        views: 997,
+        time: '1m:5s',
+        exitRate: '87.3%',
+      },
+      {
+        path: '/technext.it/services',
+        views: 983,
+        time: '1m:16s',
+        exitRate: '74.3%',
+      },
+      {
+        path: '/themewagon.com/themes/free-website-template',
+        views: 971,
+        time: '1m:06s',
+        exitRate: '49.3%',
+      },
+      {
+        path: '/blog/mailbluster-vs-sendy',
+        views: 996,
+        time: '1m:26s',
+        exitRate: '4.3%',
+      },
+      {
+        path: '/blog/mailbluster-vs-emailoctopus',
+        views: 890,
+        time: '1m:19s',
+        exitRate: '49.3%',
+      },
+      {
+        path: '/themewagon.com/themes/bootstrap-template',
+        views: 11047,
+        time: '1m:16s',
+        exitRate: '21.5%',
+      },
+      {
+        path: '/themewagon.com/themes/free-website-template',
+        views: 11047,
+        time: '0m:54s',
+        exitRate: '62.5%',
+      },
+    ]
+
+mixin TableItem(config, index)
+  tr.btn-reveal-trigger
+    td.align-middle.white-space-nowrap.path
+      a.text-primary.fw-semi-bold(href=`#!`)=config.path
+    td.align-middle.white-space-nowrap.views.text-end=config.views
+    td.align-middle.white-space-nowrap.time.text-end=config.time
+    td.align-middle.text-end.exitRate.text-end.pe-x1=config.exitRate
+
+mixin Table      
+  .table-responsive.scrollbar
+    table.table.fs--1.mb-0.overflow-hidden
+      thead.bg-200.text-900
+        tr
+          th.sort.pe-1.align-middle.white-space-nowrap(data-sort="path") Page Path
+          th.sort.pe-1.align-middle.white-space-nowrap.text-end(data-sort="views") Page Views
+          th.sort.pe-1.align-middle.white-space-nowrap.text-end(data-sort="time") Avg Time on Page
+          th.sort.pe-x1.align-middle.white-space-nowrap.text-end(data-sort="exitRate") Exit Rate
+      tbody.list
+        each item, index in pagesTableItems
+          +TableItem(item, index)
+  .text-center.d-none#pages-table-fallback
+    p.fw-bold.fs-1.mt-3 No Page found
+
+mixin PagesTable(perPage=8)
+  .card#table(data-list!={
+    valueNames: ["path", "views", "time", "exitRate"],
+    page: perPage,
+    pagination: true,
+    fallback:'pages-table-fallback'
+  })&attributes(attributes)
+    .card-header
+      .row.flex-between-center
+        .col-auto.col-sm-6.col-lg-7
+          h6.mb-0.text-nowrap.py-2.py-xl-0 What are my top pages today?
+
+        .col-auto.col-sm-6.col-lg-5
+          div&attributes(attributes)
+            form
+              .input-group
+                input.form-control.form-control-sm.shadow-none.search(type='search', placeholder='Search for a page', aria-label='search')
+                button.btn.btn-sm.btn-outline-secondary.border-300.hover-border-secondary
+                  span.fa.fa-search.fs--1
+
+              
+    .card-body.px-0.py-0
+      +Table
+    .card-footer
+      .row.align-items-center
+        .pagination.d-none
+        .col
+          p.mb-0.fs--1
+            span.d-none.d-sm-inline-block.me-2(data-list-info)
+        .col-auto.d-flex
+          button.btn.btn-sm.btn-primary(type='button' data-list-pagination='prev')
+            span Previous
+          button.btn.btn-sm.btn-primary.px-4.ms-2(type='button' data-list-pagination='next')
+            span Next

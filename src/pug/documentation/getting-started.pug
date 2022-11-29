@@ -1,0 +1,93 @@
+extends ../layouts/LayoutComponent
+
+block append content
+  +PageHeader({title:"Getting Started", headerClass: 'mb-0'})
+  .card.mb-3
+    .card-header
+      h5.mb-0(data-anchor) Quick start
+    .card-body.bg-light
+      p.mb-0 Looking to start your project quickly? Just unzip the 
+        code #{theme}.zip
+        | . We have precompiled and packaged everything in the 
+        code public
+        |  directory for you. Start editing the 
+        code public/pages/starter.html
+        |  with a text or code editor, save it, and open the file in your favourite browser to see the changes.
+
+  .card.mb-3
+    .card-header
+      h5.mb-0(data-anchor) Setting up Build system
+    .card-body.bg-light
+      p Unzip the 
+        code #{theme}.zip
+        |  to any folder and open a command line or terminal at that location.
+        | theme's dev tools require 
+        a(href='https://nodejs.org/en/' target='_blank') Node
+        |  and 
+        a(href='https://git-scm.com/' target='_blank') Git
+        |  . If you do not have them in your machine, please install their latest stable version from their corresponding website. As you have 
+        span.fw-black.text-black Node and Git installed and accessible from your terminal or command line
+        | , install 
+        a(href="https://gulpjs.com/" target='_blank') Gulp CLI
+        |  package 
+        |  globally with the following command:
+      pre
+        code.lang-html.
+          npm i gulp-cli -g
+
+      p.mt-4 When you’re done, install the rest of the theme’s dependencies with:
+      pre
+        code.lang-html.
+          npm i
+
+      p.mt-4 Now run:
+      pre
+        code.lang-html.
+          gulp
+
+      p.mt-4 Running gulp will compile the SCSS, transpile the javascript, copy all required libraries form 
+        code node_modules
+        |  to the corresponding 
+        code public/assets/vendors 
+        |  directory and will open a browser window to 
+        code public/index.html
+      p All of the following folders are monitored for changes, which will tell the browser to reload automatically after any changes are made:
+      pre
+        code.lang-html.
+          public/assets/fonts/
+          public/assets/video/
+          public/assets/img/
+          public/vendors
+          src/pug/
+          src/scss/ 
+          src/js/
+
+      p.mt-4 Now you can edit any 
+        code pug
+        |  file from 
+        code src/pug
+        | , change SCSS variable with 
+        code scss/_user-variables.scss
+        | , or write your own SCSS code in 
+        code scss/_user.scss
+        |  and add or update 
+        code javaScript
+        |  from 
+        code src/js
+        |  directory.
+
+      .alert.alert-warning Running the 
+        code gulp
+        |  command will discard and regenerate all the files in following directories:
+      pre
+        code.lang-html.
+          public/**/*.html
+          public/assets/css/
+          public/assets/js/
+          public/vendors
+
+      p.mt-4 Hit 
+        code Ctrl+C
+        |  or just close the command line window to stop the server.
+
+      p Happy editing!

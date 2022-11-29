@@ -1,0 +1,42 @@
+mixin AskIntelligence
+  .card&attributes(attributes)
+    .card-header
+      .d-flex.align-items-center
+        img.me-2(src=`${CWD}assets/img/icons/signal.png` alt="" height='35')
+        h5.fs-0.fw-normal.text-800.mb-0 Ask Falcon Intelligence
+    .card-body.p-0
+      .scrollbar-overlay.pt-0.px-x1.ask-analytics
+        +SingleItem({
+          title: 'Content Analysis',
+          icon: 'fas fa-code-branch',
+          description:  'Which landing pages with over 10 sessions have the worst bounce rates?',
+        }).mb-3
+        +SingleItem({
+          title: 'Technical performance',
+          icon: 'fas fa-bug',
+          description:  'Show me a trend of my average page load time over the last 3 months',
+        }).mb-3
+        +SingleItem({
+          title: 'Technical performance',
+          icon: 'fas fa-project-diagram',
+          description:  'What are my top default channel groupings by user?',
+        }).mb-3
+        +SingleItem({
+          title: 'Geographic Analysis',
+          icon: 'fas fa-map-marker-alt',
+          description:  'What pages do people from California go to the most?',
+        }).mb-3
+    .card-footer.bg-light.text-end.py-2
+      a.btn.btn-link.btn-sm.px-0.fw-medium(href='#!') More Insights
+        span.fas.fa-chevron-right.ms-1.fs--2
+
+
+
+
+mixin SingleItem({title,icon,description})
+  .border.border-1.border-300.rounded-2.p-3.ask-analytics-item.position-relative&attributes(attributes)
+    .d-flex.align-items-center.mb-3
+      span(class=icon).text-primary
+      a.stretched-link.text-decoration-none(href='#!')
+        h5.fs--1.text-600.mb-0.ps-3=title
+    h5.fs--1.text-800=description

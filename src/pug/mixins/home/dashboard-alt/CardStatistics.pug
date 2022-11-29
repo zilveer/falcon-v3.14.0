@@ -1,0 +1,29 @@
+mixin CardStatistics
+  .row.g-3.mb-3&attributes(attributes)
+    .col-sm-6.col-md-4
+      .card.overflow-hidden(style='min-width: 12rem')
+        +Background({image: `${CWD}assets/img/icons/spot-illustrations/corner-1.png`, className: 'bg-card'})
+        .card-body.position-relative
+          h6 Customers
+            span.badge.badge-soft-warning.rounded-pill.ms-2 -0.23%
+          .display-4.fs-4.mb-2.fw-normal.font-sans-serif.text-warning(data-countup!={endValue: 58.386, decimalPlaces: 2, suffix: 'k'}) 0
+          a(href=`${CWD}${paths['customers']}`).fw-semi-bold.fs--1.text-nowrap See all
+            span.fas.fa-angle-right.ms-1(data-fa-transform='down-1')
+    .col-sm-6.col-md-4      
+      .card.overflow-hidden(style='min-width: 12rem')
+        +Background({image: `${CWD}assets/img/icons/spot-illustrations/corner-2.png`, className: 'bg-card'})
+        .card-body.position-relative
+          h6 Orders
+            span.badge.badge-soft-info.rounded-pill.ms-2 0.0%
+          .display-4.fs-4.mb-2.fw-normal.font-sans-serif.text-info(data-countup!={endValue: 23.434, decimalPlaces: 2, suffix: 'k'}) 0
+          a(href=`${CWD}${paths['order-list']}`).fw-semi-bold.fs--1.text-nowrap All orders
+            span.fas.fa-angle-right.ms-1(data-fa-transform='down-1')
+    .col-md-4        
+      .card.overflow-hidden(style='min-width: 12rem')
+        +Background({image: `${CWD}assets/img/icons/spot-illustrations/corner-3.png`, className: 'bg-card'})
+        .card-body.position-relative
+          h6 Revenue
+            span.badge.badge-soft-success.rounded-pill.ms-2 9.54%
+          .display-4.fs-4.mb-2.fw-normal.font-sans-serif(data-countup!={endValue: 43594, prefix: '$'}) 0
+          a(href=`${CWD}${paths['default-dashboard']}`).fw-semi-bold.fs--1.text-nowrap Statistics
+            span.fas.fa-angle-right.ms-1(data-fa-transform='down-1')

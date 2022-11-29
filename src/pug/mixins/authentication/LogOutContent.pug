@@ -1,0 +1,13 @@
+mixin LogOutContent(config)
+  - var config = Object.assign({layout: 'simple', titleTag: 'h4'}, config)
+  div&attributes(attributes)
+    img(src=`${CWD}assets/img/icons/spot-illustrations/45.png` alt='shield' width=100).d-block.mx-auto.mb-4
+    
+    #{config.titleTag} See you again!
+
+    p Thanks for using #{name}. You are 
+      br
+      | now successfully signed out.
+    a(href=`${CWD}${paths[`${config.layout}-login`]}`).btn.btn-primary.btn-sm.mt-3
+      span.fas.fa-chevron-left(data-fa-transform="shrink-4 down-1").me-1
+      | Return to Login

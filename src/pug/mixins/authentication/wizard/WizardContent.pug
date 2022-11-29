@@ -1,0 +1,113 @@
+mixin WizardContentProfile(config)
+  form
+    .mb-3
+      .row(data-dropzone data-options!={ maxFiles: 1, data: [{ name: 'avatar.png', size: '54kb', url: `${CWD}assets/img/team`}]})
+        .fallback
+          input(type="file" name="file")
+        .col-md-auto
+          .dz-preview.dz-preview-single
+            .dz-preview-cover.d-flex.align-items-center.justify-content-center.mb-3.mb-md-0
+              .avatar.avatar-4xl
+                img.rounded-circle(src=`${CWD}assets/img/team/avatar.png` alt='...' data-dz-thumbnail)
+              .dz-progress
+                span.dz-upload(data-dz-uploadprogress='')
+        .col-md
+          .dz-message.dropzone-area.px-2.py-3(data-dz-message)
+            .text-center
+              img(src=`${CWD}assets/img/icons/cloud-upload.svg`, width=25 alt="").me-2
+              | Upload your profile picture
+              p.mb-0.fs--1.text-400 Upload a 300x300 jpg image with 
+                br
+                | a maximum size of 400KB
+
+
+    .mb-3
+      label.form-label(for=config.name+"-gender") Gender
+      select.form-select(name="gender" id=config.name+"-gender")
+        option(value="") Select your gender ...
+        option(value="Male") Male
+        option(value="Female") Female
+        option(value="Other") Other
+    .mb-3
+      label.form-label(for=config.name+"-wizard-phone") Phone
+      input(type="text" name="phone" placeholder="Phone" id=config.name+"-wizard-phone").form-control
+    .mb-3
+      label.form-label(for=config.name+"-wizard-datepicker") Date of Birth
+      input.form-control.datetimepicker(type="text" placeholder="d/m/y" data-options!={dateFormat:'d/m/y',disableMobile:true} id=config.name+"-wizard-datepicker")
+    .mb-3
+      label.form-label(for=config.name+"-wizard-address") Address
+      textarea(rows="4" id=config.name+"-wizard-address").form-control
+
+mixin WizardContent(config)
+  - var config = Object.assign({ url: `${CWD}${paths['wizard-auth']}` }, config)
+  .tab-content
+    .tab-pane.active.px-sm-3.px-md-5(role="tabpanel" aria-labelledby=config.tab1.split('#').pop() id=config.tab1)
+      form(class=config.validation && 'needs-validation' novalidate)
+        .mb-3
+          label.form-label(for=config.name+"-wizard-name") Name
+          input(type="text" name="name" placeholder="John Smith" id=config.name+"-wizard-name").form-control
+        .mb-3
+          label.form-label(for=config.name+"-wizard-email") Email*
+          input(type="email" name="email" placeholder="Email address" pattern=`^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$` required id=config.name+"-wizard-email"  data-wizard-validate-email="true").form-control
+          .invalid-feedback You must add email
+
+        .row.g-2
+          .col-6  
+            .mb-3
+              label.form-label(for=config.name+"-wizard-password") Password*
+              input(type="password" name="password" placeholder="Password" required id=config.name+"-wizard-password" data-wizard-validate-password="true").form-control
+              .invalid-feedback Please enter password
+          .col-6
+            .mb-3
+              label.form-label(for=config.name+"-wizard-confirm-password") Confirm Password*
+              input(type="password" name="confirmPassword" placeholder="Confirm Password" required id=config.name+"-wizard-confirm-password" data-wizard-validate-confirm-password="true").form-control
+              .invalid-feedback Passwords need to match
+        .form-check
+          input.form-check-input(type='checkbox' name="terms" required checked id=config.name+'-wizard-checkbox')
+          label.form-check-label(for=config.name+'-wizard-checkbox')
+            | I accept the 
+            a(href='#!') terms 
+            | and 
+            a(href='#!') privacy policy
+    .tab-pane.px-sm-3.px-md-5(role="tabpanel" aria-labelledby=config.tab2.split('#').pop() id=config.tab2)
+      +WizardContentProfile({name: config.name})
+    .tab-pane.px-sm-3.px-md-5(role="tabpanel" aria-labelledby=config.tab3.split('#').pop() id=config.tab3)
+      form.form-validation
+        .row.g-2
+          .col
+            .mb-3
+              label.form-label(for=config.name+'-card-number') Card Number
+              input.form-control(placeholder='XXXX XXXX XXXX XXXX' type='text' id=config.name+'-card-number')
+          .col
+            .mb-3
+              label.form-label(for=config.name+'-card-name') Name on Card
+              input.form-control(placeholder='John Doe' name="cardName" type='text' id=config.name+'-card-name')
+        .row.g-2
+          .col-6
+            .mb-3
+              label.form-label(for=config.name+'-card-holder-country') Country
+              select.form-select(name='customSelectCountry' id=config.name+'-card-holder-country')
+                option(value='') Select your country ...
+                each country, index in countries
+                  option(value=country)=country
+          .col-6
+            .mb-3
+              label.form-label(for=config.name+'-card-holder-zip-code') Zip Code
+              input.form-control(placeholder='1234' name="zipCode" type='text' id=config.name+'-card-holder-zip-code')
+          .col-6
+            .form-group.mb-0
+              label.form-label(for=config.name+'-card-exp-date') Exp Date
+              input.form-control(placeholder='15/2024' name="expDate" type='text' id=config.name+'-card-exp-date')
+          .col-6
+            .form-group.mb-0
+              label.form-label(for=config.name+'-card-cvv')
+                | CVV
+              span(data-bs-toggle="tooltip" data-bs-placement="top" title="Card verification value").ms-1
+                span.fa.fa-question-circle
+              input.form-control(placeholder='123' name="cvv" maxlength='3' pattern='[0-9]{3}' type='text' id=config.name+'-card-cvv')
+    .tab-pane.text-center.px-sm-3.px-md-5(role="tabpanel" aria-labelledby=config.tab4.split('#').pop() id=config.tab4)
+      .wizard-lottie-wrapper
+        .lottie.wizard-lottie.mx-auto.my-3(data-options!={ path: `${CWD}assets/img/animated-icons/celebration.json`})
+      h4.mb-1 Your account is all set!
+      p Now you can access to your account
+      a(href=config.url).btn.btn-primary.px-5.my-3 Start Over

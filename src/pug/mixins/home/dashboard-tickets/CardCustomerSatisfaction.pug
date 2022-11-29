@@ -1,0 +1,25 @@
+include ../dashboard/Mixins
+
+mixin CardCustomerSatisfaction
+  .card.h-100&attributes(attributes)
+    .card-header.d-flex.flex-between-center.border-bottom.border-200.py-2
+      h6.mb-0 Customer Satisfaction
+      +DashboardDropdown('dropdown-customer-satisfaction')
+    .card-body.p-3.d-flex.aligm-items-center
+      .echart-customer-setisfaction.h-100.w-100(data-echart-responsive="true")
+    .card-footer.border-top.border-200.py-0
+      .row
+        .col-6.border-end.border-200.py-3.d-flex.justify-content-center
+          div
+            h6.text-600.mb-1.fs--2 Positive
+            h6.fs-0.mb-0.d-flex.align-items-center 150
+              small.badge.px-0.text-success.bg-transparent.d-flex.align-items-start
+                span.fas.fa-caret-up.ms-2.me-1.fs--2
+                span.fs--1 23.3%
+        .col-6.py-3.d-flex.justify-content-center
+          div
+            h6.text-600.mb-1.fs--2 Negative
+            h6.fs-0.mb-0.d-flex.align-items-center 20
+              small.badge.px-0.text-danger.d-flex.align-items-start
+                span.fas.fa-caret-down.ms-2.me-1.fs--2
+                span.fs--1 5.23%

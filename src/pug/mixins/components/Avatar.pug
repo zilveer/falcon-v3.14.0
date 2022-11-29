@@ -1,0 +1,20 @@
+append variables
+  - var status = ['online', 'offline', 'away', 'do-not-disturb'];
+  - var avatars = ['5xl', '4xl', '3xl', '2xl', 'xl', 'l', 'm', 's'];
+
+mixin AvatarSquareDemo
+  .avatar.avatar-4xl&attributes(attributes)
+    = '\n'
+    img(src=`${CWD}assets/img/team/2.jpg` alt="")
+    = '\n'
+mixin AvatarStatusDemo
+  .row.align-items-center&attributes(attributes)
+    each value in status
+      .col-auto
+        +Avatar({size: '4xl', img: 'team/1.jpg', status: value, round: 'circle'})
+
+mixin AvatarSizesDemo
+  .row.align-items-center&attributes(attributes)
+    each size, index in avatars
+      .col-auto
+        +Avatar({size, img: 'team/1.jpg', round: 'circle'})

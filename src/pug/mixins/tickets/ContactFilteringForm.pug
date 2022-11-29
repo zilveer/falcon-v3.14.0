@@ -1,0 +1,80 @@
+mixin ContactFilteringForm
+  .card.scrollbar.shadow-none.shadow-show-xl&attributes(attributes)
+    .card-header.bg-light.d-none.d-xl-block
+      h6.mb-0 Filter
+    .card-body
+      form
+        .mb-2.mt-n2
+          label.mb-1 Contact Created
+          select.form-select.form-select-sm
+            option None
+            option Today
+            option(selected) Last Day
+            option Last 7 days
+            option Last 30 days
+            option Choose a time period
+        .mb-2
+          label.mb-1.mt-2 Zone of time
+          select.form-select.form-select-sm
+            option None
+            option Bangladesh Standard Time
+            option India Standard Time
+            option Pakistan Standard Time
+            option Central America Standard Time
+            option Nepal Standard Time
+        .mb-2
+          label.mb-1.mt-2 Subscription
+          select.form-select.form-select-sm
+            option None
+            option Active
+            option Inactive
+            option Expired
+            option Pending
+        .mb-2
+          label.mb-1.mt-2 Social
+          select.form-select.form-select-sm
+            option None
+            option Facebook
+            option Twitter
+            option LinkedIn
+        .mb-2
+          label.mb-1.mt-2 Agents
+          select.form-select.form-select-sm
+            option None
+            option Emma
+            option Luke
+            option(selected) Finley
+            option Peter Gill
+            option Sallie Reyes
+            option Freya
+            option Morrison
+            option Aar Kay
+            option Michele
+            option Banneker
+            option Romanin
+        .mb-2
+          label.mb-1.mt-2 Group
+          select.form-select.form-select-sm
+            option None
+            option My Group
+            option Billing
+            option Customer Support
+            option Enhancement
+            option Unassigned
+        div
+          label.mb-1.mt-2 Customer
+          select.form-select.form-select-sm
+            option None
+            option Emma
+            option Luke
+            option Finley
+            option Peter Gill
+            option Sallie Reyes
+            option Freya
+            option Morrison
+            option Aar Kay
+            option Michele
+            option Banneker
+            option Romanin
+    .card-footer.border-top.border-200.py-x1
+      button.btn.btn-primary.w-100 Update

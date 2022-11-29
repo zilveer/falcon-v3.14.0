@@ -1,0 +1,69 @@
+append variables
+  - 
+    var files = [
+      {
+        img: 'products/5-thumb.png',
+        name: 'apple-smart-watch.png',
+        user: 'Antony',
+        time: 'Just Now'
+      },
+      {
+        img: 'products/3-thumb.png',
+        name: 'iphone.jpg',
+        user: 'Antony',
+        time: 'Yesterday at 1:30 PM'
+      },
+      {
+        icon: 'icons/zip.png',
+        name: 'Falcon v1.8.2',
+        user: 'Jane',
+        time: '27 Sep at 10:30 AM'
+      },
+      {
+        img: 'products/2-thumb.png',
+        name: 'iMac.jpg',
+        user: 'Rowen',
+        time: '23 Sep at 6:10 PM'
+      },
+      {
+        icon: 'icons/docs.png',
+        name: 'functions.php',
+        user: 'John',
+        time: '1 Oct at 4:30 PM'
+      },
+      {
+        icon: 'icons/zip.png',
+        name: 'Boots4-v1.0.0.zip',
+        user: 'Anna',
+        time: '5 Oct at 4:30 PM'
+      },
+    ]
+mixin FileItem(file, index, start, end)
+  .d-flex.mb-3.hover-actions-trigger.align-items-center
+    .file-thumbnail
+      if file.img
+        img(src=`${CWD}assets/img/${file.img}`, alt="").border.h-100.w-100.fit-cover.rounded-2
+      else
+        img(src=`${CWD}assets/img/${file.icon}`, alt="").img-fluid
+    .ms-3.flex-shrink-1.flex-grow-1
+      h6.mb-1
+        a(href="#!").stretched-link.text-900.fw-semi-bold=file.name
+      .fs--1
+        span.fw-semi-bold=file.user
+        span.fw-medium.text-600.ms-2=file.time
+      .hover-actions.end-0.top-50.translate-middle-y
+        a.btn.btn-light.border-300.btn-sm.me-1.text-600(data-bs-toggle="tooltip" data-bs-placement="top" title='Download' href=`${CWD}assets/img/icons/cloud-download.svg` download)
+          img(src=`${CWD}assets/img/icons/cloud-download.svg`, alt="" width="15")
+        button.btn.btn-light.border-300.btn-sm.me-1.text-600.shadow-none(type="button" data-bs-toggle="tooltip" data-bs-placement="top" title='Edit')
+          img(src=`${CWD}assets/img/icons/edit-alt.svg`, alt="" width="15")
+  if(index !== end - start - 1)
+    hr.text-200
+
+mixin CardSharedFiles(start = 0, end = files.length)
+  .card&attributes(attributes)
+    .card-header.d-flex.flex-between-center.bg-light.py-2
+      h6.mb-0 Shared Files
+      a(href="#!").py-1.fs--1.font-sans-serif View All
+    .card-body.pb-0
+      each file, index in files.slice(start, end)  
+        +FileItem(file, index, start, end)

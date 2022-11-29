@@ -1,0 +1,39 @@
+
+mixin DropdownSettings(className)
+  .dropdown.font-sans-serif&attributes(attributes)
+    button.btn.btn-falcon-default.text-600.btn-sm.dropdown-toggle.dropdown-caret-none(type='button' id="email-settings" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false" class=`${className ? className : ''}`)
+      span.fas.fa-cog
+    .dropdown-menu.dropdown-menu-end.border.py-2(aria-labelledby="email-settings")
+      a(href='#!').dropdown-item Configure inbox
+      .dropdown-divider
+      a(href='#!').dropdown-item Settings
+      a(href='#!').dropdown-item Themes
+      .dropdown-divider
+      a(href='#!').dropdown-item Send feedback
+      a(href='#!').dropdown-item Help
+
+mixin EmailDetailHeader
+  .card&attributes(attributes)
+    .card-body.d-flex.justify-content-between
+      div
+        a.btn.btn-falcon-default.btn-sm(href=`${CWD}${paths['email-inbox']}` data-bs-toggle="tooltip" data-bs-placement="top" title="Back to inbox")
+          span.fas.fa-arrow-left
+        span.mx-1.mx-sm-2.text-300 |
+        button.btn.btn-falcon-default.btn-sm(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Archive")
+          span.fas.fa-archive
+        button.btn.btn-falcon-default.btn-sm.ms-1.ms-sm-2(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Delete")
+          span.fas.fa-trash-alt
+        button.btn.btn-falcon-default.btn-sm.ms-1.ms-sm-2(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Mark as unread")
+          span.fas.fa-envelope
+        button.btn.btn-falcon-default.btn-sm.ms-1.ms-sm-2(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Snooze")
+          span.fas.fa-clock
+        button.btn.btn-falcon-default.btn-sm.ms-1.ms-sm-2.d-none.d-sm-inline-block(type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Print")
+          span.fas.fa-print
+      .d-flex
+        .d-none.d-md-block
+          small 2 of 354
+          button(type='button').btn.btn-falcon-default.btn-sm.ms-2
+            span.fas.fa-chevron-left
+          button(type='button').btn.btn-falcon-default.btn-sm.ms-2
+            span.fas.fa-chevron-right
+        +DropdownSettings('ms-2')

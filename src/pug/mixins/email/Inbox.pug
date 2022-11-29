@@ -1,0 +1,281 @@
+block append variables
+  -
+    var emails = [
+      {
+        id: 1,
+        user: 'GitHub',
+        img: 'logos/github.png',
+        title: '[GitHub] Subscribed to technext/photogallery notifications',
+        description: 'Hey there, we’re just writing to let you know that you’ve been...',
+        time: '11:50AM',
+        star: true,
+        read: true
+      },
+      {
+        id: 2,
+        user: 'Diana',
+        img: 'team/17.jpg',
+        badge: 'NEW',
+        title: 'Your Daily Work Summary',
+        description: 'And they\'d probably do a lot of damage to an...',
+        time: 'Mar 26',
+        star: true,
+        read: false
+      },
+      {
+        id: 3,
+        user: 'Coursera',
+        img: 'logos/coursera.png',
+        title: 'Recommended: Server-side Development with NodeJS, Express and MongoDB',
+        description: 'We combed our catalog and found courses...',
+        time: 'Mar 3',
+        star: true,
+        read: true,
+        attachments: [
+          {
+            id: 1,
+            type: 'zip',
+            icon: 'fas fa-file-archive text-warning',
+            fileName: 'syllabus'
+          }
+        ]
+      },
+      {
+        id: 4,
+        user: 'Spectrum',
+        img: 'logos/spectrum.jpg',
+        title: 'Spectrum Weekly Digest: ZEIT watercooler, Escape Room!',
+        description: 'You didn’t gain any reputation last week. Reputation is an...',
+        time: 'Feb 21',
+        star: false,
+        read: true
+      },
+      {
+        id: 5,
+        user: 'Pinterest',
+        img: 'logos/pinterest.png',
+        title: 'Tony, 14 ideas in Pink saree',
+        description: 'New ideas for you in Web Development...',
+        time: 'Jan 16',
+        star: false,
+        read: true
+      },
+      {
+        id: 6,
+        user: 'Medium',
+        img: 'logos/medium.png',
+        title: 'Technology Brief: Who’s keeping us safe?',
+        description: 'policy at Google, Twitter, and Pinterest, says, "The team starts to feel like the...',
+        time: 'Jan 11',
+        star: true,
+        read: true
+      },
+      {
+        id: 7,
+        user: 'Unsplash Team',
+        img: 'logos/unsplash.png',
+        title: 'Get involved for International Women\'s Day - with link 👩',
+        description: 'The link below is now clickable for Chrome users...',
+        time: 'Dec 16',
+        star: false,
+        read: false,
+        attachments: [
+          {
+            id: 1,
+            type: 'img',
+            icon: 'fas fa-image text-danger',
+            fileName: 'Winter',
+            src: 'generic/1.jpg'
+          },
+          {
+            id: 2,
+            type: 'img',
+            icon: 'fas fa-image text-danger',
+            fileName: 'Coffee',
+            src: 'generic/8.jpg'
+          }
+        ]
+      },
+      {
+        id: 8,
+        user: 'Stripe',
+        img: 'logos/stripe.png',
+        title: 'Confirm your Stripe email address!',
+        description: 'Before you can start accepting live payments, you need to confirm your email address...',
+        time: 'Dec 11',
+        star: true,
+        read: true
+      },
+      {
+        id: 9,
+        user: 'Tony Stark',
+        img: 'team/4.jpg',
+        title: 'Bruce Banner - Invitation to edit',
+        description: 'Tony Stark has invited you to edit the following document...',
+        time: 'Mar 9',
+        star: false,
+        read: true,
+        attachments: [
+          {
+            id: 1,
+            type: 'doc',
+            icon: 'fas fa-file-alt text-primary',
+            fileName: 'Endgame schedule'
+          },
+          {
+            id: 2,
+            type: 'pdf',
+            icon: 'fas fa-file-pdf text-danger',
+            fileName: 'Endgame schedule'
+          }
+        ]
+      },
+      {
+        id: 10,
+        user: 'Youtube',
+        img: 'logos/youtube.png',
+        title: 'Firebase just uploaded a video',
+        description: 'Firebase has uploaded Understanding Cloud Functions: Configuration settings In the last...',
+        time: 'Nov 19',
+        star: false,
+        read: true,
+        attachments: [
+          {
+            id: 1,
+            type: 'video',
+            icon: 'fab fa-youtube text-youtube',
+            fileName: 'Cloud Functions'
+          }
+        ]
+      },
+      {
+        id: 11,
+        user: 'Bruce Banner',
+        img: 'team/5.jpg',
+        title: 'Invitation for migration',
+        description: 'Bruce Wayne, you have an invitation of migration...',
+        time: 'Oct 26',
+        star: false,
+        read: true,
+        attachments: [
+          {
+            id: 1,
+            type: 'pdf',
+            icon: 'fas fa-file-pdf text-danger',
+            fileName: 'Invitation'
+          }
+        ]
+      },
+      {
+        id: 12,
+        user: 'Goodreads',
+        img: 'logos/goodreads.png',
+        title: 'Goodreads Newsletter: March 5, 2019',
+        description: 'The most anticipated books of spring, a rocking read, and more! Goodreads Spring...',
+        time: 'March 5',
+        star: false,
+        read: false
+      }
+    ];
+
+mixin ButtonReload(className)
+  button.btn.btn-falcon-default.btn-sm&attributes(attributes)(type="button" onclick="location.reload()")
+    span.fas.fa-redo
+
+mixin Paginations 
+  button(type='button' disabled).btn.btn-falcon-default.btn-sm.ms-1.ms-sm-2
+    span.fas.fa-chevron-left
+  button(type='button').btn.btn-falcon-default.btn-sm.ms-1.ms-sm-2
+    span.fas.fa-chevron-right
+
+mixin EmailActions
+  .btn-group.btn-group-sm&attributes(attributes)
+    button.btn.btn-falcon-default(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Archive")
+      span.fas.fa-archive
+    button.btn.btn-falcon-default(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Delete")
+      span.fas.fa-trash-alt
+    button.btn.btn-falcon-default(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Mark as unread")
+      span.fas.fa-envelope
+    button.btn.btn-falcon-default(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Snooze")
+      span.fas.fa-clock
+
+mixin DropdownFilter(className)
+  .dropdown.font-sans-serif&attributes(attributes)
+    button.btn.btn-falcon-default.text-600.btn-sm.dropdown-toggle.dropdown-caret-none(type='button' id="email-filter" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class=`${className ? className : ''}`)
+      span.fas.fa-sliders-h
+    .dropdown-menu.border.py-0(aria-labelledby="email-filter")
+      .bg-white.dark__bg-dark.py-2
+        a(href='#!').dropdown-item.d-flex.justify-content-between All
+          span.fas.fa-check(data-fa-transform="down-4 shrink-4")
+        a(href='#!').dropdown-item Unread
+        a(href='#!').dropdown-item To me
+        a(href='#!').dropdown-item Flagged
+        a(href='#!').dropdown-item Mentions
+        a(href='#!').dropdown-item Attachments
+
+mixin DropdownSettings(className)
+  .dropdown.font-sans-serif&attributes(attributes)
+    button.btn.btn-falcon-default.text-600.btn-sm.dropdown-toggle.dropdown-caret-none(type='button' id="email-settings" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false" class=`${className ? className : ''}`)
+      span.fas.fa-cog
+    .dropdown-menu.dropdown-menu-end.border.py-0(aria-labelledby="email-settings")
+      .py-2
+        a(href='#!').dropdown-item Configure inbox 
+        .dropdown-divider
+        a(href='#!').dropdown-item Settings
+        a(href='#!').dropdown-item Themes
+        .dropdown-divider
+        a(href='#!').dropdown-item Send feedback
+        a(href='#!').dropdown-item Help
+
+mixin ActionButtons(read)
+  .btn-group.btn-group-sm.z-index-2(style="width: 10rem;")&attributes(attributes)
+    button.btn.btn-light.hover-bg-200(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Archive")
+      span.fas.fa-archive
+    button.btn.btn-light.hover-bg-200(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Delete")
+      span.fas.fa-trash-alt
+    button.btn.btn-light.hover-bg-200(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title=`${read ? 'Mark as unread' : 'Mark as read'}`)
+      span.fas(class=`${read ? 'fa-envelope' : 'fa-envelope-open'}`)
+    button.btn.btn-light.hover-bg-200(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Snooze")
+      span.fas.fa-clock
+
+mixin EmailRow(config)
+  .row.border-bottom.border-200.hover-actions-trigger.hover-shadow.py-2.px-1.mx-0(class=`${config.read ? 'bg-light' : 'bg-white dark__bg-dark'}` data-href=`${CWD}${paths['email-detail']}`)
+    +ActionButtons(config.read).hover-actions.end-0.me-3
+    .col-auto.d-none.d-sm-block
+      .d-flex(class=`${config.read ? 'bg-light' : 'bg-white dark__bg-dark'}`)
+        .form-check.mb-0.fs-0
+          input.form-check-input(type='checkbox' id=`checkbox-${config.id}` data-bulk-select-row)
+        span(class=`${config.star ? 'fas text-warning' : 'far text-300'}` data-fa-transform="down-4").fa-star.ms-1
+
+    .col.col-md-9.col-xxl-10
+      .row
+        .col-md-4.col-xl-3.col-xxl-2.ps-md-0.mb-1.mb-md-0
+          .d-flex.position-relative
+            if(config.img)
+              +Avatar({img: config.img, size: 's', round: 'soft'})
+            else
+              +Avatar({name: config.user, size: 's'})
+            .flex-1.ms-2
+              a(href=`${CWD}${paths['email-detail']}` class=`${!config.read ? 'fw-bold' : ''}`).stretched-link.inbox-link=config.user
+              if(config.badge)
+                span.badge.badge-soft-success.badge-pill.ms-2=config.badge
+        .col
+          a(href=`${CWD}${paths['email-detail']}`).d-block.inbox-link
+            span(class=`${!config.read ? 'fw-bold' : ''}`)=config.title
+            span.mx-1 &ndash;
+            span=config.description
+          if(config.attachments)
+            each attachment in config.attachments
+              if(attachment.type === 'img')
+                a.d-inline-flex.align-items-center.border.rounded-pill.px-3.py-1.me-2.mt-2.inbox-link(href=`${CWD}assets/img/${attachment.src}` data-gallery=`gallery-${config.id}`)
+                  span(class=attachment.icon data-fa-transform="grow-4")
+                  span.ms-2 #{attachment.fileName}
+              else
+                a.d-inline-flex.align-items-center.border.rounded-pill.px-3.py-1.me-2.mt-2.inbox-link(href="#!")
+                  span(class=attachment.icon data-fa-transform="grow-4")
+                  span.ms-2 #{attachment.fileName}
+
+
+    .col-auto.ms-auto.d-flex.flex-column.justify-content-between
+      span(class=`${!config.read ? 'fw-bold' : ''}`)=config.time
+      span(class=`${config.star ? 'fas text-warning' : 'far text-300'}` data-fa-transform="down-7").fa-star.ms-auto.mb-2.d-sm-none

@@ -1,0 +1,13 @@
+extends LayoutTheme
+include ../mixins/common/PageHeader
+include ../mixins/common/DocCardHeader
+
+
+prepend styles
+  link(href=`${CWD}vendors/prism/prism-okaidia.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/prism/prism.js`)
+
+block content
+  block component

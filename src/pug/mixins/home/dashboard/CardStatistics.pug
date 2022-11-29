@@ -1,0 +1,114 @@
+include Mixins
+append variables
+  -
+    var marketShareDefault = {
+      title: 'Market Share',
+      ammount: '26M',
+      chart: 'echart-market-share',
+      data:[
+        {
+          brand: 'Samsung',
+          color: 'primary',
+          percentage: '33'
+        },
+        {
+          brand: 'Huawei',
+          color: 'info',
+          percentage: '29'
+        },
+        {
+          brand: 'Apple',
+          color: '300',
+          percentage: '20'
+        },
+      ]
+    }
+
+mixin CardWeatherUpdate
+  .card&attributes(attributes)
+    .card-header.d-flex.flex-between-center.pb-0
+      h6.mb-0 Weather
+      +DashboardDropdown('dropdown-weather-update')
+    .card-body.pt-2
+      .row.g-0.h-100.align-items-center
+        .col
+          .d-flex.align-items-center
+            img(src=`${CWD}assets/img/icons/weather-icon.png`, alt="" height="60").me-3
+            div
+              h6.mb-2 New York City
+              .fs--2.fw-semi-bold
+                .text-warning Sunny
+                | Precipitation: 50%
+
+        .col-auto.text-center.ps-2
+          .fs-4.fw-normal.font-sans-serif.text-primary.mb-1.lh-1 31&deg;
+          .fs--1.text-800 32&deg; / 25&deg;
+
+mixin CardMarketShare(marketShare=marketShareDefault)
+  .card.h-md-100&attributes(attributes)
+    .card-body
+      .row.h-100.justify-content-between.g-0
+        .col-5.col-sm-6.col-xxl.pe-2
+          h6.mt-1 #{marketShare.title}
+          .fs--2.mt-3
+            each item in marketShare.data
+              .d-flex.flex-between-center.mb-1
+                .d-flex.align-items-center
+                  span.dot(class = `bg-${item.color}`)
+                  span.fw-semi-bold #{item.brand}
+                .d-xxl-none #{item.percentage}%
+        .col-auto.position-relative
+          div(class= `${marketShare.chart}`)
+          .position-absolute.top-50.start-50.translate-middle.text-dark.fs-2 26M
+
+mixin CardTotalOrder
+  .card.h-md-100
+    .card-header.pb-0
+      h6.mb-0.mt-2 Total Order
+    .card-body.d-flex.flex-column.justify-content-end
+      .row.justify-content-between
+        .col-auto.align-self-end
+          .fs-4.fw-normal.font-sans-serif.text-700.lh-1.mb-1 58.4K
+          span.badge.rounded-pill.fs--2.bg-200.text-primary
+            span.fas.fa-caret-up.me-1
+            | 13.6%
+        .col-auto.ps-0.mt-n4
+          .echart-default-total-order(data-echarts!={
+              tooltip:{
+                trigger:'axis',
+                formatter: '{b0} : {c0}',
+              },
+              xAxis:{
+                data: ['Week 4', 'Week 5', 'Week 6', 'Week 7'],
+              },
+              series: [
+                { 
+                  type: 'line',
+                  data: [20, 40, 100, 120],
+                  smooth:true,
+                  lineStyle: {
+                    width: 3,
+                  },
+                }
+              ],
+            grid:{ 
+                bottom: '2%',
+                top: '2%',
+                right: '10px',
+                left: '10px',
+              }
+            } data-echart-responsive="true")
+
+mixin CardWeeklySales(amountFontSize='fs-4')
+  .card.h-md-100.ecommerce-card-min-width
+    .card-header.pb-0
+      h6.mb-0.mt-2.d-flex.align-items-center Weekly Sales
+        span.ms-1.text-400(data-bs-toggle="tooltip" data-bs-placement="top" title="Calculated according to last week's sales")
+          span.far.fa-question-circle(data-fa-transform="shrink-1")
+    .card-body.d-flex.flex-column.justify-content-end
+      .row
+        .col
+          p.font-sans-serif.lh-1.mb-1(class = `${amountFontSize}`) $47K
+          span.badge.badge-soft-success.rounded-pill.fs--2 +3.5%
+        .col-auto.ps-0
+          .echart-bar-weekly-sales.h-100&attributes(attributes)

@@ -1,0 +1,38 @@
+append variables 
+  - var countries = ["Afghanistan", "Albania", "Algeria", "American Samoa", "Antigua and Barbuda"]
+
+mixin Select2
+  +ComponentCard({
+    title: 'Single Select',
+    anchor: true,
+    anchorID: 'jquery-select2-single-select',
+  }).mb-3
+    .form-group
+      label(for="basic-example") Select an option
+      select.form-select.selectpicker#basic-example(data-options!={placeholder: 'Select country...'})
+        option Select country...
+        each country in countries
+          option=country
+  
+  +ComponentCard({
+    title: 'Multiple Select',
+    anchor: true,
+    anchorID: 'jquery-select2-multiple-select',
+  }).mb-3
+    .form-group
+      label(for="multiple-select") Select options
+      select.form-select.selectpicker#multiple-select(multiple data-options!={placeholder: 'Select your options'})
+        each country in countries.slice(0, 4)
+          option=country
+
+  .card
+    .card-body
+      h5.mb-0 Javascript 
+      +ComponentCardLib.mb-3
+        script(src=`vendors/jquery/jquery.min.js`)
+        script(src=`vendors/select2/select2.min.js`)
+        script(src=`vendors/select2/select2.full.min.js`)
+      h5.mb-0 Stylesheets 
+      +ComponentCardLib
+        script(src=`vendors/select2/select2.min.css`)
+        script(src=`vendors/select2-bootstrap-5-theme/select2-bootstrap-5-theme.min.css`)

@@ -1,0 +1,34 @@
+mixin CloseButtonWhiteVariant
+  button.btn-close.btn-close-white(type='button' aria-label='Close')
+  button.btn-close.btn-close-white(type='button' disabled='' aria-label='Close')
+
+
+mixin CloseButtonWhiteVarientDescription
+  p&attributes(attributes) Change the default 
+    code .btn-close 
+    | to be white with the 
+    code .btn-close-white 
+    | class. This class uses the 
+    code backdrop-filter 
+    | property to invert the 
+    code background-image.
+
+mixin CloseButtonExample
+  button.btn-close(type='button' aria-label='Close')
+  button.btn-close(type='button' disabled='' aria-label='Close')
+
+mixin FalconCloseButton
+  .btn-close-falcon
+
+mixin CloseButtonExampleDescription
+  p&attributes(attributes)
+    strong Be sure to include text for screen readers
+    | , as we’ve done with 
+    code aria-label
+    | . Disabled close buttons have 
+    code pointer-events: none 
+    | and 
+    code user-select: none
+    |  applied to, preventing hover and active states from triggering.
+
+

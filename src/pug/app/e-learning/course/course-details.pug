@@ -1,0 +1,53 @@
+extends ../../../layouts/LayoutTheme
+include ../../../mixins/e-learning/Mixins
+include ../../../mixins/e-learning/CourseGrid
+include ../../../mixins/e-learning/CourseDetails
+
+append variables 
+  - var attrsMain = { id: 'top', class: 'main pb-6 pb-lg-0' };
+  - var hasTopNavOnly = true;
+
+prepend styles
+  link(href=`${CWD}vendors/swiper/swiper-bundle.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/glightbox/glightbox.min.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/swiper/swiper-bundle.min.js`)
+  script(src=`${CWD}vendors/glightbox/glightbox.min.js`) 
+
+block navbarTop
+
+block navbarVertical
+  if ENV === 'PROD'
+    +NavbarDoubleTop({
+      toggleID: 'navbarDoubleTop',
+      search: true,
+      changelog: true,
+      footer: true
+    }).navbar-expand-lg
+  
+  +NavbarTop({
+    toggleID: 'navbarStandard',
+    links: true,
+    search: false,
+    changelog: true
+  }).navbar-expand-lg
+
+block content
+  +CourseBanner.mb-3
+  .row.g-lg-3
+    .col-lg-8.order-1.order-lg-0
+      +CourseFeatures
+      +WhatCourseWillTeach
+      +CourseLessonPlans
+      +CourseRequirements
+      +CourseTrainer
+      +CourseReviews
+      +SimilarCourses
+    .col-lg-4
+      .course-details-sticky-sidebar.mb-lg-8.mt-xl-n10.pe-xl-4.pe-xxl-7
+        +CoursePricingPlan
+        .d-none.d-xl-block.position-absolute.z-index--1.top-0.end-0.text-end.me-n2.me-xxl-4.mt-xl-6
+          img(src=`${CWD}assets/img/illustrations/bg-wave.png`, alt="", style="max-width: 23.75rem;").bg-card
+
+  +CourseBottomBar

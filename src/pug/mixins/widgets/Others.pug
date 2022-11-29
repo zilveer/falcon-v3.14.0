@@ -1,0 +1,79 @@
+include ../home/dashboard-alt/CardDipositeStatus
+include ../home/dashboard-alt/CardWorldMap
+include ../common/PageHeader
+include ../authentication/LogOutContent
+include ../authentication/ConfirmMailContent
+include ../pages/Settings
+
+include ../home/saas/DoMoreCard
+include ../home/e-commerce/CardGreetings
+
+include ../home/project-management/CardGreetings
+include ../home/project-management/CardCalendarManagement
+
+mixin Others
+  +WidgetSectionTitle({
+    transform: 'shrink-2',
+    icon: 'fas fa-folder-plus',
+    title: 'Others',
+    subtitle: `Get more awesome cards for showing your different types of content..`
+  }).mb-4.mt-6
+
+  .row.g-3.mb-3
+    .col-xxl-8.d-flex.flex-column.align-items-stretched
+      +BillingPageHeader
+      +CardDipositeStatus.mb-3
+      +EventCreateFooter.mb-3
+      +BirthdayNotification
+    .col-xxl-4
+      +SettingsDanzerZone.h-xxl-100
+  
+  .row.g-3.mb-3
+    .col-xl-7
+      +CardGreetings
+    .col-xl-5
+      +CardGreetingsManagement.h-100
+  .row.g-3.mb-3
+    .col-xl-5.col-xxl-4
+      .row.g-3
+        .col-lg-4.col-xl-12
+          +CardWeatherUpdate.h-100
+        .col-lg-5.col-xl-12
+          +CardStorageSpaceStatus
+        .col-lg-3.col-xl-12
+          .card.h-100
+            +Background({
+              image: `${CWD}assets/img/icons/spot-illustrations/corner-4.png`, 
+              className:"d-none d-xl-block bg-card",
+              attrs: {
+                style: 'opacity: 0.7'
+              }
+            })
+            .card-body
+              h5 Order Details: #2737
+              p.fs--1 April 21, 2019, 5:33 PM
+              div
+                strong.me-2 Status: 
+                .badge.rounded-pill.badge-soft-success.fs--2 Completed
+                  span.fas.fa-check.ms-1(data-fa-transform="shrink-2")
+    .col-xl-7.col-xxl-8
+      +CardWorldMap({title: 'Project Locations'})
+  
+  .row.g-3.mb-3
+    .col-lg-8
+      +CardCalendarManagement.h-100
+    .col-lg-4
+      +DoMoreCard.h-100
+  .row.g-3.mb-3
+    .col-lg-6
+      +CardTeamProgress
+    .col-lg-6
+      +CardFalconRoadMapDiscussion.h-100
+  .row.g-3.mb-3
+    .col-lg-6
+      +LayoutAuthBasicCard.h-100
+        +LogOutContent.text-center
+    .col-lg-6
+      +LayoutAuthBasicCard
+        +ConfirmMailContent.text-center
+  

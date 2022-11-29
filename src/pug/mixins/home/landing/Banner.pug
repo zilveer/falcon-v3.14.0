@@ -1,0 +1,22 @@
+mixin Banner
+  +Section({
+    image: `${CWD}assets/img/generic/bg-1.jpg`,
+    className: 'overlay',
+    attrs: {style: 'background-position: center bottom'}
+  }).py-0.overflow-hidden.light#banner
+    .row.flex-center.pt-8.pt-lg-10.pb-lg-9.pb-xl-0
+      .col-md-11.col-lg-8.col-xl-4.pb-7.pb-xl-9.text-center.text-xl-start
+        a(href='#!').btn.btn-outline-danger.mb-4.fs--1.border-2.rounded-pill
+          span.me-2(role="img" aria-label="Gift") 🎁
+          | Become a pro
+        h1.text-white.fw-light Bring 
+          span.typed-text.fw-bold(data-typed-text!=["design", "beauty", "elegance", "perfection"])
+          br
+          | to your webapp
+        p.lead.text-white.opacity-75 With the power of #{name}, you can now focus only on functionaries for your digital products, while leaving the UI design on us!
+        a.btn.btn-outline-light.border-2.rounded-pill.btn-lg.mt-4.fs-0.py-2(href='#!') Start building with the falcon
+          span.fas.fa-play.ms-2(data-fa-transform="shrink-6 down-1")
+      .col-xl-7.offset-xl-1.align-self-end.mt-4.mt-xl-0
+        a.img-landing-banner.rounded(href=`${CWD}${paths['default-dashboard']}`)
+          img.img-fluid(src=`${CWD}assets/img/generic/dashboard-alt.jpg` alt='')
+

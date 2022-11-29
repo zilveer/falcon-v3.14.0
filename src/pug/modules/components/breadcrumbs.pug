@@ -1,0 +1,35 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/Breadcrumb
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Breadcrumb',
+      description: 'Indicate the current page’s location within a navigational hierarchy that automatically adds separators via CSS.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/components/breadcrumb/`,
+      linkText: 'Breadcrumb on Bootstrap'
+    }
+
+block component
+  +PageHeader(pageHeader)
+
+  
+  +ComponentCard({
+    title: 'Example',
+    anchor: true,
+  }).mb-3
+    +BreadcrumbExampleDemo
+
+
+  +ComponentCard({
+    title: 'Divider',
+    anchor: true,
+  }).mb-3
+    +BreadcrumbDividerExample
+
+  +ComponentCard({
+    title: 'SVG Divider',
+    anchor: true,
+  }).mb-3
+    +BreadcrumbSvgDividerExample

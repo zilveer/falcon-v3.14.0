@@ -1,0 +1,62 @@
+extends ../../../layouts/LayoutComponent
+include ../../../mixins/forms/Checks
+
+append variables            
+  -
+    var pageHeader = {
+      title: 'Checks',
+      description: 'Create consistent cross-browser and cross-device checkboxes and radios with our completely rewritten checks component.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/forms/checks`,
+      linkText: "Form's check on Bootstrap"
+    }
+
+
+block component
+  +PageHeader(pageHeader)
+
+  
+  +ComponentCard({
+    title: 'Checks',
+    anchor: true,
+  }).mb-3
+    +Checks
+
+    
+  +ComponentCard({
+    title: 'Indeterminate',
+    anchor: true,
+    description:"Checkboxes can utilize the <code> :indeterminate </code> pseudo class when manually set via JavaScript (there is no available HTML attribute for specifying it.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +IndeterminateBox
+
+
+  +ComponentCard({
+    title: 'Radios',
+    anchor: true,
+  }).mb-3
+    +Radios
+
+  +ComponentCard({
+    title: 'Switches',
+    anchor: true,
+    description:"A switch has the markup of a custom checkbox but uses the <code>.form-switch</code> class to render a toggle switch. Switches also support the <code>disabled</code> attribute.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +Switches
+
+  +ComponentCard({
+    title: 'Check Inline',
+    anchor: true,
+    description:"Group checkboxes or radios on the same horizontal row by adding <code>.form-check-inline</code> to any <code>.form-check</code>.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +InlineCheckbox
+               
+
+  +ComponentCard({
+    title: 'Radio Inline',
+    anchor: true,
+  }).mb-3
+    +InlineRadio
+  

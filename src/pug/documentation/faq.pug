@@ -1,0 +1,18 @@
+extends ../layouts/LayoutTheme
+include ../mixins/common/PageHeader
+include ../mixins/faq/FaqDoc
+
+prepend styles
+  link(href=`${CWD}vendors/glightbox/glightbox.min.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/glightbox/glightbox.min.js`) 
+
+             
+append content
+  +PageHeader({
+    title: 'FAQ on using Falcon',
+    description: `Below you'll find answers to the questions we get asked the most.`
+  })
+
+  +FaqDoc

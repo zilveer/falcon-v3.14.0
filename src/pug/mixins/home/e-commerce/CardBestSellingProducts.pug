@@ -1,0 +1,114 @@
+append variables
+  -
+    var bestSellingProducts = [
+      {
+        img: 'ecommerce/1.jpg',
+        title: 'iPad Pro 2020 11',
+        type: 'Tablet',
+        orderNumbers: '26',
+        orderPercent: '31',
+        revenue: '1311',
+        revenuePercent: '41'
+      },
+      {
+        img: 'ecommerce/2.jpg',
+        title: 'iPhone XS',
+        type: 'Smartphone',
+        orderNumbers: '18',
+        orderPercent: '29',
+        revenue: '1311',
+        revenuePercent: '41'
+      },
+      {
+        img: 'ecommerce/3.jpg',
+        title: 'Amazfit Pace (Global)',
+        type: 'Smartwatch',
+        orderNumbers: '16',
+        orderPercent: '27',
+        revenue: '539',
+        revenuePercent: '27'
+      },
+      {
+        img: 'ecommerce/4.jpg',
+        title: 'Lotto AMF Posh Sports Plus',
+        type: 'Shoes',
+        orderNumbers: '11',
+        orderPercent: '21',
+        revenue: '245',
+        revenuePercent: '17'
+      },
+      {
+        img: 'ecommerce/5.jpg',
+        title: 'Casual Long Sleeve Hoodie',
+        type: 'Jacket',
+        orderNumbers: '10',
+        orderPercent: '19',
+        revenue: '234',
+        revenuePercent: '7'
+      },
+      {
+        img: 'ecommerce/6.jpg',
+        title: 'Playstation 4 1TB Slim',
+        type: 'Console',
+        orderNumbers: '10',
+        orderPercent: '19',
+        revenue: '234',
+        revenuePercent: '7'
+      },
+      {
+        img: 'ecommerce/7.jpg',
+        title: 'SUNGAIT Lightweight Sunglass',
+        type: 'Jacket',
+        orderNumbers: '10',
+        orderPercent: '19',
+        revenue: '234',
+        revenuePercent: '7'
+      },
+    ]
+
+
+mixin ProductItem(product, index, totalPrice)
+
+  tr(class=(index !== bestSellingProducts.length - 1 ? 'border-bottom border-200' : ''))
+    td
+      .d-flex.align-items-center.position-relative
+        img(src=`${CWD}assets/img/${product.img}`, width="60" alt="").rounded-1.border.border-200
+        .flex-1.ms-3
+          h6.mb-1.fw-semi-bold.text-nowrap
+            a(href="#!").text-900.stretched-link=product.title
+          p.fw-semi-bold.mb-0.text-500=product.type
+    td.align-middle.text-center.fw-semi-bold #{product.orderNumbers}
+    td.align-middle.text-center.fw-semi-bold #{product.orderPercent}%
+    td.align-middle.text-end.fw-semi-bold $#{product.revenue}
+    td.align-middle.pe-x1
+      .d-flex.align-items-center
+        .progress(style=`height: 5px;width:80px`).me-3.rounded-3.bg-200
+          .progress-bar.bg-primary.rounded-pill(role='progressbar', style=`width: ${product.revenuePercent}%;`  aria-valuenow=`${product.revenuePercent}`, aria-valuemin='0' aria-valuemax='100')
+        .fw-semi-bold.ms-2 #{product.revenuePercent}%
+
+
+mixin CardBestSellingProducts
+  .card.h-lg-100.overflow-hidden&attributes(attributes)
+    .card-body.p-0
+      .table-responsive.scrollbar
+        table.table.table-dashboard.mb-0.table-borderless.fs--1.border-200
+          thead.bg-light
+            tr.text-900
+              th Best Selling Products
+              th.text-center Orders(269)
+              th.text-center Order(%)
+              th.text-end Revenue
+              th.pe-x1.text-end(style="width: 8rem") Revenue (%)
+          tbody
+            each product, index in bestSellingProducts
+              +ProductItem(product, index, totalPrice)
+              
+    .card-footer.bg-light.py-2
+      .row.flex-between-center
+        .col-auto
+          select.form-select.form-select-sm
+            option Last 7 days
+            option Last Month
+            option Last Year
+        .col-auto
+          a(href="#!").btn.btn-sm.btn-falcon-default View All

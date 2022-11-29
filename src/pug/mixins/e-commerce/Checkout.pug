@@ -1,0 +1,141 @@
+mixin ShippingAddress
+  .card.mb-3
+    .card-header.bg-light
+      .row.flex-between-center
+        .col-sm-auto
+          h5.mb-2.mb-sm-0 Your Shipping Address
+        .col-sm-auto
+          a(href="#!").btn.btn-falcon-default.btn-sm
+            span.fas.fa-plus.me-2(data-fa-transform="shrink-2")
+            | Add New Address     
+    .card-body
+      .row
+        .col-md-6.mb-3.mb-md-0
+          .form-check.mb-0.custom-radio.radio-select
+            input#address-1.form-check-input(type='radio' name='clientName' checked)
+            label.form-check-label.mb-0(for='address-1').fw-bold.d-block Antony Hopkins
+              span.radio-select-content
+                span  2392 Main Avenue,
+                  br 
+                  | Pensaukee,
+                  br
+                  | New Jersey 02139
+                  span.d-block.mb-0.pt-2 +(856) 929-229
+            a(href="#!").fs--1 Edit
+
+        .col-md-6
+          .position-relative
+            .form-check.mb-0.custom-radio.radio-select
+              input#address-2.form-check-input(type='radio' name='clientName')
+              label.form-check-label.mb-0(for='address-2').fw-bold.d-block Robert Bruce
+                span.radio-select-content
+                  span 3448 Ile De France St #242
+                    br
+                    | Fort Wainwright, 
+                    br
+                    | Alaska, 99703
+                    span.d-block.mb-0.pt-2 +(901) 637-734
+              a(href="#!").fs--1 Edit
+
+mixin PaymentCreditCard
+
+  +Radio({ 
+    id:'credit-card', 
+    text: 'Credit Card', 
+    parentAttrs: { class: 'mb-0' }, 
+    labelAttrs: { class: 'mb-2 fs-1'} 
+  })(checked name="payment-method")
+  .row.gx-0.ps-2.mb-4
+    .col-sm-8.px-3
+      .mb-3
+        label.form-label(for='inputNumber').ls.text-uppercase.text-600.fw-semi-bold.mb-0 Card Number
+        input.form-control#inputNumber(type="text" placeholder="•••• •••• •••• ••••")
+      .row.align-items-center
+        .col-6
+          label.form-label.ls.text-uppercase.text-600.fw-semi-bold.mb-0 Exp Date
+          input.form-control(type="text" placeholder="mm/yyyy")
+        .col-6
+          label.form-label.ls.text-uppercase.text-600.fw-semi-bold.mb-0 CVV
+            a(href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Card verification value").d-inline-block
+              span.fa.fa-question-circle.ms-2
+          input.form-control(type="text" placeholder="123" maxlength=3 pattern="[0-9]{3}")
+    .col-4.ps-3.text-center.pt-2.d-none.d-sm-block
+      .rounded-1.p-2.mt-3.bg-100
+        .text-uppercase.fs--2.fw-bold We Accept
+        img(src=`${CWD}assets/img/icons/icon-payment-methods-grid.png`, alt="" width=120)
+
+
+mixin PaymentPaypal
+  +Radio({ 
+    id:'paypal',
+    parentAttrs: { class: 'd-flex align-items-center'}, 
+    labelAttrs: { class: 'mb-0 ms-2'}
+  })(name="payment-method")
+    img(src=`${CWD}assets/img/icons/icon-paypal-full.png` height=20 alt='')
+
+mixin CheckoutFooter
+  .row
+    .col-md-7.col-xl-12.col-xxl-7.px-md-3.mb-xxl-0.position-relative
+      .d-flex
+        img(src=`${CWD}assets/img/icons/shield.png`, alt="" width="60" height="60").me-3
+        .flex-1
+          h5.mb-2 Buyer Protection
+          .form-check.mb-0
+            input#protection-option-1.form-check-input(type='checkbox' checked)
+            label.form-check-label.mb-0(for='protection-option-1') 
+              strong Full Refund 
+              | If you don't 
+              br.d-none.d-md-block.d-lg-none
+              | receive your order
+          .form-check
+            input#protection-option-2.form-check-input(type='checkbox' checked)
+            label.form-check-label.mb-0(for='protection-option-2') 
+              strong Full or Partial Refund, 
+              | If the product is not as described in details
+          a(href="#!").fs--1.ms-3.ps-2 Learn More
+            span.fas.fa-caret-right.ms-1(data-fa-transform="down-2")     
+      .vertical-line.d-none.d-md-block.d-xl-none.d-xxl-block 
+    .col-md-5.col-xl-12.col-xxl-5.ps-lg-4.ps-xl-2.ps-xxl-5.text-center.text-md-start.text-xl-center.text-xxl-start
+      .border-bottom.border-dashed.d-block.d-md-none.d-xl-block.d-xxl-none.my-4
+      .fs-2.fw-semi-bold All Total: 
+        span.text-primary $3320
+      button.btn.btn-success.mt-3.px-5(type="submit") Confirm &amp; Pay
+      p.fs--1.mt-3.mb-0 By clicking 
+        strong Confirm & Pay 
+        | button you agree to the 
+        a(href="#!") Terms &amp; Conditions
+
+mixin OrderSummary
+  .card&attributes(attributes)
+    .card-header.bg-light.btn-reveal-trigger.d-flex.flex-between-center
+      h5.mb-0 Order Summary
+      a(href=`${CWD}${paths['shopping-cart']}`).btn.btn-link.btn-sm.btn-reveal.text-600
+        span.fas.fa-pencil-alt
+    .card-body
+      table.table.table-borderless.fs--1.mb-0
+        tr.border-bottom
+          th.ps-0.pt-0 Apple MacBook Pro 15" x 1
+            .text-400.fw-normal.fs--2 Z0V20008N: 2.9GHz 6-core 8th-Gen Intel Core i9, 32GB RAM
+          th.pe-0.text-end.pt-0 $1345
+        tr.border-bottom
+          th.ps-0 Apple iMac Pro x 1
+            .text-400.fw-normal.fs--2 27-inch with Retina 5K Display, 3.0GHz 10-core Intel Xeon W, 1TB
+          th.pe-0.text-end $2010
+        tr.border-bottom
+          th.ps-0 Subtotal
+          th.pe-0.text-end $3355
+        tr.border-bottom
+          th.ps-0 Coupon: 
+            span.text-success 40SITEWIDE
+          th.pe-0.text-end -$55
+        tr.border-bottom
+          th.ps-0 Shipping
+          th.pe-0.text-end $20
+        tr
+          th.ps-0.pb-0 Total
+          th.pe-0.text-end.pb-0 $3320
+    .card-footer.d-flex.justify-content-between.bg-light
+      .fw-semi-bold Payable Total
+      .fw-bold $3320
+
+

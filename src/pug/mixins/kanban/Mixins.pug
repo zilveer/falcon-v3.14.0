@@ -1,0 +1,366 @@
+append variables
+  - var attrsBody = { class: 'overflow-hidden' };
+  - var attrsLayout = Object.assign(attrsLayout, { class: 'container-fluid', 'data-layout': 'container-fluid' })
+  - var attrsHtml = Object.assign(attrsHtml, { class: 'navbar-vertical-collapsed' })
+  - var footer = false;
+  -
+    var labels = [
+      { text: 'New', type: 'success'},
+      { text: 'Goal', type: 'primary'},
+      { text: 'Enhancement', type: 'info'},
+      { text: 'Bug', type: 'danger'},
+      { text: 'Documentation', type: 'secondary'},
+      { text: 'Helper', type: 'warning'},
+    ]
+  -
+    var members = [
+      { name: 'Anna Karinina', img: 'team/1.jpg', role: 'Member' },
+      { name: 'Antony Hopkins', img: 'team/2.jpg', role: 'Member' },
+      { name: 'Rowan Atkinson', img: 'team/3.jpg', role: 'Member' },
+      { name: 'John Doe', img: 'team/4.jpg', role: 'Member' },
+      { name: 'Emily Rose', img: 'team/5.jpg', role: 'Member' },
+      { name: 'Marry Jane', img: 'team/6.jpg', role: 'Member' },
+    ]
+  -
+    var attachments = [
+      { image: `${CWD}assets/img/kanban/3.jpg`, src: `${CWD}assets/img/kanban/3.jpg`, title: 'final-img.jpg', date: '2020-04-18 5:25 pm', type: 'image' },
+      { image: `${CWD}assets/img/kanban/4.jpg`, src: `${CWD}assets/img/kanban/4.jpg`, title: 'picture.png', date: '2020-04-20 4:34 pm', type: 'image' },
+      { src: `#!`, title: 'sample.txt', date: '2020-04-21 2:10 pm', type: 'txt' },
+      { src: `#!`, title: 'example.pdf', date: '2020-05-02 11:34 am', type: 'pdf' },
+      { image: `${CWD}assets/video/beach.jpg`, src: `${CWD}assets/video/beach.mp4`, title: 'beach.mp4', date: '2020-05-10 3:40 pm', type: 'video' }
+    ]
+  -
+    var kanbanItems = [
+      {
+        name: 'Documentation',
+        items: [
+          { title: '👌 <strong>Drag cards</strong> to any list and place anywhere in the list' },
+          { title: '👇 <strong>Click</strong> cards to see the detail of the cards or edit them'},
+          { title: '➕ <strong>Click "Add Another Card" </strong> at the bottom of the list for a new card'},
+          { title: '<strong>Hovering on the cards</strong> will reveal meatball (...) button, click that for more options'},
+          { title: '<strong>At the top of the board, click ⭐</strong> to pin this board to your favorites '},
+          { title: '🙋 Add members to the board by clicking <strong>+ Invite</strong> at the top of the board'},
+          { title: '📃 Add more lists to this board by clicking <strong>+ Add Another List</strong>'},
+          { title: '<strong>Click the meatball (...)</strong> button at the top of any list for more options'},
+
+        ]
+      },
+      {
+        name: 'Doing',
+        items: [
+          {
+            title: 'Add a cookie notice, which will be shown at the bottom of the page and has a link of "Privacy Policy"',
+            user: 'Kit',
+            checklist: { totalCount: 6, completed: 3 },
+            members: [
+              { name: 'Emma', url: `team/3.jpg` }
+            ]
+
+          },
+          {
+            title: 'Add a pdf file that describes all the symptoms of COVID-19',
+            user: 'Rowan',
+            modalID: '#kanban-modal-3',
+            members: [
+              { name: 'Shophie', url: `team/3.jpg` },
+              { name: 'Rowan', url: `team/4.jpg` }
+            ],
+            attachments: [
+              { type: 'image', url: `${CWD}assets/img/kanban/2.jpg`, className: "py-8"},
+            ]
+          },
+          {
+            title: 'Make a Registration form that includes Name, Email, and a Password input field',
+            user: 'Antony',
+            labels: [
+              { type: 'success', text: 'New' },
+              { type: 'primary', text: 'Goal' },
+            ],
+            attachments: [
+              { type: 'doc', name: 'test.txt' }
+            ],
+            checklist: { totalCount: 10, completed: 2 },
+            members: [
+              { name: 'Shophie', url: `team/3.jpg` }
+            ]
+          },
+          {
+            title: 'Update profile page layout with cover image and user setting menu',
+            user: 'Emma',
+            labels: [
+              { type: 'info', text: 'Enhancement' },
+            ],
+            attachments: [
+              { type: 'txt', url: `falcon.txt` },
+            ],
+            members: [
+              { name: 'Emma', url: `team/1.jpg` },
+              { name: 'Antony', url: `team/2.jpg` },
+              { name: 'Anna', url: `team/3.jpg` },
+            ]
+          },
+        ]
+      },
+      {
+        name: 'Review',
+        items: [
+          {
+            title: 'Update all the npm packages and also remove the outdated plugins',
+            user: 'Emma',
+            labels: [
+              { type: 'danger', text: 'bug'}
+            ],
+            checklist: { totalCount: 5, completed: 5, },
+            members: [
+              { name: 'Sophie', url: `team/4.jpg` },
+              { name: 'Antony', url: `team/1.jpg` },
+              { name: 'Emma', url: `team/2.jpg` }
+            ]
+          },
+          {
+            title: 'Add a getting started page that allows users to see the starting process',
+            user: 'Anna',
+            labels: [
+              { type: 'secondary', text: 'Documentation' },
+            ],
+            attachments: [
+              { type: 'pdf', url: `sample.pdf` },
+              { type: 'txt', url: `example.txt` },
+            ],
+            members: [
+              { name: 'Antony', url: `team/2.jpg` }
+            ]
+          },
+          { title: 'Review and test all the task and deploy to the server'},
+          { 
+            title: 'Get all the data by API call and show them to the landing page by adding a new section',
+            labels: [
+              { type: 'success', text: 'New' },
+            ],
+          },
+        ]
+      },
+      { 
+        name: 'Release', 
+        items: [
+          {
+            title: 'Add a new illustration to the landing page according to the contrast of the current theme ',
+            user: 'John',
+            modalID: '#kanban-modal-2',
+            attachments: [
+              { type: 'image', url: `${CWD}assets/img/kanban/1.jpg`, className: "py-9"},
+              { type: 'doc', name: 'test.txt' }
+            ],
+            members: [
+              { name: 'Anna', url: `team/1.jpg` },
+              { name: 'Antony', url: `team/2.jpg` },
+              { name: 'Emma', url: `team/3.jpg` }
+            ]
+          },
+          {
+            title: 'Design a new E-commerce, Product list, and details page',
+            labels: [
+              { type: 'info', text: 'Goal' }
+            ]
+          },
+          { title: 'Make a weather app design which must have: Local weather, Weather map and weather widgets'},
+          { 
+            title: 'List all the Frequently Asked Questions and make an FAQ section in the landing page',
+            labels: [
+              { type: 'secondary', text: 'Documentation'}
+            ]
+          },
+          { title: 'Remove all the warning from dev dependencies and update the packages if needed'},
+
+        ] 
+      },
+    ]
+
+//- Member group
+mixin MemberGroup(config)
+  - var config = Object.assign({count: config.members.length, size: 'l', id: 'kanbanDropdown'}, config)
+  - var { members, count, add, size } = config
+  ul.nav.avatar-group.mb-0&attributes(attributes)
+    li.nav-item.dropdown
+    each member, index in members
+      if index < count
+        li.nav-item.dropdown
+          a.nav-link.p-0.dropdown-toggle.dropdown-caret-none(href="#" role="button" class=index!=0 && 'ms-n1' data-bs-toggle="dropdown")
+            +Avatar({img: member.img, size})
+          .dropdown-menu.dropdown-md.px-0.py-3
+            .d-flex.align-items-center.position-relative.px-3
+              +Avatar({img: member.img}).me-2
+              .flex-1
+                h6.mb-0
+                  a(href=`${CWD}${paths['user-profile']}`).stretched-link.text-900=member.name
+                p.mb-0.fs--2.text-500=member.role
+            hr.my-2
+            a.dropdown-item(href="#!") Member Rule
+            a.dropdown-item.text-danger(href="#!") Remove Member
+    li.nav-item.dropdown
+      if count != members.length
+        a.nav-link.dropdown-toggle.dropdown-caret-none.p-0.ms-n1(href="#" role="button" data-bs-toggle="dropdown")
+          +Avatar({size, more: `${members.length - count}+`, round: 'circle', contentClass: 'avatar-button' })
+        .dropdown-menu.dropdown-md
+          h6.dropdown-header.py-0.px-3.mb-0 Board Members
+          .dropdown-divider
+          .d-flex.px-3
+            each item, index in members
+              a(href=`${CWD}${paths['user-profile']}` data-bs-toggle="tooltip" title=item.name class=index !== members.length - 1 ? 'me-2' : '')
+                +Avatar({img: item.img, size: 'xl'})
+      if add
+        a.nav-link.dropdown-toggle.dropdown-caret-none.p-0.ms-n1(href="#" role="button" data-bs-toggle="dropdown")
+          +Avatar({size, icon: '<span class="fas fa-plus" data-fa-trasnsform="grow-2"></span>', round: 'circle', contentClass: 'avatar-button' })
+
+        .dropdown-menu.dropdown-md(data-list!={valueNames: ['name']})
+          h6.dropdown-header.py-0.px-3.mb-0 Select Member
+          .dropdown-divider
+          form.px-3.mb-2
+            input.form-control.form-control-sm.search(type="text" placeholder="Search team member")
+          ul.list-unstyled.list
+            each item in members
+              li
+                a(href=`#!`).d-flex.align-items-center.text-decoration-none.py-1.px-3
+                  +Avatar({img: item.img, size: 'xl'}).me-2
+                  .flex-1
+                    h6.mb-0.link-900.name=item.name
+
+//- Card add form
+mixin KanbanCardForm(config, index)
+  form.add-card-form&attributes(attributes)
+    textarea.form-control(data-input="add-card" rows=2 placeholder="Enter a title for this card...")
+    .row.gx-2.mt-2
+      .col
+        button.btn.btn-primary.btn-sm.d-block.w-100(type="button") Add
+      .col
+        button.btn.btn-outline-secondary.btn-sm.d-block.w-100.border-400(type="button" data-btn-form="hide") Cancel
+
+mixin KanbanHeader
+  .row.gx-0.kanban-header.rounded-2.px-x1.py-2.mt-2.mb-3
+    .col.d-flex.align-items-center
+      h5.mb-0 Falcon
+      button.btn.btn-sm.btn-falcon-default.ms-3
+        span.far.fa-star
+      .vertical-line.vertical-line-400.position-relative.h-100.mx-3
+      +MemberGroup({members, count: 4}).d-none.d-md-flex
+      .vertical-line.vertical-line-400.position-relative.h-100.mx-3.d-none.d-md-flex
+      .position-relative
+        button.btn.btn-sm.btn-falcon-default.dropdown-toggle.dropdown-caret-none#invitePeople(type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+          span.fas.fa-plus.me-2
+          | Invite 
+        .dropdown-menu.dropdown-menu-end.pt-2.pb-0(aria-labelledby="invitePeople" style="min-width: 300px;")
+          h6.dropdown-header.text-center.text-uppercase.py-1.fs--2.ls.fw-semi-bold Invite To Board
+          .dropdown-divider.mb-0
+          .p-3
+            form
+              .border.rounded-1.fs--2.mb-3
+                .d-flex.flex-between-center.border-bottom.bg-200
+                  .px-2.text-700 Anyone with the link can join
+                  .border-start
+                    button.btn.btn-link.btn-sm.text-decoration-none.hover-300.rounded-0.fs--2#dataCopy(type="button" data-copy="#invite-link" data-bs-placement="top" data-bs-trigger="manual" title="Copy to clipboard") 
+                      span.far.fa-copy.me-2
+                      | Copy link
+                   
+                input.form-control.bg-white.dark__bg-dark.border-0.fs--2.px-1.rounded-top-0#invite-link(type="text" readonly value="https://prium.github.io/falcon/kanban/QhNCShh8TdxKx0kYN1oWzzKJDjOYUXhm9IJ035laUVdWMYsUN5")
+
+              input.form-control.form-control-sm(type="text" placeholder="Enter name or email")
+
+              button.btn.btn-primary.btn-sm.d-block.w-100.mt-2(type="button") Send Invitation
+
+    .col-auto.d-flex.align-items-center
+      button.btn.btn-sm.btn-falcon-default.me-2.d-none.d-md-block
+        span.fas.fa-plus.me-2
+        | Add Column
+      .dropdown.font-sans-serif
+        button.btn.btn-sm.btn-falcon-default.dropdown-toggle.dropdown-caret-none(type='button' id="kanbanMenu" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false")
+          span.fas.fa-ellipsis-h
+        .dropdown-menu.dropdown-menu-end.border.py-2(aria-labelledby="kanbanMenu")
+          a(href='#!').dropdown-item Copy link
+          .dropdown-divider
+          a(href='#!').dropdown-item Settings
+          a(href='#!').dropdown-item Themes
+          .dropdown-divider
+          a(href='#!').dropdown-item.text-danger Remove 
+
+//- Kanban item footer
+mixin KanbanItemFooter(config)
+  .kanban-item-footer.cursor-default
+    .text-500.z-index-2
+      if config.members
+        - var member = config.members.filter(member => member.name === 'Emma')[0]
+        if member
+          span.me-2(data-bs-toggle="tooltip" title="You're assigned in this card")
+            span.fas.fa-eye
+      if config.attachments
+        span.me-2(data-bs-toggle="tooltip" title="Attachments")
+          span.fas.fa-paperclip.me-1
+          span=config.attachments.length
+      if config.checklist
+        span.me-2(data-bs-toggle="tooltip" title="Checklist")
+          span.fas.fa-check.me-1
+          span #{config.checklist.completed}/#{config.checklist.totalCount}
+    .z-index-2
+      if config.members
+        each member in config.members
+          +Avatar({img: member.url, size: 'l'}).align-top.ms-n2(data-bs-toggle="tooltip" title=member.name)     
+
+
+//- Card item
+mixin KanbanItem(config, index, length)
+  - var config = Object.assign({modalID: '#kanban-modal-1'}, config)
+  .kanban-item
+    .card.kanban-item-card.hover-actions-trigger
+      if config.attachments
+        - var image = config.attachments.filter(attachment => attachment.type === 'image')[0]
+      if image
+        .position-relative.rounded-top-lg.overflow-hidden(class=image.className)
+          +Background({ image: image.url })
+      .card-body
+        .position-relative        
+          .dropdown.font-sans-serif
+            button.btn.btn-sm.btn-falcon-default.kanban-item-dropdown-btn.hover-actions(type='button' data-boundary="viewport" data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              span.fas.fa-ellipsis-h(data-fa-transform="shrink-2")
+            .dropdown-menu.dropdown-menu-end.py-0
+              +DropdownContent
+        if config.labels
+          .mb-2
+            each label in config.labels
+              span.badge.py-1.me-1.mb-1(class=`badge-soft-${label.type}`)=label.text
+        p.mb-0.fw-medium.font-sans-serif.stretched-link(data-bs-toggle="modal" data-bs-target=config.modalID)!=config.title
+
+
+        if config.members || config.attachments || config.checklist
+          +KanbanItemFooter(config)
+
+//- Dropdown content
+mixin DropdownContent(index)
+  a.dropdown-item(href="#!") Add Card
+  a.dropdown-item(href="#!") Edit
+  a.dropdown-item(href="#!") Copy link
+  .dropdown-divider
+  a.dropdown-item.text-danger(href="#!") Remove
+
+
+//- Column header
+mixin KanbanColumnHeader(config, index)
+  .kanban-column-header
+    h5.fs-0.mb-0 #{config.name} 
+      span.text-500 (#{config.items.length})
+    .dropdown.font-sans-serif.btn-reveal-trigger
+      button.btn.btn-sm.btn-reveal.py-0.px-2(type='button', id=`kanbanColumn${index}`, data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+        span.fas.fa-ellipsis-h
+      .dropdown-menu.dropdown-menu-end.py-0(aria-labelledby=`kanbanColumn${index}`)
+        +DropdownContent(index)
+
+//- Board column
+mixin KanbanColumn(config, index)
+  .kanban-column
+    +KanbanColumnHeader(config, index)
+    .kanban-items-container.scrollbar
+      each item, index in config.items
+        +KanbanItem(item, index, config.items.length)
+      +KanbanCardForm(config, index).mt-3
+    .kanban-column-footer
+      button.btn.btn-link.btn-sm.d-block.w-100.btn-add-card.text-decoration-none.text-600(type="button")
+        span.fas.fa-plus.me-2
+        | Add another card

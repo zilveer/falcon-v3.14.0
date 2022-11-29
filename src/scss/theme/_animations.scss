@@ -1,0 +1,71 @@
+/* -------------------------------------------------------------------------- */
+/*                                  Animations                                 */
+/* -------------------------------------------------------------------------- */
+
+// Used in Navbar Top
+.icon-spin {
+  animation: icon-spin 6s cubic-bezier(0.15, 1.15, 0.65, 1) infinite;
+}
+
+.settings-popover {
+  left: 29%;
+  z-index: 2;
+  top: 31%;
+
+  .d-flex {
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+}
+
+.ripple {
+  position: absolute;
+  @extend .all-0;
+
+  .fa-spin {
+    animation-duration: 3s;
+  }
+
+  &:after,
+  &:before {
+    position: absolute;
+    content: "";
+    height: 0.45rem;
+    width: 0.45rem;
+    border-radius: 50%;
+    border: 3px solid rgba(var(--#{$prefix}success-rgb), 0.4);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    animation: ripple 2s ease infinite;
+  }
+
+  &:before {
+    border: 5px solid rgba(var(--#{$prefix}success-rgb), 0.3);
+    animation-delay: 5s;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    height: 0.75rem;
+    width: 0.75rem;
+  }
+
+  100% {
+    height: 2.125rem;
+    width: 2.125rem;
+    border-color: transparent;
+  }
+}
+
+@keyframes icon-spin {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

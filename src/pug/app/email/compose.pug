@@ -1,0 +1,9 @@
+extends ../../layouts/LayoutTheme
+include ../../mixins/email/Compose
+
+
+prepend scripts
+  script(src=`${CWD}vendors/tinymce/tinymce.min.js`)
+
+append content
+  +Compose

@@ -1,0 +1,20 @@
+extends ../layouts/LayoutTheme
+include ../mixins/home/dashboard/Dashboard
+
+prepend scripts
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+
+block navbarTop
+
+block navbarVertical
+  +NavbarDoubleTop({
+    toggleID: 'navbarDoubleTop',
+    search: true,
+    changelog: true,
+    footer: true
+  }).navbar-expand-lg
+
+block navbarScript
+
+block content
+  +Dashboard

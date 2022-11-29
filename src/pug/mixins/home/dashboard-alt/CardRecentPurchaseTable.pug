@@ -1,0 +1,220 @@
+append variables
+  -
+    var badges = [
+      {content: 'Success', type:'success', icon: 'fas fa-check'},
+      {content: 'Blocked', type:'secondary', icon: 'fas fa-ban'},
+      {content: 'Pending', type:'warning', icon: 'fas fa-stream'}
+    ];
+  -
+    var purchases = [
+      {
+        customer: 'Sylvia Plath',
+        email: 'john@gmail.com',
+        product: 'Slick - Drag & Drop Bootstrap Generator',
+        status:  badges[0],
+        amount: '$99'
+      },
+      {
+        customer: 'Homer',
+        email: 'sylvia@mail.ru',
+        product: 'Bose SoundSport Wireless Headphones',
+        status:  badges[0],
+        amount: '$634'
+      },
+      {
+        customer: 'Edgar Allan Poe',
+        email: 'edgar@yahoo.com',
+        product: 'All-New Fire HD 8 Kids Edition Tablet',
+        status:  badges[1],
+        amount: '$199'
+      },
+      {
+        customer: 'William Butler Yeats',
+        email: 'william@gmail.com',
+        product: 'Apple iPhone XR (64GB)',
+        status:  badges[0],
+        amount: '$798'
+      },
+      {
+        customer: 'Rabindranath Tagore',
+        email: 'tagore@twitter.com',
+        product: 'ASUS Chromebook C202SA-YS02 11.6"',
+        status:  badges[1],
+        amount: '$318'
+      },
+      {
+        customer: 'Emily Dickinson',
+        email: 'emily@gmail.com',
+        product: 'Mirari OK to Wake! Alarm Clock & Night-Light',
+        status:  badges[2],
+        amount: '$11'
+      },
+      {
+        customer: 'Giovanni Boccaccio',
+        email: 'giovanni@outlook.com',
+        product: 'Summer Infant Contoured Changing Pad',
+        status:  badges[0],
+        amount: '$31'
+      },
+      {
+        customer: 'Oscar Wilde',
+        email: 'oscar@hotmail.com',
+        product: 'Munchkin 6 Piece Fork and Spoon Set',
+        status:  badges[0],
+        amount: '$43'
+      },
+      {
+        customer: 'John Doe',
+        email: 'doe@gmail.com',
+        product: 'Falcon - Responsive Dashboard Template',
+        status:  badges[0],
+        amount: '$57'
+      },
+      {
+        customer: 'Emma Watson',
+        email: 'emma@gmail.com',
+        product: 'Apple iPhone XR (64GB)',
+        status:  badges[1],
+        amount: '$999'
+      },
+      {
+        customer: 'Sylvia Plath',
+        email: 'plath@yahoo.com',
+        product: 'All-New Fire HD 8 Kids Edition Tablet',
+        status:  badges[2],
+        amount: '$199'
+      },
+      {
+        customer: 'Rabindranath Tagore',
+        email: 'Rabindra@gmail.com',
+        product: 'Apple iPhone XR (64GB)',
+        status:  badges[1],
+        amount: '$999'
+      },
+      {
+        customer: 'Anila Wilde',
+        email: 'anila@yahoo.com',
+        product: 'All-New Fire HD 8 Kids Edition Tablet',
+        status:  badges[2],
+        amount: '$199'
+      },
+      {
+        customer: 'Jack Watson ',
+        email: 'Jack@gmail.com',
+        product: 'Apple iPhone XR (64GB)',
+        status:  badges[1],
+        amount: '$999'
+      },
+    ]
+
+mixin Badge(badge)
+  span.badge.badge.rounded-pill(class=`badge-soft-${badge.type}`)=badge.content
+    span.ms-1(class=badge.icon data-fa-transform="shrink-2")
+
+mixin Dropdown(id)
+  .dropstart.font-sans-serif.position-static.d-inline-block
+    button.btn.btn-link.text-600.btn-sm.dropdown-toggle.btn-reveal&attributes(attributes)(type='button' id=id data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent")
+      span.fas.fa-ellipsis-h.fs--1
+    .dropdown-menu.dropdown-menu-end.border.py-2(aria-labelledby=id)
+      a(href='#!').dropdown-item View
+      a(href='#!').dropdown-item Edit
+      a(href='#!').dropdown-item Refund
+      .dropdown-divider
+      a(href='#!').dropdown-item.text-warning Archive
+      a(href='#!').dropdown-item.text-danger Delete
+
+mixin RecentPurchaseTableItem(config, index)
+  tr.btn-reveal-trigger
+    td(style="width: 28px;").align-middle
+      .form-check.mb-0
+        input.form-check-input(
+          type='checkbox'
+          id=`recent-purchase-${index}`
+          data-bulk-select-row
+        )
+    th.align-middle.white-space-nowrap.name
+      a(href=`${CWD}${paths['customer-details']}`)=config.customer
+    td.align-middle.white-space-nowrap.email=config.email
+    td.align-middle.white-space-nowrap.product=config.product
+    td.align-middle.text-center.fs-0.white-space-nowrap.payment
+      +Badge(config.status)
+    td.align-middle.text-end.amount=config.amount
+    td.align-middle.white-space-nowrap.text-end
+      +Dropdown(`dropdown-recent-purchase-table-${index}`).float-end
+
+mixin RecentPurchaseTable
+  .table-responsive.scrollbar
+    table.table.table-sm.fs--1.mb-0.overflow-hidden
+      thead.bg-200.text-900
+        tr
+          th.white-space-nowrap
+            .form-check.mb-0.d-flex.align-items-center
+              input.form-check-input#checkbox-bulk-purchases-select(
+                type='checkbox'
+                data-bulk-select!={
+                  body: "table-purchase-body",
+                  actions: "table-purchases-actions",
+                  replacedElement: "table-purchases-replace-element"
+                }
+              )
+          th.sort.pe-1.align-middle.white-space-nowrap(data-sort="name") Customer
+          th.sort.pe-1.align-middle.white-space-nowrap(data-sort="email") Email
+          th.sort.pe-1.align-middle.white-space-nowrap(data-sort="product") Product
+          th.sort.pe-1.align-middle.white-space-nowrap.text-center(data-sort="payment") Payment
+          th.sort.pe-1.align-middle.white-space-nowrap.text-end(data-sort="amount") Amount
+          th.no-sort.pe-1.align-middle.data-table-row-action
+      tbody.list#table-purchase-body
+        each purchase, index in purchases
+          +RecentPurchaseTableItem(purchase, index)
+
+mixin CardRecentPurchaseTable(page=8, viewAllBtn=true)
+  .card.z-index-1#recentPurchaseTable&attributes(attributes)(data-list!={
+    valueNames: ["name", "email", "product", "payment", "amount"],
+    page: page,
+    pagination: true
+  })
+    .card-header
+      .row.flex-between-center
+        .col-6.col-sm-auto.d-flex.align-items-center.pe-0
+          h5.fs-0.mb-0.text-nowrap.py-2.py-xl-0 Recent Purchases
+
+        .col-6.col-sm-auto.ms-auto.text-end.ps-0
+          #table-purchases-actions.d-none
+            .d-flex
+              select.form-select.form-select-sm(aria-label='Bulk actions')
+                option(selected='') Bulk actions
+                option(value='Refund') Refund
+                option(value='Delete') Delete
+                option(value='Archive') Archive
+              button.btn.btn-falcon-default.btn-sm.ms-2(type='button') Apply
+          #table-purchases-replace-element
+            button(type='button').btn.btn-falcon-default.btn-sm
+              span.fas.fa-plus(data-fa-transform="shrink-3 down-2")
+              span.d-none.d-sm-inline-block.ms-1 New
+            button(type='button').btn.btn-falcon-default.btn-sm.mx-2
+              span.fas.fa-filter(data-fa-transform="shrink-3 down-2")
+              span.d-none.d-sm-inline-block.ms-1 Filter
+            button(type='button').btn.btn-falcon-default.btn-sm
+              span.fas.fa-external-link-alt(data-fa-transform="shrink-3 down-2")
+              span.d-none.d-sm-inline-block.ms-1 Export
+    .card-body.px-0.py-0
+      +RecentPurchaseTable
+    .card-footer
+      .row.align-items-center
+        .pagination.d-none
+        .col
+          p.mb-0.fs--1
+            span.d-none.d-sm-inline-block.me-2(data-list-info)
+            if viewAllBtn
+              span.d-none.d-sm-inline-block.me-2 &mdash;
+              a.fw-semi-bold(href='#!' data-list-view="*")
+                | View all
+                span.fas.fa-angle-right.ms-1(data-fa-transform='down-1')
+              a.fw-semi-bold.d-none(href='#!' data-list-view="less")
+                | View less
+                span.fas.fa-angle-right.ms-1(data-fa-transform='down-1')
+        .col-auto.d-flex
+          button.btn.btn-sm.btn-primary(type='button' data-list-pagination='prev')
+            span Previous
+          button.btn.btn-sm.btn-primary.px-4.ms-2(type='button' data-list-pagination='next')
+            span Next

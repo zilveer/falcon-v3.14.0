@@ -1,0 +1,72 @@
+append variables
+  -
+    var reports = {
+      analysis: [
+        {
+          title: "In-Depth Helpdesk",
+          description: "an overview of your helpdesk system",
+          img: "1"
+        },
+        {
+          title: "Trends in Ticket Volume",
+          description: "an overview of the number of tickets",
+          img: "2"
+        },
+      ],
+      customerSatisfaction: [
+        {
+          title: "Analysis of the Top Customers",
+          description: "Check out our customer stories",
+          img: "3"
+        },
+        {
+          title: "Customer Satisfaction Survey",
+          description: "Check out the report details",
+          img: "4"
+        },
+      ],
+      productivity: [
+        {
+          title: "Performance of Agents",
+          description: "Check out the report details",
+          img: "5"
+        },
+        {
+          title: "Performance in a Group",
+          description: "Check out the report details",
+          img: "6"
+        },
+        {
+          title: "Distribution of Performance",
+          description: "Check out the report details",
+          img: "7"
+        },
+      ]
+    }
+
+mixin ReportItem(config)
+  .col-xxl-4.col-lg-6&attributes(attributes)
+    .d-flex.align-items-center.px-4.py-x1.bg-light.rounded-3.border.position-relative
+      img(src=`${CWD}assets/img/tickets/reports/${config.img}.png`, alt="" width='39')
+      .ms-3.my-x1
+        h5.fs-0.fw-semi-bold.mb-2
+          a.text-900.hover-primary.stretched-link(href='#!')= config.title
+        h6.mb-0.text-600= config.description
+
+mixin Reports
+  .card&attributes(attributes)
+    .card-header.bg-light
+      h6.mb-0 Reports
+    .card-body
+      h5.fs-0.mb-2 Analysis of the Helpdesk
+      .row.g-3
+        each report in reports.analysis
+          +ReportItem(report)
+      h5.fs-0.mb-2.mt-5 Customer Satisfaction
+      .row.g-3
+        each report in reports.customerSatisfaction
+          +ReportItem(report)
+      h5.fs-0.mb-2.mt-5 Productivity
+      .row.g-3
+        each report in reports.productivity
+          +ReportItem(report)

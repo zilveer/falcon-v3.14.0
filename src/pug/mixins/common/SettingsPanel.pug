@@ -1,0 +1,153 @@
+mixin NavbarStyle(config)
+  input.btn-check(
+    id=config.id
+    type='radio' 
+    name='navbarStyle' 
+    value=config.value
+    data-theme-control='navbarStyle'
+  )
+  label.btn.d-block.w-100.btn-navbar-style.fs--1(for=config.id) 
+    img.img-fluid.img-prototype(src=`${CWD}assets/img/generic/${config.img}.png`, alt="")
+    span.label-text 
+      +cleanText(config.value)
+
+mixin SettingsPanel
+  #settings-offcanvas.offcanvas.offcanvas-end.settings-panel.border-0(tabindex='-1' aria-labelledby='settings-offcanvas')
+    .offcanvas-header.settings-panel-header.bg-shape
+      .z-index-1.py-1.light
+        .d-flex.justify-content-between.align-items-center.mb-1
+          h5.text-white.mb-0.me-2
+            span.fas.fa-palette.me-2.fs-0
+            | Settings
+          button.btn.btn-primary.btn-sm.rounded-pill.mt-0.mb-0(data-theme-control="reset" style='font-size:12px' ) 
+            span.fas.fa-redo-alt.me-1(data-fa-transform='shrink-3')
+            | Reset
+        p.mb-0.fs--1.text-white.opacity-75  Set your own customized style
+      button.btn-close.btn-close-white.z-index-1.mt-0(type='button' data-bs-dismiss='offcanvas' aria-label='Close')
+
+    #themeController.offcanvas-body.scrollbar-overlay.px-x1.h-100
+      h5.fs-0 Color Scheme
+      p.fs--1 Choose the perfect color mode for your app.
+
+      .btn-group.d-block.w-100.btn-group-navbar-style
+        .row.gx-2
+          .col-6
+            input.btn-check(
+              id="themeSwitcherLight"
+              name='theme-color'
+              type='radio'
+              value="light"
+              data-theme-control='theme'
+            )
+            label.btn.d-inline-block.btn-navbar-style.fs--1(for="themeSwitcherLight") 
+              span.hover-overlay.mb-2.rounded.d-block
+                img.img-fluid.img-prototype.mb-0(src=`${CWD}assets/img/generic/falcon-mode-default.jpg`, alt="")
+              span.label-text
+                +cleanText('light')
+          .col-6
+            input.btn-check(
+              id="themeSwitcherDark"
+              name='theme-color'
+              type='radio'  
+              value="dark"
+              data-theme-control='theme'
+            )
+            label.btn.d-inline-block.btn-navbar-style.fs--1(for="themeSwitcherDark") 
+              span.hover-overlay.mb-2.rounded.d-block
+                img.img-fluid.img-prototype.mb-0(src=`${CWD}assets/img/generic/falcon-mode-dark.jpg`, alt="")
+              span.label-text 
+                +cleanText('dark')
+      hr
+      .d-flex.justify-content-between
+
+        .d-flex.align-items-start
+          img(src=`${CWD}assets/img/icons/left-arrow-from-left.svg`, width=20 alt="").me-2
+          .flex-1
+            h5.fs-0 RTL Mode
+            p.fs--1.mb-0 Switch your language direction 
+            a.fs--1(href=`${CWD}${paths['doc-configuration']}`) RTL Documentation
+        .form-check.form-switch
+          input#mode-rtl.form-check-input.ms-0(
+            type='checkbox'
+            data-theme-control="isRTL"
+          )
+      hr
+      .d-flex.justify-content-between
+
+        .d-flex.align-items-start
+          img(src=`${CWD}assets/img/icons/arrows-h.svg`, width=20 alt="").me-2
+          .flex-1
+            h5.fs-0 Fluid Layout
+            p.fs--1.mb-0 Toggle container layout system 
+            a.fs--1(href=`${CWD}${paths['doc-configuration']}`) Fluid Documentation
+        .form-check.form-switch
+          input#mode-fluid.form-check-input.ms-0(
+            type='checkbox'
+            data-theme-control="isFluid"
+          )
+      hr
+      .d-flex.align-items-start
+        img(src=`${CWD}assets/img/icons/paragraph.svg`, width=20 alt="").me-2
+        .flex-1
+          - var navbarVerticalPageUrl = ENV !== 'PROD' ? `${CWD}${paths['vertical-navbar']}` : false;
+          - var navbarTopPageUrl = ENV !== 'PROD' ? `${CWD}${paths['top-navbar']}` : false;
+          - var navbarComboPageUrl = ENV !== 'PROD' ? `${CWD}${paths['combo-navbar']}` : false;
+          - var navbarDoubleTopPageUrl = ENV !== 'PROD' ? `${CWD}${paths['double-top-navbar']}` : false;
+          - var isLiveNavbarTop = ENV !== 'PROD' && pageTree[pageTree.length - 1] === 'navbar-top' ? true : false;
+          - var isLiveNavbarCombo = ENV !== 'PROD' && pageTree[pageTree.length - 1] === 'combo-nav' ? true : false;
+          - var disableVerticalAndComboNav = ENV === 'PROD' && ["course-details", "course-list", "course-grid", "trainer-profile"].includes(pageName);
+          - var hideLayoutSelect = ENV === 'PROD' && pathName.includes('demo');
+
+          h5.fs-0.d-flex.align-items-center Navigation Position
+          p.fs--1.mb-2 Select a suitable navigation system for your web application 
+          if isLiveNavbarTop || isLiveNavbarCombo || hideLayoutSelect
+            p.text-warning.fs--1 You cann't update navigation position in an example page
+          else
+            div
+              select.form-select.form-select-sm(aria-label='Navbar position' data-theme-control='navbarPosition')
+                option(disabled=disableVerticalAndComboNav ? '' : false value="vertical"  data-page-url=navbarVerticalPageUrl)
+                  | Vertical
+                option(value="top"  data-page-url=navbarTopPageUrl)
+                  | Top
+                option(disabled=disableVerticalAndComboNav ? '' : false value="combo"  data-page-url=navbarComboPageUrl)
+                  | Combo
+                option(value="double-top"  data-page-url=navbarDoubleTopPageUrl)
+                  | Double Top
+      hr          
+
+      h5.fs-0.d-flex.align-items-center Vertical Navbar Style
+      p.fs--1.mb-0 Switch between styles for your vertical navbar 
+      p 
+        a.fs--1(href=`${CWD}${paths['vertical-navbar']}#navbar-styles`) See Documentation
+      if isLiveNavbarTop || isLiveNavbarCombo
+        p.text-warning.fs--1 You can't change navbar vertical style in an example page
+      .btn-group.d-block.w-100.btn-group-navbar-style(class=(isLiveNavbarTop || isLiveNavbarCombo) && 'd-none')
+        .row.gx-2
+          .col-6
+            +NavbarStyle({
+              id: 'navbar-style-transparent',
+              img: 'default',
+              value: 'transparent',
+            })
+          .col-6
+            +NavbarStyle({
+              id: 'navbar-style-inverted',
+              img: 'inverted',
+              value: 'inverted',
+            })
+          .col-6
+            +NavbarStyle({
+              id: 'navbar-style-card',
+              img: 'card',
+              value: 'card',
+            })
+          .col-6
+            +NavbarStyle({
+              id: 'navbar-style-vibrant',
+              img: 'vibrant',value: 'vibrant',
+            })
+      .text-center.mt-5
+        img(src=`${CWD}assets/img/icons/spot-illustrations/47.png`, alt="" width=120).mb-4
+        h5 Like What You See?
+        p.fs--1 Get #{name} now and create beautiful dashboards with hundreds of widgets.
+        a.mb-3(href="https://themes.getbootstrap.com/product/falcon-admin-dashboard-webapp-template/" target="_blank").btn.btn-primary Purchase

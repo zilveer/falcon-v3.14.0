@@ -1,0 +1,98 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/Typography
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Typography',
+      description: 'Documentation and examples for Bootstrap typography, including global settings, headings, body text, lists, and more.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/content/typography/`,
+      linkText: 'Typography on Bootstrap'
+    }
+
+
+block component
+  +PageHeader(pageHeader)
+
+  +ComponentCard({
+    title: 'Font Family',
+    descriptionEl: `<p class='mt-2 mb-0'>You have three font-family helper classes available to use.</p>`,
+    anchor: true
+  }).mb-3
+    +TypographyFontFamilyDemo
+  
+  +ComponentCard({
+    title: 'Headings',
+    descriptionEl:`<p class='mt-2 mb-0'>All HTML headings, <code>h1 </code>through<code> h6</code>, are available.</p>`,
+    anchor: true
+  }).mb-3
+    +TypographyHeadingDemo
+
+  +ComponentCard({
+    title: 'Headings with classes',
+    descriptionEl: `<p class='mt-2 mb-0'><code>.h1</code> through <code>.h6</code> classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element.</p>`,
+    anchor: true
+  }).mb-3
+    +TypographyHeadingClassDemo
+
+  +ComponentCard({
+    title: 'Customizing headings',
+    descriptionEl: `<p class='mt-2 mb-0'>Use the included utility classes to recreate the small secondary heading text from Bootstrap 3.</p>`,
+    anchor: true
+  }).mb-3
+    +TypographyCustomizeHeadingDemo      
+
+  +ComponentCard({
+    title: 'Font Weights',
+    anchor: true
+  }).mb-3
+    +TypographyFontWeightsDemo
+
+  +ComponentCard({
+    title: 'Display headings',
+    descriptionEl: `<p class='mt-2 mb-0'>Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a 
+    <strong> display heading </strong> —a larger, slightly more opinionated heading style.</p>`,
+    anchor: true
+  }).mb-3
+    +TypographyDisplayHeadingDemo
+
+  +ComponentCard({
+    title: 'Colors',
+    descriptionEl: `<p class='mt-2 mb-0'>Use the following colors to change the text color</p>`,
+    anchor: true
+  }).mb-3
+    +TypographyColorsDemo 
+
+  +ComponentCard({
+    title: 'Responsive classes',
+    descriptionEl: `<p class='my-2'>If you want different sizes of fonts, you may use the following classes. If you want responsive fonts size, use <code>fs-{sm|md|lg|xl|xxl}-{value} </code> classes.</p>`,
+    anchor: true
+  }).mb-3
+    +TypographySizeDemo
+
+  +ComponentCard({
+    title: 'Text Transformation',
+    descriptionEl: `<p class='mt-2 mb-0'>Transform text in components with text capitalization classes.</p>`,
+    anchor: true
+  }).mb-3
+    +TextTransformationDemo
+
+  +ComponentCard({
+    title: 'Lead',
+    descriptionEl: `<p class='mt-2 mb-0'>Make a paragraph stand out by adding <code> .lead </code></p>`,
+    anchor: true
+  }).mb-3
+    +TypographyLeadDemo
+
+  +ComponentCard({
+    title: 'Dropcap',
+    descriptionEl: `<p class='mt-2 mb-0'>Make a paragraph stand out by adding <code> .dropcap </code> class.</p>`,
+    anchor: true,
+    descriptionClass:'mt-2'
+  }).mb-3
+    +TypographyDropcapDemo
+    
+
+
+

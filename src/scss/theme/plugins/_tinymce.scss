@@ -1,0 +1,160 @@
+/*-----------------------------------------------
+|   Tinymce
+-----------------------------------------------*/
+
+.tox-editor-container .tox-toolbar {
+  border: 0 !important;
+}
+.tinymce-mobile-toolbar,
+.tox-edit-area,
+.tox-tinymce {
+  border-color: var(--#{$prefix}gray-200) !important;
+}
+.tox-tbtn:not([disabled="disabled"]) {
+  color: var(--#{$prefix}body-color) !important;
+}
+.tox .tox-tbtn--enabled,
+.tox .tox-tbtn:active,
+.tox .tox-tbtn:hover,
+.tox .tox-tbtn:focus{
+  background-color: var(--#{$prefix}gray-300) !important;
+}
+.tox .tox-tbtn:not([disabled="disabled"]) svg {
+  fill: var(--#{$prefix}body-color) !important;
+}
+.tinymce-mobile-toolstrip .tinymce-mobile-toolbar:not(.tinymce-mobile-context-toolbar) .tinymce-mobile-toolbar-group .tinymce-mobile-toolbar-group-item.tinymce-mobile-toolbar-button.tinymce-mobile-toolbar-button-selected {
+  background-color: var(--#{$prefix}gray-300) !important;
+  color: var(--#{$prefix}body-color) !important;
+  border-radius: $border-radius;
+}
+.tox-collection__item--active {
+  background-color: var(--#{$prefix}gray-300) !important;
+  color: var(--#{$prefix}body-color) !important;
+}
+.tox .tox-tbtn--select {
+  padding: 0 10px !important;
+
+}
+.tinymce-mobile-icon-full-dot:before {
+  color: var(--#{$prefix}gray-300);
+}
+.tinymce-mobile-icon:not(.tinymce-mobile-icon-back),
+.tinymce-mobile-icon-large-font:before, 
+.tinymce-mobile-icon-style-formats:before,
+.tox .tox-collection__item {
+  color: var(--#{$prefix}body-color) !important;
+}
+.tox .tox-collection__item-accessory{
+  color: inherit!important;
+}
+.tinymce-mobile-toolbar-button svg,
+.tox-collection__item-caret svg {
+  fill: var(--#{$prefix}body-color) !important;
+}
+.tox .tox-toolbar__group:not(:last-of-type) {
+  border-right: 1px solid var(--#{$prefix}gray-200) !important;
+}
+.tox:not([dir=rtl]) .tox-toolbar__group:not(:last-of-type) {
+  border-left: 1px solid var(--#{$prefix}gray-200) !important;
+}
+.tinymce-mobile-toolstrip .tinymce-mobile-toolbar:not(.tinymce-mobile-context-toolbar) .tinymce-mobile-toolbar-group:first-of-type, 
+.tinymce-mobile-toolstrip .tinymce-mobile-toolbar:not(.tinymce-mobile-context-toolbar) .tinymce-mobile-toolbar-group:last-of-type {
+  background-color: var(--#{$prefix}primary) !important;
+}
+.tinymce-mobile-disabled-mask {
+  background-color: var(--#{$prefix}gray-200) !important;
+}
+.tinymce-mobile-outer-container:not(.tinymce-mobile-fullscreen-maximized) .tinymce-mobile-editor-socket {
+  height: 50vh !important;
+}
+.tox .tox-edit-area__iframe{
+  background-color: var(--#{$prefix}tinymce-bg) !important;
+}
+
+.tox {
+  .tox-toolbar-overlord{
+    background-color: inherit !important;
+    .tox-toolbar__primary {
+      [dir="rtl"] & {
+        justify-content: flex-end;
+      }
+      background: none;
+      background-color: inherit;
+      border-bottom: 1px solid var(--#{$prefix}border-color);
+    }
+  }
+  .tox-menu, 
+  .tox-dialog{ 
+    border-radius: $border-radius !important;
+    border-color: var(--#{$prefix}border-color) !important; 
+    background-color: var(--#{$prefix}tinymce-bg) !important;
+    &__header,
+    &__footer{
+      background-color: var(--#{$prefix}tinymce-bg) !important;
+      border-color: var(--#{$prefix}border-color) !important;
+    }
+    &__footer{
+      .tox-button--secondary{
+        @extend .btn;
+        @extend .btn-light;
+      }
+      .tox-button:last-child {
+        @extend .btn;
+        @extend .btn-primary;
+      }
+    }
+  }
+  .tox-toolbar{
+    background-color: var(--#{$prefix}tinymce-bg) !important;
+  }
+  .tox-selectfield select, 
+  .tox-textarea, 
+  .tox-textfield, 
+  .tox-toolbar-textfield{
+    border-color: var(--#{$prefix}border-color) !important;
+  }
+  .tox-insert-table-picker > div{
+    border-color: var(--#{$prefix}border-color) !important;
+  }
+}
+.tox .tox-label, .tox .tox-toolbar-label{
+  color: var(--#{$prefix}gray-900) !important;
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.25rem !important;
+}
+.tox .tox-dialog__title {
+  color: var(--#{$prefix}gray-900) !important;
+}
+.tox .tox-textarea, .tox .tox-textfield, .tox .tox-toolbar-textfield, .tox .tox-selectfield select,.tox-listbox {
+  background-color:  var(--#{$prefix}input-bg) !important;
+  color:  var(--#{$prefix}body-color) !important;
+  border-color: var(--#{$prefix}border-color) !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.tox .tox-dialog-wrap__backdrop {
+  background-color: rgba($black, 0.75) !important;
+  backdrop-filter: blur(3px);
+}
+.tox .tox-button--naked{
+  color: var(--#{$prefix}body-color) !important;
+  &:hover:not(:disabled) {
+    background-color: var(--#{$prefix}gray-200) !important;
+    border-color: var(--#{$prefix}border-color) !important;
+  }
+}
+.tox .tox-collection--list .tox-collection__group {
+  border-color: var(--#{$prefix}border-color) !important;
+}
+.tox .tox-dialog__body-nav-item {
+  color: var(--#{$prefix}body-color) !important;
+}
+.tox .tox-dialog__body-nav-item--active {
+  color: var(--#{$prefix}primary) !important;
+  border-bottom: none !important;
+}
+.tox .tox-collection--list .tox-collection__item--enabled {
+  background-color: var(--#{$prefix}gray-200) !important;
+}
+

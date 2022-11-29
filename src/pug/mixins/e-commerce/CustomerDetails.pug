@@ -1,0 +1,148 @@
+mixin CustomerDetailsHeader
+  .card.mb-3
+    .card-header
+      .row
+        .col
+          h5.mb-2 Tony Robbins (
+            a(href="mailto:tony@gmail.com") tony@gmail.com
+            | )
+          a.btn.btn-falcon-default.btn-sm(href="#!")
+            span.fas.fa-plus.fs--2.me-1
+            | Add note
+          button.btn.btn-falcon-default.btn-sm.dropdown-toggle.ms-2.dropdown-caret-none(type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+            span.fas.fa-ellipsis-h
+          .dropdown-menu
+            a.dropdown-item(href='#') Edit
+            a.dropdown-item(href='#') Report
+            a.dropdown-item(href='#') Archive
+            .dropdown-divider
+            a.dropdown-item.text-danger(href='#') Delete user
+        .col-auto.d-none.d-sm-block
+          h6.text-uppercase.text-600 Customer
+            span.fas.fa-user.ms-2
+    .card-body.border-top
+      .d-flex
+        span.fas.fa-user.text-success.me-2(data-fa-transform="down-5")
+        .flex-1
+          p.mb-0 Customer was created
+          p.fs--1.mb-0.text-600 Jan 12, 11:13 PM
+
+mixin CustomerDetails
+  .card.mb-3
+    .card-header
+      .row.align-items-center
+        .col
+          h5.mb-0 Details
+        .col-auto
+          a.btn.btn-falcon-default.btn-sm(href="#!")
+            span.fas.fa-pencil-alt.fs--2.me-1
+            | Update details
+    .card-body.bg-light.border-top
+      .row
+        .col-lg.col-xxl-5
+          h6.fw-semi-bold.ls.mb-3.text-uppercase Account Information
+          .row
+            .col-5.col-sm-4
+              p.fw-semi-bold.mb-1 ID
+            .col dcfasyo_Dfdjl
+          .row
+            .col-5.col-sm-4
+              p.fw-semi-bold.mb-1 Created
+            .col 2019/01/12 23:13
+          .row
+            .col-5.col-sm-4
+              p.fw-semi-bold.mb-1 Email
+            .col
+              a(href="mailto:tony@gmail.com") tony@gmail.com
+          .row
+            .col-5.col-sm-4
+              p.fw-semi-bold.mb-1 Description
+            .col
+              p.fst-italic.text-400.mb-1 No Description
+          .row
+            .col-5.col-sm-4
+              p.fw-semi-bold.mb-0 VAT number
+            .col
+              p.fst-italic.text-400.mb-0 No VAT number
+        .col-lg.col-xxl-5.mt-4.mt-lg-0.offset-xxl-1
+          h6.fw-semi-bold.ls.mb-3.text-uppercase Billing Information
+          .row
+            .col-5.col-sm-4
+              p.fw-semi-bold.mb-1 Send email to
+            .col
+              a(href="mailto:tony@gmail.com") tony@gmail.com
+          .row
+            .col-5.col-sm-4
+              p.fw-semi-bold.mb-1 Address
+            .col 
+              p.mb-1 8962 Lafayette St. 
+                br
+                | Oswego, NY 13126
+          .row
+            .col-5.col-sm-4
+              p.fw-semi-bold.mb-1 Phone number
+            .col
+              a(href="tel:+12025550110") +1-202-555-0110
+          .row
+            .col-5.col-sm-4
+              p.fw-semi-bold.mb-0 Invoice prefix
+            .col
+              p.fw-semi-bold.mb-0 7C23435
+    .card-footer.border-top.text-end
+      a.btn.btn-falcon-default.btn-sm(href="#!")
+        span.fas.fa-dollar-sign.fs--2.me-1
+        | Refund
+      a.btn.btn-falcon-default.btn-sm.ms-2(href="#!")
+        span.fas.fa-check.fs--2.me-1
+        | Save changes
+
+mixin CustomerDetailsLogs
+  .card.mb-3
+    .card-header
+      h5.mb-0 Logs
+    .card-body.border-top.p-0
+      .row.g-0.align-items-center.border-bottom.py-2.px-3
+        .col-md-auto.pe-3
+          span.badge.badge-soft-success.rounded-pill 200
+        .col-md.mt-1.mt-md-0
+          code POST /v1/invoiceitems
+        .col-md-auto
+          p.mb-0 2019/02/23 15:29:45
+      .row.g-0.align-items-center.border-bottom.py-2.px-3
+        .col-md-auto.pe-3
+          span.badge.badge-soft-warning.rounded-pill 400
+        .col-md.mt-1.mt-md-0
+          code POST /v1/invoiceitems
+        .col-md-auto
+          p.mb-0 2019/02/19 21:32:12
+      .row.g-0.align-items-center.border-bottom.py-2.px-3
+        .col-md-auto.pe-3
+          span.badge.badge-soft-success.rounded-pill 200
+        .col-md.mt-1.mt-md-0
+          code POST /v1/invoices/in_1Dnkhadfk
+        .col-md-auto
+          p.mb-0 2019/02/26 12:23:43
+      .row.g-0.align-items-center.border-bottom.py-2.px-3
+        .col-md-auto.pe-3
+          span.badge.badge-soft-success.rounded-pill 200
+        .col-md.mt-1.mt-md-0
+          code POST /v1/invoices/in_1Dnkhadfk
+        .col-md-auto
+          p.mb-0 2019/02/12 23:32:12
+      .row.g-0.align-items-center.border-bottom.py-2.px-3
+        .col-md-auto.pe-3
+          span.badge.badge-soft-danger.rounded-pill 404
+        .col-md.mt-1.mt-md-0
+          code POST /v1/invoices/in_1Dnkhadfk
+        .col-md-auto
+          p.mb-0 2019/02/08 02:20:23
+      .row.g-0.align-items-center.border-bottom.py-2.px-3
+        .col-md-auto.pe-3
+          span.badge.badge-soft-success.rounded-pill 200
+        .col-md.mt-1.mt-md-0
+          code POST /v1/invoices/in_1Dnkhadfk
+        .col-md-auto
+          p.mb-0 2019/02/01 12:29:34
+    .card-footer.bg-light.p-0
+      a.btn.btn-link.d-block.w-100(href="#!") View more logs
+        span.fas.fa-chevron-right.fs--2.ms-1

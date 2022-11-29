@@ -1,0 +1,40 @@
+mixin ActiveUsers
+  .card&attributes(attributes)
+    .card-header.d-flex.flex-between-center.bg-light.py-2
+      h6.mb-0 Active Users
+      +DashboardDropdown('dropdown-active-user-report')
+    .card-body
+      .row
+        .col-md-auto.mt-md-0
+          .row.flex-md-column.justify-content-between.h-md-100.ms-0
+            .col.border-end.border-md-end-0.border-md-bottom.pt-3
+              h6.fs--2.text-700
+                span.fas.fa-circle.text-primary.me-2
+                | Mobile
+              h5.text-700.fs-0 10,325
+            .col.border-end.border-md-end-0.border-md-bottom.pt-3.pt-md-4
+              h6.fs--2.text-700
+                span.fas.fa-circle.text-success.me-2
+                | Desktop
+              h5.text-700.fs-0 4,235
+            .col.pt-3.pt-md-4
+              h6.fs--2.text-700
+                span.fas.fa-circle.text-info.me-2
+                | Tablet
+              h5.text-700.fs-0 3,575
+        .col-md-auto.echart-active-users-report-container
+          // Find the JS file for the following chart at: src/js/charts/echarts/active-users-report.js
+          // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+          .echart-active-users-report.h-100(data-echart-responsive="true")
+
+    .card-footer.bg-light.py-2
+      .row.flex-between-center.g-0
+        .col-auto
+          select.form-select.form-select-sm.audience-select-menu
+            option(value='week' selected) Last 7 days
+            option(value='month') Last month
+            option(value='year') Last Year
+        .col-auto
+          h6.mb-0
+            a.py-2(href='#!') Active users report
+              span.fas.fa-chevron-right.ms-1.fs--2

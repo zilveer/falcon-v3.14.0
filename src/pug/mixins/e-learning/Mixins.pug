@@ -1,0 +1,325 @@
+append variables 
+  -
+    var tags = {
+      writing: {
+        type: 'primary',
+        content: 'Writing',
+        icon: 'fas fa-pen-nib',
+        iconBefore: true,
+      },
+      topTrainer: {
+        type: 'success',
+        content: 'Top Trainer',
+        icon: 'fas fa-crown',
+        iconBefore: true,
+      },
+      editorsChoice: {
+        type: 'warning',
+        content: 'Editor’s Choice',
+        icon: 'fas fa-award',
+        iconBefore: true,
+      },
+      misc: {
+        type: 'primary',
+        content: 'Misc.',
+        icon: 'fas fa-thumbtack',
+        iconBefore: true,
+      },
+      design: {
+        type: 'primary',
+        content: 'Design',
+        icon: 'fas fa-brush',
+        iconBefore: true,
+      },
+      bestSeller: {
+        type: 'success',
+        content: 'Best Seller',
+        icon: 'fas fa-hashtag',
+        iconBefore: true,
+      },
+      painting: {
+        type: 'primary',
+        content: 'Painting',
+        icon: 'fas fa-palette',
+        iconBefore: true,
+      },      
+    }
+
+  -
+    var courses = [
+      {
+        name: 'Script Writing Masterclass: Introdution to Industry Cliches',
+        price: '$69.50',
+        oldPrice: '$139.90',
+        excerpt: 'Great Script Writers never avoid cliche moments, rather play with it. In this course, legendary Mr. Finger will explain the process in great details.',
+        trainer: 'Bill Finger',
+        thumbnail: {
+          image: 'elearning/courses/course1.png',
+          video: 'video/beach.mp4'
+        }, 
+        totalEnrolled: 92632,
+        rating: 4.9,
+        reviews: 78259,
+        tags: [
+          tags.writing,
+          tags.topTrainer,
+          tags.editorsChoice,
+        ]
+      },
+      {
+        name: 'Composition in Comics: Easy to Read Between Panels',
+        price: '$39.99',
+        oldPrice: '$139.90',
+        excerpt: 'Great Script Writers never avoid cliche moments, rather play with it. In this course, legendary Mr. Finger will explain the process in great details.',
+        trainer: 'Bill Finger',
+        thumbnail: {
+          image: 'elearning/courses/course2.png',
+          video: 'video/beach.mp4'
+        }, 
+        totalEnrolled: 92603,
+        rating: 4.9,
+        reviews: 34567,
+        tags: [tags.misc]
+      },
+      {
+        name: 'Advanced Design Tools for Modern Designs',
+        price: '$69.50',
+        oldPrice: '$139.90',
+        excerpt: 'Great Script Writers never avoid cliche moments, rather play with it. In this course, legendary Mr. Finger will explain the process in great details.',
+        trainer: 'Bill Finger',
+        thumbnail: {
+          image: 'elearning/courses/course3.png',
+          video: 'video/beach.mp4'
+        }, 
+        totalEnrolled: 11000,
+        rating: 4.9,
+        reviews: 108009,
+        tags: [
+          tags.design,
+          tags.bestSeller,
+        ],
+        wishlisted: true,
+      },
+      {
+        name: 'Comic Page Layout: Analysing The Classics',
+        price: '$49.50',
+        oldPrice: '$139.90',
+        excerpt: 'Great Script Writers never avoid cliche moments, rather play with it. In this course, legendary Mr. Finger will explain the process in great details.',
+        trainer: 'Bill Finger',
+        thumbnail: {
+          image: 'elearning/courses/course4.png',
+          video: 'video/beach.mp4'
+        }, 
+        totalEnrolled: 32106,
+        rating: 4.9,
+        reviews: 26777,
+        tags: [
+          tags.misc, tags.topTrainer,
+        ],
+        addedToCart: true,
+      },
+      {
+        name: 'Abstract Painting: Zero to Mastery in Traditional Medium',
+        price: '$69.50',
+        oldPrice: '$139.90',
+        excerpt: 'Great Script Writers never avoid cliche moments, rather play with it. In this course, legendary Mr. Finger will explain the process in great details.',
+        trainer: 'J. H. Williams III',
+        thumbnail: {
+          image: 'elearning/courses/course5.png',
+          video: 'video/beach.mp4'
+        }, 
+        totalEnrolled: 2304,
+        rating: 4.9,
+        reviews: 1527,
+        tags: [
+          tags.design,
+          tags.topTrainer,
+        ]
+      },
+      {
+        name: 'Inking: Choosing Between Analog vs Digital',
+        price: '$39.99',
+        oldPrice: '$139.90',
+        excerpt: 'Great Script Writers never avoid cliche moments, rather play with it. In this course, legendary Mr. Finger will explain the process in great details.',
+        trainer: 'Bill Finger',
+        thumbnail: {
+          image: 'elearning/courses/course6.png',
+          video: 'video/beach.mp4'
+        }, 
+        totalEnrolled: 9312,
+        rating: 4.9,
+        reviews: 8179,
+        tags: [
+          tags.painting,
+          tags.topTrainer,
+        ]
+      },
+      {
+        name: 'Character Design Masterclass: Your First Supervillain',
+        price: '$99.90',
+        oldPrice: '$139.90',
+        excerpt: 'Great Script Writers never avoid cliche moments, rather play with it. In this course, legendary Mr. Finger will explain the process in great details.',
+        trainer: 'Bill Finger',
+        thumbnail: {
+          image: 'elearning/courses/course7.png',
+          video: 'video/beach.mp4'
+        }, 
+        totalEnrolled: 292603,
+        rating: 4.9,
+        reviews: 201452,
+        tags: [
+          tags.writing,
+          tags.bestSeller,
+          tags.editorsChoice,
+        ]
+      },
+      {
+        name: 'Character Design Masterclass: Your First Superhero',
+        price: '$69.99',
+        oldPrice: '$139.90',
+        excerpt: 'Great Script Writers never avoid cliche moments, rather play with it. In this course, legendary Mr. Finger will explain the process in great details.',
+        trainer: 'Bill Finger',
+        thumbnail: {
+          image: 'elearning/courses/course8.png',
+          video: 'video/beach.mp4'
+        }, 
+        totalEnrolled: 90304,
+        rating: 4.9,
+        reviews: 80259,
+        tags: [
+          tags.writing,
+          tags.editorsChoice
+        ]
+      },
+      {
+        name: 'Character Design Masterclass: Your First Sidekick',
+        price: '$69.99',
+        oldPrice: '$139.90',
+        excerpt: 'Great Script Writers never avoid cliche moments, rather play with it. In this course, legendary Mr. Finger will explain the process in great details.',
+        trainer: 'Bill Finger',
+        thumbnail: {
+          image: 'elearning/courses/course9.png',
+          video: 'video/beach.mp4'
+        }, 
+        totalEnrolled: 66304,
+        rating: 4.9,
+        reviews: 55699,
+        tags: [
+          tags.writing,
+          tags.topTrainer,
+        ]
+      },
+    ]
+
+  - 
+    var lessons = [
+      {
+        title: 'Intro',
+        excerpt: 'Introduction and Course Objectives',
+        isLocked: false,
+        attachment: { 
+          image: `${CWD}assets/img/elearning/lessons/intro.png`, 
+          src: `${CWD}assets/video/beach.mp4`,
+          type: 'video' 
+        }
+      },
+      {
+        title: 'Chapter 1',
+        excerpt: 'Tools, nothing more, nothing less',
+        isLocked: true,
+        attachment: { 
+          image: `${CWD}assets/img/elearning/lessons/chapter1.png`, 
+          src: `${CWD}assets/video/beach.mp4`,
+          type: 'image' 
+        }
+      },
+      {
+        title: 'Chapter 2',
+        excerpt: 'Choosing the Right Tool',
+        isLocked: true,
+        attachment: { 
+          image: `${CWD}assets/img/elearning/lessons/chapter2.png`, 
+          src: `${CWD}assets/video/beach.mp4`, 
+          type: 'image' 
+        }
+      },
+      {
+        title: 'Chapter 3',
+        excerpt: 'Getting Comfortable',
+        isLocked: true,
+        attachment: { 
+          image: `${CWD}assets/img/elearning/lessons/chapter3.png`, 
+          src: `${CWD}assets/video/beach.mp4`,
+          type: 'image' 
+        }
+      },
+      {
+        title: 'Chapter 4',
+        excerpt: 'Exploring Beyond Comfort',
+        isLocked: true,
+        attachment: { 
+          image: `${CWD}assets/img/elearning/lessons/chapter4.png`, 
+          src: `${CWD}assets/video/beach.mp4`, 
+          type: 'image' 
+        }
+      },
+    ]
+
+//- ==============================================
+//- Dropdown (dropdown-id)
+//- ==============================================
+mixin DropdownLms(id)
+  .dropdown.font-sans-serif.position-static.d-inline-block.btn-reveal-trigger
+    button.btn.btn-link.text-600.btn-sm.dropdown-toggle.btn-reveal.dropdown-caret-none&attributes(attributes)(
+      type='button' 
+      id=id 
+      data-bs-toggle="dropdown" 
+      data-boundary="window" 
+      aria-haspopup="true" 
+      aria-expanded="false" 
+      data-bs-reference="parent"
+    )
+      span.fas.fa-ellipsis-h.fs--1
+    .dropdown-menu.dropdown-menu-end.border.py-2(aria-labelledby=id)
+      a(href='#!').dropdown-item View
+      a(href='#!').dropdown-item Edit
+      .dropdown-divider
+      a(href='#!').dropdown-item.text-danger Delete
+
+
+
+//- ==============================================
+//- Badge (badge-config)
+//- ==============================================
+mixin Badge(badge)
+  span.badge.rounded-pill(class=`badge-soft-${badge.type}`)&attributes(attributes)
+    if badge.iconBefore
+      span(class=`${badge.icon} me-1` data-fa-transform="shrink-4")
+    span=badge.content
+    if !badge.iconBefore
+      span(class=`${badge.icon} ms-1` data-fa-transform="shrink-4")
+
+
+//- ==============================================
+//- Attachment (attachment-config)
+//- ==============================================
+mixin AttachmentLink(config, group)
+  a(
+    href=config.image ? config.src : '#!' 
+    data-gallery=config.type==='txt' || config.type==='pdf' ? false : group
+  ).text-decoration-none&attributes(attributes)
+    block
+
+
+//- ==============================================
+//- Review (rating)
+//- ==============================================
+mixin Review(rating)
+  - for(var i = 0; i < 5; i++){
+    if(i < Math.floor(rating))
+      span.fa.fa-star.text-warning&attributes(attributes)
+    else if( rating > i && rating < i+1 )
+      span.fa.fa-star-half-alt.text-warning.star-icon&attributes(attributes)
+    else
+      span.fa.fa-star.text-300&attributes(attributes)
+  - }

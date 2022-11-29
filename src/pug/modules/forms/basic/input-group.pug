@@ -1,0 +1,66 @@
+extends ../../../layouts/LayoutComponent
+include ../../../mixins/forms/InputGroup
+
+append variables
+  
+  -
+    var pageHeader = 
+      {
+        title: 'Input group',
+        description: 'Easily extend form controls by adding text, buttons, or button groups on either side of textual inputs, custom selects, and custom file inputs.',
+        url: `https://getbootstrap.com/docs/${bootstrapVersion}/forms/input-group`,
+        linkText: 'Input group on Bootstrap'
+      }
+block component
+  +PageHeader(pageHeader)
+
+  
+  +ComponentCard({
+    title: 'Basic example',
+    anchor: true,
+    description:"Place one add-on or button on either side of an input. You may also place one on both sides of an input. Remember to place <code>label</code>'s outside the input group.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +BasicExample
+
+  +ComponentCard({
+    title: 'Wrapping',
+    anchor: true,
+    description:`Input groups wrap by default via <code>flex-wrap: wrap</code> in order to accommodate custom form field validation within an input group. You may disable this with <code>.flex-nowrap</code>`,
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +WrappingExample
+
+  +ComponentCard({
+    title: 'Sizing',
+    anchor: true,
+    description:`Add the relative form sizing classes to the <code>.input-group</code> itself and contents within will automatically resize—no need for repeating the form control size classes on each element.`,
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +SizingExample
+
+  +ComponentCard({
+    title: 'Checkboxes and Radios',
+    anchor: true,
+    description:`Place any checkbox or radio option within an input group’s addon instead of text.`,
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +CheckboxesRadios
+
+  +ComponentCard({
+    title: 'Multiple inputs',
+    anchor: true,
+    description:`While multiple <code>input</code>s are supported visually, validation styles are only available for input groups with a single <code>input</code>.`,
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +MultipleInputs
+
+  +ComponentCard({
+    title: 'Multiple Addons',
+    anchor: true,
+    description:`Multiple add-ons are supported and can be mixed with checkbox and radio input versions.`,
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +MultipleAddons
+                             
+

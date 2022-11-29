@@ -1,0 +1,859 @@
+append variables
+  -
+    var ticketsBadges = [
+      {content: 'Recent', type:'success'},
+      {content: 'Overdue', type:'danger'},
+      {content: 'Remaining', type:'warning'},
+      {content: 'Responded', type:'info'},
+      {content: 'Closed', type:'secondary'}
+    ];
+
+
+
+  -
+    var tickets = [
+      {
+        name:"Emma Watson",
+        avatar: {
+          name:"Emma Watson",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"Synapse Design #1125",
+        status: ticketsBadges[0],
+        priority: {
+          title: "Urgent",
+          color: "#e63757",
+          data: 100,
+        },
+        agent:"Anindya",
+        date:"2d ago",
+      },
+      {
+        name:"Luke",
+        avatar: {
+          name:"Luke",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"Change of refund my last buy | Order #125631",
+        status: ticketsBadges[1],
+        priority:{
+          title: "High",
+          color: "#F68F57",
+          data: 75
+        },
+        agent:"Anindya",
+        date:"2d ago",
+      },
+      {
+        name:"Finley",
+        avatar: {
+          img: 'team/1-thumb.png',
+          size: 'xl',
+        },
+        subject:"I need your help #2256",
+        status: ticketsBadges[2],
+        priority:{
+          title: "Medium",
+          color: "#2A7BE4",
+          data: 50
+        },
+        agent:"Nowrin",
+        date:"2d ago",
+      },
+      {
+        name:"Peter Gill",
+        avatar: {
+          name:"Peter Gill",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"I need your help #2256",
+        status: ticketsBadges[3],
+        priority: {
+          title: "Low",
+          color: "#00D27B",
+          data: 25
+        },
+        agent:"Nowrin",
+        date:"2d ago",
+      },
+      {
+        name:"Freya",
+        avatar: {
+          img: 'team/25-thumb.png',
+          size: 'xl',
+        },
+        subject:"Contact Froms #3264",
+        status: ticketsBadges[4],
+        priority:{
+          title: "Medium",
+          color: "#2A7BE4",
+          data: 50
+        },
+        agent:"Khalid",
+        date:"2d ago",
+      },
+      {
+        name:"Morrison",
+        avatar: {
+          name:"Morrison",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"I need your help #2256",
+        status: ticketsBadges[3],
+        priority: {
+          title: "Medium",
+          color: "#2A7BE4",
+          data: 50
+        },
+        agent:"Khalid",
+        date:"2d ago",
+      },
+      {
+        name:"Morrison Banneker",
+        avatar: {
+          name:"Morrison Banneker",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"I need your help #2256",
+        status: ticketsBadges[4],
+        priority:{
+          title: "Medium",
+          color: "#2A7BE4",
+          data: 50
+        },
+        agent:"Khalid",
+        date:"2d ago",
+      },
+      {
+        name:"Aar Kay",
+        avatar: {
+          img: 'team/14-thumb.png',
+          size: 'xl',
+        },
+        subject:"Regarding Falcon Theme #3262",
+        status: ticketsBadges[0],
+        priority:{
+          title: "High",
+          color: "#F68F57",
+          data: 75
+        },
+        agent:"",
+        date:"2d ago",
+      },
+      {
+        name:"Fadil Badr",
+        avatar: {
+          name:"Fadil Badr",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"i would like to buy theme #3261",
+        status: ticketsBadges[4],
+        priority: {
+          title: "Low",
+          color: "#00D27B",
+          data: 25
+        },
+        agent:"Khalid",
+        date:"2d ago",
+      },
+      {
+        name:"Regina Kempt",
+        avatar: {
+          img: 'team/3-thumb.png',
+          size: 'xl',
+        },
+        subject:"Theme info (icons) #3260",
+        status: ticketsBadges[4],
+        priority:{
+          title: "Medium",
+          color: "#2A7BE4",
+          data: 50
+        },
+        agent:"Anindya",
+        date:"2d ago",
+      },
+      {
+        name:"Caleb",
+        avatar: {
+          name:"Caleb",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"Phishing link #3259",
+        status: ticketsBadges[0],
+        priority: {
+          title: "Low",
+          color: "#00D27B",
+          data: 25
+        },
+        agent:"",
+        date:"2d ago",
+      },
+      {
+        name:"Fadil Badr",
+        avatar: {
+          name:"Fadil Badr",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"i would like to buy theme #3261",
+        status: ticketsBadges[4],
+        priority:{
+          title: "Medium",
+          color: "#2A7BE4",
+          data: 50
+        },
+        agent:"Khalid",
+        date:"2d ago",
+      },
+      {
+        name:"Regina Kempt",
+        avatar: {
+          img: 'team/3-thumb.png',
+          size: 'xl',
+        },
+        subject:"Theme info (icons) #3260",
+        status: ticketsBadges[4],
+        priority: {
+          title: "Low",
+          color: "#00D27B",
+          data: 25
+        },
+        agent:"Anindya",
+        date:"2d ago",
+      },
+      {
+        name:"Caleb",
+        avatar: {
+          name:"Caleb",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"Phishing link #3259",
+        status: ticketsBadges[0],
+        priority:{
+          title: "Medium",
+          color: "#2A7BE4",
+          data: 50
+        },
+        agent:"",
+        date:"2d ago",
+      },
+      {
+        name:"Emma Watson",
+        avatar: {
+          name:"Emma Watson",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"Synapse Design #1125",
+        status: ticketsBadges[0],
+        priority: {
+          title: "Urgent",
+          color: "#e63757",
+          data: 100,
+        },
+        agent:"Anindya",
+        date:"2d ago",
+      },
+      {
+        name:"Luke",
+        avatar: {
+          name:"Luke",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"Change of refund my last buy | Order #125631",
+        status: ticketsBadges[1],
+        priority:{
+          title: "High",
+          color: "#F68F57",
+          data: 75
+        },
+        agent:"Anindya",
+        date:"2d ago",
+      },
+      {
+        name:"Finley",
+        avatar: {
+          img: 'team/1-thumb.png',
+          size: 'xl',
+        },
+        subject:"I need your help #2256",
+        status: ticketsBadges[2],
+        priority:{
+          title: "Medium",
+          color: "#2A7BE4",
+          data: 50
+        },
+        agent:"Nowrin",
+        date:"2d ago",
+      },
+      {
+        name:"Peter Gill",
+        avatar: {
+          name:"Peter Gill",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"I need your help #2256",
+        status: ticketsBadges[3],
+        priority: {
+          title: "Low",
+          color: "#00D27B",
+          data: 25
+        },
+        agent:"Nowrin",
+        date:"2d ago",
+      },
+      {
+        name:"Freya",
+        avatar: {
+          img: 'team/25-thumb.png',
+          size: 'xl',
+        },
+        subject:"Contact Froms #3264",
+        status: ticketsBadges[4],
+         priority: {
+          title: "Urgent",
+          color: "#e63757",
+          data: 100,
+        },
+        agent:"Khalid",
+        date:"2d ago",
+      },
+      {
+        name:"Morrison",
+        avatar: {
+          name:"Morrison",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"I need your help #2256",
+        status: ticketsBadges[3],
+        priority: {
+          title: "Medium",
+          color: "#2A7BE4",
+          data: 50
+        },
+        agent:"Khalid",
+        date:"2d ago",
+      },
+      {
+        name:"Morrison Banneker",
+        avatar: {
+          name:"Morrison Banneker",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"I need your help #2256",
+        status: ticketsBadges[4],
+        priority:{
+          title: "Medium",
+          color: "#2A7BE4",
+          data: 50
+        },
+        agent:"Khalid",
+        date:"2d ago",
+      },
+      {
+        name:"Aar Kay",
+        avatar: {
+          img: 'team/14-thumb.png',
+          size: 'xl',
+        },
+        subject:"Regarding Falcon Theme #3262",
+        status: ticketsBadges[0],
+        priority: {
+          title: "Low",
+          color: "#00D27B",
+          data: 25
+        },
+        agent:"",
+        date:"2d ago",
+      },
+      {
+        name:"Caleb",
+        avatar: {
+          name:"Caleb",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"Phishing link #3259",
+        status: ticketsBadges[0],
+        priority:{
+          title: "High",
+          color: "#F68F57",
+          data: 75
+        },
+        agent:"",
+        date:"2d ago",
+      },
+      {
+        name:"Fadil Badr",
+        avatar: {
+          name:"Fadil Badr",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"i would like to buy theme #3261",
+        status: ticketsBadges[4],
+        priority: {
+          title: "Low",
+          color: "#00D27B",
+          data: 25
+        },
+        agent:"Khalid",
+        date:"2d ago",
+      },
+      {
+        name:"Regina Kempt",
+        avatar: {
+          img: 'team/3-thumb.png',
+          size: 'xl',
+        },
+        subject:"Theme info (icons) #3260",
+        status: ticketsBadges[4],
+        priority: {
+          title: "Low",
+          color: "#00D27B",
+          data: 25
+        },
+        agent:"Anindya",
+        date:"2d ago",
+      },
+      {
+        name:"Emma Watson",
+        avatar: {
+          name:"Emma Watson",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"Synapse Design #1125",
+        status: ticketsBadges[0],
+        priority: {
+          title: "Urgent",
+          color: "#e63757",
+          data: 100,
+        },
+        agent:"Anindya",
+        date:"2d ago",
+      },
+      {
+        name:"Luke",
+        avatar: {
+          name:"Luke",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"Change of refund my last buy | Order #125631",
+        status: ticketsBadges[1],
+        priority:{
+          title: "High",
+          color: "#F68F57",
+          data: 75
+        },
+        agent:"Anindya",
+        date:"2d ago",
+      },
+      {
+        name:"Aar Kay",
+        avatar: {
+          img: 'team/14-thumb.png',
+          size: 'xl',
+        },
+        subject:"Regarding Falcon Theme #3262",
+        status: ticketsBadges[0],
+        priority: {
+          title: "Low",
+          color: "#00D27B",
+          data: 25
+        },
+        agent:"",
+        date:"2d ago",
+      },
+      {
+        name:"Morrison Banneker",
+        avatar: {
+          name:"Morrison Banneker",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"I need your help #2256",
+        status: ticketsBadges[4],
+        priority:{
+          title: "Medium",
+          color: "#2A7BE4",
+          data: 50
+        },
+        agent:"Khalid",
+        date:"2d ago",
+      },
+      {
+        name:"Morrison",
+        avatar: {
+          name:"Morrison",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"I need your help #2256",
+        status: ticketsBadges[3],
+        priority:{
+          title: "High",
+          color: "#F68F57",
+          data: 75
+        },
+        agent:"Khalid",
+        date:"2d ago",
+      },
+      {
+        name:"Finley",
+        avatar: {
+          img: 'team/1-thumb.png',
+          size: 'xl',
+        },
+        subject:"I need your help #2256",
+        status: ticketsBadges[2],
+        priority:{
+          title: "Medium",
+          color: "#2A7BE4",
+          data: 50
+        },
+        agent:"Nowrin",
+        date:"2d ago",
+      },
+      {
+        name:"Peter Gill",
+        avatar: {
+          name:"Peter Gill",
+          size: 'xl',
+          round: "circle"
+        },
+        subject:"I need your help #2256",
+        status: ticketsBadges[3],
+        priority: {
+          title: "Low",
+          color: "#00D27B",
+          data: 25
+        },
+        agent:"Nowrin",
+        date:"2d ago",
+      },
+      {
+        name:"Freya",
+        avatar: {
+          img: 'team/25-thumb.png',
+          size: 'xl',
+        },
+        subject:"Contact Froms #3264",
+        status: ticketsBadges[4],
+        priority:{
+          title: "Medium",
+          color: "#2A7BE4",
+          data: 50
+        },
+        agent:"Khalid",
+        date:"2d ago",
+      },
+    ]
+
+mixin Badge(badge)
+  small.badge.rounded(class=`badge-soft-${badge.type} ${badge.type === 'secondary' && "dark__bg-1000"}`)=badge.content
+
+mixin PrioritySelect(config)
+  .d-flex.align-items-center.gap-2&attributes(attributes)
+    div(style=`--falcon-circle-progress-bar:${config.data}`)
+      svg.circle-progress-svg(width="26" height="26" viewBox="0 0 120 120")
+        circle.progress-bar-rail(cx="60" cy="60" r="54" fill="none" stroke-linecap="round" stroke-width="12")
+        circle.progress-bar-top(cx="60" cy="60" r="54" fill="none" stroke-linecap="round" stroke=config.color stroke-width="12")
+    h6.mb-0.text-700= config.title
+
+mixin AgentSelect(selectedAgent)
+  select.form-select.form-select-sm&attributes(attributes)(aria-label='agents actions')
+    each agent in ['Select Agent','Anindya', 'Nowrin', 'Khalid']
+      option(selected= agent === selectedAgent)
+        | #{agent}
+
+mixin TicketsTableItem(config, index)
+  tr
+    td.align-middle.fs-0.py-3
+      .form-check.mb-0
+          input.form-check-input(
+            type='checkbox'
+            id=`table-view-tickets-${index}`
+            data-bulk-select-row
+          )
+    td.align-middle.client.white-space-nowrap.pe-3.pe-xxl-4.ps-2
+      .d-flex.align-items-center.gap-2.position-relative
+        +Avatar(config.avatar)
+        h6.mb-0
+          a.stretched-link.text-900(href=`${CWD}${paths['contact-details']}`)= config.name
+    td.align-middle.subject.py-2.pe-4
+      a.fw-semi-bold(href=`${CWD}${paths['tickets-preview']}`)= config.subject
+    td.align-middle.status.fs-0.pe-4
+      +Badge(config.status)
+    td.align-middle.priority.pe-4
+      +PrioritySelect(config.priority)
+    td.align-middle.agent
+      +AgentSelect(config.agent).w-auto.ms-auto
+
+
+mixin TableView(amount)
+  .table-responsive.scrollbar&attributes(attributes)
+    table.table.table-sm.mb-0.fs--1.table-view-tickets
+      thead.text-800.bg-light
+        tr
+          th.py-2.fs-0.pe-2(style="width: 28px;")
+            .form-check.d-flex.align-items-center
+              input.form-check-input#checkbox-bulk-table-tickets-select(
+                type='checkbox'
+                data-bulk-select!={
+                  body: "table-ticket-body",
+                  actions: "table-ticket-actions",
+                  replacedElement: "table-ticket-replace-element"
+                }
+              )
+          th.sort.align-middle.ps-2(data-sort="client") Client
+          th.sort.align-middle(data-sort="subject" style="min-width:15.625rem") Subject
+          th.sort.align-middle(data-sort="status") Status
+          th.sort.align-middle(data-sort="priority") Priority
+          th.sort.align-middle.text-end(data-sort="agent") Agent
+      tbody.list#table-ticket-body
+        each ticket, index in tickets.slice(0, amount)
+          +TicketsTableItem(ticket, index)
+    .text-center.d-none#tickets-table-fallback
+      p.fw-bold.fs-1.mt-3 No ticket found
+
+mixin CardView(amount)
+  .form-check.d-none
+    input.form-check-input#checkbox-bulk-card-tickets-select(
+      type='checkbox'
+      data-bulk-select!={
+        body: "card-ticket-body",
+        actions: "table-ticket-actions",
+        replacedElement: "table-ticket-replace-element"
+      }
+    )
+  .list.bg-light.p-x1.d-flex.flex-column.gap-3#card-ticket-body
+    each ticket, index in tickets.slice(0, amount)
+      .bg-white.dark__bg-1100.d-md-flex.d-xl-inline-block.d-xxl-flex.align-items-center.p-x1.rounded-3.shadow-sm.card-view-height
+        .d-flex.align-items-start.align-items-sm-center
+          .form-check.me-2.me-xxl-3.mb-0
+            input.form-check-input(
+              type='checkbox'
+              id=`card-view-tickets-${index}`
+              data-bulk-select-row
+            )
+          a(href=`${CWD}${paths['contact-details']}`).d-none.d-sm-block
+            +Avatar(ticket.avatar).avatar-3xl
+          .ms-1.ms-sm-3
+            p.fw-semi-bold.mb-3.mb-sm-2
+              a(href=`${CWD}${paths['tickets-preview']}`)= ticket.subject
+            .row.align-items-center.gx-0.gy-2
+              .col-auto.me-2
+                h6.client.mb-0
+                  a.text-800.d-flex.align-items-center.gap-1(href=`${CWD}app/support-desk/contact-details.html`)
+                    span.fas.fa-user(data-fa-transform="shrink-3 up-1")
+                    span= ticket.name
+              .col-auto.lh-1.me-3
+                +Badge(ticket.status)
+              .col-auto
+                h6.mb-0.text-500= ticket.date
+        .border-bottom.mt-4.mb-x1
+        .d-flex.justify-content-between.ms-auto
+          +PrioritySelect(ticket.priority)(style="width:7.5rem").ms-md-4.ms-xl-0
+          +AgentSelect(ticket.agent)(style="width:9.375rem")
+  .text-center.d-none#tickets-card-fallback
+      p.fw-bold.fs-1.mt-3 No ticket found
+
+
+mixin CardTicketsDashboard(layout)
+  .card#ticketsTable&attributes(attributes)
+    .card-header.border-bottom.border-200.px-0
+      .d-lg-flex.justify-content-between
+        .row.flex-between-center.gy-2.px-x1
+          .col-auto.pe-0
+            h6.mb-0 Unsolved Tickets
+          .col-auto
+            form
+              .input-group.input-search-width
+                input.form-control.form-control-sm.shadow-none(type='search' placeholder='Search  by name' aria-label='search')
+                button.btn.btn-sm.btn-outline-secondary.border-300.hover-border-secondary
+                  span.fa.fa-search.fs--1
+        .border-bottom.border-200.my-3
+        .d-flex.align-items-center.justify-content-between.justify-content-lg-end.px-x1
+          button.btn.btn-sm.btn-falcon-default(type="button")
+            span.fas.fa-filter(data-fa-transform="shrink-4 down-1")
+            span.ms-1.d-none.d-sm-inline-block Filter
+          .bg-300.mx-3.d-none.d-lg-block(style='width:1px; height:29px')
+          #table-ticket-actions.d-none
+            .d-flex
+              select.form-select.form-select-sm(aria-label='Bulk actions')
+                option(selected='') Bulk actions
+                option(value='Refund') Refund
+                option(value='Delete') Delete
+                option(value='Archive') Archive
+              button.btn.btn-falcon-default.btn-sm.ms-2(type='button') Apply
+          .d-flex.align-items-center#table-ticket-replace-element
+            .dropdown
+              button.btn.btn-sm.btn-falcon-default.dropdown-toggle.dropdown-caret-none&attributes(attributes)(type='button' id="dashboard-layout" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent")
+                span.d-none.d-sm-inline-block.d-xl-none.d-xxl-inline-block.me-1.table-layout Table View
+                span.fas.fa-chevron-down(data-fa-transform="shrink-3 down-1")
+              .dropdown-menu.dropdown-toggle-item.dropdown-menu-end.border.py-2(aria-labelledby="dashboard-layout" role="tablist")
+                a.dropdown-item(
+                  id="tableView"
+                  data-bs-toggle=  "tab"
+                  href= "#table-view"
+                  class= 'active'
+                  role= "tab"
+                  aria-controls="table-view"
+                  ) Table View
+                a.dropdown-item(
+                  id="cardView"
+                  data-bs-toggle= "tab"
+                  href= "#card-view"
+                  role= "tab"
+                  aria-controls="card-view"
+                  ) Card View
+            button(type='button').btn.btn-falcon-default.btn-sm.mx-2
+              span.fas.fa-plus(data-fa-transform="shrink-3")
+              span.d-none.d-sm-inline-block.d-xl-none.d-xxl-inline-block.ms-1 New
+            button(type='button').btn.btn-falcon-default.btn-sm
+              span.fas.fa-external-link-alt(data-fa-transform="shrink-3")
+              span.d-none.d-sm-inline-block.d-xl-none.d-xxl-inline-block.ms-1 Export
+            .dropdown.font-sans-serif.ms-2
+              button.btn.btn-falcon-default.text-600.btn-sm.dropdown-toggle.dropdown-caret-none(type='button' id="preview-dropdown" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false")
+                span.fas.fa-ellipsis-h.fs--2
+              .dropdown-menu.dropdown-menu-end.border.py-2(aria-labelledby="preview-dropdown" )
+                a(href='#!').dropdown-item View
+                a(href='#!').dropdown-item Export
+                .dropdown-divider
+                a(href='#!').dropdown-item.text-danger Remove
+    .tab-content#ticketViewContent
+      .fade.tab-pane.active.show#table-view(
+          role= "tabpanel"
+          aria-labelledby="tableView"
+          data-list!={
+          valueNames: ["client", "subject", "status", "priority", "agent"],
+          page: 6,
+          pagination: true,
+        }
+        )
+        .card-body.p-0
+          +TableView(12)
+        .card-footer 
+          +BtnPagination
+
+      .fade.tab-pane#card-view(
+          role= "tabpanel"
+          aria-labelledby="cardView"
+          data-list!={
+          valueNames: ["client", "subject", "status", "priority", "agent"],
+          page: 4,
+          pagination: true,
+        }
+        )
+        .card-body.p-0
+          +CardView(8)
+        .card-footer 
+          +BtnPagination
+
+
+mixin CardTickets(page, layout, amount)
+  .card#ticketsTable&attributes(attributes)(data-list!={
+    valueNames: ["client", "subject", "status", "priority", "agent"],
+    page: page,
+    pagination: true,
+    fallback: layout === 'table' ? "tickets-table-fallback" : "tickets-card-fallback"
+  })
+    .card-header.border-bottom.border-200.px-0
+      .d-lg-flex.justify-content-between
+        .row.flex-between-center.gy-2.px-x1
+          .col-auto.pe-0
+            h6.mb-0 All tickets
+          .col-auto
+            form
+              .input-group.input-search-width
+                input.form-control.form-control-sm.shadow-none.search(type='search' placeholder='Search  by name' aria-label='search')
+                button.btn.btn-sm.btn-outline-secondary.border-300.hover-border-secondary
+                  span.fa.fa-search.fs--1
+        .border-bottom.border-200.my-3
+        .d-flex.align-items-center.justify-content-between.justify-content-lg-end.px-x1
+          button.btn.btn-sm.btn-falcon-default.d-xl-none(
+            type="button"
+            data-bs-toggle= "offcanvas"
+            data-bs-target="#ticketOffcanvas"
+            aria-controls= "ticketOffcanvas"
+          )
+            span.fas.fa-filter(data-fa-transform="shrink-4 down-1")
+            span.ms-1.d-none.d-sm-inline-block Filter
+          .bg-300.mx-3.d-none.d-lg-block.d-xl-none(style='width:1px; height:29px')
+          #table-ticket-actions.d-none
+            .d-flex
+              select.form-select.form-select-sm(aria-label='Bulk actions')
+                option(selected='') Bulk actions
+                option(value='Refund') Refund
+                option(value='Delete') Delete
+                option(value='Archive') Archive
+              button.btn.btn-falcon-default.btn-sm.ms-2(type='button') Apply
+          .d-flex.align-items-center#table-ticket-replace-element
+            .dropdown
+              button.btn.btn-sm.btn-falcon-default.dropdown-toggle.dropdown-caret-none&attributes(attributes)(type='button' id="ticket-layout" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent")
+                span.d-none.d-sm-inline-block.d-xl-none.d-xxl-inline-block.me-1= layout==="table" ? "Table View" : "Card View"
+                span.fas.fa-chevron-down(data-fa-transform="shrink-3 down-1")
+              .dropdown-menu.dropdown-toggle-item.dropdown-menu-end.border.py-2(aria-labelledby="ticket-layout")
+                a.dropdown-item( 
+                  href=`${CWD}app/support-desk/table-view.html`
+                  class=layout==='table' && "active"
+                  ) Table View
+                a.dropdown-item(
+                  href= `${CWD}app/support-desk/card-view.html`
+                  class=layout==='card' && "active"
+                  ) Card View
+            button(type='button').btn.btn-falcon-default.btn-sm.mx-2
+              span.fas.fa-plus(data-fa-transform="shrink-3")
+              span.d-none.d-sm-inline-block.d-xl-none.d-xxl-inline-block.ms-1 New
+            button(type='button').btn.btn-falcon-default.btn-sm
+              span.fas.fa-external-link-alt(data-fa-transform="shrink-3")
+              span.d-none.d-sm-inline-block.d-xl-none.d-xxl-inline-block.ms-1 Export
+            .dropdown.font-sans-serif.ms-2
+              button.btn.btn-falcon-default.text-600.btn-sm.dropdown-toggle.dropdown-caret-none(type='button' id="preview-dropdown" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false")
+                span.fas.fa-ellipsis-h.fs--2
+              .dropdown-menu.dropdown-menu-end.border.py-2(aria-labelledby="preview-dropdown" )
+                a(href='#!').dropdown-item View
+                a(href='#!').dropdown-item Export
+                .dropdown-divider
+                a(href='#!').dropdown-item.text-danger Remove
+    .card-body.p-0
+      if layout === "table"
+        +TableView(amount)
+      else
+        +CardView(amount)
+    .card-footer 
+      +NumberPagination
+
+
+mixin BtnPagination
+  .row.align-items-center
+    .pagination.d-none
+    .col
+      span.d-none.d-sm-inline-block.me-2.fs--1(data-list-info)
+    .col-auto.d-flex
+      button.btn.btn-sm.btn-primary(type='button' data-list-pagination='prev')
+        span Previous
+      button.btn.btn-sm.btn-primary.px-4.ms-2(type='button' data-list-pagination='next')
+        span Next
+
+mixin NumberPagination
+    .d-flex.justify-content-center
+      button(type='button' title="Previous" data-list-pagination='prev').btn.btn-sm.btn-falcon-default.me-1
+        span.fas.fa-chevron-left
+      ul.pagination.mb-0
+      button(type='button' title="Next" data-list-pagination='next').btn.btn-sm.btn-falcon-default.ms-1
+        span.fas.fa-chevron-right

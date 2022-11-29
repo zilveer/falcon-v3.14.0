@@ -1,0 +1,125 @@
+block append variables
+  -
+    var faqs = [
+      {
+        id: 1,
+        title  :'How to start working with Falcon?',
+        description: `
+        <p><b>You will find HTML pages in the public directory</b>. If you want, you can include the file over there and make the project live. You can write SCSS which is generated to the CSS file in the <code>public/assets</code> directory. We also used a pug template engine to generate all HTML files which one is very helpful for easy customization.</p>
+        <p class='mb-0'> For detailed documentation, check the following link: <a href='https://prium.github.io/falcon/${version}/documentation/getting-started.html'> https://prium.github.io/falcon/${version}/documentation/getting-started.html</a>.</p>`,
+        active: true,
+      },
+      {
+        id: 2,
+        title  :'What is the minimum requirement to run Falcon?',
+        description: `<p class='mb-0'>Minimum requirements to run Falcon <code>${version}</code></p>
+        <ul class='mb-0'>
+          <li> Node v14.18.1 </li>
+          <li> npm v6.14.5 </li>
+          <li> Bootstrap v5.1.3 </li>
+        </ul>
+        `,
+      },
+      {
+        id: 3,
+        title  :'What to do with Falcon after running Gulp?',
+        description: `<p >After running gulp you can start customizing the Falcon using Pug.
+        You can start customizing from <code>src/pug/pages/starter.pug</code> where minimum styles and scripts are included to run Falcon theme.</p><p class='mb-0'>Or you can update html files directly from the public directory.</p>`,
+      },
+      {
+        id: 4,
+        title  :'Do I need to work with Pug/Gulp/Node if I want to build with Falcon?',
+        description: `<p class='mb-0'>You are not required to use pug, gulp, node, or any other workflow tools.All the HTML files are ready to use under the <code>public</code> folder. Just take a fresh copy of Falcon, open any HTML files in the <code>public</code> folder, and you can edit it as you like. Plane and simple HTML.</p>`,
+      },
+      {
+        id: 5,
+        title  :'How to update this template to the latest version of Falcon?',
+        description: `<p><b>Updating from any earlier version of 3.x to ${version}:</b><br />
+        Check out the following link and follow the changes: <a href='https://prium.github.io/falcon/${version}/changelog.html'>https://prium.github.io/falcon/${version}/changelog.html</a>
+        </p>
+        <p class='mb-0'><b>Updating from version 2 to version 3:</b><br />
+        As the latest versions of templates and all their packages have different structures behind their components, you have to update all the components manually into your project.<br>
+        So, it would be better to start building applications with the Bootstrap 5 version of Falcon from scratch. You can include any components from Bootstrap 5 version to your project. Bring the component and its required SCSS and place it into your current project.
+        </p>
+        `,
+      },
+      {
+        id: 6,
+        title  :'Where to get the Figma Files?',
+        description: `<p>You will find the Figma link in the <code>README.md</code> file on your downloaded copy of Falcon. Here is the detailed documentation: <a target='_blank' href='https://prium.github.io/falcon/${version}/documentation/design-file.html'> https://prium.github.io/falcon/${version}/documentation/design-file.html</a>.</p>
+        <p class='mb-0'>If you still have any problem with the link, reach us out with your purchase ID at <a href="mailto:support@themewagon.com">support@themewagon.com</a></p>
+        `,
+      },
+      {
+        id: 7,
+        title  :'Is it possible to build a mobile app using Falcon components?',
+        description: `<p class='mb-0'> Falcon is made out of HTML, CSS, and JS. You can not use Falcon as a "Native" component library for an android or iOS app. But if you use a web-view for your app or use a framework that uses HTML, CSS, and JS for mobile app UI, yes, you can use Falcon in that case </p>`,
+      },
+      {
+        id: 8,
+        title  :'Can one use Falcon with Django?',
+        description: `<p> Many of our customers are using Falcon with Django. Using Falcon is like using Bootstrap with Django, just with some extra features.</p>
+        <p> For a starter, you need to take all the CSS and JS file from Falcon's <code>public/assets</code> folder to your project and link them to your view files. You can find all the required scripts and styles on the source of the starter page.</p>
+        <p class='mb-0'>It is also possible to compile the SCSS and use the ES6 JavaScript partial files with Django using Falcon's built-in gulp based workflow.</p>`,
+      },
+      {
+        id: 9,
+        title  :'Is it possible to use this template with Blazor?',
+        description: `<p class='mb-0'>We are afraid, there is no Blazor version of Falcon and no Blazor expert in our team at this moment. But we think, you would be able to use it just like Bootstrap, only an extended version.</p>`,
+      },
+      {
+        id: 10,
+        title  :'How can one switch to the top navbar and combo navbar layout?',
+        description: `<p class='mb-0'> In Falcon live demo, we are previewing both combo nav and top nav together. To apply top nav layout to any page, check the documentation in Falcon <a href='https://prium.github.io/falcon/${version}/modules/components/navs-and-tabs/top-navbar.html'> https://prium.github.io/falcon/${version}/modules/components/navs-and-tabs/top-navbar.html</a>.</p>
+        <p>You will also get the example of navbar top layout page in public/demo/navbar-top.html. Also check the following link for top nav: <a href='https://prium.github.io/falcon/${version}/demo/navbar-top.html'>https://prium.github.io/falcon/${version}/demo/navbar-top.html</a>.</p>
+        <p class='mb-0'>In the same way, you can implement the Combo nav layout. Here is the documentation of combo nav layout: <a href="https://prium.github.io/falcon/${version}/modules/components/navs-and-tabs/combo-navbar.html"> https://prium.github.io/falcon/${version}/modules/components/navs-and-tabs/combo-navbar.html</a>. </p>
+        <p>Example page:<br>
+        <a href="https://prium.github.io/falcon/${version}/demo/combo-nav.html">https://prium.github.io/falcon/${version}/demo/combo-nav.html</a>.</P>
+        <p class='mb-0'>Why did we keep it different? Because in the demo, we included HTML codes for all the Navs on every page. But most of our users need to use only one nav and do not want their users to give the option to change the nav. That’s why we redirected the settings to the corresponding documentation page to see how they can configure it</P>`,
+      },
+      {
+        id: 11,
+        title  :'Does Falcon incorporate properly with Laravel?',
+        description: ` <p>Falcon works nicely with Laravel.</P>
+        <p class='mb-0'>Good news is we have a starter project made with laravel mix and Falcon. This project is privately available. If you are interested, after purchasing Falcon, please send your purchase ID and we will send you the starter project.</p>`,
+      },
+      {
+        id: 12,
+        title  :'With which version of Laravel Falcon works fine?',
+        description: ` Falcon works fine with Laravel 9x.`,
+      },
+      {
+        id: 13,
+        title  :' How to use Falcon with Angular?',
+        description: `<p>We have developed a very basic Angular starter pack to help developers get started with Falcon & Angular. The project is still a work in process, and we are updating it quite often to match with the industry best practices. If you are interested, after purchasing Falcon, please send your purchase ID and we will send you the starter pack.</P> `,
+      },
+      {
+        id: 14,
+        title:'Tried running npm install but getting a bunch of errors.',
+        description: ` <a href="${CWD}assets/img/doc/error.png" data-gallery="gallery-2">  <img class="img-fluid rounded" src="${CWD}assets/img/doc/error.png" alt="" width="300" /></a> 
+        <p class='mb-0'>Try deleting the <code>package-lock.json</code> and <code>node_modules</code> folder and then run <code>npm i</code> again.</p>`,
+      },
+      {
+        id: 15,
+        title  :'Does Falcon work fine with Ruby?',
+        description: `<p class='mb-0'>I'm afraid we do not have any documentation on rails integration yet or any version for Ruby. But you may find the following link useful. Since all the Bootstrap themes are structured in a similar fashion, you may find it helpful: <a target='_blank' href='https://rubyyagi.com/how-to-integrate-html-bootstrap-theme-into-rails-6/'>https://rubyyagi.com/how-to-integrate-html-bootstrap-theme-into-rails-6/</a>.</p>`,
+      }
+    ];
+mixin FaqDocItem(config)
+  .card.shadow-none&attributes(attributes)
+    .accordion-item.border-0
+      .card-header.p-0(id=`faqAccordionHeading${config.id}`)
+        button.accordion-button.btn.btn-link.text-decoration-none.d-block.w-100.py-2.px-3.collapsed.border-0.text-start.rounded-0.shadow-none(data-bs-toggle='collapse' data-bs-target=`#collapseFaqAccordion${config.id}` aria-expanded='false' aria-controls=`collapseFaqAccordion${config.id}`)
+          span.fas.fa-caret-right.accordion-icon.me-3(data-fa-transform="shrink-2")
+          span.fw-medium.font-sans-serif.text-900=config.title
+      .accordion-collapse.collapse(id=`collapseFaqAccordion${config.id}` aria-labelledby=`faqAccordionHeading${config.id}` data-parent='#accordionFaq')
+        .accordion-body.p-0
+          .card-body.pt-2
+            .ps-3.mb-0!=config.description
+
+mixin FaqDoc
+  .card
+    .card-body
+      #accordionFaq.accordion.border.rounded.overflow-hidden
+        each faq, index in faqs
+          +FaqDocItem(faq)(class=`${index === 0 ? 'rounded-bottom-0 ' : 'rounded-0 '}${index !== faqs.length - 1 ? 'border-bottom' : ''}`)

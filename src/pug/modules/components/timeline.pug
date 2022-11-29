@@ -1,0 +1,172 @@
+extends ../../layouts/LayoutComponent
+
+append variables
+
+  -
+    var pageHeader = {
+      title: 'Timeline',
+      description: 'Create timeline, stories, roadmap, history with Falcon’s exclusive timeline component.',
+
+    }
+
+    var verticalTimelineData = [
+      {
+        title: 'iPhone 13 released',
+        description: 'Most advanced dual‑camera system ever. Durability that’s front and center. And edge to edge. A lightning-fast chip that leaves the competition behind.',
+        day: '2021',
+        date: '24 September',
+        icon: 'fas fa-mobile'
+      },
+      {
+        title: 'iPad  launched',
+        description: 'Following on from the success of their iPhone launches and the popularity of lighter, more portable laptops, the iPad was born in 2010, combining the best features of both products. ',
+        day: '2010-2014',
+        date: '03 April',
+        icon: 'fas fa-fire'
+      },
+      {
+        title: 'MacBook Air released',
+        description: 'Along with releasing the next generation of the iPhone, the iPhone 3G, Apple also released the MacBook Air which would set the precedent across the industry for thinner, lighter laptops. ',
+        day: '2008',
+        date: '15 January',
+        icon: 'fas fa-book-open'
+      },
+      {
+        title: 'First generation iphone',
+        description: 'The first-generation iPhone was released with a mere 4GB storage and would launch the company into a new portable internet age of smartphones.',
+        day: '2007',
+        date: '01 January',
+        icon: 'fas fa-rocket'
+      },
+      {
+        title: 'Apple IIc & The Mac',
+        description: '1984 saw the rise of the Apple IIc, the first portable computer which was intended to be carried around but had no battery, this meant that a power socket would need to be nearby for you to use it.',
+        day: '1984',
+        date: '24 April',
+        icon: 'fas fa-tint'
+      },
+      {
+        title: 'Apple I was launched',
+        description: 'July 1st, 1976 was when the Apple I was launched, designed and built by Steve Wozniak, the co-founder of Apple. However, it was Steve Jobs who had the idea to sell the computer and it was there that the Apple empire was born.',
+        day: '1976',
+        date: '01 July',
+        icon: 'fas fa-flag'
+      },
+    ];
+
+    var zigzagTimelineData = [
+      {
+        year: '2000',
+        title: '1 Ghz pentium and athlon',
+        description: 'AMD and intel release chips clocked at 1 GHz. Sony releases the play station 2.',
+        img: {
+          src: 'gallery/2000.jpg',
+          classes: 'rounded',
+          height: '250',
+          width: '188'
+        }
+     },
+      {
+        year: '2001',
+        title: 'Mac OS X/ windows XP',
+        description: 'New version of the three major operation systems are released.',
+        img: {
+          src: 'gallery/2001.jpg',
+          classes: 'rounded',
+          height: '250',
+          width: '188'
+        }
+     },
+
+      {
+        year: '2006',
+        title: 'Macbook pro/Intel core 2/wifi',
+        description: 'The Macbook pro, their first dual-core intel based mobile computer. Sony and Nintendo release the PS3 and will respectively.',
+        img: {
+          src: 'gallery/2006.jpg',
+          classes: 'rounded',
+          height: '250',
+          width: '188'
+        }
+     },
+      {
+        year: '2007',
+        title: 'Iphone/ASUS Eee pc',
+        description: 'The first iphone was introduces by Apple. The first ASUS Eee introduces the netbook category of laptops',
+        img: {
+          src: 'gallery/2007.jpg',
+          classes: 'rounded',
+          height: '250',
+          width: '188'
+        }
+     },
+      {
+        year: '2008',
+        title: 'HTC Dream/Google android',
+        description: 'The HTC Dream is released- the first  commercially available phone to run the newly released android operating  system by google.',
+        img: {
+          src: 'gallery/2008.jpg',
+          classes: 'rounded',
+          height: '250',
+          width: '188'
+        }
+     },
+      {
+        year: '2010',
+        title: 'Ipad',
+        description: 'Apple released the ipad, a tablet computer that bridges the gap between smartphones and laptops.',
+        img: {
+          src: 'gallery/2010.jpg',
+          classes: 'rounded',
+          height: '250',
+          width: '188'
+        }
+     },
+    ];
+
+block component
+
+  +PageHeader(pageHeader)
+
+  .card.mb-3
+    .card-header.bg-light
+      h5.mb-0(data-anchor) Example
+    .card-body.px-sm-4.px-md-8.px-lg-6.px-xxl-8
+      .timeline-vertical
+        each item,index in verticalTimelineData 
+          .timeline-item(class= `${ index%2 == 0 ? 'timeline-item-start': 'timeline-item-end'}`)
+            .timeline-icon.icon-item.icon-item-lg.text-primary.border-300
+              span.fs-1(class=`${item.icon}`)
+            .row
+              .col-lg-6.timeline-item-time  
+                div
+                  p.fs--1.mb-0.fw-semi-bold=item.day
+                  p.fs--2.text-600=item.date
+              .col-lg-6
+                .timeline-item-content
+                  .timeline-item-card
+                    h5.mb-2=item.title
+                    p.fs--1.mb-0=item.description
+
+  .card 
+    .card-header.bg-light 
+      h5.mb-0(data-anchor) Timeline with media
+    .card-body.px-sm-4.px-md-8.px-lg-6.px-xxl-8
+      .timeline-zigzag
+        each item,index in zigzagTimelineData
+          +TimelineRow(item, index)
+    
+mixin TimelineRow(item, index)
+  - var {title, description, year} = item
+  - var { src, width, height, classes} = item.img
+    
+  .row.timeline-item(class= `${ index%2==0 ? 'timeline-item-end': 'timeline-item-start'}`)
+    .col-lg-6.timeline-item-content
+      span.bullet
+      .row.g-0.mt-n4
+        .col.timeline-item-text
+          h3.text-primary.mt-4.mt-sm-0=year   
+          h6.mt-2.mb-1.mt-sm-3=title
+          p.fs--1=description
+        .col-sm-auto
+          img.timeline-item-media(src=`${CWD}assets/img/${src}` width=`${width || '255px'}` height=`${height || '188px'}` class=`${classes}` alt="") 

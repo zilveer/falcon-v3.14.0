@@ -1,0 +1,36 @@
+extends ../../../layouts/LayoutTheme
+include ../../../mixins/e-learning/Mixins
+include ../../../mixins/e-learning/CreateCourse
+
+prepend styles
+  link(href=`${CWD}vendors/choices/choices.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/dropzone/dropzone.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/flatpickr/flatpickr.min.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/tinymce/tinymce.min.js`)
+  script(src=`${CWD}vendors/choices/choices.min.js`)
+  script(src=`${CWD}assets/js/flatpickr.js`)
+  script(src=`${CWD}vendors/dropzone/dropzone.min.js`)
+
+append content 
+  .row.g-lg-3.font-sans-serif
+    .col-lg-8 
+      +CreateCourseHeader
+      +CourseInformationForm
+      +CourseResources
+      +CourseRequirements
+      +CourseGoals
+    .col-lg-4
+      .sticky-sidebar.top-navbar-height.d-flex.flex-column
+        +PublishCourse.order-lg-0.order-1
+        +CourseCoverPhoto
+        +CoursePreviewVideo
+        +CoursePricing
+  +CreateCourseBottomBar
+
+append afterContent
+  #schedule-discount-modal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='schedule-discount-modal-label' aria-hidden='true')
+    .modal-dialog.modal-dialog-centered.modal-lg(role="document")
+      .modal-content
+        +ScheduleDiscount

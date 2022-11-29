@@ -1,0 +1,42 @@
+extends ../../layouts/LayoutFeed
+include ../../mixins/pages/profile/Events
+
+prepend styles
+  link(href=`${CWD}vendors/choices/choices.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/flatpickr/flatpickr.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/dropzone/dropzone.min.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/choices/choices.min.js`)
+  script(src=`${CWD}assets/js/flatpickr.js`)
+  script(src=`${CWD}vendors/dropzone/dropzone.min.js`)
+
+
+block feedBanner  
+  +EventTitle
+  +EventBanner
+
+block feed
+  +Card({
+    title:'Event Details',
+  }).mb-3
+    +EventDetail
+  
+  +Card({
+    title:'Ticket Price'
+  }).mb-3
+    +TicketPrice
+
+  +Schedule
+  +UploadPhotos
+  +CustomField
+
+block feedSideBar
+
+  +Card({
+    title:'Other Info'
+  }).mb-lg-0
+    +OtherInfo
+
+block feedFooter  
+  +EventCreateFooter.mt-3

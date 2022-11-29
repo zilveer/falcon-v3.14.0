@@ -1,0 +1,66 @@
+mixin MiniChart({title,value,center})
+  div(class=center && 'text-center')
+    h6.text-700=title
+    h3.fw-normal.text-700=value
+
+
+mixin BounceRate
+  .card&attributes(attributes)
+    .card-header
+      h5.text-900.fs-0.mb-2 Trend of Bounce Rate
+      h6.mb-0.fs--2.text-500 Nov 1, 2020–Jan 31, 2021
+    .card-body
+      // Find the JS file for the following chart at: src/js/charts/echarts/bounce-rate.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-bounce-rate.h-100(data-echart-responsive="true")
+    .card-footer.bg-light.py-2
+      .row.flex-between-center.g-0
+        .col-auto
+          select.form-select.form-select-sm(data-target='.echart-bounce-rate')
+            option(value='week') Last 7 days
+            option(value='month' selected) Last month
+        .col-auto
+          a.btn.btn-link.btn-sm.px-0.fw-medium(href='#!') View full report
+            span.fas.fa-chevron-right.ms-1.fs--2
+
+
+mixin TrafficChannel
+  .card&attributes(attributes)
+    .card-header.d-flex.flex-between-center.bg-light.py-2
+      h6.mb-0 Traffic source
+      +DashboardDropdown('dropdown-traffic-channel')
+    .card-body
+      // Find the JS file for the following chart at: src/js/charts/echarts/traffic-channels.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-traffic-channels.h-100(data-echart-responsive="true")
+    .card-footer.bg-light.py-2
+      .row.flex-between-center.g-0
+        .col-auto
+          select.form-select.form-select-sm.audience-select-menu
+            option(value='week' selected) Last 7 days
+            option(value='month') Last month
+            option(value='year') Last Year
+        .col-auto
+          a.btn.btn-link.btn-sm.px-0.fw-medium(href='#!') Acquisition overview
+            span.fas.fa-chevron-right.ms-1.fs--2
+
+
+mixin UsersByTime
+  .card&attributes(attributes)
+    .card-header.bg-light.py-3
+      h6.mb-0 Users at a Time
+    .card-body
+      // Find the JS file for the following chart at: src/js/charts/echarts/users-by-time.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-users-by-time.h-100(data-echart-responsive="true")
+    .card-footer.bg-light.py-2
+      .row.flex-between-center
+        .col-auto
+          select.form-select.form-select-sm.audience-select-menu
+            option(value='week' selected) Last 7 days
+            option(value='month') Last month
+            option(value='year') Last Year
+        .col-auto
+          a.btn.btn-link.btn-sm.px-0.fw-medium(href='#!') Overview
+            span.fas.fa-chevron-right.ms-1.fs--2
+

@@ -1,0 +1,50 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/common/ComingSoon
+
+block append variables
+  
+  
+  - 
+    var pageHeader = {
+      title: 'Leaflet Map',
+      description: 'JavaScript library for mobile-friendly interactive maps',
+      url: `https://leafletjs.com/`,
+      linkText: 'Documentation for leaflet'
+    }
+
+prepend styles
+  link(href=`${CWD}vendors/leaflet/leaflet.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/leaflet.markercluster/MarkerCluster.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/leaflet.markercluster/MarkerCluster.Default.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/leaflet/leaflet.js`)
+  script(src=`${CWD}vendors/leaflet.markercluster/leaflet.markercluster.js`)
+  script(src=`${CWD}vendors/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js`)
+
+block append content
+  +PageHeader(pageHeader)
+
+  
+  +ComponentCard({
+    title: 'Example',
+    anchor: true,
+  }).mb-3
+    #map(style="height:300px")
+
+  .card.mb-3
+    .card-header
+      h5.mb-0 Javascript
+    .card-body.bg-light   
+      +ComponentCardLib
+        script(src=`${CWD}vendors/leaflet/leaflet.js`)
+        script(src=`${CWD}vendors/leaflet.markercluster/leaflet.markercluster.js`)
+        script(src=`${CWD}vendors/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js`)
+  .card.mb-3
+    .card-header
+      h5.mb-0 stylesheet
+    .card-body.bg-light   
+      +ComponentCardLib
+        link(href=`${CWD}vendors/leaflet/leaflet.css`, rel='stylesheet')
+        link(href=`${CWD}vendors/leaflet.markercluster/MarkerCluster.css`, rel='stylesheet')
+        link(href=`${CWD}vendors/leaflet.markercluster/MarkerCluster.Default.css`, rel='stylesheet')

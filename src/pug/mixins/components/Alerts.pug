@@ -1,0 +1,25 @@
+mixin AlertBasicDemo
+  .alert.alert-primary(role='alert') A simple primary alert—check it out!
+  .alert.alert-secondary(role='alert') A simple secondary alert—check it out!
+  .alert.alert-success(role='alert') A simple success alert—check it out!
+  .alert.alert-danger(role='alert') A simple danger alert—check it out!
+  .alert.alert-warning(role='alert') A simple warning alert—check it out!
+  .alert.alert-info(role='alert') A simple info alert—check it out!
+  .alert.alert-light(role='alert') A simple light alert—check it out!
+  .alert.alert-dark(role='alert') A simple dark alert—check it out!
+
+mixin AlertAdditionalContentDemo
+  .alert.alert-success&attributes(attributes)(role='alert')
+    h4.alert-heading.fw-semi-bold Well done!
+    p Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.
+    hr
+    p.mb-0 Whenever you need to, be sure to use margin utilities to keep things nice and tidy.
+
+mixin AlertDismissingDemo
+  .alert.alert-warning.alert-dismissible.fade.show(role='alert')&attributes(attributes)
+    = '\n'
+    strong Holy guacamole!
+    |  You should check in on some of those fields below.
+    = '\n'
+    button.btn-close(type='button' data-bs-dismiss='alert' aria-label='Close')
+    = '\n'

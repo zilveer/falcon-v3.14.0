@@ -1,0 +1,26 @@
+mixin Error404Content
+  .fw-black.lh-1.text-300.fs-error 404
+  p.lead.mt-4.text-800.font-sans-serif.fw-semi-bold.w-md-75.w-xl-100.mx-auto The page you're looking for is not found.
+  hr
+  p Make sure the address is correct and that the page hasn't moved. If you think this is a mistake, 
+    a(href='mailto:info@exmaple.com') contact us
+    | .
+  a(href=`${CWD}${paths['default-dashboard']}`).btn.btn-primary.btn-sm.mt-3
+    span.fas.fa-home.me-2
+    | Take me home
+
+mixin Error500Content
+  .fw-black.lh-1.text-300.fs-error 500
+  p.lead.mt-4.text-800.font-sans-serif.fw-semi-bold Whoops, something went wrong!
+  hr
+  p Try refreshing the page, or going back and attempting the action again. If this problem persists, 
+    a(href='mailto:info@exmaple.com') contact us
+    | .
+
+mixin Error404
+  +LayoutBasic({columnClass: 'col-xxl-5'}).text-center
+    +Error404Content
+
+mixin Error500
+  +LayoutBasic({columnClass: 'col-xxl-5'}).text-center
+    +Error500Content

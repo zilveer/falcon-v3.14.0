@@ -1,0 +1,85 @@
+block append variables
+  -
+    var faqs = [
+      {
+        title   :`How does ${name}'s pricing work?`,
+        description: `The free version of ${name} is available for teams of up to 15 people. Our ${name} Premium plans of 15 or fewer qualify for a small team discount. As your team grows to 20 users or more and gets more value out of ${name}, you'll get closer to our standard monthly price per seat. The price of a paid ${name} plan is tiered, starting in groups of 5 and 10 users, based on the number of people you have in your Team or Organization.`,
+      },
+      {
+        title:'What forms of payment do you accept?',
+        description: `You can purchase ${name} with any major credit card. For annual subscriptions, we can issue an invoice payable by bank transfer or check. Please contact us to arrange an invoice purchase. Monthly purchases must be paid for by credit card.`,
+      },
+      {
+        title: 'We need to add more people to our team. How will that be billed?',
+        description: `You can add as many new teammates as you need before changing your subscription. We will subsequently ask you to correct your subscription to cover current usage.`,
+      },
+      {
+        title: `How secure is ${name}?`,
+        description: `Protecting the data you trust to ${name} is our first priority. ${name} uses physical, procedural, and technical safeguards to preserve the integrity and security of your information. We regularly back up your data to prevent data loss and aid in recovery. Additionally, we host data in secure SSAE 16 / SOC1 certified data centers, implement firewalls and access restrictions on our servers to better protect your information, and work with third party security researchers to ensure our practices are secure.`,
+      },
+      {
+        title: `Will I be charged sales tax?`,
+        description: `As of May 2016, state and local sales tax will be applied to fees charged to customers with a billing address in the State of New York.`,
+      },
+      {
+        title: `Do you offer discounts?`,
+        description: `We've built in discounts at each tier for teams smaller than 15 members. We also offer two months for free in exchange for an annual subscription.`
+      },
+      {
+        title: `Do you offer academic pricing?`,
+        description: `We're happy to work with student groups using ${name}. Contact Us`
+      },
+      {
+        title: `Is there an on-premise version of ${name}?`,
+        description: `We are passionate about the web. We don't plan to offer an internally hosted version of ${name}. We hope you trust us to provide a robust and secure service so you can do the work only your team can do.`
+      },
+      {
+        title: `What is your refund policy?`,
+        description: `We do not offer refunds apart from exceptions listed below. If you cancel your plan before the next renewal cycle, you will retain access to paid features until the end of your subscription period. When your subscription expires, you will lose access to paid features and all data associated with those features. Exceptions to our refund policy: canceling within 48 hours of initial charge will result in a full refund. If you cancel within this timeframe, you will lose access to paid features and associated data immediately upon canceling.`, 
+        hr: false 
+      }
+    ]; 
+
+mixin FaqAltItem(config)
+  h5.fs-0=config.title
+  p.fs--1=config.description
+
+mixin FaqAlt(config)
+  - var config = Object.assign({footerPadding: false}, config)
+  .card
+    .card-header
+      h5.mb-0 Frequently asked questions
+    .card-body.bg-light.pb-0
+      .row
+        .col-lg-6
+          each faq in faqs.slice(0, Math.floor(faqs.length / 2) )
+            +FaqAltItem(faq)
+        .col-lg-6
+          each faq in faqs.slice(Math.floor(faqs.length / 2) )
+            +FaqAltItem(faq)
+
+    .card-footer.py-3 
+      .text-center(class=config.footerPadding)
+        h6.fs-0.fw-normal Have more questions?
+        a(href="#" data-bs-toggle='modal' data-bs-target='#exampleModal').btn.btn-falcon-primary.btn-sm Ask us anything
+
+      #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+        .modal-dialog(role='document')
+          .modal-content.border-0
+            .modal-header.bg-card-gradient.light
+              h5#exampleModalLabel.modal-title.text-white Ask your question
+              button.btn-close.btn-close-white.text-white(type='button' data-bs-dismiss='modal' aria-label='Close')
+            .modal-body
+              form
+                .mb-3
+                  label(for="name") Name
+                  input.form-control#name(type="text")
+                .mb-3 
+                  label(for="emailModal") Email
+                  input.form-control#emailModal(type="email")
+                .mb-3   
+                  label(for="question") Question
+                  textarea.form-control#question(rows="4")
+              button.btn.btn-primary.btn-sm.px-4(type='submit')
+                span.fas.fa-paper-plane.me-2(aria-hidden='true') 
+                | Send

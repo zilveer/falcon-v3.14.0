@@ -1,0 +1,30 @@
+extends ../../../layouts/LayoutComponent
+include ../../../mixins/components/HoverBox
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Hoverbox',
+      description: 'Style your card with a different design using theme Hoverbox',
+    }
+
+append content
+  +PageHeader(pageHeader)
+
+  .row.g-0
+    .col-lg-6.pe-lg-2
+      +ComponentCard({
+        title: 'Example',
+        anchor: true,
+        bodyClass:'bg-light overflow-hidden'
+      }).mb-3
+        +HoverBoxExampleDemo
+
+    .col-lg-6.pe-lg-2
+      +ComponentCard({
+        title: 'Change Image',
+        anchor: true,
+        bodyClass:'bg-light overflow-hidden'
+      }).mb-3
+        +HoverBoxChangeImageDemo

@@ -1,0 +1,240 @@
+mixin createPost
+  .card&attributes(attributes)
+    .card-header.bg-light.overflow-hidden
+      .d-flex.align-items-center
+        +Avatar({img: 'team/1.jpg', size: 'm'})
+        .flex-1.ms-2
+          h5.mb-0.fs-0 Create post
+    .card-body.p-0
+      form
+        textarea.shadow-none.form-control.border-0.rounded-0.resize-none.px-x1(placeholder="What do you want to talk about?" rows='4')
+        .d-flex.align-items-center.border-y.px-x1.mt-1
+          label(for='hash-tags').text-nowrap.mb-0.me-2
+            span.fas.fa-plus.me-1.fs--2
+            span.fw-medium.fs--1 Add hashtag
+          input.form-control.border-0.fs--1.shadow-none#hash-tags(type="text" placeholder="Help the right person to see")
+
+        .row.g-0.justify-content-between.mt-3.px-x1.pb-3
+          .col
+            button.btn.btn-light.btn-sm.rounded-pill.shadow-none.d-inline-flex.align-items-center.fs--1.mb-0.me-1(type='button')
+              img.cursor-pointer(src=`${CWD}assets/img/icons/spot-illustrations/image.svg` width=17 alt="")
+              span.ms-2.d-none.d-md-inline-block Image
+            button.btn.btn-light.btn-sm.rounded-pill.shadow-none.d-inline-flex.align-items-center.fs--1.me-1(type='button')
+              img.cursor-pointer(src=`${CWD}assets/img/icons/spot-illustrations/calendar.svg` width=17 alt="")
+              span.ms-2.d-none.d-md-inline-block Event
+            button.btn.btn-light.btn-sm.rounded-pill.shadow-none.d-inline-flex.align-items-center.fs--1.me-1(type='button')
+              img.cursor-pointer(src=`${CWD}assets/img/icons/spot-illustrations/location.svg` width=17 alt="")
+              span.ms-2.d-none.d-md-inline-block.text-nowrap Check in
+          .col-auto
+            .dropdown.d-inline-block.me-1
+              button#dropdownMenuButton.btn.btn-sm.dropdown-toggle.px-1(type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                span.fas.fa-globe-americas
+              .dropdown-menu.dropdown-menu-end(aria-labelledby='dropdownMenuButton')
+                a.dropdown-item(href='#') Public
+                a.dropdown-item(href='#') Private
+                a.dropdown-item(href='#') Draft
+            button.btn.btn-primary.btn-sm.px-4.px-sm-5(type='submit') Share
+
+mixin postCog(id)
+  .dropdown.font-sans-serif
+    button.btn.btn-sm.dropdown-toggle.p-1.dropdown-caret-none(type='button' id=id data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+      span.fas.fa-ellipsis-h.fs--1
+    .dropdown-menu.dropdown-menu-end.py-3(aria-labelledby=id)
+      a(href='#!').dropdown-item View
+      a(href='#!').dropdown-item Edit
+      a(href='#!').dropdown-item Report
+      .dropdown-divider
+      a(href='#!').dropdown-item.text-warning Archive
+      a(href='#!').dropdown-item.text-danger Delete          
+
+mixin postHeader(avatar, sub, auth)
+  - var avatarConfig = Object.assign({size: '2xl'}, avatar)
+  .d-flex
+    +Avatar(avatar)
+    .flex-1.align-self-center.ms-2
+      block
+      p.mb-0.fs--1!=sub
+        span(class=`${auth ? auth : 'fas fa-globe-americas'}`)
+
+mixin postAction(config)
+  - var config = Object.assign({like: false, comment: false}, config)
+  .card-footer.bg-light.pt-0
+    if(config.like || config.comment)
+      .border-bottom.border-200.fs--1.py-3
+        if(config.like)
+          a(href='#!').text-700 345 Likes
+        if(config.comment && config.like)
+          |  &bull; 
+        if(config.comment)
+          a(href='#!').text-700 34 Comments
+    .row.g-0.fw-semi-bold.text-center.py-2.fs--1
+      .col-auto
+        a.rounded-1.d-flex.align-items-center.me-3(href='#!' class=`${config.like ? '' : 'text-700'}`)
+          img(src=`${CWD}assets/img/icons/spot-illustrations/like-${config.like ? 'active': 'inactive'}.png` width=20 alt="")
+          span.ms-1 Like
+      .col-auto
+        a.rounded-1.d-flex.align-items-center.me-3(href='#!' class=`${config.comment ? '' : 'text-700'}`)
+          img(src=`${CWD}assets/img/icons/spot-illustrations/comment-${config.comment ? 'active': 'inactive'}.png` width=20 alt="")
+          span.ms-1 Comment
+      .col-auto.d-flex.align-items-center
+        a.rounded-1.text-700.d-flex.align-items-center(href='#!')
+          img(src=`${CWD}assets/img/icons/spot-illustrations/share-inactive.png` width=20 alt="")
+          span.ms-1 Share
+    form.d-flex.align-items-center.border-top.border-200.pt-3
+      +Avatar({img: 'team/3.jpg', size: 'xl'})
+      input.form-control.rounded-pill.ms-2.fs--1(type='text' placeholder='Write a comment...')
+
+    if(config.comment)
+      .d-flex.mt-3
+        +Avatar({img: 'team/4.jpg', size: 'xl'})
+        .flex-1.ms-2.fs--1
+          p.mb-1.bg-200.rounded-3.p-2
+            a(href=`${CWD}${paths['user-profile']}`).fw-semi-bold Rowan Atkinson
+            |  She starred as Jane Porter in The 
+            a(href='#!') @Legend of Tarzan (2016)
+            | , Tanya Vanderpoel in Whiskey Tango Foxtrot (2016) and as DC comics villain Harley Quinn in Suicide Squad (2016), for which she was nominated for a Teen Choice Award, and many other awards.
+          .px-2
+            a(href='#!') Like
+            |  &bull; 
+            a(href='#!') Reply
+            |  &bull; 23min 
+      .d-flex.mt-3
+        +Avatar({img: 'team/3.jpg', size: 'xl'})
+        .flex-1.ms-2.fs--1
+          p.mb-1.bg-200.rounded-3.p-2
+            a(href=`${CWD}${paths['user-profile']}`).fw-semi-bold Jessalyn Gilsig
+            |  Jessalyn Sarah Gilsig is a Canadian-American actress known for her roles in television series, e.g., as Lauren Davis in Boston Public, Gina Russo in Nip/Tuck, Terri Schuester in Glee, and as Siggy Haraldson on the History Channel series Vikings. 🏆
+          .px-2
+            a(href='#!') Like
+            |  &bull; 
+            a(href='#!') Reply
+            |  &bull; 3hrs 
+      a(href='#!').fs--1.text-700.d-inline-block.mt-2 Load more comments (2 of 34)
+
+mixin postAlbum
+  .card&attributes(attributes)
+    .card-header.bg-light
+      .row.justify-content-between
+        .col
+          +postHeader({img: 'team/4.jpg', status: 'online'}, '11 hrs &bull; Consett, UK &bull; ')
+            p.mb-1.lh-1
+              a(href=`${CWD}${paths['user-profile']}`).fw-semi-bold Rowan Atkinson
+              |  shared an 
+              a(href='#!') album
+        .col-auto
+          +postCog('post-album-action')
+    .card-body.overflow-hidden
+      p Rowan Sebastian Atkinson CBE is an English actor, comedian and screenwriter best known for his work on the sitcoms Blackadder and Mr. Bean.
+      .row.mx-n1
+        .col-6.p-1
+          a(href=`${CWD}assets/img/generic/4.jpg` data-gallery="gallery-1")
+            img(src=`${CWD}assets/img/generic/4.jpg` alt='').img-fluid.rounded  
+        .col-6.p-1
+          a(href=`${CWD}assets/img/generic/5.jpg` data-gallery="gallery-1")
+            img(src=`${CWD}assets/img/generic/5.jpg` alt='').img-fluid.rounded   
+        .col-4.p-1
+          a(href=`${CWD}assets/img/gallery/4.jpg` data-gallery="gallery-1")
+            img(src=`${CWD}assets/img/gallery/4.jpg` alt='').img-fluid.rounded   
+        .col-4.p-1
+          a(href=`${CWD}assets/img/gallery/5.jpg` data-gallery="gallery-1")
+            img(src=`${CWD}assets/img/gallery/5.jpg` alt='').img-fluid.rounded  
+        .col-4.p-1
+          a(href=`${CWD}assets/img/gallery/3.jpg` data-gallery="gallery-1")
+            img(src=`${CWD}assets/img/gallery/3.jpg` alt='').img-fluid.rounded       
+    +postAction({like: true, comment: true})
+
+mixin postArticle
+  .card.mb-3
+    .card-header.bg-light
+      .row.justify-content-between
+        .col
+          +postHeader({img: 'team/15.jpg'}, 'Yesterday &bull; Dalby &bull; ', 'fas fa-users')
+            p.mb-1.lh-1
+              a(href=`${CWD}${paths['user-profile']}`).fw-semi-bold Margot Robbie
+        .col-auto
+          +postCog('post-article-action')
+    .card-body
+      p Margot Elise Robbie was born on July 2, 1990 in Dalby, Queensland, Australia to Scottish parents. Her mother, Sarie Kessler, is a physiotherapist, and her father, is Doug Robbie. She comes from a family of four children, having two brothers and one sister. She graduated from Somerset College in Mudgeeraba, Queensland, Australia, a suburb in the Gold Coast hinterland of South East Queensland, where she and her siblings were raised by their mother and spent much of her time at the farm belonging to her grandparents. In her late teens, she moved to Melbourne, Victoria, Australia to pursue an acting career.
+      p From 2008-2010, Robbie played the character of Donna Freedman in the long-running Australian soap opera, Neighbours (1985), for which she was nominated for two Logie Awards. She set off to pursue Hollywood opportunities, quickly landing the role of Laura Cameron on the short-lived ABC series, Pan Am (2011). She made her big screen debut in the film, About Time (2013).
+      p Robbie rose to fame co-starring alongside Leonardo DiCaprio, portraying the role of Naomi Lapaglia in Martin Scorsese's Oscar-nominated film, The Wolf of Wall Street (2013). She was nominated for a Breakthrough Performance MTV Movie Award, and numerous other awards.
+      p In 2014, Robbie founded her own production company, LuckyChap Entertainment. She also appeared in the World War II romantic-drama film, Suite Française (2014). She starred in Focus (2015) and Z for Zachariah (2015), and made a cameo in The Big Short (2015).
+      p In 2016, she married Tom Ackerley in Byron Bay, New South Wales, Australia.
+      p She starred as Jane Porter in The Legend of Tarzan (2016), Tanya Vanderpoel in Whiskey Tango Foxtrot (2016) and as DC comics villain Harley Quinn in Suicide Squad (2016), for which she was nominated for a Teen Choice Award, and many other awards.
+      p She portrayed figure skater Tonya Harding in the biographical film I, Tonya (2017), receiving critical acclaim and a Golden Globe Award nomination for Best Actress - Motion Picture Comedy or Musical.
+    +postAction({comment: true})
+
+mixin postImage
+  .card.mb-3
+    .card-header.bg-light
+      .row.justify-content-between
+        .col
+          +postHeader({img: 'team/10.jpg'}, '13 Jan &bull; LA, US &bull; ')
+            p.mb-1.lh-1
+              a(href=`${CWD}${paths['user-profile']}`).fw-semi-bold Leonardo DiCaprio
+              |  shared a 
+              a(href='#!') photo
+        .col-auto
+          +postCog('post-image-action')
+    .card-body.overflow-hidden
+      a(href=`${CWD}assets/img/generic/11.jpg` data-gallery="gallery-2")
+        img(src=`${CWD}assets/img/generic/11.jpg` alt='').img-fluid.rounded
+    +postAction
+
+mixin postVideo
+  .card&attributes(attributes)
+    .card-header.bg-light
+      .row.justify-content-between
+        .col
+          +postHeader({img: 'team/8.jpg'}, 'Just Now &bull; Paris &bull; ', 'fas fa-users')
+            p.mb-1.lh-1
+              a(href=`${CWD}${paths['user-profile']}`).fw-semi-bold Johnny Depp
+              |  shared a 
+              a(href='#!') video
+        .col-auto
+          +postCog('post-video-action')
+    .card-body
+      p See the sport of surfing as it’s never been captured before in John Florence and Blake Vincent Kueny’s second signature release, in association with the award-winning film studio, Brain Farm. The first surf film shot entirely in 4K, View From a Blue Moon. 🤩 🌎 🎬
+      div 
+        .player(data-plyr-provider='youtube' data-plyr-embed-id='bTqVqk7FSmY')
+    +postAction
+
+mixin postEvent
+  .card.mb-3
+    img.card-img-top(src=`${CWD}assets/img/generic/13.jpg` alt='')
+    .card-body.overflow-hidden
+      .row.justify-content-between.align-items-center
+        .col
+          .d-flex
+            .calendar.me-2
+              span.calendar-month Dec
+              span.calendar-day 31 
+            .flex-1.fs--1
+              h5.fs-0
+                a(href=`${CWD}${paths['event-detail']}`) FREE New Year's Eve Midnight Harbor Fireworks
+              p.mb-0 by 
+                a(href='#!') Boston Harbor Now
+              span.fs-0.text-warning.fw-semi-bold $49.99 – $89.99
+        .col-md-auto.d-none.d-md-block
+          button.btn.btn-falcon-default.btn-sm.px-4(type='button') Register
+    +postAction
+
+mixin postUrl
+  .card
+    .card-header.bg-light
+      .row.justify-content-between
+        .col
+          +postHeader({img: 'team/17.jpg', status: 'online'}, '14 Feb &bull; London &bull; ')
+            p.mb-1.lh-1
+              a(href=`${CWD}${paths['user-profile']}`).fw-semi-bold Emilia Clarke
+              |  shared a 
+              a(href='#!') url
+        .col-auto
+          +postCog('post-url-action')
+    .card-body.overflow-hidden
+      p Mount Everest, known in Nepali as Sagarmatha and in Tibetan as Chomolungma, is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The international border between Nepal and China runs across its summit point.
+      a(href='#!').text-decoration-none
+        img.img-fluid.rounded(src=`${CWD}assets/img/generic/12.jpg` alt='')
+        small.text-uppercase.text-700 en.wikipedia.org
+        h6.fs-0.mb-0 Mount Everest: Facts & Location of World's Highest Mountain
+        p.fs--1.mb-0.text-700 The Himalayan range has many of the Earth's highest peaks, including the highest, Mount Everest...
+    +postAction({like: true})

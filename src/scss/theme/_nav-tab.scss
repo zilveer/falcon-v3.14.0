@@ -1,0 +1,69 @@
+.nav-tabs {
+  border-bottom: 2px solid var(--#{$prefix}border-color);
+
+  .nav-link {
+    margin-bottom: -$nav-tabs-border-width;
+    border: var(--#{$prefix}border-color);
+    color: var(--#{$prefix}gray-800);
+    font-weight: $font-weight-bold;
+    font-size: $font-size-sm;
+    @include border-top-radius($nav-tabs-border-radius);
+
+    &:hover,
+    &:focus {
+      border-color: var(--#{$prefix}white);
+      outline: none;
+    }
+
+    &.disabled {
+      color: var(--#{$prefix}black);
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+
+  .nav-link.active,
+  .nav-item.show .nav-link {
+    color: var(--#{$prefix}primary);
+    background-color: transparent;
+    border-bottom: 2px solid var(--#{$prefix}primary);
+  }
+
+}
+
+.nav-pills-falcon {
+  background-color: var(--#{$prefix}gray-100);
+  border-radius: .25rem !important;
+  border: 1px solid var(--#{$prefix}gray-200);
+
+  .btn {
+    --#{$prefix}btn-hover-border-color: transparent;
+    --#{$prefix}btn-box-shadow: none;
+    --#{$prefix}btn-color: var(--#{$prefix}gray-600);
+
+    // box-shadow: none;
+    outline: 0;
+    // color: var(--#{$prefix}gray-600);
+
+    &.active {
+      // background-color: var(--#{$prefix}nav-pills-falcon-active-bg-color) !important;
+      // box-shadow: var(--#{$prefix}btn-falcon-box-shadow) !important;
+      // color: var(--#{$prefix}btn-falcon-default-color);
+      --#{$prefix}btn-active-bg: var(--#{$prefix}nav-pills-falcon-active-bg-color) !important;
+      --#{$prefix}btn-active-shadow: var(--#{$prefix}btn-falcon-box-shadow) !important;
+      --#{$prefix}btn-color: var(--#{$prefix}btn-falcon-default-color);
+      --#{$prefix}btn-active-color: var(--#{$prefix}btn-falcon-default-color);
+    }
+
+    &.active:focus {
+      // box-shadow: none;
+      --#{$prefix}btn-active-shadow: var(--#{$prefix}btn-falcon-box-shadow) !important;
+      --#{$prefix}btn-focus-box-shadow: var(--#{$prefix}btn-falcon-box-shadow) !important;
+
+    }
+
+    @include hover-focus {
+      color: var(--#{$prefix}btn-falcon-default-color);
+    }
+  }
+}

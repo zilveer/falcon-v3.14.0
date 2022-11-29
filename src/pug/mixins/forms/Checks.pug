@@ -1,0 +1,83 @@
+mixin Checks
+  .form-check
+    input#flexCheckDefault.form-check-input(type='checkbox', value='')
+    label.form-check-label(for='flexCheckDefault')
+      | Default checkbox
+  .form-check
+    input#flexCheckChecked.form-check-input(type='checkbox', value='', checked='')
+    label.form-check-label(for='flexCheckChecked')
+      | Checked checkbox
+
+mixin IndeterminateText
+   p.mb-0.mt-2 Checkboxes can utilize the 
+    code :indeterminate
+    |  pseudo class when manually set via JavaScript (there is no available HTML attribute for specifying it).
+
+mixin IndeterminateBox
+  .form-check
+    input#flexCheckIndeterminate.form-check-input(type='checkbox', value='')
+    label.form-check-label(for='flexCheckIndeterminate')
+      | Indeterminate checkbox
+
+mixin Radios
+  .form-check
+    input#flexRadioDefault1.form-check-input(type='radio', name='flexRadioDefault')
+    label.form-check-label(for='flexRadioDefault1')
+      | Default radio
+  .form-check
+    input#flexRadioDefault2.form-check-input(type='radio', name='flexRadioDefault', checked='')
+    label.form-check-label(for='flexRadioDefault2')
+      | Default checked radio
+
+mixin SwitchesText
+  p.mb-0.mt-2 A switch has the markup of a custom checkbox but uses the 
+    code .form-switch
+    |  class to render a toggle switch. Switches also support the 
+    code disabled
+    |  attribute.
+
+mixin Switches
+  .form-check.form-switch
+    input#flexSwitchCheckDefault.form-check-input(type='checkbox')
+    label.form-check-label(for='flexSwitchCheckDefault') Default switch checkbox input
+  .form-check.form-switch
+    input#flexSwitchCheckChecked.form-check-input(type='checkbox', checked='')
+    label.form-check-label(for='flexSwitchCheckChecked') Checked switch checkbox input
+  .form-check.form-switch
+    input#flexSwitchCheckDisabled.form-check-input(type='checkbox', disabled='')
+    label.form-check-label(for='flexSwitchCheckDisabled') Disabled switch checkbox input
+  .form-check.form-switch
+    input#flexSwitchCheckCheckedDisabled.form-check-input(type='checkbox', checked='', disabled='')
+    label.form-check-label(for='flexSwitchCheckCheckedDisabled') Disabled checked switch checkbox input
+
+mixin InlineText
+  p.mb-0.mt-2 Group checkboxes or radios on the same horizontal row by adding 
+    code .form-check-inline
+    |  to any 
+    code .form-check
+    | .
+
+mixin InlineCheckbox
+  .form-check.form-check-inline
+    input#inlineCheckbox1.form-check-input(type='checkbox', value='option1')
+    label.form-check-label(for='inlineCheckbox1') Item 1
+  .form-check.form-check-inline
+    input#inlineCheckbox2.form-check-input(type='checkbox', value='option2')
+    label.form-check-label(for='inlineCheckbox2') Item 2
+  .form-check.form-check-inline
+    input#inlineCheckbox3.form-check-input(type='checkbox', value='option3', disabled='')
+    label.form-check-label(for='inlineCheckbox3') Item 3 (disabled)
+
+mixin InlineRadio
+  .form-check.form-check-inline
+    input#inlineRadio1.form-check-input(type='radio', name='inlineRadioOptions', value='option1')
+    label.form-check-label(for='inlineRadio1') Item 1
+  .form-check.form-check-inline
+    input#inlineRadio2.form-check-input(type='radio', name='inlineRadioOptions', value='option2')
+    label.form-check-label(for='inlineRadio2') item 2
+  .form-check.form-check-inline
+    input#inlineRadio3.form-check-input(type='radio', name='inlineRadioOptions', value='option3', disabled='')
+    label.form-check-label(for='inlineRadio3') Item 3 (disabled)
+
+
+

@@ -1,0 +1,352 @@
+.timeline {
+  position: relative;
+
+  &::after, &::before  {
+    content: '';
+    position: absolute;
+  }
+
+  &::after {
+    height: 0.625rem;
+    width: 0.625rem;
+    left: $card-spacer-x;
+    top: 1.5625rem;
+    border-radius: 50%;
+    border: 1px solid var(--#{$prefix}border-color);
+  }
+
+  &-current::after {
+    left: 21px;
+  }
+
+  &::before {
+    border-left: 1px dashed;
+    height: calc(100% - 2.11rem);
+    left: calc(#{$card-spacer-x} + 0.28rem);
+    top: 2.4rem;
+    opacity: .48;
+  }
+
+
+  @each $color, $value in $theme-colors {
+    &-#{$color} {
+      &.timeline-past, &.timeline-current {
+        &::after {
+          background-color: $value;
+          border-color: $value;
+        }
+      }
+
+      &.timeline-current::after {
+        height: 0.5rem;
+        width: 0.5rem;
+        box-shadow: 0 0 0 3px rgba($value, 0.3);
+      }
+    }
+  }
+}
+
+//---------------------------- timeline vertical---------------------------------------
+
+.timeline-vertical{
+  position: relative;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  
+  
+  .timeline-item{
+    @extend .gx-0;
+    position: relative;
+    padding-left: map-get($spacers, 4);
+    @include media-breakpoint-up($timeline-vertical-breakpoint){
+      padding-left: 0;
+    }
+    &:not(:first-child){
+      margin-top: map-get($spacers, 5);
+    }
+    
+    &:not(:last-child)::before{
+      content: '';
+      position: absolute;
+      border-left: 1px solid var(--#{$prefix}gray-300);
+      height: calc(100% + map-get($spacers, 5));
+      left: 1.375rem;
+      @include media-breakpoint-up($timeline-vertical-breakpoint){
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  
+  .timeline-item-content{
+    position: relative;
+    border: 1px solid var(--#{$prefix}gray-300); 
+    border-radius: $border-radius-lg; 
+    margin-left: 1.25rem;
+    z-index:1;
+    .timeline-item-card{
+      padding: 1.5rem;
+      background-color: var(--#{$prefix}gray-100);
+      border-radius: $border-radius-lg; 
+    }
+    &.arrow-bg-white{
+      @include media-breakpoint-up(lg){
+        &::before{
+          background: var(--#{$prefix}white);
+          .dark & {
+            background-color: var(--#{$prefix}gray-100) !important;
+          }
+        }
+      }
+    }
+    @include media-breakpoint-up(lg){
+      &::before {
+        content: "";
+        position: absolute;
+        width: .8rem;
+        height: .8rem;
+        background: var(--#{$prefix}gray-100);
+        top: 0.9rem;
+        transform: rotate(45deg);
+        border-width: 1px ;
+        border-style: solid;
+        border-color: var(--#{$prefix}gray-300);
+        border-radius: .125rem;
+        z-index: -1;
+      } 
+    }
+  }
+
+  .timeline-item-time{
+    margin-top: map-get($spacers, 1);
+    padding-left: 2.25rem;
+  }
+
+  .timeline-item-start{
+    
+    @include media-breakpoint-up($timeline-vertical-breakpoint){
+      .timeline-item-time:first-child{
+        order: 1;
+      }
+    }
+
+    .timeline-item-content{      
+      @include media-breakpoint-up($timeline-vertical-breakpoint) {
+        margin-left: 0;
+        margin-right: 1.5rem;
+
+        &::before{
+          right: -0.375rem;
+        }
+      }   
+    }
+    .timeline-item-time{
+      @include media-breakpoint-up($timeline-vertical-breakpoint){
+        padding-left: 2.5rem;
+      }
+    }
+  }
+  .timeline-item-end{
+    .timeline-item-time:first-child{
+      display: flex;
+      @include media-breakpoint-up($timeline-vertical-breakpoint){
+        justify-content: flex-end;
+      }
+    }
+    .timeline-item-content{
+      @include media-breakpoint-up($timeline-vertical-breakpoint) {
+        margin-left: 1.5rem;
+        &::before{
+          left: -0.375rem;
+          border-width: 0px 0px 1px 1px;
+        }
+      }   
+    }
+    .timeline-item-time{
+      @include media-breakpoint-up($timeline-vertical-breakpoint){
+        padding-right: 2.5rem;
+      }
+    }
+  }
+
+  .timeline-icon{
+    position: absolute;
+    font-size: $font-size-sm;
+    border-radius: 50%;
+    background-color: var(--#{$prefix}gray-100);
+    box-shadow: none;
+    left: 0;
+    top: 0;
+    border: 1px solid var(--#{$prefix}border-color);
+    
+    @include media-breakpoint-up(lg){
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  
+}
+
+
+//---------------------------- timeline zigzag---------------------------------------
+
+.timeline-zigzag{
+
+  position: relative;
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+  padding-left: map-get($spacers, 2);
+  @include media-breakpoint-up($timeline-zigzag-breakpoint){
+    padding-left: 0;
+  }
+
+  .timeline-item{
+    @extend .gx-0;
+
+    &:not(:first-child) {
+      margin-top: map-get($spacers, 6);
+      @include media-breakpoint-up($timeline-zigzag-breakpoint) {
+        margin-top: -5rem;      
+      }
+    }
+    &:not(:last-child) {
+      .timeline-item-content{
+        position: relative;
+        
+
+        &::before {
+          content: '';
+          position: absolute;
+          width: 2px;
+          border-left: 1px solid var(--#{$prefix}gray-300);
+          height: calc(100% + map-get($spacers, 6) );
+          top: .5rem;
+         
+          @include media-breakpoint-up($timeline-zigzag-breakpoint) {
+            height: calc(100% - map-get($spacers, 7));      
+          }
+        } 
+
+      }
+    }
+  }
+
+  .timeline-item-text{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    order: 1;
+    @include media-breakpoint-up(sm){
+      order: 0;
+    }
+  }
+
+  .timeline-item-end{
+    justify-content: flex-end;
+
+    .bullet::after{
+      transform: translate(-50%, -50%);
+    } 
+
+    .timeline-item-content{
+      &::before{
+        left: 0;
+        @include media-breakpoint-up($timeline-zigzag-breakpoint) {     
+          transform: translateX(-50%);
+        }
+      }
+    }
+  }
+  .timeline-item-start{
+
+    .bullet::after{
+      transform: translate(-50%, -50%);
+      @include media-breakpoint-up($timeline-zigzag-breakpoint) {
+        right: 0;
+        transform: translate(50%, -50%);
+      }
+    }
+
+    .timeline-item-content{
+      &::before{
+        @include media-breakpoint-up($timeline-zigzag-breakpoint) {
+          right: 0;
+          transform: translateX(50%);
+        }
+      }
+    }
+
+    .timeline-item-text{
+      @include media-breakpoint-up($timeline-zigzag-breakpoint){
+        order: 1;
+      }
+    }
+  }
+
+  .bullet{
+    display: block;
+    position: relative;
+    height: 1px;
+    
+    &::after, &::before  {
+      content: '';
+      position: absolute;
+    }
+
+    &::after{ // circle
+      top: map-get($spacers, 2);
+      height: 1rem;
+      width: 1rem;
+      border-radius: 50%;
+      border: 1px solid var(--#{$prefix}gray-300);
+      background-color: var(--#{$prefix}gray-100);
+    }
+
+    &::before{  //- horizontal line
+      height: 1px;
+      width: 50px;
+      border-top: 1px solid var(--#{$prefix}gray-300);
+      top: map-get($spacers, 2);
+      @include media-breakpoint-up(sm){
+        width: 100%;
+      }
+    }
+  }
+
+  .timeline-item-media{
+    position: relative;
+    object-fit: cover;
+    margin-left: 1.5rem;
+    @include media-breakpoint-up(sm){
+      margin-left: 0;
+    }
+  }
+
+
+}
+
+//---------------------------- timeline card---------------------------------------
+
+.timeline-simple {
+  position: relative;
+
+  .timeline-item{
+    @extend .gx-0;
+    position: relative;
+    padding-left: 0;
+
+    .timeline-item-date {
+      width: 3.4375rem;
+    }
+    
+    &:not(:last-child)::before{
+      content: '';
+      position: absolute;
+      border-left: 2px dashed var(--#{$prefix}gray-200);
+      height: calc(100% + map-get($spacers, 5));
+      left: 4.90rem;
+      top: 1.25rem;
+    }
+  }
+}

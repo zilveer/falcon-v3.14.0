@@ -1,0 +1,92 @@
+mixin FooterStandard
+  +Section.bg-dark.pt-8.pb-4.light
+    .position-absolute.btn-back-to-top.bg-dark
+      a(href="#banner" data-bs-offset-top=0).text-600
+        span.fas.fa-chevron-up(data-fa-transform="rotate-45")
+
+    .row
+      .col-lg-4
+        h5.text-uppercase.text-white.opacity-85.mb-3 Our Mission
+        p.text-600 #{name} enables front end developers to build custom streamlined user interfaces in a matter of hours, while it gives backend developers all the UI elements they need to develop their web app.And it's rich design can be easily integrated  with backends whether  your app is based on ruby on rails, laravel, express or any other server side system.
+        .icon-group.mt-4
+          a(href='#!').icon-item.bg-white.text-facebook
+            span.fab.fa-facebook-f
+          a(href='#!').icon-item.bg-white.text-twitter
+            span.fab.fa-twitter
+          a(href='#!').icon-item.bg-white.text-google-plus
+            span.fab.fa-google-plus-g
+          a(href='#!').icon-item.bg-white.text-linkedin
+            span.fab.fa-linkedin-in
+          a(href='#!').icon-item.bg-white
+            span.fab.fa-medium-m
+      .col.ps-lg-6.ps-xl-8
+        .row.mt-5.mt-lg-0
+          .col-6.col-md-3
+            h5.text-uppercase.text-white.opacity-85.mb-3 Company
+            ul.list-unstyled
+              li.mb-1
+                a(href='#!').link-600 About
+              li.mb-1
+                a(href='#!').link-600 Contact
+              li.mb-1
+                a(href='#!').link-600 Careers
+              li.mb-1
+                a(href='#!').link-600 Blog
+              li.mb-1
+                a(href='#!').link-600 Terms
+              li.mb-1
+                a(href='#!').link-600 Privacy
+              li
+                a(href='#!').link-600 Imprint
+          .col-6.col-md-3
+            h5.text-uppercase.text-white.opacity-85.mb-3 Product
+            ul.list-unstyled
+              li.mb-1
+                a(href='#!').link-600 Features
+              li.mb-1
+                a(href='#!').link-600 Roadmap
+              li.mb-1
+                a(href='#!').link-600 Changelog
+              li.mb-1
+                a(href='#!').link-600 Pricing
+              li.mb-1
+                a(href='#!').link-600 Docs
+              li.mb-1
+                a(href='#!').link-600 System Status
+              li.mb-1
+                a(href='#!').link-600 Agencies
+              li.mb-1
+                a(href='#!').link-600 Enterprise
+          .col.mt-5.mt-md-0
+            h5.text-uppercase.text-white.opacity-85.mb-3 From the Blog
+            ul.list-unstyled
+              li
+                h5.fs-0.mb-0
+                  a(href='#!').link-600  Interactive graphs and charts
+                p.text-600.opacity-50 Jan 15 &bull; 8min read 
+              li
+                h5.fs-0.mb-0
+                  a(href='#!').link-600  Lifetime free updates
+                p.text-600.opacity-50 Jan 5 &bull; 3min read &starf;
+              li
+                h5.fs-0.mb-0
+                  a(href='#!').link-600  Merry Christmas From us
+                p.text-600.opacity-50 Dec 25 &bull; 2min read
+              li
+                h5.fs-0.mb-0
+                  a(href='#!').link-600  The New #{name} Theme
+                p.text-600.opacity-50 Dec 23 &bull; 10min read 
+
+  +Section('').py-0.bg-dark.light
+    hr.my-0.text-600.opacity-25
+    .container.py-3
+      .row.justify-content-between.fs--1
+        .col-12.col-sm-auto.text-center
+          p.mb-0.text-600.opacity-85 Thank you for creating with #{name} 
+            span.d-none.d-sm-inline-block | 
+            br.d-sm-none
+            |  #{new Date().getFullYear()} &copy; 
+            a(href="https://themewagon.com").text-white.opacity-85 Themewagon
+        .col-12.col-sm-auto.text-center
+          p.mb-0.text-600.opacity-85=version
+

@@ -1,0 +1,107 @@
+append variables
+  -
+    var adminData = {
+      team: [
+        {
+        icon: "user",
+        color: "primary",
+        title: "Agents",
+        description: "Define agents' scope of work, type, language, and other details."
+        },
+        {
+          icon: "users",
+          color: "info",
+          title: "Groups",
+          description: "Agents can be organized and unattended tickets can be notified."
+        },
+        {
+          icon: "git-pull-request",
+          color: "warning",
+          title: "Roles",
+          description: "Provide agents with fine-grained access and privileges."
+        },
+        {
+          icon: "clock",
+          color: "success",
+          title: "Working Hours",
+          description: "To set client expectations, define operating hours and holidays."
+        },
+        {
+          icon: "briefcase",
+          color: "primary",
+          title: "Skills",
+          description: "Assign kinds of tickets to agents based on their expertise."
+        },
+        {
+          icon: "repeat",
+          color: "info",
+          title: "Agent Changes",
+          description: "Create and manage agent schedules all in one spot."
+        },
+      ],
+      account: [
+        {
+        icon: "user-check",
+        color: "primary",
+        title: "Account Information",
+        description: "View the status of your account as well as your invoice email address."
+        },
+        {
+          icon: "file-text",
+          color: "info",
+          title: "Billing & Plans",
+          description: "Plan, add-ons, team size, and billing cycle are all under your control."
+        },
+        {
+          icon: "sunrise",
+          color: "warning",
+          title: "Passes for the day",
+          description: "Part-time agents can purchase on-demand licenses."
+        },
+        {
+          icon: "lock",
+          color: "success",
+          title: "Security",
+          description: "Advanced SSO settings, password policy, and domain restriction."
+        },
+        {
+          icon: "hexagon",
+          color: "primary",
+          title: "Log of Audits",
+          description: "All of the changes made to your falcon Support tickets account."
+        },
+        {
+          icon: "alert-circle",
+          color: "info",
+          title: "Configure the Helpdesk",
+          description: "Your Falcon Support Tickets will be personalized."
+        },
+      ],
+    }
+
+mixin AmdinItem(config)
+  .col-xxl-4.col-md-6&attributes(attributes)
+    .hover-bg-100.py-x1.text-center.rounded-3.position-relative
+      .icon-item.icon-item-xl.shadow-none.mx-auto.mt-x1(class=`bg-soft-${config.color}`)
+        span(class=`text-${config.color}` data-feather=config.icon)
+      h5.mt-3.mb-2
+        a.text-900.hover-primary.stretched-link(href='#!')= config.title
+      h6.w-75.mx-auto.text-600.mb-x1= config.description
+
+mixin Team
+  .card&attributes(attributes)
+    .card-header.border-bottom.border-200
+      h6.mb-0 Team
+    .card-body
+      .row.gx-3
+        each item in adminData.team
+          +AmdinItem(item)
+
+mixin Account
+  .card&attributes(attributes)
+    .card-header.border-bottom.border-200
+      h6.mb-0 Account
+    .card-body
+      .row.gx-3
+        each item in adminData.account
+          +AmdinItem(item)

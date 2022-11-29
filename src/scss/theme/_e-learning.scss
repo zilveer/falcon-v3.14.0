@@ -1,0 +1,28 @@
+/* -------------------------------------------------------------------------- */
+/*                             Course Details                                 */
+/* -------------------------------------------------------------------------- */
+
+.course-details-sticky-sidebar {
+  @include media-breakpoint-up(lg) {
+    position: sticky;
+    z-index: $zindex-sticky;
+    top: $top-nav-height + 1;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                             Create Course                                  */
+/* -------------------------------------------------------------------------- */
+.create-course-description-textarea {
+  .tox-editor-header {
+    background-color: var(--#{$prefix}card-bg);
+     .tox-toolbar__primary {
+       border-bottom: 1px solid var(--#{$prefix}gray-300) !important;
+     }
+  }
+  .tox-tinymce {
+    border: 1px solid var(--#{$prefix}gray-300) !important;
+    border-radius: var(--#{$prefix}border-radius-lg) !important;
+    height: 13.438rem !important;
+  }
+}

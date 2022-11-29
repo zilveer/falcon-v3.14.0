@@ -1,0 +1,39 @@
+extends ../../../layouts/LayoutComponent
+include ../../../mixins/forms/Range
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Range',
+      description: 'Use our custom range inputs for consistent cross-browser styling and built-in customization.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/forms/range`,
+      linkText: 'Range on Bootstrap'
+    }
+block component
+  +PageHeader(pageHeader)
+
+  
+  +ComponentCard({
+    title: 'Overview',
+    anchor: true,
+    description:`Create custom <code>input type="range"</code> controls with <code>.form-range</code>. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only Firefox supports “filling” their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.`,
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +ExampleRange
+
+  +ComponentCard({
+    title: 'Min and max',
+    anchor: true,
+    description:`Range inputs have implicit values for <code>min</code> and <code>max</code>—<code>0</code> and <code>100</code>, respectively. You may specify new values for those using the <code>min</code> and <code>max</code> attributes.`,
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +MinMaxrange
+
+  +ComponentCard({
+    title: 'Steps',
+    anchor: true,
+    description:`By default, range inputs “snap” to integer values. To change this, you can specify a <code>step</code> value. In the example below, we double the number of steps by using <code>step="0.5"</code>.`,
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +StepsRange

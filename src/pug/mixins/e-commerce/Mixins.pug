@@ -1,0 +1,177 @@
+append variables  
+  -
+    var products = [
+      {
+        img: 2,
+        title: 'Apple iMac Pro (27-inch with Retina 5K Display, 3.0GHz 10-core Intel Xeon W, 1TB SSD)',
+        category: 'Computer & Accessories',
+        features: ['16GB RAM', '1TB SSD Hard Drive', '10-core Intel Xeon', 'Mac OS', 'Secured'],
+        price: '1245',
+        oldPrice: '2399',
+        off: 50,
+        rating: 4,
+        review: '8',
+        shippingCost: '$50',
+        stock: 'Available',
+        new: 'New',
+        class: 'mb-4'
+      },
+      {
+        img: 1, 
+        title: 'Apple MacBook Pro (15" Retina, Touch Bar, 2.2GHz 6-Core Intel Core i7, 16GB RAM, 256GB SSD) - Space Gray (Latest Model)',
+        category: 'Computer & Accessories',
+        features: ['16GB RAM', '256GB SSD Hard Drive', 'Intel Core i7', 'Mac OS', 'Space Gray'],
+        price: '7199',
+        rating: 4.5,
+        review: '20',
+        shippingCost: '$65',
+        stock: 'Sold-Out',
+        new: 'New',
+        slider: ['1', '1-2', '1-3'],
+        class: 'mb-4'
+      },
+      {
+        img: 4, 
+        title: 'Apple iPad Air 2019 (3GB RAM, 128GB ROM, 8MP Main Camera)',
+        category: 'Mobile & Tabs',
+        features: ['3GB RAM', '128GB ROM', 'Apple A12 Bionic (7 nm)', 'iOS 12.1.3'],
+        price: '562.5',
+        oldPrice: '750',
+        off: 25,
+        rating: 2.5,
+        review: '14',
+        shippingCost: '$47',
+        stock: 'Available',
+        class: 'mb-4'
+      },
+      {
+        img: 3, 
+        title: 'Apple iPhone XS Max (4GB RAM, 512GB ROM, 12MP Main Camera)',
+        category: 'Mobile & Tabs',
+        features: ['4GB RAM', '512GB Internal Storage', 'Apple A12 Bionic (7nm)', 'iOS 12', '3174mAh Li-Ion Battery'],
+        price: '1050',
+        rating: 4.5,
+        review: '13',
+        shippingCost: '$65',
+        stock: 'Available',
+        class: 'mb-4'
+      },
+      {
+        img: 8, 
+        title: 'Canon Standard Zoom Lens',
+        category: 'Camera',
+        price: 450,
+        oldPrice: 500,
+        off: 20,
+        rating: 4,
+        review: 10,
+        shippingCost: '$60',
+        stock: 'Sold Out',
+        new: true,
+        class: 'mb-4'
+      },
+      {
+        img: 6, 
+        title: 'Logitech G305 Gaming Mouse',
+        category: 'Computer & Accessories',
+        price: 95,
+        off: 50,
+        rating: 3.5,
+        review: 6,
+        shippingCost: '$20',
+        stock: 'Available',
+        new: true,
+        class: 'mb-4'
+      },
+      {
+        img: 7, 
+        title: 'Nikon D3200 Digital  DSLR Camera',
+        category: 'Camera',
+        price: 2398,
+        rating: 4,
+        review: 5,
+        shippingCost: '$30',
+        stock: 'Available',
+        class: 'mb-4 mb-lg-0'
+      },
+      {
+        img: 5, 
+        title: 'Apple Watch Series 4 44mm GPS Only',
+        category: 'Watches & Accessories',
+        oldPrice: 400,
+        off: 10,
+        rating: 5,
+        review: 4,
+        shippingCost: '$24',
+        stock: 'Available',
+        new: true,
+        class: 'mb-4 mb-lg-0'
+      },
+      {
+        img: '9', 
+        title: 'Nikon AF-S FX NIKKOR 24-70mm',
+        category: 'Camera',
+        price: 956.57,
+        rating: 5,
+        review: 4,
+        shippingCost: '$50',
+        stock: 'Available',
+        class: ''
+      }
+    ];  
+
+mixin Review(rating)
+  - for(var i = 0; i < 5; i++){
+    if(i < Math.floor(rating))
+      span.fa.fa-star.text-warning&attributes(attributes)
+    else if( rating > i && rating < i+1 )
+      span.fa.fa-star-half-alt.text-warning.star-icon&attributes(attributes)
+    else
+      span.fa.fa-star.text-300&attributes(attributes)
+  - }
+
+    if(rating.new)
+      .badge.rounded-pill.bg-success.position-absolute.top-0.end-0.me-2.mt-2.fs--2.z-index-2 New
+        .col-sm-7.col-md-8
+          .row
+            .col-lg-8
+              h5.mt-3.mt-sm-0
+                a(href=`${CWD}${paths['product-details']}`).text-dark.fs-0.fs-lg-1=config.title
+              p.fs--1.mb-2.mb-md-3
+                a(href="#!").text-500=config.category
+              ul.list-unstyled.d-none.d-lg-block
+                each feature in config.features
+                  li
+                    span.fas.fa-circle(data-fa-transform="shrink-12")
+                    span=feature
+
+            .col-lg-4.d-flex.justify-content-between.flex-column
+              div
+                if(config.oldPrice)
+                  h4.fs-1.fs-md-2.text-warning.mb-0 $#{config.oldPrice - (config.oldPrice * ( config.off / 100 ))}
+                else
+                  h4.fs-1.fs-md-2.text-warning.mb-0 $#{config.price}
+                if(config.oldPrice)
+                  h5.fs--1.text-500.mb-0.mt-1
+                    del $#{config.oldPrice} 
+                    span.ms-1 -#{config.off}%
+                .mb-2.mt-3
+                  +Review(config.rating)
+                  span.ms-1 (#{config.review})
+                .d-none.d-lg-block
+                  p.fs--1.mb-1 Shipping Cost: 
+                    strong=config.shippingCost
+                  p.fs--1.mb-1 Stock: 
+                    if(config.stock === 'Available')
+                      strong.text-success=config.stock
+                    else
+                      strong.text-danger=config.stock
+
+              .mt-md-2
+                a(href="#!").btn.btn-sm.btn-outline-secondary.border-300.d-lg-block.mt-2.me-2.me-lg-0
+                  span.far.fa-heart
+                  span.ms-2.d-none.d-md-inline-block Favourite
+                a(href="#!").btn.btn-sm.btn-primary.d-lg-block.mt-2
+                  span.fas.fa-cart-plus 
+                  span.ms-2.d-none.d-md-inline-block Add to Cart
+

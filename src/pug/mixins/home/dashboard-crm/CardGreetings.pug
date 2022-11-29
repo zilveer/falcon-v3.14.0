@@ -1,0 +1,28 @@
+
+mixin CardGreetings
+  - var date = new Date();
+  - var currentMonth = date.toLocaleString('en-us', { month: 'short' });
+  - var getDate = date.getDate();
+  - var currentDateNumber = `0${getDate}`.slice(-2)
+  - var startDate = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+  - var startMonth= startDate.toLocaleString('en-us', { month: 'short' });
+  - var startDateNumber = `0${startDate.getDate()}`.slice(-2)
+
+
+  .card.bg-100.shadow-none.border&attributes(attributes)
+    .row.gx-0.flex-between-center
+      .col-sm-auto.d-flex.align-items-center
+        img(src=`../assets/img/illustrations/crm-bar-chart.png`, alt="" width='90').ms-n2
+        div
+          h6.text-primary.fs--1.mb-0 Welcome to 
+          h4.text-primary.fw-bold.mb-0 Falcon 
+            span.text-info.fw-medium CRM
+        img(src=`../assets/img/illustrations/crm-line-chart.png`, alt="" width='150').ms-n4.d-md-none.d-lg-block
+
+      .col-md-auto.p-3
+        form.row.align-items-center.g-3
+          .col-auto
+            h6.text-700.mb-0 Showing Data For: 
+          .col-md-auto.position-relative
+            input#CRMDateRange.form-control.form-control-sm.datetimepicker.ps-4(type='text' data-options=`{"mode":"range","dateFormat":"M d","disableMobile":true , "defaultDate": ["${startMonth} ${startDateNumber}", "${currentMonth} ${currentDateNumber}"] }`) 
+            span.fas.fa-calendar-alt.text-primary.position-absolute.top-50.translate-middle-y.ms-2 

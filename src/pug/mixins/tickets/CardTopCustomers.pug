@@ -1,0 +1,84 @@
+mixin CardTopCustomers
+  .card&attributes(attributes)
+    .card-header.d-flex.justify-content-between.align-items-center.bg-light.py-2
+      h6.mb-0 Analysis of the Top Customers
+      +DashboardDropdown('dropdown-top-customers')
+    .card-body.ps-0.py-0.d-flex
+      ul#top-customers-chart-tab.nav.nav-tabs.tab-active-caret.top-customers-tab.border-0.border-end.d-inline-block.text-center(role='tablist' data-tab-has-echarts)
+        li.nav-item.border-bottom(role='presentation')
+          a.nav-link.p-x1.mb-0.active#monday-tab(data-bs-toggle='tab' href='#monday' role='tab' aria-controls='monday' aria-selected='true') MON
+        li.nav-item.border-bottom(role='presentation')
+          a.nav-link.p-x1.mb-0#tuesday-tab(data-bs-toggle='tab' href='#tuesday' role='tab' aria-controls='tuesday' aria-selected='false') TUE
+        li.nav-item.border-bottom(role='presentation')
+          a.nav-link.p-x1.mb-0#wednesday-tab(data-bs-toggle='tab' href='#wednesday' role='tab' aria-controls='wednesday' aria-selected='false') WED
+        li.nav-item.border-bottom(role='presentation')
+          a.nav-link.p-x1.mb-0#thursday-tab(data-bs-toggle='tab' href='#thursday' role='tab' aria-controls='thursday' aria-selected='false') THU
+        li.nav-item.border-bottom(role='presentation')
+          a.nav-link.p-x1.mb-0#friday-tab(data-bs-toggle='tab' href='#friday' role='tab' aria-controls='friday' aria-selected='false') FRI
+        li.nav-item.border-bottom(role='presentation')
+          a.nav-link.p-x1.mb-0#saturday-tab(data-bs-toggle='tab' href='#saturday' role='tab' aria-controls='saturday' aria-selected='false') SAT
+        li.nav-item(role='presentation')
+          a.nav-link.p-x1.mb-0#sunday-tab(data-bs-toggle='tab' href='#sunday' role='tab' aria-controls='sunday' aria-selected='false') SUN
+      .tab-content.w-100.ps-x1.pt-x1
+        .tab-pane.active#monday(role='tabpanel' aria-labelledby='monday-tab')
+          // Find the JS file for the following chart at: src/js/charts/echarts/top-customers.js
+          // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+          .d-flex.align-items-center.gap-2.mb-3
+            h4.text-primary 65.09%
+            h6.fs--2.py-1.px-2.fw-semi-bold.badge.badge-soft-primary.rounded-pill
+              span.fas.fa-caret-up.me-1
+              span 13.6%
+          .echart-top-customers(data-echart-responsive="true")
+        .tab-pane#tuesday(role='tabpanel' aria-labelledby='tuesday-tab')
+          .d-flex.align-items-center.gap-2.mb-3
+            h4.text-primary 78.35%
+            h6.fs--2.py-1.px-2.fw-semi-bold.badge.badge-soft-primary.rounded-pill
+              span.fas.fa-caret-up.me-1
+              span 8.3%
+          .echart-top-customers(data-echart-responsive="true")
+        .tab-pane#wednesday(role='tabpanel' aria-labelledby='wednesday-tab')
+          .d-flex.align-items-center.gap-2.mb-3
+            h4.text-primary 45.45%
+            h6.fs--2.py-1.px-2.fw-semi-bold.badge.badge-soft-primary.rounded-pill
+              span.fas.fa-caret-up.me-1
+              span 5.12%
+          .echart-top-customers(data-echart-responsive="true")
+        .tab-pane#thursday(role='tabpanel' aria-labelledby='thursday-tab')
+          .d-flex.align-items-center.gap-2.mb-3
+            h4.text-primary 12.19%
+            h6.fs--2.py-1.px-2.fw-semi-bold.badge.badge-soft-primary.rounded-pill
+              span.fas.fa-caret-up.me-1
+              span 2.03%
+          .echart-top-customers(data-echart-responsive="true")
+        .tab-pane#friday(role='tabpanel' aria-labelledby='friday-tab')
+          .d-flex.align-items-center.gap-2.mb-3
+            h4.text-primary 80.09%
+            h6.fs--2.py-1.px-2.fw-semi-bold.badge.badge-soft-primary.rounded-pill
+              span.fas.fa-caret-up.me-1
+              span 11.6%
+          .echart-top-customers(data-echart-responsive="true")
+        .tab-pane#saturday(role='tabpanel' aria-labelledby='saturday-tab')
+          .d-flex.align-items-center.gap-2.mb-3
+            h4.text-primary 55.05%
+            h6.fs--2.py-1.px-2.fw-semi-bold.badge.badge-soft-primary.rounded-pill
+              span.fas.fa-caret-up.me-1
+              span 5.55%
+          .echart-top-customers(data-echart-responsive="true")
+        .tab-pane#sunday(role='tabpanel' aria-labelledby='sunday-tab')
+          .d-flex.align-items-center.gap-2.mb-3
+            h4.text-primary 65.09%
+            h6.fs--2.py-1.px-2.fw-semi-bold.badge.badge-soft-primary.rounded-pill
+              span.fas.fa-caret-up.me-1
+              span 13.6%
+          .echart-top-customers(data-echart-responsive="true")
+    .card-footer.bg-light.py-2
+      .row.flex-between-center
+        .col-auto.pe-0
+          select.form-select.form-select-sm
+            option Last 7 days
+            option Last Month
+            option Last Year
+        .col-auto
+          a.btn.btn-link.btn-sm.px-0.fw-medium(href=`#!`)
+            | View all reports
+            span.fas.fa-chevron-right.ms-1.fs--2

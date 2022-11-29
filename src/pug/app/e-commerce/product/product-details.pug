@@ -1,0 +1,170 @@
+extends ../../../layouts/LayoutTheme
+include ../../../mixins/e-commerce/Mixins
+         
+
+prepend styles
+  link(href=`${CWD}vendors/swiper/swiper-bundle.min.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/swiper/swiper-bundle.min.js`)
+  script(src=`${CWD}vendors/rater-js/index.js`)
+
+append content
+  .card.mb-3
+    .card-body
+      .row
+        .col-lg-6.mb-4.mb-lg-0
+
+          .product-slider#galleryTop
+            .swiper-container.theme-slider.position-lg-absolute.all-0(data-swiper!={
+              autoHeight:true,
+              spaceBetween: 5,
+              loop: true, 
+              loopedSlides: 5,
+              thumb: {
+                spaceBetween: 5,
+                slidesPerView: 5,
+                loop: true,
+                freeMode: true,
+                grabCursor: true,
+                loopedSlides: 5, 
+                centeredSlides: true,
+                slideToClickedSlide: true,
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+                parent: '#galleryTop'
+              },
+              slideToClickedSlide: true,
+            })
+
+              .swiper-wrapper.h-100
+                .swiper-slide.h-100
+                  img(src=`${CWD}assets/img/products/1.jpg` alt="").rounded-1.fit-cover.h-100.w-100
+                .swiper-slide.h-100
+                  img(src=`${CWD}assets/img/products/1-2.jpg` alt="").rounded-1.fit-cover.h-100.w-100
+                .swiper-slide.h-100  
+                  img(src=`${CWD}assets/img/products/1-3.jpg` alt="").rounded-1.fit-cover.h-100.w-100
+                .swiper-slide.h-100  
+                  img(src=`${CWD}assets/img/products/1-4.jpg` alt="").rounded-1.fit-cover.h-100.w-100
+                .swiper-slide.h-100  
+                  img(src=`${CWD}assets/img/products/1-5.jpg` alt="").rounded-1.fit-cover.h-100.w-100 
+                .swiper-slide.h-100  
+                  img(src=`${CWD}assets/img/products/1-6.jpg` alt="").rounded-1.fit-cover.h-100.w-100  
+              .swiper-nav
+                .swiper-button-next.swiper-button-white
+                .swiper-button-prev.swiper-button-white
+
+        .col-lg-6
+          h5 Apple MacBook Pro (15" Retina, Touch Bar, 2.2GHz 6-Core Intel Core i7, 16GB RAM, 256GB SSD) - Space Gray (Latest Model)
+          a(href="#!").fs--1.mb-2.d-block Computer &amp; Accessories
+          .fs--2.mb-3.d-inline-block.text-decoration-none
+            +Review(4.5)
+            span.ms-1.text-600 (8)
+          p.fs--1 Testing conducted by Apple in October 2018 using pre-production 2.9GHz 6‑core Intel Core i9‑based 15-inch MacBook Pro systems with Radeon Pro Vega 20 graphics, and shipping 2.9GHz 6‑core Intel Core i9‑based 15‑inch MacBook Pro systems with Radeon Pro 560X graphics, both configured with 32GB of RAM and 4TB SSD.
+          h4.d-flex.align-items-center
+            span.text-warning.me-2 $1200
+            span.me-1.fs--1.text-500
+              del.me-1 $2400
+              strong -50%
+          p.fs--1.mb-1 
+            span Shipping Cost: 
+            strong $50
+          p.fs--1 Stock: 
+            strong.text-success Available
+          p.fs--1.mb-3 Tags: 
+            a(href="#!").ms-2 Computer,
+            a(href="#!").ms-1 Mac Book,
+            a(href="#!").ms-1 Mac Book Pro,
+            a(href="#!").ms-1 Laptop    
+          .row
+            .col-auto.pe-0
+              .input-group.input-group-sm(data-quantity)
+                button.btn.btn-sm.btn-outline-secondary.border-300(data-field="input-quantity" data-type="minus") -
+                input.form-control.text-center.input-quantity.input-spin-none(type='number' min="0" value="0" aria-label='Amount (to the nearest dollar)' style="max-width: 50px")
+                button.btn.btn-sm.btn-outline-secondary.border-300(data-field="input-quantity" data-type="plus") +
+            .col-auto.px-2.px-md-3
+              a(href="#!").btn.btn-sm.btn-primary
+                span.fas.fa-cart-plus.me-sm-2
+                span.d-none.d-sm-inline-block Add To Cart
+            .col-auto.px-0
+              a(href="#!" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Wish List").btn.btn-sm.btn-outline-danger.border-300
+                span.far.fa-heart.me-1
+                | 282
+      .row
+        .col-12
+          .overflow-hidden.mt-4
+            ul#myTab.nav.nav-tabs(role='tablist')
+              li.nav-item
+                a#description-tab.nav-link.active.ps-0(data-bs-toggle='tab' href='#tab-description' role='tab' aria-controls='tab-description' aria-selected='true') Description
+              li.nav-item
+                a#specifications-tab.nav-link.px-2.px-md-3(data-bs-toggle='tab' href='#tab-specifications' role='tab' aria-controls='tab-specifications' aria-selected='false') Specifications
+              li.nav-item
+                a#reviews-tab.nav-link.px-2.px-md-3(data-bs-toggle='tab' href='#tab-reviews' role='tab' aria-controls='tab-reviews' aria-selected='false') Reviews
+            #myTabContent.tab-content
+              #tab-description.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='description-tab') 
+                .mt-3  
+                  p Over the years, Apple has built a reputation for releasing its products with a lot of fanfare – but that didn’t exactly happen for the MacBook Pro 2018. Rather, Apple’s latest pro laptop experienced a subdued launch, in spite of it offering a notable spec upgrade over the 2017 model – along with an improved keyboard. And, as with previous generations the 15-inch MacBook Pro arrives alongside a 13-inch model.
+                  p Apple still loves the MacBook Pro though, despite the quiet release. This is because, while the iPhone XS and iPad, along with the 12-inch MacBook, are aimed at everyday consumers, the MacBook Pro has always aimed at the creative and professional audience. This new MacBook Pro brings a level of performance (and price) unlike its more consumer-oriented devices.  
+                  p Still, Apple wants mainstream users to buy the MacBook Pro, too. So, if you’re just looking for the most powerful MacBook on the market, you’ll love this new MacBook Pro. Just keep in mind that, while the keyboard has been updated, there are still some issues with it.
+                  p There’s enough of a difference between the two sizes when it comes to performance to warrant two separate reviews, and here we’ll be looking at how the flagship 15-inch MacBook Pro performs in 2019.
+                  p It's build quality and design is batter than elit. Numquam excepturi a debitis, sint voluptates, nam odit vel delectus id repellendus vero reprehenderit quidem totam praesentium vitae nesciunt deserunt. Sint, veniam?
+              #tab-specifications.tab-pane.fade(role='tabpanel' aria-labelledby='specifications-tab') 
+                table.table.fs--1.mt-3
+                  tbody
+                    tr
+                      td.bg-100(style="width: 30%;") Processor
+                      td 2.3GHz quad-core Intel Core i5,
+                    tr
+                      td.bg-100(style="width: 30%;") Memory
+                      td 8GB of 2133MHz LPDDR3 onboard memory
+                    tr
+                      td.bg-100(style="width: 30%;") Brand Name
+                      td Apple
+                    tr
+                      td.bg-100(style="width: 30%;") Model
+                      td Mac Book Pro
+                    tr
+                      td.bg-100(style="width: 30%;") Display
+                      td 13.3-inch (diagonal) LED-backlit display with IPS technology
+                    tr
+                      td.bg-100(style="width: 30%;") Storage
+                      td 512GB SSD
+                    tr
+                      td.bg-100(style="width: 30%;") Graphics
+                      td Intel Iris Plus Graphics 655
+                    tr
+                      td.bg-100(style="width: 30%;") Weight
+                      td 7.15 pounds
+                    tr
+                      td.bg-100(style="width: 30%;") Finish
+                      td Silver, Space Gray
+              #tab-reviews.tab-pane.fade(role='tabpanel' aria-labelledby='reviews-tab') 
+                .row.mt-3
+                  .col-lg-6.mb-4.mb-lg-0
+                    .mb-1
+                      +Review(5).fs--1
+                      span.ms-3.text-dark.fw-semi-bold Awesome support, great code 😍
+                    p.fs--1.mb-2.text-600 By Drik Smith • October 14, 2019
+                    p.mb-0 You shouldn't need to read a review to see how nice and polished this theme is. So I'll tell you something you won't find in the demo. After the download I had a technical question, emailed the team and got a response right from the team CEO with helpful advice.
+                    hr.my-4
+                    .mb-1
+                      +Review(4.5).fs--1
+                      span.ms-3.text-dark.fw-semi-bold Outstanding Design, Awesome Support
+                    p.fs--1.mb-2.text-600 By Liane • December 14, 2019
+                    p.mb-0 This really is an amazing template - from the style to the font - clean layout. SO worth the money! The demo pages show off what Bootstrap 4 can impressively do. Great template!! Support response is FAST and the team is amazing - communication is important.
+                  .col-lg-6.ps-lg-5
+                    form
+                      h5.mb-3 Write your Review
+                      .mb-3
+                        label.form-label Ratting: 
+                        .d-block(data-rater!={starSize:32, step: .5})
+                      .mb-3
+                        label.form-label(for='formGroupNameInput') Name:
+                        input#formGroupNameInput.form-control(type='text')
+                      .mb-3
+                        label.form-label(for='formGroupEmailInput') Email:
+                        input#formGroupEmailInput.form-control(type="email")
+                      .mb-3
+                        label.form-label(for='formGrouptextareaInput') Review:
+                        textarea#formGrouptextareaInput(rows="3").form-control
+                      button.btn.btn-primary(type="submit") Submit

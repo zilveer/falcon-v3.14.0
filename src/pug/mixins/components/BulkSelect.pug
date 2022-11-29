@@ -1,0 +1,138 @@
+append variables
+  -
+    var rows = [
+      {
+        id: 1,
+        name: 'Kit Harington',
+        nationality: 'British',
+        gender: 'Male',
+        age: 32
+      },
+      {
+        id: 2,
+        name: 'Emilia Clarke',
+        nationality: 'British',
+        gender: 'Female',
+        age: 32
+      },
+      {
+        id: 3,
+        name: 'Peter Dinklage',
+        nationality: 'American',
+        gender: 'Male',
+        age: 49
+      },
+      {
+        id: 4,
+        name: 'Sean Bean',
+        nationality: 'British',
+        gender: 'Male',
+        age: 59
+      },
+      {
+        id: 5,
+        name: 'Maisie Williams',
+        nationality: 'British',
+        gender: 'Female',
+        age: 21
+      },
+      {
+        id: 6,
+        name: 'Sophie Turner',
+        nationality: 'British',
+        gender: 'Female',
+        age: 23
+      }
+    ];
+    
+mixin BulkSelectAddingSteps
+  ul&attributes(attributes)
+    li The main checkbox, which is used for checking all the other checkboxes, the attribute 
+      code data-bulk-select
+      |  is used to define that item.
+    li Three(3) elements can be hooked with bulk select: 
+      code body
+      | , 
+      code actions
+      | , 
+      code replacedElement
+      | .
+      +ComponentCardLib
+        input.form-check-input(
+          type='checkbox'
+          data-bulk-select!={
+            body: "bulk-select-body",
+            actions: "bulk-select-actions",
+            replacedElement: "bulk-select-replace-element"
+          }
+        )
+      p.mb-0 These ids definded in these keys are used to hook the respective elements.
+    li
+      code body:
+      |  The target checkboxes are wrapped using a unique id defined in 
+      code body
+      | . In this example 
+      code bulk-select-body
+      | . Every targeted checkbox within this wrapper is marked with the attribute 
+      code data-bulk-select-row.
+    li
+      code actions:
+      |  The target actions are wrapped using a unique id defined in 
+      code actions
+      | . The element with this id (in 
+      code example bulk-select-actions
+      | ) will be toggled by checking the main checkbox.
+    li
+      code replacedElement:
+      |  The target replaced element with action are wrapped using a unique id defined in 
+      code replacedElement
+      | . Bulk select actions will be replaced with the content of this element with this id (in example 
+      code bulk-select-replace-element
+      | )
+
+mixin BulkSelectExampleHeader
+  .d-flex.align-items-center.justify-content-end.my-3&attributes(attributes)
+    #bulk-select-replace-element
+      button(type='button').btn.btn-falcon-success.btn-sm
+        span.fas.fa-plus(data-fa-transform="shrink-3 down-2")
+        span.ms-1 New
+    #bulk-select-actions.d-none.ms-3
+      .d-flex
+        select.form-select.form-select-sm(aria-label='Bulk actions')
+          option(selected) Bulk actions
+          option(value='Delete') Delete
+          option(value='Archive') Archive
+        button.btn.btn-falcon-danger.btn-sm.ms-2(type='button') Apply
+
+mixin BulkSelectExampleTable
+  .table-responsive.scrollbar&attributes(attributes)
+    table.table.mb-0
+      thead.text-black.bg-200
+        tr
+          th.align-middle.white-space-nowrap
+            .form-check.mb-0
+              input.form-check-input(
+                type='checkbox'
+                data-bulk-select!={
+                  body: "bulk-select-body",
+                  actions: "bulk-select-actions",
+                  replacedElement: "bulk-select-replace-element"
+                }
+              )
+          th.align-middle Name
+          th.align-middle Nationality 
+          th.align-middle Gender
+          th.align-middle.white-space-nowrap.pe-3 Age
+      
+      tbody#bulk-select-body
+        each row in rows
+          tr
+            td.align-middle.white-space-nowrap
+              .form-check.mb-0
+                input.form-check-input(type='checkbox' id=`checkbox-${row.id}` data-bulk-select-row)
+            th.align-middle=row.name
+            td.align-middle=row.nationality
+            td.align-middle=row.gender
+            td.align-middle.white-space-nowrap.text-end.pe-3=row.age
+mixin BulkSelectExampleFooter
+  small&attributes(attributes) showing #{rows.length} of #{rows.length}

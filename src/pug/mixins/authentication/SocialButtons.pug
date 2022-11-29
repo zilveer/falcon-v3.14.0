@@ -1,0 +1,13 @@
+mixin SocialButtons(config)
+  .position-relative&attributes(attributes)
+    hr
+    .divider-content-center or #{config.title} with
+  .row.g-2.mt-2
+    .col-sm-6
+      a.btn.btn-outline-google-plus.btn-sm.d-block.w-100(href='#')
+        span.fab.fa-google-plus-g.me-2(data-fa-transform='grow-8')
+        |  google
+    .col-sm-6
+      a.btn.btn-outline-facebook.btn-sm.d-block.w-100(href='#')
+        span.fab.fa-facebook-square.me-2(data-fa-transform='grow-8')
+        |  facebook

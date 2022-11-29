@@ -1,0 +1,58 @@
+extends ../../../layouts/LayoutComponent
+include ../../../mixins/forms/FormControl
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Form controls',
+      description: 'Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/forms/form-control`,
+      linkText: "Form controls on Bootstrap"
+    }
+block component 
+  +PageHeader(pageHeader)
+
+  
+  +ComponentCard({
+    title: 'Example',
+    anchor: true,
+  }).mb-3
+    +ExampleForm
+
+  +ComponentCard({
+    title: 'Sizing',
+    anchor: true,
+  }).mb-3
+    +InputSizing
+
+    
+  +ComponentCard({
+    title: 'Readonly plain text',
+    anchor: true,
+    description:"If you want to have <code>input readonly</code> elements in your form styled as plain text, use the <code>.form-control-plaintext</code> class to remove the default form field styling and preserve the correct margin and padding.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +ReadonlyForm
+    
+  +ComponentCard({
+    title: 'File Input',
+    anchor: true,
+    description:"The file input is the most gnarly of the bunch and requires additional JavaScript if you’d like to hook them up with functional <code>Choose File</code>  and selected file name text.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +FileInputDefault
+    
+  +ComponentCard({
+    title: 'File Input Sizing',
+    anchor: true,
+    description:" You may also choose from small and large file inputs to match our similarly sized text inputs.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +FileInputSizing
+    
+  +ComponentCard({
+    title: 'Datalist',
+    anchor: true,
+  }).mb-3
+    +Datalist

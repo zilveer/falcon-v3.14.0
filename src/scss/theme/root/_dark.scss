@@ -1,0 +1,373 @@
+
+
+.dark{   
+  @each $color, $value in $dark-grays-rgb {
+    --#{$prefix}gray-#{$color}-rgb: #{$value} ;
+  }    
+  @each $color, $value in $theme-dark-colors-rgb {
+    --#{$prefix}#{$color}-rgb: #{$value} ;
+  }    
+  --#{$prefix}dark-rgb: #{to-rgb(map-get($theme-dark-colors, 'dark'))} ;
+  --#{$prefix}light-rgb: #{to-rgb(map-get($theme-dark-colors, 'light'))};
+
+  --#{$prefix}heading-color: #{map-get($dark-grays, '900')} ;
+
+  // -------- New ---------
+  @each $color, $value in $theme-dark-colors {
+    --#{$prefix}#{$color}: #{$value};
+    /* ------------------------------ Colored Link ------------------------------ */
+    --#{$prefix}colored-link-hover-color-#{$color}: #{if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage))};
+  }
+  @each $color, $value in $dark-grays {
+    --#{$prefix}gray-#{$color}: #{$value};
+     /* ------------------------------ Colored Link ------------------------------ */
+     --#{$prefix}colored-link-hover-color-#{$color}: #{if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage))};
+  }
+  --#{$prefix}white: #{map-get($dark-grays, 'white')};
+  --#{$prefix}black: #{map-get($dark-grays, 'black')};
+ 
+
+  //--------------------------
+  @each $color, $value in $theme-dark-colors-soft {
+    --#{$prefix}soft-#{$color}: #{$value};
+  }
+  --#{$prefix}body: #{map-get($dark-grays, '200')};
+  --#{$prefix}body-color: #{map-get($dark-grays, '700')};
+  --#{$prefix}body-bg: #{map-get($dark-grays, '100')};
+  --#{$prefix}border-color: #{rgba($white, 0.05)} ;
+
+  --#{$prefix}link-color: #{$link-color-dark};
+  --#{$prefix}link-hover-color: #{shift-color($link-color-dark, $link-shade-percentage)};
+
+
+  /* --------------------------------- Shadow --------------------------------- */
+  --#{$prefix}box-shadow: #{0 7px 14px 0 rgba(3, 12, 51, 0.15), 0 3px 6px 0 rgba(0, 0, 0, 0.2)};
+  --#{$prefix}box-shadow-sm: #{ 0 .125rem .25rem rgba($black, .075)};
+  --#{$prefix}box-shadow-lg: #{0 1rem 4rem rgba($black, 0.175)};
+  --#{$prefix}box-shadow-inset: #{inset 0 1px 2px rgba($black, .075)};
+
+  /* ---------------------------------- Form ---------------------------------- */
+  --#{$prefix}input-bg: #{$dark};
+  --#{$prefix}input-color: #{map-get($dark-grays, '900')};
+  --#{$prefix}input-border-color: #{map-get($dark-grays, '300')};
+  --#{$prefix}input-focus-border-color: #{shade-color($component-active-bg, 50%)};
+  --#{$prefix}input-placeholder-color: #{map-get($grays, '900')};
+
+  --#{$prefix}form-check-input-border-color: #{map-get($dark-grays, '400')};
+
+
+
+  /* --------------------------------- Navbar --------------------------------- */
+  --#{$prefix}bg-navbar-glass: #{rgba(map-get($dark-grays, '100'), 0.96)};
+
+  --#{$prefix}navbar-dark-color: #{rgba($dark, .55)};
+  --#{$prefix}navbar-dark-hover-color: #{rgba($dark, .75)};
+  --#{$prefix}navbar-dark-active-color: #{$dark};
+  --#{$prefix}navbar-dark-disabled-color: #{rgba($dark, .25)};
+  --#{$prefix}navbar-dark-toggler-border-color:  #{rgba($dark, .1)};
+
+  --#{$prefix}navbar-light-color: #{rgba($white, .55)};
+  --#{$prefix}navbar-light-hover-color: #{rgba($white, .7)};
+  --#{$prefix}navbar-light-active-color: #{rgba($white, .9)};
+  --#{$prefix}navbar-light-disabled-color: #{rgba($white, .3)};
+  --#{$prefix}navbar-light-toggler-border-color: #{rgba($white, .1)};
+
+  --#{$prefix}navbar-light-brand-color: #{$navbar-light-active-color};
+  --#{$prefix}navbar-light-brand-hover-color: #{$navbar-light-active-color};
+  --#{$prefix}navbar-dark-brand-color: #{$navbar-dark-active-color};
+  --#{$prefix}navbar-dark-brand-hover-color: #{$navbar-dark-active-color};
+
+  --#{$prefix}navbar-light-brand-color: #{map-get($theme-dark-colors, 'primary')};
+  --#{$prefix}navbar-dark-brand-color: #{map-get($theme-dark-colors, 'primary')};
+
+  // --------------------------- nav dropdown ------------------------------------
+  --#{$prefix}nav-dropdown-link-hover-bg: #{lighten(map-get($dark-grays, '100'),5%)} !important;
+  
+  /* -------------------------------------------------------------------------- */
+  /*                               Navbar Vertical                              */
+  /* -------------------------------------------------------------------------- */
+
+  /* --------------------------------- Default -------------------------------- */
+  --#{$prefix}navbar-vertical-collapsed-hover-shadow-color: #{rgba($black, 0.2)};
+  --#{$prefix}navbar-vertical-bg-color: var(--#{$prefix}bg-navbar-glass);
+  --#{$prefix}navbar-vertical-link-color: #{map-get($dark-grays, '700')};
+  --#{$prefix}navbar-vertical-link-hover-color: #{map-get($dark-grays, '1000')};
+  --#{$prefix}navbar-vertical-link-active-color: #{map-get($theme-dark-colors, 'primary')};
+  --#{$prefix}navbar-vertical-link-disable-color: #{map-get($dark-grays, '400')};
+  --#{$prefix}navbar-vertical-hr-color: #{rgba($white, 0.08)};
+  --#{$prefix}navbar-vertical-scrollbar-color: #{rgba(map-get($dark-grays, '600'), 0.3)};
+
+  /* ----------------------------- Navbar Inverted ---------------------------- */
+  /* ----------------------------- Navbar Card ---------------------------- */
+  --#{$prefix}navbar-card-hr-color: #{rgba($white, 0.08)};
+  --#{$prefix}navbar-card-bg-color: #{$card-bg-dark};
+
+
+  /* --------------------------- End Navbar Vertical -------------------------- */
+
+  /* ------------------------------ Reveal Button ----------------------------- */
+  --#{$prefix}btn-reveal-color: #{dark};
+  --#{$prefix}btn-reveal-bg: #{shade-color($dark, 10%)};
+  --#{$prefix}btn-reveal-border-color: #{shade-color($dark, 12.5%)};
+
+  /* ------------------------------ Falcon Button ----------------------------- */
+
+  --#{$prefix}btn-falcon-background: var(--#{$prefix}body-bg);
+  --#{$prefix}btn-disabled-color: #4d5969;
+  --#{$prefix}btn-falcon-box-shadow: #{0 0 0 1px rgba(0,8,19,.3), 0 2px 5px 0 rgba(0,13,33,.5), 0 1px 1.5px 0 rgba(0,8,1,.48), 0 1px 2px 0 rgba(0,8,1,.4)};
+  --#{$prefix}btn-falcon-hover-box-shadow: #{0 0 0 1px rgba(0,8,19,.3),0 3px 7px 0 rgba(0,13,33,.8),0 1px 1.5px 0 #000801,0 1px 2px 0 #000801};
+
+  --#{$prefix}btn-falcon-default-color: #{map-get($dark-grays, '800')};
+  --#{$prefix}btn-falcon-default-hover-color: #{shift-color(map-get($dark-grays, '800'), -17%)};
+  --#{$prefix}btn-falcon-default-active-background: #{shade-color($dark, 10%)};
+  --#{$prefix}btn-falcon-default-active-border: #{shift-color(map-get($dark-grays, '800'), -17%)};
+
+
+  
+  @each $color, $value in $theme-dark-colors {
+
+    /* ------------------------------ Falcon button ----------------------------- */
+
+    --#{$prefix}btn-falcon-#{$color}-color: var(--#{$prefix}#{$color});
+    --#{$prefix}btn-falcon-#{$color}-hover-color: #{shift-color($value, -17%)};
+    --#{$prefix}btn-falcon-#{$color}-active-background: #{shade-color($dark, 40%)};
+    --#{$prefix}btn-falcon-#{$color}-active-color: #{shift-color($value, -17%)};
+
+    /* ---------------------------------- Alert --------------------------------- */
+    .alert-#{$color}{
+      --#{$prefix}alert-bg: #{rgba(shift-color($value, 60%), 0.6)} ;
+      --#{$prefix}alert-border-color: #{shift-color($value, -$alert-border-scale)};
+      --#{$prefix}alert-color: #{shift-color($value, -$alert-color-scale)};
+      --#{$prefix}alert-link-color-#{$color}: #{tint-color($value, 20%)};
+    }
+
+    /* ------------------------------- List Group ------------------------------- */
+    --#{$prefix}list-group-item-background-#{$color}: #{shift-color($value, -$list-group-item-bg-scale)};
+    --#{$prefix}list-group-item-color-#{$color}: #{shift-color($value, -$list-group-item-color-scale)};
+      
+    /* ---------------------------------- Badge --------------------------------- */
+    --#{$prefix}badge-soft-#{$color}-background-color: #{shift-color($value, 80%)};
+    @if $color == 'secondary' {
+      --#{$prefix}badge-soft-#{$color}-color: #{shift-color($value, 6.4%)};
+    } @else if $value == 'warning' {
+      --#{$prefix}badge-soft-#{$color}-color: #{shift-color($value, -20%)};
+    } @else if $value == 'danger' {
+      --#{$prefix}badge-soft-#{$color}-color: #{shift-color($value, -36%)};
+    } @else {
+      --#{$prefix}badge-soft-#{$color}-color: #{shift-color($value, -36%)};
+    }
+  }
+
+  --#{$prefix}transparent-50: #{rgba($dark, 0.5)};
+
+
+  
+  /* --------------------------------- Avarar --------------------------------- */
+  --#{$prefix}avatar-status-border-color: #{$dark};
+  --#{$prefix}avatar-name-bg: #{map-get($dark-grays, '400')};
+  --#{$prefix}avatar-button-bg: #{map-get($dark-grays, '400')};
+  --#{$prefix}avatar-button-hover-bg: #{map-get($dark-grays, '500')};
+  
+  /* ------------------------------ Notification ------------------------------ */
+  --#{$prefix}notification-bg: var(--#{$prefix}card-cap-bg);
+  --#{$prefix}notification-title-bg: #{map-get($dark-grays, '300')};
+  --#{$prefix}notification-unread-bg: #{map-get($dark-grays, '200')};
+  --#{$prefix}notification-unread-hover-bg: #{darken(map-get($dark-grays, '200'), 5%)};
+  --#{$prefix}notification-indicator-border-color: #0a1727;
+
+  /* --------------------------------- Kanban --------------------------------- */
+  --#{$prefix}kanban-bg: #{rgba(map-get($dark-grays, '200'), 0.25)};
+  --#{$prefix}kanban-item-bg: #{map-get($dark-grays, '200')};
+  --#{$prefix}kanban-item-color: #{map-get($dark-grays, '900')};
+  --#{$prefix}kanban-btn-add-hover-bg: #{map-get($dark-grays, '200')};
+  --#{$prefix}kanban-draggable-source-dragging-bg: #{map-get($dark-grays, '100')};
+  --#{$prefix}kanban-bg-attachment-bg: #{map-get($dark-grays, '300')};
+  --#{$prefix}kanban-footer-color: #{map-get($dark-grays, '600')};
+  --#{$prefix}kanban-nav-link-card-details-color: #{map-get($dark-grays, '700')};
+  --#{$prefix}kanban-nav-link-card-details-hover-bg: #{map-get($dark-grays, '300')};
+
+  /* --------------------------- Gradient Background -------------------------- */
+  --#{$prefix}bg-shape-bg: #01224b;
+  --#{$prefix}bg-shape-bg-ltd: #{linear-gradient(-45deg,rgba(20,58,101,.41),#053571)};
+  --#{$prefix}bg-shape-bg-dtl: #{linear-gradient(-45deg,#0a3b79,rgba(9,25,43,.41))};
+
+  --#{$prefix}line-chart-gradient: #{linear-gradient(45deg,#012552,#001835)};
+  --#{$prefix}card-gradient: #{linear-gradient(45deg,#012552,#001835)};
+  --#{$prefix}bg-circle-shape: #{linear-gradient(-45deg,rgba(9,25,43,.41),#0a3b79)};
+  --#{$prefix}bg-circle-shape-bg: #4695ff;
+  --#{$prefix}modal-shape-header: #{linear-gradient(-45deg,#012552,#001835)};
+  --#{$prefix}modal-shape-header-after: #{linear-gradient(-45deg,rgba(20,58,101,.41),#053571)};
+  --#{$prefix}modal-shape-header-bg: #01224b;
+
+  /* ------------------------------ Full Calendar ----------------------------- */
+
+  --fc-button-list-day-cushion: #{$dark};
+  --fc-page-bg-color: #{$dark};
+  --fc-neutral-bg-color: #{map-get($dark-grays, '200')};
+
+  /* -------------------------------- Flatpickr ------------------------------- */
+  --#{$prefix}flatpickr-calendar-bg: #{$dark};
+
+  /* -------------------------------- Flatpickr ------------------------------- */
+  --#{$prefix}leaflet-bar-bg: #{map-get($dark-grays, '300')};
+  --#{$prefix}leaflet-popup-content-wrapper-bg: #{$dark};
+
+  /* --------------------------------- Choices -------------------------------- */
+  --#{$prefix}choices-item-has-no-choices-bg: #{$dark};
+  --#{$prefix}bg-choices-close-button:  #{map-get($dark-grays, '400')};
+
+  /* -------------------------------- Thumbnail ------------------------------- */
+  --#{$prefix}thumbnail-bg: #{map-get($dark-grays, '200')};
+
+  /* ---------------------------------- Chat ---------------------------------- */
+  --#{$prefix}chat-contact-bg: #121e2d;
+
+  /* --------------------------------- Tinymce -------------------------------- */
+  --#{$prefix}tinymce-bg: #{$dark};
+
+  /* --------------------------------- Swiper --------------------------------- */
+  --#{$prefix}swiper-nav-bg: #{rgba($dark, 0.8)};
+
+  /* --------------------------------- Rater --------------------------------- */
+  --#{$prefix}star-rating-bg-image: #{url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFdElEQVR4nO2aXWxURRTH/2dut58Imho1SgStuit+vBo0BkgkRjDog+VBiJEXqJhKK21x+7EdUu5u2W1Uqi8Qo4YQY6gQDQlRn9RENGoMD0a7RCzGRCJGBLRF9mOOD+waKHe7e2f23mt0f4/zceY/Z2fmzJm7QI0aNWr8j6EgBu3sHG9oXHC2gxQvJ/CUhbpUPD5wMggtwv8hmZrmn3mHmF8G4XEm6s5R/kinlPP91xKAA7YN2A8CeHRW8eLmrOjwWwsQgAMYqs+xnLGls3O8wW89vjqgp1/eDWC1YyXhxqYFvz/ppx7AZwcIsnrmbMDUK6X0V5NfA/VJuRDgdWWa3Tmds1b5IqiAf97OUReAunLNCOx4RniFL/eALimvrs+KnwDMq6yHWJq0Bz/3VFRxJD8GabgY4iqcPABWvd6puRzPV4CUsnEmK6YA3OCiG1tKRRIJecwrXUU8XwHTGbEe7iYPAJQXYqsXeq4YyEvjUkoxkxXfAbhDo/uFOrYWxeMDv1Rb16V4ugJmctYa6E0eABpyItdZTT1OeLwFDEMa02YpZeWHpwaeOaBncOQhMJYamrnmvMdJUtXOgI0bd4daW0+25S0rAoV7iLiHgWqkuDkChjik9ibl8EmAuAo2/8G1A7ZKea24IMJkcQRAmJkiBIQBtAGwqiluNgScU4w0EU2CkWZSk8ycnleP76WUf2nadCYajbfmrfwDxIWJgiMAhQG06k7AQxSAEwAmiTnNRJMEMWkxpePx/lNzrRpHB7wwOLJcMR+Cm9vbv5cZAK81h1S3lFLNrnQ8BBVjF/4bkweAZgDPnc+IJ5wqS0QBDnsoKBAYdLtTubMDCF95qiYAhMUfOpY7FSqlOgCc9lSRjzDR86MjsS+d6hwdMBaX3zCrlQDOeKrMBwiIpnYMvVSqvuRNMBWXXwPiYQB/eKLMBxgY3mnHRudqM+dVOGkPfsEKjwCYrqoyHyAgnrKHRipoV57CveAwgCZjZT7AwFjKHuqr5Npc8VW4r3/7ShAdAuD7xwuXjCftoa5KcwZXuUDv4MgqYn4XQEhLmscw8+5UPPaMm4TJVTqc2jF0GERrAeRcq/MceqOlnje7zRa10uHege3tBHobgXxdvhIm7DuRjjw9MbE277av1gRS9vAEwE8BqGpurgVhf0ud2qAz+YvdDegb3L4BTK+b2DCBgffO/np9+549m7K6NoweMD795KOj9y9bcRsB95rY0SRTp+qW7drV/aeJEeM9TMzvm9rQg48mEv2/mVoxP8RYLDa2oYWor4oVYwuEu6qgQwOOtLfvN36DrEIY4yXmNrRobGv79hZTI0YOKPwCEVMRurBFxqvPyAGLw+lbEWBuoBCwAwhB7f/i+GS8/YwcwBzY/i8S7AoILgIUMY8EZluAzZegIY2Fc0gbbQdc9DwHFgGKCFZGP4K2AwoxuFGz+xkCehFSNxHzKoCO6uowjQRl/7dXCs0YnCXmVwWH7Evu8T9LKT+Yzoj1BNggLHRl0fAc0ncAiyVuHl8INKEI0aQdOz67rvDRcm9394sToabpLhBHAVxVkV02c4D2e0DfwMi+Cv76CoCPKEU9Y4nYZ5Xa7pHyOpEVwwA2oXzKfmHqWKRF90FEewVUkAMcZ/C2lB076PadbkzKUwCejUblK3kSO0FYM0fzhkXh9M0AptyMUcQkDJY6AE8D2NIcUktS9vABk7+0JBJyMhmPPcYKywEu9cGWQ3nrnO4Y2g5gYN+sogyIU5mQakvasXEpZUbX9mxSidjHzSG+jxjrAPx4eS29afIwor0FWkJq9HzOOsvMq5n5B0vx2OioPKFrrxyFg/ItKeXBmazoAGMFQEea6/MlP3zWqFGjRo0y/A3lxcMNXfCjjAAAAABJRU5ErkJggg==')};
+
+
+  /* --------------------------------- Wizard --------------------------------- */
+  --#{$prefix}theme-wizard-nav-item-circle-bg: #{$dark};
+
+  /* -------------------------------- Card Span ------------------------------- */
+  --#{$prefix}card-span-img-bg: #{$dark};
+  --#{$prefix}card-span-img-box-shadow: #{$box-shadow-sm};
+  --#{$prefix}card-span-img-hover-box-shadow: #{$box-shadow};
+  --#{$prefix}card-bg: #{$card-bg-dark};
+
+  /* ------------------------------ Emoji Picker ------------------------------ */
+  &.emoji-picker{
+    --dark-background-color: #{map-get($dark-grays, '200')};
+    --dark-hover-color: #{map-get($dark-grays, '300')};
+    --dark-border-color: #{map-get($dark-grays, '300')};
+    --dark-search-background-color: $input-bg;
+    --dark-search-border-color: #{map-get($dark-grays, '300')};
+    --search-icon-color: #{map-get($dark-grays, '400')};
+    --dark-category-button-color: #{map-get($dark-grays, '700')};
+    --dark-secondary-text-color: #{map-get($dark-grays, '600')};
+    --dark-search-focus-border-color: #{map-get($dark-grays, '700')};
+
+  }
+
+  /* ------------------------------ showcase-page ------------------------------ */
+  --#{$prefix}setting-toggle-shadow: #{0 -7px 14px 0 rgba(3, 12, 51, 0.15), 0 3px 6px 0 rgba(0, 0, 0, 0.2)};
+
+  /* -------------------------------- Scrollbar ------------------------------- */
+  --#{$prefix}scrollbar-bg: #{rgba($gray-900, 0.6)};
+  --#{$prefix}simplebar-bg: #{rgba($gray-400, 0.6)};
+
+
+  /* ------------------------------- Falcon Pill ------------------------------ */
+  --#{$prefix}nav-pills-falcon-active-bg-color: #{map-get($dark-grays, '100')};
+
+  /* ------------------------------- Custom disabled button ------------------------------ */
+  --#{$prefix}btn-disabled-custom-background: #{rgba($dark, 0.65)};
+  --#{$prefix}btn-disabled-custom-color: #{rgba($white, 0.2)};
+
+  /* ------------------------------- Dropdown Caret ------------------------------ */
+  --#{$prefix}dropdown-caret-bg: #{$card-bg-dark};
+  /* ------------------------------- Divider Content ------------------------------ */
+  --#{$prefix}divider-content-bg: #{$card-bg-dark};
+
+   /* -------------------------------- Accordion ------------------------------- */
+   .accordion{
+    --#{$prefix}accordion-border-color: #{rgba($white, 0.125)};
+    --#{$prefix}accordion-bg: #{$card-bg-dark};
+    --#{$prefix}accordion-color: #{map-get($dark-grays, '700')};;
+  }
+
+  /* -------------------------------- Dropdown -------------------------------- */
+
+  .dropdown-menu{
+    --#{$prefix}dropdown-bg: #{map-get($dark-grays, '200')};
+    --#{$prefix}dropdown-color: #{map-get($dark-grays, '300')};
+    // --#{$prefix}dropdown-border-color: #{rgba($white, 0.075)};
+    --#{$prefix}dropdown-box-shadow: #{$box-shadow};
+    --#{$prefix}dropdown-link-color: #{map-get($dark-grays, '900')};
+    --#{$prefix}dropdown-link-hover-color: #{lighten(map-get($dark-grays, '900'), 5%)};
+    --#{$prefix}dropdown-link-hover-bg: #{rgba(map-get($dark-grays, '100'), 0.4)};
+    --#{$prefix}dropdown-link-active-color: #{$component-active-color};
+    --#{$prefix}dropdown-link-active-bg: #{$component-active-bg};
+    --#{$prefix}dropdown-link-disabled-color: #{map-get($dark-grays, '600')};
+    --#{$prefix}dropdown-header-color: #{map-get($dark-grays, '600')};
+  }
+  /* ------------------------------- Pagination ------------------------------- */
+  .pagination{
+    --#{$prefix}pagination-color: #{$white};
+    --#{$prefix}pagination-bg: #{$dark};
+    --#{$prefix}pagination-border-color: #{map-get($dark-grays, '200')};
+    --#{$prefix}pagination-hover-color: #{$white};
+    --#{$prefix}pagination-disabled-bg: #{$dark};
+    --#{$prefix}pagination-disabled-border-color: #{map-get($dark-grays, '200')};
+  }
+
+  /* ---------------------------------- Card ---------------------------------- */
+  &.card,.card{
+    --#{$prefix}card-border-color: #{rgba($white, 0.125)};
+    --#{$prefix}card-cap-bg: #{rgba(map-get($dark-grays, '200'), 0.03)};
+    --#{$prefix}card-bg: #{$card-bg-dark};
+  }
+
+  /* --------------------------------- Popover -------------------------------- */
+  .popover{
+    --#{$prefix}popover-bg: #{$dark};
+    --#{$prefix}popover-border-color: #{rgba($white, .2)};
+    // --#{$prefix}popover-box-shadow: #{$box-shadow};
+    --#{$prefix}popover-header-bg: #{map-get($theme-dark-colors, 'light')};
+    --#{$prefix}popover-header-border-bottom-color: #{tint-color($dark, 16%)}; //black
+  
+    --#{$prefix}popover-arrow-color: #{$dark};
+    --#{$prefix}popover-arrow-outer-color: #{fade-in(rgba($white, .2), .05)};
+  }
+  .offcanvas{
+    --#{$prefix}offcanvas-bg: #{$dark};
+  }
+  /* ---------------------------------- Toast --------------------------------- */
+  .toast {
+    --#{$prefix}toast-bg: #{rgba(map-get($dark-grays, '300'), 0.3)};
+    --#{$prefix}toast-header-bg: #{rgba(map-get($dark-grays, '300'), 0.3)};
+
+  }
+    /* ------------------------------- List Group ------------------------------- */
+    .list-group{
+      --#{$prefix}list-group-bg: var(--#{$prefix}card-cap-bg);
+      --#{$prefix}list-group-action-hover-color: #{map-get($dark-grays, '700')};
+      --#{$prefix}list-group-action-hover-bg: #{map-get($dark-grays, '100')};
+      // -- new 5.2 -----
+      --#{$prefix}list-group-disabled-bg: var(--#{$prefix}card-cap-bg);
+    }
+  
+  
+    /* ---------------------------------- Table --------------------------------- */
+    .table{
+      --#{$prefix}table-border-color: #{map-get($dark-grays, '100')};
+      --#{$prefix}table-striped-bg: #{map-get($dark-grays, '100')};
+      --#{$prefix}table-color: #{map-get($dark-grays, '500')};
+  
+    }
+    @each $color, $value in $theme-colors {
+      .table-#{$color}{
+        --#{$prefix}table-bg: #{shift-color($value, -$table-bg-scale)};
+        --#{$prefix}table-color: #{color-contrast(opaque(map-get($dark-grays, '200'), $value))};
+        --#{$prefix}table-hover-bg: #{mix(color-contrast(opaque(map-get($dark-grays, '200'), $value)), $value, percentage($table-hover-bg-factor))};
+        --#{$prefix}table-hover-color: #{color-contrast(mix(color-contrast(opaque(map-get($dark-grays, '200'), $value)), $value, percentage($table-hover-bg-factor)))};
+        --#{$prefix}table-striped-bg: #{mix(color-contrast(opaque(map-get($dark-grays, '200'), $value)), $value, percentage($table-striped-bg-factor))};
+        --#{$prefix}table-striped-color: #{color-contrast(mix(color-contrast(opaque(map-get($dark-grays, '200'), $value)), $value, percentage($table-striped-bg-factor)))};
+        --#{$prefix}table-active-bg: #{mix(color-contrast(opaque(map-get($dark-grays, '200'), $value)), $value, percentage($table-active-bg-factor))};
+        --#{$prefix}table-active-color: #{color-contrast(mix(color-contrast(opaque(map-get($dark-grays, '200'), $value)), $value, percentage($table-active-bg-factor)))};
+        --#{$prefix}table-border-color: #{rgba(mix(color-contrast(opaque(map-get($dark-grays, '200'), $value)), $value, percentage($table-border-factor)), 0.05)};
+      } 
+    }
+  /* ---------------------------------- Modal --------------------------------- */
+  .modal{
+    --#{$prefix}modal-bg: #{$card-bg-dark};
+  }
+
+}
+

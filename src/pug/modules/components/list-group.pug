@@ -1,0 +1,58 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/ListGroup
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'List Group',
+      description: "List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.",
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/components/list-group/`,
+      linkText: 'List on Bootstrap'
+    }
+
+block component
+  +PageHeader(pageHeader)
+
+  .row.g-3.mb-3
+    .col-lg-6
+      +ComponentCard({
+        title: 'Basic Example',
+        anchor: true,
+      })
+        +ListGroupBasicExampleDemo
+
+    .col-lg-6
+      +ComponentCard({
+        title: 'Active Item',
+        anchor: true,
+      })
+        +ListGroupActiveItemDemo
+
+    .col-lg-6
+      +ComponentCard({
+        title: 'List group flush',
+        anchor: true,
+      })
+        +ListGroupFlushDemo
+
+    .col-lg-6
+      +ComponentCard({
+        title: 'List group with badge',
+        anchor: true,
+      })
+        +ListGroupBadgeDemo 
+
+    .col-lg-6
+      +ComponentCard({
+        title: 'List group background',
+        anchor: true,
+      })
+        +ListGroupBackgroundDemo 
+
+    .col-lg-6
+      +ComponentCard({
+        title: 'List group with Link',
+        anchor: true,
+      })
+        +ListGroupLinkDemo 

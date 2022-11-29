@@ -1,0 +1,71 @@
+mixin CardAudience
+  .card.overflow-hidden&attributes(attributes)
+    .card-header.audience-chart-header.p-0.bg-light.scrollbar-overlay
+      ul.nav.nav-tabs.border-0.chart-tab.flex-nowrap#audience-chart-tab(role='tablist')
+        li.nav-item(role='presentation')
+          a.nav-link.mb-0.active#users-tab(data-bs-toggle='tab' href='#users' role='tab' aria-controls='users' aria-selected='true')
+            .audience-tab-item.p-2.pe-4
+              h6.text-800.fs--2.text-nowrap Users
+              h5.text-800 3.9K
+              .d-flex.align-items-center
+                span.fas.fa-caret-up.text-success
+                h6.fs--2.mb-0.ms-2.text-success 62.0%
+        li.nav-item(role='presentation')
+          a.nav-link.mb-0#sessions-tab(data-bs-toggle='tab' href='#sessions' role='tab' aria-controls='sessions' aria-selected='false')
+            .audience-tab-item.p-2.pe-4
+              h6.text-800.fs--2.text-nowrap Sessions
+              h5.text-800 6.3K
+              .d-flex.align-items-center
+                span.fas.fa-caret-up.text-success
+                h6.fs--2.mb-0.ms-2.text-success 46.2%
+        li.nav-item(role='presentation')
+          a.nav-link.mb-0#rate-tab(data-bs-toggle='tab' href='#rate' role='tab' aria-controls='rate' aria-selected='false')
+            .audience-tab-item.p-2.pe-4
+              h6.text-800.fs--2.text-nowrap Bounce Rate
+              h5.text-800 9.49%
+              .d-flex.align-items-center
+                span.fas.fa-caret-down.text-warning
+                h6.fs--2.mb-0.ms-2.text-warning 56.1%
+        li.nav-item(role='presentation')
+          a.nav-link.mb-0#duration-tab(data-bs-toggle='tab' href='#duration' role='tab' aria-controls='duration' aria-selected='false')
+            .audience-tab-item.p-2.pe-4
+              h6.text-800.fs--2.text-nowrap Session Duration
+              h5.text-800 4m 03s
+              .d-flex.align-items-center
+                span.fas.fa-caret-down.text-warning
+                h6.fs--2.mb-0.ms-2.text-warning 32.2%
+    .card-body
+      .tab-content
+        .tab-pane.active#users(role='tabpanel' aria-labelledby='users-tab')
+          // Find the JS file for the following chart at: src/js/charts/echarts/audience.js
+          // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+          .echart-audience(data-echart-responsive="true" style='height:320px;')
+        .tab-pane#sessions(role='tabpanel' aria-labelledby='sessions-tab')
+          .echart-audience(data-echart-responsive="true" style='height:320px;')
+        .tab-pane#rate(role='tabpanel' aria-labelledby='rate-tab')
+          .echart-audience(data-echart-responsive="true" style='height:320px;')
+        .tab-pane#duration(role='tabpanel' aria-labelledby='duration-tab')
+          .echart-audience(data-echart-responsive="true" style='height:320px;')
+    .card-footer.bg-light.py-2
+      .row.flex-between-center.g-0
+        .col-auto
+          select.form-select.form-select-sm.audience-select-menu
+            option(value='week' selected) Last 7 days
+            option(value='month') Last month
+        .col-auto
+          a.btn.btn-link.btn-sm.px-0.fw-medium(href='#!') Visitors overview
+            span.fas.fa-chevron-right.ms-1.fs--2
+
+mixin CardConnect
+  .card&attributes(attributes)
+    +Background({image: `${CWD}assets/img/icons/spot-illustrations/corner-5.png`, className: 'bg-card'})
+    .card-body.position-relative
+      .row.g-2.align-items-sm-center
+        .col-auto
+          img(src=`${CWD}assets/img/icons/connect-circle.png` alt="" height='55')
+        .col
+          .row.align-items-center
+            .col.col-lg-8
+              h5.fs-0.mb-3.mb-sm-0.text-primary Connect your domain to your website and get things done faster with Falcon
+            .col-12.col-sm-auto.ms-auto
+              button.btn.btn-falcon-primary(type="button") Connect

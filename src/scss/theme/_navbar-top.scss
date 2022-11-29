@@ -1,0 +1,210 @@
+/* -------------------------------------------------------------------------- */
+/*                                 Navbar Top                                 */
+/* -------------------------------------------------------------------------- */
+
+.navbar-top {
+  position: sticky;
+  top: 0;
+  font-size: map_get($font-sizes, "-1");
+  font-weight: $font-weight-semi-bold;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  z-index: 1020;
+  background-image: none;
+  min-height: $top-nav-height;
+  .navbar-nav-icons {
+    .dropdown-menu {
+      position: absolute;
+    }
+  }
+  .navbar-collapse {
+    overflow: auto;
+    max-height: calc(100vh - #{$top-nav-height});
+    margin: 0 -0.75rem;
+    padding: 0 0.75rem;
+    flex: 1 0 100%;
+    order: 1;
+  }
+  .navbar-toggler {
+    margin-left: -0.625rem;
+  }
+  &[data-navbar-top="combo"] .navbar-collapse{
+    width: auto;
+  }
+}
+
+.dropdown-menu-card {
+  padding: 0;
+  .card {
+    border: 0;
+  }
+}
+.navbar-toggler {
+  border: 0;
+  padding: 0;
+}
+.navbar-top,
+.navbar-standard {
+  .navbar-nav:not(.navbar-nav-icons) {
+    .dropdown-menu {
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+// Settings Icon
+.settings-popover {
+  position: relative;
+  padding: 0;
+  height: 0.875rem;
+  width: 0.875rem;
+  outline: none;
+}
+
+@each $breakpoint, $container-max-width in $container-max-widths {
+  @include media-breakpoint-up($breakpoint) {
+    .navbar-expand-#{$breakpoint} {
+      &.navbar-top {
+        .navbar-collapse {
+          max-height: none;
+          margin: 0;
+          padding: 0;
+          order: 0;
+          flex: 0 1 auto;
+        }
+      }
+      &.navbar {
+        .max-h-dropdown {
+          max-height: 75vh;
+        }
+      }
+      &.navbar-standard {
+        .navbar-collapse {
+          max-height: none;
+        }
+      }
+      &.navbar-top,
+      &.navbar-standard {
+        .navbar-nav:not(.navbar-nav-icons) {
+          .dropdown-menu {
+            &:after {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    .navbar.navbar-expand-#{$breakpoint} {
+      &:not(.navbar-vertical) {
+        .navbar-collapse {
+          overflow: visible !important;
+        }
+      }
+    }
+  }
+}
+.img-dropdown{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  
+  html[dir="rtl"] &{
+    transform: scaleX(-1);
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .navbar-card-components {
+    min-width: 28.8125rem;
+  }
+  .navbar-card-auth {
+    min-width: 21rem;
+  }
+  .navbar-card-pages {
+    min-width: 28rem;
+  }
+  .navbar-card-app {
+    min-width: 32rem;
+  }
+}
+@include media-breakpoint-up(lg) {
+  .navbar-card-login {
+    min-width: 22rem;
+  }
+}
+@include media-breakpoint-up(xxl) {
+  .navbar-card-components {
+    min-width: 53.125rem;
+  }
+  .navbar-card-pages {
+    min-width: 45rem;
+  }
+}
+@include media-breakpoint-up(xxl) {
+  .navbar-card-auth {
+    min-width: 40.625rem;
+  }
+}
+
+.theme-control-toggle{
+  .theme-control-toggle-label{
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--#{$prefix}gray-300);
+    color: var(--#{$prefix}primary);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: $transition-base;
+    &:hover{
+      background-color: var(--#{$prefix}gray-400);
+    }
+  }
+
+  .theme-control-toggle-input {
+    display: none;
+    &:checked ~ .theme-control-toggle-dark{
+      display: none;
+    }
+    &:not(:checked) ~ .theme-control-toggle-light{
+      display: none;
+    }
+  }
+}  
+
+.theme-switch-toggle{
+  .theme-switch-toggle-label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.5rem;
+    margin-bottom: 0;
+    display: none;
+    // background-color: var(--#{$prefix}gray-300);
+    color: rgba($white, 0.55);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: $transition-base;
+    &:hover{
+      color: rgba($white, 0.75);
+    }
+    @include media-breakpoint-up(lg) {
+      display: block;
+    }
+  }
+
+
+  .theme-switch-toggle-input {
+    display: none;
+    &:checked ~ .theme-switch-toggle-dark{
+      display: none;
+    }
+    &:not(:checked) ~ .theme-switch-toggle-light{
+      display: none;
+    }
+  }
+}  

@@ -1,0 +1,7 @@
+mixin ErrorModalContent
+  .d-flex.align-items-center
+    .lottie.me-3(data-options!={ path: `${CWD}assets/img/animated-icons/warning-light.json` })
+    .flex-1
+      button.btn.btn-link.text-danger.position-absolute.top-0.end-0.mt-2.me-2(data-bs-dismiss="modal")
+        span.fas.fa-times
+      p.mb-0 You don't have access to the link. Please try again.

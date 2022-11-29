@@ -1,0 +1,151 @@
+mixin CardTotalSalesEcommerce
+  .card&attributes(attributes)
+    .card-header
+      .row.flex-between-center.g-0
+        .col-auto
+          h6.mb-0 Total Sales
+        .col-auto.d-flex
+          .form-check.mb-0.d-flex
+            input#ecommerceLastMonth.form-check-input.form-check-input-primary(type="checkbox" checked )
+            label.form-check-label.ps-2.fs--2.text-600.mb-0(for="ecommerceLastMonth") Last Month
+              span.text-dark.d-none.d-md-inline : $32,502.00
+          .form-check.mb-0.d-flex.ps-0.ps-md-3
+            input#ecommercePrevYear.form-check-input.ms-2.form-check-input-warning.opacity-75(type="checkbox" checked)
+            label.form-check-label.ps-2.fs--2.text-600.mb-0(for="ecommercePrevYear") Prev Year
+              span.text-dark.d-none.d-md-inline : $46,018.00
+        .col-auto
+          +DashboardDropdown('dropdown-total-sales-ecomm')
+    .card-body.pe-xxl-0
+      // Find the JS file for the following chart at: src/js/charts/echarts/total-sales-ecommerce.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-line-total-sales-ecommerce(data-echart-responsive="true" data-options!={
+        optionOne:'ecommerceLastMonth',
+        optionTwo: 'ecommercePrevYear'
+      })
+
+mixin CardSalesByPosLocation 
+  .card&attributes(attributes)
+    .card-header.bg-light.py-2
+      .d-flex.flex-between-center
+        h6.mb-0 Sales by POS location 
+        a.btn.btn-link.btn-sm.px-0(href=`#!`) View Details
+            span.fas.fa-chevron-right.ms-1.fs--2
+    .card-body.px-0.pt-4.pb-0
+      +SalesByPosLocationTable
+      // Find the JS file for the following chart at: src/js/charts/echarts/sales-by-pos-location.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-radar-sales-by-pos-location.h-100.px-md-2.mt-md-5(data-echart-responsive="true")
+      
+mixin SalesByPosLocationTable
+  -
+    var rows = [
+      {
+        name:{
+          text:'Allocated Budget',
+          color:'primary'
+        },
+        amount:'$13,325.98',
+        percentage:{
+          icon:'fas fa-caret-up',
+          color:'success',
+          text:'10%'
+        },
+      },
+      {
+        name:{
+          text:'Actual Spending',
+          color:'warning'
+        },
+        amount:'$12,348.46',
+        percentage:{
+          icon:'fas fa-caret-down',
+          color:'success',
+          text:'13%'
+        },
+      }
+    ]
+  table.table.table-borderless.font-sans-serif.fw-medium.fs--1
+    tbody
+      each row in rows
+        tr
+          td.pb-2.pt-0 
+            span.fas.fa-circle.fs--2.me-1(class=`text-${row.name.color}`)
+            | !{row.name.text}
+          td.pb-2.pt-0.text-end !{row.amount}
+          td.pb-2.pt-0.text-end
+            span.me-1(class=`${row.percentage.icon} text-${row.percentage.color}`)
+            | !{row.percentage.text}
+
+mixin CardTopProductsEcommerce
+  .card&attributes(attributes)
+    .card-header.bg-light.py-2.d-flex.flex-between-center
+      h6.mb-0 Top Products
+      .d-flex
+        a(href="#!").btn.btn-link.btn-sm.me-2 View Details
+        +DashboardDropdown('dropdown-top-products')
+    .card-body.d-flex.h-100.flex-column.justify-content-end
+      // Find the JS file for the following chart at: src/js/charts/echarts/top-products.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-bar-top-products.echart-bar-top-products-ecommerce(data-echart-responsive="true") 
+
+mixin CardReturningCustomerRate
+  -
+    var details = {
+      title: 'Returning Customer Rate',
+      badge: {
+        color: 'primary',
+        text: '3.5%'
+      }
+    }
+  -
+    var months = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
+    ]
+  .card&attributes(attributes)
+    .card-header.bg-light
+      .row.justify-content-between
+        .col-auto
+          h6 #{details.title}
+          .d-flex.align-items-center
+            h4.text-primary.mb-0 $59.09%
+            span.badge.rounded-pill.ms-3(class=`badge-soft-${details.badge.color}`)
+              span.fas.fa-caret-up
+              |  #{details.badge.text}
+        .col-auto
+          select.form-select.form-select-sm.pe-4#select-returning-customer-month
+            each month, index in months
+              option(value=index)=month
+    .card-body
+      // Find the JS file for the following chart at: src/js/charts/echarts/returning-customer-rate.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-line-returning-customer-rate(data-echart-responsive="true" data-options={
+        target: 'returning-customer-rate-footer',
+        monthSelect:'select-returning-customer-month',
+        optionOne: 'newMonth',
+        optionTwo: 'returningMonth',
+      })&attributes(attributes)
+    .card-footer.border-top.py-2
+      .row.align-items-center.gx-0#returning-customer-rate-footer
+        .col-auto.me-2
+          .btn.btn-sm.btn-text.d-flex.align-items-center.p-0.shadow-none#newMonth
+            span.fas.fa-circle.text-primary.fs--2.me-1
+            | New 
+        .col-auto
+          .btn.btn-sm.btn-text.d-flex.align-items-center.p-0.shadow-none#returningMonth
+            span.fas.fa-circle.text-warning.fs--2.me-1
+            | Returning 
+        .col.text-end
+          a.btn.btn-link.btn-sm.px-0.fw-medium(href='#!') View report 
+            span.fas.fa-chevron-right.fs--2
+

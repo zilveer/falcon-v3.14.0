@@ -1,0 +1,42 @@
+include ../home/dashboard/Mixins
+
+mixin InfoItem(title, content)
+  .mb-4&attributes(attributes)
+    h6(class=`${title === 'Email' && "mb-1"} ${title === 'Phone Number' && "mb-1"}`)= title
+    if title === "Email"
+      a.fs--1(href=`mailto:${content}`)= content
+    else if title === "Phone Number"
+      a.fs--1(href=`tel:${content.replace(/\s+/g, '')}`)= content
+    else
+      p.mb-0.text-700.fs--1 #{content}
+
+mixin ContactInfo
+  .card&attributes(attributes)
+    .card-header.d-flex.flex-between-center.py-2.bg-light
+      h6.mb-0 Contact Information
+      +DashboardDropdown('dropdown-contact-information')
+    .card-body
+      .row.g-0.border-bottom.pb-x1.mb-x1.align-items-sm-center.align-items-xl-start
+        .col-12.col-sm-auto.col-xl-12.me-sm-3.me-xl-0
+          +Avatar({img: "team/1.jpg", size: "3xl"})
+        .col-12.col-sm-auto.col-xl-12
+          p.fw-semi-bold.text-800.mb-0 Emma Watson
+          a.btn.btn-link.btn-sm.p-0.fe-medium.fs--1(href=`${CWD}${paths['contact-details']}`) View more details
+      .row.g-0.justify-content-lg-between
+        .col-auto.col-md-6.col-lg-auto
+          .row
+            .col-md-auto.mb-4.mb-md-0.mb-xl-4
+              h6.mb-1 Email
+              a.fs--1(href=`mailto:mattrogers@gmail.com`) mattrogers@gmail.com
+            .col-md-auto.mb-4.mb-md-0.mb-xl-4
+              h6.mb-1 Phone Number
+              a.fs--1(href=`tel:+6(855)747677`) +6(855) 747 677
+        .col-auto.col-md-6.col-lg-auto.ps-md-5.ps-xl-0
+          .border-start.position-absolute.start-50.d-none.d-md-block.d-xl-none(style='height: 72px')
+          h6.d-flex.align-items-center.mb-1
+            span.me-2 Previous Tickets
+            span.badge.badge-soft-info Responded
+          a(href=`${CWD}${paths['tickets-preview']}`).text-truncate.fs--1.font-sans-serif.mb-1.d-block.text-700 When I unboxed my TV, I found a broken TV
+          p.fs--1.mb-0.text-600.fw-semi-bold 01 March, 2020
+            span.mx-1 |
+            span.fst-italic 8:40 AM

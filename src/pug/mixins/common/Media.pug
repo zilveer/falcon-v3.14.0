@@ -1,0 +1,63 @@
+mixin Media(config)
+  - var config = Object.assign({hr: true, varified: false, action: false, link: '#!'}, config)
+  .d-flex.btn-reveal-trigger&attributes(attributes)
+    if (config.img)
+      - var img = Object.assign({width: 50}, config.img)
+      img.img-fluid(src=`${CWD}assets/img/${img.src}` alt='' width=img.width)
+    if (config.calendar)
+      .calendar
+        span.calendar-month=config.calendar.month
+        span.calendar-day=config.calendar.day
+    .flex-1.position-relative.ps-3
+      if(config.action)
+        .position-absolute.end-0.z-index-1
+          .dropdown.font-sans-serif
+            button.btn.btn-link.text-600.btn-sm.dropdown-toggle.btn-reveal(type='button' id='profile-settings' data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+              span.fas.fa-ellipsis-h.fs--1
+            .dropdown-menu.me-3.py-0.dropdown-menu-end(aria-labelledby='profile-settings')
+              .bg-white.py-1
+                a(href='#!').dropdown-item.text-warning Edit
+                a(href='#!').dropdown-item.text-danger Delete
+      if (config.title)
+        h6.fs-0.mb-0(class=`${config.action ? 'pe-5': ''}`)
+          a(href=config.link)!=config.title
+            if(config.varified)
+              +Varified(config.varified)
+      if(config.subtitle)
+        p.mb-1!=config.subtitle
+      if(config.additional)
+        if(typeof config.additional === 'object')
+          each value in config.additional
+            p.text-1000.mb-0!=value
+        else
+          p.text-1000.mb-0!=config.additional
+      block
+      if (config.hr)
+        .border-bottom.border-dashed.my-3
+
+mixin MediaVarified(config)
+  - var config = Object.assign({width: 100, hr: false, varified: false, link: '#!'}, config)
+  if(config.link)
+    a(href=config.link)
+      img.img-thumbnail.img-fluid.rounded-circle.mb-3.shadow-sm(src=`${CWD}assets/img/${config.img}` alt='' width=config.width)
+  else
+    img.img-thumbnail.img-fluid.rounded-circle.mb-3.shadow-sm(src=`${CWD}assets/img/${config.img}` alt='' width=config.width)
+  if (config.title)
+    h6.mb-1
+      a(href=config.link)=config.title
+      if(config.varified)
+        +Varified(config.varified)
+    if(config.varified)
+      +Varified(config.varified)
+  if(config.subtitle)
+    if(config.subtitleLink)
+      p.fs--2.mb-1
+        a(href=config.subtitleLink).text-700=config.subtitle
+    else
+      p.fs--2.mb-1=config.subtitle
+  if(config.time)
+    p.text-1000.mb-0=config.time
+  if(config.location)
+    p.text-1000.mb-0=config.location
+  if (config.hr)
+    hr.border.border-dashed

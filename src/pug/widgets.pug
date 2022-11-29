@@ -1,0 +1,58 @@
+extends layouts/LayoutTheme
+include mixins/common/Media
+include mixins/common/Verified
+include mixins/widgets/WidgetSectionTitle
+include mixins/home/dashboard/Dashboard
+include mixins/widgets/Stats
+include mixins/widgets/Tables
+include mixins/widgets/ECommerce
+include mixins/e-commerce/Checkout
+include mixins/widgets/Users
+include mixins/widgets/Errors
+include mixins/widgets/Forms
+include mixins/widgets/Others
+
+prepend styles
+  link(href=`${CWD}vendors/flatpickr/flatpickr.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/glightbox/glightbox.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/plyr/plyr.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/dropzone/dropzone.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/leaflet/leaflet.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/leaflet.markercluster/MarkerCluster.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/leaflet.markercluster/MarkerCluster.Default.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/fullcalendar/main.min.css`, rel='stylesheet')
+
+
+prepend scripts
+  script(src=`${CWD}vendors/glightbox/glightbox.min.js`) 
+  script(src=`${CWD}assets/js/flatpickr.js`)
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+  script(src=`${CWD}assets/data/world.js`)
+  script(src=`${CWD}vendors/plyr/plyr.polyfilled.min.js`) 
+  script(src=`${CWD}vendors/countup/countUp.umd.js`)
+  script(src=`${CWD}vendors/chart/chart.min.js`)
+  script(src=`${CWD}vendors/dropzone/dropzone.min.js`)
+  script(src=`${CWD}vendors/leaflet/leaflet.js`)
+  script(src=`${CWD}vendors/leaflet.markercluster/leaflet.markercluster.js`)
+  script(src=`${CWD}vendors/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js`)
+  script(src=`${CWD}vendors/list.js/list.min.js`)
+  script(src=`${CWD}vendors/tinymce/tinymce.min.js`)
+  script(src=`${CWD}vendors/dayjs/dayjs.min.js`)
+  script(src=`${CWD}vendors/fullcalendar/main.min.js`)
+  script(src=`${CWD}vendors/d3/d3.min.js`)
+
+
+
+block append content
+
+  +Stats
+  +Tables
+  +ECommerce
+  +Users
+  +Errors
+  +Forms
+  +Others
+
+append afterContent
+  +CalendarEventDetailsModal
+  +CalendarAddEventModal

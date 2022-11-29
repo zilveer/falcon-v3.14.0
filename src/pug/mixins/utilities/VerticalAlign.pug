@@ -1,0 +1,47 @@
+
+mixin VerticalAlignExampleDescription
+  p.mt-2 Change the alignment of elements with the vertical-alignment utilities. Please note that vertical-align only affects inline, inline-block, inline-table, and table cell elements.
+  p Choose from 
+    code .align-baseline,
+    |  
+    code .align-top,
+    |  
+    code .align-middle,
+    |  
+    code .align-bottom,
+    |  
+    code .align-text-bottom,
+    |  and 
+    code .align-text-top
+    |  as needed.
+  p.mb-0 Multiple links and tap targets are not recommended with stretched links. However, some 
+    code position 
+    | and 
+    code z-index 
+    | styles can help should this be required.
+
+mixin VerticalAlignExampleDemo
+  = '\n'
+  span.align-baseline baseline
+  = '\n'
+  span.align-top top
+  = '\n'
+  span.align-middle middle
+  = '\n'
+  span.align-bottom bottom
+  = '\n'
+  span.align-text-top text-top
+  = '\n'
+  span.align-text-bottom text-bottom
+
+mixin VerticalAlignExampleTable
+  .table-responsive
+    table.table.table-bordered(style='height: 100px;')
+      tbody
+        tr
+          td.align-baseline baseline
+          td.align-top top
+          td.align-middle middle
+          td.align-bottom bottom
+          td.align-text-top text-top
+          td.align-text-bottom text-bottom

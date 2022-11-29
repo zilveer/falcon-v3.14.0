@@ -1,0 +1,65 @@
+mixin BasicExample
+  .input-group.mb-3
+    span#basic-addon1.input-group-text @
+    input.form-control(type='text', placeholder='Username', aria-label='Username', aria-describedby='basic-addon1')
+  .input-group.mb-3
+    input.form-control(type='text', placeholder="Recipient's username", aria-label="Recipient's username", aria-describedby='basic-addon2')
+    span#basic-addon2.input-group-text @example.com
+  label.form-label(for='basic-url') Your vanity URL
+  .input-group.mb-3
+    span#basic-addon3.input-group-text https://example.com/users/
+    input#basic-url.form-control(type='text', aria-describedby='basic-addon3')
+  .input-group.mb-3
+    span.input-group-text $
+    input.form-control(type='text', aria-label='Amount (to the nearest dollar)')
+    span.input-group-text .00
+  .input-group
+    span.input-group-text With textarea
+    textarea.form-control(aria-label='With textarea')
+
+mixin WrappingExample
+  .input-group.flex-nowrap
+    span#addon-wrapping.input-group-text @
+    input.form-control(type='text', placeholder='Username', aria-label='Username', aria-describedby='addon-wrapping')
+
+mixin SizingExample
+  .input-group.input-group-sm.mb-3
+    span#inputGroup-sizing-sm.input-group-text Small
+    input.form-control(type='text', aria-label='Sizing example input', aria-describedby='inputGroup-sizing-sm')
+  .input-group.mb-3
+    span#inputGroup-sizing-default.input-group-text Default
+    input.form-control(type='text', aria-label='Sizing example input', aria-describedby='inputGroup-sizing-default')
+  .input-group.input-group-lg
+    span#inputGroup-sizing-lg.input-group-text Large
+    input.form-control(type='text', aria-label='Sizing example input', aria-describedby='inputGroup-sizing-lg')
+
+
+mixin CheckboxesRadios
+  .input-group.mb-3
+    .input-group-text
+      input.form-check-input(type='checkbox', value='', aria-label='Checkbox for following text input')
+    input.form-control(type='text', aria-label='Text input with checkbox')
+  .input-group
+    .input-group-text
+      input.form-check-input(type='radio', value='', aria-label='Radio button for following text input')
+    input.form-control(type='text', aria-label='Text input with radio button')
+
+mixin MultipleInputs 
+  .input-group
+    span.input-group-text First and last name
+    input.form-control(type='text', aria-label='First name')
+    input.form-control(type='text', aria-label='Last name')
+
+mixin MultipleAddons
+  .input-group.mb-3
+    span.input-group-text $
+    span.input-group-text 0.00
+    input.form-control(type='text', aria-label='Dollar amount (with dot and two decimal places)')
+  .input-group
+    input.form-control(type='text', aria-label='Dollar amount (with dot and two decimal places)')
+    span.input-group-text $
+    span.input-group-text 0.00
+
+
+
+

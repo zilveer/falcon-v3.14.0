@@ -1,0 +1,63 @@
+block append variables
+  -
+    var faqs = [
+      {
+        title   :`How does ${name}'s pricing work?`,
+        description: `The free version of ${name} is available for teams of up to 15 people. Our ${name} Premium plans of 15 or fewer qualify for a small team discount. As your team grows to 20 users or more and gets more value out of ${name}, you'll get closer to our standard monthly price per seat. The price of a paid ${name} plan is tiered, starting in groups of 5 and 10 users, based on the number of people you have in your Team or Organization.`,
+      },
+      {
+        title:'What forms of payment do you accept?',
+        description: `You can purchase ${name} with any major credit card. For annual subscriptions, we can issue an invoice payable by bank transfer or check. Please contact us to arrange an invoice purchase. Monthly purchases must be paid for by credit card.`,
+      },
+      {
+        title: 'We need to add more people to our team. How will that be billed?',
+        description: `You can add as many new teammates as you need before changing your subscription. We will subsequently ask you to correct your subscription to cover current usage.`,
+      },
+      {
+        title: `How secure is ${name}?`,
+        description: `Protecting the data you trust to ${name} is our first priority. ${name} uses physical, procedural, and technical safeguards to preserve the integrity and security of your information. We regularly back up your data to prevent data loss and aid in recovery. Additionally, we host data in secure SSAE 16 / SOC1 certified data centers, implement firewalls and access restrictions on our servers to better protect your information, and work with third party security researchers to ensure our practices are secure.`,
+      },
+      {
+        title: `Will I be charged sales tax?`,
+        description: `As of May 2016, state and local sales tax will be applied to fees charged to customers with a billing address in the State of New York.`,
+      },
+      {
+        title: `Do you offer discounts?`,
+        description: `We've built in discounts at each tier for teams smaller than 15 members. We also offer two months for free in exchange for an annual subscription.`
+      },
+      {
+        title: `Do you offer academic pricing?`,
+        description: `We're happy to work with student groups using ${name}. Contact Us`
+      },
+      {
+        title: `Is there an on-premise version of ${name}?`,
+        description: `We are passionate about the web. We don't plan to offer an internally hosted version of ${name}. We hope you trust us to provide a robust and secure service so you can do the work only your team can do.`
+      },
+      {
+        title: `What is your refund policy?`,
+        description: `We do not offer refunds apart from exceptions listed below. If you cancel your plan before the next renewal cycle, you will retain access to paid features until the end of your subscription period. When your subscription expires, you will lose access to paid features and all data associated with those features. Exceptions to our refund policy: canceling within 48 hours of initial charge will result in a full refund. If you cancel within this timeframe, you will lose access to paid features and associated data immediately upon canceling.`, 
+        hr: false 
+      }
+    ];
+
+mixin FaqBasicItem(config)
+  - var config = Object.assign({url: '#!', hr: true}, config)
+  h6 
+    a(href=config.url)!=config.title
+      span.fas.fa-caret-right.ms-2
+  p.fs--1.mb-0=config.description
+  if config.hr
+    hr.my-3 
+
+mixin FaqFooter
+  .card-footer.d-flex.align-items-center.bg-light
+    h5.d-inline-block.me-3.mb-0.fs--1 Was this information helpful?
+    button.btn.btn-falcon-default.btn-sm Yes
+    button.btn.btn-falcon-default.btn-sm.ms-2 No
+
+mixin FaqBasic
+  .card.mb-3
+    .card-body
+      each faq in faqs
+        +FaqBasicItem(faq)
+    +FaqFooter  

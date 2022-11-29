@@ -1,0 +1,118 @@
+//- ==============================================
+//- Trainer Info - Card
+//- ==============================================
+mixin TrainerInfo
+  .card&attributes(attributes)
+    .card-body
+      .row.g-3.align-items-center
+        .col-md-6.col-lg-12.text-center
+          img.img-fluid.rounded-3(src=`${CWD}assets/img/elearning/avatar/trainer.png` alt='')
+
+        .col-md-6.col-lg-12
+          .row.row-cols-1.g-0
+            .col.text-center
+              h4 Bill Finger 
+              h5.mb-1.text-800.fs-0 Artist | Comic Writer
+              p.mb-0.fs--1 National Comics Publications, NY, USA
+
+            .col.mt-4.mt-md-5.mt-lg-4.order-md-1.order-lg-0
+              button.btn.btn-falcon-default.btn-md.mb-2.w-100(type='button')
+                span.fas.fa-comment.me-1 
+                | Message
+              button.btn.btn-primary.btn-md.w-100(type='button')
+                span.fas.fa-heart.me-1 
+                | Follow
+
+            .col.mt-4.mt-md-5.mt-lg-4
+              .row.text-center
+                .col-6.border-sm-end.border-300
+                  img(src=`${CWD}assets/img/icons/user-plus.svg`, width=30 alt="").mb-2
+                  h4.text-700(data-countup!={endValue: 79563}) 0
+                  h6.fw-normal.mb-0 Following
+                .col-6
+                  img(src=`${CWD}assets/img/icons/users.svg`, width=30 alt="").mb-2
+                  h4.text-700(data-countup!={endValue: 120302}) 0
+                  h6.fw-normal.mb-0 Followers
+
+
+//- ==============================================
+//- Trainer Introduction - Card
+//- ==============================================
+mixin TrainerIntro
+  - 
+    var socials = [
+      {
+        title: 'Website',
+        icon: 'fas fa-globe',
+        url: '#!'
+      },
+      {
+        title: 'LinkedIn',
+        icon: 'fab fa-linkedin',
+        url: '#!'
+      },
+      {
+        title: 'Facebook',
+        icon: 'fab fa-facebook',
+        url: '#!'
+      },
+      {
+        title: 'Instagram',
+        icon: 'fab fa-instagram',
+        url: '#!'
+      },
+      {
+        title: 'Pinterest',
+        icon: 'fab fa-pinterest',
+        url: '#!'
+      }
+    ]
+
+  .card&attributes(attributes)
+    .card-header.bg-light
+      h6.mb-0 Introduction
+    .card-body
+      .row.flex-between-center
+        .col-xxl-9.text-1000
+          p Milton Finger (born February 8, 1914), better known as Bill Finger, was an American comic strip, comic book, film, and television writer who co-created the DC Comics superhero character Batman (along with Bob Kane).
+          p A young, promising writer and part-time shoe dealer Finger, joined Kane's fledgling studio in 1938. Despite his significant (and often iconic) contributions as an  imaginative writer, visionary mythos/world builder, and illustration creator, Finger was frequently reduced to ghostwriter status on a number of comics, including Batman and Green Lantern (Original Version).
+          p In 1994, Finger was welcomed into the Jack Kirby Hall of Fame, and in 1999, he was inducted into the Will Eisner Award Hall of Fame. In 1985, the company recognised Finger as one of the awardees in their 50th anniversary edition of Fifty Who Made DC Great. In 2014, Finger was posthumously awarded The Inkpot Award.
+        .col-xxl-3.mt-4.mt-xxl-0.d-flex.justify-content-center
+          ul.list-unstyled.mb-0.d-flex.flex-wrap.flex-xxl-column.gap-3.justify-content-center
+            each social in socials
+              +SocialItem(social)
+
+mixin SocialItem(social)
+  li
+    a(href=social.url).text-800.hover-primary.hover-text-decoration-none
+      span(class=`${social.icon}`)
+      span.fw-semi-bold.ms-2=social.title
+
+
+//- ==============================================
+//- Trainer Courses - Course Grid Card
+//- ==============================================
+mixin TrainerCourses
+  .card&attributes(attributes)
+    .card-header.bg-light.d-flex.flex-between-center.py-2
+      h6.mb-0 Other Courses by Bill Finger
+      div
+        select.form-select.form-select-sm
+          option(value='' selected) Sort by
+          option(value='oldest') Oldest
+          option(value='newest') Newest
+          option(value='name') Name
+
+    .card-body
+      .row.g-3
+        each course in courses
+          +CourseGridItem(course).col-md-6.col-xxl-4
+
+    .card-footer.py-2.bg-light.d-flex.justify-content-end
+      button.btn.btn-falcon-default.btn-sm.me-2(type='button' disabled data-bs-toggle="tooltip" data-bs-placement="top" title="Prev")
+        span.fas.fa-chevron-left
+      a.btn.btn-sm.btn-falcon-default.text-primary.me-2(href="#!") 1
+      a.btn.btn-sm.btn-falcon-default.me-2(href="#!") 2
+      a.btn.btn-sm.btn-falcon-default.me-2(href="#!") 3
+      button.btn.btn-falcon-default.btn-sm(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Next")
+        span.fas.fa-chevron-right

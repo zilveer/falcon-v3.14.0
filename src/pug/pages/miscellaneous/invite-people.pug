@@ -1,0 +1,10 @@
+extends ../../layouts/LayoutTheme
+include ../../mixins/pages/InvitePeople
+
+append content
+  +InvitePeople({
+    titleClass: 'mt-md-4 fs-md-3',
+    buttonClass: 'mb-xl-0',
+    brClass: 'd-none d-md-block',
+    footerTitleClass: 'fs-md-2'
+  })

@@ -1,0 +1,62 @@
+mixin ExampleForm
+  .mb-3
+    label.form-label(for='exampleFormControlInput1') Email address
+    input#exampleFormControlInput1.form-control(type='email' placeholder='name@example.com')
+  .mb-3
+    label.form-label(for='exampleFormControlTextarea1') Example textarea
+    textarea#exampleFormControlTextarea1.form-control(rows='3')
+
+mixin InputSizing
+  .mb-3
+    input.form-control.form-control-lg(type='text' placeholder='.form-control-lg' aria-label='.form-control-lg example')
+  .mb-3  
+    input.form-control(type='text' placeholder='Default input' aria-label='default input example')
+  .mb-3  
+    input.form-control.form-control-sm(type='text' placeholder='.form-control-sm' aria-label='.form-control-sm example')
+
+
+mixin ReadonlyForm
+  .mb-3.row
+    label.col-sm-2.col-form-label(for='staticEmail') Email
+    .col-sm-10
+      input#staticEmail.form-control-plaintext.outline-none(type='text' readonly='' value='email@example.com')
+      .mb-3.row
+    label.col-sm-2.col-form-label(for='inputPassword') Password
+    .col-sm-10
+      input#inputPassword.form-control(type='password')
+
+mixin FileInputDefault
+  .mb-3
+    label.form-label(for='customFile') File input example
+    input#customFile.form-control(type='file')
+
+  .mb-3
+    label.form-label(for='formFileDisabled') Disabled file input example
+    input.form-control#formFileDisabled(type='file' disabled)
+
+  .mb-3
+    label.form-label(for='formFileMultiple') Multiple files input example
+    input.form-control#formFileMultiple(type='file' multiple)
+
+
+mixin FileInputSizing
+  .mb-3
+    label.form-label(for='customFileSm') Small file input example
+    input#customFileSm.form-control.form-control-sm(type='file')
+  .mb-3
+    label.form-label(for='customFileLg') Large file input example
+    input#customFileLg.form-control.form-control-lg(type='file')
+
+
+mixin Datalist
+  .mb-3
+    label.form-label(for='customDatalist') Choose your browser from the list:
+    input#customDatalist.form-control.form-control-sm(list='browsers' name='browser')
+    datalist#browsers
+      option(value='Edge')  
+      option(value='Firefox')  
+      option(value='Chrome')  
+      option(value='Opera')  
+      option(value='Safari')
+    
+    

@@ -1,0 +1,67 @@
+mixin CardTicketVolume
+  .card&attributes(attributes)
+    .card-header.border-bottom.border-300
+      .row.flex-between-center.gy-2
+        .col-auto
+          h6.mb-0.text-truncate.me-x1 Trends in Ticket Volume
+        .col-auto
+          select.form-select.form-select-sm.w-auto
+            option Daily
+            option Weekly
+            option(selected) Monthly
+            option Yearly
+    .card-body
+      .row.flex-between-center.mx-0.gy-4
+        .col-lg-auto.px-0.me-5
+          .row.g-md-0
+            .col-auto.d-md-flex
+              .d-flex.align-items-center.me-md-3.form-check.mb-0
+                input.form-check-input.dot.mt-0.shadow-none.remove-checked-icon.rounded-circle.cursor-pointer(type="checkbox" data-ticket-volume="On Hold Tickets" value="" id="onHoldTickets" checked)
+                label.form-check-label.mb-0.cursor-pointer.text-700.font-base.fw-normal(for="onHoldTickets") On Hold Tickets
+              .d-flex.align-items-center.me-md-3.form-check.mb-0
+                input.form-check-input.dot.mt-0.shadow-none.remove-checked-icon.rounded-circle.open-tickets.cursor-pointer(type="checkbox" data-ticket-volume="Open Tickets" value="" id="openTickets" checked)
+                label.form-check-label.mb-0.cursor-pointer.text-700.font-base.fw-normal(for="openTickets") Open Tickets
+            .col-auto.d-md-flex
+              .d-flex.align-items-center.me-md-3.form-check.mb-0
+                input.form-check-input.dot.mt-0.shadow-none.remove-checked-icon.rounded-circle.due-tickets-volume.cursor-pointer(type="checkbox" data-ticket-volume="Due Tickets" value="" id="dueTickets" checked)
+                label.form-check-label.mb-0.cursor-pointer.text-700.font-base.fw-normal(for="dueTickets") Due Tickets
+              .d-flex.align-items-center.form-check.mb-0
+                input.form-check-input.dot.mt-0.shadow-none.remove-checked-icon.rounded-circle.unassigned-tickets-volume.cursor-pointer(type="checkbox" data-ticket-volume="Unassigned Tickets" value="" id="unassignedTickets" checked)
+                label.form-check-label.mb-0.cursor-pointer.text-700.font-base.fw-normal(for="unassignedTickets") Unassigned Tickets
+        .col-lg-auto.scrollbar.overflow-y-hidden.px-0
+          .d-flex.white-space-nowrap.justify-content-xl-end.w-100
+            .d-flex.align-items-center
+              div
+                h6.fs-0.d-flex.align-items-center.text-700.mb-1 125
+                  small.badge.text-success.bg-transparent.px-0
+                    span.fas.fa-caret-up.ms-2.me-1.fs--2
+                    span 5.3%
+                h6.text-600.mb-0.fs--2 Total On Hold Tickets
+              .bg-200.mx-3(style='height: 24px; width: 1px')
+            .d-flex.align-items-center
+              div
+                h6.fs-0.d-flex.align-items-center.text-700.mb-1 100
+                  small.badge.px-0.text-primary
+                    span.fas.fa-caret-up.ms-2.me-1.fs--2
+                    span 3.20%
+                h6.fs--2.text-600.mb-0 Total Open Tickets
+              .bg-200.mx-3(style='height: 24px; width: 1px')
+            .d-flex.align-items-center
+              div
+                h6.fs-0.d-flex.align-items-center.text-700.mb-1 53
+                  small.badge.px-0.text-warning
+                    span.fas.fa-caret-down.ms-2.me-1.fs--2
+                    span 2.3%
+                h6.fs--2.text-600.mb-0 Total Due Tickets
+              .bg-200.mx-3(style='height: 24px; width: 1px')
+            div
+              h6.fs-0.d-flex.align-items-center.text-700.mb-1 136
+                small.badge.px-0.text-danger
+                  span.fas.fa-caret-up.ms-2.me-1.fs--2
+                  span 3.12%
+              h6.fs--2.text-600.mb-0 Total Unassigned Tickets
+      .echart-ticket-volume(data-echart-responsive="true")
+    .card-footer.bg-light.py-2.text-center
+      a.btn.btn-link.btn-sm.px-0.fw-medium(href=`#!`)
+        | View all report
+        span.fas.fa-chevron-right.ms-1.fs--2

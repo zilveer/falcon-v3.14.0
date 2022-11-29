@@ -1,0 +1,43 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/utilities/Colors
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Colors',
+      description: 'Convey meaning through color with a handful of color utility classes. Includes support for styling links with hover states, too.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/utilities/colors/`,
+      linkText: 'Colors on Bootstrap'
+    }
+
+append content
+
+  +PageHeader(pageHeader)
+
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Theme colors')
+    .card-body.bg-light
+      +ThemeColorsDemo
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Gray shades')
+    .card-body.bg-light
+      +GrayShadeDemo
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Background Gradient')
+        +BackgroundGradientDescription.mt-2.mb-0
+    .card-body.bg-light
+      +BackgroundGradientDemo
+  .card.mb-3
+    .card-header
+      +DocCardHeader('Soft colors')
+    .card-body.bg-light
+      +SoftColorsDemo
+  .card
+    .card-header
+      +DocCardHeader('Brand colors')
+    .card-body.bg-light
+      +BrandColorsDemo

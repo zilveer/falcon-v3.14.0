@@ -1,0 +1,95 @@
+//---------------------------------------
+  |  Bottom Bar
+//---------------------------------------
+mixin BottomBarStructure
+  .card.mb-3
+    .card-header 
+      +DocCardHeader('Structure')#bottom-bar-structure
+    .card-body.bg-light
+      .mb-3
+        h5 Basic
+        p.mb-0.mt-2
+          code .bottom-bar 
+          | class is responsible for showing the bar in the bottom of the viewport. You can control the breakpoint of visibility by simply using 
+          a(href=`${CWD}${paths['utilities-display']}`) display utilities 
+          | classes.
+        +ComponentCardLib
+          .card.bottom-bar.d-lg-none
+            .card-body
+              // Your content here
+      div  
+        h5 Triggered
+        p.mb-0.mt-2 Bottom Bar's can be triggered based on the target element's visibility on viewport. All you need to pass some options through the 
+          code data-bottom-bar 
+          | attribute.
+        +ComponentCardLib
+          .card.bottom-bar.d-lg-none(data-bottom-bar!={ target: 'target-element-id', breakPoint: 'lg', offsetTop: 60 })
+            .card-body
+              // Your content here  
+
+mixin BottomBarOptions
+  .card
+    .card-header  
+      +DocCardHeader('Options')#bottom-bar-options
+    .card-body.bg-light
+      .table-responsive.scrollbar.mb-3
+        table.table.table-bordered.border.border-200.fs--1.mb-0
+          thead.bg-200.text-900
+            tr
+              th.white-space-nowrap data-bottom-bar
+              th object
+          tbody
+            tr  
+              td Example
+              td 
+                pre.language-css.
+                  data-bottom-bar={ "target": "target-element-id", "breakPoint": "lg", "offsetTop": 60 }
+      .table-responsive.scrollbar
+        table.table.table-bordered.border.border-200.fs--1.mb-0
+          thead.bg-200.text-900
+            tr
+              th.white-space-nowrap Option
+              th.white-space-nowrap Type
+              th.white-space-nowrap Defaults
+              th.white-space-nowrap Description
+          tbody
+            tr  
+              td.white-space-nowrap target
+              td.white-space-nowrap 
+                code String
+              td.white-space-nowrap 
+                code -
+              td.white-space-nowrap Provide the unique 
+                code ID 
+                | of the target element. Bottom bar will visible when the target element is scrolled outside the viewport.
+            tr
+              td.white-space-nowrap breakPoint
+              td
+                code String 
+              td.white-space-nowrap  
+                code 'lg'
+              td.white-space-nowrap Max width of the screen size until bottom bar will work. The value can be 
+                code sm,md,lg,xl,xxl 
+                i (lg means 992 and you can customize this value from js file)
+            tr
+              td.white-space-nowrap offsetTop
+              td
+                code Number
+              td
+                code 0
+              td.white-space-nowrap Leave some spaces from top of the viewport to trigger the bottom bar early.
+
+mixin BottomBar
+  .card.rounded-0.bottom-bar.d-lg-none(data-bottom-bar!={ 
+    target: 'bottom-bar-target-example-btn', 
+    breakPoint: 'lg',
+    offsetTop: 60
+  })
+    .card-body.py-2.px-0
+      .container
+        .row.flex-between-center.g-0
+          .col-auto
+            h6.fs-0.mb-0.text-secondary
+              | Bottom Bar
+          .col-auto
+            button(type="button").btn.btn-primary.btn-md.px-5.fw-medium Button

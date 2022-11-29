@@ -1,0 +1,39 @@
+.focus-actions {
+  display: none;
+  position: absolute;
+  &.show {
+    display: inline-block;
+
+    & + .focus-hide {
+      display: none;
+    }
+  }
+}
+
+.focus-actions-trigger {
+  position: relative;
+
+  &:focus-within {
+    .focus-actions {
+      z-index: 1;
+      display: flex;
+    }
+   
+    .focus-hide {
+      display: none;
+    }
+  }
+}
+
+.focus-bg-primary {
+  &:focus, &:focus-visible, &:active {
+    background-color: var(--#{$prefix}primary) !important;
+    color: var(--#{$prefix}white) !important;
+  }
+}
+.focus-bg-secondary {
+  &:focus, &:focus-visible, &:active {
+    background-color: var(--#{$prefix}secondary) !important;
+    color: var(--#{$prefix}white) !important;
+  }
+}

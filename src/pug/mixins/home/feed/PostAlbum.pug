@@ -1,0 +1,34 @@
+include Mixins
+include PostAction
+
+mixin PostAlbum
+  .card&attributes(attributes)
+    .card-header.bg-light
+      .row.justify-content-between
+        .col
+          +PostHeader({img: 'team/4.jpg', status: 'online'}, '11 hrs &bull; Consett, UK &bull; ')
+            p.mb-1.lh-1
+              a(href=`${CWD}${paths['user-profile']}`).fw-semi-bold Rowan Atkinson
+              |  shared an 
+              a(href='#!') album
+        .col-auto
+          +PostCog('post-album-action')
+    .card-body.overflow-hidden
+      p Rowan Sebastian Atkinson CBE is an English actor, comedian and screenwriter best known for his work on the sitcoms Blackadder and Mr. Bean.
+      .row.mx-n1
+        .col-6.p-1
+          a(href=`${CWD}assets/img/generic/4.jpg` data-gallery="gallery-1")
+            img(src=`${CWD}assets/img/generic/4.jpg` alt='').img-fluid.rounded  
+        .col-6.p-1
+          a(href=`${CWD}assets/img/generic/5.jpg` data-gallery="gallery-1")
+            img(src=`${CWD}assets/img/generic/5.jpg` alt='').img-fluid.rounded   
+        .col-4.p-1
+          a(href=`${CWD}assets/img/gallery/4.jpg` data-gallery="gallery-1")
+            img(src=`${CWD}assets/img/gallery/4.jpg` alt='').img-fluid.rounded   
+        .col-4.p-1
+          a(href=`${CWD}assets/img/gallery/5.jpg` data-gallery="gallery-1")
+            img(src=`${CWD}assets/img/gallery/5.jpg` alt='').img-fluid.rounded  
+        .col-4.p-1
+          a(href=`${CWD}assets/img/gallery/3.jpg` data-gallery="gallery-1")
+            img(src=`${CWD}assets/img/gallery/3.jpg` alt='').img-fluid.rounded       
+    +PostAction({like: true, comment: true}).bg-light.pt-0

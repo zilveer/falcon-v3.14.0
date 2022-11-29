@@ -1,0 +1,92 @@
+include ../dashboard/Mixins
+
+mixin SessionByDevice
+  .card.echart-session-by-browser-card&attributes(attributes)
+    .card-header.d-flex.flex-between-center.bg-light.py-2
+      h6.mb-0 Session By Browser
+      +DashboardDropdown('dropdown-session-by-browser')
+    .card-body.d-flex.flex-column.justify-content-between.py-0
+      .my-auto.py-5.py-md-0
+        // Find the JS file for the following chart at: src/js/charts/echarts/session-by-browser.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+        .echart-session-by-browser.h-100(data-echart-responsive="true")
+      .border-top
+        table.table.table-sm.mb-0
+          tbody
+            +SingleDeviceComp({
+              icon:'chrome-logo.png',
+              label:'Chrome',
+              value:'50.3%',
+              caret:'fas fa-caret-down text-danger',
+              color:'text-primary',
+              prevValue:'2.9%'
+            })
+            +SingleDeviceComp({
+              icon:'safari-logo.png',
+              label:'Safari',
+              value:'30.1%',
+              caret:'fas fa-caret-up text-success',
+              color:'text-success',
+              prevValue:'29.4%'
+            })
+            +SingleDeviceComp({
+              icon:'firefox-logo.png',
+              label:'Mozilla',
+              value:'20.6%',
+              caret:'fas fa-caret-up text-success',
+              color:'text-info',
+              prevValue:'220.7%'
+            })
+    .card-footer.bg-light.py-2
+      .row.flex-between-center.g-0
+        .col-auto
+          select.form-select.form-select-sm(data-target='.echart-session-by-browser')
+            option(value='week' selected) Last 7 days
+            option(value='month') Last month
+            option(value='year') Last Year
+        .col-auto
+          a.btn.btn-link.btn-sm.px-0.fw-medium(href='#!') Browser overview
+            span.fas.fa-chevron-right.ms-1.fs--2
+          
+mixin SessionByCountry
+  .card&attributes(attributes)
+    .card-header.d-flex.align-items-center.bg-light.py-2
+      h6.mb-0.flex-1 Users By Country
+      .btn-reveal-trigger
+        button.btn.btn-link.btn-reveal.btn-sm.session-by-country-map-reset(type='button')
+          span.fas.fa-sync-alt.fs--1
+      +DashboardDropdown('dropdown-session-by-country')
+    .card-body
+      // Find the JS file for the following chart at: src/js/charts/echarts/session-by-country-map.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-session-by-country-map.w-100.h-100(data-echart-responsive="true")
+      // Find the JS file for the following chart at: src/js/charts/echarts/session-by-country.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-session-by-country.h-100(data-echart-responsive="true")
+    .card-footer.bg-light.py-2
+      .row.flex-between-center.g-0
+        .col-auto
+          select.form-select.form-select-sm.audience-select-menu
+            option(value='week' selected) Last 7 days
+            option(value='month') Last month
+            option(value='year') Last Year
+        .col-auto
+          a.btn.btn-link.btn-sm.px-0.fw-medium(href='#!') Country overview
+            span.fas.fa-chevron-right.ms-1.fs--2
+          
+
+
+mixin SingleDeviceComp({icon,label,value,caret,color,prevValue})
+  tr
+    td.py-3
+      .d-flex.align-items-center
+        img(src=`${CWD}assets/img/icons/${icon}`, alt="" width=16)
+        h6.text-600.mb-0.ms-2=label
+    td.py-3
+      .d-flex.align-items-center
+        span.fas.fa-circle.fs--2.me-2(class=color)
+        h6.fw-normal.text-700.mb-0=value
+    td.py-3
+      .d-flex.align-items-center.justify-content-end
+        span(class=caret)
+        h6.fs--2.mb-0.ms-2.text-700=prevValue

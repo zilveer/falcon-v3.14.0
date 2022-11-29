@@ -1,0 +1,103 @@
+extends ../../../layouts/LayoutComponent
+include ../../../mixins/common/Avatar
+include ../../../mixins/components/Avatar
+
+append variables
+  -
+    var pageHeader = {
+      title: 'Avatar',
+      description: 'Use avater of different shapes and sizes with a single component.',
+    }
+
+append content
+  +PageHeader(pageHeader)
+
+  .row.g-0
+    .col-md-4.pe-md-2
+
+      +ComponentCard({
+        title: 'Circular',
+        anchor: true,
+      }).mb-3
+        +Avatar({size: '4xl'})
+
+    .col-md-4.px-md-2
+      +ComponentCard({
+        title: 'Square',
+        anchor: true,
+      }).mb-3
+        +AvatarSquareDemo
+
+    .col-md-4.ps-md-2
+      +ComponentCard({
+        title: 'Soft',
+        anchor: true,
+      }).mb-3
+        +Avatar({size: '4xl', img: 'team/3.jpg', round: 'soft' })
+
+    .col-md-4.pe-md-2
+      +ComponentCard({
+        title: 'Content',
+        anchor: true,
+      }).mb-3
+        +Avatar({size: '4xl', more: '12+', round: 'circle' })
+
+    .col-md-4.pe-md-2
+      +ComponentCard({
+        title: 'Name',
+        anchor: true,
+      }).mb-3
+        +Avatar({size: '4xl', name: 'Emma Watson', round: 'circle' })
+
+    .col-md-4.pe-md-2
+      +ComponentCard({
+        title: 'Emoji',
+        anchor: true,
+      }).mb-3
+        +Avatar({size: '4xl', emoji: '🎁', round: 'circle' })
+
+
+  +ComponentCard({
+    title: 'Status',
+    anchor: true,
+  }).mb-3
+    +AvatarStatusDemo
+
+  +ComponentCard({
+    title: 'Sizes',
+    anchor: true,
+  }).mb-3
+    +AvatarSizesDemo
+
+  -
+    var roadMapUsers = [
+      {
+        img:'team/1-thumb.png',
+      },
+      {
+        img:'team/2-thumb.png',
+      },
+      {
+        more:'+50',
+      },
+    ];
+
+  .row.g-3
+    .col-lg-6
+      +ComponentCard({
+        title: 'Avatar Group',
+        anchor: true,
+      }).mb-3.mb-lg-0
+        each size in ['s', 'm', 'l', 'xl', '2xl', '3xl', '4xl', '5xl']
+          .avatar-group
+            each user in roadMapUsers
+              +Avatar(Object.assign({size},user)).border.border-2.border-light.rounded-circle
+    .col-lg-6
+      +ComponentCard({
+        title: 'Avatar Group Dense',
+        anchor: true,
+      })
+        each size in ['s', 'm', 'l', 'xl', '2xl', '3xl', '4xl', '5xl']
+          .avatar-group.avatar-group-dense
+            each user in roadMapUsers
+              +Avatar(Object.assign({size},user)).border.border-2.border-light.rounded-circle

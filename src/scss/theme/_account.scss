@@ -1,0 +1,43 @@
+/*-----------------------------------------------
+|   Cover and profile image
+-----------------------------------------------*/
+.avatar-profile {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(50%);
+}
+
+.overlay-icon {
+  position: absolute;
+  height: 50%;
+  width: 100%;
+  bottom: 0;
+  opacity: 0;
+  transition: $transition-base;
+  cursor: pointer;
+}
+
+.cover-image-file-input {
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: map_get($spacers, 1) map_get($spacers, 2);
+  margin-left: map_get($spacers, 3);
+  margin-top: map_get($spacers, 3);
+  border-radius: $border-radius;
+  font-size: map_get($font-sizes, "-1");
+  color: $white;
+  border: 1px solid $border-color;
+  box-shadow: $box-shadow-sm;
+  background-color: rgba($black, 0.9);
+}
+
+.cover-image{
+  overflow: hidden;
+  &:hover .cover-image-file-input{
+    opacity: 1;
+    transition: $transition-base;
+  }
+}

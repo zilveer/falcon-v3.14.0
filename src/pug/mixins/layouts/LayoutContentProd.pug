@@ -1,0 +1,55 @@
+include ./NavbarScript
+mixin LayoutContentProd
+  div()&attributes(attrsLayout)
+    script.
+      var isFluid = JSON.parse(localStorage.getItem('isFluid'));
+      if(isFluid) {
+        var container = document.querySelector('[data-layout]');
+        container.classList.remove('container');
+        container.classList.add('container-fluid');
+      }
+
+    block wrapperContent
+      block beforeContent
+        block navbarVertical
+          +NavbarDoubleTop({
+            toggleID: 'navbarDoubleTop',
+            search: true,
+            changelog: true
+          }).navbar-expand-lg(style='display: none')
+
+          +NavbarVertical(style='display: none')
+          +NavbarTop({
+            toggleID: 'navbarStandard',
+            links: true,
+            search: false,
+            changelog: true
+          }).navbar-expand-lg(style='display: none')
+
+      .content()&attributes(attrsContent)
+        block navbarTop 
+          +NavbarTop({
+            toggleID: 'navbarVerticalCollapse',
+            links: false,
+            search: true
+          }).navbar-expand(style='display: none')
+
+          +NavbarTop({
+            toggleID: 'navbarVerticalCollapse',
+            navbarCollapseID: 'navbarStandard',
+            links: false,
+            simpleNav: true,
+            search: false,
+            changelog: false
+          }).navbar-expand-lg(style='display: none' data-move-target="#navbarVerticalNav" data-navbar-top="combo")
+        
+        block navbarScript
+          +NavbarScript
+        
+        block content
+
+        if footer
+          +Footer   
+      
+      block afterContent
+        +AuthenticationModal

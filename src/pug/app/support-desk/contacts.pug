@@ -1,0 +1,15 @@
+extends ../../layouts/LayoutTheme
+include ../../mixins/tickets/AllContactTable
+include ../../mixins/tickets/ContactFilteringForm
+
+
+block append content
+  .row.gx-3
+    .col-xxl-10.col-xl-9
+      +AllContactTable(11)
+    .col-xxl-2.col-xl-3
+      .offcanvas.offcanvas-end.offcanvas-filter-sidebar.border-0.dark__bg-card-dark.h-auto.rounded-xl-3(tabindex="-1" id="allContactOffcanvas" aria-labelledby="allContactOffcanvasLabel")
+        .offcanvas-header.d-flex.flex-between-center.d-xl-none.bg-light
+          h6.fs-0.mb-0.fw-semi-bold Filter
+          button.btn-close.text-reset.d-xl-none.shadow-none#allContactOffcanvasLabel(type='button' data-bs-dismiss='offcanvas' aria-label='Close')
+        +ContactFilteringForm

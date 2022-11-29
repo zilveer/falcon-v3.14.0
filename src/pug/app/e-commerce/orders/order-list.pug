@@ -1,0 +1,9 @@
+extends ../../../layouts/LayoutTheme
+include ../../../mixins/e-commerce/Orders
+
+
+append scripts
+  script(src=`${CWD}vendors/list.js/list.min.js`)
+
+append content
+  +Orders

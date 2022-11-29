@@ -1,0 +1,13 @@
+extends ../../../layouts/LayoutTheme
+include ../../../layouts/LayoutBasic
+
+block wrapperContent
+  +LayoutBasic.text-center
+    +Avatar({ size: '4xl'})
+    h5.mt-3.mb-0 Hi! Emma Watson
+    small Enter your password to access the admin.
+    form.mt-4.row.g-0.mx-sm-4
+      .col
+        input.form-control.me-2.mb-2(type='password' placeholder="Enter your password" aria-label="User's password" aria-describedby='user-password')
+      .col-auto.ps-2
+        button#user-password.btn.btn-primary.px-3.mb-2(type='button') Login

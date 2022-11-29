@@ -1,0 +1,31 @@
+mixin FloatingLabelsExample
+  .form-floating.mb-3
+    input#floatingInput.form-control(type='email' placeholder='name@example.com')
+    label(for='floatingInput') Email address
+  .form-floating
+    input#floatingPassword.form-control(type='password' placeholder='Password')
+    label(for='floatingPassword') Password
+
+mixin FloatingLabelsFormValidation 
+  .form-floating.mb-3
+    input#floatingInputValid.form-control.is-valid(type='email' placeholder='name@example.com' value='test@example.com')
+    label(for='floatingInputValid') Valid input
+
+  div.form-floating
+    input#floatingInputInvalid.form-control.is-invalid(type='email' placeholder='name@example.com' value='test@example.com')
+    label(for='floatingInputInvalid') Invalid input
+
+mixin FloatingLabelsTextarea
+  .form-floating
+    textarea#floatingTextarea2.form-control(placeholder='Leave a comment here' style='height: 100px')
+    label(for='floatingTextarea2') Comments
+
+mixin FloatingLabelsSelects
+  .form-floating
+    select#floatingSelect.form-select(aria-label='Floating label select example')
+      option(selected='') Open this select menu
+      option(value='1') One
+      option(value='2') Two
+      option(value='3') Three
+    label(for='floatingSelect') Works with selects
+

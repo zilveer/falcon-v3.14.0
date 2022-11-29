@@ -1,0 +1,15 @@
+extends ../../../layouts/LayoutSplit
+include ../../../mixins/authentication/ConfirmMailContent
+
+block append variables
+  -
+    var background = {
+      image: `${CWD}assets/img/generic/16.jpg`,
+      attrs: { style: 'background-position: 50% 30%;' }
+    }
+
+block splitContent
+  +ConfirmMailContent({
+    layout: 'split',
+    titleTag: 'h3'
+  }).text-center

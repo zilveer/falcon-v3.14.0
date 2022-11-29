@@ -1,0 +1,11 @@
+mixin Footer
+  footer.footer&attributes(attributes)
+    .row.g-0.justify-content-between.fs--1.mt-4.mb-3
+      .col-12.col-sm-auto.text-center
+        p.mb-0.text-600 Thank you for creating with #{name} 
+          span.d-none.d-sm-inline-block | 
+          br.d-sm-none
+          |  #{ new Date().getFullYear() } &copy; 
+          a(href="https://themewagon.com") Themewagon
+      .col-12.col-sm-auto.text-center
+        p.mb-0.text-600=version

@@ -1,0 +1,46 @@
+mixin CardGreetings
+  .card.bg-transparent-50.overflow-hidden&attributes(attributes)
+    .card-header.position-relative
+      +Background({image: "../assets/img/illustrations/ecommerce-bg.png", attrs: {style: {'background-size': '230px', 'background-position': 'right bottom','z-index':'-1'} }, className:'d-none d-md-block bg-card z-index-1'})
+      .position-relative.z-index-2
+        div
+          h3.text-primary.mb-1 Good Afternoon, Jonathan!
+          p Here’s what happening with your store today 
+        .d-flex.py-3
+          .pe-3 
+            p.text-600.fs--1.fw-medium Today's visit 
+            h4.text-800.mb-0 14,209
+          .ps-3 
+            p.text-600.fs--1 Today’s total sales 
+            h4.text-800.mb-0 $21,349.29   
+    .card-body.p-0
+      +GreetingsNotifications
+
+mixin GreetingsNotifications 
+  ul.mb-0.list-unstyled
+    -
+      var notifications = [
+        {
+          title: '<strong>5 products</strong> didn’t publish to your Facebook page',
+          linkText: 'View products',
+          color: 'warning'
+        },
+        {
+          title: '<strong>7 orders</strong> have payments that need to be captured',
+          linkText: 'View payments',
+        },
+        {
+          title: '<strong>50+ orders</strong> need to be fulfilled',
+          linkText: 'View orders',
+        }
+      ]; 
+    each item, index in notifications
+      li.alert.mb-0.rounded-0.py-3.px-x1(class=`${item.color ? `alert-${item.color}` : 'greetings-item border-top'} ${index === notifications.length - 1 ? ' border-0' : 'border-x-0 border-top-0' }`)
+        .row.flex-between-center
+          .col
+            .d-flex
+              .fas.fa-circle.mt-1.fs--2(class=`${!item.color ? 'text-primary' : ''}`)
+              p.fs--1.ps-2.mb-0 !{item.title}
+          .col-auto.d-flex.align-items-center
+            a.alert-link.fs--1.fw-medium(href='#!') #{item.linkText}
+              i.fas.fa-chevron-right.ms-1.fs--2

@@ -1,0 +1,816 @@
+//- ==============================================
+//- Create Course Bottom Bar
+//- ==============================================
+mixin CreateCourseBottomBar 
+  .card.rounded-0.bottom-bar.d-lg-none(
+    data-bottom-bar!={ 
+      target: 'course-publish-btn', 
+      breakPoint: 'lg' 
+    })
+    .card-body.py-2.px-0
+      .container
+        .row.flex-between-center.g-0
+          .col-auto
+            a(href='#!').btn.btn-link.btn-sm.text-secondary.fw-medium.px-0
+              | Save as Draft
+          .col-auto
+            button(type="submit").btn.btn-primary.btn-md.px-5.fw-medium Publish
+
+
+
+//- ==============================================
+//- Create Course - Page Header
+//- ==============================================
+mixin CreateCourseHeader 
+  .card.mb-3&attributes(attributes)
+    +Background({
+      image: `${CWD}assets/img/icons/spot-illustrations/corner-4.png`, 
+      className:"d-none d-lg-block bg-card",
+    })
+    .card-body.z-index-1
+      h3 Create A New Course
+      p.mb-0 Enlighten the world with your knowledge. Use our Course Creator to design a well-structured course; set whatever price you feel worthy of, and publish at our platform. 
+        br 
+        | or, 
+        br.d-lg-none
+        | Want to edit your existing course? Jump to 
+        a(href=`${CWD}${paths['course-grid']}`) Your courses
+
+
+//- ==============================================
+//- Course Information - Form
+//- ==============================================
+mixin CourseInformationForm 
+  .card.mb-3&attributes(attributes)
+    .card-header
+      h5.mb-0 Course Information
+
+    .card-body.bg-light 
+      form.row.gx-2
+        .col-12.mb-3
+          label.form-label(for="course-name") Course Title
+            span.text-danger *
+          input.form-control#course-name(type="text" placeholder="Course Title" required)
+        .col-sm-6.mb-3
+          label.form-label(for="course-category") Category
+            span.text-danger *
+          select.form-select#course-category(name="course-category") 
+            option Select a category
+            option Academia
+            option Arts & Crafts
+            option Design
+            option Development
+            option Finance
+            option Marketing
+            option Music
+            option Lifestyle
+            option Photography
+            option Miscellaneous
+        .col-sm-6.mb-3
+          label.form-label(for="course-subcategory") Sub-category
+            span.text-danger *
+          select.form-select#course-subcategory(name="course-sub-category") 
+            option Select a sub-category
+            option 3D & Animation
+            option Architectural Design
+            option Graphics Design
+            option Game Design
+            option Fashion Design
+            option Illustration
+            option User Interface Design
+            option UX Design
+            option Web Design
+            option Others…
+        .col-12.mb-3
+          label.form-label(for="course-tags") Tags
+            span.text-danger *
+          input.form-control.js-choice#course-tags(
+            type="text" 
+            name="tags"  
+            required
+            size="1" 
+            data-placeholder="Select upto 4 tags"
+            data-options!={removeItemButton: true, placeholder: true}
+          )
+        .col-12
+          label.form-label(for="course-description") Course Description
+            span.text-danger *
+          .create-course-description-textarea
+            textarea.tinymce.d-none(name='course-description' id="course-description" required)
+
+
+//- ==============================================
+//- Publish Course
+//- ==============================================
+mixin PublishCourse 
+  .card.mb-lg-3&attributes(attributes)
+    .card-header.py-2.d-flex.flex-between-center
+      h5.mb-0 Publish your Course
+      a(href='#!').btn.btn-link.btn-sm.text-secondary.px-0
+        span.fw-medium.d-lg-none.d-xxl-inline-block Preview
+        span.fas.fa-external-link-alt.fs--2.ms-2
+
+    .card-body.bg-light
+      ul.list-unstyled.fs--1.mb-0
+        li.mb-2.hover-actions-trigger
+          span.fas.fa-file.me-2
+          span.ms-1 Condition: 
+          span.text-800.fw-medium.me-2
+            | Draft
+          a(href='#!').btn.btn-link.btn-sm.p-0.lh-sm.hover-actions
+            | Edit
+        li.mb-2.hover-actions-trigger
+          span.fas.fa-unlock-alt.me-2
+          span.ms-1 Privacy: 
+          span.text-800.fw-medium.me-2
+            | Public
+          a(href='#!').btn.btn-link.btn-sm.p-0.lh-sm.hover-actions
+            | Edit
+        li.mb-2.hover-actions-trigger
+          span.fas.fa-globe.me-2
+          span.ms-1 Visibility: 
+          span.text-800.fw-medium.me-2
+            | Global Search
+          a(href='#!').btn.btn-link.btn-sm.p-0.lh-sm.hover-actions
+            | Edit
+        li.hover-actions-trigger
+          span.fas.fa-clock.me-2
+          span.ms-1 Publish: 
+          span.text-800.fw-medium.me-2
+            | Now
+          a(href='#!').btn.btn-link.btn-sm.p-0.lh-sm.hover-actions
+            | Edit
+
+    .card-footer.py-2#course-publish-btn
+      .row.flex-between-center.g-0
+        .col-auto
+          a(href='#!').btn.btn-link.btn-sm.text-secondary.fw-medium.px-0
+            | Save as Draft
+        .col-auto
+          button.btn.btn-primary.btn-md.px-xxl-5.px-4.fw-medium(type="submit") Publish
+
+//- ==============================================
+//- Course Cover Image - Image Upload
+//- ==============================================
+mixin CourseCoverPhoto
+  .card.mb-3&attributes(attributes)
+    .card-header
+      h5.mb-0 Upload Cover Photo 
+        span(data-bs-toggle="tooltip" data-bs-placement="top" title="Add cover photo")
+          span.fas.fa-info-circle.text-primary.fs-0.ms-2
+
+    .card-body.bg-light 
+      form.dropzone.dropzone-single.p-0(data-dropzone data-options!={ maxFiles: 1, acceptedFiles: 'image/*' })
+        .fallback
+          input(type="file" name="file")
+        .dz-preview.dz-preview-single
+          .dz-preview-cover.dz-complete
+            img.dz-preview-img(src=`${CWD}assets/img/generic/image-file-2.png` alt='' data-dz-thumbnail='')
+            a(href="#!" data-dz-remove).dz-remove.text-danger
+              span.fas.fa-times
+            .dz-progress
+              span.dz-upload(data-dz-uploadprogress='')
+            .dz-errormessage.m-1
+              span(data-dz-errormessage)
+          .dz-progress
+            span.dz-upload(data-dz-uploadprogress='')
+        .dz-message.fs--1(data-dz-message)
+          img(src=`${CWD}assets/img/icons/cloud-upload.svg`, width=20 alt="").me-2
+          span.d-none.d-lg-inline Drag your image here
+            br 
+            | or, 
+          span.btn.btn-link.p-0.fs--1 Browse
+
+
+//- ==============================================
+//- Course Preview Video - Video Upload
+//- ==============================================
+mixin CoursePreviewVideo
+  .card.mb-3&attributes(attributes)
+    .card-header
+      h5.mb-0 Upload Preview Video
+        span(data-bs-toggle="tooltip" data-bs-placement="top" title="Upload preview video")
+          span.fas.fa-info-circle.text-primary.fs-0.ms-2
+
+    .card-body.bg-light 
+      form.dropzone.dropzone-single.p-0(data-dropzone data-options!={ maxFiles: 1, acceptedFiles: ".mp4,.mkv,.avi" })
+        .fallback
+          input(type="file" accept="video/*")
+        .dz-preview.dz-preview-single
+          .dz-preview-cover.dz-complete
+            video.dz-preview-img(controls data-dz-thumbnail='')
+            a(href="#!" data-dz-remove).dz-remove.text-danger
+              span.fas.fa-times
+            .dz-progress
+              span.dz-upload(data-dz-uploadprogress='')
+            .dz-errormessage.m-1.text-center
+              span(data-dz-errormessage)
+          .dz-progress
+            span.dz-upload(data-dz-uploadprogress='')
+        .dz-message.fs--1(data-dz-message)
+          img(src=`${CWD}assets/img/icons/cloud-upload.svg`, width=20 alt="").me-2
+          span.d-none.d-lg-inline Drag your .mp4 or .mkv file here
+            br 
+            | or, 
+          span.btn.btn-link.p-0.fs--1 Browse
+
+      label.form-label.mt-3(for="video-link") or, paste youtube link here
+      .position-relative
+        input.form-control#video-link(type="url" placeholder="youtu.be/xXxxXxXXxxX")
+        .position-absolute.top-50.end-0.translate-middle-y.lh-1.me-2
+          span.fas.fa-link.text-400.me-1
+
+
+//- ==============================================
+//- Course Pricing
+//- ==============================================
+mixin CoursePricing 
+  .card.mb-3.mb-lg-0&attributes(attributes)
+    .card-header
+      h5.mb-0 Set Pricing
+
+    .card-body.bg-light 
+      .row.gx-2
+        .col-12.mb-3
+          label.form-label(for="base-price") Base Price  
+            span(data-bs-toggle="tooltip" data-bs-placement="top" title="Course regular price")
+              span.fas.fa-question-circle.text-primary.fs--1.ms-1
+          input.form-control#base-price(type="text" placeholder="")
+        .col-12
+          label.form-label(for="discounted-price") Discounted Price 
+            span(data-bs-toggle="tooltip" data-bs-placement="top" title="Course discounted price")
+              span.fas.fa-question-circle.text-primary.fs--1.ms-1
+          input.form-control#discounted-price(type="text" placeholder="")
+        .text-end 
+          a(href="#schedule-discount-modal" data-bs-toggle='modal').fs--1.fw-medium
+            | Schedule Discount
+
+
+//- ==============================================
+//- Course Schedule Discount - Modal
+//- ==============================================
+mixin ScheduleDiscount 
+  .modal-header.d-flex.align-items-center.border-bottom.px-4
+    h4.mb-0#schedule-discount-modal-label Schedule for Discount 
+
+  .modal-body.p-4.bg-light
+    +ScheduleDiscountForm
+
+  .modal-footer.border-top.text-start.py-2.px-4.d-flex.justify-content-end
+    button.btn.btn-outline-secondary.btn-md(data-bs-dismiss='modal') 
+      span.fas.fa-times.me-1.fs--1
+      | Cancel
+    button.btn.btn-primary.btn-md.ms-2(type="submit") 
+      span.fas.fa-check.me-1.fs--1
+      | Confirm
+
+mixin ScheduleDiscountForm
+  form.row.gx-3
+    .col-lg-6.mb-3
+      label.form-label(for="time-zone") Timezone
+        -
+          var timezones = [
+            {
+              "offset": "GMT-12:00",
+              "name": "Etc/GMT-12"
+            },
+            {
+              "offset": "GMT-11:00",
+              "name": "Etc/GMT-11"
+            },
+            {
+              "offset": "GMT-11:00",
+              "name": "Pacific/Midway"
+            },
+            {
+              "offset": "GMT-10:00",
+              "name": "America/Adak"
+            },
+            {
+              "offset": "GMT-09:00",
+              "name": "America/Anchorage"
+            },
+            {
+              "offset": "GMT-09:00",
+              "name": "Pacific/Gambier"
+            },
+            {
+              "offset": "GMT-08:00",
+              "name": "America/Dawson_Creek"
+            },
+            {
+              "offset": "GMT-08:00",
+              "name": "America/Ensenada"
+            },
+            {
+              "offset": "GMT-08:00",
+              "name": "America/Los_Angeles"
+            },
+            {
+              "offset": "GMT-07:00",
+              "name": "America/Chihuahua"
+            },
+            {
+              "offset": "GMT-07:00",
+              "name": "America/Denver"
+            },
+            {
+              "offset": "GMT-06:00",
+              "name": "America/Belize"
+            },
+            {
+              "offset": "GMT-06:00",
+              "name": "America/Cancun"
+            },
+            {
+              "offset": "GMT-06:00",
+              "name": "America/Chicago"
+            },
+            {
+              "offset": "GMT-06:00",
+              "name": "Chile/EasterIsland"
+            },
+            {
+              "offset": "GMT-05:00",
+              "name": "America/Bogota"
+            },
+            {
+              "offset": "GMT-05:00",
+              "name": "America/Havana"
+            },
+            {
+              "offset": "GMT-05:00",
+              "name": "America/New_York"
+            },
+            {
+              "offset": "GMT-04:30",
+              "name": "America/Caracas"
+            },
+            {
+              "offset": "GMT-04:00",
+              "name": "America/Campo_Grande"
+            },
+            {
+              "offset": "GMT-04:00",
+              "name": "America/Glace_Bay"
+            },
+            {
+              "offset": "GMT-04:00",
+              "name": "America/Goose_Bay"
+            },
+            {
+              "offset": "GMT-04:00",
+              "name": "America/Santiago"
+            },
+            {
+              "offset": "GMT-04:00",
+              "name": "America/La_Paz"
+            },
+            {
+              "offset": "GMT-03:00",
+              "name": "America/Argentina/Buenos_Aires"
+            },
+            {
+              "offset": "GMT-03:00",
+              "name": "America/Montevideo"
+            },
+            {
+              "offset": "GMT-03:00",
+              "name": "America/Araguaina"
+            },
+            {
+              "offset": "GMT-03:00",
+              "name": "America/Godthab"
+            },
+            {
+              "offset": "GMT-03:00",
+              "name": "America/Miquelon"
+            },
+            {
+              "offset": "GMT-03:00",
+              "name": "America/Sao_Paulo"
+            },
+            {
+              "offset": "GMT-03:30",
+              "name": "America/St_Johns"
+            },
+            {
+              "offset": "GMT-02:00",
+              "name": "America/Noronha"
+            },
+            {
+              "offset": "GMT-01:00",
+              "name": "Atlantic/Cape_Verde"
+            },
+            {
+              "offset": "GMT",
+              "name": "Europe/Belfast"
+            },
+            {
+              "offset": "GMT",
+              "name": "Africa/Abidjan"
+            },
+            {
+              "offset": "GMT",
+              "name": "Europe/Dublin"
+            },
+            {
+              "offset": "GMT",
+              "name": "Europe/Lisbon"
+            },
+            {
+              "offset": "GMT",
+              "name": "Europe/London"
+            },
+            {
+              "offset": "UTC",
+              "name": "UTC"
+            },
+            {
+              "offset": "GMT+01:00",
+              "name": "Africa/Algiers"
+            },
+            {
+              "offset": "GMT+01:00",
+              "name": "Africa/Windhoek"
+            },
+            {
+              "offset": "GMT+01:00",
+              "name": "Atlantic/Azores"
+            },
+            {
+              "offset": "GMT+01:00",
+              "name": "Atlantic/Stanley"
+            },
+            {
+              "offset": "GMT+01:00",
+              "name": "Europe/Amsterdam"
+            },
+            {
+              "offset": "GMT+01:00",
+              "name": "Europe/Belgrade"
+            },
+            {
+              "offset": "GMT+01:00",
+              "name": "Europe/Brussels"
+            },
+            {
+              "offset": "GMT+02:00",
+              "name": "Africa/Cairo"
+            },
+            {
+              "offset": "GMT+02:00",
+              "name": "Africa/Blantyre"
+            },
+            {
+              "offset": "GMT+02:00",
+              "name": "Asia/Beirut"
+            },
+            {
+              "offset": "GMT+02:00",
+              "name": "Asia/Damascus"
+            },
+            {
+              "offset": "GMT+02:00",
+              "name": "Asia/Gaza"
+            },
+            {
+              "offset": "GMT+02:00",
+              "name": "Asia/Jerusalem"
+            },
+            {
+              "offset": "GMT+03:00",
+              "name": "Africa/Addis_Ababa"
+            },
+            {
+              "offset": "GMT+03:00",
+              "name": "Asia/Riyadh89"
+            },
+            {
+              "offset": "GMT+03:00",
+              "name": "Europe/Minsk"
+            },
+            {
+              "offset": "GMT+03:30",
+              "name": "Asia/Tehran"
+            },
+            {
+              "offset": "GMT+04:00",
+              "name": "Asia/Dubai"
+            },
+            {
+              "offset": "GMT+04:00",
+              "name": "Asia/Yerevan"
+            },
+            {
+              "offset": "GMT+04:00",
+              "name": "Europe/Moscow"
+            },
+            {
+              "offset": "GMT+04:30",
+              "name": "Asia/Kabul"
+            },
+            {
+              "offset": "GMT+05:00",
+              "name": "Asia/Tashkent"
+            },
+            {
+              "offset": "GMT+05:30",
+              "name": "Asia/Kolkata"
+            },
+            {
+              "offset": "GMT+05:45",
+              "name": "Asia/Katmandu"
+            },
+            {
+              "offset": "GMT+06:00",
+              "name": "Asia/Dhaka"
+            },
+            {
+              "offset": "GMT+06:00",
+              "name": "Asia/Yekaterinburg"
+            },
+            {
+              "offset": "GMT+06:30",
+              "name": "Asia/Rangoon"
+            },
+            {
+              "offset": "GMT+07:00",
+              "name": "Asia/Bangkok"
+            },
+            {
+              "offset": "GMT+07:00",
+              "name": "Asia/Novosibirsk"
+            },
+            {
+              "offset": "GMT+08:00",
+              "name": "Etc/GMT+8"
+            },
+            {
+              "offset": "GMT+08:00",
+              "name": "Asia/Hong_Kong"
+            },
+            {
+              "offset": "GMT+08:00",
+              "name": "Asia/Krasnoyarsk"
+            },
+            {
+              "offset": "GMT+08:00",
+              "name": "Australia/Perth"
+            },
+            {
+              "offset": "GMT+08:45",
+              "name": "Australia/Eucla"
+            },
+            {
+              "offset": "GMT+09:00",
+              "name": "Asia/Irkutsk"
+            },
+            {
+              "offset": "GMT+09:00",
+              "name": "Asia/Seoul"
+            },
+            {
+              "offset": "GMT+09:00",
+              "name": "Asia/Tokyo"
+            },
+            {
+              "offset": "GMT+09:30",
+              "name": "Australia/Adelaide"
+            },
+            {
+              "offset": "GMT+09:30",
+              "name": "Australia/Darwin"
+            },
+            {
+              "offset": "GMT+09:30",
+              "name": "Pacific/Marquesas"
+            },
+            {
+              "offset": "GMT+10:00",
+              "name": "Etc/GMT+10"
+            },
+            {
+              "offset": "GMT+10:00",
+              "name": "Australia/Brisbane"
+            },
+            {
+              "offset": "GMT+10:00",
+              "name": "Australia/Hobart"
+            },
+            {
+              "offset": "GMT+10:00",
+              "name": "Asia/Yakutsk"
+            },
+            {
+              "offset": "GMT+10:30",
+              "name": "Australia/Lord_Howe"
+            },
+            {
+              "offset": "GMT+11:00",
+              "name": "Asia/Vladivostok"
+            },
+            {
+              "offset": "GMT+11:30",
+              "name": "Pacific/Norfolk"
+            },
+            {
+              "offset": "GMT+12:00",
+              "name": "Etc/GMT+12"
+            },
+            {
+              "offset": "GMT+12:00",
+              "name": "Asia/Anadyr"
+            },
+            {
+              "offset": "GMT+12:00",
+              "name": "Asia/Magadan"
+            },
+            {
+              "offset": "GMT+12:00",
+              "name": "Pacific/Auckland"
+            },
+            {
+              "offset": "GMT+12:45",
+              "name": "Pacific/Chatham"
+            },
+            {
+              "offset": "GMT+13:00",
+              "name": "Pacific/Tongatapu"
+            },
+            {
+              "offset": "GMT+14:00",
+              "name": "Pacific/Kiritimati"
+            }
+          ]
+      select.form-select#time-zone
+        each timezone in timezones
+          option #{(timezone.offset)} #{timezone.name}
+    .col-lg-6
+    .col-lg-6.mb-3
+      label.form-label(for="start-date") Start Date
+      input.form-control#start-date.datetimepicker(type="text" placeholder="dd/mm/yyyy" data-options!={ dateFormat: 'd/m/y',disableMobile: true})
+    .col-lg-6.mb-3
+      label.form-label(for="start-time") Start Time
+      input.form-control#start-time.datetimepicker(type="text" placeholder="23 : 45" data-options!={enableTime: true, noCalendar: true, dateFormat: 'H:i',disableMobile: true})
+    .col-lg-6.mb-3
+      label.form-label(for="end-date") End Date
+      input.form-control#end-date.datetimepicker(type="text" placeholder="dd/mm/yyyy" data-options!={ dateFormat: 'd/m/y',disableMobile: true})
+    .col-lg-6.mb-3
+      label.form-label(for="end-time") End Time
+      input.form-control#end-time.datetimepicker(type="text" placeholder="23 : 45" data-options!={enableTime: true, noCalendar: true, dateFormat: 'H:i',disableMobile: true})
+
+
+//- ==============================================
+//- Course Resources
+//- ==============================================
+mixin CourseResources
+  .card.mb-3&attributes(attributes)
+    .card-header
+      h5.mb-0 Create Resources
+
+    .card-body.p-0 
+      +ResourceTable
+
+    .card-footer.py-2.text-center
+      a(href='#!').btn.btn-link.btn-sm.px-0.fw-medium 
+        span.fas.fa-plus.me-1.fs--2
+        | Add New Chaptar
+
+
+mixin ResourceTable
+  -
+    var resources = [
+      {
+        title: 'Intro',
+        excerpt: 'Introduction and Course Objectives',
+        details: {
+          slides: 1,
+          minutes: 4,
+          tests: 0
+        },
+        image: 'elearning/lessons/intro.png',
+        isFulfilled: true,
+      },
+      {
+        title: 'Chapter 1',
+        excerpt: 'Getting Started with Photoshop',
+        details: {
+          slides: 3,
+          minutes: 11,
+          tests: 3
+        },
+        image: 'elearning/lessons/chapter1.png',
+        isFulfilled: true,
+      },
+      {
+        title: 'Chapter 2',
+        excerpt: 'Understanding Layers',
+        details: {
+          slides: 1,
+          minutes: 3,
+          tests: 0
+        },
+        image: 'elearning/lessons/chapter2.png',
+        isFulfilled: false,
+      },
+    ]
+
+  .table-responsive.scrollbar
+    table.table.table-borderless.mb-0.fs--1.overflow-hidden
+      tbody
+        each resource, index in resources
+          tr.btn-reveal-trigger(class=index % 2 === 0 && 'bg-light')
+            td.align-middle.white-space-nowrap
+              .d-flex.gap-3.align-items-center.position-relative
+                img(src=`${CWD}assets/img/${resource.image}`, width="60" alt="").rounded-1.border.border-200
+                div
+                  h5.fs-0.text-primary=resource.title
+                    span(data-bs-toggle="tooltip" data-bs-placement="top" title=resource.isFulfilled ? 'Requirement fulfilled' : 'No. of Slide/Test doesn’t fulfill requirement' )
+                      span.text-primary.fs-0.ms-2(class=resource.isFulfilled ? 'fas fa-check-circle' : 'fas fa-exclamation-circle')
+                  p.fs--1.text-900.mb-0=resource.excerpt
+            td.align-middle.white-space-nowrap.fs--1.text-700
+              p.mb-1 #{resource.details.slides} Slide • #{resource.details.minutes} Minutes
+              p.mb-0 #{resource.details.tests} Tests
+            td.align-middle.white-space-nowrap.text-end
+              +DropdownLms(`dropdown-${index}`).float-end
+
+
+//- ==============================================
+//- Course Requirements
+//- ==============================================
+mixin CourseRequirements
+  .card.mb-3&attributes(attributes)
+    .card-header.bg-light
+      h5.mb-0 Requirements
+
+    .card-body.pt-0
+      - 
+        var requirements = [
+          'This course requires profieciency in English language as the Lessons are prepared in English.',
+          'Learners with following skills might be more benefited, but little extra work is all that’ll take.'
+        ]
+      ul.list-unstyled.mb-0
+        each requirement,index in requirements
+          li 
+            .d-flex.hover-actions-trigger.align-items-center.py-3(class=index !== 0 ? 'border-top border-300' : '')
+              span.fas.fa-grip-lines.fs--2.text-secondary.me-3
+              p.mb-0.fs--1.me-6 #{requirement}
+              .hover-actions.end-0.top-50.translate-middle-y
+                button(data-bs-toggle="tooltip" data-bs-placement="top" title="Edit").btn.btn-link.me-3.fs--2.p-0.text-700
+                  span.fas.fa-pencil-alt
+                button(data-bs-toggle="tooltip" data-bs-placement="top" title="Remove").btn.btn-light.icon-item.rounded-3.fs--2.icon-item-sm
+                  span.fas.fa-times
+
+      .position-relative.focus-actions-trigger
+        input.form-control(type="text" placeholder="Add another requirement...")
+        .position-absolute.end-0.top-50.translate-middle.focus-actions
+          button.btn.btn-link.btn-sm.p-0.text-700.me-2
+            span.fas.fa-arrow-right
+
+
+//- ==============================================
+//- Course Goals & Features
+//- ==============================================
+mixin CourseGoals
+  .card.mb-3.mb-lg-0&attributes(attributes)
+    .card-header.bg-light
+      h5.mb-0 Course Goals and Key features
+
+    .card-body 
+      label.mb-3.form-label.lh-1(for="course-goal") Course Goals 
+        span.text-danger *
+
+      - 
+        var goals = [
+          'Which tool is preferred for what kind of work.',
+          'How to take criticism and make best use of them.'
+        ]
+      ul.list-unstyled.mb-0
+        each goal,index in goals
+          li 
+            .d-flex.py-3.hover-actions-trigger.align-items-center.border-top.border-300
+              span.fas.fa-grip-lines.fs--2.text-secondary.me-3
+              p.mb-0.fs--1.me-6 #{goal}
+              .hover-actions.end-0.top-50.translate-middle-y
+                button(data-bs-toggle="tooltip" data-bs-placement="top" title="Edit").btn.btn-link.me-3.fs--2.p-0.text-700
+                  span.fas.fa-pencil-alt
+                button(data-bs-toggle="tooltip" data-bs-placement="top" title="Remove").btn.btn-light.icon-item.rounded-3.fs--2.icon-item-sm
+                  span.fas.fa-times
+
+      .position-relative.mb-4.focus-actions-trigger
+        input.form-control#course-goal(type="text" placeholder="Add another goal...")
+        .position-absolute.end-0.top-50.translate-middle.focus-actions
+          button.btn.btn-link.btn-sm.p-0.text-700.me-2
+            span.fas.fa-arrow-right
+
+      .d-flex.flex-between-center.mb-2
+        label.mb-0.lh-1(for="course-features") Key features
+          span.text-danger *
+        button.btn.btn-link.btn-sm.fw-medium.p-0(type="button") Add New
+      select.form-select.js-choice#course-features(multiple size="1" name="features" data-options!={removeItemButton: true,placeholder: true})
+        option(value="") Select multiple features...
+        option Total 13 hours of video lectures
+        option 12 premium article access
+        option 11 downloadable resources
+        option Mobile, Tab or TV friendly content 

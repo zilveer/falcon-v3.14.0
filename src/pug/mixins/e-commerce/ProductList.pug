@@ -1,0 +1,73 @@
+mixin ProductList(config, index)
+  .col-12.p-x1(class=`${index % 2 !== 0 ? 'bg-100' : ''}`)&attributes(attributes)
+    .row
+      .col-sm-5.col-md-4
+        .position-relative.h-sm-100
+          if(config.slider)
+              .swiper-container.theme-slider.h-100(data-swiper!={
+                autoplay: true,
+                autoHeight: true,
+                spaceBetween: 5,
+                loop: true,
+                loopedSlides: 5,
+                navigation: {
+                  nextEl: ".swiper-button-next",
+                  prevEl: ".swiper-button-prev",
+                },
+              })
+                .swiper-wrapper.h-100
+                  each slide in config.slider
+                    .swiper-slide.h-100
+                      a(href=`${CWD}${paths['product-details']}`).d-block.h-sm-100
+                        img(src=`${CWD}assets/img/products/${slide}.jpg` alt="").rounded-1.h-100.w-100.fit-cover
+                .swiper-nav
+                  .swiper-button-next.swiper-button-white
+                  .swiper-button-prev.swiper-button-white
+          else
+            a(href=`${CWD}${paths['product-details']}`).d-block.h-100
+              img(src=`${CWD}assets/img/products/${config.img}.jpg`, alt="").img-fluid.fit-cover.w-sm-100.h-sm-100.rounded-1.absolute-sm-centered
+
+          if(config.new)
+            .badge.rounded-pill.bg-success.position-absolute.top-0.end-0.me-2.mt-2.fs--2.z-index-2 New
+      .col-sm-7.col-md-8
+        .row
+          .col-lg-8
+            h5.mt-3.mt-sm-0
+              a(href=`${CWD}${paths['product-details']}`).text-dark.fs-0.fs-lg-1=config.title
+            p.fs--1.mb-2.mb-md-3
+              a(href="#!").text-500=config.category
+            ul.list-unstyled.d-none.d-lg-block
+              each feature in config.features
+                li
+                  span.fas.fa-circle(data-fa-transform="shrink-12")
+                  span=feature
+
+          .col-lg-4.d-flex.justify-content-between.flex-column
+            div
+              if(config.oldPrice)
+                h4.fs-1.fs-md-2.text-warning.mb-0 $#{config.oldPrice - (config.oldPrice * ( config.off / 100 ))}
+              else
+                h4.fs-1.fs-md-2.text-warning.mb-0 $#{config.price}
+              if(config.oldPrice)
+                h5.fs--1.text-500.mb-0.mt-1
+                  del $#{config.oldPrice} 
+                  span.ms-1 -#{config.off}%
+              .mb-2.mt-3
+                +Review(config.rating)
+                span.ms-1 (#{config.review})
+              .d-none.d-lg-block
+                p.fs--1.mb-1 Shipping Cost: 
+                  strong=config.shippingCost
+                p.fs--1.mb-1 Stock: 
+                  if(config.stock === 'Available')
+                    strong.text-success=config.stock
+                  else
+                    strong.text-danger=config.stock
+
+            .mt-2
+              a(href="#!").btn.btn-sm.btn-outline-secondary.border-300.d-lg-block.me-2.me-lg-0
+                span.far.fa-heart
+                span.ms-2.d-none.d-md-inline-block Favourite
+              a(href="#!").btn.btn-sm.btn-primary.d-lg-block.mt-lg-2
+                span.fas.fa-cart-plus 
+                span.ms-2.d-none.d-md-inline-block Add to Cart

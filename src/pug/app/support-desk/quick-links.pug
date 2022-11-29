@@ -1,0 +1,13 @@
+extends ../../layouts/LayoutTheme
+include ../../mixins/tickets/Admin
+include ../../mixins/tickets/Reports
+
+prepend scripts
+  script(src='https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js')
+  script.
+    feather.replace()
+
+block append content
+  +Reports
+  +Team.mt-3
+  +Account.mt-3

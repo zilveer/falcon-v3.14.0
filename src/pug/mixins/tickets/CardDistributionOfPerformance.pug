@@ -1,0 +1,27 @@
+include ../home/dashboard/Mixins
+
+mixin CardDistributionOfPerformance
+  .card&attributes(attributes)
+    .card-header.d-flex.justify-content-between.align-items-center.border-bottom.py-2
+      h6.mb-0 Distribution of Performance
+      +DashboardDropdown('dropdown-distribution-of-performance')
+    .card-body.scrollbar
+      .echart-distribution-of-performance(data-echart-responsive="true")
+    .card-footer.bg-light.py-2
+      .row.flex-between-center
+        .col-auto
+          select.form-select.form-select-sm
+            option January
+            option February
+            option(selected) March
+            option April
+            option May
+            option June
+            option July
+            option August
+            option September
+            option October
+            option Novenber
+            option December
+        .col-auto
+          a(href="#!").btn.btn-sm.btn-falcon-default View All

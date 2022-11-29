@@ -1,0 +1,67 @@
+append variables
+  -
+    var dealForecastByOwnerItems = [
+      {
+        owner: 'John oliver',
+        qualifiedItem: '1000',
+        appointment: '2600',
+        contactSent: '3523',
+        closedWon: '1311',
+      },
+      {
+        owner: 'Sean Paul',
+        qualifiedItem: '1500',
+        appointment: '1600',
+        contactSent: '3523',
+        closedWon: '2311',
+      },
+      {
+        owner: 'Brad Shaw',
+        qualifiedItem: '1400',
+        appointment: '2200',
+        contactSent: '3523',
+        closedWon: '3311',
+      },
+      {
+        owner: 'Max Payne',
+        qualifiedItem: '6600',
+        appointment: '2220',
+        contactSent: '3523',
+        closedWon: '1511',
+      },     
+    ]
+
+mixin CardDealForecastByOwner
+  .card.overflow-hidden&attributes(attributes)
+    .card-header 
+      h6.mb-0 Deal Forecast by Owner
+    .card-body.p-0
+      .table-responsive.scrollbar
+        table.table.mb-0.fs--1.border-200.table-borderless
+          thead.bg-light
+            tr.text-800.bg-200
+              th.text-nowrap Owner
+              th.text-center.text-nowrap Qualified to buy
+              th.text-center.text-nowrap Appointment 
+              //- Appointment Scheduled
+              th.text-end.text-nowrap Contact sent
+              th.pe-x1.text-end.text-nowrap Closed won
+          tbody
+            each product, index in dealForecastByOwnerItems
+              +ForecastItem(product, index, totalPrice)
+          tfoot.bg-light
+             tr.text-700.fw-bold
+              td Total
+              td.text-center $6359
+              td.text-center  $8151
+              td.text-center  $9174
+              td.pe-x1.text-end  $12587
+
+mixin ForecastItem(item, index, totalPrice)
+  tr(class=(index !== dealForecastByOwnerItems.length - 1 ? 'border-bottom border-200' : ''))
+    td.align-middle.font-sans-serif.fw-medium.text-nowrap
+      a(href=`${CWD}${paths['customer-details']}`) #{item.owner}
+    td.align-middle.text-center #{item.qualifiedItem}
+    td.align-middle.text-center $#{item.appointment}
+    td.align-middle.text-center $#{item.contactSent}
+    td.align-middle.text-end $#{item.closedWon}

@@ -1,0 +1,31 @@
+mixin LayoutContent  
+
+  div()&attributes(attrsLayout)
+    script.
+      var isFluid = JSON.parse(localStorage.getItem('isFluid'));
+      if(isFluid) {
+        var container = document.querySelector('[data-layout]');
+        container.classList.remove('container');
+        container.classList.add('container-fluid');
+      }
+
+    block wrapperContent
+      block beforeContent
+        block navbarVertical
+          +NavbarVertical
+
+      .content()&attributes(attrsContent)
+
+        block navbarTop 
+          +NavbarTop({
+            toggleID: 'navbarVerticalCollapse',
+            links: false,
+            search: true
+          }).navbar-expand
+
+        block content
+        if footer
+          +Footer  
+
+      block afterContent
+        +AuthenticationModal

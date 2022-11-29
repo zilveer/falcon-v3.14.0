@@ -1,0 +1,9 @@
+mixin Sidebar(elements)
+  .card.sticky-top
+    .card-header.border-bottom
+      h6.mb-0.fs-0 On this page
+    .card-body
+      #terms-sidebar.terms-sidebar.nav.flex-column.fs--1
+        each element in elements
+          .nav-item
+            a.nav-link.px-0.py-1(href=`${element.link}`)=element.linkText

@@ -1,0 +1,29 @@
+/* -------------------------------------------------------------------------- */
+/*                                  Override                                  */
+/* -------------------------------------------------------------------------- */
+.dark {
+  @each $color, $value in $theme-all-colors {
+    .dark__bg-#{$color} {
+      background-color: $value !important;
+    }
+    .dark__text-#{$color} {
+      color: $value !important;
+    }
+    .dark__bg-card-dark{
+      background-color: $card-bg-dark !important;
+    }
+  }
+
+  .bg-light{
+    --#{$prefix}bg-opacity: 0.25;
+  }
+
+  ::selection {
+    background-color: var(--#{$prefix}warning);
+  }
+
+  .btn-close{
+    filter: invert(1) grayscale(100%) brightness(70%) !important;
+  }
+
+}

@@ -1,0 +1,28 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/Collapse
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Collapse',
+      description: "Toggle the visibility of content with a few classes and Bootstrap's JavaScript plugins.",
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/components/collapse/`,
+      linkText: 'Collapse on Bootstrap'
+    }
+
+block component
+
+  +PageHeader(pageHeader)
+
+  +ComponentCard({
+    title: 'Example',
+    anchor: true,
+  }).mb-3
+    +CollapseExampleDemo
+
+  +ComponentCard({
+    title: 'Multiple Targets',
+    anchor: true,
+    description:"A <code>button </code>or <code>a </code>can show and hide multiple elements by referencing them with a JQuery selecotro in its <code>href </code>or <code>data-bs-target </code>attribute."
+  }).mb-3
+    +MultipleTargetsDemo

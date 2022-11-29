@@ -1,0 +1,72 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/Progress
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Progress',
+      description: `Documentation and examples for using ${name} custom progress bars featuring support for stacked bars, animated backgrounds, and text labels`,
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/components/progress/`,
+      linkText: 'Progress Bars on Bootstrap'
+    }
+
+block component
+
+  +PageHeader(pageHeader)
+
+  .row.g-0
+    .col-xl-6.pe-xl-2
+      +ComponentCard({
+        title: 'Basic Example',
+        anchor: true,
+      }).mb-3
+        +ProgressbarDemo
+
+    .col-xl-6.ps-xl-2
+      +ComponentCard({
+        title: 'Label',
+        anchor: true,
+      }).mb-3
+        +ProgressbarDemo({value: 50,display:true})
+
+  +ComponentCard({
+    title: 'Height',
+    anchor: true,
+  }).mb-3
+    +ProgressbarDemo({ height:1})
+    +ProgressbarDemo({ height:10})
+    +ProgressbarDemo({ height:20})
+
+  +ComponentCard({
+    title: 'Background',
+    anchor: true,
+  }).mb-3
+    +ProgressbarDemo({value: 30}).bg-success
+    +ProgressbarDemo({value: 40}).bg-info
+    +ProgressbarDemo({value: 50}).bg-warning
+    +ProgressbarDemo({value: 60}).bg-danger
+
+  +ComponentCard({
+    title: 'Multiple bars',
+    anchor: true,
+  }).mb-3
+    +ProgressbarMultipleColorDemo
+
+  +ComponentCard({
+    title: 'Striped',
+    anchor: true,
+  }).mb-3
+    +ProgressbarDemo({value: 30}).bg-success.progress-bar-striped
+    +ProgressbarDemo({value: 40}).bg-info.progress-bar-striped
+    +ProgressbarDemo({value: 50}).bg-warning.progress-bar-striped
+    +ProgressbarDemo({value: 60}).bg-danger.progress-bar-striped
+    +ProgressbarDemo({value: 70}).bg-primary.progress-bar-striped
+  
+  +ComponentCard({
+    title: 'Animated',
+    anchor: true,
+    description:`To animate any progress bar in ${name}, set a unique id to the progress element and assign it to the <code>data-progress-animation </code> attribute in the targetted link or button. It will toggle the <code>.progress-bar-animated </code>class to the progress bar element.`,
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +ProgressbarAnimatedDemo

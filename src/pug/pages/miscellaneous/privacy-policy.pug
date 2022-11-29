@@ -1,0 +1,54 @@
+extends ../../layouts/LayoutFeed
+include ../../mixins/common/PageHeader
+include ../../mixins/pages/terms/PrivacyPolicy
+include ../../mixins/pages/terms/Sidebar
+
+append variables
+  - var attrsBody = { 'data-bs-spy': 'scroll', 'data-bs-target': '#terms-sidebar', 'data-bs-offset': 100,  tabindex: 0, };
+  -
+    var elements = [
+      {
+        link: '#account',
+        linkText: 'Account',
+      },
+
+      {
+        link: '#subscriptions',
+        linkText: 'Subscriptions',
+      },
+
+      {
+        link: '#termination',
+        linkText: 'Termination'
+      },
+      {
+        link: '#rules',
+        linkText: 'Rules and abuse'
+      },
+      {
+        link: '#liability',
+        linkText: 'Liability'
+      },
+      {
+        link: '#rights',
+        linkText: 'Rights'
+      },
+
+      {
+        link: '#instructions',
+        linkText: 'Instructions'
+      },
+    ];
+
+
+block feedBanner
+  +PageHeader({
+    title: 'Privacy policy',
+    description: `A privacy policy is a statement or legal document that discloses some or all of the ways a party gathers, uses, discloses, and manages a customer or client's data.`
+  })
+
+block feed
+  +PrivacyPolicy
+
+block feedSideBar
+  +Sidebar(elements)

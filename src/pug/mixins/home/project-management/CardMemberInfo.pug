@@ -1,0 +1,184 @@
+append variables
+  -
+    var members = [
+      {
+        name: 'Gavin Belson',
+        avatar: {
+          img: 'team/7.jpg',
+          status: 'online'
+        },
+        role: 'CRM dashboard design',
+        attendance: {
+          text: 'Late',
+          color: 'warning'
+        },
+        today: {
+          amount: 12,
+          color: 'danger'
+        },
+        thisWeek: {
+          amount: 68,
+          color: 'primary'
+        },
+        data: [15,22,28,20,20,35]
+      },
+      {
+        name: 'Rsuss Hanneman',
+        avatar: {
+          img: 'team/9.jpg',
+          status: 'online'
+        },
+        role: 'Smart Learning Management',
+        attendance: {
+          text: 'intime',
+          color: 'success'
+        },
+        today: {
+          amount: 86,
+          color: 'success'
+        },
+        thisWeek: {
+          amount: 45,
+          color: 'warning'
+        },
+        data: [30,20,40,18,20,35]
+      },
+      {
+        name: 'Peter Gregory',
+        avatar: {
+          img: 'team/12.jpg',
+          status: 'away'
+        },
+        role: 'Graduate Network',
+        attendance: {
+          text: 'intime',
+          color: 'success'
+        },
+        today: {
+          amount: 97,
+          color: 'success'
+        },
+        thisWeek: {
+          amount: 60,
+          color: 'primary'
+        },
+        data: [20,22,18,30,20,35]
+      },
+      {
+        name: 'Jian-Yang',
+        avatar: {
+          img: 'team/avatar.png',
+          status: 'online'
+        },
+        role: 'Quality testing',
+        attendance: {
+          text: 'intime',
+          color: 'success'
+        },
+        today: {
+          amount: 34,
+          color: 'warning'
+        },
+        thisWeek: {
+          amount: 80,
+          color: 'success'
+        },
+        data: [30,22,18,20,20,35]
+      },
+      {
+        name: 'Laurie Bream',
+        avatar: {
+          img: 'team/16.jpg',
+          status: 'do-not-disturb'
+        },
+        role: 'Accounts',
+        attendance: {
+          text: 'Late',
+          color: 'warning'
+        },
+        today: {
+          amount: 12,
+          color: 'primary'
+        },
+        thisWeek: {
+          amount: 68,
+          color: 'danger'
+        },
+        data: [20,22,18,20,20,35]
+      },
+      {
+        name: 'Fionna Mayer',
+        avatar: {
+          img: 'team/25.jpg',
+          status: 'online'
+        },
+        role: 'SAAS dashboard design',
+        attendance: {
+          text: 'Absent',
+          color: 'danger'
+        },
+        today: {
+          amount: 12,
+          color: 'primary'
+        },
+        thisWeek: {
+          amount: 68,
+          color: 'success'
+        },
+        data: [30,22,18,30,20,35]
+      }
+    ];
+
+mixin CardMemberInfo
+  .card&attributes(attributes)
+    .card-body.p-0
+      .scrollbar
+        table.table.table-dashboard.mb-0.table-borderless.fs--1.border-200.overflow-hidden.rounded-3.table-member-info
+          thead.bg-light
+            tr.text-900
+              th Member info
+              th.text-center Attendance
+              th.text-center Today
+              th.text-end This Week
+
+          tbody
+            each member, index in members
+              +MemberData(member, index)
+    .card-footer.bg-light.py-2
+      .row.flex-between-center
+        .col-auto
+          select.form-select.form-select-sm
+            option Last 7 days
+            option Last Month
+            option Last Year
+        .col-auto
+          a.btn.btn-sm.btn-link.px-0.fw-medium(href=`#!`) View All
+           span.fas.fa-chevron-right.ms-1.fs--2
+
+mixin MemberData(member, index)
+  tr(class=(index !== members.length - 1 ? 'border-bottom border-200' : ''))
+    td
+      +MemeberInfoMember(member)
+    td.align-middle.text-center
+      small.badge.fw-semi-bold.rounded-pill(class = `badge-soft-${member.attendance.color}`) #{member.attendance.text}
+    td.align-middle.text-center
+      small.badge.fw-semi-bold.rounded-pill(class = `badge-soft-${member.today.color}`) #{member.today.amount}%
+      p.fs--2.mb-0 1h:52m
+    td.align-middle
+      .row.g-2.justify-content-end
+        .col-auto
+          small.badge.fw-semi-bold.rounded-pill(class = `badge-soft-${member.thisWeek.color}`) #{member.thisWeek.amount}%
+          p.fs--2.mb-0 1h:52m
+        .col-auto.mt-auto
+          .mb-1(data-echarts!={
+            tooltip:{show:false},
+            series: [ { data: member.data }]
+          })
+
+mixin MemeberInfoMember(config)
+  .d-flex.align-items-center.position-relative
+    +Avatar(config.avatar)
+    .flex-1.ms-3
+      h6.mb-0.fw-semi-bold
+        a(href=`${CWD}pages/user/profile.html`).stretched-link.text-900=config.name
+      p.text-500.fs--2.mb-0=config.role

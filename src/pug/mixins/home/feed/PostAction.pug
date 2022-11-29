@@ -1,0 +1,54 @@
+mixin PostAction(config)
+  - var config = Object.assign({like: false, comment: false}, config)
+  .card-footer&attributes(attributes)
+    if(config.like || config.comment)
+      .border-bottom.border-200.fs--1.py-3
+        if(config.like)
+          a(href='#!').text-700 345 Likes
+        if(config.comment && config.like)
+          |  &bull; 
+        if(config.comment)
+          a(href='#!').text-700 34 Comments
+    .row.g-0.fw-semi-bold.text-center.py-2.fs--1
+      .col-auto
+        a.rounded-2.d-flex.align-items-center.me-3(href='#!' class=`${config.like ? '' : 'text-700'}`)
+          img(src=`${CWD}assets/img/icons/spot-illustrations/like-${config.like ? 'active': 'inactive'}.png` width=20 alt="")
+          span.ms-1 Like
+      .col-auto
+        a.rounded-2.d-flex.align-items-center.me-3(href='#!' class=`${config.comment ? '' : 'text-700'}`)
+          img(src=`${CWD}assets/img/icons/spot-illustrations/comment-${config.comment ? 'active': 'inactive'}.png` width=20 alt="")
+          span.ms-1 Comment
+      .col-auto.d-flex.align-items-center
+        a.rounded-2.text-700.d-flex.align-items-center(href='#!')
+          img(src=`${CWD}assets/img/icons/spot-illustrations/share-inactive.png` width=20 alt="")
+          span.ms-1 Share
+    form.d-flex.align-items-center.border-top.border-200.pt-3
+      +Avatar({img: 'team/3.jpg', size: 'xl'})
+      input.form-control.rounded-pill.ms-2.fs--1(type='text' placeholder='Write a comment...')
+
+    if(config.comment)
+      .d-flex.mt-3
+        +Avatar({img: 'team/4.jpg', size: 'xl'})
+        .flex-1.ms-2.fs--1
+          p.mb-1.bg-200.rounded-3.p-2
+            a(href=`${CWD}${paths['user-profile']}`).fw-semi-bold Rowan Atkinson
+            |  She starred as Jane Porter in The 
+            a(href='#!') @Legend of Tarzan (2016)
+            | , Tanya Vanderpoel in Whiskey Tango Foxtrot (2016) and as DC comics villain Harley Quinn in Suicide Squad (2016), for which she was nominated for a Teen Choice Award, and many other awards.
+          .px-2
+            a(href='#!') Like
+            |  &bull; 
+            a(href='#!') Reply
+            |  &bull; 23min 
+      .d-flex.mt-3
+        +Avatar({img: 'team/3.jpg', size: 'xl'})
+        .flex-1.ms-2.fs--1
+          p.mb-1.bg-200.rounded-3.p-2
+            a(href=`${CWD}${paths['user-profile']}`).fw-semi-bold Jessalyn Gilsig
+            |  Jessalyn Sarah Gilsig is a Canadian-American actress known for her roles in television series, e.g., as Lauren Davis in Boston Public, Gina Russo in Nip/Tuck, Terri Schuester in Glee, and as Siggy Haraldson on the History Channel series Vikings. 🏆
+          .px-2
+            a(href='#!') Like
+            |  &bull; 
+            a(href='#!') Reply
+            |  &bull; 3hrs 
+      a(href='#!').fs--1.text-700.d-inline-block.mt-2 Load more comments (2 of 34)

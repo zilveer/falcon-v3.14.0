@@ -1,0 +1,17 @@
+include ../errors/Mixins
+include ../../layouts/LayoutBasic
+
+mixin Errors
+  +WidgetSectionTitle({
+    icon: 'fas fa-exclamation-circle',
+    title: 'Errors',
+    subtitle: `Display your error pages with awesome cards.`
+  }).mb-4.mt-6
+
+  .row.g-0
+    .col-lg-6.pe-lg-2.mb-3.mb-lg-0
+      +LayoutAuthBasicCard.text-center.h-100
+        +Error404Content
+    .col-lg-6.ps-lg-2
+      +LayoutAuthBasicCard.text-center.h-100
+        +Error500Content.h-100

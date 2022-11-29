@@ -1,0 +1,75 @@
+append variables
+  -
+    var projects = [
+      {
+        name: 'Falcon',
+        progress: '38',
+        time: '12:50:00',
+        color: 'primary'
+      },
+      {
+        name: 'Reign',
+        progress: '79',
+        time: '25:20:00',
+        color: 'success'
+      },
+      {
+        name: 'Boots4',
+        progress: '90',
+        time: '58:20:00',
+        color: 'info'
+      },
+      {
+        name: 'Raven',
+        progress: '40',
+        time: '21:20:00',
+        color: 'warning'
+      },
+      {
+        name: 'Slick',
+        progress: '70',
+        time: '31:20:00',
+        color: 'danger'
+      }
+    ]
+
+mixin ProjectAvatar(config)
+  .avatar.avatar-xl.me-3&attributes(attributes)
+    .avatar-name.rounded-circle&attributes(config.nameAttrs)
+      span.fs-0(class=`text-${config.color}`)
+        +getFirstLetter(config.name)
+
+mixin ProjectItem(config, index)
+  .row.g-0.align-items-center.py-2.position-relative(class=(index !== projects.length - 1 ? 'border-bottom border-200' : ''))
+    .col.ps-x1.py-1.position-static
+      .d-flex.align-items-center
+        +ProjectAvatar({ name: config.name, nameAttrs: { class: `bg-soft-${config.color} text-dark` }, color: config.color})
+        .flex-1
+          h6.mb-0.d-flex.align-items-center
+            a(href=`#!`).text-800.stretched-link=config.name
+            span.badge.rounded-pill.ms-2.bg-200.text-primary #{config.progress}%
+    .col.py-1
+      .row.flex-end-center.g-0
+        .col-auto.pe-2
+          .fs--1.fw-semi-bold=config.time
+        .col-5.pe-x1.ps-2
+          .progress.bg-200.me-2(style='height: 5px;')
+            .progress-bar.rounded-pill(role='progressbar', style=`width: ${config.progress}%`, aria-valuenow=`${config.progress}`, aria-valuemin='0' aria-valuemax='100')
+
+mixin CardProjects
+  .card.h-lg-100.overflow-hidden
+    .card-header.bg-light
+      .row.align-items-center
+        .col
+          h6.mb-0 Running Projects
+        .col-auto.text-center.pe-x1
+          select.form-select.form-select-sm
+            option Working Time
+            option Estimated Time
+            option Billable Time
+    .card-body.p-0
+      each project, index in projects
+        +ProjectItem(project, index)
+    .card-footer.bg-light.p-0
+      a(href="#!").btn.btn-sm.btn-link.d-block.w-100.py-2 Show all projects
+        span.fas.fa-chevron-right.ms-1.fs--2

@@ -1,0 +1,26 @@
+mixin Checkbox(config)
+  .form-check&attributes(config.parentAttrs)
+    input.form-check-input&attributes(attributes)(type='checkbox' id=config.id)
+    label.form-check-label&attributes(config.labelAttrs)(for=config.id)
+      if config.text
+        =config.text
+      else
+        block
+
+mixin Radio(config)
+  .form-check&attributes(config.parentAttrs)
+    input.form-check-input&attributes(attributes)(type='radio', value='', id=config.id)
+    label.form-check-label&attributes(config.labelAttrs)(for=config.id)
+      if config.text
+        =config.text
+      else
+        block
+
+mixin Switch(config)
+  .form-check.form-switch&attributes(config.parentAttrs)
+    input.form-check-input&attributes(attributes)(type='checkbox' id=config.id)
+    label.form-check-label&attributes(config.labelAttrs)(for=config.id)
+      if config.text
+        =config.text
+      else
+        block

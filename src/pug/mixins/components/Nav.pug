@@ -1,0 +1,19 @@
+mixin NavDemo
+  ul.nav&attributes(attributes)
+    li.nav-item
+      a.nav-link.active(href='#') Active
+    li.nav-item
+      a.nav-link(href='#') Link
+    li.nav-item
+      a.nav-link(href='#') Link
+    li.nav-item
+      a.nav-link.disabled(href='#') Disabled
+
+mixin NavFillAndJustifyDemo
+  ul.nav.nav-pills.nav-fill
+    li.nav-item
+      a.nav-link.active(href='#') Active
+    li.nav-item
+      a.nav-link(href='#') Longer nav link
+    li.nav-item
+      a.nav-link(href='#') Link

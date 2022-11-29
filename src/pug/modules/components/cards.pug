@@ -1,0 +1,88 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/Card
+include ../../mixins/components/PageHeader
+
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Card',
+      description: `${name}'s cards provide a flexible and extensible content container with multiple variants and options.`,
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/components/card/`,
+      linkText: 'Card on Bootstrap'
+    }
+
+block component
+  +PageHeader(pageHeader)
+  .row.mb-3
+    .col-xl-6.pe-xl-2
+      +ComponentCard({
+        title: 'Basic Example',
+        anchor: true,
+      }).mb-3.h-lg-100
+        +CardBasicDemo
+
+    .col-xl-6.ps-xl-2
+      +ComponentCard({
+        title: 'Card with image',
+        anchor: true,
+      }).mb-3.h-100
+        +CardWithImageDemo
+
+  +ComponentCard({
+    title: 'Card with background',
+    anchor: true,
+  }).mb-3
+    +PageHeaderExampleDemo 
+
+  +ComponentCard({
+    title: 'Notification',
+    anchor: true,
+  }).mb-3
+    .fs--1(style="max-width: 25rem;")
+      +Notification({
+        avatar: {size: '2xl', img: 'team/1.jpg'},
+        body: '<strong>Emma Watson</strong> replied to your comment : "Nice Dashboard 😍"',
+        time: 'Just now',
+        emoji: '💬',
+      }) 
+
+
+  +ComponentCard({
+    title: 'Background',
+    anchor: true,
+  }).mb-3
+    +CardOverlayDemo({
+      title: 'Card title', 
+      body: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.', 
+      img: 'generic/3.jpg',
+      attrs: {
+        style: 'max-width: 30rem',
+      }
+    }).align-items-end.d-flex
+
+  +ComponentCard({
+    title: 'Card Groups',
+    anchor: true,
+    bodyClass:'bg-light overflow-hidden'
+  }).mb-3
+    +CardGroupDemo
+
+    
+  +ComponentCard({
+    title: 'Card Styles',
+    anchor: true,
+    description:"Cards include various options for customizing their backgrounds, borders, and color.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +CardStyleDemo
+
+    
+  +ComponentCard({
+    title: 'Card Border',
+    anchor: true,
+    description:"Use <code>border-utilities</code> to change just the <code>border-color</code> of a card. Note that you can put <code>.text-{color}</code> classes on the parent <code>.card</code> or a subset of the card’s contents as shown below.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +CardBorderDemo

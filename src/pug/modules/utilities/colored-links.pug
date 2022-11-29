@@ -1,0 +1,29 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/utilities/ColoredLinks
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Colored links',
+      description: 'Colored links with hover states',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/helpers/colored-links/`,
+      linkText: 'Colored links on Bootstrap'
+    }
+
+append content
+
+  +PageHeader(pageHeader)
+  +ComponentCard({
+    title: 'Example',
+    description: `You can use the <code>.link-*</code> classes to colorize links. Unlike the <a href='https://getbootstrap.com/docs/${bootstrapVersion}/helpers/colored-links/' target="_blank"><code>.text-*</code> classes</a>, these classes have a <code>:hover</code> and <code>:focus</code> state.`,
+    anchor:true,
+    descriptionClass:'mt-2'
+  }).mb-3
+    +ColoredLinksDemo
+
+  +ComponentCard({
+    title: 'Grays',
+    anchor:true
+  })
+    +GraysColoredLinksDemo

@@ -1,0 +1,45 @@
+block append variables
+  -
+    var pageHeader = [
+      {
+        title: 'Select',
+        description: 'Customize the native selects with custom CSS that changes the element’s initial appearance.',
+        url: `https://getbootstrap.com/docs/${bootstrapVersion}/forms/select`,
+        linkText: 'Select on Bootstrap'
+      },
+    ];
+
+
+mixin DefaultText
+  p.mb-0.mt-2 Custom 
+    code select
+    |  menus need only a custom class, 
+    code .form-select
+    |  to trigger the custom styles. Custom styles are limited to the 
+    code select
+    | 's initial appearance and cannot modify the 
+    code option
+    | s due to browser limitations.
+    
+mixin DefaultForm
+  select.form-select(aria-label='Default select example')
+    option(selected='') Open this select menu
+    option(value='1') One
+    option(value='2') Two
+    option(value='3') Three
+
+mixin Sizing 
+  select.form-select.form-select-lg.mb-3(aria-label='.form-select-lg example')
+    option(selected='') Open this select menu
+    option(value='1') One
+    option(value='2') Two
+    option(value='3') Three
+  select.form-select.form-select-sm(aria-label='.form-select-sm example')
+    option(selected='') Open this select menu
+    option(value='1') One
+    option(value='2') Two
+    option(value='3') Three
+
+
+    
+

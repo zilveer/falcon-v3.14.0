@@ -1,0 +1,112 @@
+extends ../../../layouts/LayoutComponent
+
+block prepend scripts
+  script(src=`${CWD}vendors/lodash/lodash.min.js`)
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+  script(src=`${CWD}vendors/dayjs/dayjs.min.js`)
+  script(src=`${CWD}assets/js/echarts-example.js`)
+
+block append content
+
+  .row.g-3.mb-3
+    .col-lg-6
+      +ComponentCard({
+        title:'Basic line chart',
+        anchor:true
+      }).h-100
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/basic-line-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-line-chart-example(style="min-height: 300px;" data-echart-responsive="true")
+    
+    .col-lg-6
+      +ComponentCard({
+        title:'Basic area line chart',
+        anchor:true
+      }).h-100
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/line-area-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-line-area-chart-example(style="min-height: 300px;" data-echart-responsive="true")
+
+  .row.g-3.mb-3
+    .col-lg-6 
+      +ComponentCard({
+        title:'Stacked line chart',
+        anchor:true
+      }).h-100
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/stacked-line-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-stacked-line-chart-example(style="min-height: 300px;" data-echart-responsive="true")
+
+    .col-lg-6 
+      +ComponentCard({
+        title:'Stacked area chart',
+        anchor:true
+      }).h-100
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/stacked-area-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-stacked-area-chart-example(style="min-height: 300px;" data-echart-responsive="true")
+
+  .row.g-3.mb-3
+    .col-lg-6 
+      +ComponentCard({
+        title:'Line marker chart',
+        anchor:true
+      }).h-100
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/line-marker-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-line-marker-chart-example(style="min-height: 300px;" data-echart-responsive="true")
+
+    .col-lg-6 
+      +ComponentCard({
+        title:'Area pieces chart',
+        anchor:true
+      }).h-100
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/area-pieces-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-area-pieces-chart-example(style="min-height: 300px;" data-echart-responsive="true")
+
+  .row.g-3.mb-3
+    .col-lg-6 
+      +ComponentCard({
+        title:'Step line chart',
+        anchor:true
+      }).h-100
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/step-line-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-step-line-chart-example(style="min-height: 300px;" data-echart-responsive="true")
+    .col-lg-6 
+      +ComponentCard({
+        title:'Line gradient chart',
+        anchor:true
+      }).h-100
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/line-gradient-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-line-gradient-chart-example(style="min-height: 300px;" data-echart-responsive="true")
+
+  .row.g-3.mb-3
+    .col-lg-6 
+      +ComponentCard({
+        title:'Dynamic line chart',
+        anchor:true
+      }).h-100
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/dynamic-line-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-dynamic-line-chart-example(style="min-height: 300px;" data-echart-responsive="true")
+    .col-lg-6 
+      +ComponentCard({
+        title:'Line log chart',
+        anchor:true
+      }).h-100
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/line-log-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-line-log-chart-example(style="min-height: 300px;" data-echart-responsive="true")
+
+  .row.g-3.mb-3
+    .col 
+      +ComponentCard({
+        title:'Share dataset',
+        anchor:true
+      }).h-100
+        // Find the JS file for the following chart at: src/js/charts/echarts/examples/line-share-dataset-chart.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/echarts-example.js
+        .echart-line-share-dataset-chart-example(style="min-height: 500px;" data-echart-responsive="true")

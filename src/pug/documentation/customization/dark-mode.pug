@@ -1,0 +1,177 @@
+extends ../../layouts/LayoutComponent
+
+block append variables
+  
+  -
+    var pageHeader = {
+      title: 'Dark Mode',
+      description: `It’s effortless to switch Dark Mode in Falcon. You can enable Dark Mode by default or create a Dark/Light switch if you want. To set the default mode "Dark", please see the <a href='${CWD}${paths['doc-configuration']}'>configuration page</a>.`,
+    }
+
+block append content
+  +PageHeader(pageHeader)
+  //- .card.mb-3 
+    .card-header 
+      h5 Toggle Dark Mode 
+      p.mb-0 Toggling dark mode is very easy in #{name}. You can toggle dark or light mode by using checkbox, radio input, switch input and custom icon component. 
+    .card-body.bg-light
+  +ComponentCard({
+    title: 'Toggle Dark Mode',
+    anchor: true,
+    bodyClass:'bg-light',
+    description: `Toggling dark mode is very easy in ${name}. You can toggle dark or light mode by using checkbox, radio input, switch input and custom icon component.`,
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    .row 
+      .col
+        h5.fs-0.mb-2 Checkbox 
+        .form-check
+          input#flexCheckDefault.form-check-input(type='checkbox' data-theme-control="theme")
+          label.form-check-label(for='flexCheckDefault') Dark mode
+      .col
+        h5.fs-0.mb-2 Switch Input
+        .form-check.form-switch.ps-0
+          input#switchDarkModeExample.form-check-input.ms-0.me-2(
+            type='checkbox'
+            data-theme-control="theme"
+          )
+          label(for="switchDarkModeExample") Dark Mode
+      .col
+        h5.fs-0.mb-2 Radio button
+        .form-check.form-check-inline
+          input#flexRadioDefault1.form-check-input(type='radio' value='light' data-theme-control="theme")
+          label.form-check-label(for='flexRadioDefault1') Light
+        .form-check.form-check-inline
+          input#flexRadioDefault2.form-check-input(type='radio' value="dark" data-theme-control="theme")
+          label.form-check-label(for='flexRadioDefault2') Dark
+      .col
+        h5.fs-0.mb-2 Custom icon
+        .theme-control-toggle
+          input#themeControlToggleExample.form-check-input.ms-0.theme-control-toggle-input(
+            type='checkbox'
+            data-theme-control="theme"
+            value='dark'
+          )
+          label.mb-0.theme-control-toggle-label.theme-control-toggle-light(for="themeControlToggleExample")
+            span.fas.fa-sun.fs-0
+          label.mb-0.theme-control-toggle-label.theme-control-toggle-dark(for="themeControlToggleExample")
+            span.fas.fa-moon.fs-0
+
+  .card.mb-3
+    .card-header
+      h5.mb-0 If you are using gulp based workflow
+
+    .card-body.bg-light
+      h6.fs-0 Modify  Dark colors using SCSS
+      p You can find all the variables used to create the dark mode in 
+        code /src/scss/theme/root/_dark.scss
+        |  file. If you want to override a variable, copy that variable to your 
+        code /src/scss/theme/user.scss
+        |  file and update it as you see fit. When you change the variable with scss, make sure that the gulp is running.
+  .card.mb-3
+    .card-header
+      h5.mb-0 If you are not using gulp based workflow
+
+    .card-body.bg-light
+      h6.fs-0 Modify  Dark colors using CSS
+      p You can find all the CSS variables used to create the dark mode in 
+        code /public/assets/css/theme.css
+        |  file. Look for the class 
+        code :root.dark
+        |  and you will see all the available variables. If you want to override a variable, copy that variable to your 
+        code /public/assets/css/user.css
+        |  file and update it as you see fit.
+      pre.language-css
+        code.lang-css.
+          /*-----------------------------------------------
+          |   Theme Styles
+          -----------------------------------------------*/
+          :root, :root.light, :root .light {
+            --falcon-gray-100: #f9fafd;
+            --falcon-gray-100-rgb: 249, 250, 253;
+
+            --falcon-gray-200: #edf2f9;
+            --falcon-gray-200-rgb: 237, 242, 249;
+
+            --falcon-gray-300: #d8e2ef;
+            --falcon-gray-300-rgb: 237, 242, 249;
+          }
+
+          .dark {
+            --falcon-gray-100: #0b1727;
+            --falcon-gray-100: 11, 23, 39;
+
+            --falcon-gray-200: #232e3c;
+            --falcon-gray-200: 35, 46, 60;
+
+            --falcon-gray-300: #344050;
+            --falcon-gray-300: 52, 64, 80;
+          }
+  .card.mb-3
+    .card-header
+      h5.mb-0 Using the Dark CSS classes in HTML
+
+    .card-body.bg-light
+      h6.fs-0 You can keep a style constant regardless of current (light or dark) mode
+      p If you want a component to retain it’s color (light or dark) as it is regardless of the current mode, you can use the following classes -
+      p 
+        code .light
+        |  - It will keep the color light even if the current mode is dark
+      p 
+        code .dark
+        |  - It will keep the color dark even if the current mode is light
+      p The following two examples illustrate the color persistency -
+      .row.gx-3
+        .col-lg-6
+          +ComponentCard
+            .card.bg-100.light
+              .card-body 
+                p.mb-0.text-700
+                  b This element will retain it's color if you switch between light and dark mode.
+        .col-lg-6.mt-3.mt-lg-0
+          +ComponentCard
+            .card.bg-100.dark
+              .card-body 
+                p.mb-0.text-700
+                  b This element will retain it's color if you switch between light and dark mode.
+
+
+      h6.fs-0.mt-4 Override Background and Text color only for dark mode
+      p If you want to use a different text color or background color rather than the default dark theme color for any element, you can use the special "dark" classes: 
+      ul
+        li 
+          code dark__bg-* 
+        li
+          code dark__text-* 
+      p The following element illustrates the example:
+      +ComponentCard
+        .card.bg-light.dark__bg-primary
+          .card-body 
+            p.mb-0
+              span.fw-bold This element will retain it's color if you switch between light and dark mode.
+
+  .card.mb-3
+    .card-header
+      h5.mb-0 Emit JavaScript event on color scheme change
+    .card-body.bg-light
+      p When you switch between the dark and light mode, or change any settings from the global theme config at runtime, we emit an  event 
+        code clickControl 
+        br
+        | We used this event to update colors using JavaScript. For example, the charts change their colors using this event. You can catch and use this event with the following code snippet:
+      pre
+        code.lang-js.
+          const themeController = document.body;
+
+          themeController.addEventListener(
+            "clickControl",
+            ({ detail: { control, value } }) => {
+
+              if (control === "theme") {
+                console.log(value) // value will be localStorage theme value (dark/light)
+                // your code here
+
+              }
+            }
+          );
+
+

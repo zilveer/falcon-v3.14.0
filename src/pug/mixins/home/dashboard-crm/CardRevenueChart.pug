@@ -1,0 +1,65 @@
+mixin CardCrmRevenueChart
+  .card
+    .card-header.d-flex.flex-between-center.ps-0.py-0.border-bottom
+
+      ul#crm-revenue-chart-tab.nav.nav-tabs.border-0.flex-nowrap.tab-active-caret(role='tablist' data-tab-has-echarts)
+        li.nav-item(role='presentation')
+          a.nav-link.py-3.mb-0.active#crm-revenue-tab(data-bs-toggle='tab' href='#crm-revenue' role='tab' aria-controls='crm-revenue' aria-selected='true') Revenue
+        li.nav-item(role='presentation')
+          a.nav-link.py-3.mb-0#crm-users-tab(data-bs-toggle='tab' href='#crm-users' role='tab' aria-controls='crm-users' aria-selected='false') Users
+        li.nav-item(role='presentation')
+          a.nav-link.py-3.mb-0#crm-deals-tab(data-bs-toggle='tab' href='#crm-deals' role='tab' aria-controls='crm-deals' aria-selected='false') Deals
+        li.nav-item(role='presentation')
+          a.nav-link.py-3.mb-0#crm-profit-tab(data-bs-toggle='tab' href='#crm-profit' role='tab' aria-controls='crm-profit' aria-selected='false') Profit
+
+      +DashboardDropdown('dropdown-session-by-country')
+    .card-body
+      .row.g-1
+        .col-xxl-3
+          +RevenueStats
+        .col-xxl-9
+          .tab-content
+            // Find the JS file for the following chart at: src/js/charts/echarts/crm-revenue.js
+            // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+            .tab-pane.active#crm-revenue(role='tabpanel' aria-labelledby='crm-revenue-tab')
+              .echart-crm-revenue(data-echart-responsive="true" data-echart-tab style='height:320px;')
+            .tab-pane#crm-users(role='tabpanel' aria-labelledby='crm-users-tab')
+              .echart-crm-users(data-echart-responsive="true" data-echart-tab style='height:320px;')
+            .tab-pane#crm-deals(role='tabpanel' aria-labelledby='crm-deals-tab')
+              .echart-crm-deals(data-echart-responsive="true" data-echart-tab style='height:320px;')
+            .tab-pane#crm-profit(role='tabpanel' aria-labelledby='crm-profit-tab')
+              .echart-crm-profit(data-echart-responsive="true" data-echart-tab style='height:320px;')
+      
+
+
+mixin RevenueStats
+  .row.g-0.my-2
+    .col-md-6.col-xxl-12
+      .border-xxl-bottom.border-xxl-200.mb-2
+        h2.text-primary $37,950
+        p.fs--2.text-500.fw-semi-bold.mb-0
+          span.fas.fa-circle.text-primary.me-2
+          | Closed Amount
+        p.fs--2.text-500.fw-semi-bold
+          span.fas.fa-circle.text-warning.me-2
+          | Revenue Goal
+      .form-check.form-check-inline.me-2
+        input#crmInbound.form-check-input(type='radio', name='bound', value='inbound' Checked)
+        label.form-check-label(for='crmInbound') Inbound
+      .form-check.form-check-inline
+        input#outbound.form-check-input(type='radio', name='bound', value='outbound')
+        label.form-check-label(for='outbound') Outbound
+    .col-md-6.col-xxl-12.py-2
+      .row.mx-0
+        .col-6.border-end.border-bottom.py-3
+          h5.fw-normal.text-600 $4.2k
+          h6.text-500.mb-0 Email
+        .col-6.border-bottom.py-3
+          h5.fw-normal.text-600 $5.6k
+          h6.text-500.mb-0 Social
+        .col-6.border-end.py-3
+          h5.fw-normal.text-600 $6.7k
+          h6.text-500.mb-0 Call
+        .col-6.py-3
+          h5.fw-normal.text-600 $2.3k
+          h6.text-500.mb-0 Other

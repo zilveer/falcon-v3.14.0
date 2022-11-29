@@ -1,0 +1,51 @@
+include ../pages/profile/Events
+include ../pages/profile/Activity
+include ../pages/profile/Associations
+include ../pages/profile/Members
+include ../pages/profile/Profile
+include ../home/feed/PostAlbum
+include ../home/feed/PostVideo
+include ../home/feed/FeedUserSuggestion
+include ../pages/InvitePeople
+
+mixin Users
+  +WidgetSectionTitle({
+    transform: 'shrink-4',
+    icon: 'fas fa-user-friends',
+    title: 'Users & Feed',
+  }).mb-4.mt-6    
+  .row.g-0.align-items-stretch.h-100
+    .col-lg-6.pe-lg-2.mb-3
+      +Events({more: true, title: 'You may interested'}).h-100
+    .col-lg-6.ps-lg-2.mb-3
+      .card.h-100
+        .card-header
+          h5.mb-0 Notifications
+        .card-body.p-0
+          +Notifications(0, 4)
+        .card-footer.bg-light.py-0.border-top
+          a(href=`${CWD}${paths['notifications']}`).btn.btn-link.d-block.w-100 All Notifications
+  .row.g-0
+    .col-lg-7.pe-lg-2
+      +Associations({ start: 0, end: 10 }).mb-3
+      +Members({end: 6, gridClass: 'col-6 col-md-4'}).mb-3.overflow-hidden
+
+    .col-lg-5.ps-lg-2.mb-3
+      +InvitePeople({
+        inputFieldColumn: 'col',
+        buttonColumn: 'col-12'
+      }).h-100
+
+  .row.g-0
+    .col-lg-8.pe-lg-2.mb-3
+      .row.g-0.h-100.align-items-stretch
+        .col-12.mb-3
+          +PostVideo.h-100
+        .col-12
+          +PostAlbum.h-100
+    .col-lg-4.ps-lg-2.mb-3
+      +Activity({more: true, start: 2}).mb-3
+      +FeedUserSuggestion({end: 8}).mb-3
+      +CardActiveUsers({end: 6})    
+  +Profile
+  +EventBanner    

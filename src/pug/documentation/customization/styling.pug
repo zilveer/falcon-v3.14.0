@@ -1,0 +1,181 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/documentation/Plugins
+
+
+append content
+  +PageHeader({title:"Styling"})
+    p.mb-1.mt-2 We recommend you to customize your theme styles using the user style files. Use the following approaches to customize the theme’s styles :
+  .card.mb-3
+    .card-header
+      h5.mb-0(data-anchor) Gulp based workflow
+    .card-body.bg-light
+      .border.rounded-1.bg-white.px-3.py-2.mb-3
+        code user.scss
+      p.mb-0 You can add your own SCSS and override the theme style in the 
+        code src/scss/user.scss
+        |  file.
+      .border-bottom.border-dashed.my-3
+      .border.rounded-1.bg-white.px-3.py-2.mt-4.mb-3
+        code _user-variables.scss
+      p.mb-0 To make broader changes to the design of the theme, such as changing the color scheme or font sizes, use 
+        code src/scss/_user-variables.scss
+        | . Any variable from 
+        code node_modules/bootstrap/scss/variables
+        |  or 
+        code src/scss/theme/_variables.scss
+        |  can be overridden with your own value.
+      .border-bottom.border-dashed.my-3
+      .border.rounded-1.bg-white.px-3.py-2.mt-4.mb-3
+        code _bootstrap.scss
+      p.mb-0 To remove bootstrap components, update 
+        code src/scss/_bootstrap.scss
+        |  file.
+
+  .card.mb-3
+    .card-header
+      h5.mb-0(data-anchor) If you are not using Gulp based workflow
+    .card-body.bg-light
+      .border.rounded-1.bg-white.px-3.py-2.mb-3
+        code user.css
+      p.mb-0 You can add your own CSS and override the theme style in the 
+        code public/assets/css/user.css
+        |  file.
+
+  .card.mb-3
+    .card-header
+      h5.mb-0.fs-2(data-anchor) Changing theme colors
+    .card-body.bg-light
+      h5(data-anchor) Gulp based workflow
+
+      p If you are using gulp base work flow, you can update your theme colors with two different approaches.
+
+
+      h6.fs-0(data-anchor) 1. Using scss variable:
+      .border.rounded-1.bg-white.px-3.py-2.mb-3
+        code _user-variables.scss
+      p You can bring your necessary variable colors form  
+        code src/scss/theme/_colors.scss 
+        | and paste it into 
+        code src/scss/_user-variables.scss 
+        | then update variables as your necessity. We recommend to follow this approach.
+
+
+      p  Light mode is default theme style in Falcon. So, if you update any bootstrap’s SCSS variables, it will effect in Light mode. If you want to update any color, find the corresponding variable for thise color and place theme to _user-variables.scss file. For example:
+      pre
+        code.lang-css. 
+          //*-----------------------------------------------
+          //|   Theme Colors
+          //-----------------------------------------------*/
+         
+          $primary: $blue !default; 
+          $secondary: $gray-600 !default;
+          $success: $green !default;
+          $info: $cyan !default;
+          $warning: $yellow !default;
+          $danger: $red !default;
+          $light: $gray-100 !default;
+          $dark: $gray-1100 !default;        
+
+
+      p.mt-3 If you want to update any theme colors for dark mode, update 
+        code $theme-dark-colors 
+        | variable and to update the grays colors you have to update the 
+        code $dark-grays 
+        | variable.
+
+      pre
+        code.lang-css. 
+          /*-----------------------------------------------
+          |   Theme Styles
+          -----------------------------------------------*/
+          $theme-dark-colors: (
+            'primary': $primary, //change hare
+            'secondary': $secondary,
+            'success': $success,
+            'info': $info,
+            'warning': $warning,
+            'danger': $danger,
+            'light': rgba(map-get($dark-grays, '200'), 0.25),
+            'dark': $light,
+          ) !default;
+          
+          $dark-grays: (
+            'black': $white,
+            '100': $gray-1100,
+            '200': $gray-1000,
+            '300': $gray-900,
+            '400': $gray-800,
+            '500': $gray-700,
+            '600': $gray-600,
+            '700': $gray-500,
+            '800': $gray-400,
+            '900': $gray-300,
+            '1000': $gray-200,
+            '1100': $gray-100,
+            'white': $black,
+          ) !default;
+
+
+      h6.mt-4.fs-0(data-anchor) 2. Using CSS variable:
+      .border.rounded-1.bg-white.px-3.py-2.mb-3
+        code _user.scss
+      p To update theme color with this approach, you have to update CSS variable for both modes. If you change any color you have to assign it's corresponding RGB color too. Please note sometimes you may need to update corresponding component's CSS variable. For example:
+      pre
+        - var successRgb = '#{to-rgb($success)}'
+        - var dangerRgb = '#{to-rgb($danger)}'
+        - var success = '#{$success}'
+        - var danger = '#{$danger}'
+        code.lang-css.
+          /*-----------------------------------------------
+          |   Theme Styles
+          -----------------------------------------------*/
+          $success: #00d27a;
+          $danger: #e63757;
+          :root, :root.light, :root .light {
+            --falcon-primary:  #{success};
+            --falcon-primary-rgb: #{successRgb};
+             ...
+             ...
+             ...
+          }
+          .dark{
+            --falcon-primary: #{danger};
+            --falcon-primary-rgb: #{dangerRgb};
+            .card{
+              --falcon-card-bg: #{success};
+            }
+          }
+
+          
+      h5.mt-4(data-anchor) If you are not using Gulp based workflow 
+      p You can add your own CSS and override the theme style in the 
+        code public/assets/css/user.css 
+        | file. You can update all theme colors including grays using css variables. If you change any color you have to assign it's corresponding rgb color. Sometimes you may need to update corresponding component's css variable too.
+
+      pre
+        code.lang-css.
+          /*-----------------------------------------------
+          |   Theme Styles
+          -----------------------------------------------*/
+          :root, :root.light, :root .light {
+            --falcon-primary:  #00d27a;
+            --falcon-primary-rgb: 0, 210, 122;
+            ...
+            ...
+            ...
+            /* grays */
+            --falcon-gray-100:  #f9fafd;
+            --falcon-gray-100-rgb: 249, 250, 253;
+          }
+          .dark{
+            --falcon-primary:  #e63757;
+            --falcon-primary-rgb: 230, 55, 87;
+
+            .card{
+              --falcon-card-bg: #00d27a;
+            }
+          }
+
+
+
+        

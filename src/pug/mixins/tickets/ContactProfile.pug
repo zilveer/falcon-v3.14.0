@@ -1,0 +1,48 @@
+include ../home/dashboard/Mixins
+
+mixin InfoItem(title, content)
+  .mb-4&attributes(attributes)
+    h6(class=`${title === 'Email' && "mb-1"} ${title === 'Phone Number' && "mb-1"}`)= title
+    if title === "Email"
+      a.fs--1(href=`mailto:${content}`)= content
+    else if title === "Phone Number"
+      a.fs--1(href=`tel:${content.replace(/\s+/g, '')}`)= content
+    else
+      p.mb-0.text-700.fs--1 #{content}
+
+mixin ContactProfile 
+  .card&attributes(attributes)
+    .card-header.d-flex.align-items-center.justify-content-between.py-2
+      h6.mb-0 Contact Information
+      +DashboardDropdown('dropdown-contact-information')
+    .card-body.bg-light
+      .card.border.rounded-3.bg-white.dark__bg-1000.shadow-none
+        +Background({image: `${CWD}assets/img/icons/spot-illustrations/corner-2.png`, className: 'bg-card d-none d-sm-block d-xl-none'})
+        .card-body.row.g-0.flex-column.flex-sm-row.flex-xl-column.z-index-1.align-items-center
+          .col-auto.text-center.me-sm-x1.me-xl-0
+            img(src=`${CWD}assets/img/team/5-thumb.png`, alt="").ticket-preview-avatar
+          .col-sm-8.col-md-6.col-lg-4.col-xl-12.ps-sm-1.ps-xl-0
+            p.fw-semi-bold.mb-0.text-800.text-center.text-sm-start.text-xl-center.mb-3.mt-3.mt-sm-0.mt-xl-3 Matt Rogers
+            .d-flex.gap-2.justify-content-center
+              button.btn.btn-primary.btn-sm.px-2.text-nowrap.w-50
+                span.fas.fa-plus.me-1(data-fa-transform="shrink-3 down-1")
+                span.fs--2 New Ticket
+              button.btn.btn-sm.btn-falcon-default.w-50
+                span.fas.fa-phone-alt.me-1(data-fa-transform="shrink-4")
+                span.fs--2 Call
+      .border.rounded-3.p-x1.mt-3.bg-white.dark__bg-1000.row.mx-0.g-0
+        .col-md-6.col-xl-12.pe-md-4.pe-xl-0
+          +InfoItem("Email", "mattrogers@gmail.com")
+          +InfoItem("Phone Number", "+6(855) 747 677")
+          +InfoItem("Location", "936 N. Fairground Rd.Farnham, QC J2N 5E9")
+          +InfoItem("Language", "English")
+          +InfoItem("Account Verified by Twitter", "No").mb-md-0.mb-xl-4
+        .col-md-6.col-xl-12.ps-md-4.ps-xl-0
+          +InfoItem("Subscription", "Active")
+          +InfoItem("OS", "macOS Monterey")
+          +InfoItem("Browser", "Google Chrome 98.0.2563")
+          +InfoItem("IP", "52.119.132.297")
+          h6 Tag
+          a(href='#!').badge.border.link-secondary.me-1.text-decoration-none.fs--2 New
+          a(href='#!').badge.border.link-secondary.me-1.text-decoration-none.fs--2 Payment
+          a(href='#!').badge.border.link-secondary.text-decoration-none.fs--2 Subscribe

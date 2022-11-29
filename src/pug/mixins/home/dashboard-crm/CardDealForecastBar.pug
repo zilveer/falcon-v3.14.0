@@ -1,0 +1,43 @@
+mixin CardDealForecastBar
+  .card&attributes(attributes)
+    .card-header.d-flex.flex-between-center.border-bottom.border-200.py-2
+      h6.mb-0 Deal Forecast
+      +DashboardDropdown(`crm-deal-forecast-bar`) 
+    .card-body.d-flex.align-items-center
+      .w-100
+        h3.text-700.mb-6 $90,439
+      
+        +CrmProgressBar.mt-xxl-auto
+        +DealForecastLegends.mt-3.mt-xxl-4
+      
+
+mixin CrmProgressBar
+  .progress.overflow-visible.rounded-3.font-sans-serif.fw-medium.fs--1(style="height: 20px;")&attributes(attributes)
+    .progress-bar.overflow-visible.bg-progress-gradient.border-end.border-white.border-2.rounded-end.rounded-pill.text-start(role='progressbar' style='width: 50%' aria-valuenow='50' aria-valuemin='0' aria-valuemax='100')
+      span.text-700.mt-n6 $47.8k
+    .progress-bar.overflow-visible.bg-soft-primary.border-end.border-white.border-2.text-start(role='progressbar' style='width: 20%' aria-valuenow='20' aria-valuemin='0' aria-valuemax='100')
+      span.text-700.mt-n6 $20.2k
+    .progress-bar.overflow-visible.bg-soft-info.border-end.border-white.border-2.text-start(role='progressbar' style='width: 15%' aria-valuenow='15' aria-valuemin='0' aria-valuemax='100')
+      span.text-700.mt-n6 $18k
+    .progress-bar.overflow-visible.bg-info.rounded-start.rounded-pill.text-start(role='progressbar' style='width: 15%' aria-valuenow='15' aria-valuemin='15' aria-valuemax='100')
+      span.text-700.mt-n6 $16k
+
+mixin DealForecastLegends
+  .row.fs--1.fw-semi-bold.text-500.mt-3.g-0&attributes(attributes)
+    .col-auto.d-flex.align-items-center.pe-3
+      span.dot.bg-primary
+      span Closed won
+      span.d-none.d-md-inline-block.d-lg-none.d-xxl-inline-block (100%)
+    .col-auto.d-flex.align-items-center.pe-3
+      span.dot.bg-soft-primary
+      span Contact sent
+      span.d-none.d-md-inline-block.d-lg-none.d-xxl-inline-block (5%)
+    
+    .col-auto.d-flex.align-items-center.pe-3
+      span.dot.bg-soft-info
+      span Pending
+      span.d-none.d-md-inline-block.d-lg-none.d-xxl-inline-block (5%)
+    .col-auto.d-flex.align-items-center
+      span.dot.bg-info
+      span Qualified
+      span.d-none.d-md-inline-block.d-lg-none.d-xxl-inline-block (20%)

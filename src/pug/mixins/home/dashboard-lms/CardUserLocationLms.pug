@@ -1,0 +1,91 @@
+append variables  
+  -
+    var usersLms = [
+      {
+        country: 'Bahrain',
+        revenue:'$3997',
+        users: '900',
+        status: 'Unavailable',
+        badge: 'danger'
+      },
+      {
+        country: 'Bangladesh',
+        revenue:'$6700',
+        users: '123k',
+        status: 'Early Beta',
+        badge: 'warning'
+      },
+      {
+        country: 'Belarus',
+        revenue:'$5949',
+        users: '6.5k',
+        status: 'Unavailable',
+        badge: 'danger'
+      },
+      {
+        country: 'Belgium',
+        revenue:'$73000',
+        users: '27k',
+        status: 'Available',
+        badge: 'success'
+      },
+    ]
+
+mixin CardLmsUserLocation(page=4)
+  .card#LmsUserByLocationTable(data-list!={
+    valueNames: ["country", "users", "revenue", "native-support"],
+    page: page,
+  })&attributes(attributes)
+    .card-header.d-flex.flex-between-center.bg-light.py-2
+      h6.mb-0 User Location
+      +DashboardDropdown(`lms-user-by-location`)
+    .card-body.pb-0.position-relative
+      // Find the JS file for the following chart at: src/js/charts/echarts/user-by-location-lms.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-user-by-location-map(data-echart-responsive="true" style='height:302px;')
+      
+      .position-absolute.top-0.border.mt-3.border-200.rounded-3.bg-light
+        button.btn.btn-link.btn-sm.bg-100.rounded-bottom-0.px-2.user-by-location-map-zoom.text-700(type='button')
+          span.fas.fa-plus.fs--1
+        hr.text-200.m-0
+        button.btn.btn-link.btn-sm.bg-100.rounded-top-0.px-2.user-by-location-map-zoomOut.text-700(type='button')
+          span.fas.fa-minus.fs--1
+      
+      .mt-3  
+        .bar-indicator-gradient.mb-1
+        .d-flex.flex-between-center.fs--2 
+          p.mb-0 less than 1k
+          p.mb-0 more than 100k
+      +UserByLocationTable.mx-ncard.mt-3
+    
+    .card-footer.bg-light.text-end.py-2
+      a.btn.btn-link.btn-sm.px-0.fw-medium(href='#!') View all
+        span.fas.fa-chevron-right.ms-1.fs--2
+
+
+mixin Badge(content, type)
+  span.badge.badge.rounded-pill.fw-medium.fs--2(class=`badge-soft-${type}`)=content
+
+mixin UserByLocationTable
+  .table-responsive.scrollbar&attributes(attributes)
+    table.table.fs--1.mb-0
+      thead.bg-light.text-800
+        tr.font-sans-serif
+          th.sort(data-sort="country" style="width: 40%") Country
+          th.sort.text-end(data-sort="users") User Count
+          th.sort.text-end(data-sort="revenue") Revenue
+          th.sort.text-end.w-25(data-sort="native-support") Language Support
+      tbody.list
+        each user, index in usersLms
+          +CrmTableItem(user, index)
+
+
+mixin CrmTableItem(config, index)
+  tr.fw-semi-bold
+    td.align-middle.py-3
+      a(href=`#!`)
+        p.mb-0.text-primary.country #{config.country}
+    td.align-middle.text-end.users #{config.users}
+    td.align-middle.text-end.revenue #{config.revenue}
+    td.align-middle.pe-x1.text-end.native-support
+        +Badge(config.status, config.badge)

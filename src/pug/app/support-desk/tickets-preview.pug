@@ -1,0 +1,23 @@
+extends ../../layouts/LayoutTheme
+include ../../mixins/tickets/ContactInfo
+include ../../mixins/home/dashboard-tickets/CardTodoListTickets
+include ../../mixins/tickets/TicketPreviewHeader
+include ../../mixins/tickets/PropertyFilteringForm
+include ../../mixins/tickets/Conversation
+
+prepend scripts
+  script(src=`${CWD}vendors/tinymce/tinymce.min.js`)
+
+block append content
+  .row.g-3
+    .col-xxl-9.col-xl-8
+      +TicketPreviewHeader
+      +Conversation.mt-3
+    .col-xxl-3.col-xl-4
+      .row.g-3.position-sticky.top-0
+        .col-md-6.col-xl-12
+          +PropertyFilteringForm
+        .col-md-6.col-xl-12
+          +CardTodoListTickets.preview-todo-list.h-100
+        .col-12 
+          +ContactInfo

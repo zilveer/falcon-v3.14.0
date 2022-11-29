@@ -1,0 +1,346 @@
+//- ==============================================
+//- Courses Page Head(list/grid)
+//- ==============================================
+mixin CoursesHeader(type)
+  .card.mb-3&attributes(attributes)
+    .card-header.position-relative
+      h5.mb-0.mt-1 All Courses
+      +Background({
+        image: `${CWD}assets/img/illustrations/corner-6.png`, 
+        className:"d-none d-md-block bg-card",
+      })
+
+    .card-body.pt-0.pt-md-3
+      .row.g-3.align-items-center
+        .col-auto.d-xl-none
+          button.btn.btn-sm.p-0.btn-link.position-relative(
+            type="button" 
+            data-bs-toggle="offcanvas" 
+            data-bs-target="#filterOffcanvas" 
+            aria-controls="filterOffcanvas"
+          )
+            span.fas.fa-filter.fs-0.text-700
+
+        .col
+          form.position-relative
+            input.form-control.form-control-sm.search-input.lh-1.rounded-2.ps-4(type='search' placeholder='Search...' aria-label='Search')
+            .position-absolute.top-50.start-0.translate-middle-y.ms-2
+              span.fas.fa-search.text-400.fs--1
+
+        .col.position-sm-relative.position-absolute.top-0.end-0.me-3.me-sm-0.p-0
+          .row.g-0.g-md-3.justify-content-end
+            .col-auto
+              form.row.gx-2
+                .col-auto.d-none.d-lg-block
+                  small.fw-semi-bold Sort by:
+                .col-auto   
+                  select.form-select.form-select-sm(aria-label='Bulk actions')
+                    option(value="rating") Rating
+                    option(value='review') Review
+                    option(value='price') Price
+
+            .col-auto
+              .d-flex.align-items-center
+                small.fw-semi-bold.d-none.d-lg-block.lh-1 View:
+                .d-flex
+                  a.btn.btn-link.btn-sm(href=`${CWD}${paths['course-grid']}` data-bs-toggle="tooltip" data-bs-placement="top" title="Course Grid" class=type==='grid' ? 'text-700' : 'text-400 hover-700')
+                    span.fas.fa-th.fs-1(data-fa-transform="down-1")
+                  a.btn.btn-link.btn-sm.px-1(href=`${CWD}${paths['course-list']}` data-bs-toggle="tooltip" data-bs-placement="top" title="Course List" class=type==='list' ? 'text-700' : 'text-400 hover-700')
+                    span.fas.fa-list-ul.fs-1(data-fa-transform="down-1")
+
+
+//- ==============================================
+//- Courses Page Filter
+//- ==============================================
+mixin CoursesFilter
+  -
+    var filters = [
+      {
+        label: 'Category',
+        options: [
+          {
+            label: 'Free',
+            icon: 'fas fa-file-alt',
+            type: 'checkbox',
+            selected: true
+          },
+          {
+            label: 'Paid',
+            icon: 'fas fa-file-invoice-dollar',
+            type: 'checkbox'
+          },
+          {
+            label: 'On Sale',
+            icon: 'fas fa-tags',
+            iconShrink: true,
+            type: 'checkbox',
+            selected: true
+          },
+        ]
+      },
+      {
+        label: 'Subject',
+        options: [
+          {
+            label: 'Design',
+            icon: 'fas fa-brush',
+            type: 'checkbox',
+            selected: true
+          },
+          {
+            label: 'Web Development',
+            icon: 'fas fa-globe',
+            type: 'checkbox'
+          },
+          {
+            label: 'Software',
+            icon: 'fas fa-code',
+            type: 'checkbox'
+          },
+          {
+            label: 'Business',
+            icon: 'fas fa-balance-scale-left',
+            type: 'checkbox'
+          },
+          {
+            label: 'Marketing',
+            icon: 'fas fa-comment-dollar',
+            type: 'checkbox'
+          },
+          {
+            label: 'Self Help',
+            icon: 'fas fa-hand-holding-water',
+            type: 'checkbox'
+          },
+          {
+            label: 'Photography',
+            icon: 'fas fa-camera-retro',
+            type: 'checkbox'
+          },
+          {
+            label: 'Music',
+            icon: 'fas fa-music',
+            type: 'checkbox'
+          },
+          {
+            label: 'Writing',
+            icon: 'fas fa-pen-nib',
+            type: 'checkbox'
+          },
+          {
+            label: 'Painting',
+            icon: 'fas fa-palette',
+            type: 'checkbox'
+          },
+          {
+            label: 'Cooking',
+            icon: 'fas fa-utensils',
+            type: 'checkbox'
+          },
+          {
+            label: 'Teaching',
+            icon: 'fas fa-book',
+            type: 'checkbox'
+          },
+          {
+            label: 'Miscellaneous',
+            icon: 'fas fa-thumbtack',
+            type: 'checkbox'
+          },
+        ]
+      },
+      {
+        label: 'Rating',
+        options: [
+          {
+            label: '4.5 & Up',
+            icon: 'fas fa-star',
+            type: 'radio',
+            name: 'rating'
+          },
+          {
+            label: '4.0 & Up',
+            icon: 'fas fa-star',
+            type: 'radio',
+            name: 'rating'
+          },
+          {
+            label: '3.5 & Up',
+            icon: 'fas fa-star',
+            type: 'radio',
+            name: 'rating'
+          },
+          {
+            label: '3.0 & Up',
+            icon: 'fas fa-star',
+            type: 'radio',
+            name: 'rating'
+          },
+        ]
+      },
+      {
+        label: 'Proficiency',
+        options: [
+          {
+            label: 'Beginner',
+            svg: 'chevron-up',
+            type: 'checkbox'
+          },
+          {
+            label: 'Intermediate',
+            svg: 'double-chevron-up',
+            type: 'checkbox'
+          },
+          {
+            label: 'Professional',
+            svg: 'triple-chevron-up',
+            type: 'checkbox'
+          },
+          {
+            label: 'Master',
+            icon: 'fas fa-star',
+            type: 'checkbox'
+          },
+          {
+            label: 'Everyone',
+            icon: 'fas fa-users',
+            type: 'checkbox'
+          },
+        ]
+      },
+      {
+        label: 'Language',
+        options: [
+          {
+            label: 'English',
+            type: 'checkbox',
+            selected: true
+          },
+          {
+            label: 'Spanish',
+            type: 'checkbox'
+          },
+          {
+            label: 'French',
+            type: 'checkbox'
+          },
+          {
+            label: 'German',
+            type: 'checkbox'
+          },
+          {
+            label: 'Bengali',
+            type: 'checkbox'
+          },
+          {
+            label: 'Hindi',
+            type: 'checkbox'
+          },
+          {
+            label: 'Arabic',
+            type: 'checkbox'
+          },
+        ]
+      },
+      {
+        label: 'Enrolled Courses',
+        options: [
+          {
+            label: 'Show',
+            name: 'enrolled-courses',
+            type: 'radio',
+          },
+          {
+            label: 'Don’t Show',
+            name: 'enrolled-courses',
+            type: 'radio',
+          },
+        ]
+      },
+    ]
+
+  -
+    const slugifyText = (str) => str.toLowerCase()
+      .replace(/\s+/g, '-')   
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/--+/g, '-')  
+      .replace(/^-+/, '')      
+      .replace(/-+$/, '');
+
+  aside.scrollbar-overlay.font-sans-serif.p-4.p-xl-3.ps-xl-0(class="offcanvas offcanvas-start offcanvas-filter-sidebar" tabindex="-1" id="filterOffcanvas" aria-labelledby="filterOffcanvasLabel")
+    .d-flex.flex-between-center
+      .d-flex.gap-2.flex-xl-grow-1.align-items-center.justify-content-xl-between
+        h5.mb-0.text-700.d-flex.align-items-center#filterOffcanvasLabel
+          span.fas.fa-filter.fs--1.me-1
+          span Filter
+        button.btn.btn-sm.btn-outline-secondary
+          | Reset
+
+      button.btn-close.text-reset.d-xl-none.shadow-none(type='button' data-bs-dismiss='offcanvas' aria-label='Close')
+
+    .d-flex.gap-2.flex-wrap.my-3
+      - 
+        var tags = ['Free', 'On sale', 'Design', 'English'];
+      each tag in tags
+        span.badge.bg-300.text-600.py-0
+          | #{tag}
+          button.btn.btn-link.btn-sm.p-0.text-600.ms-1
+            span.fas.fa-times.fs--2
+
+    ul.list-unstyled
+      each filter,index in filters
+        li(class=filters.length - 1 !== index && 'border-bottom')
+          a.nav-link.collapse-indicator-plus.fs--2.fw-medium.text-600.py-3(
+            data-bs-toggle="collapse" 
+            href=`#${slugifyText(filter.label)}-collapse` 
+            aria-controls=`${slugifyText(filter.label)}-collapse` 
+            aria-expanded=(index===0 || index===1) ? 'true' : 'false' 
+          )
+            | #{filter.label}
+          .collapse(id=`${slugifyText(filter.label)}-collapse` class=(index===0 || index ===1) && 'show')
+            ul.list-unstyled
+              each option in filter.options
+                li
+                  .form-check.d-flex.ps-0
+                    label.form-check-label.fs--1.flex-1.text-truncate(for=`filter-${slugifyText(filter.label)}-${slugifyText(option.label)}`)
+                      if option.icon
+                        span(class=`${option.icon} ${option.iconShrink ? 'fs--2' : 'fs--1'}`).me-3
+                      if option.svg
+                        img.me-3(src=`${CWD}assets/img/icons/${option.svg}.svg`, width=13 alt="")
+                      | #{option.label}
+
+                    input.form-check-input(
+                      type=option.type 
+                      checked=option.selected ? true : false
+                      name=option.name ? option.name : slugifyText(option.label) 
+                      id=`filter-${slugifyText(filter.label)}-${slugifyText(option.label)}`
+                    )
+
+//- ==============================================
+//- Courses Page Pagination
+//- ==============================================
+mixin CoursesPagination 
+  .card
+    .card-body
+      .row.g-3.flex-center.justify-content-md-between
+        .col-auto
+          form.row.gx-2
+            .col-auto
+              small Show:
+            .col-auto     
+              select.form-select.form-select-sm(aria-label='Show courses')
+                option(selected value='9') 9
+                option(value='20') 20
+                option(value='50') 50
+
+        .col-auto 
+          button(type='button' disabled data-bs-toggle="tooltip" data-bs-placement="top" title="Prev").btn.btn-falcon-default.btn-sm.me-2
+            span.fas.fa-chevron-left
+          a(href="#!").btn.btn-sm.btn-falcon-default.text-primary.me-2 1
+          a(href="#!").btn.btn-sm.btn-falcon-default.me-2 2
+          a(href="#!").btn.btn-sm.btn-falcon-default.me-2 3
+          a(href="#!").btn.btn-sm.btn-falcon-default.me-2 
+            span.fas.fa-ellipsis-h
+          a(href="#!").btn.btn-sm.btn-falcon-default.me-2 303
+          button(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Next").btn.btn-falcon-default.btn-sm
+            span.fas.fa-chevron-right   

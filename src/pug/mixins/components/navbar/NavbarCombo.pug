@@ -1,0 +1,42 @@
+mixin ComboNavHTMLDescription
+  p&attributes(attributes) Convert any page to Combo Nav layout easily by using #{name}'s 
+    a(href=`${CWD}${paths['vertical-navbar']}` target="_blank") Navbar Vertical 
+    | and 
+    a(href=`${CWD}${paths['top-navbar']}` target="_blank") Navbar Top 
+    |. The structure of combo nav layout will like this:
+
+mixin ComboNavHTMLDemo 
+  main.main
+    .container(data-layout="container")
+      // Set data-navbar-top="combo" attribute to the navbar top element as describe in step 1 in the responsive behaviours section
+      nav.navbar.navbar-vertical.navbar-expand-xl.navbar-light
+        .collapse.navbar-collapse
+          .navbar-vertical-content.scrollbar
+            // Your navbar vertical content
+            // Set a unique ID to the navbar vertical element as describe in step 2 in the responsive behaviours section  
+            .navbar-nav#yourUniqueID
+              // Nav elements
+      .content
+        // Set the unique ID to data-move-target attribute which you added in step 2 as describe in step 3 in the responsive behaviours section 
+        nav.navbar.navbar-expand-lg.navbar-light.navbar-glass.navbar-top(data-move-target="#yourUniqueID" data-navbar-top="combo")
+          // Your navbar top content here
+        ='\n'
+        // Your page content wil go here
+
+mixin ComboNavResponsiveBehaviors
+  p #{name} get the breakpoint from the 
+    code navbar-expand{-sm|-md|-lg|-xl|-xxl} 
+    | class of navbar top and move the content to the navbar vertical if screen size is below the breakpoint.
+  p.mb-0.fw-semi-bold To make the combo nav responsive follow the steps below:
+  ol.mb-0
+    li Add 
+      code data-navbar-top="combo" 
+      | attribute to the 
+      code .navbar-top 
+      | element.
+    li Add a unique id to the any of navbar vertical element after where you want to put your navbar top content on responsive.
+    li Add 
+      code data-move-target 
+      | attribute with the id (set in step 2) to the 
+      code data-navbar-top="combo" 
+      | element to move the navbar collapse content to the navbar vertical.

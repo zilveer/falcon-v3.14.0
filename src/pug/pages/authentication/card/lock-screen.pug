@@ -1,0 +1,14 @@
+extends ../../../layouts/CardLayout
+include ../../../mixins/authentication/LockScreenContent
+
+block append variables
+  - var attrsLayout = { class: 'container-fluid' }
+
+block cardLeft
+  p.mb-0.mt-4.mt-md-5.fs--1.fw-semi-bold.text-white.opacity-75 Read our 
+    a(href='#!').text-decoration-underline.text-white terms
+    |  and 
+    a(href="#!").text-decoration-underline.text-white conditions 
+
+block cardRight
+  +LockScreenContent

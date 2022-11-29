@@ -1,0 +1,27 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/BulkSelect
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Bulk Select',
+      description: 'Bulk select allows users to check multiple checkboxes at once and toggles a UI for bulk actions to be performed for the selected items.',
+    }
+
+append content
+  +PageHeader(pageHeader)
+
+  .card.mb-3
+    .card-body
+      +DocCardHeader('Bulk select consist of this following parts')
+        +BulkSelectAddingSteps.mt-2.mb-0
+        
+  +ComponentCard({
+    title:'Example',
+    bodyClass:'py-0 border-top'
+  })
+    .card.shadow-none
+      .card-body.p-0.pb-3
+        +BulkSelectExampleHeader
+        +BulkSelectExampleTable

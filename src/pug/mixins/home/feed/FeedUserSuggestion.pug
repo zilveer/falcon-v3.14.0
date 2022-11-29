@@ -1,0 +1,63 @@
+append variables
+  -
+    var connections = [
+      {
+        name: 'Katheryn Winnick',
+        img: 13
+      },
+      {
+        name: 'Travis Fimmel',
+        img: 5,
+        mutual: 5
+      },
+      {
+        name: 'Gustaf Skarsgård',
+        img: 10,
+        mutual: 10
+      },
+      {
+        name: 'Clive Standen',
+        img: 8,
+        mutual: 8
+      },
+      {
+        name: 'Jennie Jacques',
+        img: 15,
+        hr: true
+      },
+      {
+        name: 'Isaac Hempstead',
+        img: 6,
+        hr: true
+      },
+      {
+        name: 'Antony Hopkins',
+        img: 2,
+        hr: true
+      },
+      {
+        name: 'Sophie Turner',
+        img: 3,
+        hr: true
+      },
+    ]
+mixin FeedUserSuggestion(config)
+  - var config = Object.assign({start: 0, end: connections.length}, config);
+  .card&attributes(attributes)
+    .card-header.bg-light.d-flex.justify-content-between.align-items-center
+      h5.mb-0 Add to your feed
+      a(href='#!').fs--1 See all
+    .card-body
+      each connection, index in connections.slice(config.start, config.end)
+        .d-flex
+          +Avatar({img: `team/${connection.img}.jpg`, size: '3xl'})
+          .flex-1.ms-2
+            h6.mb-0
+              a(href=`${CWD}${paths['user-profile']}`)=connection.name
+            if(connection.mutual)
+              p.fs--1.mb-0 #{connection.mutual} mutual connections
+            button.btn.btn-light.btn-sm.py-0.mt-1.border(type='button')
+              span.fas.fa-user-plus(data-fa-transform='shrink-5 left-2')
+              span.fs--1 Follow
+            if(index !== config.end - 1)
+              .border-bottom.border-dashed.my-3

@@ -1,0 +1,122 @@
+/* -------------------------------------------------------------------------- */
+/*                                   Navbar                                   */
+/* -------------------------------------------------------------------------- */
+
+.navbar{
+  .nav-link {
+    outline: none;
+  }
+  .dropdown-menu {
+    overflow: visible;
+    left: -0.5625rem;
+    &.dropdown-caret:after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 1rem;
+      height: 1rem;
+      background: $card-bg;
+      background: inherit;
+      top: -0.375rem;
+      left: map_get($spacers, 4);
+      transform: rotate(45deg);
+      border-radius: 0.125rem;
+      border-width: 1px 0 0 1px;
+      border-style: solid;
+      border-color: $dropdown-border-color;
+      box-shadow: $box-shadow-sm;
+    }
+    &.dropdown-menu-end {
+      left: auto;
+      right: -0.5625rem;
+      &:after {
+        right: 0.95rem;
+        left: auto;
+      }
+    }
+  }
+  // Initial hover color for all navbar dropdown item
+  .dropdown-item {
+    font-weight: $font-weight-medium;
+    @include hover-focus {
+      background-color: var(--falcon-nav-dropdown-link-hover-bg);
+      color: var(--#{$prefix}gray-1000);
+    }
+  }
+}
+.navbar-toggler-humburger-icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 0.3125rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: none;
+  @include hover-focus {
+    background-color: var(--#{$prefix}gray-300) !important;
+  }
+}
+.navbar-toggle-icon {
+  position: relative;
+  height: 0.125rem;
+  width: 1.25rem;
+  transition: $transition-base;
+  display: block;
+  top: -0.3125rem;
+  padding-right: 0;
+  .toggle-line {
+    display: block;
+    height: 100%;
+    border-radius: $border-radius;
+    transition: $transition-base;
+    background-color: var(--#{$prefix}gray-700);
+  }
+  &:after,
+  &:before {
+    content: "";
+    position: absolute;
+    height: 0.125rem;
+    background-color: var(--#{$prefix}gray-700);
+    left: 0;
+    transition: $transition-base;
+    border-radius: $border-radius;
+    width: 100%;
+  }
+  &:before {
+    top: 0.3125rem;
+  }
+  &:after {
+    top: 0.625rem;
+  }
+}
+.navbar-glass { background-color: $bg-navbar-glass; }
+
+.navbar-brand {
+  font-weight: $navbar-brand-font-weight;
+}
+.navbar-glass-shadow {
+  box-shadow: 0 0.5rem 0.5rem -0.5rem rgba($black, 0.2) !important;
+}
+
+//* -------------------------------------------------------------------------- */
+/*                               Navbar Dropdown                               */
+/* --------------------------------------------------------------------------- */
+
+.nine-dots-dropdown{ 
+  width: 16.7rem;
+  height: 21rem; 
+}
+.nine-dots{
+  // margin-top: 1rem;
+  // margin-bottom: 1rem;
+  &:hover{
+    circle{
+      fill: var(--#{$prefix}navbar-light-hover-color);
+    }
+  }
+}
+
+.dropdown-caret-bg::after {
+  background: var(--#{$prefix}dropdown-caret-bg) !important;
+}

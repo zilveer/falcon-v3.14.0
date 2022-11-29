@@ -1,0 +1,53 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/Pagination
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Pagination',
+      description: "Documentation and examples for showing pagination to indicate a series of related content exists across multiple pages.",
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/components/pagination/`,
+      linkText: 'Pagination on Bootstrap'
+    }
+
+block component
+  +PageHeader(pageHeader)
+
+  .row.g-0
+    .col-xl-6.pe-xl-2
+
+      +ComponentCard({
+        title: 'Example with text',
+        anchor: true,
+      }).mb-3
+        +PaginationTextDemo
+
+    .col-xl-6.ps-xl-2
+
+      +ComponentCard({
+        title: 'Example with icon',
+        anchor: true,
+      }).mb-3
+        +PaginationIconDemo
+
+  +ComponentCard({
+    title: 'Sizing',
+    anchor: true,
+    descriptionEl:"<p class='mt-2 mb-0'>Fancy larger or smaller pagination? Add <code>.pagination-lg</code> or <code>.pagination-sm</code> for additional sizes.</p>",
+  }).mb-3
+    +PaginationSizingDdemo.pagination-lg
+    +PaginationSizingDdemo
+    +PaginationSizingDdemo.pagination-sm
+
+  +ComponentCard({
+    title: 'Alignment',
+    anchor: true,
+    descriptionEl:`<p class='mt-2 mb-0'>Change the alignment of pagination components with <a href="${CWD}${paths['utilities-flex']}">flexbox utilities</a>.</p>`,
+  }).mb-3
+    +PaginationAlignment
+
+    //- ${CWD}${paths[${config.layout}-login]}
+
+
+

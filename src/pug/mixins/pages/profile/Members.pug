@@ -1,0 +1,195 @@
+mixin Members(config)
+  - var config = Object.assign({more: false, start: 0, gridClass: 'col-6 col-md-4 col-lg-3 col-xxl-2 mb-1'}, config);
+  -
+    var members = [
+      {
+        img: 'team/1.jpg',
+        title: 'Emilia Clarke',
+        subtitle: 'Technext limited',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/2.jpg',
+        title: 'Kit Harington',
+        subtitle: 'Harvard Korea Society',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/3.jpg',
+        title: 'Sophie Turner',
+        subtitle: 'Graduate Student Council',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/4.jpg',
+        title: 'Peter Dinklage',
+        subtitle: 'Art Club, MIT',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/5.jpg',
+        title: 'Nikolaj Coster',
+        subtitle: 'Archery Club, MIT',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/6.jpg',
+        title: 'Isaac Hempstead',
+        subtitle: 'Asymptones',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/7.jpg',
+        title: 'Alfie Allen',
+        subtitle: 'Brain Trust',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/8.jpg',
+        title: 'Iain Glen',
+        subtitle: 'GSAS Action Coalition',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/9.jpg',
+        title: 'Liam Cunningham',
+        subtitle: 'Caving Club, MIT',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/10.jpg',
+        title: 'John Bradley',
+        subtitle: 'Chess Club',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/11.jpg',
+        title: 'Rory McCann',
+        subtitle: 'Chamber Music Society',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/12.jpg',
+        title: 'Joe Dempsie',
+        subtitle: 'Clubchem',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/13.jpg',
+        title: 'Maisie Williams',
+        subtitle: 'Brain Trust',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/14.jpg',
+        title: 'Lena Headey',
+        subtitle: 'Clubchem',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/15.jpg',
+        title: 'Gwendoline Christie',
+        subtitle: 'Technext limited',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/16.jpg',
+        title: 'Nathalie Emmanuel',
+        subtitle: 'Asymptones',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/17.jpg',
+        title: 'Natalie Dormer',
+        subtitle: 'Musical Club',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/18.jpg',
+        title: 'Carice Houten',
+        subtitle: 'Concert Choir',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/19.jpg',
+        title: 'Hannah Murray',
+        subtitle: 'Career Club',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/20.jpg',
+        title: 'Rose Leslie',
+        subtitle: 'Musical Club',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/21.jpg',
+        title: 'Rory McCann',
+        subtitle: 'Alpine Ski Club',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/22.jpg',
+        title: 'Diana Rigg',
+        subtitle: 'Clubchem',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/23.jpg',
+        title: 'Michelle Fairley',
+        subtitle: 'Alpha Chi Omega',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/24.jpg',
+        title: 'Gemma Whelan',
+        subtitle: 'Chamber Music Society',
+        subtitleLink: '#!'
+      },
+      {
+        img: 'team/25.jpg',
+        title: 'Indira Varma',
+        subtitle: 'ASA',
+        subtitleLink: '#!'
+      }
+    ];
+  .card(class=`${config.more ? 'mt-3' : ''}`)&attributes(attributes)
+    .card-header.bg-light
+      .row.align-items-center
+        .col
+          h5.mb-0#followers Followers 
+            span.d-none.d-sm-inline-block (233)
+        .col(class=`${config.more ? 'text-end' : ''}`)
+          if(config.more)
+            a.font-sans-serif(href=`${CWD}${paths['followers']}`) All Members
+          else
+            form
+              .row.g-0
+                .col
+                  input(type="text" placeholder="Search...").form-control.form-control-sm
+                .col.d-md-block.d-none
+                  -
+                    var options = [
+                      'Concert Choir',
+                      'Clubchem',
+                      'Chamber Music Society',
+                      'Alpha Chi Omega',
+                      'Alpine Ski Club',
+                      'Career Club',
+                      'Musical Club',
+                      'Asymptones',
+                      'Clubchem',
+                      'Brain Trust',
+                      'Other'
+                    ];
+                  select.form-select.form-select-sm.ms-2(aria-label='.form-select-sm example')
+                    option(selected) All followers
+                    each option in options
+                      option=option
+          
+    .card-body.bg-light.px-1.py-0
+      .row.g-0.text-center.fs--1
+        each member in members.slice(config.start, config.end)
+          div(class=`${config.gridClass}`)
+            .bg-white.dark__bg-1100.p-3.h-100
+              +MediaVarified(Object.assign({link: `${CWD}${paths['user-profile']}`}, member))

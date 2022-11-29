@@ -1,0 +1,81 @@
+mixin SimplePaginationTableItem(config, index)
+  tr.btn-reveal-trigger
+    td(style="width: 28px;").align-middle
+      .form-check.mb-0
+        input.form-check-input(
+          type='checkbox' 
+          id=`simple-pagination-item-${index}`
+          data-bulk-select-row
+        )
+    th.align-middle.white-space-nowrap.name
+      a(href=`${CWD}${paths['customer-details']}`)=config.customer
+    td.align-middle.white-space-nowrap.email=config.email
+    td.align-middle.white-space-nowrap.product=config.product
+    td.align-middle.text-center.fs-0.white-space-nowrap.payment
+      +Badge(config.status)
+    td.align-middle.text-end.amount=config.amount
+    td.align-middle.white-space-nowrap.text-end
+      +Dropdown(`dropdown-simple-pagination-table-item-${index}`).float-end
+
+mixin SimplePaginationTable    
+  table.table.table-sm.mb-0.overflow-hidden.data-table.fs--1(data-options!={
+      responsive: false,
+      pagingType: 'simple', 
+      lengthChange: false, 
+      searching: false,
+      pageLength: 8,
+      language: {
+        info: '_START_ to _END_ Items of _TOTAL_',
+      },
+    })
+    thead.bg-200.text-900
+      tr
+        th.no-sort.white-space-nowrap
+          .form-check.mb-0.d-flex.align-items-center
+            input.form-check-input#checkbox-bulk-item-select(
+              type='checkbox' 
+              data-bulk-select!={
+                body: "table-simple-pagination-body",
+                actions: "table-simple-pagination-actions",
+                replacedElement: "table-simple-pagination-replace-element"
+              }
+            )
+        th.sort.pe-1.align-middle.white-space-nowrap Customer
+        th.sort.pe-1.align-middle.white-space-nowrap Email
+        th.sort.pe-1.align-middle.white-space-nowrap Product
+        th.sort.pe-1.align-middle.white-space-nowrap.text-center Payment
+        th.sort.pe-1.align-middle.white-space-nowrap.text-end Amount
+        th.no-sort.pe-1.align-middle.data-table-row-action
+    tbody.list#table-simple-pagination-body
+      each purchase, index in purchases
+        +SimplePaginationTableItem(purchase, index)
+
+mixin CardSimplePaginationTable
+  .card.shadow-none
+    .card-header
+      .row.flex-between-center
+        .col-6.col-sm-auto.d-flex.align-items-center.pe-0
+          h5.fs-0.mb-0.text-nowrap.py-2.py-xl-0 Recent Purchases 
+
+        .col-6.col-sm-auto.ms-auto.text-end.ps-0
+          #table-simple-pagination-actions.d-none
+            .d-flex
+              select.form-select.form-select-sm(aria-label='Bulk actions')
+                option(selected='') Bulk actions
+                option(value='Refund') Refund
+                option(value='Delete') Delete
+                option(value='Archive') Archive
+              button.btn.btn-falcon-default.btn-sm.ms-2(type='button') Apply
+          #table-simple-pagination-replace-element
+            button(type='button').btn.btn-falcon-default.btn-sm
+              span.fas.fa-plus(data-fa-transform="shrink-3 down-2")
+              span.d-none.d-sm-inline-block.ms-1 New
+            button(type='button').btn.btn-falcon-default.btn-sm.mx-2
+              span.fas.fa-filter(data-fa-transform="shrink-3 down-2")
+              span.d-none.d-sm-inline-block.ms-1 Filter
+            button(type='button').btn.btn-falcon-default.btn-sm
+              span.fas.fa-external-link-alt(data-fa-transform="shrink-3 down-2")
+              span.d-none.d-sm-inline-block.ms-1 Export
+    .card-body.px-0.pt-0
+      +SimplePaginationTable
+

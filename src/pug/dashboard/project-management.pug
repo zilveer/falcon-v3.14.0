@@ -1,0 +1,73 @@
+extends ../layouts/LayoutTheme
+include ../mixins/home/dashboard-alt/CardWorldMap
+include ../mixins/calendar/Mixins
+include ../mixins/common/Form
+include ../mixins/home/dashboard/Mixins
+
+include ../mixins/home/project-management/CardGreetings
+include ../mixins/home/project-management/CardStatistics
+include ../mixins/home/project-management/CardChart
+include ../mixins/home/project-management/CardProjectStatistics
+include ../mixins/home/project-management/CardRecentActivity
+include ../mixins/home/project-management/CardMemberInfo
+include ../mixins/home/project-management/CardMembersActivity
+include ../mixins/home/project-management/CardRunningProject
+include ../mixins/home/project-management/CardToDoListManagement
+include ../mixins/home/project-management/CardCalendarManagement
+
+prepend styles
+  link(href=`${CWD}vendors/leaflet/leaflet.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/leaflet.markercluster/MarkerCluster.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/leaflet.markercluster/MarkerCluster.Default.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/fullcalendar/main.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/flatpickr/flatpickr.min.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/chart/chart.min.js`)
+  script(src=`${CWD}vendors/leaflet/leaflet.js`)
+  script(src=`${CWD}vendors/leaflet.markercluster/leaflet.markercluster.js`)
+  script(src=`${CWD}vendors/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js`)
+  script(src=`${CWD}vendors/countup/countUp.umd.js`)
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+  script(src=`${CWD}vendors/fullcalendar/main.min.js`)
+  script(src=`${CWD}assets/js/flatpickr.js`)
+  script(src=`${CWD}vendors/dayjs/dayjs.min.js`)
+
+append content
+  .row.g-3.mb-3
+    .col-xxl-6.col-lg-12
+      +CardGreetingsManagement.h-100
+    .col-xxl-3.col-md-6
+      +CardTeamProgress.h-100
+    .col-xxl-3.col-md-6
+      +CardFalconRoadMapDiscussion.h-100
+
+  .row.g-3.mb-3
+    .col-xxl-6.col-lg-12
+      .row
+        .col-lg-12
+          +CardManagementStatistics
+        .col-lg-12
+          +CardReportForThisWeek
+    .col-xxl-6.col-lg-6.order-xxl-1
+      +CardWorldMap({title: 'Project Locations'})
+    .col-xxl-6.col-lg-6
+      +CardProjectStatistics.h-100
+    .col-xxl-6.col-lg-6.order-xxl-1
+      +CardRecentActivity.h-100
+    .col-xxl-4.col-lg-6.order-xxl-3
+      +CardMembersActivity.h-100
+    .col-xxl-8.order-xxl-2
+      +CardMemberInfo.h-100
+    .col-12.order-xxl-3
+      +CardRunningProject
+  .row.g-3 
+    .col-xxl-8 
+      +CardCalendarManagement.h-100
+    .col-xxl-4 
+      +CardToDoListManagement.h-100
+
+append afterContent
+  +CalendarEventDetailsModal
+  +CalendarAddEventModal
+

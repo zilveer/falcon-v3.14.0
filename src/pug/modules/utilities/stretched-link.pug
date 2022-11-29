@@ -1,0 +1,36 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/utilities/StretchedLink
+
+append variables
+  
+  
+  -
+    var pageHeader = {
+      title: 'Stretched Link',
+      description: 'Make any HTML element or Bootstrap component clickable by “stretching” a nested link via CSS.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/helpers/stretched-link/`,
+      linkText: 'Stretched-link on Bootstrap'
+    }
+append content
+  +PageHeader(pageHeader)
+
+  +ComponentCard({
+    title: "Example",
+    description: `Add <code>.stretched-link </code> to a link to make its containing block clickable via a <code>::after</code> pseudo element. In most cases, this means that an element with <code>position: relative; </code> that contains a link with the <code>.stretched-link </code> class is clickable. <br>
+    Cards have <code>position: relative </code>by default in Bootstrap, so in this case you can safely add the <code>.stretched-link </code>class to a link in the card without any other HTML changes.
+    <p class="mt-3">Multiple links and tap targets are not recommended with stretched links. However, some<code>position </code>and <code>z-index </code> styles can help should this be required.`,
+    anchor: true
+  }).mb-3
+    +StretchedLinkExampleDemo
+
+  .card.mb-3
+    .card-header
+      +StretchedLinkContainingBlockHeader.mt-2
+    .card-body.py-0
+      +ComponentCard({
+        title: false,
+        anchor: true,
+      }).mx-ncard.shadow-none.rounded-top-0
+        +StretchedLinkContainingBlockDemo
+
+

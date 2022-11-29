@@ -1,0 +1,171 @@
+
+/* -------------------------------------------------------------------------- */
+/*                                   Choices                                  */
+/* -------------------------------------------------------------------------- */
+
+@use 'sass:math';
+
+.choices{
+  font-family: var(--#{$prefix}font-sans-serif) !important;
+  .choices__inner {
+    border-radius: 0.25rem;
+    min-height: calc(#{$input-line-height} + #{$input-padding-y*2} + #{$input-border-width});
+    line-height: 1.5rem !important;
+    font-size: 1rem;
+    background-color: var(--#{$prefix}input-bg) !important;
+    background-size: $form-select-bg-size;
+    border: 1px solid var(--falcon-input-border-color);
+    font-family: $form-select-font-family;
+    padding:  math.div($form-select-padding-y, 1.2) ($form-select-padding-x)  math.div($form-select-padding-y, 1.2) $form-select-padding-x;
+    box-shadow: $input-box-shadow;
+  }
+  .choices__input--cloned {
+    padding: 0;
+    font-size: 1rem;
+    color: var(--#{$prefix}-input-color);
+    background-color: var(--#{$prefix}input-bg) !important;
+    margin-top: 5px !important;
+    vertical-align: top;
+    margin-bottom: 0;
+  }
+  .choices__list--dropdown{
+    border: 1px solid var(--#{$prefix}gray-200) !important;
+    box-shadow: var(--#{$prefix}box-shadow) !important;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    background-color: var(--#{$prefix}gray-100);
+    // border-radius: $border-radius;
+    .choices__item--selectable {
+      padding: 2px $form-select-padding-x;
+      padding-right: 20px;
+      font-size: 1rem !important;
+      background-color: var(--#{$prefix}gray-200);
+      color: var(--#{$prefix}body-color);
+      &.is-highlighted {
+        background-color: var(--#{$prefix}primary);
+        color: var(--#{$prefix}choices-item-selectable-highlighted-bg);
+      }
+    }
+  }
+  .choices__list{
+    margin-top: 0 !important;
+    .has-no-choices {
+      background-color: var(--#{$prefix}choices-item-has-no-choices-bg);
+    }
+  }
+  .choices__list--multiple .choices__item{
+    padding: 0 8px !important;
+    font-size: 0.813rem !important;
+    border: 0;
+    background-color: var(--#{$prefix}gray-200);
+    border-radius: 4px;
+    margin-bottom: 0 !important;
+    margin-top: 5px !important;
+    color: var(--#{$prefix}body-color);
+  }
+  .choices__button {
+    background-color: red !important;
+    border-left: $black !important;
+  }
+  .choices__list--single{
+    padding: 0 !important;
+    margin-top: 5px !important; 
+    .choices__button{
+      background-color: transparent !important;
+    }
+  }
+}
+.choices[data-type*=select-multiple] .choices__button, .choices[data-type*=text] .choices__button{
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==);
+  background-color: transparent !important;
+  padding-left: 5px !important;
+  width: 5px !important;
+  background-size: 6px !important;
+}
+.dark{
+  .choices[data-type*=select-multiple] .choices__button, .choices[data-type*=text] .choices__button{
+    filter: invert(1) grayscale(100%) brightness(80%) !important;
+  }
+}
+
+.choices[data-type*=select-one] {
+  .choices__input {
+    padding-left: $form-select-padding-x;
+    padding-right: $form-select-padding-x;
+  }
+  .choices__inner{
+    padding-bottom: 5px !important;
+  }
+}
+.is-focused,
+.is-open{
+  .choices__inner{
+    border-radius: $border-radius !important;
+    border-color: $border-color !important;
+  }
+}
+
+.was-validated  {
+  .choices{
+    &.valid{
+      .choices__inner{
+        border-color: var(--#{$prefix}success) !important;
+        padding-right: calc(1.5em + 0.75rem);
+        background-image: escape-svg($form-feedback-icon-valid);
+        background-repeat: no-repeat;
+        background-position: right calc(0.375em + 0.1875rem) center;
+        background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+      }
+    }
+    &[data-type="select-one"].valid{
+      .choices__inner{
+        background-position: right calc(0.375em + 1.55rem) center;
+      }
+    }
+    &.invalid{
+      margin-bottom: 0;
+      .choices__inner{
+        border-color: var(--#{$prefix}danger) !important;
+        padding-right: calc(1.5em + 0.75rem);
+        background-image: escape-svg($form-feedback-icon-invalid);
+        background-repeat: no-repeat;
+        background-position: right calc(0.375em + 0.1875rem) center;
+        background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+      }
+      & +.invalid-feedback{
+        display: block;
+      }
+    }
+    &[data-type="select-one"].invalid{
+      .choices__inner{
+        background-position: right calc(0.375em + 1.55rem) center;
+      }
+    }
+  }
+  .choices[data-type*=select-one] .choices__button {
+    margin-right: 60px !important;
+  }
+  
+}
+.choices[data-type*=select-one] .choices__input {
+  border-bottom: var(--#{$prefix}gray-100);
+}
+
+// Cross button 
+
+.choices .choices__list--single .choices__button {
+  background-color: var(--#{$prefix}bg-choices-close-button) !important;   
+}
+
+.choices[data-type*=select-one] .choices__button {
+  margin-right: 30px;
+}
+
+[dir="rtl"] .choices[data-type*=select-one]:after {
+  left: auto !important;
+  right: 11.5px !important;
+}
+[dir="rtl"] .choices[data-type*=select-one] .choices__button {
+  left: auto;
+  right: 0;
+}

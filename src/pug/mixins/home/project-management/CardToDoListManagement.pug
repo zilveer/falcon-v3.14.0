@@ -1,0 +1,55 @@
+append variables
+  -
+    var todoList = [
+      {
+        task: 'Design a facebook ad',
+        color: 'primary'
+      },
+      {
+        task: 'Analyze Data',
+        color: 'secondary'
+      },
+      {
+        task: 'Youtube campaign',
+        color: 'success'
+      },
+      {
+        task: 'Assign 10 employee',
+        color: 'warning'
+      },
+      {
+        task: 'Meeting at 12',
+        color: 'danger'
+      },
+      {
+        task: 'Meeting at 10',
+        color: 'info'
+      },
+    ];
+
+mixin CardToDoListManagement
+  .card&attributes(attributes)
+    .card-header
+      h6.mb-0 To Do List
+
+    .card-body.p-0.scrollbar.to-do-list-body-height
+      each item, index in todoList
+        +TodoItem(item,index)
+
+    .card-footer.bg-light.p-0
+      a.btn.btn-sm.btn-link.d-block.py-2(href=`#!`)
+        span.fas.fa-plus.me-1.fs--2
+        | Add New Task
+
+mixin TodoItem(item,index)
+  .d-flex.justify-content-between.border-top.hover-actions-trigger.btn-reveal-trigger.px-x1.border-200.todo-list-item(class = index===todoList.length-1 && `border-bottom`)
+    .form-check.mb-0.d-flex.align-items-center
+      input.form-check-input.rounded-circle.form-check-line-through.p-2(type="checkbox" id=`checkbox-todo-${index}` class= `form-check-input-${item.color}`)
+      label.form-check-label.mb-0.p-3(for=`checkbox-todo-${index}`)=item.task
+    .d-flex.align-items-center
+      .hover-actions
+        button.btn.btn-light.icon-item.rounded-3.me-2.fs--2.icon-item-sm
+          span.fas.fa-clock
+        button.btn.btn-light.icon-item.rounded-3.me-2.fs--2.icon-item-sm
+          span.fas.fa-user-plus
+      +DashboardDropdown(`management-to-do-list-${index}`, 'sm').transition-none

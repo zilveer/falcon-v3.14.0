@@ -1,0 +1,226 @@
+/* -------------------------------------------------------------------------- */
+/*                                  Utilities                                 */
+/* -------------------------------------------------------------------------- */
+
+$utilities: () !default;
+$utilities: map_merge(
+  (
+    "opacity": (
+      property: opacity,
+      responsive: true,
+      values: $opacities,
+    ),
+    "font-weight": (
+      property: font-weight,
+      class: fw,
+      values: (
+        thin: $font-weight-thin,
+        lighter: $font-weight-lighter,
+        light: $font-weight-light,
+        normal: $font-weight-normal,
+        medium: $font-weight-medium,
+        semi-bold: $font-weight-semi-bold,
+        bold: $font-weight-bold,
+        bolder: $font-weight-bolder,
+        'black': $font-weight-black,
+      ),
+    ),
+    "font-size": (
+      property: font-size,
+      class: fs,
+      responsive: true,
+      values: $font-sizes,
+    ),
+    "position": (
+      property: position,
+      responsive: true,
+      values: $positions,
+    ),
+    "height": (
+      property: height,
+      class: h,
+      responsive: true,
+      values: $sizes,
+    ),
+    "width": (
+      property: width,
+      responsive: true,
+      class: w,
+      values: $sizes
+    ),
+    "min-viewport-height": (
+      property: min-height,
+      class: min-vh,
+      responsive: true,
+      values: $viewport-heights,
+    ),
+    "viewport-height": (
+      property: height,
+      class: vh,
+      responsive: true,
+      values: $viewport-heights,
+    ),
+    "max-viewport-height": (
+      property: max-height,
+      class: max-vh,
+      responsive: true,
+      values: $viewport-heights,
+    ),
+    "viewport-width": (
+      property: width,
+      class: vw,
+      responsive: true,
+      values: $viewport-widths,
+    ),
+    "border": (
+      property: border,
+      responsive: true,
+      values: (
+        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+        0: 0,
+      )
+    ),
+    "border-top": (
+      property: border-top,
+      responsive: true,
+      class: border,
+      values: (
+        top: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+        top-0: 0,
+      ),
+    ),
+    "border-end": (
+      property: border-right,
+      responsive: true,
+      class: border,
+      values: (
+        end: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+        end-0: 0,
+      ),
+    ),
+    "border-start": (
+      property: border-left,
+      responsive: true,
+      class: border,
+      values: (
+        start: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+        start-0: 0,
+      ),
+    ),
+    "border-bottom": (
+      property: border-bottom,
+      responsive: true,
+      class: border,
+      values: (
+        bottom: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+        bottom-0: 0,
+      ),
+    ),
+    "border-x": (
+      property: border-left border-right,
+      responsive: true,
+      class: border,
+      values: (
+        x: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+        x-0: 0,
+      ),
+    ),
+    "border-y": (
+      property: border-top border-bottom,
+      responsive: true,
+      class: border,
+      values: (
+        y: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+        y-0: 0,
+      ),
+    ),
+    "border-color": (
+      responsive: true,
+      property: border-color,
+      class: border,
+        local-vars: (
+          "border-opacity": 1
+        ),
+      values: null
+    ),
+    "border-colors": (
+      responsive: true,
+      property: border-color,
+      class: border,
+        local-vars: (
+          "border-opacity": 1
+        ),
+      values: $utilities-border-colors
+    ),
+    "border-style": (
+      css-var: true,
+      css-variable-name: border-style,
+      class: border,
+      values: $border-styles
+    ),
+    "rounded-top": (
+      responsive: true,
+      property: border-top-left-radius border-top-right-radius,
+      class: rounded,
+      values: (
+        top: $border-radius,
+        top-lg: $border-radius-lg,
+        top-0: 0,
+      ),
+    ),
+    "rounded-end": (
+      responsive: true,
+      property: border-top-right-radius border-bottom-right-radius,
+      class: rounded,
+      values: (
+        end: $border-radius,
+        end-lg: $border-radius-lg,
+        end-0: 0,
+      ),
+    ),
+    "rounded-bottom": (
+      responsive: true,
+      property: border-bottom-right-radius border-bottom-left-radius,
+      class: rounded,
+      values: (
+        bottom: $border-radius,
+        bottom-lg: $border-radius-lg,
+        bottom-0: 0,
+      ),
+    ),
+    "rounded-start": (
+      responsive: true,
+      property: border-bottom-left-radius border-top-left-radius,
+      class: rounded,
+      values: (
+        start: $border-radius,
+        start-lg: $border-radius-lg,
+        start-0: 0,
+      ),
+    ),
+    "rounded-0": (
+      responsive: true,
+      property: border-radius,
+      class: rounded,
+      values: (
+        0: 0,
+      ),
+    ),
+    "background-soft-color": (
+      property: background-color,
+      class: bg-soft,
+      values: $bg-soft-colors,
+    ),
+    "translate-middle": (
+      property: transform,
+      class: translate,
+      responsive: true,
+      values: (
+        middle: (translateX(-50%) translateY(-50%)),
+        middle-x: translateX(-50%),
+        middle-y: translateY(-50%),
+      )
+    ),
+  ),
+  $utilities
+);

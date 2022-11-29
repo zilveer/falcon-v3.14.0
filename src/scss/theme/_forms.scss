@@ -1,0 +1,79 @@
+/*-----------------------------------------------
+|   Form
+-----------------------------------------------*/
+label {
+  font-size: map_get($font-sizes, "-1");
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.02em;
+}
+
+.form-check-label {
+  line-height: 1.45rem;
+}
+
+/*-----------------------------------------------
+|   Remove spinner from Input[type="number"]
+-----------------------------------------------*/
+.input-spin-none::-webkit-outer-spin-button,
+.input-spin-none::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-spin-none[type="number"] {
+  -moz-appearance: textfield;
+  /* Firefox */
+}
+
+/*-----------------------------------------------
+|   Theme Checkbox
+-----------------------------------------------*/
+.form-check {
+
+  @each $color,
+  $value in $theme-colors {
+    &-input {
+      &-#{$color} {
+        border-color: $value !important;
+
+        &:focus {
+          box-shadow: 0 0 $input-btn-focus-blur $input-btn-focus-width rgba($value, $input-btn-focus-color-opacity);
+        }
+
+        &:checked {
+          background-color: $value !important;
+        }
+      }
+    }
+  }
+}
+
+.form-check-line-through {
+  &+label {
+    transition: $transition-base;
+  }
+
+  &:checked+label {
+    color: $gray-500;
+    text-decoration: line-through;
+  }
+
+  .ticket-todo-list &{
+    &+label {
+      transition: none;
+    }
+  }
+}
+
+// Floating Labels
+.form-floating>label {
+  line-height: 1.625rem;
+}
+
+input[type="file"].form-control-lg {
+  line-height: 1.813rem;
+}
+
+option:disabled {
+  color: var(--#{$prefix}gray-400);
+}

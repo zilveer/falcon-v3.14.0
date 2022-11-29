@@ -1,0 +1,24 @@
+
+mixin LoginForm(config)
+  - var config = Object.assign({layout: 'basic', email: {}, password: {}}, config)
+  form
+    .mb-3
+      if config.email.label
+        label.form-label(for=config.email.attrs.id)=config.email.label
+      input.form-control(id=config.email.attrs.id type='email')&attributes(config.email.attrs)
+    .mb-3
+      if config.password.label
+        .d-flex.justify-content-between
+          label.form-label(for=config.password.attrs.id)=config.password.label
+      input.form-control(id=config.password.attrs.id type='password')&attributes(config.password.attrs)
+
+    .row.flex-between-center
+      .col-auto
+        .form-check.mb-0
+          input.form-check-input(type='checkbox')&attributes(config.checkbox.attrs)
+          label.form-check-label.mb-0(for=config.checkbox.attrs.id) Remember me
+      .col-auto
+        a.fs--1(href=`${CWD}${paths[`${config.layout}-forgot-password`]}`) Forgot Password?
+         
+    .mb-3
+      button.btn.btn-primary.d-block.w-100.mt-3(type='submit' name='submit') Log in

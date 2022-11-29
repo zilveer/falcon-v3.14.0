@@ -1,0 +1,46 @@
+extends ../../../layouts/LayoutTheme
+include ../../../mixins/e-commerce/Mixins
+include ../../../mixins/e-commerce/ProductList
+            
+
+prepend styles
+  link(href=`${CWD}vendors/swiper/swiper-bundle.min.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/swiper/swiper-bundle.min.js`)
+
+append content
+  .card.mb-3
+    .card-body
+      .row.flex-between-center
+        .col-sm-auto.mb-2.mb-sm-0
+          h6.mb-0 Showing 1-24 of 205 Products
+        .col-sm-auto
+          .row.gx-2.align-items-center
+            .col-auto
+              form.row.gx-2
+                .col-auto
+                  small Sort by: 
+                .col-auto
+                  select.form-select.form-select-sm(aria-label='Bulk actions')
+                    option(selected='') Best Match
+                    option(value='Refund') Newest
+                    option(value='Delete') Price
+            .col-auto.pe-0
+              a(href=`${CWD}${paths['product-grid']}` data-bs-toggle="tooltip" title="Product Grid").text-600.px-1
+                span.fas.fa-th
+  .card
+    .card-body.p-0.overflow-hidden
+      .row.g-0
+        each product, index in products.slice(0, 4)
+          +ProductList(product, index)
+    .card-footer.border-top.d-flex.justify-content-center
+      button(type='button' disabled data-bs-toggle="tooltip" data-bs-placement="top" title="Prev").btn.btn-falcon-default.btn-sm.me-2
+        span.fas.fa-chevron-left
+      a.btn.btn-sm.btn-falcon-default.text-primary.me-2(href="#!") 1
+      a.btn.btn-sm.btn-falcon-default.me-2(href="#!") 2
+      a.btn.btn-sm.btn-falcon-default.me-2(href="#!")
+        span.fas.fa-ellipsis-h
+      a.btn.btn-sm.btn-falcon-default.me-2(href="#!") 35
+      button(type='button' data-bs-toggle="tooltip" data-bs-placement="top" title="Next").btn.btn-falcon-default.btn-sm
+        span.fas.fa-chevron-right

@@ -1,0 +1,104 @@
+extends ../../../layouts/LayoutComponent
+
+block append variables           
+  - 
+    var pageHeader = {
+      title: 'How to use',
+      description: 'A powerful, interactive charting and visualization library for browser.',
+      url: `https://echarts.apache.org/en/option.html#title`,
+      linkText: 'Documentation for EChart'
+    }
+
+block prepend scripts
+  script(src=`${CWD}vendors/lodash/lodash.min.js`)
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+  script(src=`${CWD}vendors/dayjs/dayjs.min.js`)
+
+block append content
+  +PageHeader(pageHeader)
+
+
+  .card.mb-3
+    .card-header
+      h5.mb-0 Javascript
+    .card-body.bg-light   
+      +ComponentCardLib
+        script(src=`vendors/echarts/echarts.min.js`)
+  .card.mb-3
+    .card-header
+      h5.mb-0 Getting Started
+    .card-body.bg-light
+      h5.mb-3 For gulp based workflow:
+      p To add a new chart using Echarts, follow the steps below: 
+
+      ul
+        li Add an HTML element with a unique class name. For example: 
+          +ComponentCardLib 
+            .echart-bar-top-products(data-echart-responsive="true")
+        li Give a height of the chart element in CSS
+        li Add a JavaScript file into 
+          code src/js 
+          | directory and write a function to initialize the Echart with the required options.
+          br
+          strong Tips: 
+          | Select any chart of #{name} which you want to duplicate, copy the file and replace the class name and options.
+
+        li Import and call the function into 
+          code src/js/theme 
+          | file. 
+      h5.mt-5.mb-3 If you're not using gulp: 
+      p If you are not using gulp based workflow and want to add Echart, Follow the steps below:
+      ul
+        li Add an HTML element with a unique class name. For example: 
+          +ComponentCardLib 
+            .echart-bar-top-products(data-echart-responsive="true")
+        li Give a height of the chart element in CSS
+        li Write a function to the 
+          code public/assets/js/theme.js 
+          | file to initialize the echart with the class name added in the first step and pass the required options. 
+          br
+          strong Tips: 
+          | Select the chart you want to duplicate and copy the code of the chart from 
+          code public/assets/js/theme.js 
+          | or 
+          code public/assets/js/echart-example.js
+          |. Then place the code bottom of the 
+          code public/assets/js/theme.js 
+          | file and replace the class name and the options. 
+        li Call the function you made in previous step.
+
+
+
+  .card.mb-3
+    .card-header
+      h5.mb-0 Responsive
+    .card-body.bg-light
+      p.mb-0 To responsive Echarts just add 
+        code data-echart-responsive="true" 
+        | in your dom element. #{name} will take the 
+        code true 
+        | value and will resize the charts when container size changes.
+
+  +ComponentCard({
+    title: 'Echart inside a Tab',
+    anchor: true,
+    bodyClass:'bg-light',
+    description:`To set any echarts inside Bootstrap tab component in ${name}, follow the steps below:</p><ul><li>Add <code>data-tab-has-echart </code>attribute to the <code>.nav-tab </code>element.</li><li>Then add <code>data-echart-tab </code>attribute to the Echart element.</li></ul><p>By following these steps multiple echart can be added in a tab or multiple tabs with Echarts also be placed.`,
+    descriptionClass:'mt-2 mb-0'
+  })
+    
+    ul#echart-tab-example.nav.nav-tabs.mb-3(role='tablist' data-tab-has-echarts)
+      li.nav-item(role='presentation')
+        button#bar-chart-tab.nav-link.active(data-bs-toggle='pill' data-bs-target='#bar-chart' type='button' role='tab' aria-controls='bar-chart' aria-selected='true') Bar Chart
+      li.nav-item(role='presentation')
+        button#line-charts-tab.nav-link(data-bs-toggle='pill' data-bs-target='#line-charts' type='button' role='tab' aria-controls='line-charts' aria-selected='false') Line Chart
+    #echart-tab-example-content.tab-content
+      #bar-chart.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='bar-chart-tab') 
+        .echart-bar-top-products(data-echart-responsive="true" data-echart-tab)
+      #line-charts.tab-pane.fade(role='tabpanel' aria-labelledby='line-charts-tab') 
+        .echart-line-total-sales(data-echart-responsive="true" data-echart-tab)
+
+
+
+
+

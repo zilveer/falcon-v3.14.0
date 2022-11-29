@@ -1,0 +1,74 @@
+extends ../../layouts/LayoutComponent
+
+append variables
+  
+  -
+    var exampleItems = [
+      {
+        name: 'Doing',
+        items: [
+          {
+            title: 'Add a cookie notice which will be shown in the bottom of the page and have a link of "Privacy Policy"',
+          },
+          {
+            title: 'Add a pdf file that describes all the symptoms of COVID-19',
+          },
+          {
+            title: 'Make a Registration form that include Name, Email and a Password input field',
+          },
+          {
+            title: 'Update profile page layout with cover image and user setting menu',
+          },
+        ]
+      },
+      {
+        name: 'Review',
+        items: [
+          {
+            title: 'Update all the npm packages and also remove the outdated plugins',
+          },
+          {
+            title: 'Add a getting started page that allows users to see the starting process',
+          },
+          { title: 'Review and test all the task and deploy to the server'},
+          { 
+            title: 'Get all the data by API call and show them to the landing page by adding a new section'
+          },
+        ]
+      }
+    ]
+  -
+    var pageHeader = {
+      title: 'Draggable',
+      description: 'A lightweight, responsive, modern drag &amp; drop library',
+      url: 'https://shopify.github.io/draggable/docs/',
+      linkText: 'Draggable Documentation'
+    }
+
+prepend scripts
+  script(src=`${CWD}vendors/draggable/draggable.bundle.legacy.js`)
+
+append content
+  +PageHeader(pageHeader)
+
+  +ComponentCard({
+    title: 'Example',
+    anchor: true,
+    description:`Here is the example of the Multiple Container Sortable feature of the Draggable library. We also design <a href="${CWD}${paths['kanban']}">Kanban Board </a>using this Draggable Library. <strong>You can drag any card in between the two columns below:</strong>`,
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    .row
+      each listItems in exampleItems
+        .col-lg-6
+          .kanban-items-container.border.bg-white.dark__bg-1000.rounded-2.py-3.mb-3(style="max-height: none;")
+            each item in listItems.items
+              .card.mb-3.kanban-item.shadow-sm.dark__bg-1100
+                .card-body
+                  p.fs--1.fw-medium.font-sans-serif.mb-0=item.title  
+
+  .card.mb-3
+    .card-header
+      h5.mb-0 Javascript
+    .card-body.bg-light
+      +ComponentCardLib
+        script(src=`vendors/draggable/draggable.bundle.legacy.js`)

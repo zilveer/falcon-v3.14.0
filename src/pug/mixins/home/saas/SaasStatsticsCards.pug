@@ -1,0 +1,75 @@
+mixin SaasStatsticsCard({title, badge, amount, amountAtrrs})
+  .card&attributes(attributes)
+    .card-body
+      .row.flex-between-center
+        .col.d-md-flex.d-lg-block.flex-between-center 
+          h6.mb-md-0.mb-lg-2=title
+          span.badge.rounded-pill(class=`badge-soft-${badge.color}`)
+            span.fas.fa-caret-up
+            |  #{badge.text}
+        .col-auto
+          h4.fs-3.fw-normal(data-countup!=amount)&attributes(amountAtrrs) 0
+
+mixin SaasActiveUserCard
+  .card&attributes(attributes)
+    .card-body
+      .row.flex-between-center.g-0
+        .col-6.d-lg-block.flex-between-center 
+          h6.mb-2.text-900 Active Users
+          h4.fs-3.fw-normal.text-700.mb-0 765k
+        .col-auto.h-100
+          div(style='height:50px;min-width:80px;' data-echarts!={
+            xAxis: {
+              show: false,
+              boundaryGap: false
+            },
+            series: [ 
+                {
+                  data: [3, 7, 6, 8, 5, 12, 11],
+                  type: 'line',
+                  symbol: "none",
+                }
+              ],
+              grid: { right: "0px", left: "0px", bottom: "0px", top: "0px" },
+            },
+          )
+
+mixin SaasRevenueCard
+  +SaasStatsticsCard({
+      title: 'Revenue',
+      badge: {
+        color: 'success',
+        text: '61.8%'
+      },
+      amount: {
+        endValue: 82.18, decimalPlaces: 2, suffix: 'M', prefix: '$'
+      },
+      amountAtrrs: {
+        class: 'text-700'
+      }
+    })&attributes(attributes)
+
+mixin SaasConversionCard
+  +SaasStatsticsCard({
+    title: 'Conversion',
+    badge: {
+      color: 'primary',
+      text: '29.4%'
+    },
+    amount: {
+      endValue: 28.5, decimalPlaces: 2, suffix: '%'
+    },
+    amountAtrrs: {
+      class: 'text-primary'
+    }
+  })&attributes(attributes)
+
+mixin SaasStatsticsCards()
+  .row.g-3
+    .col-md-4.col-xxl-12
+      +SaasActiveUserCard.h-100
+    .col-md-4.col-xxl-12
+      +SaasRevenueCard.h-100
+    .col-md-4.col-xxl-12
+      +SaasConversionCard.h-100
+

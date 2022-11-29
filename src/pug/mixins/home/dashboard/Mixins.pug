@@ -1,0 +1,38 @@
+mixin DashboardDropdown(id, reveal)
+  .dropdown.font-sans-serif.btn-reveal-trigger
+    button.btn.btn-link.text-600.btn-sm.dropdown-toggle.dropdown-caret-none&attributes(attributes)(type='button' class=`btn-reveal${reveal ? '-' + reveal : ''}` id=id data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false")
+      span.fas.fa-ellipsis-h.fs--2
+
+    .dropdown-menu.dropdown-menu-end.border.py-2(aria-labelledby=id )
+      a(href='#!').dropdown-item View
+      a(href='#!').dropdown-item Export
+      .dropdown-divider
+      a(href='#!').dropdown-item.text-danger Remove
+
+
+
+mixin CardBandWidthSaved
+  .card&attributes(attributes)
+    .card-header.bg-light.d-flex.flex-between-center.py-2
+      h6.mb-0 Bandwidth Saved
+      +DashboardDropdown('dropdown-bandwidth-saved')
+    .card-body.d-flex.flex-center.flex-column
+      // Find the JS file for the following chart at: src/js/charts/echarts/bandwidth-saved.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-bandwidth-saved(data-echart-responsive="true")
+      .text-center.mt-3
+        h6.fs-0.mb-1
+          span.fas.fa-check.text-success.me-1(data-fa-transform="shrink-2")
+          | 35.75 GB saved
+        p.fs--1.mb-0 38.44 GB total bandwidth
+
+    .card-footer.bg-light.py-2
+      .row.flex-between-center
+        .col-auto
+          select.form-select.form-select-sm
+            option Last 6 Months
+            option Last Year
+            option Last 2 Year
+        .col-auto
+          a(href="#!").fs--1.font-sans-serif Help
+

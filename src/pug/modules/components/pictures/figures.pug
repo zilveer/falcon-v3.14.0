@@ -1,0 +1,31 @@
+extends ../../../layouts/LayoutComponent
+include ../../../mixins/components/Figures
+
+append variables
+  -
+    var pageHeader = {
+      title: 'Figures',
+      description: 'Documentation and examples for displaying related images and text with the figure component in Bootstrap.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/content/figures/`,
+      linkText: 'Figures on Bootstrap'
+    }
+
+block component
+  +PageHeader(pageHeader)
+
+  
+  +ComponentCard({
+    title: 'Example',
+    anchor: true,
+    description:"Anytime you need to display a piece of content—like an image with an optional caption, consider using a <code>figure</code>.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +FigureExampleDemo
+
+  +ComponentCard({
+    title: 'Caption Alignment',
+    anchor: true,
+    description:`Aligning the figure’s caption is easy with bootstrap <a href="https://getbootstrap.com/docs/${bootstrapVersion}/utilities/text/#text-alignment">text utilities</a>`,
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +FigureCaptionAlignmentDemo   

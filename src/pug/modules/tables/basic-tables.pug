@@ -1,0 +1,137 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/Table
+
+append variables
+  -
+    var pageHeader = {
+      title: 'Tables',
+      description: `Documentation and examples for opt-in styling of tables with ${name}.`,
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/content/tables/`,
+      linkText: 'Tables on Bootstrap'
+    }
+
+append content
+  +PageHeader(pageHeader)
+
+  .row.g-3.mb-3
+
+    .col-lg-6
+      +ComponentCard({
+        title: 'Basic Table',
+        anchor: true,
+        headerClass:'border-bottom',
+        bodyClass:'pt-0',
+        description:"Using the most basic table markup, here’s how <code> .table </code> based tables look in Bootstrap.",
+        descriptionClass:'mt-2 mb-0'
+      })
+        .table-responsive.scrollbar
+          +Table({action:true})
+
+    .col-lg-6
+      +ComponentCard({
+        title: 'Striped',
+        anchor: true,
+        headerClass:'border-bottom',
+        bodyClass:'pt-0',
+        description:"Use <code>.table-striped</code> to add zebra-striping to any table row within the <code> tbody</code>.",
+        descriptionClass:'mt-2 mb-0',
+      }).z-index-1
+        .table-responsive.scrollbar
+          +Table({action:true,actionType:'dropdown'}).table-striped.overflow-hidden
+
+    .col-lg-6
+    
+      +ComponentCard({
+        title: 'Dark',
+        anchor: true,
+        bodyClass:'pt-0',
+        description:"Using the most basic table markup, here’s how <code>.table-dark</code> based tables look in Bootstrap.",
+        descriptionClass:'mt-2 mb-0'
+      })
+        +Table.table-dark 
+
+    .col-lg-6
+      +ComponentCard({
+        title: 'Hoverable Rows',
+        anchor: true,
+        headerClass:'border-bottom',
+        bodyClass:'pt-0',
+      })
+        .table-responsive.scrollbar
+          +HoverTableExample({action:true})
+
+    .col-lg-6
+      +ComponentCard({
+        title: 'Bordered tables ',
+        anchor: true,
+        bodyClass:'pt-0',
+        description:"Add <code>.table-bordered</code> for borders on all sides of the table and cells.",
+        descriptionClass:'mt-2 mb-0'
+      })
+        +Table({head:true}).table-bordered
+
+    .col-lg-6
+      +ComponentCard({
+        title: 'Captions',
+        anchor: true,
+        headerClass:'border-bottom',
+        bodyClass:'pt-0',
+      })
+        +Table({caption:true})
+
+    .col-lg-6
+      +ComponentCard({
+        title: 'Small Tables',
+        anchor: true,
+        headerClass:'border-bottom',
+        bodyClass:'pt-0',
+        description:'Add <code>.table-sm</code> to make any <code>.table</code> more compact by cutting all cell padding in half.',
+        descriptionClass:'mt-2 mb-0'
+      })
+        +Smalltable.table-sm
+
+        
+    .col-lg-6
+      +ComponentCard({
+        title: 'Highlight Column',
+        anchor: true,
+        bodyClass:'pt-0',
+      })
+        .table-responsive.scrollbar
+          +Table({action:true,actionType:'dropdown',colgroup :true}).table-bordered.overflow-hidden
+
+
+    .col-lg-6
+      +ComponentCard({
+        title: 'Active Table',
+        anchor: true,
+        bodyClass:'pt-0',
+        description:'Highlight a table row or cell by adding a <code>.table-active</code> class.',
+        descriptionClass:'mt-2 mb-0'
+      })
+        .table-responsive.scrollbar
+          +Activetable.table-bordered
+        
+    .col-lg-6
+      +ComponentCard({
+        title: 'Variants',
+        anchor: true,
+        headerClass:'border-bottom',
+        bodyClass:'pt-0',
+        description:'Use contextual classes to color tables, table rows or individual cells.',
+        descriptionClass:'mt-2 mb-0'
+      })
+        +Table({contextual: true})
+
+
+  +ComponentCard({ 
+    title:'Responsive Table',
+    anchor:true,
+    headerClass:'border-bottom',
+    bodyClass:'pt-0',
+    description:"Use <code>.table-responsive</code> for horizontally scrolling tables.And use <code>.table-responsive{-sm|-md|-lg|-xl|-xxl} </code> as needed to create responsive tables up to a particular breakpoint",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    .table-responsive.scrollbar
+      +ResponsiveTableExample({action:true,actionType:'dropdown',activeCell:true}).table-striped.overflow-hidden
+

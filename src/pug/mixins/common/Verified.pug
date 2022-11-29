@@ -1,0 +1,5 @@
+mixin Verified(config)
+  - var config = Object.assign({placement: 'top', title: 'Verified', transform: 'shrink-4 down-2'}, config)
+ 
+  span(data-bs-toggle="tooltip" data-bs-placement=config.placement title=config.title)&attributes(attributes)
+    small.fa.fa-check-circle.text-primary(data-fa-transform=config.transform)

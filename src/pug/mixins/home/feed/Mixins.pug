@@ -1,0 +1,34 @@
+mixin PostCog(id)
+  .dropdown.font-sans-serif.btn-reveal-trigger
+    button.btn.btn-link.text-600.btn-sm.dropdown-toggle.p-1.dropdown-caret-none.btn-reveal(type='button' id=id data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+      span.fas.fa-ellipsis-h.fs--1
+    .dropdown-menu.dropdown-menu-end.py-3(aria-labelledby=id)
+      a(href='#!').dropdown-item View
+      a(href='#!').dropdown-item Edit
+      a(href='#!').dropdown-item Report
+      .dropdown-divider
+      a(href='#!').dropdown-item.text-warning Archive
+      a(href='#!').dropdown-item.text-danger Delete   
+  
+  
+
+mixin PostHeader(avatar, sub, auth)
+  - var avatarConfig = Object.assign({size: '2xl'}, avatar)
+  .d-flex
+    +Avatar(avatar)
+    .flex-1.align-self-center.ms-2
+      block
+      p.mb-0.fs--1!=sub
+        span(class=`${auth ? auth : 'fas fa-globe-americas'}`)
+
+
+mixin BirthdayNotification
+  .card&attributes(attributes)
+    .card-body.fs--1
+      .d-flex
+        span.fas.fa-gift.fs-0.text-warning
+        .flex-1.ms-2
+          a(href=`${CWD}${paths['user-profile']}`).fw-semi-bold Emma Watson
+          | 's Birthday is today
+
+

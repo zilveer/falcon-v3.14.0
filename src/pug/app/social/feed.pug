@@ -1,0 +1,36 @@
+extends ../../layouts/LayoutTheme
+include ../../mixins/common/Media
+include ../../mixins/pages/profile/Events
+include ../../mixins/home/feed/PostCreate
+include ../../mixins/home/feed/PostAlbum
+include ../../mixins/home/feed/PostArticle
+include ../../mixins/home/feed/PostImage
+include ../../mixins/home/feed/PostEvent
+include ../../mixins/home/feed/PostVideo
+include ../../mixins/home/feed/PostUrl
+include ../../mixins/home/feed/FeedUserSuggestion
+
+prepend styles
+  link(href=`${CWD}vendors/glightbox/glightbox.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/plyr/plyr.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/glightbox/glightbox.min.js`)
+  script(src=`${CWD}vendors/plyr/plyr.polyfilled.min.js`)
+            
+
+append content
+  .row.g-3
+    .col-lg-8
+      +PostCreate.mb-3
+      +PostAlbum.mb-3
+      +PostArticle.mb-3
+      +PostEvent.mb-3
+      +PostImage.mb-3
+      +PostVideo.mb-3
+      +PostUrl
+    .col-lg-4
+      +BirthdayNotification.mb-3
+      +FeedUserSuggestion.mb-3
+      +Events({more: true, title: 'You may interested'})
+

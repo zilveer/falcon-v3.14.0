@@ -1,0 +1,29 @@
+extends ../layouts/LayoutTheme
+include ../mixins/home/dashboard/Dashboard
+
+prepend scripts
+  script(src=`${CWD}vendors/echarts/echarts.min.js`)
+
+block wrapperContent
+
+  block navbarVertical
+    +NavbarVertical({comboNav: true})
+
+  .content&attributes(attrsContent)
+    block navbarScript
+
+    block navbarTop
+      +NavbarTop({
+        toggleID: 'navbarVerticalCollapse',
+        navbarCollapseID: 'navbarStandard',
+        links: false,
+        simpleNav: true,
+        search: false,
+        changelog: false
+      }).navbar-expand-lg(data-move-target="#navbarVerticalNav" data-navbar-top="combo")
+
+    +Dashboard
+    +Footer
+
+  block afterContent     
+    +AuthenticationModal 

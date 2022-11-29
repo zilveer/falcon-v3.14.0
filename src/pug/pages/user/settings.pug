@@ -1,0 +1,29 @@
+extends ../../layouts/LayoutFeed
+include ../../mixins/common/Verified
+include ../../mixins/common/Form
+include ../../mixins/pages/profile/ExperienceForm
+include ../../mixins/pages/profile/EducationForm
+include ../../mixins/pages/profile/Education
+include ../../mixins/pages/profile/Experience
+include ../../mixins/pages/Settings
+         
+
+prepend styles
+  link(href=`${CWD}vendors/flatpickr/flatpickr.min.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}assets/js/flatpickr.js`)
+
+block feedBanner
+  +Banner
+
+block feed
+  +ProfileSetting
+  +CardExperience
+  +CardEducation
+
+block feedSideBar
+  +AccountSetting
+  +BillingSetting 
+  +ChangePassword     
+  +SettingsDanzerZone

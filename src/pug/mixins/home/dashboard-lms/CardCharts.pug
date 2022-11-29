@@ -1,0 +1,347 @@
+//- ===============================================
+//- Trending Keywords Chart
+//- ===============================================
+mixin CardTrendingKeywords
+  .card&attributes(attributes)
+    .card-header.bg-light.d-flex.flex-between-center.py-2
+      h6.mb-0 Trending Keywords
+      +DashboardDropdown('dropdown-trending-keywords')
+
+    .card-body.p-2.d-flex.flex-center
+      // Find the JS file for the following chart at: src/js/charts/d3/trending-keywords.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .d3-trending-keywords.position-relative.w-100
+        svg.d3-trending-keywords-svg.h-100.w-100
+        .d3-trending-keywords-tooltip.pe-none.position-fixed.py-1.px-2.rounded
+          .d-flex.align-items-center.fs--1
+            span.dot.d3-tooltip-dot
+            span.fw-semi-bold.d3-tooltip-name.pe-2
+            span.fw-semi-bold.d3-tooltip-value
+
+    .card-footer.bg-light.py-2
+      .row.justify-content-between
+        .col-auto
+          select.form-select.form-select-sm
+            option(value='week' selected) Last 7 days
+            option(value='month') Last month
+            option(value='year') Last year
+        .col-auto
+          a(href="#!").btn.btn-sm.btn-falcon-default View All
+
+
+//- ===============================================
+//- Revenue Target Chart
+//- ===============================================
+mixin CardRevenueTarget
+  - 
+    var revenue = 
+      {
+        target: 1200000,
+        reached: 823000
+      }
+  .card.font-sans-serif&attributes(attributes)
+    .card-header.pb-0
+      h6.mb-0 
+        | Monthly Revenue Target
+
+    .card-body.pt-0
+      .row.align-items-end.h-100.mb-n1
+        .col-5.pe-md-0.pe-lg-3
+          .row.g-0 
+            .col-7
+              h6.text-600 Target:
+            .col-5
+              h6.text-800 $1.2M
+          .row.g-0
+            .col-7
+              h6.mb-0.text-600 Reached:
+            .col-5
+              h6.mb-0.text-800 $823K
+        .col-7
+          .lms-half-doughnut.mt-n3.ms-auto
+            canvas.pe-none(data-half-doughnut!={
+              data: {
+                labels: ['Target', 'Reached'],
+                datasets: [{
+                  data: [revenue.target, revenue.reached],
+                  backgroundColor: ['primary', 'gray-300'],
+                }]
+              },
+            })
+            p.mb-0.mt-n6.text-center.fs-1.fw-medium(data-countup!={
+              endValue: ((revenue.reached / revenue.target)*100).toFixed(0), 
+              suffix:'%'
+            }) 0
+
+//- ===============================================
+//- Revenue Target Chart
+//- ===============================================
+mixin CardVisitorTarget
+  - 
+    var visitor = 
+      {
+        target: 7500000,
+        reached: 4800000,
+      }
+  .card.font-sans-serif&attributes(attributes)
+    .card-header.pb-0
+      h6.mb-0 Monthly Visitor Target
+
+    .card-body.pt-0
+      .row.align-items-end.h-100.mb-n1
+        .col-5.pe-md-0.pe-lg-3
+          .row.g-0 
+            .col-7
+              h6.text-600 Target:
+            .col-5
+              h6.text-800 $7.5M
+          .row.g-0
+            .col-7
+              h6.mb-0.text-600 Reached:
+            .col-5
+              h6.mb-0.text-800 $4.8M
+        .col-7
+          .lms-half-doughnut.mt-n3.ms-auto
+            canvas.pe-none(data-half-doughnut!={
+              data: {
+                labels: ['Target', 'Reached'],
+                datasets: [{
+                  data: [visitor.target, visitor.reached],
+                  backgroundColor: ['info', 'gray-300'],
+                }]
+              },
+            })
+            p.mb-0.mt-n6.text-center.fs-1.fw-medium(data-countup!={
+              endValue: ((visitor.reached / visitor.target)*100).toFixed(0), 
+              suffix:'%'
+            }) 0
+
+
+//- ===============================================
+//- Average Course Enrollment Rate
+//- ===============================================
+mixin CardAvgEnrollmentRate
+  .card&attributes(attributes)
+    .card-header.py-2
+      .row.flex-between-center.g-0
+        .col-auto
+          h6.mb-0 Avarage Enrollment Rate
+        
+        .col-12.col-md-auto.order-3.order-md-2
+          .d-flex.flex-wrap.gap-md-2
+            button.btn.btn-link.text-decoration-none.text-600.fs--2.px-0.me-2#onSaleCourse
+              span.fas.fa-circle.text-primary.me-1(data-fa-transform="shrink-3")
+              | On Sale Course
+            button.btn.btn-link.text-decoration-none.text-600.fs--2.px-0#regularPaidCourse
+              span.fas.fa-circle.text-warning.me-1(data-fa-transform="shrink-3")
+              | Regular Paid Course
+        
+        .col-auto.order-2.order-md-3
+          +DashboardDropdown('dropdown-avg-enrollment-lms')
+
+    .card-body.pb-0
+      // Find the JS file for the following chart at: src/js/charts/echarts/average-enrollment-rate.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-avg-enrollment-rate(
+        data-echart-responsive="true" 
+        data-options!={
+        optionOne: 'onSaleCourse',
+        optionTwo: 'regularPaidCourse'
+      })
+
+
+//- ===============================================
+//- Marketing Expenses Chart
+//- ===============================================
+mixin CardMarketingExpenses
+  .card&attributes(attributes)
+    .card-header.bg-light.d-flex.flex-between-center.py-2
+      h6.mb-0 Marketing Expenses
+      .ms-auto
+        a.btn.btn-link.btn-sm.px-0.fw-medium(href='#!') Full Report
+          span.fas.fa-external-link-alt.ms-1.fs--2
+
+    .card-body.d-flex.flex-column.justify-content-between
+      .position-relative
+        // Find the JS file for the following chart at: src/js/charts/echarts/marketing-expenses.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+        .echart-marketing-expenses(
+          data-echart-responsive="true"
+        )
+        .absolute-centered
+          .rounded-circle.d-flex.flex-center.marketing-exp-circle
+            h4.mb-0.text-900 $1.1M
+      +MarketingExpensesData
+
+    .card-footer.bg-light.py-2.d-flex
+      .ms-auto
+        select.form-select.form-select-sm
+          option(value='3months' selected) Last 3 months
+          option(value='1month') Last month
+
+
+mixin MarketingExpensesData 
+  - 
+    var marketingExpenses = 
+      {
+        digitalMarketing: [
+          {
+            field: 'Generate Backlinks',
+            value: '$91.6k',
+            colorOpacity: 100,
+          },
+          {
+            field: 'Email Marketing',
+            value: '$183k',
+            colorOpacity: 75,
+          },
+          {
+            field: 'Influencer Marketing',
+            value: '$138k',
+            colorOpacity: 50,
+          },
+          {
+            field: 'Google Ads',
+            value: '$45.9k',
+            colorOpacity: 25,
+          },
+          {
+            field: 'Social Media',
+            value: '$183k',
+            colorOpacity: 10,
+          },
+        ],
+        offlineMarketing: [
+          {
+            field: 'Event Sponsorship',
+            value: '$91.6k',
+            colorOpacity: 75,
+          },
+          {
+            field: 'Outrich Event',
+            value: '$183k',
+            colorOpacity: 50,
+          },
+          {
+            field: 'Ad Campaign',
+            value: '$138k',
+            colorOpacity: 25,
+          },
+        ]
+      }
+
+  .row.g-3.font-sans-serif
+    .col-sm-6
+      .rounded-3.border.p-3 
+        .d-flex.align-items-center.mb-4
+          span.dot.bg-info.bg-opacity-25
+          h6.mb-0.fw-bold Digital Marketing
+        ul.list-unstyled.mb-0
+          each expense, index in marketingExpenses.digitalMarketing
+            li.d-flex.align-items-center.fs--2.fw-medium.pt-1(
+              class=`${index !== marketingExpenses.digitalMarketing.length - 1 ? 'mb-3' : false}`
+            )
+                span.dot.bg-info(class=`bg-opacity-${expense.colorOpacity}`)
+                p.lh-sm.mb-0.text-700 #{expense.field}
+                  span.text-900.ps-2 #{expense.value}
+
+    .col-sm-6
+      .rounded-3.border.p-3.h-100
+        .d-flex.align-items-center.mb-4
+          span.dot.bg-primary
+          h6.mb-0.fw-bold Offline Marketing
+        ul.list-unstyled.mb-0
+          each expense, index in marketingExpenses.offlineMarketing
+            li.d-flex.align-items-center.fs--2.fw-medium.pt-1(
+              class=index !== marketingExpenses.offlineMarketing.length - 1 ? 'mb-3' : false )
+              span.dot.bg-primary(class=`bg-opacity-${expense.colorOpacity}`
+            )
+              p.lh-sm.mb-0.text-700 #{expense.field}
+                span.text-900.ps-2 #{expense.value}
+
+//- ===============================================
+//- Weekly Goals Chart
+//- ===============================================
+mixin CardWeeklyGoals
+  - 
+    var weeklyGoals = [
+      {
+        title: 'Site Visit',
+        value: 79,
+        color: 'info',
+        badge: {
+          text: 'On par',
+          icon: 'fas fa-check',
+          color: 'success',
+        },
+      },
+      {
+        title: 'Support',
+        value: 85,
+        color: 'primary',
+        badge: {
+          text: 'Ahead',
+          icon: 'fas fa-caret-up',
+          color: 'primary',
+        },
+      },
+      {
+        title: 'Revenue',
+        value: 70,
+        color: 'success',
+        badge: {
+          text: 'Behind',
+          icon: 'fas fa-caret-down',
+          color: 'danger',
+        },
+      },
+    ]
+  .card&attributes(attributes)
+    .card-header.bg-light.d-flex.flex-between-center.py-2
+      h6.mb-0 Weekly Goal
+      +DashboardDropdown(`lms-weekly-goal`)
+
+    .card-body
+      .row.align-items-center
+        .col-sm-4
+          each item,index in weeklyGoals 
+            +WeeklyGoalsStat(item,index)
+
+        .col-sm-8.h-100
+          // Find the JS file for the following chart at: src/js/charts/echarts/weekly-goals-lms.js
+          // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+          .echart-weekly-goals-lms(
+            data-echart-responsive="true" 
+          )
+
+mixin WeeklyGoalsStat(goal, index)
+  div(class=index != 2 ? 'pb-3 mb-3 border-bottom border-200' : '')
+    .position-relative.ps-3
+      .position-absolute.h-100.start-0.rounded(class=`bg-${goal.color}` style="width: 4px;")
+      
+      h6.fs--2.text-600.mb-1 #{goal.title}
+      .d-flex.align-items-center
+        h5.fs-2.text-700.mb-0.me-2(data-countup!={endValue: goal.value, suffix:'%'}) 0
+        span.badge.rounded-pill.fs--2.fw-medium(class=`badge-soft-${goal.badge.color}`)
+          span(class=`${goal.badge.icon}`)
+          |  #{goal.badge.text}
+
+
+//- ===============================================
+//- Course Enrollments Chart
+//- ===============================================
+mixin CardCourseEnrollments
+  .card&attributes(attributes)
+    .card-header.bg-light.d-flex.flex-between-center.py-2
+      h6.mb-0 Course Enrollment
+      .ms-auto
+        select.form-select.form-select-sm
+          option(value='week' selected) Last 7 days
+          option(value='month') Last month
+
+    .card-body
+      // Find the JS file for the following chart at: src/js/charts/echarts/course-enrollments.js
+      // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+      .echart-bar-course-enrollments(
+        data-echart-responsive="true"
+      )

@@ -1,0 +1,14 @@
+mixin ConfirmMailContent(config)
+  - var config = Object.assign({layout: 'simple', titleTag: 'h4'}, config)
+  div&attributes(attributes)
+    img(src=`${CWD}assets/img/icons/spot-illustrations/16.png` alt='Email' width=100).d-block.mx-auto.mb-4
+    #{config.titleTag}(class=config.layout !== 'basic' ? 'mb-2': false) Please check your email!
+    p An email has been sent to 
+      strong xyz@abc.com
+      | . Please click on the 
+      if config.layout === 'card'
+        br.d-none.d-sm-block.d-md-none
+      | included link to reset your password.
+    a(href=`${CWD}${paths[`${config.layout}-login`]}`).btn.btn-primary.btn-sm.mt-3
+      span.fas.fa-chevron-left.me-1(data-fa-transform="shrink-4 down-1")
+      | Return to login

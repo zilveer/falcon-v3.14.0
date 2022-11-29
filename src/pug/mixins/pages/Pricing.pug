@@ -1,0 +1,141 @@
+mixin PricingTitle
+  .col-12.text-center.mb-4
+    .fs-1 #{name} Pricing
+    h3.fs-2.fs-md-3 Free plan with all the basic features. 
+      br.d-none.d-md-block
+      | Pro plan for advanced users.
+    .d-flex.justify-content-center
+      label.form-check-label.me-2(for='customSwitch1') Monthly
+      .form-check.form-switch
+        input#customSwitch1.form-check-input(type='checkbox' checked)
+        label.form-check-label.align-top(for='customSwitch1') Yearly
+
+mixin PricingFree
+  .col-md
+    .border.rounded-3.overflow-hidden.mb-3.mb-md-0
+      .d-flex.flex-between-center.p-4
+        div
+          h3.fw-light.fs-5.mb-0.text-primary Free
+
+          h2.fw-light.mt-0.text-primary
+            sup.fs-1 &dollar;
+            span.fs-3 0
+            span.fs--2.mt-1 / m
+        .pe-3
+          img(src=`${CWD}assets/img/icons/free.svg`, width="70" alt="")
+      .p-4.bg-light
+        ul.list-unstyled
+          li.border-bottom.py-2 
+            span.fas.fa-check.text-primary(data-fa-transform="shrink-2") 
+            |  Unlimited Broadcasts
+          li.border-bottom.py-2 
+            span.fas.fa-check.text-primary(data-fa-transform="shrink-2")
+            |  Unlimited Sequences
+          li.py-2.border-bottom
+            span.fas.fa-check.text-primary(data-fa-transform="shrink-2")
+            |  Advanced marketing 
+          li.py-2.border-bottom
+            span.fas.fa-check.text-primary(data-fa-transform="shrink-2")
+            |  Api &amp; Developer Tools
+          li.py-2.border-bottom.text-300
+            span.fas.fa-check(data-fa-transform="shrink-2")
+            |  Integrations
+          li.py-2.border-bottom.text-300
+            span.fas.fa-check(data-fa-transform="shrink-2")
+            |  Payments                    
+          li.py-2.border-bottom.text-300
+            span.fas.fa-check(data-fa-transform="shrink-2")
+            |  Payments
+          li.py-2.text-300
+            span.fas.fa-check(data-fa-transform="shrink-2")
+            |  Unlimted Tags
+        button.btn.btn-outline-primary.d-block.w-100(type="button") Start free trial   
+
+mixin PricingPro
+  .col-md
+    .border.rounded-3.overflow-hidden
+      .d-flex.flex-between-center.p-4
+        div
+          h3.fw-light.text-primary.fs-5.mb-0 Pro
+
+          h2.fw-light.text-primary.mt-0
+            sup.fs-1 &dollar;
+            span.fs-3 99
+            span.fs--2.mt-1 / m
+        .pe-3
+          img(src=`${CWD}assets/img/icons/pro.svg`, width="70" alt="")
+      .p-4.bg-light
+        ul.list-unstyled
+          li.border-bottom.py-2 
+            span.fas.fa-check.text-primary(data-fa-transform="shrink-2") 
+            |  Unlimited Broadcasts
+          li.border-bottom.py-2 
+            span.fas.fa-check.text-primary(data-fa-transform="shrink-2")
+            |  Unlimited Sequences
+          li.py-2.border-bottom
+            span.fas.fa-check.text-primary(data-fa-transform="shrink-2")
+            |  Advanced marketing 
+          li.py-2.border-bottom
+            span.fas.fa-check.text-primary(data-fa-transform="shrink-2")
+            |  Api &amp; Developer Tools
+          li.py-2.border-bottom
+            span.fas.fa-check.text-primary(data-fa-transform="shrink-2") 
+            |  Integrations
+          li.py-2.border-bottom
+            span.fas.fa-check.text-primary(data-fa-transform="shrink-2") 
+            |  Payments
+          li.py-2.border-bottom
+            span.fas.fa-check.text-primary(data-fa-transform="shrink-2") 
+            |  Unlimted Tags
+          li.py-2
+            span.fas.fa-check.text-primary(data-fa-transform="shrink-2") 
+            |  Custom Fields
+        button.btn.btn-primary.d-block.w-100(type="button") Purchase Now
+
+//- Mixin for pricing page 
+mixin PricingHeader
+  .card.overflow-hidden.mb-3
+    +Background({image: `${CWD}assets/img/icons/spot-illustrations/corner-4.png`, className:"d-none d-lg-block bg-card"})
+    .card-body.position-relative
+      h6.text-600 Free for 30 days
+      h2 For teams of all sizes, in the cloud
+      p Get the power, control, and customization you need to manage your
+        br.d-none.d-md-block
+        |  team’s and organization’s projects.
+      a(href='#!').btn.btn-link.ps-0.btn-sm  Have questions? Chat with us
+mixin PricingCardTitle
+  .row.justify-content-center.justify-content-sm-between
+    .col-sm-auto.text-center
+      h5.d-inline-block Billed Annually
+      span.badge.badge-soft-success.rounded-pill.ms-2 Save 25%
+    .col-sm-auto.d-flex.justify-content-center.mt-1.mt-sm-0
+      label.form-check-label.me-2(for='customSwitch1') Monthly
+      .form-check.form-switch.mb-0
+        input#customSwitch1.form-check-input(type='checkbox' checked)
+        label.form-check-label.align-top(for='customSwitch1') Yearly
+
+mixin PricingCard(config)
+  .col-lg-4.border-top.border-bottom&attributes(attributes)
+    .h-100
+      .text-center.p-4
+        h3.fw-normal.my-0=config.title
+        p.mt-3=config.subTitle
+
+        h2.fw-medium.my-4 
+          sup.fw-normal.fs-2.me-1 &dollar;
+          =config.price
+          small.fs--1.text-700 / year
+
+        a.btn(href=config.url class=config.buttonActive ? 'btn-primary' : 'btn-outline-primary')=config.buttonText
+
+      hr.border-bottom-0.m-0
+
+      .text-start.px-sm-4.py-4
+        h5.fw-medium.fs-0=config.featureTitle
+        ul.list-unstyled.mt-3
+          each feature in config.features
+            li.py-1
+              span.me-2.fas.fa-check.text-success 
+              | 
+              !=feature
+        a(href="#").btn.btn-link More about #{config.title}

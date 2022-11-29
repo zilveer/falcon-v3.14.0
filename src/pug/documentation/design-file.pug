@@ -1,0 +1,18 @@
+extends ../layouts/LayoutComponent
+
+block append content
+  +PageHeader({ title: "Design File" })
+    p.mb-1.mt-2 We have designed #{name} initially directly with code. After receiving multiple requests from our customers for design files, we recreated the design in Figma.
+
+  .card
+    .card-body
+      p This is an early demo of Figma files. All the design is not yet recreated with Figma. But hopefully, we will port all the layouts in the next couple of weeks.
+      h5(data-anchor) To play with the design:
+      ul
+        li 
+          a(href="https://www.figma.com/" target="_blank") Download Figma
+        li Open the Figma link from the 
+          code README.md
+        li The file is "read-only", so you'll have to duplicate it! Go to your grid of documents in Figma, click the ellipsis icon on 
+          b.text-primary.text-600 #{name} (Distributed)
+          | , and then "Duplicate" to create an editable version.

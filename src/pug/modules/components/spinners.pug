@@ -1,0 +1,64 @@
+extends ../../layouts/LayoutComponent
+include ../../mixins/components/Spinners
+
+append variables
+  
+  -
+    var pageHeader = {
+      title: 'Spinners',
+      description: 'Indicate the loading state of a component or page with Bootstrap spinners, built entirely with HTML, CSS, and no JavaScript.',
+      url: `https://getbootstrap.com/docs/${bootstrapVersion}/components/spinners/`,
+      linkText: 'Spinners on Bootstrap'
+    }
+
+
+block component
+  +PageHeader(pageHeader)
+
+  +ComponentCard({
+    title: 'Basic Example',
+    anchor: true,
+  }).mb-3
+    +SpinnerBasicExampleDemo
+
+  +ComponentCard({
+    title: 'Colors',
+    anchor: true,
+    description:"The border spinner uses <code>currentColor </code>for its <code>border-color</code>, meaning you can customize the color with text color utilities. You can use any of our text color utilities on the standard spinner.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +SpinnerColorsDemo
+
+  +ComponentCard({
+    title: 'Growing spinner',
+    anchor: true,
+    description:"If you don’t fancy a border spinner, switch to the grow spinner. While it doesn’t technically spin, it does repeatedly grow!",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +SpinnerGrowingDemo
+
+  +ComponentCard({
+    title: 'Growing colors',
+    anchor: true,
+  }).mb-3
+    +SpinnerGrowingColorDemo
+
+  +ComponentCard({
+    title: 'Size',
+    anchor: true,
+    description:"Add <code>.spinner-border-sm </code>and <code>.spinner-grow-sm </code>to make a smaller spinner that can quickly be used within other components.",
+    descriptionClass:'mt-2 mb-0'
+  }).mb-3
+    +SpinnerSizeDemo
+        
+  +ComponentCard({
+    title: 'Buttons',
+    anchor: true,
+  }).mb-3
+    +SpinnerButtonDemo
+
+
+
+
+
+

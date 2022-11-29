@@ -1,0 +1,33 @@
+extends ../../layouts/LayoutComponent
+
+
+append content
+  +PageHeader({ title: 'Overlay Scrollbar' })
+    p.mt-2 
+      strong SimpleBar, 
+      | A javascript scrollbar plugin that made custom scrollbars simple, lightweight, easy to use and cross-browser compatible.
+    a(href='https://github.com/Grsmto/simplebar/tree/master/packages/simplebar' target='_blank').btn.btn-link.ps-0.btn-sm Simplebar Documentation
+      span.fas.fa-chevron-right.ms-1.fs--2
+
+  +ComponentCard({
+    title: 'Example',
+    anchor:true
+  }).mb-3
+    .card.scrollbar-overlay(style="max-height: 10rem")
+      .card-body
+        h3 Scroll me!
+        p.mb-0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda beatae totam nihil quidem optio odio dolorum necessitatibus animi, incidunt consectetur voluptas impedit nesciunt alias delectus ex eius repellat ipsam aperiam laboriosam enim provident nisi molestias quibusdam. Ipsam ab, illo illum assumenda ex voluptas sit odit doloremque reprehenderit consequuntur facilis ipsa atque quo eius unde dicta! Laboriosam, suscipit, ex, expedita vitae ea maxime tenetur ut ipsum inventore dignissimos fugit quae. Odio fuga corporis maiores suscipit eos, hic numquam vero illum amet delectus eum minima optio id, tempore vitae dolores. Alias quibusdam aspernatur possimus? Eos cumque voluptatibus dolores aperiam veritatis voluptates consectetur quae quo nihil ratione laboriosam ut totam ab, recusandae, numquam impedit vel minus aliquam dignissimos fugiat ad incidunt iste expedita ea! Iusto, enim! Eos dolore ipsam recusandae ullam rem minima facilis, eligendi eaque? Reprehenderit, nostrum amet repudiandae, explicabo maxime modi magni illo, consequatur placeat natus ab at a enim fugiat!
+
+  .card.mb-3
+    .card-header
+      h5.mb-0 CSS
+    .card-body.bg-light
+      +ComponentCardLib
+        link(href=`vendors/simplebar/simplebar.min.css`, rel='stylesheet')
+
+  .card.mb-3
+    .card-header
+      h5.mb-0 Javascript
+    .card-body.bg-light
+      +ComponentCardLib
+        script(src=`vendors/simplebar/simplebar.min.js`)

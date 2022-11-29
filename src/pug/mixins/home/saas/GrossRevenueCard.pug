@@ -1,0 +1,110 @@
+mixin GrossRevenueCard
+  - 
+    var details = {
+      title: 'Gross revenue',
+      badge: {
+        color: 'primary',
+        text: '5%'
+      },
+      amount: {
+        endValue: 82.18, decimalPlaces: 2, suffix: 'M', prefix: '$'
+      }
+    }
+
+  - 
+    var months = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
+    ]
+
+  .card.h-100
+    .card-header
+      .row.justify-content-between.gx-0
+        .col-auto
+          h1.fs-0.text-900 #{details.title}
+          .d-flex
+            h4.text-primary.mb-0 $165.50
+            .ms-3
+              span.badge.rounded-pill(class=`badge-soft-${details.badge.color}`)
+                span.fas.fa-caret-up
+                |  #{details.badge.text}
+        .col-auto
+          select.form-select.form-select-sm.pe-4#select-gross-revenue-month
+            each month, index in months
+              option(value=index)=month
+    .card-body.pt-0.pb-3.h-100
+      .mx-ncard
+        +GrossTable
+        // Find the JS file for the following calendar at: src/js/charts/echarts/gross-revenue.js
+        // If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js
+        .echart-gross-revenue-chart.px-3(data-echart-responsive="true" data-options={
+          target: 'gross-revenue-footer',
+          monthSelect:'select-gross-revenue-month',
+          optionOne: 'currentMonth',
+          optionTwo: 'prevMonth',
+        })&attributes(attributes)
+    .card-footer.border-top.py-2.d-flex.flex-between-center
+        #gross-revenue-footer.d-flex
+          .btn.btn-sm.btn-text.d-flex.align-items-center.p-0.shadow-none#currentMonth(data-month="current")
+            span.fas.fa-circle.text-primary.fs--2.me-1
+            span.text Jan
+          .btn.btn-sm.btn-text.d-flex.align-items-center.p-0.shadow-none.ms-2#prevMonth(data-month="prev")
+            span.fas.fa-circle.text-300.fs--2.me-1
+            span.text Dec
+        a.btn.btn-link.btn-sm.px-0(href=`#!`)
+          | View report
+          span.fas.fa-chevron-right.ms-1.fs--2
+
+
+mixin GrossTable
+  -
+    var rows = [
+      {
+        col1:'Point of sale',
+        col2:'$791.64',
+        col3:{
+          icon:'fas fa-long-arrow-alt-down',
+          iconColor:'danger',
+          text:'13%'
+        },
+      },
+      {
+        col1:'Online Store',
+        col2:'$113.86',
+        col3:{
+          icon:'fas fa-long-arrow-alt-up',
+          iconColor:'success',
+          text:'178%'
+        },
+      },
+      {
+        col1:'Online Store',
+        col2:'$0.00',
+        col3:{
+          icon:false,
+          iconColor:'success',
+          text:'-'
+        },
+      },
+    ]
+
+  table.table.table-borderless.font-sans-serif.fw-medium.fs--1
+    each row in rows
+      tr
+        td.pb-2.pt-0 !{row.col1}
+        td.pb-2.pt-0(style="width: 20%").text-end !{row.col2}
+        td.pb-2.pt-0(style="max-width: 20%").text-end.text-700
+          span.me-1(class=`${row.col3.icon && row.col3.icon} text-${row.col3.iconColor}`)
+          | !{row.col3.text}
+
+
